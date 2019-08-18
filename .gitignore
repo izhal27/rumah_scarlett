@@ -341,3 +341,6 @@ ASALocalRun/
 
 # Temporary Directories
 temp/
+
+# Visual paradigm temp file
+.*.vpp.lck
