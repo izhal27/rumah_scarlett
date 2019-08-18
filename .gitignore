@@ -344,3 +344,5 @@ temp/
 
 # Visual paradigm temp file
 .*.vpp.lck
+*.vpp.bak
+*.vpp.bak_*
