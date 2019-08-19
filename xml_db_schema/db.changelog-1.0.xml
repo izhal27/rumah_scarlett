@@ -1,0 +1,307 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <changeSet author="User (generated)" id="1566202993628-1">
+        <createTable tableName="barang">
+            <column autoIncrement="true" name="id" type="INT UNSIGNED">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="sub_tipe_id" type="INT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="supplier_id" type="INT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="nama" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="stok" type="INT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="harga_pokok" type="DECIMAL(19)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="harga_jual" type="DECIMAL(19)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="minimal_stok" type="INT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="User (generated)" id="1566202993628-2">
+        <createTable tableName="kas_awal">
+            <column autoIncrement="true" name="id" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column defaultValueNumeric="0" name="total" type="DECIMAL(19)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="User (generated)" id="1566202993628-3">
+        <createTable tableName="pembelian">
+            <column autoIncrement="true" name="id" type="INT UNSIGNED">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="no_nota" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="tanggal" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="supplier_id" type="INT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="User (generated)" id="1566202993628-4">
+        <createTable tableName="pembelian_detail">
+            <column autoIncrement="true" name="id" type="INT UNSIGNED">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="pembelian_id" type="INT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="barang_id" type="INT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="qty" type="INT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="total" type="DECIMAL(19)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="User (generated)" id="1566202993628-5">
+        <createTable tableName="pengeluaran">
+            <column autoIncrement="true" name="id" type="INT UNSIGNED">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="tanggal" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="nama" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="jumlah" type="DECIMAL(19)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueComputed="NULL" name="keterangan" type="INT UNSIGNED"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="User (generated)" id="1566202993628-6">
+        <createTable tableName="penjualan">
+            <column autoIncrement="true" name="id" type="INT UNSIGNED">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="no_nota" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="tanggal" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="supplier_id" type="INT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="diskon" type="DECIMAL(19)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="User (generated)" id="1566202993628-7">
+        <createTable tableName="penjualan_detail">
+            <column autoIncrement="true" name="id" type="INT UNSIGNED">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="penjualan_id" type="INT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="barang_id" type="INT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="qty" type="INT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="sub_total" type="DECIMAL(19)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="total" type="DECIMAL(19)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="User (generated)" id="1566202993628-8">
+        <createTable tableName="penyesuaian_stok">
+            <column autoIncrement="true" name="id" type="INT UNSIGNED">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="tanggal" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="no_nota" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="User (generated)" id="1566202993628-9">
+        <createTable tableName="penyesuaian_stok_detail">
+            <column autoIncrement="true" name="id" type="INT UNSIGNED">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="penyesuaian_stok_id" type="INT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="barang_id" type="INT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="qty" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="keterangan" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="User (generated)" id="1566202993628-10">
+        <createTable tableName="sub_tipe">
+            <column autoIncrement="true" name="id" type="INT UNSIGNED">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="nama" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="keterangan" type="VARCHAR(255)"/>
+            <column name="tipe_id" type="INT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="User (generated)" id="1566202993628-11">
+        <createTable tableName="supplier">
+            <column autoIncrement="true" name="id" type="INT UNSIGNED">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="nama" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="alamat" type="VARCHAR(255)"/>
+            <column name="telpon" type="VARCHAR(50)"/>
+            <column name="fax" type="VARCHAR(50)"/>
+            <column name="email" type="VARCHAR(255)"/>
+            <column name="website" type="VARCHAR(255)"/>
+            <column name="contact_person" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="User (generated)" id="1566202993628-12">
+        <createTable tableName="tipe">
+            <column autoIncrement="true" name="id" type="INT UNSIGNED">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="nama" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="keterangan" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="User (generated)" id="1566202993628-13">
+        <addUniqueConstraint columnNames="nama" constraintName="nama" tableName="sub_tipe"/>
+    </changeSet>
+    <changeSet author="User (generated)" id="1566202993628-14">
+        <addUniqueConstraint columnNames="nama" constraintName="nama" tableName="tipe"/>
+    </changeSet>
+    <changeSet author="User (generated)" id="1566202993628-15">
+        <addUniqueConstraint columnNames="no_nota" constraintName="no_nota" tableName="pembelian"/>
+    </changeSet>
+    <changeSet author="User (generated)" id="1566202993628-16">
+        <addUniqueConstraint columnNames="no_nota" constraintName="no_nota" tableName="penjualan"/>
+    </changeSet>
+    <changeSet author="User (generated)" id="1566202993628-17">
+        <createIndex indexName="fk_barang_sub_tipe_id" tableName="barang">
+            <column name="sub_tipe_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="User (generated)" id="1566202993628-18">
+        <createIndex indexName="fk_barang_supplier_id" tableName="barang">
+            <column name="supplier_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="User (generated)" id="1566202993628-19">
+        <createIndex indexName="fk_pembelian_barang_id" tableName="pembelian_detail">
+            <column name="barang_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="User (generated)" id="1566202993628-20">
+        <createIndex indexName="fk_pembelian_pembelian_id" tableName="pembelian_detail">
+            <column name="pembelian_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="User (generated)" id="1566202993628-21">
+        <createIndex indexName="fk_pembelian_supplier_id" tableName="pembelian">
+            <column name="supplier_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="User (generated)" id="1566202993628-22">
+        <createIndex indexName="fk_penjualan_barang_id" tableName="penjualan_detail">
+            <column name="barang_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="User (generated)" id="1566202993628-23">
+        <createIndex indexName="fk_penjualan_penjualan_id" tableName="penjualan_detail">
+            <column name="penjualan_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="User (generated)" id="1566202993628-24">
+        <createIndex indexName="fk_penjualan_supplier_id" tableName="penjualan">
+            <column name="supplier_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="User (generated)" id="1566202993628-25">
+        <createIndex indexName="fk_penyesuaian_barang_id" tableName="penyesuaian_stok_detail">
+            <column name="barang_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="User (generated)" id="1566202993628-26">
+        <createIndex indexName="fk_penyesuaian_penyesuaian_stok_id" tableName="penyesuaian_stok_detail">
+            <column name="penyesuaian_stok_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="User (generated)" id="1566202993628-27">
+        <createIndex indexName="fk_sub_tipe_tipe_id" tableName="sub_tipe">
+            <column name="tipe_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="User (generated)" id="1566202993628-28">
+        <addForeignKeyConstraint baseColumnNames="sub_tipe_id" baseTableName="barang" constraintName="fk_barang_sub_tipe_id" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="sub_tipe"/>
+    </changeSet>
+    <changeSet author="User (generated)" id="1566202993628-29">
+        <addForeignKeyConstraint baseColumnNames="supplier_id" baseTableName="barang" constraintName="fk_barang_supplier_id" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="supplier"/>
+    </changeSet>
+    <changeSet author="User (generated)" id="1566202993628-30">
+        <addForeignKeyConstraint baseColumnNames="barang_id" baseTableName="pembelian_detail" constraintName="fk_pembelian_barang_id" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="barang"/>
+    </changeSet>
+    <changeSet author="User (generated)" id="1566202993628-31">
+        <addForeignKeyConstraint baseColumnNames="pembelian_id" baseTableName="pembelian_detail" constraintName="fk_pembelian_pembelian_id" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="pembelian"/>
+    </changeSet>
+    <changeSet author="User (generated)" id="1566202993628-32">
+        <addForeignKeyConstraint baseColumnNames="supplier_id" baseTableName="pembelian" constraintName="fk_pembelian_supplier_id" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="supplier"/>
+    </changeSet>
+    <changeSet author="User (generated)" id="1566202993628-33">
+        <addForeignKeyConstraint baseColumnNames="barang_id" baseTableName="penjualan_detail" constraintName="fk_penjualan_barang_id" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="barang"/>
+    </changeSet>
+    <changeSet author="User (generated)" id="1566202993628-34">
+        <addForeignKeyConstraint baseColumnNames="penjualan_id" baseTableName="penjualan_detail" constraintName="fk_penjualan_penjualan_id" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="penjualan"/>
+    </changeSet>
+    <changeSet author="User (generated)" id="1566202993628-35">
+        <addForeignKeyConstraint baseColumnNames="supplier_id" baseTableName="penjualan" constraintName="fk_penjualan_supplier_id" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="supplier"/>
+    </changeSet>
+    <changeSet author="User (generated)" id="1566202993628-36">
+        <addForeignKeyConstraint baseColumnNames="barang_id" baseTableName="penyesuaian_stok_detail" constraintName="fk_penyesuaian_barang_id" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="barang"/>
+    </changeSet>
+    <changeSet author="User (generated)" id="1566202993628-37">
+        <addForeignKeyConstraint baseColumnNames="penyesuaian_stok_id" baseTableName="penyesuaian_stok_detail" constraintName="fk_penyesuaian_penyesuaian_stok_id" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="penyesuaian_stok"/>
+    </changeSet>
+    <changeSet author="User (generated)" id="1566202993628-38">
+        <addForeignKeyConstraint baseColumnNames="tipe_id" baseTableName="sub_tipe" constraintName="fk_sub_tipe_tipe_id" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="tipe"/>
+    </changeSet>
+</databaseChangeLog>
