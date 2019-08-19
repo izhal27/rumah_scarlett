@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RumahScarlett.Presentation", "RumahScarlett.Presentation\RumahScarlett.Presentation.csproj", "{60BA32FE-9C7E-45A4-973B-1CE46E37BC03}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RumahScarlett.Domain", "RumahScarlett.Domain\RumahScarlett.Domain.csproj", "{3567E92F-7919-4ECE-A99D-AA577D7C1495}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RumahScarlett.CommonComponents", "RumahScarlett.CommonComponents\RumahScarlett.CommonComponents.csproj", "{8E581912-AA3B-4C65-AFB2-AADFE298417B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RumahScarlett.Infrastructure", "RumahScarlett.Infrastructure\RumahScarlett.Infrastructure.csproj", "{BEBD8253-6419-4331-BF18-6BCC42F2FFD3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RumahScarlett.Services.UnitTests", "RumahScarlett.Services.UnitTests\RumahScarlett.Services.UnitTests.csproj", "{74052BCA-0D55-4E15-B134-0D5475927EF0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RumahScarlett.Services", "RumahScarlett.Services\RumahScarlett.Services.csproj", "{7AC68722-6031-4BDA-B7D3-37B21C05422C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{60BA32FE-9C7E-45A4-973B-1CE46E37BC03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60BA32FE-9C7E-45A4-973B-1CE46E37BC03}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60BA32FE-9C7E-45A4-973B-1CE46E37BC03}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60BA32FE-9C7E-45A4-973B-1CE46E37BC03}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3567E92F-7919-4ECE-A99D-AA577D7C1495}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3567E92F-7919-4ECE-A99D-AA577D7C1495}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3567E92F-7919-4ECE-A99D-AA577D7C1495}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3567E92F-7919-4ECE-A99D-AA577D7C1495}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E581912-AA3B-4C65-AFB2-AADFE298417B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E581912-AA3B-4C65-AFB2-AADFE298417B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E581912-AA3B-4C65-AFB2-AADFE298417B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E581912-AA3B-4C65-AFB2-AADFE298417B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BEBD8253-6419-4331-BF18-6BCC42F2FFD3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BEBD8253-6419-4331-BF18-6BCC42F2FFD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BEBD8253-6419-4331-BF18-6BCC42F2FFD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BEBD8253-6419-4331-BF18-6BCC42F2FFD3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74052BCA-0D55-4E15-B134-0D5475927EF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74052BCA-0D55-4E15-B134-0D5475927EF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74052BCA-0D55-4E15-B134-0D5475927EF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74052BCA-0D55-4E15-B134-0D5475927EF0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7AC68722-6031-4BDA-B7D3-37B21C05422C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7AC68722-6031-4BDA-B7D3-37B21C05422C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7AC68722-6031-4BDA-B7D3-37B21C05422C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7AC68722-6031-4BDA-B7D3-37B21C05422C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
