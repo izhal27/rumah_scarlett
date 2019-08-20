@@ -26,12 +26,12 @@ namespace RumahScarlett.Domain.Models.Pembelian
       [DisplayName("Supplier")]
       public string supplier_nama { get; set; }
 
-      [Required(AllowEmptyStrings = false, ErrorMessage = "Nama No Nota harus diisi !!!")]
+      [Required(AllowEmptyStrings = false, ErrorMessage = "No Nota harus diisi !!!")]
       [StringLength(255, ErrorMessage = "Panjang maksimal No Nota 255 karakter !!!")]
       [DisplayName("No Nota")]
       public string no_nota { get; set; }
 
-      [Required(ErrorMessage = "Tanggal pembelian harus diisi !!!")]
+      [Required(ErrorMessage = "Tanggal harus diisi !!!")]
       [DisplayName("Tanggal")]
       public DateTime tanggal { get; set; }
 

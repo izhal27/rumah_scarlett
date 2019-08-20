@@ -8,10 +8,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RumahScarlett.Domain.Models.Penjualan
+namespace RumahScarlett.Domain.Models.PenyesuainStok
 {
-   [Table("penjualan")]
-   public class Penjualan : IPenjualan
+   [Table("penyesuaian_stok")]
+   public class PenyesuaianStok : IPenyesuaianStok
    {
       [Browsable(false)]
       [DisplayName("ID")]
@@ -26,17 +26,13 @@ namespace RumahScarlett.Domain.Models.Penjualan
       [DisplayName("Tanggal")]
       public DateTime tanggal { get; set; }
 
-      [DefaultValue(0)]
-      [DisplayName("Diskon")]
-      public decimal diskon { get; set; }
-
       [Browsable(false)]
       [Dp.Write(false)]
-      public IEnumerable<IPenjualanDetail> PenjualanDetails { get; set; }
+      public IEnumerable<IPenyesuaianStokDetail> PenyesuaianStokDetails { get; set; }
 
-      public Penjualan()
+      public PenyesuaianStok()
       {
-         PenjualanDetails = new List<PenjualanDetail>();
+         PenyesuaianStokDetails = new List<IPenyesuaianStokDetail>();
       }
    }
 }

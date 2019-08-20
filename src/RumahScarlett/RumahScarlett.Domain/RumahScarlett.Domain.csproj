@@ -59,11 +59,16 @@
     <Compile Include="Models\Pembelian\PembelianDetail.cs" />
     <Compile Include="Models\Pembelian\IPembelian.cs" />
     <Compile Include="Models\Pembelian\Pembelian.cs" />
+    <Compile Include="Models\Pengeluaran\IPengeluaran.cs" />
     <Compile Include="Models\Pengeluaran\Pengeluaran.cs" />
     <Compile Include="Models\Penjualan\IPenjualan.cs" />
     <Compile Include="Models\Penjualan\IPenjualanDetail.cs" />
     <Compile Include="Models\Penjualan\Penjualan.cs" />
     <Compile Include="Models\Penjualan\PenjualanDetail.cs" />
+    <Compile Include="Models\PenyesuainStok\IPenyesuaianStok.cs" />
+    <Compile Include="Models\PenyesuainStok\IPenyesuaianStokDetail.cs" />
+    <Compile Include="Models\PenyesuainStok\PenyesuaianStok.cs" />
+    <Compile Include="Models\PenyesuainStok\PenyesuaianStokDetail.cs" />
     <Compile Include="Models\SubTipe\ISubTipe.cs" />
     <Compile Include="Models\SubTipe\SubTipe.cs" />
     <Compile Include="Models\Supplier\ISupplier.cs" />
