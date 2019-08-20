@@ -40,6 +40,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccessTypeEventArgs.cs" />
+    <Compile Include="DataAccessException.cs" />
+    <Compile Include="DataAccessStatus.cs" />
+    <Compile Include="EventHelper.cs" />
+    <Compile Include="IAccessTypeEventArgs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

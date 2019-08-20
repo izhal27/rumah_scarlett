@@ -15,12 +15,12 @@ namespace RumahScarlett.Domain.Models.SubTipe
    {
       [Browsable(false)]
       [DisplayName("ID")]
-      public int id { get; set; }
+      public uint id { get; set; }
 
       [Browsable(false)]
       [DisplayName("Tipe ID")]
       [Required(ErrorMessage = "Tipe harus diisi !!!")]
-      public int tipe_id { get; set; }
+      public uint tipe_id { get; set; }
 
       [Dp.Write(false)]
       [DisplayName("Tipe")]

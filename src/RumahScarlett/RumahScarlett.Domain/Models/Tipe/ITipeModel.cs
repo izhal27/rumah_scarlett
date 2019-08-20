@@ -1,6 +1,6 @@
 ﻿namespace RumahScarlett.Domain.Models.Tipe
 {
-   public interface ITipe
+   public interface ITipeModel
    {
       uint id { get; set; }
       string nama { get; set; }

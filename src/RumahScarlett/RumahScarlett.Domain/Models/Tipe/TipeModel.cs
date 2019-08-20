@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace RumahScarlett.Domain.Models.Tipe
 {
    [Table("tipe")]
-   public class Tipe : ITipe
+   public class TipeModel : ITipeModel
    {
       [Browsable(false)]
       [DisplayName("ID")]

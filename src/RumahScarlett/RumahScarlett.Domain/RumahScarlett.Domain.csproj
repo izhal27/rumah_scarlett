@@ -73,8 +73,8 @@
     <Compile Include="Models\SubTipe\SubTipe.cs" />
     <Compile Include="Models\Supplier\ISupplier.cs" />
     <Compile Include="Models\Supplier\Supplier.cs" />
-    <Compile Include="Models\Tipe\ITipe.cs" />
-    <Compile Include="Models\Tipe\Tipe.cs" />
+    <Compile Include="Models\Tipe\ITipeModel.cs" />
+    <Compile Include="Models\Tipe\TipeModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
