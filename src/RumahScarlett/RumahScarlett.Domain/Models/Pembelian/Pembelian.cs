@@ -15,12 +15,12 @@ namespace RumahScarlett.Domain.Models.Pembelian
    {
       [Browsable(false)]
       [DisplayName("ID")]
-      public int id { get; set; }
+      public uint id { get; set; }
 
       [Browsable(false)]
       [Required(ErrorMessage = "Supplier harus diisi !!!")]
       [DisplayName("Supplier ID")]
-      public int supplier_id { get; set; }
+      public uint supplier_id { get; set; }
 
       [Dp.Write(false)]
       [DisplayName("Supplier")]
@@ -35,6 +35,8 @@ namespace RumahScarlett.Domain.Models.Pembelian
       [DisplayName("Tanggal")]
       public DateTime tanggal { get; set; }
 
+      [Browsable(false)]
+      [Dp.Write(false)]
       public IEnumerable<IPembelianDetail> PembelianDetails { get; set; }
 
       public Pembelian()

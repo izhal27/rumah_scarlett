@@ -5,10 +5,10 @@ namespace RumahScarlett.Domain.Models.Penjualan
 {
    public interface IPenjualan
    {
-      int id { get; set; }
+      uint id { get; set; }
       string no_nota { get; set; }
       DateTime tanggal { get; set; }
       decimal diskon { get; set; }
-      IEnumerable<PenjualanDetail> IPenjualanDetails { get; set; }
+      IEnumerable<IPenjualanDetail> PenjualanDetails { get; set; }
    }
 }

@@ -15,7 +15,7 @@ namespace RumahScarlett.Domain.Models.Penjualan
    {
       [Browsable(false)]
       [DisplayName("ID")]
-      public int id { get; set; }
+      public uint id { get; set; }
 
       [Required(AllowEmptyStrings = false, ErrorMessage = "No Nota harus diisi !!!")]
       [StringLength(255, ErrorMessage = "Panjang maksimal No Nota 255 karakter !!!")]
@@ -30,7 +30,9 @@ namespace RumahScarlett.Domain.Models.Penjualan
       [DisplayName("Diskon")]
       public decimal diskon { get; set; }
 
-      public IEnumerable<PenjualanDetail> PenjualanDetails { get; set; }
+      [Browsable(false)]
+      [Dp.Write(false)]
+      public IEnumerable<IPenjualanDetail> PenjualanDetails { get; set; }
 
       public Penjualan()
       {

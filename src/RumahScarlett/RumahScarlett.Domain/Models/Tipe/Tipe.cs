@@ -14,11 +14,14 @@ namespace RumahScarlett.Domain.Models.Tipe
    {
       [Browsable(false)]
       [DisplayName("ID")]
-      public int id { get; set; }
+      public uint id { get; set; }
+
       [Required(AllowEmptyStrings = false, ErrorMessage = "Nama tipe harus diisi !!!")]
       [StringLength(100, MinimumLength = 3, ErrorMessage = "Nama tipe harus diantara 3 sampai 100 karakter !!!")]
       [DisplayName("Nama")]
       public string nama { get; set; }
+
+      [DefaultValue("")]
       [StringLength(255, ErrorMessage = "Panjang maksimal keterangan 255 karakter !!!")]
       [DisplayName("Keterangan")]
       public string keterangan { get; set; }

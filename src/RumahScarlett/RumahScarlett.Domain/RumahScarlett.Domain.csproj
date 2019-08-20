@@ -31,7 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Dapper, Version=1.60.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Dapper.1.60.1\lib\net451\Dapper.dll</HintPath>
+      <HintPath>..\packages\Dapper.1.60.6\lib\net451\Dapper.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Dapper.Contrib, Version=1.60.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -51,18 +51,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\Barang\Barang.cs" />
+    <Compile Include="Models\Barang\IBarang.cs" />
     <Compile Include="Models\KasAwal\IKasAwal.cs" />
     <Compile Include="Models\KasAwal\KasAwal.cs" />
     <Compile Include="Models\Pembelian\IPembelianDetail.cs" />
     <Compile Include="Models\Pembelian\PembelianDetail.cs" />
     <Compile Include="Models\Pembelian\IPembelian.cs" />
     <Compile Include="Models\Pembelian\Pembelian.cs" />
+    <Compile Include="Models\Pengeluaran\Pengeluaran.cs" />
     <Compile Include="Models\Penjualan\IPenjualan.cs" />
     <Compile Include="Models\Penjualan\IPenjualanDetail.cs" />
     <Compile Include="Models\Penjualan\Penjualan.cs" />
     <Compile Include="Models\Penjualan\PenjualanDetail.cs" />
     <Compile Include="Models\SubTipe\ISubTipe.cs" />
     <Compile Include="Models\SubTipe\SubTipe.cs" />
+    <Compile Include="Models\Supplier\ISupplier.cs" />
+    <Compile Include="Models\Supplier\Supplier.cs" />
     <Compile Include="Models\Tipe\ITipe.cs" />
     <Compile Include="Models\Tipe\Tipe.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

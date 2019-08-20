@@ -14,7 +14,7 @@ namespace RumahScarlett.Domain.Models.KasAwal
    {
       [Browsable(false)]
       [DisplayName("ID")]
-      public int id { get; set; }
+      public uint id { get; set; }
 
       [Required]
       [DisplayName("Tanggal")]

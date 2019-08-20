@@ -16,31 +16,31 @@ namespace RumahScarlett.Domain.Models.Pembelian
    {
       [Browsable(false)]
       [DisplayName("ID")]
-      public int id { get; set; }
+      public uint id { get; set; }
 
       [Browsable(false)]
       [Required(ErrorMessage = "Pembelian ID harus diisi !!!")]
       [DisplayName("Pembelian ID")]
-      public int pembelian_id { get; set; }
+      public uint pembelian_id { get; set; }
 
       [Browsable(false)]
       [Required(ErrorMessage = "Barang ID harus diisi !!!")]
       [DisplayName("Barang ID")]
-      public int barang_id { get; set; }
+      public uint barang_id { get; set; }
 
       [Dp.Write(false)]
       [DisplayName("Barang")]
       public string barang_nama { get; set; }
 
       [Required(ErrorMessage = "Minimal Qty pembelian 1 !!!")]
-      [IntegerValidator(MinValue = 1)]
+      [IntegerValidator(MinValue = 0)]
       [DisplayName("Qty")]
-      public int qty { get; set; }
+      public uint qty { get; set; }
 
-      [Required(ErrorMessage = "Harga beli harus diisi !!!")]
-      [IntegerValidator(MinValue = 1)]
-      [DisplayName("Harga Beli")]
-      public decimal harga_beli { get; set; }
+      [Required(ErrorMessage = "HPP harus diisi !!!")]
+      [IntegerValidator(MinValue = 0)]
+      [DisplayName("HPP")]
+      public decimal hpp { get; set; }
 
       [Dp.Write(false)]
       [DisplayName("Total")]

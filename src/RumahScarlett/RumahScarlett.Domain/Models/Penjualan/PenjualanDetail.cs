@@ -16,17 +16,17 @@ namespace RumahScarlett.Domain.Models.Penjualan
    {
       [Browsable(false)]
       [DisplayName("ID")]
-      public int id { get; set; }
+      public uint id { get; set; }
 
       [Browsable(false)]
       [Required(ErrorMessage = "Penjualan ID harus diisi !!!")]
       [DisplayName("Penjualan ID")]
-      public int penjualan_id { get; set; }
+      public uint penjualan_id { get; set; }
 
       [Browsable(false)]
       [Required(ErrorMessage = "Barang ID harus diisi !!!")]
       [DisplayName("Barang ID")]
-      public int barang_id { get; set; }
+      public uint barang_id { get; set; }
 
       [Dp.Write(false)]
       [DisplayName("Barang")]
@@ -35,7 +35,7 @@ namespace RumahScarlett.Domain.Models.Penjualan
       [Required(ErrorMessage = "Minimal Qty pembelian 1 !!!")]
       [IntegerValidator(MinValue = 1)]
       [DisplayName("Qty")]
-      public int qty { get; set; }
+      public uint qty { get; set; }
 
       [Required(ErrorMessage = "Harga jual harus diisi !!!")]
       [IntegerValidator(MinValue = 1)]

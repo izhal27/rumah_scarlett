@@ -5,8 +5,8 @@ namespace RumahScarlett.Domain.Models.Pembelian
 {
    public interface IPembelian
    {
-      int id { get; set; }
-      int supplier_id { get; set; }
+      uint id { get; set; }
+      uint supplier_id { get; set; }
       string supplier_nama { get; set; }
       string no_nota { get; set; }
       DateTime tanggal { get; set; }

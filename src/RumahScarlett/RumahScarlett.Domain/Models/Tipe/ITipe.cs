@@ -2,7 +2,7 @@
 {
    public interface ITipe
    {
-      int id { get; set; }
+      uint id { get; set; }
       string nama { get; set; }
       string keterangan { get; set; }
    }

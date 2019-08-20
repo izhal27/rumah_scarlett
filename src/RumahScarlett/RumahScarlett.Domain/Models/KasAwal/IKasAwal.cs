@@ -2,7 +2,7 @@
 {
    public interface IKasAwal
    {
-      int id { get; set; }
+      uint id { get; set; }
       decimal total { get; set; }
    }
 }
