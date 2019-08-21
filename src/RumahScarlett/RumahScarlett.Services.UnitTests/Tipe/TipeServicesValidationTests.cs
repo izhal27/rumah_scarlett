@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json.Linq;
 using RumahScarlett.Domain.Models.Tipe;
+using RumahScarlett.Services.UnitTests.CommonTests;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -67,23 +68,7 @@ namespace RumahScarlett.Services.UnitTests.Tipe
 
       private void WriteExceptionTestResult(Exception exception)
       {
-         if (exception != null)
-         {
-            _testOutputHelper.WriteLine(exception.Message);
-         }
-         else
-         {
-            StringBuilder strBuilder = new StringBuilder();
-            JObject json = JObject.FromObject(_tipeServicesFixture.TipeModel);
-            strBuilder.Append("********** Tidak ada exception yang terjadi *********").AppendLine();
-
-            foreach (var jProperty in json.Properties())
-            {
-               strBuilder.Append(jProperty.Name).Append(" ---> ").Append(jProperty.Value).AppendLine();
-            }
-
-            _testOutputHelper.WriteLine(strBuilder.ToString());
-         }
+         TestsHelper.WriteExceptionTestResult(exception, _testOutputHelper, _tipeServicesFixture.TipeModel);
       }
    }
 }

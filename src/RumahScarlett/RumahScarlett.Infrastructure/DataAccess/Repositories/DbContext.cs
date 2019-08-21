@@ -28,10 +28,10 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories
          get { return _transaction; }
       }
 
-      public DbContext(string connStr)
+      public DbContext()
       {
          _providerName = @"MySql.Data.MySqlClient";
-         _connString = connStr;
+         _connString = @"Server=localhost;Database=rumah_scarlett_dev;Uid=root;Pwd=;";
 
          if (_conn == null)
          {

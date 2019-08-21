@@ -17,28 +17,28 @@ using Xunit.Abstractions;
 namespace RumahScarlett.Services.UnitTests.Tipe
 {
    [Trait("Category", "Data Access Validations")]
-   public class TipeServicesDataAccessTests
+   public class SubTipeServicesDataAccessTests
    {
-      private TipeServices _services;
+      private SubTipeServices _services;
       private readonly ITestOutputHelper _testOutputHelper;
 
-      public TipeServicesDataAccessTests(ITestOutputHelper testOutputHelper)
+      public SubTipeServicesDataAccessTests(ITestOutputHelper testOutputHelper)
       {
          _testOutputHelper = testOutputHelper;
-         _services = new TipeServices(new TipeRepository(), new ModelDataAnnotationCheck());
+         _services = new SubTipeServices(new SubTipeRepository(), new ModelDataAnnotationCheck());
       }
 
       [Fact]
       private void ShouldReturnSuccessForInsert()
       {
-         var model = new TipeModel()
+         var model = new SubTipeModel()
          {
-            nama = "Tipe #8",
-            keterangan= "Keterangan Tipe #8"
+            tipe_id = 3,
+            nama = "Sub tipe #11",
+            keterangan = "Keterangan Sub tipe #11"
          };
 
          var operationSecceded = false;
-         var dataAccessJsonStr = string.Empty;
          var formattedJsonStr = string.Empty;
 
          try
@@ -48,9 +48,8 @@ namespace RumahScarlett.Services.UnitTests.Tipe
          }
          catch (DataAccessException ex)
          {
-            operationSecceded = ex.DataAccessStatusInfo.OperationSucceeded;
-            dataAccessJsonStr = JsonConvert.SerializeObject(ex.DataAccessStatusInfo);
-            formattedJsonStr = JToken.Parse(dataAccessJsonStr).ToString();
+            operationSecceded = false;
+            formattedJsonStr = TestsHelper.DataAccessStatusInfoToJson(ex);
          }
 
          try
@@ -67,11 +66,12 @@ namespace RumahScarlett.Services.UnitTests.Tipe
       [Fact]
       private void ShouldReturnSuccessForUpdate()
       {
-         var model = new TipeModel()
+         var model = new SubTipeModel()
          {
-            id = 4,
-            nama = "Tipe #4",
-            keterangan = "Keterangan Tipe #4"
+            id = 1,
+            tipe_id = 1,
+            nama = "Sub tipe #1 (Update)",
+            keterangan = "Keterangan Sub tipe #1 (Update)"
          };
 
          var operationSecceded = false;
@@ -85,9 +85,8 @@ namespace RumahScarlett.Services.UnitTests.Tipe
          }
          catch (DataAccessException ex)
          {
-            operationSecceded = ex.DataAccessStatusInfo.OperationSucceeded;
-            dataAccessJsonStr = JsonConvert.SerializeObject(ex.DataAccessStatusInfo);
-            formattedJsonStr = JToken.Parse(dataAccessJsonStr).ToString();
+            operationSecceded = false;
+            formattedJsonStr = TestsHelper.DataAccessStatusInfoToJson(ex);
          }
 
          try
@@ -104,9 +103,9 @@ namespace RumahScarlett.Services.UnitTests.Tipe
       [Fact]
       private void ShouldReturnSuccessForDelete()
       {
-         var model = new TipeModel()
+         var model = new SubTipeModel()
          {
-            id = 6,
+            id = 12,
          };
 
          var operationSecceded = false;
@@ -120,9 +119,8 @@ namespace RumahScarlett.Services.UnitTests.Tipe
          }
          catch (DataAccessException ex)
          {
-            operationSecceded = ex.DataAccessStatusInfo.OperationSucceeded;
-            dataAccessJsonStr = JsonConvert.SerializeObject(ex.DataAccessStatusInfo);
-            formattedJsonStr = JToken.Parse(dataAccessJsonStr).ToString();
+            operationSecceded = false;
+            formattedJsonStr = TestsHelper.DataAccessStatusInfoToJson(ex);
          }
 
          try
@@ -139,7 +137,7 @@ namespace RumahScarlett.Services.UnitTests.Tipe
       [Fact]
       public void ShouldReturnListOfModels()
       {
-         var listModels = (List<TipeModel>)_services.GetAll();
+         var listModels = (List<SubTipeModel>)_services.GetAll();
 
          Assert.NotEmpty(listModels);
 
@@ -149,12 +147,12 @@ namespace RumahScarlett.Services.UnitTests.Tipe
       [Fact]
       public void ShouldReturnModelMatchingId()
       {
-         TipeModel model = null;
+         SubTipeModel model = null;
          int idToGet = 1;
 
          try
          {
-            model = (TipeModel)_services.GetById(idToGet);
+            model = (SubTipeModel)_services.GetById(idToGet);
          }
          catch (DataAccessException ex)
          {

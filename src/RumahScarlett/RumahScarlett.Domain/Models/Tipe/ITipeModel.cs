@@ -1,9 +1,12 @@
-﻿namespace RumahScarlett.Domain.Models.Tipe
+﻿using System.Collections.Generic;
+
+namespace RumahScarlett.Domain.Models.Tipe
 {
    public interface ITipeModel
    {
       uint id { get; set; }
       string nama { get; set; }
       string keterangan { get; set; }
+      IEnumerable<ISubTipeModel> SubTipeModels { get; set; }
    }
 }

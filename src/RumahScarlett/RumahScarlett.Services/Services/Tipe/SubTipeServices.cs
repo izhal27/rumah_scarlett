@@ -20,11 +20,13 @@ namespace RumahScarlett.Services.Services.Tipe
 
       public void Insert(ISubTipeModel model)
       {
+         ValidateModel(model);
          _subTipeRepository.Insert(model);
       }
 
       public void Update(ISubTipeModel model)
       {
+         ValidateModel(model);
          _subTipeRepository.Update(model);
       }
 

@@ -31,9 +31,8 @@ namespace RumahScarlett.Domain.Models.PenyesuainStok
       [Dp.Write(false)]
       [DisplayName("Barang")]
       public string barang_nama { get; set; }
-
-      [Required(ErrorMessage = "Minimal Qty penyesuaian stok 1 !!!")]
-      [IntegerValidator(MinValue = 1)]
+      
+      [Range(1, uint.MaxValue, ErrorMessage = "Qty harus diisi !!!")]
       [DisplayName("Qty")]
       public uint qty { get; set; }
       

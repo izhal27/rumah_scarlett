@@ -9,6 +9,7 @@ using Dapper.Contrib.Extensions;
 using RumahScarlett.CommonComponents;
 using Dapper;
 using MySql.Data.MySqlClient;
+using RumahScarlett.Services.CommonServices;
 
 namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Tipe
 {
@@ -16,16 +17,15 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Tipe
    {
       private DbContext _context;
 
-      public TipeRepository(string connStr) : base()
+      public TipeRepository()
       {
-         _context = new DbContext(connStr);
+         _context = new DbContext();
          _modelName = "tipe";
       }
 
       public void Insert(ITipeModel model)
       {
-         DataAccessStatus dataAccessStatus = new DataAccessStatus();
-
+         var dataAccessStatus = new DataAccessStatus();
          ValidateModel(model, dataAccessStatus);
 
          try
@@ -53,8 +53,7 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Tipe
 
       public void Update(ITipeModel model)
       {
-         DataAccessStatus dataAccessStatus = new DataAccessStatus();
-
+         var dataAccessStatus = new DataAccessStatus();
          ValidateModel(model, dataAccessStatus);
 
          try
@@ -83,7 +82,7 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Tipe
 
       public void Delete(ITipeModel model)
       {
-         DataAccessStatus dataAccessStatus = new DataAccessStatus();
+         var dataAccessStatus = new DataAccessStatus();
 
          try
          {
@@ -122,12 +121,18 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Tipe
       public IEnumerable<ITipeModel> GetAll()
       {
          var listObj = new List<TipeModel>();
-
          var dataAccessStatus = new DataAccessStatus();
 
          try
          {
             listObj = _context.Conn.GetAll<TipeModel>().ToList();
+
+            //if (listObj != null)
+            //{
+            //   listObj = listObj.Map(
+            //      t => t.SubTipeModels = null
+            //      ).ToList();
+            //}
          }
          catch (MySqlException ex)
          {
@@ -150,21 +155,16 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Tipe
          }
          catch (MySqlException ex)
          {
-            dataAccessStatus.SetValues(status: "Error", operationSucceeded: false, exceptionMessage: ex.Message,
-                                       customMessage: $"Tidak dapat mengambil data {_modelName} yang sesuai dengan id yang diminta.",
-                                       helpLink: ex.HelpLink, errorCode: ex.ErrorCode, stackTrace: ex.StackTrace);
+            dataAccessStatus = SetDataAccessValues(ex, ErrorMessageType.GetById);
             throw new DataAccessException(message: ex.Message, innerException: ex.InnerException,
                                           dataAccessStatus: dataAccessStatus);
          }
 
          if (model == null)
          {
-            dataAccessStatus.SetValues(status: "Error", operationSucceeded: false, exceptionMessage: "",
-                                       customMessage: $"Data {_modelName} tidak ditemukan. " +
-                                       $"Tidak dapat mengambil data {_modelName} yang sesuai dengan id yang diminta {id}. " +
-                                       $"ID {id} tidak ditemukan di database.",
-                                       helpLink: "", errorCode: 0, stackTrace: "");
-            throw new DataAccessException(dataAccessStatus: dataAccessStatus);
+            var ex = new DataAccessException(dataAccessStatus);
+            SetDataAccessValues(ex, ErrorMessageType.ModelNotFound);
+            throw ex;
          }
 
          return model;
@@ -186,8 +186,9 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Tipe
 
       private bool CheckInsert(ITipeModel model)
       {
-         return _context.Conn.ExecuteScalar<bool>("SELECT COUNT(1) FROM tipe WHERE nama=@nama",
-                                                   new { model.nama });
+         return _context.Conn.ExecuteScalar<bool>("SELECT COUNT(1) FROM tipe WHERE nama=@nama "
+                                                  + "AND id=(SELECT LAST_INSERT_ID())",
+                                                  new { model.nama });
       }
 
       private bool CheckUpdateDelete(ITipeModel model)

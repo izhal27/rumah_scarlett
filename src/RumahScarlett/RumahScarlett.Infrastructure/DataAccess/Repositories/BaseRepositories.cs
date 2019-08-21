@@ -97,8 +97,8 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories
          ex.DataAccessStatusInfo.Status = "Error";
          ex.DataAccessStatusInfo.OperationSucceeded = false;
          ex.DataAccessStatusInfo.CustomMessage = customMessage;
-         ex.DataAccessStatusInfo.ExceptionMessage = string.Copy(ex.Message);
-         ex.DataAccessStatusInfo.StackTrace = string.Copy(ex.StackTrace);
+         ex.DataAccessStatusInfo.ExceptionMessage = !string.IsNullOrWhiteSpace(ex.Message) ? string.Copy(ex.Message) : "";
+         ex.DataAccessStatusInfo.StackTrace = !string.IsNullOrWhiteSpace(ex.StackTrace) ? string.Copy(ex.StackTrace) : "";
       }
 
       protected void RecordExistsCheck(T model, TypeOfExistenceCheck typeOfExistenceCheck,

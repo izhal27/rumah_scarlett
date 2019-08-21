@@ -31,14 +31,12 @@ namespace RumahScarlett.Domain.Models.Pembelian
       [Dp.Write(false)]
       [DisplayName("Barang")]
       public string barang_nama { get; set; }
-
-      [Required(ErrorMessage = "Minimal Qty pembelian 1 !!!")]
-      [IntegerValidator(MinValue = 0)]
+      
+      [Range(1, uint.MaxValue, ErrorMessage = "Qty harus diisi !!!")]
       [DisplayName("Qty")]
       public uint qty { get; set; }
 
-      [Required(ErrorMessage = "HPP harus diisi !!!")]
-      [IntegerValidator(MinValue = 0)]
+      [Range(typeof(decimal), "1", "79228162514264337593543950335", ErrorMessage = "HPP harus diisi !!!")]
       [DisplayName("HPP")]
       public decimal hpp { get; set; }
 
