@@ -75,6 +75,7 @@
   <ItemGroup>
     <Compile Include="DataAccess\Repositories\BaseRepositories.cs" />
     <Compile Include="DataAccess\Repositories\DbContext.cs" />
+    <Compile Include="DataAccess\Repositories\Tipe\SubTipeRepository.cs" />
     <Compile Include="DataAccess\Repositories\Tipe\TipeRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

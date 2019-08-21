@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RumahScarlett.Services.Services.Tipe
 {
-   public class TipeServices : IBaseServices<ITipeModel>, ITipeServices
+   public class TipeServices : ITipeServices
    {
       private ITipeRepository _tipeRepository;
       private IModelDataAnnotationCheck _modelDataAnnotationCheck;
@@ -18,13 +18,15 @@ namespace RumahScarlett.Services.Services.Tipe
          _modelDataAnnotationCheck = modelDataAnnotationCheck;
       }
 
-      public void Create(ITipeModel model)
+      public void Insert(ITipeModel model)
       {
-         _tipeRepository.Create(model);
+         ValidateModel(model);
+         _tipeRepository.Insert(model);
       }
 
       public void Update(ITipeModel model)
       {
+         ValidateModel(model);
          _tipeRepository.Update(model);
       }
 

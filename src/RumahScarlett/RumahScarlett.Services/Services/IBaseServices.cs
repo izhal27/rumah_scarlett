@@ -8,7 +8,7 @@ namespace RumahScarlett.Services.Services
 {
    public interface IBaseServices<T> where T : class
    {
-      void Create(T model);
+      void Insert(T model);
       void Update(T model);
       void Delete(T model);
       IEnumerable<T> GetAll();

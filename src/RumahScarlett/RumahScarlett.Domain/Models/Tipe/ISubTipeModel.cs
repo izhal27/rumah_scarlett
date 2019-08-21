@@ -1,6 +1,6 @@
-﻿namespace RumahScarlett.Domain.Models.SubTipe
+﻿namespace RumahScarlett.Domain.Models.Tipe
 {
-   public interface ISubTipe
+   public interface ISubTipeModel
    {
       uint id { get; set; }
       uint tipe_id { get; set; }

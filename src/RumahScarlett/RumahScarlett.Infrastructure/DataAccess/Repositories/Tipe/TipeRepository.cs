@@ -15,28 +15,18 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Tipe
    public class TipeRepository : BaseRepositories<ITipeModel>, ITipeRepository
    {
       private DbContext _context;
-      private static string _modelName = "tipe";
 
-      public TipeRepository(string connStr)
+      public TipeRepository(string connStr) : base()
       {
          _context = new DbContext(connStr);
+         _modelName = "tipe";
       }
 
-      public void Create(ITipeModel model)
+      public void Insert(ITipeModel model)
       {
          DataAccessStatus dataAccessStatus = new DataAccessStatus();
 
-         var exists = _context.Conn.ExecuteScalar<bool>("SELECT COUNT(1) from tipe where nama=@nama",
-                                                        new { model.nama });
-
-         if (exists)
-         {
-            dataAccessStatus.Status = "Error";
-            dataAccessStatus.CustomMessage = $"Nama {_modelName} sudah ada, " +
-                                              $"silahkan ganti dengan nama {_modelName} yang lain.";
-
-            throw new DataAccessException(dataAccessStatus); ;
-         }
+         ValidateModel(model, dataAccessStatus);
 
          try
          {
@@ -44,27 +34,19 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Tipe
          }
          catch (MySqlException ex)
          {
-            dataAccessStatus.SetValues(status: "Error", operationSucceeded: false, exceptionMessage: ex.Message,
-                                       customMessage: $"Terjadi kesalahan saat menambahkan data {_modelName}.",
-                                       helpLink: ex.HelpLink, errorCode: ex.ErrorCode, stackTrace: ex.StackTrace);
+            dataAccessStatus = SetDataAccessValues(ex, ErrorMessageType.Insert);
             throw new DataAccessException(message: ex.Message, innerException: ex.InnerException,
                                           dataAccessStatus: dataAccessStatus);
          }
 
          try
          {
-            RecordExistsCheck(model, CheckAdd(model), CheckUpdateDelete(model),
-                              TypeOfExistenceCheck.DoesExistInDB, RequestType.ConfirmAdd);
+            RecordExistsCheck(model, TypeOfExistenceCheck.DoesExistInDB, RequestType.ConfirmInsert,
+                              checkInsert: CheckInsert(model));
          }
          catch (DataAccessException ex)
          {
-            ex.DataAccessStatusInfo.Status = "Error";
-            ex.DataAccessStatusInfo.OperationSucceeded = false;
-            ex.DataAccessStatusInfo.CustomMessage = $"Tidak dapat menemukan data {_modelName} " +
-                                                     "di database setelah sukses menambahkan data.";
-            ex.DataAccessStatusInfo.ExceptionMessage = string.Copy(ex.Message);
-            ex.DataAccessStatusInfo.StackTrace = string.Copy(ex.StackTrace);
-
+            SetDataAccessValues(ex, ErrorMessageType.AfterInsert);
             throw ex;
          }
       }
@@ -73,18 +55,17 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Tipe
       {
          DataAccessStatus dataAccessStatus = new DataAccessStatus();
 
+         ValidateModel(model, dataAccessStatus);
+
          try
          {
-            RecordExistsCheck((TipeModel)model, CheckAdd(model), CheckUpdateDelete(model),
-                              TypeOfExistenceCheck.DoesExistInDB, RequestType.Update);
+            RecordExistsCheck((TipeModel)model,
+                              TypeOfExistenceCheck.DoesExistInDB, RequestType.Update,
+                              checkUpdateDelete: CheckUpdateDelete(model));
          }
          catch (DataAccessException ex)
          {
-            ex.DataAccessStatusInfo.CustomMessage = $"Tipe tidak dapat diubah, dikarenakan data {_modelName} " +
-                                                     "tidak ditemukan di database.";
-            ex.DataAccessStatusInfo.ExceptionMessage = string.Copy(ex.Message);
-            ex.DataAccessStatusInfo.StackTrace = string.Copy(ex.StackTrace);
-
+            SetDataAccessValues(ex, ErrorMessageType.ModelNotFound);
             throw ex;
          }
 
@@ -94,9 +75,7 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Tipe
          }
          catch (MySqlException ex)
          {
-            dataAccessStatus.SetValues(status: "Error", operationSucceeded: false, exceptionMessage: ex.Message,
-                                       customMessage: $"Terjadi kesalahan saat menyimpan data {_modelName}.",
-                                       helpLink: ex.HelpLink, errorCode: ex.ErrorCode, stackTrace: ex.StackTrace);
+            dataAccessStatus = SetDataAccessValues(ex, ErrorMessageType.Update);
             throw new DataAccessException(message: ex.Message, innerException: ex.InnerException,
                                           dataAccessStatus: dataAccessStatus);
          }
@@ -108,15 +87,12 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Tipe
 
          try
          {
-            RecordExistsCheck((TipeModel)model, CheckAdd(model), CheckUpdateDelete(model), TypeOfExistenceCheck.DoesExistInDB, RequestType.Delete);
+            RecordExistsCheck((TipeModel)model, TypeOfExistenceCheck.DoesExistInDB, RequestType.Delete,
+                              checkUpdateDelete: CheckUpdateDelete(model));
          }
          catch (DataAccessException ex)
          {
-            ex.DataAccessStatusInfo.CustomMessage = $"Tipe tidak dapat dihapus, dikarenakan data {_modelName} " +
-                                                     "tidak ditemukan di database.";
-            ex.DataAccessStatusInfo.ExceptionMessage = string.Copy(ex.Message);
-            ex.DataAccessStatusInfo.StackTrace = string.Copy(ex.StackTrace);
-
+            SetDataAccessValues(ex, ErrorMessageType.ModelNotFound);
             throw ex;
          }
 
@@ -126,26 +102,19 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Tipe
          }
          catch (MySqlException ex)
          {
-            dataAccessStatus.SetValues(status: "Error", operationSucceeded: false, exceptionMessage: ex.Message,
-                                       customMessage: $"Terjadi kesalahan saat menghapus data {_modelName}.",
-                                       helpLink: ex.HelpLink, errorCode: ex.ErrorCode, stackTrace: ex.StackTrace);
+            dataAccessStatus = SetDataAccessValues(ex, ErrorMessageType.Delete);
             throw new DataAccessException(message: ex.Message, innerException: ex.InnerException,
                                           dataAccessStatus: dataAccessStatus);
          }
 
          try
          {
-            RecordExistsCheck(model, CheckAdd(model), CheckUpdateDelete(model),
-                              TypeOfExistenceCheck.DoesNotExistInDB, RequestType.ConfirmDelete);
+            RecordExistsCheck(model, TypeOfExistenceCheck.DoesNotExistInDB, RequestType.ConfirmDelete,
+                              checkUpdateDelete: CheckUpdateDelete(model));
          }
          catch (DataAccessException ex)
          {
-            ex.DataAccessStatusInfo.Status = "Error";
-            ex.DataAccessStatusInfo.OperationSucceeded = false;
-            ex.DataAccessStatusInfo.CustomMessage = $"Gagal menghapus data {_modelName} di database.";
-            ex.DataAccessStatusInfo.ExceptionMessage = string.Copy(ex.Message);
-            ex.DataAccessStatusInfo.StackTrace = string.Copy(ex.StackTrace);
-
+            SetDataAccessValues(ex, ErrorMessageType.FailedDelete);
             throw ex;
          }
       }
@@ -162,9 +131,7 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Tipe
          }
          catch (MySqlException ex)
          {
-            dataAccessStatus.SetValues(status: "Error", operationSucceeded: false, exceptionMessage: ex.Message,
-                                       customMessage: $"Tidak dapat mengambil list {_modelName} dari database.",
-                                       helpLink: ex.HelpLink, errorCode: ex.ErrorCode, stackTrace: ex.StackTrace);
+            dataAccessStatus = SetDataAccessValues(ex, ErrorMessageType.GetList);
             throw new DataAccessException(message: ex.Message, innerException: ex.InnerException,
                                           dataAccessStatus: dataAccessStatus);
          }
@@ -203,15 +170,29 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Tipe
          return model;
       }
 
-      private bool CheckAdd(ITipeModel model)
+      private void ValidateModel(ITipeModel model, DataAccessStatus dataAccessStatus)
       {
-         return _context.Conn.ExecuteScalar<bool>("SELECT COUNT(1) from tipe where nama=@nama",
+         var existsNama = _context.Conn.ExecuteScalar<bool>("SELECT COUNT(1) FROM tipe WHERE nama=@nama AND id!=@id",
+                                                                 new { model.nama, model.id });
+
+         if (existsNama)
+         {
+            dataAccessStatus.Status = "Error";
+            dataAccessStatus.CustomMessage = StringHelper.DuplicateEntry("nama", _modelName);
+
+            throw new DataAccessException(dataAccessStatus); ;
+         }
+      }
+
+      private bool CheckInsert(ITipeModel model)
+      {
+         return _context.Conn.ExecuteScalar<bool>("SELECT COUNT(1) FROM tipe WHERE nama=@nama",
                                                    new { model.nama });
       }
 
       private bool CheckUpdateDelete(ITipeModel model)
       {
-         return _context.Conn.ExecuteScalar<bool>("SELECT COUNT(1) from tipe where id=@id",
+         return _context.Conn.ExecuteScalar<bool>("SELECT COUNT(1) FROM tipe WHERE id=@id",
                                                   new { model.id });
       }
    }

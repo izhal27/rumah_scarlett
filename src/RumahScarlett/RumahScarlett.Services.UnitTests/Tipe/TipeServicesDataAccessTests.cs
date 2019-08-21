@@ -29,12 +29,12 @@ namespace RumahScarlett.Services.UnitTests.Tipe
       }
 
       [Fact]
-      private void ShouldReturnSuccessForAdd()
+      private void ShouldReturnSuccessForInsert()
       {
          var tipeModel = new TipeModel()
          {
-            nama = "Tipe #1",
-            keterangan= "Keterangan Tipe #1"
+            nama = "Tipe #6",
+            keterangan= "Keterangan Tipe #6"
          };
 
          var operationSecceded = false;
@@ -43,7 +43,7 @@ namespace RumahScarlett.Services.UnitTests.Tipe
 
          try
          {
-            _services.Create(tipeModel);
+            _services.Insert(tipeModel);
             operationSecceded = true;
          }
          catch (DataAccessException ex)

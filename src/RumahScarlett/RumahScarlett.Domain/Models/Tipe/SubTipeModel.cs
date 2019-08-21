@@ -8,10 +8,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RumahScarlett.Domain.Models.SubTipe
+namespace RumahScarlett.Domain.Models.Tipe
 {
    [Table("sub_tipe")]
-   public class SubTipe : ISubTipe
+   public class SubTipeModel : ISubTipeModel
    {
       [Browsable(false)]
       [DisplayName("ID")]

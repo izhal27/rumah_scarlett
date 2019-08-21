@@ -69,8 +69,8 @@
     <Compile Include="Models\PenyesuainStok\IPenyesuaianStokDetail.cs" />
     <Compile Include="Models\PenyesuainStok\PenyesuaianStok.cs" />
     <Compile Include="Models\PenyesuainStok\PenyesuaianStokDetail.cs" />
-    <Compile Include="Models\SubTipe\ISubTipe.cs" />
-    <Compile Include="Models\SubTipe\SubTipe.cs" />
+    <Compile Include="Models\Tipe\ISubTipeModel.cs" />
+    <Compile Include="Models\Tipe\SubTipeModel.cs" />
     <Compile Include="Models\Supplier\ISupplier.cs" />
     <Compile Include="Models\Supplier\Supplier.cs" />
     <Compile Include="Models\Tipe\ITipeModel.cs" />

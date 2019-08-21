@@ -51,8 +51,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\IBaseRepository.cs" />
     <Compile Include="Services\IBaseServices.cs" />
+    <Compile Include="Services\Tipe\ISubTipeRepository.cs" />
+    <Compile Include="Services\Tipe\ISubTipeServices.cs" />
     <Compile Include="Services\Tipe\ITipeRepository.cs" />
     <Compile Include="Services\Tipe\ITipeServices.cs" />
+    <Compile Include="Services\Tipe\SubTipeServices.cs" />
     <Compile Include="Services\Tipe\TipeServices.cs" />
   </ItemGroup>
   <ItemGroup>
