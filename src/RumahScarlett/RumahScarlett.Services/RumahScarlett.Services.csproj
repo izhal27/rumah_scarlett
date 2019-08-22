@@ -55,6 +55,9 @@
     <Compile Include="Services\KasAwal\IKasAwalRepository.cs" />
     <Compile Include="Services\KasAwal\IKasAwalServices.cs" />
     <Compile Include="Services\KasAwal\KasAwalServices.cs" />
+    <Compile Include="Services\Supplier\ISupplierRepository.cs" />
+    <Compile Include="Services\Supplier\ISupplierServices.cs" />
+    <Compile Include="Services\Supplier\SupplierServices.cs" />
     <Compile Include="Services\Tipe\ISubTipeRepository.cs" />
     <Compile Include="Services\Tipe\ISubTipeServices.cs" />
     <Compile Include="Services\Tipe\ITipeRepository.cs" />

@@ -12,7 +12,7 @@ using MySql.Data.MySqlClient;
 
 namespace RumahScarlett.Infrastructure.DataAccess.Repositories.KasAwal
 {
-   public class KasAwalRepository : BaseRepositories<IKasAwalModel>, IKasAwalRepository
+   public class KasAwalRepository : BaseRepository<IKasAwalModel>, IKasAwalRepository
    {
       private DbContext _context;
 

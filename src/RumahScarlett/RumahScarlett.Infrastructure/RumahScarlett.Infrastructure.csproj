@@ -73,9 +73,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataAccess\Repositories\BaseRepositories.cs" />
+    <Compile Include="DataAccess\Repositories\BaseRepository.cs" />
     <Compile Include="DataAccess\Repositories\DbContext.cs" />
     <Compile Include="DataAccess\Repositories\KasAwal\KasAwalRepository.cs" />
+    <Compile Include="DataAccess\Repositories\Supplier\SupplierRepository.cs" />
     <Compile Include="DataAccess\Repositories\Tipe\SubTipeRepository.cs" />
     <Compile Include="DataAccess\Repositories\Tipe\TipeRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

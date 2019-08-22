@@ -1,35 +1,36 @@
-﻿using RumahScarlett.Services.Services.Tipe;
+﻿using Dapper;
+using Dapper.Contrib.Extensions;
+using MySql.Data.MySqlClient;
+using RumahScarlett.CommonComponents;
+using RumahScarlett.Domain.Models.Supplier;
+using RumahScarlett.Services.CommonServices;
+using RumahScarlett.Services.Services.Supplier;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using RumahScarlett.Domain.Models.Tipe;
-using RumahScarlett.CommonComponents;
-using Dapper;
-using MySql.Data.MySqlClient;
-using Dapper.Contrib.Extensions;
 
-namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Tipe
+namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Supplier
 {
-   public class SubTipeRepository : BaseRepository<ISubTipeModel>, ISubTipeRepository
+   public class SupplierRepository : BaseRepository<ISupplierModel>, ISupplierRepository
    {
       private DbContext _context;
-      protected new static string _modelName = "sub tipe";
 
-      public SubTipeRepository()
+      public SupplierRepository()
       {
          _context = new DbContext();
+         _modelName = "supplier";
       }
 
-      public void Insert(ISubTipeModel model)
+      public void Insert(ISupplierModel model)
       {
-         DataAccessStatus dataAccessStatus = new DataAccessStatus();
+         var dataAccessStatus = new DataAccessStatus();
          ValidateModel(model, dataAccessStatus);
 
          try
          {
-            _context.Conn.Insert((SubTipeModel)model);
+            _context.Conn.Insert((SupplierModel)model);
          }
          catch (MySqlException ex)
          {
@@ -49,15 +50,15 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Tipe
             throw ex;
          }
       }
-
-      public void Update(ISubTipeModel model)
+      
+      public void Update(ISupplierModel model)
       {
-         DataAccessStatus dataAccessStatus = new DataAccessStatus();
+         var dataAccessStatus = new DataAccessStatus();
          ValidateModel(model, dataAccessStatus);
 
          try
          {
-            RecordExistsCheck((SubTipeModel)model,
+            RecordExistsCheck((SupplierModel)model,
                               TypeOfExistenceCheck.DoesExistInDB, RequestType.Update,
                               checkUpdateDelete: CheckUpdateDelete(model));
          }
@@ -69,7 +70,7 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Tipe
 
          try
          {
-            _context.Conn.Update((SubTipeModel)model);
+            _context.Conn.Update((SupplierModel)model);
          }
          catch (MySqlException ex)
          {
@@ -79,13 +80,13 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Tipe
          }
       }
 
-      public void Delete(ISubTipeModel model)
+      public void Delete(ISupplierModel model)
       {
-         DataAccessStatus dataAccessStatus = new DataAccessStatus();
+         var dataAccessStatus = new DataAccessStatus();
 
          try
          {
-            RecordExistsCheck((SubTipeModel)model, TypeOfExistenceCheck.DoesExistInDB, RequestType.Delete,
+            RecordExistsCheck((SupplierModel)model, TypeOfExistenceCheck.DoesExistInDB, RequestType.Delete,
                               checkUpdateDelete: CheckUpdateDelete(model));
          }
          catch (DataAccessException ex)
@@ -96,7 +97,7 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Tipe
 
          try
          {
-            _context.Conn.Delete((SubTipeModel)model);
+            _context.Conn.Delete((SupplierModel)model);
          }
          catch (MySqlException ex)
          {
@@ -117,16 +118,14 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Tipe
          }
       }
 
-      public IEnumerable<ISubTipeModel> GetAll()
+      public IEnumerable<ISupplierModel> GetAll()
       {
-         var listObj = new List<SubTipeModel>();
+         var listObj = new List<SupplierModel>();
          var dataAccessStatus = new DataAccessStatus();
-         var queryStr = "SELECT s.*, t.id AS tipe_id, t.nama AS tipe_nama FROM sub_tipe s " +
-                        "INNER JOIN tipe t ON s.tipe_id = t.id";
 
          try
          {
-            listObj = _context.Conn.Query<SubTipeModel>(queryStr).ToList();
+            listObj = _context.Conn.GetAll<SupplierModel>().ToList();            
          }
          catch (MySqlException ex)
          {
@@ -138,36 +137,14 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Tipe
          return listObj;
       }
 
-      public IEnumerable<ISubTipeModel> GetAll(object tipeId)
+      public ISupplierModel GetById(object id)
       {
-         var listObj = new List<SubTipeModel>();
-         var dataAccessStatus = new DataAccessStatus();
-         var queryStr = "SELECT s.*, t.id AS tipe_id, t.nama AS tipe_nama FROM sub_tipe s " +
-                        "INNER JOIN tipe t ON s.tipe_id = t.id " +
-                        "WHERE t.id=@id";
-
-         try
-         {
-            listObj = _context.Conn.Query<SubTipeModel>(queryStr, new { id = tipeId }).ToList();
-         }
-         catch (MySqlException ex)
-         {
-            dataAccessStatus = SetDataAccessValues(ex, ErrorMessageType.GetList);
-            throw new DataAccessException(message: ex.Message, innerException: ex.InnerException,
-                                          dataAccessStatus: dataAccessStatus);
-         }
-
-         return listObj;
-      }
-
-      public ISubTipeModel GetById(object id)
-      {
-         SubTipeModel model = null;
+         SupplierModel model = null;
          var dataAccessStatus = new DataAccessStatus();
 
          try
          {
-            model = _context.Conn.Get<SubTipeModel>(id);
+            model = _context.Conn.Get<SupplierModel>(id);
          }
          catch (MySqlException ex)
          {
@@ -185,32 +162,31 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Tipe
 
          return model;
       }
-
-
-      private void ValidateModel(ISubTipeModel model, DataAccessStatus dataAccessStatus)
+      
+      private void ValidateModel(ISupplierModel model, DataAccessStatus dataAccessStatus)
       {
-         var existsNama = _context.Conn.ExecuteScalar<bool>("SELECT COUNT(1) FROM sub_tipe WHERE nama=@nama AND id!=@id",
-                                                            new { model.nama, model.id });
+         var existsNama = _context.Conn.ExecuteScalar<bool>("SELECT COUNT(1) FROM supplier WHERE nama=@nama AND id!=@id",
+                                                             new { model.nama, model.id });
 
          if (existsNama)
          {
             dataAccessStatus.Status = "Error";
             dataAccessStatus.CustomMessage = StringHelper.DuplicateEntry("nama", _modelName);
 
-            throw new DataAccessException(dataAccessStatus);
+            throw new DataAccessException(dataAccessStatus); ;
          }
       }
 
-      private bool CheckInsert(ISubTipeModel model)
+      private bool CheckInsert(ISupplierModel model)
       {
-         return _context.Conn.ExecuteScalar<bool>("SELECT COUNT(1) FROM sub_tipe WHERE nama=@nama "
+         return _context.Conn.ExecuteScalar<bool>("SELECT COUNT(1) FROM supplier WHERE nama=@nama "
                                                   + "AND id=(SELECT LAST_INSERT_ID())",
                                                   new { model.nama });
       }
 
-      private bool CheckUpdateDelete(ISubTipeModel model)
+      private bool CheckUpdateDelete(ISupplierModel model)
       {
-         return _context.Conn.ExecuteScalar<bool>("SELECT COUNT(1) FROM sub_tipe WHERE id=@id",
+         return _context.Conn.ExecuteScalar<bool>("SELECT COUNT(1) FROM supplier WHERE id=@id",
                                                   new { model.id });
       }
    }

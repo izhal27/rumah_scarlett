@@ -21,10 +21,10 @@ namespace RumahScarlett.Services.UnitTests.KasAwal
       {
          _servicesFixture = servicesFixture;
          _testOutputHelper = testOutputHelper;
-         SerValidSampleValues();
+         SetValidSampleValues();
       }
 
-      private void SerValidSampleValues()
+      private void SetValidSampleValues()
       {
          _servicesFixture.Model = new KasAwalModel
          {

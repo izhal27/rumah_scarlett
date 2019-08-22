@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace RumahScarlett.Services.Services
 {
+   /// <summary>
+   /// Base of model repository
+   /// </summary>
+   /// <typeparam name="T">Type of model</typeparam>
    public interface IBaseRepository<T> where T : class
    {
       void Insert(T model);

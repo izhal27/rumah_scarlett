@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace RumahScarlett.Infrastructure.DataAccess.Repositories
 {
-   public class BaseRepositories<T>
+   public class BaseRepository<T>
    {
       protected enum TypeOfExistenceCheck
       {

@@ -13,7 +13,7 @@ using RumahScarlett.Services.CommonServices;
 
 namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Tipe
 {
-   public class TipeRepository : BaseRepositories<ITipeModel>, ITipeRepository
+   public class TipeRepository : BaseRepository<ITipeModel>, ITipeRepository
    {
       private DbContext _context;
 
