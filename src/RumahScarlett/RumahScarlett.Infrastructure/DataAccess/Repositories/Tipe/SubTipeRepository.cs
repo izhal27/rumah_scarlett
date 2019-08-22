@@ -138,6 +138,28 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Tipe
          return listObj;
       }
 
+      public IEnumerable<ISubTipeModel> GetAll(object tipeId)
+      {
+         var listObj = new List<SubTipeModel>();
+         var dataAccessStatus = new DataAccessStatus();
+         var queryStr = "SELECT s.*, t.id AS tipe_id, t.nama AS tipe_nama FROM sub_tipe s " +
+                        "INNER JOIN tipe t ON s.tipe_id = t.id " +
+                        "WHERE t.id=@id";
+
+         try
+         {
+            listObj = _context.Conn.Query<SubTipeModel>(queryStr, new { id = tipeId }).ToList();
+         }
+         catch (MySqlException ex)
+         {
+            dataAccessStatus = SetDataAccessValues(ex, ErrorMessageType.GetList);
+            throw new DataAccessException(message: ex.Message, innerException: ex.InnerException,
+                                          dataAccessStatus: dataAccessStatus);
+         }
+
+         return listObj;
+      }
+
       public ISubTipeModel GetById(object id)
       {
          SubTipeModel model = null;

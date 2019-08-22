@@ -127,12 +127,12 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Tipe
          {
             listObj = _context.Conn.GetAll<TipeModel>().ToList();
 
-            //if (listObj != null)
-            //{
-            //   listObj = listObj.Map(
-            //      t => t.SubTipeModels = null
-            //      ).ToList();
-            //}
+            if (listObj != null)
+            {
+               listObj = listObj.Map(
+                  t => t.SubTipeModels = new SubTipeRepository().GetAll(t.id)
+                  ).ToList();
+            }
          }
          catch (MySqlException ex)
          {

@@ -33,9 +33,9 @@ namespace RumahScarlett.Services.UnitTests.Tipe
       {
          var model = new SubTipeModel()
          {
-            tipe_id = 3,
-            nama = "Sub tipe #11",
-            keterangan = "Keterangan Sub tipe #11"
+            tipe_id = 2,
+            nama = "Sub tipe #10",
+            keterangan = "Keterangan Sub tipe #10"
          };
 
          var operationSecceded = false;

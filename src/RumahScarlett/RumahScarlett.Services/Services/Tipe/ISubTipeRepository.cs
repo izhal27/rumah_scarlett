@@ -9,5 +9,6 @@ namespace RumahScarlett.Services.Services.Tipe
 {
    public interface ISubTipeRepository : IBaseRepository<ISubTipeModel>
    {
+      IEnumerable<ISubTipeModel> GetAll(object tipeId);
    }
 }

@@ -69,9 +69,9 @@ namespace RumahScarlett.Services.UnitTests.Tipe
       {
          var model = new TipeModel()
          {
-            id = 4,
-            nama = "Tipe #4",
-            keterangan = "Keterangan Tipe #4"
+            id = 6,
+            nama = "Tipe #7",
+            keterangan = "Keterangan Tipe #7"
          };
 
          var operationSecceded = false;
