@@ -7,6 +7,7 @@
       uint barang_id { get; set; }
       string barang_nama { get; set; }
       uint qty { get; set; }
+      decimal hpp { get; set; }
       string keterangan { get; set; }
    }
 }
