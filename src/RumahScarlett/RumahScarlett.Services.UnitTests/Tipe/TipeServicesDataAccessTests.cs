@@ -33,8 +33,8 @@ namespace RumahScarlett.Services.UnitTests.Tipe
       {
          var model = new TipeModel()
          {
-            nama = "Tipe #8",
-            keterangan= "Keterangan Tipe #8"
+            nama = "Tipe #12",
+            keterangan= "Keterangan Tipe #12"
          };
 
          var operationSecceded = false;
@@ -95,8 +95,8 @@ namespace RumahScarlett.Services.UnitTests.Tipe
       {
          var model = new TipeModel()
          {
-            id = 6,
-            nama = "Tipe #7",
+            id = 7,
+            nama = "Tipe #7 (Update)",
             keterangan = "Keterangan Tipe #7"
          };
 
@@ -159,7 +159,7 @@ namespace RumahScarlett.Services.UnitTests.Tipe
       {
          var model = new TipeModel()
          {
-            id = 6,
+            id = 10,
          };
 
          var operationSecceded = false;

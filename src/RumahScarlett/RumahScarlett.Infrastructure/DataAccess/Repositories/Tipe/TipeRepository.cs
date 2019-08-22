@@ -28,27 +28,8 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Tipe
          var dataAccessStatus = new DataAccessStatus();
          ValidateModel(model, dataAccessStatus);
 
-         try
-         {
-            _context.Conn.Insert((TipeModel)model);
-         }
-         catch (MySqlException ex)
-         {
-            dataAccessStatus = SetDataAccessValues(ex, ErrorMessageType.Insert);
-            throw new DataAccessException(message: ex.Message, innerException: ex.InnerException,
-                                          dataAccessStatus: dataAccessStatus);
-         }
-
-         try
-         {
-            RecordExistsCheck(model, TypeOfExistenceCheck.DoesExistInDB, RequestType.ConfirmInsert,
-                              checkInsert: CheckInsert(model));
-         }
-         catch (DataAccessException ex)
-         {
-            SetDataAccessValues(ex, ErrorMessageType.AfterInsert);
-            throw ex;
-         }
+         Insert(model, () => _context.Conn.Insert((TipeModel)model), dataAccessStatus, 
+                () => CheckInsert(model));
       }
 
       public void Update(ITipeModel model)
@@ -56,76 +37,25 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Tipe
          var dataAccessStatus = new DataAccessStatus();
          ValidateModel(model, dataAccessStatus);
 
-         try
-         {
-            RecordExistsCheck((TipeModel)model,
-                              TypeOfExistenceCheck.DoesExistInDB, RequestType.Update,
-                              checkUpdateDelete: CheckUpdateDelete(model));
-         }
-         catch (DataAccessException ex)
-         {
-            SetDataAccessValues(ex, ErrorMessageType.ModelNotFound);
-            throw ex;
-         }
-
-         try
-         {
-            _context.Conn.Update((TipeModel)model);
-         }
-         catch (MySqlException ex)
-         {
-            dataAccessStatus = SetDataAccessValues(ex, ErrorMessageType.Update);
-            throw new DataAccessException(message: ex.Message, innerException: ex.InnerException,
-                                          dataAccessStatus: dataAccessStatus);
-         }
+         Update(model, () => _context.Conn.Update((TipeModel)model), dataAccessStatus, 
+                () => CheckUpdateDelete(model));
       }
 
       public void Delete(ITipeModel model)
       {
          var dataAccessStatus = new DataAccessStatus();
-
-         try
-         {
-            RecordExistsCheck((TipeModel)model, TypeOfExistenceCheck.DoesExistInDB, RequestType.Delete,
-                              checkUpdateDelete: CheckUpdateDelete(model));
-         }
-         catch (DataAccessException ex)
-         {
-            SetDataAccessValues(ex, ErrorMessageType.ModelNotFound);
-            throw ex;
-         }
-
-         try
-         {
-            _context.Conn.Delete((TipeModel)model);
-         }
-         catch (MySqlException ex)
-         {
-            dataAccessStatus = SetDataAccessValues(ex, ErrorMessageType.Delete);
-            throw new DataAccessException(message: ex.Message, innerException: ex.InnerException,
-                                          dataAccessStatus: dataAccessStatus);
-         }
-
-         try
-         {
-            RecordExistsCheck(model, TypeOfExistenceCheck.DoesNotExistInDB, RequestType.ConfirmDelete,
-                              checkUpdateDelete: CheckUpdateDelete(model));
-         }
-         catch (DataAccessException ex)
-         {
-            SetDataAccessValues(ex, ErrorMessageType.FailedDelete);
-            throw ex;
-         }
+         
+         Delete(model, () => _context.Conn.Delete((TipeModel)model), dataAccessStatus, 
+                () => CheckUpdateDelete(model));
       }
 
       public IEnumerable<ITipeModel> GetAll()
       {
-         var listObj = new List<TipeModel>();
          var dataAccessStatus = new DataAccessStatus();
-
-         try
+         
+         return GetAll(() =>
          {
-            listObj = _context.Conn.GetAll<TipeModel>().ToList();
+            var listObj = _context.Conn.GetAll<TipeModel>().ToList();
 
             if (listObj != null)
             {
@@ -133,41 +63,16 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Tipe
                   t => t.SubTipeModels = new SubTipeRepository().GetAll(t.id)
                   ).ToList();
             }
-         }
-         catch (MySqlException ex)
-         {
-            dataAccessStatus = SetDataAccessValues(ex, ErrorMessageType.GetList);
-            throw new DataAccessException(message: ex.Message, innerException: ex.InnerException,
-                                          dataAccessStatus: dataAccessStatus);
-         }
 
-         return listObj;
+            return listObj;
+         }, dataAccessStatus);
       }
 
       public ITipeModel GetById(object id)
       {
-         TipeModel model = null;
          var dataAccessStatus = new DataAccessStatus();
-
-         try
-         {
-            model = _context.Conn.Get<TipeModel>(id);
-         }
-         catch (MySqlException ex)
-         {
-            dataAccessStatus = SetDataAccessValues(ex, ErrorMessageType.GetById);
-            throw new DataAccessException(message: ex.Message, innerException: ex.InnerException,
-                                          dataAccessStatus: dataAccessStatus);
-         }
-
-         if (model == null)
-         {
-            var ex = new DataAccessException(dataAccessStatus);
-            SetDataAccessValues(ex, ErrorMessageType.ModelNotFound);
-            throw ex;
-         }
-
-         return model;
+         
+         return GetBy(() => _context.Conn.Get<TipeModel>(id), dataAccessStatus);
       }
 
       private void ValidateModel(ITipeModel model, DataAccessStatus dataAccessStatus)

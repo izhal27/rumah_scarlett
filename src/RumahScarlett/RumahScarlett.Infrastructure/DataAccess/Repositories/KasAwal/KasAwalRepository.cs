@@ -27,55 +27,16 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.KasAwal
          var dataAccessStatus = new DataAccessStatus();
          ValidateModel(model, dataAccessStatus);
 
-         try
-         {
-            _context.Conn.Insert((KasAwalModel)model);
-         }
-         catch (MySqlException ex)
-         {
-            dataAccessStatus = SetDataAccessValues(ex, ErrorMessageType.Insert);
-            throw new DataAccessException(message: ex.Message, innerException: ex.InnerException,
-                                          dataAccessStatus: dataAccessStatus);
-         }
-
-         try
-         {
-            RecordExistsCheck(model, TypeOfExistenceCheck.DoesExistInDB, RequestType.ConfirmInsert,
-                              checkInsert: CheckInsert(model));
-         }
-         catch (DataAccessException ex)
-         {
-            SetDataAccessValues(ex, ErrorMessageType.AfterInsert);
-            throw ex;
-         }
+         Insert(model, () => _context.Conn.Insert((KasAwalModel)model), dataAccessStatus,
+                () => CheckInsert(model));
       }
 
       public void Update(IKasAwalModel model)
       {
          var dataAccessStatus = new DataAccessStatus();
 
-         try
-         {
-            RecordExistsCheck((KasAwalModel)model,
-                              TypeOfExistenceCheck.DoesExistInDB, RequestType.Update,
-                              checkUpdateDelete: CheckUpdateDelete(model));
-         }
-         catch (DataAccessException ex)
-         {
-            SetDataAccessValues(ex, ErrorMessageType.ModelNotFound);
-            throw ex;
-         }
-
-         try
-         {
-            _context.Conn.Update((KasAwalModel)model);
-         }
-         catch (MySqlException ex)
-         {
-            dataAccessStatus = SetDataAccessValues(ex, ErrorMessageType.Update);
-            throw new DataAccessException(message: ex.Message, innerException: ex.InnerException,
-                                          dataAccessStatus: dataAccessStatus);
-         }
+         Update(model, () => _context.Conn.Update((KasAwalModel)model), dataAccessStatus,
+                () => CheckUpdateDelete(model));
       }
 
       public void Delete(IKasAwalModel model)
@@ -95,36 +56,30 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.KasAwal
 
       public IKasAwalModel GetByTanggal(object tanggal)
       {
-         KasAwalModel model = null;
          var dataAccessStatus = new DataAccessStatus();
-         var queryStr = "SELECT * FROM kas_awal WHERE tanggal=@tanggal";
-         var tanggalFix = ((DateTime)tanggal).ToString("yyyy-MM-dd");
 
-         try
+         return GetBy(() =>
          {
-            model = _context.Conn.Query<KasAwalModel>(queryStr, new { tanggal = tanggalFix }).FirstOrDefault();
-         }
-         catch (MySqlException ex)
-         {
-            dataAccessStatus = SetDataAccessValues(ex, ErrorMessageType.GetById);
-            throw new DataAccessException(message: ex.Message, innerException: ex.InnerException,
-                                          dataAccessStatus: dataAccessStatus);
-         }
+            var queryStr = "SELECT * FROM kas_awal WHERE tanggal=@tanggal";
+            var tanggalFix = ((DateTime)tanggal).ToString("yyyy-MM-dd");
 
-         if (model == null)
-         {
-            var kasAwal = new KasAwalModel
+            var model = _context.Conn.Query<KasAwalModel>(queryStr, new { tanggal = tanggalFix }).FirstOrDefault();
+
+            if (model == null)
             {
-               tanggal = ((DateTime)tanggal).Date,
-               total = 0
-            };
+               var kasAwal = new KasAwalModel
+               {
+                  tanggal = ((DateTime)tanggal).Date,
+                  total = 0
+               };
 
-            Insert(kasAwal);
+               Insert(kasAwal);
 
-            return kasAwal;
-         }
+               return kasAwal;
+            }
 
-         return model;
+            return model;
+         }, dataAccessStatus);
       }
 
       private void ValidateModel(IKasAwalModel model, DataAccessStatus dataAccessStatus)

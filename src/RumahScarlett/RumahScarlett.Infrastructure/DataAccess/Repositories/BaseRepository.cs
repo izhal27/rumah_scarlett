@@ -38,7 +38,146 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories
          GetById,
       }
 
+      protected enum ProcessType
+      {
+         Insert,
+         Update,
+         Delete
+      }
+
       protected static string _modelName = "";
+
+      protected void Insert(T model, Action insertMethod, DataAccessStatus dataAccessStatus,
+                                Func<bool> checkInsert)
+      {
+         try
+         {
+            insertMethod();
+         }
+         catch (MySqlException ex)
+         {
+            dataAccessStatus = SetDataAccessValues(ex, ErrorMessageType.Insert);
+            throw new DataAccessException(message: ex.Message, innerException: ex.InnerException,
+                                          dataAccessStatus: dataAccessStatus);
+         }
+
+         try
+         {
+            RecordExistsCheck(model, TypeOfExistenceCheck.DoesExistInDB, RequestType.ConfirmInsert,
+                              checkInsert: checkInsert());
+         }
+         catch (DataAccessException ex)
+         {
+            SetDataAccessValues(ex, ErrorMessageType.AfterInsert);
+            throw ex;
+         }
+      }
+
+      protected void Update(T model, Action updatetMethod, DataAccessStatus dataAccessStatus,
+                                        Func<bool> checkUpdate)
+      {
+         try
+         {
+            RecordExistsCheck(model, TypeOfExistenceCheck.DoesExistInDB, RequestType.Update,
+                              checkUpdateDelete: checkUpdate());
+         }
+         catch (DataAccessException ex)
+         {
+            SetDataAccessValues(ex, ErrorMessageType.ModelNotFound);
+            throw ex;
+         }
+
+         try
+         {
+            updatetMethod();
+         }
+         catch (MySqlException ex)
+         {
+            dataAccessStatus = SetDataAccessValues(ex, ErrorMessageType.Update);
+            throw new DataAccessException(message: ex.Message, innerException: ex.InnerException,
+                                          dataAccessStatus: dataAccessStatus);
+         }
+      }
+
+      protected void Delete(T model, Action deleteMethod, DataAccessStatus dataAccessStatus,
+                                Func<bool> checkDelete)
+      {
+         try
+         {
+            RecordExistsCheck(model, TypeOfExistenceCheck.DoesExistInDB, RequestType.Delete,
+                              checkUpdateDelete: checkDelete());
+         }
+         catch (DataAccessException ex)
+         {
+            SetDataAccessValues(ex, ErrorMessageType.ModelNotFound);
+            throw ex;
+         }
+
+         try
+         {
+            deleteMethod();
+         }
+         catch (MySqlException ex)
+         {
+            dataAccessStatus = SetDataAccessValues(ex, ErrorMessageType.Delete);
+            throw new DataAccessException(message: ex.Message, innerException: ex.InnerException,
+                                          dataAccessStatus: dataAccessStatus);
+         }
+
+         try
+         {
+            RecordExistsCheck(model, TypeOfExistenceCheck.DoesNotExistInDB, RequestType.ConfirmDelete,
+                              checkUpdateDelete: checkDelete());
+         }
+         catch (DataAccessException ex)
+         {
+            SetDataAccessValues(ex, ErrorMessageType.FailedDelete);
+            throw ex;
+         }
+      }
+
+      protected IEnumerable<T> GetAll(Func<IEnumerable<T>> getAllMethod, DataAccessStatus dataAccessStatus)
+      {
+         IEnumerable<T> listObj = new List<T>();
+
+         try
+         {
+            listObj = getAllMethod();
+         }
+         catch (MySqlException ex)
+         {
+            dataAccessStatus = SetDataAccessValues(ex, ErrorMessageType.GetList);
+            throw new DataAccessException(message: ex.Message, innerException: ex.InnerException,
+                                          dataAccessStatus: dataAccessStatus);
+         }
+
+         return listObj;
+      }
+
+      protected T GetBy(Func<T> getByMethod, DataAccessStatus dataAccessStatus)
+      {
+         T model = default(T);
+
+         try
+         {
+            model = getByMethod();
+         }
+         catch (MySqlException ex)
+         {
+            dataAccessStatus = SetDataAccessValues(ex, ErrorMessageType.GetById);
+            throw new DataAccessException(message: ex.Message, innerException: ex.InnerException,
+                                          dataAccessStatus: dataAccessStatus);
+         }
+
+         if (model == null)
+         {
+            var ex = new DataAccessException(dataAccessStatus);
+            SetDataAccessValues(ex, ErrorMessageType.ModelNotFound);
+            throw ex;
+         }
+
+         return model;
+      }
 
       protected DataAccessStatus SetDataAccessValues(MySqlException ex, ErrorMessageType errorMessageType)
       {
