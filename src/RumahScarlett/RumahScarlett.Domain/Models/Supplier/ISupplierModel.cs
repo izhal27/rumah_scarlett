@@ -1,6 +1,6 @@
 ﻿namespace RumahScarlett.Domain.Models.Supplier
 {
-   public interface ISupplier
+   public interface ISupplierModel
    {
       uint id { get; set; }
       string nama { get; set; }

@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace RumahScarlett.Domain.Models.Supplier
 {
    [Table("supplier")]
-   public class Supplier : ISupplier
+   public class SupplierModel : ISupplierModel
    {
       [Browsable(false)]
       [DisplayName("ID")]
