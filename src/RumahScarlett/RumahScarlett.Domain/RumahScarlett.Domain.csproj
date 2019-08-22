@@ -52,8 +52,8 @@
   <ItemGroup>
     <Compile Include="Models\Barang\Barang.cs" />
     <Compile Include="Models\Barang\IBarang.cs" />
-    <Compile Include="Models\KasAwal\IKasAwal.cs" />
-    <Compile Include="Models\KasAwal\KasAwal.cs" />
+    <Compile Include="Models\KasAwal\IKasAwalModel.cs" />
+    <Compile Include="Models\KasAwal\KasAwalModel.cs" />
     <Compile Include="Models\Pembelian\IPembelianDetail.cs" />
     <Compile Include="Models\Pembelian\PembelianDetail.cs" />
     <Compile Include="Models\Pembelian\IPembelian.cs" />

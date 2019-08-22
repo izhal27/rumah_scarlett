@@ -15,20 +15,29 @@ namespace RumahScarlett.Services.UnitTests.Tipe
    public class TipeServicesValidationTests : IClassFixture<TipeServicesFixture>
    {
       private readonly ITestOutputHelper _testOutputHelper;
-      private TipeServicesFixture _tipeServicesFixture;
+      private TipeServicesFixture _servicesFixture;
 
-      public TipeServicesValidationTests(TipeServicesFixture tipeServicesFixture, ITestOutputHelper testOutputHelper)
+      public TipeServicesValidationTests(TipeServicesFixture servicesFixture, ITestOutputHelper testOutputHelper)
       {
-         _tipeServicesFixture = tipeServicesFixture;
+         _servicesFixture = servicesFixture;
          _testOutputHelper = testOutputHelper;
          SetValidSampleValues();
       }
-      
+
+      private void SetValidSampleValues()
+      {
+         _servicesFixture.Model = new TipeModel
+         {
+            nama = "Tests",
+            keterangan = "Tests"
+         };
+      }
+
       [Fact]
       public void ShouldNotThrowExceptionForDefaultTestValuesOnAnnotations()
       {
-         var exception = Record.Exception(() =>
-         _tipeServicesFixture.TipeServices.ValidateModel(_tipeServicesFixture.TipeModel));
+         var exception = Record.Exception(() => _servicesFixture
+                                                .Services.ValidateModel(_servicesFixture.Model));
 
          Assert.Null(exception);
 
@@ -38,10 +47,10 @@ namespace RumahScarlett.Services.UnitTests.Tipe
       [Fact]
       public void ShouldThrowExceptionForNamaEmpty()
       {
-         _tipeServicesFixture.TipeModel.nama = string.Empty;
+         _servicesFixture.Model.nama = string.Empty;
 
-         var exception = Record.Exception(() =>
-         _tipeServicesFixture.TipeServices.ValidateModel(_tipeServicesFixture.TipeModel));
+         var exception = Record.Exception(() => _servicesFixture
+                                                .Services.ValidateModel(_servicesFixture.Model));
 
          WriteExceptionTestResult(exception);
       }
@@ -49,26 +58,17 @@ namespace RumahScarlett.Services.UnitTests.Tipe
       [Fact]
       public void ShouldThrowExceptionForNamaTooShort()
       {
-         _tipeServicesFixture.TipeModel.nama = "A";
+         _servicesFixture.Model.nama = "A";
 
-         var exception = Record.Exception(() =>
-         _tipeServicesFixture.TipeServices.ValidateModel(_tipeServicesFixture.TipeModel));
+         var exception = Record.Exception(() => _servicesFixture
+                                                .Services.ValidateModel(_servicesFixture.Model));
 
          WriteExceptionTestResult(exception);
       }
 
-      private void SetValidSampleValues()
-      {
-         _tipeServicesFixture.TipeModel = new TipeModel
-         {
-            nama = "Tests",
-            keterangan = "Tests"
-         };
-      }
-
       private void WriteExceptionTestResult(Exception exception)
       {
-         TestsHelper.WriteExceptionTestResult(exception, _testOutputHelper, _tipeServicesFixture.TipeModel);
+         TestsHelper.WriteExceptionTestResult(exception, _testOutputHelper, _servicesFixture.Model);
       }
    }
 }

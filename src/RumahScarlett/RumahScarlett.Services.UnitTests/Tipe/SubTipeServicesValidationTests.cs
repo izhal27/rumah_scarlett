@@ -15,20 +15,30 @@ namespace RumahScarlett.Services.UnitTests.Tipe
    public class SubTipeServicesValidationTests : IClassFixture<SubTipeServicesFixture>
    {
       private readonly ITestOutputHelper _testOutputHelper;
-      private SubTipeServicesFixture _subTipeServicesFixture;
+      private SubTipeServicesFixture _servicesFixture;
 
-      public SubTipeServicesValidationTests(SubTipeServicesFixture tipeServicesFixture, ITestOutputHelper testOutputHelper)
+      public SubTipeServicesValidationTests(SubTipeServicesFixture servicesFixture, ITestOutputHelper testOutputHelper)
       {
-         _subTipeServicesFixture = tipeServicesFixture;
+         _servicesFixture = servicesFixture;
          _testOutputHelper = testOutputHelper;
          SetValidSampleValues();
       }
-      
+
+      private void SetValidSampleValues()
+      {
+         _servicesFixture.Model = new SubTipeModel
+         {
+            tipe_id = 1,
+            nama = "Tests",
+            keterangan = "Tests"
+         };
+      }
+
       [Fact]
       public void ShouldNotThrowExceptionForDefaultTestValuesOnAnnotations()
       {
-         var exception = Record.Exception(() =>
-         _subTipeServicesFixture.SubTipeServices.ValidateModel(_subTipeServicesFixture.SubTipeModel));
+         var exception = Record.Exception(() => _servicesFixture
+                                                .Services.ValidateModel(_servicesFixture.Model));
 
          Assert.Null(exception);
 
@@ -38,50 +48,39 @@ namespace RumahScarlett.Services.UnitTests.Tipe
       [Fact]
       public void ShouldThrowExceptionForTipeIdEmpty()
       {
-         _subTipeServicesFixture.SubTipeModel.tipe_id = default(uint);
+         _servicesFixture.Model.tipe_id = default(uint);
 
-         var exception = Record.Exception(() =>
-         _subTipeServicesFixture.SubTipeServices.ValidateModel(_subTipeServicesFixture.SubTipeModel));
+         var exception = Record.Exception(() => _servicesFixture
+                                                .Services.ValidateModel(_servicesFixture.Model));
 
          WriteExceptionTestResult(exception);
       }
-      
 
       [Fact]
       public void ShouldThrowExceptionForNamaEmpty()
       {
-         _subTipeServicesFixture.SubTipeModel.nama = string.Empty;
+         _servicesFixture.Model.nama = string.Empty;
 
-         var exception = Record.Exception(() =>
-         _subTipeServicesFixture.SubTipeServices.ValidateModel(_subTipeServicesFixture.SubTipeModel));
+         var exception = Record.Exception(() => _servicesFixture
+                                                .Services.ValidateModel(_servicesFixture.Model));
 
          WriteExceptionTestResult(exception);
       }
-      
-     [Fact]
+
+      [Fact]
       public void ShouldThrowExceptionForNamaTooShort()
       {
-         _subTipeServicesFixture.SubTipeModel.nama = "A";
+         _servicesFixture.Model.nama = "A";
 
          var exception = Record.Exception(() =>
-         _subTipeServicesFixture.SubTipeServices.ValidateModel(_subTipeServicesFixture.SubTipeModel));
+         _servicesFixture.Services.ValidateModel(_servicesFixture.Model));
 
          WriteExceptionTestResult(exception);
-      }
-
-      private void SetValidSampleValues()
-      {
-         _subTipeServicesFixture.SubTipeModel = new SubTipeModel
-         {
-            tipe_id = 1,
-            nama = "Tests",
-            keterangan = "Tests"
-         };
       }
 
       private void WriteExceptionTestResult(Exception exception)
       {
-         TestsHelper.WriteExceptionTestResult(exception, _testOutputHelper, _subTipeServicesFixture.SubTipeModel);
+         TestsHelper.WriteExceptionTestResult(exception, _testOutputHelper, _servicesFixture.Model);
       }
    }
 }

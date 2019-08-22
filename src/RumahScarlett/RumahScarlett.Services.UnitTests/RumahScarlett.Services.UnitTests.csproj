@@ -92,6 +92,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommonTests\TestsHelper.cs" />
+    <Compile Include="BaseServicesFixture.cs" />
+    <Compile Include="KasAwal\KasAwalServicesDataAccessTests.cs" />
+    <Compile Include="KasAwal\KasAwalServicesFixture.cs" />
+    <Compile Include="KasAwal\KasAwalServicesValidationTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tipe\SubTipeServicesDataAccessTests.cs" />
     <Compile Include="Tipe\SubTipeServicesFixture.cs" />

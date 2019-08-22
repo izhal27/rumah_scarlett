@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace RumahScarlett.Domain.Models.KasAwal
 {
    [Table("kas_awal")]
-   public class KasAwal : IKasAwal
+   public class KasAwalModel : IKasAwalModel
    {
       [Browsable(false)]
       [DisplayName("ID")]
@@ -23,5 +23,10 @@ namespace RumahScarlett.Domain.Models.KasAwal
       [DefaultValue(0)]
       [DisplayName("Total")]
       public decimal total { get; set; }
+
+      public KasAwalModel()
+      {
+         tanggal = DateTime.Now;
+      }
    }
 }

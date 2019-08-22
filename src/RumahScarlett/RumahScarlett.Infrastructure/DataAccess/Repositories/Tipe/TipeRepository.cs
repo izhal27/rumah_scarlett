@@ -173,7 +173,7 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Tipe
       private void ValidateModel(ITipeModel model, DataAccessStatus dataAccessStatus)
       {
          var existsNama = _context.Conn.ExecuteScalar<bool>("SELECT COUNT(1) FROM tipe WHERE nama=@nama AND id!=@id",
-                                                                 new { model.nama, model.id });
+                                                             new { model.nama, model.id });
 
          if (existsNama)
          {

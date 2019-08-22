@@ -19,7 +19,7 @@ namespace RumahScarlett.Services.UnitTests.Tipe
    [Trait("Category", "Data Access Validations")]
    public class SubTipeServicesDataAccessTests
    {
-      private SubTipeServices _services;
+      private ISubTipeServices _services;
       private readonly ITestOutputHelper _testOutputHelper;
 
       public SubTipeServicesDataAccessTests(ITestOutputHelper testOutputHelper)
@@ -148,7 +148,7 @@ namespace RumahScarlett.Services.UnitTests.Tipe
       public void ShouldReturnModelMatchingId()
       {
          SubTipeModel model = null;
-         int idToGet = 1;
+         var idToGet = 1;
 
          try
          {

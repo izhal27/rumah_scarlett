@@ -9,45 +9,45 @@ namespace RumahScarlett.Services.Services.Tipe
 {
    public class TipeServices : ITipeServices
    {
-      private ITipeRepository _tipeRepository;
-      private IModelDataAnnotationCheck _modelDataAnnotationCheck;
+      private ITipeRepository _repo;
+      private IModelDataAnnotationCheck _modelDAC;
 
-      public TipeServices(ITipeRepository tipeRepository, IModelDataAnnotationCheck modelDataAnnotationCheck)
+      public TipeServices(ITipeRepository repo, IModelDataAnnotationCheck modelDAC)
       {
-         _tipeRepository = tipeRepository;
-         _modelDataAnnotationCheck = modelDataAnnotationCheck;
+         _repo = repo;
+         _modelDAC = modelDAC;
       }
 
       public void Insert(ITipeModel model)
       {
          ValidateModel(model);
-         _tipeRepository.Insert(model);
+         _repo.Insert(model);
       }
 
       public void Update(ITipeModel model)
       {
          ValidateModel(model);
-         _tipeRepository.Update(model);
+         _repo.Update(model);
       }
 
       public void Delete(ITipeModel model)
       {
-         _tipeRepository.Delete(model);
+         _repo.Delete(model);
       }
 
       public IEnumerable<ITipeModel> GetAll()
       {
-         return _tipeRepository.GetAll();
+         return _repo.GetAll();
       }
 
       public ITipeModel GetById(object id)
       {
-         return _tipeRepository.GetById(id);
+         return _repo.GetById(id);
       }
 
       public void ValidateModel(ITipeModel model)
       {
-         _modelDataAnnotationCheck.ValidateModel(model);
+         _modelDAC.ValidateModel(model);
       }      
    }
 }

@@ -9,27 +9,12 @@ using System.Threading.Tasks;
 
 namespace RumahScarlett.Services.UnitTests.Tipe
 {
-   public class TipeServicesFixture
+   public class TipeServicesFixture : BaseServicesFixture<ITipeModel, ITipeServices>
    {
-      private ITipeModel _tipeModel;
-      private ITipeServices _tipeServices;
-
       public TipeServicesFixture()
       {
-         _tipeModel = new TipeModel();
-         _tipeServices = new TipeServices(null, new ModelDataAnnotationCheck());
-      }
-
-      public ITipeModel TipeModel
-      {
-         get { return (TipeModel)_tipeModel; }
-         set { _tipeModel = value; }
-      }
-
-      public ITipeServices TipeServices
-      {
-         get { return (TipeServices)_tipeServices; }
-         set { _tipeServices = value; }
+         Model = new TipeModel();
+         Services = new TipeServices(null, new ModelDataAnnotationCheck());
       }
    }
 }
