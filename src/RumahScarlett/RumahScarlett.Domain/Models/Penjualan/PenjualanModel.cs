@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace RumahScarlett.Domain.Models.Penjualan
 {
    [Table("penjualan")]
-   public class PenjualanModel : IPenjualan
+   public class PenjualanModel : IPenjualanModel
    {
       [Browsable(false)]
       [DisplayName("ID")]
@@ -32,7 +32,7 @@ namespace RumahScarlett.Domain.Models.Penjualan
 
       [Browsable(false)]
       [Dp.Write(false)]
-      public IEnumerable<IPenjualanDetail> PenjualanDetails { get; set; }
+      public IEnumerable<IPenjualanDetailModel> PenjualanDetails { get; set; }
 
       public PenjualanModel()
       {

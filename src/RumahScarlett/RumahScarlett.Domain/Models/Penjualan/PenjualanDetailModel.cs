@@ -12,7 +12,7 @@ using System.Configuration;
 namespace RumahScarlett.Domain.Models.Penjualan
 {
    [Table("penjualan_detail")]
-   public class PenjualanDetailModel : IPenjualanDetail
+   public class PenjualanDetailModel : IPenjualanDetailModel
    {
       [Browsable(false)]
       [DisplayName("ID")]
