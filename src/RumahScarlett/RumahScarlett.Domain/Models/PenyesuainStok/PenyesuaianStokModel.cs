@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace RumahScarlett.Domain.Models.PenyesuainStok
 {
    [Table("penyesuaian_stok")]
-   public class PenyesuaianStok : IPenyesuaianStok
+   public class PenyesuaianStokModel : IPenyesuaianStokModel
    {
       [Browsable(false)]
       [DisplayName("ID")]
@@ -28,11 +28,11 @@ namespace RumahScarlett.Domain.Models.PenyesuainStok
 
       [Browsable(false)]
       [Dp.Write(false)]
-      public IEnumerable<IPenyesuaianStokDetail> PenyesuaianStokDetails { get; set; }
+      public IEnumerable<IPenyesuaianStokDetailModel> PenyesuaianStokDetails { get; set; }
 
-      public PenyesuaianStok()
+      public PenyesuaianStokModel()
       {
-         PenyesuaianStokDetails = new List<IPenyesuaianStokDetail>();
+         PenyesuaianStokDetails = new List<IPenyesuaianStokDetailModel>();
       }
    }
 }

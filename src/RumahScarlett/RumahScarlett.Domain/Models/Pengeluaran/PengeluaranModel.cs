@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace RumahScarlett.Domain.Models.Pengeluaran
 {
    [Table("pengeluaran")]
-   public class Pengeluaran : IPengeluaran
+   public class PengeluaranModel : IPengeluaranModel
    {
       [Browsable(false)]
       [DisplayName("ID")]

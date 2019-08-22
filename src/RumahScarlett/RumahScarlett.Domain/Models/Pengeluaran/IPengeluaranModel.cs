@@ -2,7 +2,7 @@
 
 namespace RumahScarlett.Domain.Models.Pengeluaran
 {
-   public interface IPengeluaran
+   public interface IPengeluaranModel
    {
       uint id { get; set; }
       DateTime tanggal { get; set; }

@@ -9,19 +9,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Configuration;
 
-namespace RumahScarlett.Domain.Models.Pembelian
+namespace RumahScarlett.Domain.Models.Penjualan
 {
-   [Table("pembelian_detail")]
-   public class PembelianDetail : IPembelianDetail
+   [Table("penjualan_detail")]
+   public class PenjualanDetailModel : IPenjualanDetail
    {
       [Browsable(false)]
       [DisplayName("ID")]
       public uint id { get; set; }
 
       [Browsable(false)]
-      [Required(ErrorMessage = "Pembelian ID harus diisi !!!")]
-      [DisplayName("Pembelian ID")]
-      public uint pembelian_id { get; set; }
+      [Required(ErrorMessage = "Penjualan ID harus diisi !!!")]
+      [DisplayName("Penjualan ID")]
+      public uint penjualan_id { get; set; }
 
       [Browsable(false)]
       [Required(ErrorMessage = "Barang ID harus diisi !!!")]
@@ -35,10 +35,10 @@ namespace RumahScarlett.Domain.Models.Pembelian
       [Range(1, uint.MaxValue, ErrorMessage = "Qty harus diisi !!!")]
       [DisplayName("Qty")]
       public uint qty { get; set; }
-
-      [Range(typeof(decimal), "1", "79228162514264337593543950335", ErrorMessage = "HPP harus diisi !!!")]
-      [DisplayName("HPP")]
-      public decimal hpp { get; set; }
+      
+      [Range(typeof(decimal), "1", "79228162514264337593543950335", ErrorMessage = "Harga jual harus diisi !!!")]
+      [DisplayName("Harga Jual")]
+      public decimal harga_jual { get; set; }
 
       [Dp.Write(false)]
       [DisplayName("Total")]

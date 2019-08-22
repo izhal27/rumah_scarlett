@@ -1,6 +1,6 @@
 ﻿namespace RumahScarlett.Domain.Models.PenyesuainStok
 {
-   public interface IPenyesuaianStokDetail
+   public interface IPenyesuaianStokDetailModel
    {
       uint id { get; set; }
       uint penyesuaian_stok_id { get; set; }

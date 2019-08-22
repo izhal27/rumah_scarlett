@@ -3,12 +3,12 @@ using System.Collections.Generic;
 
 namespace RumahScarlett.Domain.Models.Penjualan
 {
-   public interface IPenjualan
+   public interface IPenjualanModel
    {
       uint id { get; set; }
       string no_nota { get; set; }
       DateTime tanggal { get; set; }
       decimal diskon { get; set; }
-      IEnumerable<IPenjualanDetail> PenjualanDetails { get; set; }
+      IEnumerable<IPenjualanDetailModel> PenjualanDetails { get; set; }
    }
 }

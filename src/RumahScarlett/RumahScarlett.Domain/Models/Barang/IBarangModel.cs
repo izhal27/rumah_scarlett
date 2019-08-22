@@ -1,6 +1,6 @@
 ﻿namespace RumahScarlett.Domain.Models.Barang
 {
-   public interface IBarang
+   public interface IBarangModel
    {
       uint id { get; set; }
       string kode { get; set; }

@@ -12,7 +12,7 @@ using System.Configuration;
 namespace RumahScarlett.Domain.Models.PenyesuainStok
 {
    [Table("penyesuaian_stok_detail")]
-   public class PenyesuaianStokDetail : IPenyesuaianStokDetail
+   public class PenyesuaianStokDetailModel : IPenyesuaianStokDetailModel
    {
       [Browsable(false)]
       [DisplayName("ID")]

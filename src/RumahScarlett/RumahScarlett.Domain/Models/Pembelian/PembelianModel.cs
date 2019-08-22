@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace RumahScarlett.Domain.Models.Pembelian
 {
    [Table("pembelian")]
-   public class Pembelian : IPembelian
+   public class PembelianModel : IPembelianModel
    {
       [Browsable(false)]
       [DisplayName("ID")]
@@ -37,11 +37,11 @@ namespace RumahScarlett.Domain.Models.Pembelian
 
       [Browsable(false)]
       [Dp.Write(false)]
-      public IEnumerable<IPembelianDetail> PembelianDetails { get; set; }
+      public IEnumerable<IPembelianDetailModel> PembelianDetails { get; set; }
 
-      public Pembelian()
+      public PembelianModel()
       {
-         PembelianDetails = new List<IPembelianDetail>();
+         PembelianDetails = new List<IPembelianDetailModel>();
       }
    }
 }

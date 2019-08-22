@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace RumahScarlett.Domain.Models.Penjualan
 {
    [Table("penjualan")]
-   public class Penjualan : IPenjualan
+   public class PenjualanModel : IPenjualan
    {
       [Browsable(false)]
       [DisplayName("ID")]
@@ -34,9 +34,9 @@ namespace RumahScarlett.Domain.Models.Penjualan
       [Dp.Write(false)]
       public IEnumerable<IPenjualanDetail> PenjualanDetails { get; set; }
 
-      public Penjualan()
+      public PenjualanModel()
       {
-         PenjualanDetails = new List<PenjualanDetail>();
+         PenjualanDetails = new List<PenjualanDetailModel>();
       }
    }
 }

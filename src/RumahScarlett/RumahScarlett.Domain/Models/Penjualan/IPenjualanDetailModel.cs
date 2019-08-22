@@ -1,6 +1,6 @@
 ﻿namespace RumahScarlett.Domain.Models.Penjualan
 {
-   public interface IPenjualanDetail
+   public interface IPenjualanDetailModel
    {
       uint id { get; set; }
       uint penjualan_id { get; set; }
