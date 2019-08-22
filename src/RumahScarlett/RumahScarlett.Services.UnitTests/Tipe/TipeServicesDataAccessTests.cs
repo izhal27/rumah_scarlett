@@ -65,6 +65,32 @@ namespace RumahScarlett.Services.UnitTests.Tipe
       }
 
       [Fact]
+      private void ShouldReturnErrorDuplicateInsert()
+      {
+         var model = new TipeModel()
+         {
+            nama = "Tipe #2",
+         };
+
+         var dataAccessJsonStr = string.Empty;
+         var formattedJsonStr = string.Empty;
+
+         try
+         {
+            _services.Insert(model);
+         }
+         catch (DataAccessException ex)
+         {
+            dataAccessJsonStr = JsonConvert.SerializeObject(ex.DataAccessStatusInfo);
+            formattedJsonStr = JToken.Parse(dataAccessJsonStr).ToString();
+         }
+         finally
+         {
+            _testOutputHelper.WriteLine(formattedJsonStr);
+         }
+      }
+
+      [Fact]
       private void ShouldReturnSuccessForUpdate()
       {
          var model = new TipeModel()
@@ -94,6 +120,33 @@ namespace RumahScarlett.Services.UnitTests.Tipe
          {
             Assert.True(operationSecceded);
             _testOutputHelper.WriteLine("Data berhasil diubah.");
+         }
+         finally
+         {
+            _testOutputHelper.WriteLine(formattedJsonStr);
+         }
+      }
+
+      [Fact]
+      private void ShouldReturnErrorDuplicateUpdate()
+      {
+         var model = new TipeModel()
+         {
+            id = 1,
+            nama = "Tipe #2",
+         };
+
+         var dataAccessJsonStr = string.Empty;
+         var formattedJsonStr = string.Empty;
+
+         try
+         {
+            _services.Update(model);
+         }
+         catch (DataAccessException ex)
+         {
+            dataAccessJsonStr = JsonConvert.SerializeObject(ex.DataAccessStatusInfo);
+            formattedJsonStr = JToken.Parse(dataAccessJsonStr).ToString();
          }
          finally
          {
