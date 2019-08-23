@@ -73,6 +73,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataAccess\CommonRepositories\DbHelper.cs" />
     <Compile Include="DataAccess\Repositories\Barang\BarangRepository.cs" />
     <Compile Include="DataAccess\Repositories\BaseRepository.cs" />
     <Compile Include="DataAccess\Repositories\DbContext.cs" />

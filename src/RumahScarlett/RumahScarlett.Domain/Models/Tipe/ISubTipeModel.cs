@@ -3,8 +3,9 @@
    public interface ISubTipeModel
    {
       uint id { get; set; }
-      uint tipe_id { get; set; }
-      string tipe_nama { get; set; }
+      TipeModel Tipe { get; set; }
+      uint tipe_id { get; }
+      string tipe_nama { get; }
       string nama { get; set; }
       string keterangan { get; set; }
    }

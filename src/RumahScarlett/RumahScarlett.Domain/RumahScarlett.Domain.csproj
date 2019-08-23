@@ -55,8 +55,8 @@
     <Compile Include="Models\KasAwal\IKasAwalModel.cs" />
     <Compile Include="Models\KasAwal\KasAwalModel.cs" />
     <Compile Include="Models\Pembelian\IPembelianDetailModel.cs" />
-    <Compile Include="Models\Pembelian\PembelianDetailModel.cs" />
     <Compile Include="Models\Pembelian\IPembelianModel.cs" />
+    <Compile Include="Models\Pembelian\PembelianDetailModel.cs" />
     <Compile Include="Models\Pembelian\PembelianModel.cs" />
     <Compile Include="Models\Pengeluaran\IPengeluaranModel.cs" />
     <Compile Include="Models\Pengeluaran\PengeluaranModel.cs" />

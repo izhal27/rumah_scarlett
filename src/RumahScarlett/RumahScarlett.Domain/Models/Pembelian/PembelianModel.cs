@@ -7,6 +7,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using RumahScarlett.Domain.Models.Supplier;
 
 namespace RumahScarlett.Domain.Models.Pembelian
 {
@@ -18,13 +19,17 @@ namespace RumahScarlett.Domain.Models.Pembelian
       public uint id { get; set; }
 
       [Browsable(false)]
-      [Required(ErrorMessage = "Supplier harus diisi !!!")]
+      [Dp.Write(false)]
+      public SupplierModel Supplier { get; set; }
+
+      [Browsable(false)]
+      [Range(1, uint.MaxValue, ErrorMessage = "Supplier ID harus diisi !!!")]
       [DisplayName("Supplier ID")]
-      public uint supplier_id { get; set; }
+      public uint supplier_id { get { return Supplier.id; } }
 
       [Dp.Write(false)]
       [DisplayName("Supplier")]
-      public string supplier_nama { get; set; }
+      public string supplier_nama { get { return Supplier.nama; } }
 
       [Required(AllowEmptyStrings = false, ErrorMessage = "No Nota harus diisi !!!")]
       [StringLength(255, ErrorMessage = "Panjang maksimal No Nota 255 karakter !!!")]
@@ -35,6 +40,7 @@ namespace RumahScarlett.Domain.Models.Pembelian
       [DisplayName("Tanggal")]
       public DateTime tanggal { get; set; }
 
+      [MinLength(1, ErrorMessage = "Data barang harus diisi !!!")]
       [Browsable(false)]
       [Dp.Write(false)]
       public IEnumerable<IPembelianDetailModel> PembelianDetails { get; set; }
