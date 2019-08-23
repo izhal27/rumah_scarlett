@@ -99,6 +99,9 @@
     <Compile Include="KasAwal\KasAwalServicesDataAccessTests.cs" />
     <Compile Include="KasAwal\KasAwalServicesFixture.cs" />
     <Compile Include="KasAwal\KasAwalServicesValidationTests.cs" />
+    <Compile Include="Pembelian\PembelianServicesDataAccessTests.cs" />
+    <Compile Include="Pembelian\PembelianServicesFixture.cs" />
+    <Compile Include="Pembelian\PembelianServicesValidationTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Supplier\SupplierServiceFixture.cs" />
     <Compile Include="Supplier\SupplierServicesDataAccessTests.cs" />

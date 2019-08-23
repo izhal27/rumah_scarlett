@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace RumahScarlett.Infrastructure.DataAccess.CommonRepositories
 {
-   public class DbHelper
+   public static class DbHelper
    {
       /// <summary>
       /// Method untuk mengambil maksimal id dari database
@@ -26,8 +26,8 @@ namespace RumahScarlett.Infrastructure.DataAccess.CommonRepositories
          using (var context = new DbContext())
          {
             today = DateTime.Now.ToString("yyyyMMdd"); // Tanggal sekarang
-            var max = context.Conn.Query<string>($"SELECT max({column}) as maxID from {table} WHERE {column} LIKE '{today}%'")
-                                  .FirstOrDefault();
+            var max = context.Conn.Query<string>($"SELECT max({column}) as maxID from {table} " +
+                                                 $"WHERE {column} LIKE '{today}%'").FirstOrDefault();
 
             // Jika ditemukan maka, ambil 6 digit angka terakhir
             // lalu max id ditambahkan satu,
@@ -40,7 +40,7 @@ namespace RumahScarlett.Infrastructure.DataAccess.CommonRepositories
             maxID++;
          }
 
-         return today + maxID.ToString().PadLeft(4, '0');
+         return today + maxID.ToString().PadLeft(6, '0');
       }
    }
 }

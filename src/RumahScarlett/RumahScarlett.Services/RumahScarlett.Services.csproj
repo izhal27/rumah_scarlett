@@ -58,6 +58,9 @@
     <Compile Include="Services\KasAwal\IKasAwalRepository.cs" />
     <Compile Include="Services\KasAwal\IKasAwalServices.cs" />
     <Compile Include="Services\KasAwal\KasAwalServices.cs" />
+    <Compile Include="Services\Pembelian\IPembelianRepository.cs" />
+    <Compile Include="Services\Pembelian\IPembelianServices.cs" />
+    <Compile Include="Services\Pembelian\PembelianServices.cs" />
     <Compile Include="Services\Supplier\ISupplierRepository.cs" />
     <Compile Include="Services\Supplier\ISupplierServices.cs" />
     <Compile Include="Services\Supplier\SupplierServices.cs" />
@@ -77,6 +80,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

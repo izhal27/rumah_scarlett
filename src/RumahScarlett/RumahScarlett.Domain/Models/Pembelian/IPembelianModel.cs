@@ -7,7 +7,7 @@ namespace RumahScarlett.Domain.Models.Pembelian
    public interface IPembelianModel
    {
       uint id { get; set; }
-      SupplierModel Supplier { get; set; }
+      ISupplierModel Supplier { get; set; }
       uint supplier_id { get; }
       string supplier_nama { get; }
       string no_nota { get; set; }
