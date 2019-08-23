@@ -27,7 +27,7 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Tipe
          var dataAccessStatus = new DataAccessStatus();
          ValidateModel(model, dataAccessStatus);
 
-         Insert(model, () => _context.Conn.Insert((SubTipeModel)model), dataAccessStatus, 
+         Insert(model, () => _context.Conn.Insert((SubTipeModel)model), dataAccessStatus,
                 () => CheckInsert(model));
       }
 
@@ -54,10 +54,18 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Tipe
 
          return GetAll(() =>
          {
-            var queryStr = "SELECT s.*, t.id AS tipe_id, t.nama AS tipe_nama FROM sub_tipe s " +
+            var queryStr = "SELECT s.*, t.* FROM sub_tipe s " +
                            "INNER JOIN tipe t ON s.tipe_id = t.id";
 
-            return _context.Conn.Query<SubTipeModel>(queryStr).ToList(); ;
+            return _context.Conn.Query<SubTipeModel, TipeModel, SubTipeModel>(queryStr, (s, t) =>
+               {
+                  if (t != null)
+                  {
+                     s.Tipe = t;
+                  }
+
+                  return s;
+               }, splitOn: "id").ToList();
          }, dataAccessStatus);
       }
 
@@ -67,11 +75,19 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Tipe
 
          return GetAll(() =>
          {
-            var queryStr = "SELECT s.*, t.id AS tipe_id, t.nama AS tipe_nama FROM sub_tipe s " +
+            var queryStr = "SELECT s.*, t.* FROM sub_tipe s " +
                            "INNER JOIN tipe t ON s.tipe_id = t.id " +
                            "WHERE t.id=@id";
 
-            return _context.Conn.Query<SubTipeModel>(queryStr, new { id = tipeId }).ToList();
+            return _context.Conn.Query<SubTipeModel, TipeModel, SubTipeModel>(queryStr, (s, t) =>
+            {
+               if (t != null)
+               {
+                  s.Tipe = t;
+               }
+
+               return s;
+            }, new { id = tipeId }, splitOn: "id").ToList();
          }, dataAccessStatus);
       }
 
@@ -79,7 +95,22 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Tipe
       {
          var dataAccessStatus = new DataAccessStatus();
 
-         return GetBy(() => _context.Conn.Get<SubTipeModel>(id), dataAccessStatus);
+         return GetBy(() =>
+         {
+            var queryStr = "SELECT s.*, t.* FROM sub_tipe s " +
+                           "INNER JOIN tipe t ON s.tipe_id = t.id " +
+                           "WHERE s.id=@id";
+
+            return _context.Conn.Query<SubTipeModel, TipeModel, SubTipeModel>(queryStr, (s, t) =>
+            {
+               if (t != null)
+               {
+                  s.Tipe = t;
+               }
+
+               return s;
+            }, new { id } , splitOn: "id").FirstOrDefault();
+         }, dataAccessStatus);
       }
 
 

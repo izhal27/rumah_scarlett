@@ -24,11 +24,11 @@ namespace RumahScarlett.Domain.Models.Tipe
       [Browsable(false)]
       [Range(1, uint.MaxValue, ErrorMessage = "Tipe harus diisi !!!")]
       [DisplayName("Tipe ID")]
-      public uint tipe_id { get { return Tipe.id; } }
+      public uint tipe_id { get { return Tipe != null ? Tipe.id : default(uint); } }
 
       [Dp.Write(false)]
       [DisplayName("Tipe")]
-      public string tipe_nama { get { return Tipe.nama; } }
+      public string tipe_nama { get { return Tipe != null ? Tipe.nama : string.Empty; } }
 
       [Required(AllowEmptyStrings = false, ErrorMessage = "Nama Sub tipe harus diisi !!!")]
       [StringLength(100, MinimumLength = 3, ErrorMessage = "Nama Sub tipe harus diantara 3 sampai 100 karakter !!!")]

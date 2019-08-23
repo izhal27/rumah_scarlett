@@ -28,7 +28,7 @@ namespace RumahScarlett.Services.UnitTests.Tipe
       {
          _servicesFixture.Model = new SubTipeModel
          {
-            tipe_id = 1,
+            Tipe = new TipeModel { id = 1, nama = "Tipe #1" },
             nama = "Tests",
             keterangan = "Tests"
          };
@@ -48,7 +48,7 @@ namespace RumahScarlett.Services.UnitTests.Tipe
       [Fact]
       public void ShouldThrowExceptionForTipeIdEmpty()
       {
-         _servicesFixture.Model.tipe_id = default(uint);
+         _servicesFixture.Model.Tipe = new TipeModel { id = 0 };
 
          var exception = Record.Exception(() => _servicesFixture
                                                 .Services.ValidateModel(_servicesFixture.Model));

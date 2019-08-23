@@ -40,14 +40,14 @@ namespace RumahScarlett.Services.UnitTests.Tipe
             {
                var model = new SubTipeModel()
                {
-                  tipe_id = 1,
+                  Tipe = new TipeModel { id = 1 },
                   nama = $"Sub tipe #{i}",
                   keterangan = $"Keterangan Sub tipe #{i}"
                };
 
                _services.Insert(model);
             }
-            
+
             operationSecceded = true;
          }
          catch (DataAccessException ex)
@@ -72,7 +72,7 @@ namespace RumahScarlett.Services.UnitTests.Tipe
       {
          var model = new SubTipeModel()
          {
-            tipe_id = 1,
+            Tipe = new TipeModel { id = 1 },
             nama = "Sub tipe #2",
          };
 
@@ -100,7 +100,7 @@ namespace RumahScarlett.Services.UnitTests.Tipe
          var model = new SubTipeModel()
          {
             id = 1,
-            tipe_id = 1,
+            Tipe = new TipeModel { id = 1 },
             nama = "Sub tipe #1 (Update)",
             keterangan = "Keterangan Sub tipe #1 (Update)"
          };
@@ -137,7 +137,7 @@ namespace RumahScarlett.Services.UnitTests.Tipe
          var model = new SubTipeModel()
          {
             id = 2,
-            tipe_id = 1,
+            Tipe = new TipeModel { id = 1 },
             nama = "Sub tipe #3",
          };
 
