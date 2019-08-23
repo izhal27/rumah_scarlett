@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace RumahScarlett.Infrastructure.DataAccess.Repositories
 {
-   public class BaseRepository<T>
+   public class BaseRepository<TDomainModel>
    {
       protected enum TypeOfExistenceCheck
       {
@@ -47,7 +47,7 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories
 
       protected static string _modelName = "";
 
-      protected void Insert(T model, Action insertMethod, DataAccessStatus dataAccessStatus,
+      protected void Insert(TDomainModel model, Action insertMethod, DataAccessStatus dataAccessStatus,
                                 Func<bool> checkInsert)
       {
          try
@@ -73,7 +73,7 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories
          }
       }
 
-      protected void Update(T model, Action updatetMethod, DataAccessStatus dataAccessStatus,
+      protected void Update(TDomainModel model, Action updatetMethod, DataAccessStatus dataAccessStatus,
                                         Func<bool> checkUpdate)
       {
          try
@@ -99,7 +99,7 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories
          }
       }
 
-      protected void Delete(T model, Action deleteMethod, DataAccessStatus dataAccessStatus,
+      protected void Delete(TDomainModel model, Action deleteMethod, DataAccessStatus dataAccessStatus,
                                 Func<bool> checkDelete)
       {
          try
@@ -136,9 +136,9 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories
          }
       }
 
-      protected IEnumerable<T> GetAll(Func<IEnumerable<T>> getAllMethod, DataAccessStatus dataAccessStatus)
+      protected IEnumerable<TDomainModel> GetAll(Func<IEnumerable<TDomainModel>> getAllMethod, DataAccessStatus dataAccessStatus)
       {
-         IEnumerable<T> listObj = new List<T>();
+         IEnumerable<TDomainModel> listObj = new List<TDomainModel>();
 
          try
          {
@@ -154,9 +154,9 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories
          return listObj;
       }
 
-      protected T GetBy(Func<T> getByMethod, DataAccessStatus dataAccessStatus)
+      protected TDomainModel GetBy(Func<TDomainModel> getByMethod, DataAccessStatus dataAccessStatus)
       {
-         T model = default(T);
+         TDomainModel model = default(TDomainModel);
 
          try
          {
@@ -240,7 +240,7 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories
          ex.DataAccessStatusInfo.StackTrace = !string.IsNullOrWhiteSpace(ex.StackTrace) ? string.Copy(ex.StackTrace) : "";
       }
 
-      protected void RecordExistsCheck(T model, TypeOfExistenceCheck typeOfExistenceCheck,
+      protected void RecordExistsCheck(TDomainModel model, TypeOfExistenceCheck typeOfExistenceCheck,
                                      RequestType requestType, bool checkInsert = false,
                                      bool checkUpdateDelete = false)
       {

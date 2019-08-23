@@ -19,17 +19,18 @@ namespace RumahScarlett.Domain.Models.Barang
       public uint id { get; set; }
       
       [Browsable(false)]
-      [Required(ErrorMessage = "Sub Tipe harus diisi !!!")]
+      [Range(1, uint.MaxValue, ErrorMessage = "Sub Tipe barang harus diisi !!!")]
       [DisplayName("Sub Tipe ID")]
-      public int sub_tipe_id { get; set; }
+      public uint sub_tipe_id { get; set; }
       
       [Browsable(false)]
-      [Required(ErrorMessage = "Supplier harus diisi !!!")]
+      [Range(1, uint.MaxValue, ErrorMessage = "Supplier barang harus diisi !!!")]
       [DisplayName("Supplier ID")]
-      public int supplier_id { get; set; }
+      public uint supplier_id { get; set; }
 
       [Required(AllowEmptyStrings = false, ErrorMessage = "Kode barang harus diisi !!!")]
       [StringLength(100, MinimumLength = 5, ErrorMessage = "Kode barang harus diantara 5 sampai 100 karakter !!!")]
+      [RegularExpression(@"^[\w\d-]+$", ErrorMessage = "Format kode barang yang anda masukkan salah !!!")]
       [DisplayName("Kode")]
       public string kode { get; set; }
 

@@ -9,11 +9,11 @@ namespace RumahScarlett.Services.UnitTests
    /// <summary>
    /// Base of model services fixture
    /// </summary>
-   /// <typeparam name="M">Model</typeparam>
-   /// <typeparam name="S">Services</typeparam>
-   public class BaseServicesFixture<M, S>
+   /// <typeparam name="TDomainModel">Type of domain model</typeparam>
+   /// <typeparam name="TServicesModel">Type of services model</typeparam>
+   public class BaseServicesFixture<TDomainModel, TServicesModel>
    {
-      public M Model { get; set; }
-      public S Services { get; set; }
+      public TDomainModel Model { get; set; }
+      public TServicesModel Services { get; set; }
    }
 }

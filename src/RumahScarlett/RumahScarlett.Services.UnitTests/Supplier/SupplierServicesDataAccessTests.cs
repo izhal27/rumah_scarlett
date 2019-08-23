@@ -16,6 +16,7 @@ using Xunit.Abstractions;
 
 namespace RumahScarlett.Services.UnitTests.Supplier
 {
+   [Trait("Category", "Data Access Validations")]
    public class SupplierServicesDataAccessTests
    {
       private ISupplierServices _services;
@@ -30,24 +31,28 @@ namespace RumahScarlett.Services.UnitTests.Supplier
       [Fact]
       private void ShouldReturnSuccessForInsert()
       {
-         var model = new SupplierModel()
-         {
-            nama = "Supplier #6",
-            alamat = "Alamat #6",
-            telpon = "+62 8123456789",
-            fax = "+62 8123456789",
-            email = "supplier@tests.com",
-            website = "http://www.supplier.com",
-            contact_person = "Contact person #6"
-         };
-
          var operationSecceded = false;
          var dataAccessJsonStr = string.Empty;
          var formattedJsonStr = string.Empty;
 
          try
          {
-            _services.Insert(model);
+            for (int i = 1; i <= 10; i++)
+            {
+               var model = new SupplierModel()
+               {
+                  nama = $"Supplier #{i}",
+                  alamat = $"Alamat Supplier #{i}",
+                  telpon = "+62 8123456789",
+                  fax = "+62 8123456789",
+                  email = "supplier@tests.com",
+                  website = $"http://www.supplier-{i}.com",
+                  contact_person = $"Contact person Supplier #{i}"
+               };
+
+               _services.Insert(model);
+            }
+
             operationSecceded = true;
          }
          catch (DataAccessException ex)

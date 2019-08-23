@@ -1,10 +1,10 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using RumahScarlett.CommonComponents;
-using RumahScarlett.Domain.Models.Tipe;
-using RumahScarlett.Infrastructure.DataAccess.Repositories.Tipe;
+using RumahScarlett.Domain.Models.Barang;
+using RumahScarlett.Infrastructure.DataAccess.Repositories.Barang;
 using RumahScarlett.Services.Services;
-using RumahScarlett.Services.Services.Tipe;
+using RumahScarlett.Services.Services.Barang;
 using RumahScarlett.Services.UnitTests.CommonTests;
 using System;
 using System.Collections.Generic;
@@ -14,18 +14,18 @@ using System.Threading.Tasks;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace RumahScarlett.Services.UnitTests.Tipe
+namespace RumahScarlett.Services.UnitTests.Barang
 {
    [Trait("Category", "Data Access Validations")]
-   public class TipeServicesDataAccessTests
+   public class BarangServicesDataAccessTests
    {
-      private ITipeServices _services;
-      private readonly ITestOutputHelper _testOutputHelper;
+      private IBarangServices _services;
+      private ITestOutputHelper _testOutputHelper;
 
-      public TipeServicesDataAccessTests(ITestOutputHelper testOutputHelper)
+      public BarangServicesDataAccessTests(ITestOutputHelper testOutputHelper)
       {
+         _services = new BarangServices(new BarangRepository(), new ModelDataAnnotationCheck());
          _testOutputHelper = testOutputHelper;
-         _services = new TipeServices(new TipeRepository(), new ModelDataAnnotationCheck());
       }
 
       [Fact]
@@ -37,17 +37,19 @@ namespace RumahScarlett.Services.UnitTests.Tipe
 
          try
          {
-            for (int i = 1; i <= 10; i++)
+            for (int i = 6; i <= 10; i++)
             {
-               var model = new TipeModel()
+               var model = new BarangModel
                {
-                  nama = $"Tipe #{i}",
-                  keterangan = $"Keterangan Tipe #{i}"
+                  sub_tipe_id = 2,
+                  supplier_id = 2,
+                  kode = $"kode_barang_{i}",
+                  nama = $"Nama Barang #{i}"
                };
 
                _services.Insert(model);
             }
-            
+
             operationSecceded = true;
          }
          catch (DataAccessException ex)
@@ -69,11 +71,15 @@ namespace RumahScarlett.Services.UnitTests.Tipe
       }
 
       [Fact]
-      private void ShouldReturnErrorDuplicateInsert()
+      private void ShouldReturnErrorDuplicateKodeInsert()
       {
-         var model = new TipeModel()
+         var model = new BarangModel()
          {
-            nama = "Tipe #2",
+            id = 1,
+            sub_tipe_id = 1,
+            supplier_id = 1,
+            kode = "kode_barang_2",
+            nama = "Barang #1"
          };
 
          var dataAccessJsonStr = string.Empty;
@@ -95,13 +101,45 @@ namespace RumahScarlett.Services.UnitTests.Tipe
       }
 
       [Fact]
+      private void ShouldReturnErrorDuplicateNamaInsert()
+      {
+         var model = new BarangModel()
+         {
+            id = 1,
+            sub_tipe_id = 1,
+            supplier_id = 1,
+            kode = "kode_barang_1",
+            nama = "Barang #2"
+         };
+
+         var dataAccessJsonStr = string.Empty;
+         var formattedJsonStr = string.Empty;
+
+         try
+         {
+            _services.Insert(model);
+         }
+         catch (DataAccessException ex)
+         {
+            dataAccessJsonStr = JsonConvert.SerializeObject(ex.DataAccessStatusInfo);
+            formattedJsonStr = JToken.Parse(dataAccessJsonStr).ToString();
+         }
+         finally
+         {
+            _testOutputHelper.WriteLine(formattedJsonStr);
+         }
+      }
+      
+      [Fact]
       private void ShouldReturnSuccessForUpdate()
       {
-         var model = new TipeModel()
+         var model = new BarangModel
          {
-            id = 7,
-            nama = "Tipe #7 (Update)",
-            keterangan = "Keterangan Tipe #7"
+            id = 1,
+            sub_tipe_id = 1,
+            supplier_id = 1,
+            kode = "kode_barang_1_Update_",
+            nama = "Nama Barang #1 (Update)"
          };
 
          var operationSecceded = false;
@@ -130,14 +168,17 @@ namespace RumahScarlett.Services.UnitTests.Tipe
             _testOutputHelper.WriteLine(formattedJsonStr);
          }
       }
-
+      
       [Fact]
       private void ShouldReturnErrorDuplicateUpdate()
       {
-         var model = new TipeModel()
+         var model = new BarangModel
          {
             id = 1,
-            nama = "Tipe #2",
+            sub_tipe_id = 1,
+            supplier_id = 1,
+            kode = "kode_barang_2",
+            nama = "Nama Barang #2"
          };
 
          var dataAccessJsonStr = string.Empty;
@@ -157,46 +198,11 @@ namespace RumahScarlett.Services.UnitTests.Tipe
             _testOutputHelper.WriteLine(formattedJsonStr);
          }
       }
-
-      [Fact]
-      private void ShouldReturnSuccessForDelete()
-      {
-         var model = new TipeModel()
-         {
-            id = 10,
-         };
-
-         var operationSecceded = false;
-         var dataAccessJsonStr = string.Empty;
-         var formattedJsonStr = string.Empty;
-
-         try
-         {
-            _services.Delete(model);
-            operationSecceded = true;
-         }
-         catch (DataAccessException ex)
-         {
-            operationSecceded = ex.DataAccessStatusInfo.OperationSucceeded;
-            dataAccessJsonStr = JsonConvert.SerializeObject(ex.DataAccessStatusInfo);
-            formattedJsonStr = JToken.Parse(dataAccessJsonStr).ToString();
-         }
-
-         try
-         {
-            Assert.True(operationSecceded);
-            _testOutputHelper.WriteLine("Data berhasil dihapus.");
-         }
-         finally
-         {
-            _testOutputHelper.WriteLine(formattedJsonStr);
-         }
-      }
-
+      
       [Fact]
       public void ShouldReturnListOfModels()
       {
-         var listModels = (List<TipeModel>)_services.GetAll();
+         var listModels = (List<BarangModel>)_services.GetAll();
 
          Assert.NotEmpty(listModels);
 
@@ -206,12 +212,12 @@ namespace RumahScarlett.Services.UnitTests.Tipe
       [Fact]
       public void ShouldReturnModelMatchingId()
       {
-         TipeModel model = null;
+         BarangModel model = null;
          var idToGet = 1;
 
          try
          {
-            model = (TipeModel)_services.GetById(idToGet);
+            model = (BarangModel)_services.GetById(idToGet);
          }
          catch (DataAccessException ex)
          {

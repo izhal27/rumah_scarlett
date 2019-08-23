@@ -31,19 +31,23 @@ namespace RumahScarlett.Services.UnitTests.Tipe
       [Fact]
       private void ShouldReturnSuccessForInsert()
       {
-         var model = new SubTipeModel()
-         {
-            tipe_id = 2,
-            nama = "Sub tipe #10",
-            keterangan = "Keterangan Sub tipe #10"
-         };
-
          var operationSecceded = false;
          var formattedJsonStr = string.Empty;
 
          try
          {
-            _services.Insert(model);
+            for (int i = 1; i <= 5; i++)
+            {
+               var model = new SubTipeModel()
+               {
+                  tipe_id = 1,
+                  nama = $"Sub tipe #{i}",
+                  keterangan = $"Keterangan Sub tipe #{i}"
+               };
+
+               _services.Insert(model);
+            }
+            
             operationSecceded = true;
          }
          catch (DataAccessException ex)
