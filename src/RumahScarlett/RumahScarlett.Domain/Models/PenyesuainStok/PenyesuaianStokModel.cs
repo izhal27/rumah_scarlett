@@ -16,8 +16,7 @@ namespace RumahScarlett.Domain.Models.PenyesuainStok
       [Browsable(false)]
       [DisplayName("ID")]
       public uint id { get; set; }
-
-      [Required(AllowEmptyStrings = false, ErrorMessage = "No Nota harus diisi !!!")]
+      
       [StringLength(255, ErrorMessage = "Panjang maksimal No Nota 255 karakter !!!")]
       [DisplayName("No Nota")]
       public string no_nota { get; set; }
