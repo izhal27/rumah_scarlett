@@ -41,8 +41,8 @@ namespace RumahScarlett.Services.UnitTests.Barang
             {
                var model = new BarangModel
                {
-                  sub_tipe_id = 2,
-                  supplier_id = 2,
+                  sub_tipe_id = (uint)(i % 2 == 0 ? 2 : 1),
+                  supplier_id = (uint)(i % 2 == 0 ? 2 : 1),
                   kode = $"kode_barang_{i}",
                   nama = $"Nama Barang #{i}"
                };
@@ -73,20 +73,20 @@ namespace RumahScarlett.Services.UnitTests.Barang
       [Fact]
       private void ShouldReturnErrorDuplicateKodeInsert()
       {
-         var model = new BarangModel()
-         {
-            id = 1,
-            sub_tipe_id = 1,
-            supplier_id = 1,
-            kode = "kode_barang_2",
-            nama = "Barang #1"
-         };
-
          var dataAccessJsonStr = string.Empty;
          var formattedJsonStr = string.Empty;
 
          try
          {
+            var model = new BarangModel()
+            {
+               id = 1,
+               sub_tipe_id = 1,
+               supplier_id = 1,
+               kode = "kode_barang_2",
+               nama = "Barang #1"
+            };
+
             _services.Insert(model);
          }
          catch (DataAccessException ex)
@@ -103,20 +103,20 @@ namespace RumahScarlett.Services.UnitTests.Barang
       [Fact]
       private void ShouldReturnErrorDuplicateNamaInsert()
       {
-         var model = new BarangModel()
-         {
-            id = 1,
-            sub_tipe_id = 1,
-            supplier_id = 1,
-            kode = "kode_barang_1",
-            nama = "Barang #2"
-         };
-
          var dataAccessJsonStr = string.Empty;
          var formattedJsonStr = string.Empty;
 
          try
          {
+            var model = new BarangModel()
+            {
+               id = 1,
+               sub_tipe_id = 1,
+               supplier_id = 1,
+               kode = "kode_barang_1",
+               nama = "Barang #2"
+            };
+
             _services.Insert(model);
          }
          catch (DataAccessException ex)
@@ -133,21 +133,21 @@ namespace RumahScarlett.Services.UnitTests.Barang
       [Fact]
       private void ShouldReturnSuccessForUpdate()
       {
-         var model = new BarangModel
-         {
-            id = 1,
-            sub_tipe_id = 1,
-            supplier_id = 1,
-            kode = "kode_barang_1_Update_",
-            nama = "Nama Barang #1 (Update)"
-         };
-
          var operationSecceded = false;
          var dataAccessJsonStr = string.Empty;
          var formattedJsonStr = string.Empty;
 
          try
          {
+            var model = new BarangModel
+            {
+               id = 1,
+               sub_tipe_id = 1,
+               supplier_id = 1,
+               kode = "kode_barang_1_Update_",
+               nama = "Nama Barang #1 (Update)"
+            };
+
             _services.Update(model);
             operationSecceded = true;
          }
@@ -172,20 +172,20 @@ namespace RumahScarlett.Services.UnitTests.Barang
       [Fact]
       private void ShouldReturnErrorDuplicateUpdate()
       {
-         var model = new BarangModel
-         {
-            id = 1,
-            sub_tipe_id = 1,
-            supplier_id = 1,
-            kode = "kode_barang_2",
-            nama = "Nama Barang #2"
-         };
-
          var dataAccessJsonStr = string.Empty;
          var formattedJsonStr = string.Empty;
 
          try
          {
+            var model = new BarangModel
+            {
+               id = 1,
+               sub_tipe_id = 1,
+               supplier_id = 1,
+               kode = "kode_barang_2",
+               nama = "Nama Barang #2"
+            };
+
             _services.Update(model);
          }
          catch (DataAccessException ex)

@@ -11,31 +11,36 @@ using Dapper;
 using RumahScarlett.Infrastructure.DataAccess.CommonRepositories;
 using RumahScarlett.Services.CommonServices;
 using System.Transactions;
+using RumahScarlett.Domain.Models.Barang;
+using RumahScarlett.Infrastructure.DataAccess.Repositories.Supplier;
+using RumahScarlett.Domain.Models.Supplier;
 
 namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Pembelian
 {
    public class PembelianRepository : BaseRepository<IPembelianModel>, IPembelianRepository
    {
       private DbContext _context;
+      private IPembelianDetailRepository _pdRepo;
 
       public PembelianRepository()
       {
          _context = new DbContext();
          _modelName = "pembelian";
+         _pdRepo = new PembelianDetailRepository(_context);
       }
 
       public void Insert(IPembelianModel model)
       {
          var dataAccessStatus = new DataAccessStatus();
-
          model.no_nota = DbHelper.GetMaxID("pembelian", "no_nota");
 
          Insert(model, () =>
          {
             using (var transaction = _context.Conn.BeginTransaction())
             {
-               var queryStr = "INSERT INTO pembelian (supplier_id, no_nota, tanggal) VALUES (@supplier_id, @no_nota, @tanggal);" +
-                                 "SELECT LAST_INSERT_ID();";
+               var queryStr = "INSERT INTO pembelian (supplier_id, no_nota, tanggal) " +
+                              "VALUES (@supplier_id, @no_nota, @tanggal);" +
+                              "SELECT LAST_INSERT_ID();";
 
                var insertedId = _context.Conn.Query<uint>(queryStr, new
                {
@@ -46,17 +51,29 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Pembelian
 
                if (insertedId > 0)
                {
-                  var queryStr2 = "INSERT INTO pembelian_detail (pembelian_id, barang_id, qty, hpp) VALUES (@pembelian_id, @barang_id, @qty, @hpp)";
+                  model.id = insertedId;
+                  model.PembelianDetails = model.PembelianDetails.Map(p => p.pembelian_id = model.id).ToList();
 
-                  foreach (var pembelianDetail in model.PembelianDetails)
+                  foreach (var pd in model.PembelianDetails)
                   {
-                     _context.Conn.Query<int>(queryStr2, new
+                     _pdRepo.Insert(pd, transaction);
+                  }
+
+                  foreach (var pd in model.PembelianDetails)
+                  {
+                     var barang = _context.Conn.Get<BarangModel>(pd.barang_id, transaction);
+
+                     if (barang != null)
                      {
-                        pembelian_id = insertedId,
-                        barang_id = pembelianDetail.barang_id,
-                        qty = pembelianDetail.qty,
-                        hpp = pembelianDetail.hpp
-                     }, transaction);
+                        barang.stok += pd.qty;
+
+                        if (pd.hpp > 0)
+                        {
+                           barang.hpp = pd.hpp;
+                        }
+
+                        _context.Conn.Update(barang, transaction);
+                     }
                   }
                }
 
@@ -74,8 +91,33 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Pembelian
       {
          var dataAccessStatus = new DataAccessStatus();
 
-         Delete(model, () => _context.Conn.Delete(model), dataAccessStatus,
-               () => CheckUpdateDelete(model));
+         Delete(model, () =>
+         {
+            using (var transaction = _context.Conn.BeginTransaction())
+            {
+               var listPembelianDetails = _context.Conn.Query<PembelianDetailModel>("SELECT * FROM pembelian_detail where pembelian_id=@id",
+                                          new { model.id }, transaction).ToList();
+
+               var success = _context.Conn.Delete((PembelianModel)model, transaction);
+
+               if (success)
+               {
+                  foreach (var pd in listPembelianDetails)
+                  {
+                     var barang = _context.Conn.Get<BarangModel>(pd.barang_id, transaction);
+
+                     if (barang != null)
+                     {
+                        barang.stok -= pd.qty;
+
+                        _context.Conn.Update(barang, transaction);
+                     }
+                  }
+               }
+
+               transaction.Commit();
+            }
+         }, dataAccessStatus, () => CheckUpdateDelete(model));
       }
 
       public IEnumerable<IPembelianModel> GetAll()
@@ -84,7 +126,20 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Pembelian
 
          return GetAll(() =>
          {
-            return _context.Conn.GetAll<PembelianModel>().ToList();
+            var listPembelians = _context.Conn.GetAll<PembelianModel>().ToList();
+
+            if (listPembelians.Count > 0)
+            {
+               listPembelians = listPembelians.Map(p => p.Supplier = new SupplierRepository().GetById(p.supplier_id)).ToList();
+
+               foreach (var p in listPembelians)
+               {
+                  var listPembeliadDetails = _pdRepo.GetAll(p).ToList();
+                  p.PembelianDetails = listPembeliadDetails;
+               }               
+            }
+
+            return listPembelians;
          }, dataAccessStatus);
       }
 

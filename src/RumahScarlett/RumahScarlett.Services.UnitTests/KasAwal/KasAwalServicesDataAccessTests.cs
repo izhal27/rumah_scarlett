@@ -31,19 +31,19 @@ namespace RumahScarlett.Services.UnitTests.KasAwal
       [Fact]
       private void ShouldReturnSuccessForUpdate()
       {
-         var model = new KasAwalModel()
-         {
-            id = 1,
-            tanggal = DateTime.Now.Date,
-            total = 123456
-         };
-
          var operationSecceded = false;
          var dataAccessJsonStr = string.Empty;
          var formattedJsonStr = string.Empty;
 
          try
          {
+            var model = new KasAwalModel()
+            {
+               id = 1,
+               tanggal = DateTime.Now.Date,
+               total = 123456
+            };
+
             _services.Update(model);
             operationSecceded = true;
          }

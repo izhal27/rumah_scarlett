@@ -71,16 +71,16 @@ namespace RumahScarlett.Services.UnitTests.Tipe
       [Fact]
       private void ShouldReturnErrorDuplicateInsert()
       {
-         var model = new TipeModel()
-         {
-            nama = "Tipe #2",
-         };
-
          var dataAccessJsonStr = string.Empty;
          var formattedJsonStr = string.Empty;
 
          try
          {
+            var model = new TipeModel()
+            {
+               nama = "Tipe #2",
+            };
+
             _services.Insert(model);
          }
          catch (DataAccessException ex)
@@ -97,19 +97,19 @@ namespace RumahScarlett.Services.UnitTests.Tipe
       [Fact]
       private void ShouldReturnSuccessForUpdate()
       {
-         var model = new TipeModel()
-         {
-            id = 7,
-            nama = "Tipe #7 (Update)",
-            keterangan = "Keterangan Tipe #7"
-         };
-
          var operationSecceded = false;
          var dataAccessJsonStr = string.Empty;
          var formattedJsonStr = string.Empty;
 
          try
          {
+            var model = new TipeModel()
+            {
+               id = 1,
+               nama = "Tipe #1 (Update)",
+               keterangan = "Keterangan Tipe #1"
+            };
+
             _services.Update(model);
             operationSecceded = true;
          }
@@ -134,17 +134,17 @@ namespace RumahScarlett.Services.UnitTests.Tipe
       [Fact]
       private void ShouldReturnErrorDuplicateUpdate()
       {
-         var model = new TipeModel()
-         {
-            id = 1,
-            nama = "Tipe #2",
-         };
-
          var dataAccessJsonStr = string.Empty;
          var formattedJsonStr = string.Empty;
 
          try
          {
+            var model = new TipeModel()
+            {
+               id = 1,
+               nama = "Tipe #2",
+            };
+
             _services.Update(model);
          }
          catch (DataAccessException ex)
@@ -161,17 +161,17 @@ namespace RumahScarlett.Services.UnitTests.Tipe
       [Fact]
       private void ShouldReturnSuccessForDelete()
       {
-         var model = new TipeModel()
-         {
-            id = 10,
-         };
-
          var operationSecceded = false;
          var dataAccessJsonStr = string.Empty;
          var formattedJsonStr = string.Empty;
 
          try
          {
+            var model = new TipeModel()
+            {
+               id = 10,
+            };
+
             _services.Delete(model);
             operationSecceded = true;
          }

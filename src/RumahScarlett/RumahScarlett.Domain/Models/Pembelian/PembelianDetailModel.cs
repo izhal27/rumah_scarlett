@@ -20,22 +20,30 @@ namespace RumahScarlett.Domain.Models.Pembelian
       public uint id { get; set; }
 
       [Browsable(false)]
-      [Dp.Write(false)]
-      public IPembelianModel Pembelian { get; set; }
-
-      [Browsable(false)]
       [Range(1, uint.MaxValue, ErrorMessage = "Pembelian ID harus diisi !!!")]
       [DisplayName("Pembelian ID")]
-      public uint pembelian_id { get { return Pembelian != null ? Pembelian.id : default(uint); } }
+      public uint pembelian_id { get; set; }
 
       [Browsable(false)]
       [Dp.Write(false)]
       public IBarangModel Barang { get; set; }
 
+      private uint _barang_id;
+
       [Browsable(false)]
       [Range(1, uint.MaxValue, ErrorMessage = "Barang ID harus diisi !!!")]
       [DisplayName("Barang ID")]
-      public uint barang_id { get { return Barang != null ? Barang.id : default(uint); } }
+      public uint barang_id
+      {
+         get
+         {
+            return Barang.id != default(uint) ? Barang.id : _barang_id;
+         }
+         set
+         {
+            _barang_id = value;
+         }
+      }
 
       [Dp.Write(false)]
       [DisplayName("Kode Barang")]
@@ -65,7 +73,6 @@ namespace RumahScarlett.Domain.Models.Pembelian
 
       public PembelianDetailModel()
       {
-         Pembelian = new PembelianModel();
          Barang = new BarangModel();
       }
    }

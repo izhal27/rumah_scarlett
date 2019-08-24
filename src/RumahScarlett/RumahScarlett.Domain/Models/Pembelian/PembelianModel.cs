@@ -22,15 +22,21 @@ namespace RumahScarlett.Domain.Models.Pembelian
       [Dp.Write(false)]
       public ISupplierModel Supplier { get; set; }
 
+      private uint _supplier_id;
+
       [Browsable(false)]
       [Range(1, uint.MaxValue, ErrorMessage = "Supplier ID harus diisi !!!")]
       [DisplayName("Supplier ID")]
-      public uint supplier_id { get { return Supplier != null ? Supplier.id : default(uint); } }
+      public uint supplier_id
+      {
+         get { return Supplier.id != default(uint) ? Supplier.id : _supplier_id; }
+         set { _supplier_id = value; }
+      }
 
       [Dp.Write(false)]
       [DisplayName("Supplier")]
       public string supplier_nama { get { return Supplier != null ? Supplier.nama : string.Empty; } }
-      
+
       [StringLength(255, ErrorMessage = "Panjang maksimal No Nota 255 karakter !!!")]
       [DisplayName("No Nota")]
       public string no_nota { get; set; }
@@ -39,7 +45,7 @@ namespace RumahScarlett.Domain.Models.Pembelian
       [Range(typeof(DateTime), "1945/08/17", "9999/01/01", ErrorMessage = "Minimal Tanggal 1945/08/17 !!!")]
       [DisplayName("Tanggal")]
       public DateTime tanggal { get; set; }
-      
+
       [Browsable(false)]
       [Dp.Write(false)]
       public IEnumerable<IPembelianDetailModel> PembelianDetails { get; set; }

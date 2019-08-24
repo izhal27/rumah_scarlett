@@ -10,6 +10,7 @@ using RumahScarlett.Services.Services;
 using RumahScarlett.Services.Services.Barang;
 using RumahScarlett.Services.Services.Pembelian;
 using RumahScarlett.Services.Services.Supplier;
+using RumahScarlett.Services.UnitTests.CommonTests;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,7 +35,6 @@ namespace RumahScarlett.Services.UnitTests.Pembelian
          _testOutputHelper = testOutputHelper;
       }
 
-
       [Fact]
       private void ShouldReturnSuccessForInsert()
       {
@@ -45,28 +45,30 @@ namespace RumahScarlett.Services.UnitTests.Pembelian
          try
          {
             var supplierModel = new SupplierServices(new SupplierRepository(), _modelDAC).GetById(1);
+
             var barang1 = new BarangServices(new BarangRepository(), _modelDAC).GetById(1);
             var barang2 = new BarangServices(new BarangRepository(), _modelDAC).GetById(2);
             var barang3 = new BarangServices(new BarangRepository(), _modelDAC).GetById(3);
+
             var listPembelianDetail = new List<PembelianDetailModel>
             {
                new PembelianDetailModel
                {
                   Barang = barang1,
                   qty = 5,
-                  hpp = 6500                  
+                  hpp = 10000
                },
                new PembelianDetailModel
                {
                   Barang = barang2,
                   qty = 10,
-                  hpp = 8000                  
+                  hpp = 20000
                },
                new PembelianDetailModel
                {
                   Barang = barang3,
                   qty = 15,
-                  hpp = 10000                  
+                  hpp = 30000
                }
             };
 
@@ -98,5 +100,49 @@ namespace RumahScarlett.Services.UnitTests.Pembelian
          }
       }
 
+      [Fact]
+      private void ShouldReturnSuccessForDelete()
+      {
+         var operationSecceded = false;
+         var dataAccessJsonStr = string.Empty;
+         var formattedJsonStr = string.Empty;
+
+         try
+         {
+            var model = new PembelianModel()
+            {
+               id = 17,
+            };
+
+            _services.Delete(model);
+            operationSecceded = true;
+         }
+         catch (DataAccessException ex)
+         {
+            operationSecceded = ex.DataAccessStatusInfo.OperationSucceeded;
+            dataAccessJsonStr = JsonConvert.SerializeObject(ex.DataAccessStatusInfo);
+            formattedJsonStr = JToken.Parse(dataAccessJsonStr).ToString();
+         }
+
+         try
+         {
+            Assert.True(operationSecceded);
+            _testOutputHelper.WriteLine("Data berhasil dihapus.");
+         }
+         finally
+         {
+            _testOutputHelper.WriteLine(formattedJsonStr);
+         }
+      }
+
+      [Fact]
+      public void ShouldReturnListOfModels()
+      {
+         var listModels = (List<PembelianModel>)_services.GetAll();
+
+         Assert.NotEmpty(listModels);
+
+         TestsHelper.WriteListModels(_testOutputHelper, listModels);
+      }
    }
 }

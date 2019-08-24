@@ -36,11 +36,14 @@ namespace RumahScarlett.Services.UnitTests.Tipe
 
          try
          {
-            for (int i = 1; i <= 5; i++)
+            for (int i = 1; i <= 10; i++)
             {
                var model = new SubTipeModel()
                {
-                  Tipe = new TipeModel { id = 1 },
+                  Tipe = new TipeModel
+                  {
+                     id = (uint)(i % 2 == 0 ? 2 : 1)
+                  },
                   nama = $"Sub tipe #{i}",
                   keterangan = $"Keterangan Sub tipe #{i}"
                };
@@ -70,17 +73,17 @@ namespace RumahScarlett.Services.UnitTests.Tipe
       [Fact]
       private void ShouldReturnErrorDuplicateInsert()
       {
-         var model = new SubTipeModel()
-         {
-            Tipe = new TipeModel { id = 1 },
-            nama = "Sub tipe #2",
-         };
-
          var dataAccessJsonStr = string.Empty;
          var formattedJsonStr = string.Empty;
 
          try
          {
+            var model = new SubTipeModel()
+            {
+               Tipe = new TipeModel { id = 1 },
+               nama = "Sub tipe #2",
+            };
+
             _services.Insert(model);
          }
          catch (DataAccessException ex)
@@ -97,20 +100,20 @@ namespace RumahScarlett.Services.UnitTests.Tipe
       [Fact]
       private void ShouldReturnSuccessForUpdate()
       {
-         var model = new SubTipeModel()
-         {
-            id = 1,
-            Tipe = new TipeModel { id = 1 },
-            nama = "Sub tipe #1 (Update)",
-            keterangan = "Keterangan Sub tipe #1 (Update)"
-         };
-
          var operationSecceded = false;
          var dataAccessJsonStr = string.Empty;
          var formattedJsonStr = string.Empty;
 
          try
          {
+            var model = new SubTipeModel()
+            {
+               id = 1,
+               Tipe = new TipeModel { id = 1 },
+               nama = "Sub tipe #1 (Update)",
+               keterangan = "Keterangan Sub tipe #1 (Update)"
+            };
+
             _services.Update(model);
             operationSecceded = true;
          }
@@ -134,18 +137,18 @@ namespace RumahScarlett.Services.UnitTests.Tipe
       [Fact]
       private void ShouldReturnErrorDuplicateUpdate()
       {
-         var model = new SubTipeModel()
-         {
-            id = 2,
-            Tipe = new TipeModel { id = 1 },
-            nama = "Sub tipe #3",
-         };
-
          var dataAccessJsonStr = string.Empty;
          var formattedJsonStr = string.Empty;
 
          try
          {
+            var model = new SubTipeModel()
+            {
+               id = 2,
+               Tipe = new TipeModel { id = 1 },
+               nama = "Sub tipe #3",
+            };
+
             _services.Update(model);
          }
          catch (DataAccessException ex)
@@ -162,17 +165,17 @@ namespace RumahScarlett.Services.UnitTests.Tipe
       [Fact]
       private void ShouldReturnSuccessForDelete()
       {
-         var model = new SubTipeModel()
-         {
-            id = 12,
-         };
-
          var operationSecceded = false;
          var dataAccessJsonStr = string.Empty;
          var formattedJsonStr = string.Empty;
 
          try
          {
+            var model = new SubTipeModel()
+            {
+               id = 12,
+            };
+
             _services.Delete(model);
             operationSecceded = true;
          }

@@ -76,16 +76,16 @@ namespace RumahScarlett.Services.UnitTests.Supplier
       [Fact]
       private void ShouldReturnErrorDuplicateInsert()
       {
-         var model = new SupplierModel()
-         {
-            nama = "Supplier #2",
-         };
-         
          var dataAccessJsonStr = string.Empty;
          var formattedJsonStr = string.Empty;
 
          try
          {
+            var model = new SupplierModel()
+            {
+               nama = "Supplier #2",
+            };
+
             _services.Insert(model);
          }
          catch (DataAccessException ex)
@@ -102,24 +102,24 @@ namespace RumahScarlett.Services.UnitTests.Supplier
       [Fact]
       private void ShouldReturnSuccessForUpdate()
       {
-         var model = new SupplierModel()
-         {
-            id = 1,
-            nama = "Supplier #1 (Update)",
-            alamat = "Alamat #1",
-            telpon = "+62 8123456789",
-            fax = "+62 8123456789",
-            email = "supplier@tests.com",
-            website = "http://www.supplier.com",
-            contact_person = "Contact person #1"
-         };
-
          var operationSecceded = false;
          var dataAccessJsonStr = string.Empty;
          var formattedJsonStr = string.Empty;
 
          try
          {
+            var model = new SupplierModel()
+            {
+               id = 1,
+               nama = "Supplier #1 (Update)",
+               alamat = "Alamat #1",
+               telpon = "+62 8123456789",
+               fax = "+62 8123456789",
+               email = "supplier@tests.com",
+               website = "http://www.supplier.com",
+               contact_person = "Contact person #1"
+            };
+
             _services.Update(model);
             operationSecceded = true;
          }
@@ -144,17 +144,17 @@ namespace RumahScarlett.Services.UnitTests.Supplier
       [Fact]
       private void ShouldReturnErrorDuplicateUpdate()
       {
-         var model = new SupplierModel()
-         {
-            id = 1,
-            nama = "Supplier #2",
-         };
-
          var dataAccessJsonStr = string.Empty;
          var formattedJsonStr = string.Empty;
 
          try
          {
+            var model = new SupplierModel()
+            {
+               id = 1,
+               nama = "Supplier #2",
+            };
+
             _services.Update(model);
          }
          catch (DataAccessException ex)
@@ -171,17 +171,17 @@ namespace RumahScarlett.Services.UnitTests.Supplier
       [Fact]
       private void ShouldReturnSuccessForDelete()
       {
-         var model = new SupplierModel()
-         {
-            id = 6,
-         };
-
          var operationSecceded = false;
          var dataAccessJsonStr = string.Empty;
          var formattedJsonStr = string.Empty;
 
          try
          {
+            var model = new SupplierModel()
+            {
+               id = 6,
+            };
+
             _services.Delete(model);
             operationSecceded = true;
          }
