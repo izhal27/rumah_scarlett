@@ -57,7 +57,8 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Pengeluaran
       public IEnumerable<IPengeluaranModel> GetByDate(object date)
       {
          date = ((DateTime)date).ToMysqlDateFormat();
-         var queryStr = "SELECT * FROM pengeluaran WHERE DATE(tanggal)=@date";
+
+         var queryStr = StringHelper.QueryStringByDate("pengeluaran", "tanggal");
 
          return _context.Conn.Query<PengeluaranModel>(queryStr, new { date });
       }
@@ -66,7 +67,8 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Pengeluaran
       {
          startDate = ((DateTime)startDate).ToMysqlDateFormat();
          endDate = ((DateTime)endDate).ToMysqlDateFormat();
-         var queryStr = "SELECT * FROM pengeluaran WHERE DATE(tanggal) BETWEEN @startDate AND @endDate";
+
+         var queryStr = StringHelper.QueryStringByBetweenDate("pengeluaran", "tanggal");
 
          return _context.Conn.Query<PengeluaranModel>(queryStr, new { startDate, endDate });
       }

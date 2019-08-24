@@ -39,6 +39,16 @@ namespace RumahScarlett.Services.Services.Pembelian
          return _repo.GetAll();
       }
 
+      public IEnumerable<IPembelianModel> GetByDate(object date)
+      {
+         return _repo.GetByDate(date);
+      }
+
+      public IEnumerable<IPembelianModel> GetByDate(object startDate, object endDate)
+      {
+         return _repo.GetByDate(startDate, endDate);
+      }
+
       public IPembelianModel GetById(object id)
       {
          throw new NotImplementedException();

@@ -123,11 +123,21 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Pembelian
 
       public IEnumerable<IPembelianModel> GetAll()
       {
+         throw new NotImplementedException();
+      }
+
+
+      public IEnumerable<IPembelianModel> GetByDate(object date)
+      {
          var dataAccessStatus = new DataAccessStatus();
 
          return GetAll(() =>
          {
-            var listPembelians = _context.Conn.GetAll<PembelianModel>().ToList();
+            date = ((DateTime)date).ToMysqlDateFormat();
+
+            var queryStr = StringHelper.QueryStringByDate("pembelian", "tanggal");
+
+            var listPembelians = _context.Conn.Query<PembelianModel>(queryStr, new { date }).ToList();
 
             if (listPembelians.Count > 0)
             {
@@ -138,7 +148,36 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Pembelian
                {
                   var listPembeliadDetails = _pdRepo.GetAll(p).ToList();
                   p.PembelianDetails = listPembeliadDetails;
-               }               
+               }
+            }
+
+            return listPembelians;
+         }, dataAccessStatus);
+      }
+
+      public IEnumerable<IPembelianModel> GetByDate(object startDate, object endDate)
+      {
+         var dataAccessStatus = new DataAccessStatus();
+
+         return GetAll(() =>
+         {
+            startDate = ((DateTime)startDate).ToMysqlDateFormat();
+            endDate = ((DateTime)endDate).ToMysqlDateFormat();
+
+            var queryStr = StringHelper.QueryStringByBetweenDate("pembelian", "tanggal");
+
+            var listPembelians = _context.Conn.Query<PembelianModel>(queryStr, new { startDate, endDate }).ToList();
+
+            if (listPembelians.Count > 0)
+            {
+               listPembelians = listPembelians.Map(p => p.Supplier = new SupplierRepository()
+                                                                     .GetById(p.supplier_id)).ToList();
+
+               foreach (var p in listPembelians)
+               {
+                  var listPembeliadDetails = _pdRepo.GetAll(p).ToList();
+                  p.PembelianDetails = listPembeliadDetails;
+               }
             }
 
             return listPembelians;

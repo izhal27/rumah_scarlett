@@ -136,9 +136,19 @@ namespace RumahScarlett.Services.UnitTests.Pembelian
       }
 
       [Fact]
-      public void ShouldReturnListOfModels()
+      public void ShouldReturnListOfModelsDateNow()
       {
-         var listModels = (List<PembelianModel>)_services.GetAll();
+         var listModels = (List<PembelianModel>)_services.GetByDate(DateTime.Now);
+
+         Assert.NotEmpty(listModels);
+
+         TestsHelper.WriteListModels(_testOutputHelper, listModels);
+      }
+
+      [Fact]
+      public void ShouldReturnListOfModelsBetweenDate()
+      {
+         var listModels = (List<PembelianModel>)_services.GetByDate(DateTime.Now, DateTime.Now.AddDays(3));
 
          Assert.NotEmpty(listModels);
 
