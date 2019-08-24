@@ -15,11 +15,15 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Tipe
    public class SubTipeRepository : BaseRepository<ISubTipeModel>, ISubTipeRepository
    {
       private DbContext _context;
-      protected new static string _modelName = "sub tipe";
+      private string _queryStrDefault;
 
       public SubTipeRepository()
       {
          _context = new DbContext();
+         _modelName = "sub tipe";
+
+         _queryStrDefault = "SELECT s.*, t.id as tipe_id, t.nama as tipe_nama FROM sub_tipe s " +
+                            "INNER JOIN tipe t ON s.tipe_id = t.id";
       }
 
       public void Insert(ISubTipeModel model)
@@ -54,18 +58,7 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Tipe
 
          return GetAll(() =>
          {
-            var queryStr = "SELECT s.*, t.* FROM sub_tipe s " +
-                           "INNER JOIN tipe t ON s.tipe_id = t.id";
-
-            return _context.Conn.Query<SubTipeModel, TipeModel, SubTipeModel>(queryStr, (s, t) =>
-               {
-                  if (t != null)
-                  {
-                     s.Tipe = t;
-                  }
-
-                  return s;
-               }, splitOn: "id").ToList();
+            return _context.Conn.Query<SubTipeModel>(_queryStrDefault).ToList();
          }, dataAccessStatus);
       }
 
@@ -75,19 +68,7 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Tipe
 
          return GetAll(() =>
          {
-            var queryStr = "SELECT s.*, t.* FROM sub_tipe s " +
-                           "INNER JOIN tipe t ON s.tipe_id = t.id " +
-                           "WHERE t.id=@id";
-
-            return _context.Conn.Query<SubTipeModel, TipeModel, SubTipeModel>(queryStr, (s, t) =>
-            {
-               if (t != null)
-               {
-                  s.Tipe = t;
-               }
-
-               return s;
-            }, new { id = tipeId }, splitOn: "id").ToList();
+            return _context.Conn.Query<SubTipeModel>(_queryStrDefault).ToList();
          }, dataAccessStatus);
       }
 
@@ -97,19 +78,7 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Tipe
 
          return GetBy(() =>
          {
-            var queryStr = "SELECT s.*, t.* FROM sub_tipe s " +
-                           "INNER JOIN tipe t ON s.tipe_id = t.id " +
-                           "WHERE s.id=@id";
-
-            return _context.Conn.Query<SubTipeModel, TipeModel, SubTipeModel>(queryStr, (s, t) =>
-            {
-               if (t != null)
-               {
-                  s.Tipe = t;
-               }
-
-               return s;
-            }, new { id } , splitOn: "id").FirstOrDefault();
+            return _context.Conn.Query<SubTipeModel>(_queryStrDefault).FirstOrDefault();
          }, dataAccessStatus);
       }
 

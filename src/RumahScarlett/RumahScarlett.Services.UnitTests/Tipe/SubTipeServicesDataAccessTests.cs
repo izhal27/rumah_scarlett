@@ -40,10 +40,7 @@ namespace RumahScarlett.Services.UnitTests.Tipe
             {
                var model = new SubTipeModel()
                {
-                  Tipe = new TipeModel
-                  {
-                     id = (uint)(i % 2 == 0 ? 2 : 1)
-                  },
+                  tipe_id = (uint)(i % 2 == 0 ? 2 : 1),
                   nama = $"Sub tipe #{i}",
                   keterangan = $"Keterangan Sub tipe #{i}"
                };
@@ -80,7 +77,7 @@ namespace RumahScarlett.Services.UnitTests.Tipe
          {
             var model = new SubTipeModel()
             {
-               Tipe = new TipeModel { id = 1 },
+               tipe_id = 1,
                nama = "Sub tipe #2",
             };
 
@@ -109,7 +106,7 @@ namespace RumahScarlett.Services.UnitTests.Tipe
             var model = new SubTipeModel()
             {
                id = 1,
-               Tipe = new TipeModel { id = 1 },
+               tipe_id = 1,
                nama = "Sub tipe #1 (Update)",
                keterangan = "Keterangan Sub tipe #1 (Update)"
             };
@@ -145,7 +142,7 @@ namespace RumahScarlett.Services.UnitTests.Tipe
             var model = new SubTipeModel()
             {
                id = 2,
-               Tipe = new TipeModel { id = 1 },
+               tipe_id = 1,
                nama = "Sub tipe #3",
             };
 

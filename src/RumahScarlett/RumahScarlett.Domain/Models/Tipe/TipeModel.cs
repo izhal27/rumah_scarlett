@@ -29,7 +29,7 @@ namespace RumahScarlett.Domain.Models.Tipe
 
       [Browsable(false)]
       [Dp.Write(false)]
-      public IEnumerable<ISubTipeModel> SubTipeModels
+      public IEnumerable<ISubTipeModel> SubTipes
       {
          get;
          set;
@@ -37,7 +37,7 @@ namespace RumahScarlett.Domain.Models.Tipe
 
       public TipeModel()
       {
-         SubTipeModels = new List<ISubTipeModel>();
+         SubTipes = new List<ISubTipeModel>();
       }
    }
 }

@@ -95,7 +95,8 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Pembelian
          {
             using (var transaction = _context.Conn.BeginTransaction())
             {
-               var listPembelianDetails = _context.Conn.Query<PembelianDetailModel>("SELECT * FROM pembelian_detail where pembelian_id=@id",
+               var listPembelianDetails = _context.Conn.Query<PembelianDetailModel>(
+                                          "SELECT * FROM pembelian_detail where pembelian_id=@id",
                                           new { model.id }, transaction).ToList();
 
                var success = _context.Conn.Delete((PembelianModel)model, transaction);
@@ -130,7 +131,8 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Pembelian
 
             if (listPembelians.Count > 0)
             {
-               listPembelians = listPembelians.Map(p => p.Supplier = new SupplierRepository().GetById(p.supplier_id)).ToList();
+               listPembelians = listPembelians.Map(p => p.Supplier = new SupplierRepository()
+                                                                     .GetById(p.supplier_id)).ToList();
 
                foreach (var p in listPembelians)
                {

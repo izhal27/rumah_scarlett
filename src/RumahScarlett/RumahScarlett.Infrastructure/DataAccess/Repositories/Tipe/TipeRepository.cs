@@ -60,7 +60,7 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Tipe
             if (listObj != null)
             {
                listObj = listObj.Map(
-                  t => t.SubTipeModels = new SubTipeRepository().GetAll(t.id)
+                  t => t.SubTipes = new SubTipeRepository().GetAll(t.id)
                   ).ToList();
             }
 
