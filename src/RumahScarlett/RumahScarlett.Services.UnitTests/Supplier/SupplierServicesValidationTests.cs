@@ -1,4 +1,5 @@
-﻿using RumahScarlett.Domain.Models.Supplier;
+﻿using RumahScarlett.CommonComponents;
+using RumahScarlett.Domain.Models.Supplier;
 using RumahScarlett.Services.UnitTests.CommonTests;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,7 @@ using Xunit.Abstractions;
 namespace RumahScarlett.Services.UnitTests.Supplier
 {
    [Trait("Category", "Model Validations")]
-   public class SupplierServicesValidationTests :IClassFixture<SupplierServiceFixture>
+   public class SupplierServicesValidationTests : IClassFixture<SupplierServiceFixture>
    {
       private SupplierServiceFixture _servicesFixture;
       private ITestOutputHelper _testOutputHelper;
@@ -62,7 +63,7 @@ namespace RumahScarlett.Services.UnitTests.Supplier
       [Fact]
       public void ShouldThrowExceptionForLengthOfNama()
       {
-         _servicesFixture.Model.nama = GetStringByLength(101);
+         _servicesFixture.Model.nama = StringHelper.GetStringByLength(101);
 
          var exception = Record.Exception(() => _servicesFixture
                                                 .Services.ValidateModel(_servicesFixture.Model));
@@ -73,7 +74,7 @@ namespace RumahScarlett.Services.UnitTests.Supplier
       [Fact]
       public void ShouldThrowExceptionForLengthOfAlamat()
       {
-         _servicesFixture.Model.alamat = GetStringByLength(201);
+         _servicesFixture.Model.alamat = StringHelper.GetStringByLength(201);
 
          var exception = Record.Exception(() => _servicesFixture
                                                 .Services.ValidateModel(_servicesFixture.Model));
@@ -84,7 +85,7 @@ namespace RumahScarlett.Services.UnitTests.Supplier
       [Fact]
       public void ShouldThrowExceptionForLengthOfTelpon()
       {
-         _servicesFixture.Model.telpon = GetStringByLength(31);
+         _servicesFixture.Model.telpon = StringHelper.GetStringByLength(31);
 
          var exception = Record.Exception(() => _servicesFixture
                                                 .Services.ValidateModel(_servicesFixture.Model));
@@ -95,7 +96,7 @@ namespace RumahScarlett.Services.UnitTests.Supplier
       [Fact]
       public void ShouldThrowExceptionForLengthOfFax()
       {
-         _servicesFixture.Model.fax = GetStringByLength(31);
+         _servicesFixture.Model.fax = StringHelper.GetStringByLength(31);
 
          var exception = Record.Exception(() => _servicesFixture
                                                 .Services.ValidateModel(_servicesFixture.Model));
@@ -106,7 +107,7 @@ namespace RumahScarlett.Services.UnitTests.Supplier
       [Fact]
       public void ShouldThrowExceptionForLengthOfEmail()
       {
-         _servicesFixture.Model.email = GetStringByLength(151);
+         _servicesFixture.Model.email = StringHelper.GetStringByLength(151);
 
          var exception = Record.Exception(() => _servicesFixture
                                                 .Services.ValidateModel(_servicesFixture.Model));
@@ -139,26 +140,14 @@ namespace RumahScarlett.Services.UnitTests.Supplier
       [Fact]
       public void ShouldThrowExceptionForLengthOfContactPerson()
       {
-         _servicesFixture.Model.contact_person = GetStringByLength(101);
+         _servicesFixture.Model.contact_person = StringHelper.GetStringByLength(101);
 
          var exception = Record.Exception(() => _servicesFixture
                                                 .Services.ValidateModel(_servicesFixture.Model));
 
          WriteExceptionTestResult(exception);
       }
-
-      private string GetStringByLength(int length)
-      {
-         var strBuild = new StringBuilder();
-
-         for (int i = 0; i < length; i++)
-         {
-            strBuild.Append("a");
-         }
-
-         return strBuild.ToString();
-      }
-
+      
       private void WriteExceptionTestResult(Exception exception)
       {
          TestsHelper.WriteExceptionTestResult(exception, _testOutputHelper, _servicesFixture.Model);

@@ -61,7 +61,7 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.KasAwal
          return GetBy(() =>
          {
             var queryStr = "SELECT * FROM kas_awal WHERE tanggal=@tanggal";
-            var tanggalFix = ((DateTime)tanggal).ToString("yyyy-MM-dd");
+            var tanggalFix = ((DateTime)tanggal).ToMysqlDateFormat();
 
             var model = _context.Conn.Query<KasAwalModel>(queryStr, new { tanggal = tanggalFix }).FirstOrDefault();
 

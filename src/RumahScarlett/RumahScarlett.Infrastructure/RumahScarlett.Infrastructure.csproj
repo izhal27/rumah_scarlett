@@ -80,6 +80,7 @@
     <Compile Include="DataAccess\Repositories\KasAwal\KasAwalRepository.cs" />
     <Compile Include="DataAccess\Repositories\Pembelian\PembelianDetailRepository.cs" />
     <Compile Include="DataAccess\Repositories\Pembelian\PembelianRepository.cs" />
+    <Compile Include="DataAccess\Repositories\Pengeluaran\PengeluaranRepository.cs" />
     <Compile Include="DataAccess\Repositories\Supplier\SupplierRepository.cs" />
     <Compile Include="DataAccess\Repositories\Tipe\SubTipeRepository.cs" />
     <Compile Include="DataAccess\Repositories\Tipe\TipeRepository.cs" />

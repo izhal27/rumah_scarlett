@@ -1,4 +1,5 @@
-﻿using RumahScarlett.Domain.Models.Barang;
+﻿using RumahScarlett.CommonComponents;
+using RumahScarlett.Domain.Models.Barang;
 using RumahScarlett.Services.UnitTests.CommonTests;
 using System;
 using System.Collections.Generic;
@@ -97,7 +98,7 @@ namespace RumahScarlett.Services.UnitTests.Barang
       [Fact]
       public void ShouldThrowExceptionForLengthOfKode()
       {
-         _servicesFixture.Model.nama = GetStringByLength(101);
+         _servicesFixture.Model.nama = StringHelper.GetStringByLength(101);
 
          var exception = Record.Exception(() => _servicesFixture
                                                 .Services.ValidateModel(_servicesFixture.Model));
@@ -119,26 +120,14 @@ namespace RumahScarlett.Services.UnitTests.Barang
       [Fact]
       public void ShouldThrowExceptionForLengthOfNama()
       {
-         _servicesFixture.Model.nama = GetStringByLength(101);
+         _servicesFixture.Model.nama = StringHelper.GetStringByLength(101);
 
          var exception = Record.Exception(() => _servicesFixture
                                                 .Services.ValidateModel(_servicesFixture.Model));
 
          WriteExceptionTestResult(exception);
       }
-
-      private string GetStringByLength(int length)
-      {
-         var strBuild = new StringBuilder();
-
-         for (int i = 0; i < length; i++)
-         {
-            strBuild.Append("a");
-         }
-
-         return strBuild.ToString();
-      }
-
+      
       private void WriteExceptionTestResult(Exception exception)
       {
          TestsHelper.WriteExceptionTestResult(exception, _testOutputHelper, _servicesFixture.Model);
