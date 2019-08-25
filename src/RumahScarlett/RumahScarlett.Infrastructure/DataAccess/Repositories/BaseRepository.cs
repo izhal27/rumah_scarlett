@@ -36,6 +36,7 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories
          FailedDelete,
          GetList,
          GetById,
+         QtyEmpty
       }
 
       protected enum ProcessType
@@ -201,9 +202,20 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories
                customMessage = $"Gagal mengambil data {_modelName} yang sesuai dengan id yang diminta.";
                break;
             default:
+               customMessage = "Terjadi keslahan saat melakukan operasi yang diminta.";
                break;
          }
 
+         var dataAccessStatus = new DataAccessStatus();
+         dataAccessStatus.SetValues(status: "Error", operationSucceeded: false, exceptionMessage: ex.Message,
+                                    customMessage: customMessage,
+                                    helpLink: ex.HelpLink, errorCode: ex.ErrorCode, stackTrace: ex.StackTrace);
+
+         return SetDataAccessValues(ex, customMessage);
+      }
+
+      protected DataAccessStatus SetDataAccessValues(MySqlException ex, string customMessage)
+      {
          var dataAccessStatus = new DataAccessStatus();
          dataAccessStatus.SetValues(status: "Error", operationSucceeded: false, exceptionMessage: ex.Message,
                                     customMessage: customMessage,
@@ -229,10 +241,19 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories
             case ErrorMessageType.FailedDelete:
                customMessage = $"Gagal menghapus data {_modelName} di database.";
                break;
+            case ErrorMessageType.QtyEmpty:
+               customMessage = $"Qty {_modelName} yang ingin di proses bernilai 0 (Nol).";
+               break;
             default:
+               customMessage = "Terjadi keslahan saat melakukan operasi yang diminta.";
                break;
          }
 
+         SetDataAccessValues(ex, customMessage);
+      }
+
+      protected void SetDataAccessValues(DataAccessException ex, string customMessage)
+      {
          ex.DataAccessStatusInfo.Status = "Error";
          ex.DataAccessStatusInfo.OperationSucceeded = false;
          ex.DataAccessStatusInfo.CustomMessage = customMessage;

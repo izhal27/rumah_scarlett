@@ -1,8 +1,8 @@
 ﻿using Dapper;
 using Dapper.Contrib.Extensions;
+using RumahScarlett.CommonComponents;
 using RumahScarlett.Domain.Models.Pembelian;
 using RumahScarlett.Infrastructure.DataAccess.Repositories.Barang;
-using RumahScarlett.Services.CommonServices;
 using System;
 using System.Collections.Generic;
 using System.Data;

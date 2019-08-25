@@ -1,10 +1,12 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using RumahScarlett.CommonComponents;
-using RumahScarlett.Domain.Models.Pengeluaran;
-using RumahScarlett.Infrastructure.DataAccess.Repositories.Pengeluaran;
+using RumahScarlett.Domain.Models.PenyesuaianStok;
+using RumahScarlett.Infrastructure.DataAccess.Repositories.Barang;
+using RumahScarlett.Infrastructure.DataAccess.Repositories.PenyesuaianStok;
 using RumahScarlett.Services.Services;
-using RumahScarlett.Services.Services.Pengeluaran;
+using RumahScarlett.Services.Services.Barang;
+using RumahScarlett.Services.Services.PenyesuaianStok;
 using RumahScarlett.Services.UnitTests.CommonTests;
 using System;
 using System.Collections.Generic;
@@ -14,17 +16,19 @@ using System.Threading.Tasks;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace RumahScarlett.Services.UnitTests.Pengeluaran
+namespace RumahScarlett.Services.UnitTests.PenyesuaianStok
 {
    [Trait("Category", "Data Access Validations")]
-   public class PengeluaranServicesDataAccessTests
+   public class PenyesuaianStokServicesDataAccessTests
    {
-      private PengeluaranServices _services;
+      private ModelDataAnnotationCheck _modelDAC;
+      private PenyesuaianStokServices _services;
       private ITestOutputHelper _testOutputHelper;
 
-      public PengeluaranServicesDataAccessTests(ITestOutputHelper testOutputHelper)
+      public PenyesuaianStokServicesDataAccessTests(ITestOutputHelper testOutputHelper)
       {
-         _services = new PengeluaranServices(new PengeluaranRepository(), new ModelDataAnnotationCheck());
+         _modelDAC = new ModelDataAnnotationCheck();
+         _services = new PenyesuaianStokServices(new PenyesuaianStokRepository(), _modelDAC);
          _testOutputHelper = testOutputHelper;
       }
 
@@ -38,18 +42,39 @@ namespace RumahScarlett.Services.UnitTests.Pengeluaran
 
          try
          {
-            for (int i = 1; i <= 10; i++)
+            var barang1 = new BarangServices(new BarangRepository(), _modelDAC).GetById(1);
+            var barang2 = new BarangServices(new BarangRepository(), _modelDAC).GetById(2);
+            var barang3 = new BarangServices(new BarangRepository(), _modelDAC).GetById(3);
+
+            var listPenyesuaianStokDetails = new List<PenyesuaianStokDetailModel>
             {
-               var model = new PengeluaranModel()
+               new PenyesuaianStokDetailModel
                {
-                  nama = $"Nama Pengeluaran #{i}",
-                  jumlah = (i * 1000),
-                  keterangan = $"Keterangan Pengeluaran #{i}"
-               };
+                  Barang = barang1,
+                  qty = 1,
+                  keterangan = "Tester"
+               },
+               new PenyesuaianStokDetailModel
+               {
+                  Barang = barang2,
+                  qty = 2,
+                  keterangan = "Tester"
+               },
+               new PenyesuaianStokDetailModel
+               {
+                  Barang = barang3,
+                  qty = 3,
+                  keterangan = "Tester"
+               }
+            };
 
-               _services.Insert(model);
-            }
+            var penyesuaianStokModel = new PenyesuaianStokModel
+            {
+               tanggal = DateTime.Now,
+               PenyesuaianStokDetails = listPenyesuaianStokDetails
+            };
 
+            _services.Insert(penyesuaianStokModel);
             operationSecceded = true;
          }
          catch (DataAccessException ex)
@@ -69,7 +94,6 @@ namespace RumahScarlett.Services.UnitTests.Pengeluaran
             _testOutputHelper.WriteLine(formattedJsonStr);
          }
       }
-
       [Fact]
       private void ShouldReturnSuccessForDelete()
       {
@@ -79,9 +103,9 @@ namespace RumahScarlett.Services.UnitTests.Pengeluaran
 
          try
          {
-            var model = new PengeluaranModel()
+            var model = new PenyesuaianStokModel()
             {
-               id = 10
+               id = 23,
             };
 
             _services.Delete(model);
@@ -108,7 +132,7 @@ namespace RumahScarlett.Services.UnitTests.Pengeluaran
       [Fact]
       public void ShouldReturnListOfModelsDateNow()
       {
-         var listModels = (List<PengeluaranModel>)_services.GetByDate(DateTime.Now);
+         var listModels = (List<PenyesuaianStokModel>)_services.GetByDate(DateTime.Now);
 
          Assert.NotEmpty(listModels);
 
@@ -118,7 +142,7 @@ namespace RumahScarlett.Services.UnitTests.Pengeluaran
       [Fact]
       public void ShouldReturnListOfModelsBetweenDate()
       {
-         var listModels = (List<PengeluaranModel>)_services.GetByDate(DateTime.Now.AddDays(-3), DateTime.Now.AddDays(3));
+         var listModels = (List<PenyesuaianStokModel>)_services.GetByDate(DateTime.Now.AddDays(-3), DateTime.Now.AddDays(3));
 
          Assert.NotEmpty(listModels);
 

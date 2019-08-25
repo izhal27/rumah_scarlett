@@ -47,11 +47,11 @@ namespace RumahScarlett.Domain.Models.Pembelian
 
       [Dp.Write(false)]
       [DisplayName("Kode Barang")]
-      public string kode_barang { get { return Barang != null ? Barang.kode : string.Empty; } }
+      public string barang_kode { get { return Barang != null ? Barang.kode : string.Empty; } }
 
       [Dp.Write(false)]
       [DisplayName("Nama Barang")]
-      public string nama_barang { get { return Barang != null ? Barang.nama : string.Empty; } }
+      public string barang_nama { get { return Barang != null ? Barang.nama : string.Empty; } }
 
       [Range(1, uint.MaxValue, ErrorMessage = "Qty harus diisi !!!")]
       [DisplayName("Qty")]

@@ -9,7 +9,6 @@ using Dapper.Contrib.Extensions;
 using RumahScarlett.CommonComponents;
 using Dapper;
 using MySql.Data.MySqlClient;
-using RumahScarlett.Services.CommonServices;
 
 namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Tipe
 {

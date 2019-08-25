@@ -32,5 +32,13 @@ namespace RumahScarlett.Services.Services
             throw new ArgumentException(stringBuilder.ToString());
          }
       }
+
+      public void ValidateModels<TDomainModel>(IEnumerable<TDomainModel> models)
+      {
+         foreach (var model in models)
+         {
+            ValidateModel(model);
+         }
+      }
    }
 }

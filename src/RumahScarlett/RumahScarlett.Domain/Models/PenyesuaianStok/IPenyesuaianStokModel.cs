@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace RumahScarlett.Domain.Models.PenyesuainStok
+namespace RumahScarlett.Domain.Models.PenyesuaianStok
 {
    public interface IPenyesuaianStokModel
    {

@@ -56,21 +56,37 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Pengeluaran
 
       public IEnumerable<IPengeluaranModel> GetByDate(object date)
       {
-         date = ((DateTime)date).ToMysqlDateFormat();
-
          var queryStr = StringHelper.QueryStringByDate("pengeluaran", "tanggal");
-
-         return _context.Conn.Query<PengeluaranModel>(queryStr, new { date });
+         
+         return GetByDate(queryStr, date);
       }
 
       public IEnumerable<IPengeluaranModel> GetByDate(object startDate, object endDate)
       {
-         startDate = ((DateTime)startDate).ToMysqlDateFormat();
-         endDate = ((DateTime)endDate).ToMysqlDateFormat();
-
          var queryStr = StringHelper.QueryStringByBetweenDate("pengeluaran", "tanggal");
 
-         return _context.Conn.Query<PengeluaranModel>(queryStr, new { startDate, endDate });
+         return GetByDate(queryStr, startDate: startDate, endDate: endDate);
+      }
+
+      private IEnumerable<IPengeluaranModel> GetByDate(string queryStr, object date = null,
+                                                       object startDate = null, object endDate = null)
+      {
+         var dataAccessStatus = new DataAccessStatus();
+
+         return GetAll(() =>
+         {
+            if (date != null)
+            {
+               date = ((DateTime)date).ToMysqlDateFormat();
+            }
+            else if (startDate != null && endDate != null)
+            {
+               startDate = ((DateTime)startDate).ToMysqlDateFormat();
+               endDate = ((DateTime)endDate).ToMysqlDateFormat();
+            }
+
+            return _context.Conn.Query<PengeluaranModel>(queryStr, new { date, startDate, endDate });
+         }, dataAccessStatus);
       }
 
       private bool CheckInsert(IPengeluaranModel model)

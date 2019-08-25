@@ -57,6 +57,7 @@ namespace RumahScarlett.Services.Services.Pembelian
       public void ValidateModel(IPembelianModel model)
       {
          _modelDAC.ValidateModel(model);
+         _modelDAC.ValidateModels(model.PembelianDetails);
       }
    }
 }

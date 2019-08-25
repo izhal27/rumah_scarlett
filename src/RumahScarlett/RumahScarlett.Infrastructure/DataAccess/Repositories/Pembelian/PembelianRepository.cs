@@ -9,7 +9,6 @@ using RumahScarlett.CommonComponents;
 using Dapper.Contrib.Extensions;
 using Dapper;
 using RumahScarlett.Infrastructure.DataAccess.CommonRepositories;
-using RumahScarlett.Services.CommonServices;
 using System.Transactions;
 using RumahScarlett.Domain.Models.Barang;
 using RumahScarlett.Infrastructure.DataAccess.Repositories.Supplier;
@@ -74,6 +73,12 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Pembelian
 
                         _context.Conn.Update(barang, transaction);
                      }
+                     else
+                     {
+                        var ex = new DataAccessException(dataAccessStatus);
+                        SetDataAccessValues(ex, "Salah satu barang yang ingin dimasukkan dalam table pembelian tidak ditemukan.");
+                        throw ex;
+                     }
                   }
                }
 
@@ -113,6 +118,12 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Pembelian
 
                         _context.Conn.Update(barang, transaction);
                      }
+                     else
+                     {
+                        var ex = new DataAccessException(dataAccessStatus);
+                        SetDataAccessValues(ex, "Salah satu barang yang ingin dicari dalam tabel pembelian tidak ditemukan.");
+                        throw ex;
+                     }
                   }
                }
 
@@ -129,44 +140,36 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Pembelian
 
       public IEnumerable<IPembelianModel> GetByDate(object date)
       {
-         var dataAccessStatus = new DataAccessStatus();
+         var queryStr = StringHelper.QueryStringByDate("pembelian", "tanggal");
 
-         return GetAll(() =>
-         {
-            date = ((DateTime)date).ToMysqlDateFormat();
-
-            var queryStr = StringHelper.QueryStringByDate("pembelian", "tanggal");
-
-            var listPembelians = _context.Conn.Query<PembelianModel>(queryStr, new { date }).ToList();
-
-            if (listPembelians.Count > 0)
-            {
-               listPembelians = listPembelians.Map(p => p.Supplier = new SupplierRepository()
-                                                                     .GetById(p.supplier_id)).ToList();
-
-               foreach (var p in listPembelians)
-               {
-                  var listPembeliadDetails = _pdRepo.GetAll(p).ToList();
-                  p.PembelianDetails = listPembeliadDetails;
-               }
-            }
-
-            return listPembelians;
-         }, dataAccessStatus);
+         return GetByDate(queryStr, date);
       }
 
       public IEnumerable<IPembelianModel> GetByDate(object startDate, object endDate)
+      {
+         var queryStr = StringHelper.QueryStringByBetweenDate("pembelian", "tanggal");
+
+         return GetByDate(queryStr, startDate: startDate, endDate: endDate);
+      }
+
+      private IEnumerable<IPembelianModel> GetByDate(string queryStr, object date = null,
+                                                     object startDate = null, object endDate = null)
       {
          var dataAccessStatus = new DataAccessStatus();
 
          return GetAll(() =>
          {
-            startDate = ((DateTime)startDate).ToMysqlDateFormat();
-            endDate = ((DateTime)endDate).ToMysqlDateFormat();
+            if (date != null)
+            {
+               date = ((DateTime)date).ToMysqlDateFormat();
+            }
+            else if (startDate != null && endDate != null)
+            {
+               startDate = ((DateTime)startDate).ToMysqlDateFormat();
+               endDate = ((DateTime)endDate).ToMysqlDateFormat();
+            }
 
-            var queryStr = StringHelper.QueryStringByBetweenDate("pembelian", "tanggal");
-
-            var listPembelians = _context.Conn.Query<PembelianModel>(queryStr, new { startDate, endDate }).ToList();
+            var listPembelians = _context.Conn.Query<PembelianModel>(queryStr, new { date, startDate, endDate }).ToList();
 
             if (listPembelians.Count > 0)
             {
@@ -175,8 +178,8 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Pembelian
 
                foreach (var p in listPembelians)
                {
-                  var listPembeliadDetails = _pdRepo.GetAll(p).ToList();
-                  p.PembelianDetails = listPembeliadDetails;
+                  var listPembelianDetails = _pdRepo.GetAll(p).ToList();
+                  p.PembelianDetails = listPembelianDetails;
                }
             }
 

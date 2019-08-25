@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RumahScarlett.Domain.Models.PenyesuainStok
+namespace RumahScarlett.Domain.Models.PenyesuaianStok
 {
    [Table("penyesuaian_stok")]
    public class PenyesuaianStokModel : IPenyesuaianStokModel
@@ -20,8 +20,8 @@ namespace RumahScarlett.Domain.Models.PenyesuainStok
       [StringLength(255, ErrorMessage = "Panjang maksimal No Nota 255 karakter !!!")]
       [DisplayName("No Nota")]
       public string no_nota { get; set; }
-
-      [Required(ErrorMessage = "Tanggal harus diisi !!!")]
+      
+      [Range(typeof(DateTime), "1945/08/17", "9999/01/01", ErrorMessage = "Minimal Tanggal 1945/08/17 !!!")]
       [DisplayName("Tanggal")]
       public DateTime tanggal { get; set; }
 

@@ -46,7 +46,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CommonServices\Extensions.cs" />
     <Compile Include="CommonServices\IModelDataAnnotationCheck.cs" />
     <Compile Include="CommonServices\ModelDataAnnotationCheck.cs" />
     <Compile Include="Services\IBaseRepositoryGetByDate.cs" />
@@ -66,6 +65,9 @@
     <Compile Include="Services\Pengeluaran\IPengeluaranRepository.cs" />
     <Compile Include="Services\Pengeluaran\IPengeluaranServices.cs" />
     <Compile Include="Services\Pengeluaran\PengeluaranServices.cs" />
+    <Compile Include="Services\PenyesuaianStok\IPenyesuaianStokRepository.cs" />
+    <Compile Include="Services\PenyesuaianStok\IPenyesuaianStokServices.cs" />
+    <Compile Include="Services\PenyesuaianStok\PenyesuaianStokServices.cs" />
     <Compile Include="Services\Supplier\ISupplierRepository.cs" />
     <Compile Include="Services\Supplier\ISupplierServices.cs" />
     <Compile Include="Services\Supplier\SupplierServices.cs" />
