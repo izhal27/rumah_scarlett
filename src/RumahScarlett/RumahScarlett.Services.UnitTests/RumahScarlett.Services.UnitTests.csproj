@@ -105,6 +105,9 @@
     <Compile Include="Pengeluaran\PeneluaranServicesValidationTests.cs" />
     <Compile Include="Pengeluaran\PengeluaranServicesDataAccessTests.cs" />
     <Compile Include="Pengeluaran\PengeluaranServicesFixture.cs" />
+    <Compile Include="Penjualan\PenjualanServicesDataAccessTests.cs" />
+    <Compile Include="Penjualan\PenjualanServicesFixture.cs" />
+    <Compile Include="Penjualan\PenjualanServicesValidationTests.cs" />
     <Compile Include="PenyesuaianStok\PenyesuaianStokServicesDataAccessTests.cs" />
     <Compile Include="PenyesuaianStok\PenyesuaianStokServicesFixture.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

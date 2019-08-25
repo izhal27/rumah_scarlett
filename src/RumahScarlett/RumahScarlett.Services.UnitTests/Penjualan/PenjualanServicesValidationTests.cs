@@ -1,6 +1,5 @@
 ﻿using RumahScarlett.Domain.Models.Barang;
-using RumahScarlett.Domain.Models.Pembelian;
-using RumahScarlett.Domain.Models.Supplier;
+using RumahScarlett.Domain.Models.Penjualan;
 using RumahScarlett.Services.UnitTests.CommonTests;
 using System;
 using System.Collections.Generic;
@@ -10,15 +9,15 @@ using System.Threading.Tasks;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace RumahScarlett.Services.UnitTests.Pembelian
+namespace RumahScarlett.Services.UnitTests.Penjualan
 {
    [Trait("Category", "Model Validations")]
-   public class PembelianServicesValidationTests : IClassFixture<PembelianServicesFixture>
+   public class PenjualanServicesValidationTests : IClassFixture<PenjualanServicesFixture>
    {
-      private PembelianServicesFixture _servicesFixture;
+      private PenjualanServicesFixture _servicesFixture;
       private ITestOutputHelper _testOutputHelper;
 
-      public PembelianServicesValidationTests(PembelianServicesFixture servicesFixture, ITestOutputHelper testOutputHelper)
+      public PenjualanServicesValidationTests(PenjualanServicesFixture servicesFixture, ITestOutputHelper testOutputHelper)
       {
          _servicesFixture = servicesFixture;
          _testOutputHelper = testOutputHelper;
@@ -27,16 +26,17 @@ namespace RumahScarlett.Services.UnitTests.Pembelian
 
       private void SetValidSampleValues()
       {
-         _servicesFixture.Model = new PembelianModel
+         _servicesFixture.Model = new PenjualanModel
          {
             no_nota = "20190823000001",
             tanggal = DateTime.Now,
          };
-         
-         _servicesFixture.Model.Supplier = new SupplierModel { id = 1, nama = "Supplier #1" };
-         _servicesFixture.Model.PembelianDetails = new List<PembelianDetailModel>
+
+         _servicesFixture.Model.PenjualanDetails = new List<PenjualanDetailModel>
          {
-            new PembelianDetailModel { id = 1,  Barang = new BarangModel { id = 1} }
+            new PenjualanDetailModel { id = 1,  Barang = new BarangModel { id = 1}, qty = 1, harga_jual = 1000 },
+            new PenjualanDetailModel { id = 1,  Barang = new BarangModel { id = 2}, qty = 2, harga_jual = 1000 },
+            new PenjualanDetailModel { id = 1,  Barang = new BarangModel { id = 3}, qty = 3, harga_jual = 1000 }
          };
       }
 
@@ -52,20 +52,9 @@ namespace RumahScarlett.Services.UnitTests.Pembelian
       }
 
       [Fact]
-      public void ShouldThrowExceptionForSupplierIdEmpty()
-      {
-         _servicesFixture.Model.Supplier.id = default(uint);
-
-         var exception = Record.Exception(() => _servicesFixture
-                                                .Services.ValidateModel(_servicesFixture.Model));
-
-         WriteExceptionTestResult(exception);
-      }
-      
-      [Fact]
       public void ShouldThrowExceptionForTanggalEmpty()
       {
-         _servicesFixture.Model.tanggal= default(DateTime);
+         _servicesFixture.Model.tanggal = default(DateTime);
 
          var exception = Record.Exception(() => _servicesFixture
                                                 .Services.ValidateModel(_servicesFixture.Model));

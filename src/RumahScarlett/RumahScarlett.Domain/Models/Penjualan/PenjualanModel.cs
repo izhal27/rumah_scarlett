@@ -16,13 +16,12 @@ namespace RumahScarlett.Domain.Models.Penjualan
       [Browsable(false)]
       [DisplayName("ID")]
       public uint id { get; set; }
-
-      [Required(AllowEmptyStrings = false, ErrorMessage = "No Nota harus diisi !!!")]
+      
       [StringLength(255, ErrorMessage = "Panjang maksimal No Nota 255 karakter !!!")]
       [DisplayName("No Nota")]
       public string no_nota { get; set; }
 
-      [Required(ErrorMessage = "Tanggal harus diisi !!!")]
+      [Range(typeof(DateTime), "1945/08/17", "9999/01/01", ErrorMessage = "Minimal Tanggal 1945/08/17 !!!")]
       [DisplayName("Tanggal")]
       public DateTime tanggal { get; set; }
 

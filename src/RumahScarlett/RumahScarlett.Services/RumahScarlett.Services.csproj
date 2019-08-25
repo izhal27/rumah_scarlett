@@ -65,6 +65,9 @@
     <Compile Include="Services\Pengeluaran\IPengeluaranRepository.cs" />
     <Compile Include="Services\Pengeluaran\IPengeluaranServices.cs" />
     <Compile Include="Services\Pengeluaran\PengeluaranServices.cs" />
+    <Compile Include="Services\Penjualan\IPenjualanRepository.cs" />
+    <Compile Include="Services\Penjualan\IPenjualanServices.cs" />
+    <Compile Include="Services\Penjualan\PenjualanServices.cs" />
     <Compile Include="Services\PenyesuaianStok\IPenyesuaianStokRepository.cs" />
     <Compile Include="Services\PenyesuaianStok\IPenyesuaianStokServices.cs" />
     <Compile Include="Services\PenyesuaianStok\PenyesuaianStokServices.cs" />

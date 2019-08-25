@@ -76,7 +76,7 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Pembelian
                      else
                      {
                         var ex = new DataAccessException(dataAccessStatus);
-                        SetDataAccessValues(ex, "Salah satu barang yang ingin dimasukkan dalam table pembelian tidak ditemukan.");
+                        SetDataAccessValues(ex, "Salah satu barang yang ingin dimasukkan kedalam tabel pembelian tidak ditemukan.");
                         throw ex;
                      }
                   }
