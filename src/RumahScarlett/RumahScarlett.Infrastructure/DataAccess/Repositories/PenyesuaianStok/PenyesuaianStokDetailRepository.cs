@@ -15,6 +15,7 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.PenyesuaianStok
    {
       void Insert(IPenyesuaianStokDetailModel model, IDbTransaction transaction);
       IEnumerable<IPenyesuaianStokDetailModel> GetAll(IPenyesuaianStokModel penyesuaianStok);
+      uint GetQtyCount(object barangId);
    }
 
    internal class PenyesuaianStokDetailRepository : IPenyesuaianStokDetailRepository
@@ -53,6 +54,13 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.PenyesuaianStok
          }
 
          return listPembelianDetails;
+      }
+
+      public uint GetQtyCount(object barangId)
+      {
+         var queryStr = "SELECT SUM(qty) FROM penyesuaian_stok_detail WHERE barang_id=@barangId GROUP BY barang_id";
+
+         return _context.Conn.ExecuteScalar<uint>(queryStr, new { barangId });
       }
    }
 }

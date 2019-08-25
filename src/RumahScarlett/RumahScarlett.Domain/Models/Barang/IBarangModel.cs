@@ -1,4 +1,7 @@
-﻿namespace RumahScarlett.Domain.Models.Barang
+﻿using RumahScarlett.Domain.Models.PenyesuaianStok;
+using System.Collections.Generic;
+
+namespace RumahScarlett.Domain.Models.Barang
 {
    public interface IBarangModel
    {
@@ -6,11 +9,13 @@
       string kode { get; set; }
       string nama { get; set; }
       uint sub_tipe_id { get; set; }
+      uint stok { get; set; }
+      uint penyesuaian_stok_qty { get; }
       uint supplier_id { get; set; }
       decimal harga_jual { get; set; }
       decimal harga_lama { get; set; }
       decimal hpp { get; set; }
       uint minimal_stok { get; set; }
-      uint stok { get; set; }
+      IEnumerable<IPenyesuaianStokDetailModel> PenyesuaianStokDetails { get; set; }
    }
 }

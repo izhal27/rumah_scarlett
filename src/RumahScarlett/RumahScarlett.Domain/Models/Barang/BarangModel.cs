@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Configuration;
+using RumahScarlett.Domain.Models.PenyesuaianStok;
 
 namespace RumahScarlett.Domain.Models.Barang
 {
@@ -17,12 +18,12 @@ namespace RumahScarlett.Domain.Models.Barang
       [Browsable(false)]
       [DisplayName("ID")]
       public uint id { get; set; }
-      
+
       [Browsable(false)]
       [Range(1, uint.MaxValue, ErrorMessage = "Sub Tipe barang harus diisi !!!")]
       [DisplayName("Sub Tipe ID")]
       public uint sub_tipe_id { get; set; }
-      
+
       [Browsable(false)]
       [Range(1, uint.MaxValue, ErrorMessage = "Supplier barang harus diisi !!!")]
       [DisplayName("Supplier ID")]
@@ -42,11 +43,15 @@ namespace RumahScarlett.Domain.Models.Barang
       [DefaultValue(0)]
       [DisplayName("Stok")]
       public uint stok { get; set; }
-      
+
+      [Dp.Write(false)]
+      [DisplayName("Penyesuaian Stok")]
+      public uint penyesuaian_stok_qty { get; set; }
+
       [DefaultValue(0)]
       [DisplayName("HPP")]
       public decimal hpp { get; set; }
-      
+
       [DefaultValue(0)]
       [DisplayName("Harga Jual")]
       public decimal harga_jual { get; set; }
@@ -58,5 +63,17 @@ namespace RumahScarlett.Domain.Models.Barang
       [DefaultValue(0)]
       [DisplayName("Minimal Stok")]
       public uint minimal_stok { get; set; }
+
+      [Dp.Write(false)]
+      [Browsable(false)]
+      public IEnumerable<IPenyesuaianStokDetailModel> PenyesuaianStokDetails
+      {
+         get; set;
+      }
+
+      public BarangModel()
+      {
+         PenyesuaianStokDetails = new List<IPenyesuaianStokDetailModel>();
+      }
    }
 }
