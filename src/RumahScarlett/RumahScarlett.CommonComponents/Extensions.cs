@@ -12,17 +12,7 @@ namespace RumahScarlett.CommonComponents
       {
          return str.First().ToString().ToUpper() + str.Substring(1);
       }
-
-      public static string ToMysqlDateFormat(this DateTime date)
-      {
-         return date.ToString("yyyy-MM-dd");
-      }
-
-      public static string ToMysqlDateTimeFormat(this DateTime date)
-      {
-         return date.ToString("yyyy-MM-dd HH:mm:ss");
-      }
-
+      
       /// <summary>
       /// Extension yang digunakan untuk melakukan suatu action
       /// terhadap property yang ada di dalam list

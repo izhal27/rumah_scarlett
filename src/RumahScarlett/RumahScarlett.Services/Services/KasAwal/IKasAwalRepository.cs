@@ -9,6 +9,6 @@ namespace RumahScarlett.Services.Services.KasAwal
 {
    public interface IKasAwalRepository : IBaseRepository<IKasAwalModel>
    {
-      IKasAwalModel GetByTanggal(object tanggal);
+      IKasAwalModel GetByTanggal(object date);
    }
 }

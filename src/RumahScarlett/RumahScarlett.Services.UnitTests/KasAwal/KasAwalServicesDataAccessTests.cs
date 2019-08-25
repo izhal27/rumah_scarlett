@@ -69,7 +69,7 @@ namespace RumahScarlett.Services.UnitTests.KasAwal
       public void ShouldReturnModelMatchingTanggal()
       {
          KasAwalModel model = null;
-         var tanggalToGet = DateTime.Now.Date;
+         var tanggalToGet = DateTime.Now.Date.AddDays(2);
 
          try
          {

@@ -46,7 +46,9 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Pengeluaran
 
       public IEnumerable<IPengeluaranModel> GetAll()
       {
-         throw new NotImplementedException();
+         var dataAccessStatus = new DataAccessStatus();
+
+         return GetAll(() => _context.Conn.GetAll<PengeluaranModel>(), dataAccessStatus);
       }
 
       public IPengeluaranModel GetById(object id)
@@ -56,39 +58,14 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Pengeluaran
 
       public IEnumerable<IPengeluaranModel> GetByDate(object date)
       {
-         var queryStr = StringHelper.QueryStringByDate("pengeluaran", "tanggal");
-         
-         return GetByDate(queryStr, date);
+         return GetAll().Where(p => p.tanggal.Date == ((DateTime)date).Date);
       }
 
       public IEnumerable<IPengeluaranModel> GetByDate(object startDate, object endDate)
       {
-         var queryStr = StringHelper.QueryStringByBetweenDate("pengeluaran", "tanggal");
-
-         return GetByDate(queryStr, startDate: startDate, endDate: endDate);
+         return GetAll().Where(p => p.tanggal.Date >= ((DateTime)startDate).Date && p.tanggal.Date <= ((DateTime)endDate).Date);
       }
-
-      private IEnumerable<IPengeluaranModel> GetByDate(string queryStr, object date = null,
-                                                       object startDate = null, object endDate = null)
-      {
-         var dataAccessStatus = new DataAccessStatus();
-
-         return GetAll(() =>
-         {
-            if (date != null)
-            {
-               date = ((DateTime)date).ToMysqlDateFormat();
-            }
-            else if (startDate != null && endDate != null)
-            {
-               startDate = ((DateTime)startDate).ToMysqlDateFormat();
-               endDate = ((DateTime)endDate).ToMysqlDateFormat();
-            }
-
-            return _context.Conn.Query<PengeluaranModel>(queryStr, new { date, startDate, endDate });
-         }, dataAccessStatus);
-      }
-
+      
       private bool CheckInsert(IPengeluaranModel model)
       {
          return _context.Conn.ExecuteScalar<bool>("SELECT COUNT(1) FROM pengeluaran WHERE nama=@nama "

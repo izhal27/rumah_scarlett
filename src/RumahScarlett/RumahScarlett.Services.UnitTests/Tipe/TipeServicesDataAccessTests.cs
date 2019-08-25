@@ -196,7 +196,7 @@ namespace RumahScarlett.Services.UnitTests.Tipe
       [Fact]
       public void ShouldReturnListOfModels()
       {
-         var listModels = (List<TipeModel>)_services.GetAll();
+         var listModels = _services.GetAll().ToList();
 
          Assert.NotEmpty(listModels);
 

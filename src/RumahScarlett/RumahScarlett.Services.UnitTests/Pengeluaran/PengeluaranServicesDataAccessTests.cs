@@ -108,7 +108,7 @@ namespace RumahScarlett.Services.UnitTests.Pengeluaran
       [Fact]
       public void ShouldReturnListOfModelsDateNow()
       {
-         var listModels = (List<PengeluaranModel>)_services.GetByDate(DateTime.Now);
+         var listModels = _services.GetByDate(DateTime.Now).ToList();
 
          Assert.NotEmpty(listModels);
 
@@ -118,7 +118,7 @@ namespace RumahScarlett.Services.UnitTests.Pengeluaran
       [Fact]
       public void ShouldReturnListOfModelsBetweenDate()
       {
-         var listModels = (List<PengeluaranModel>)_services.GetByDate(DateTime.Now.AddDays(-3), DateTime.Now.AddDays(3));
+         var listModels = _services.GetByDate(DateTime.Now.AddDays(-3), DateTime.Now.AddDays(3)).ToList();
 
          Assert.NotEmpty(listModels);
 

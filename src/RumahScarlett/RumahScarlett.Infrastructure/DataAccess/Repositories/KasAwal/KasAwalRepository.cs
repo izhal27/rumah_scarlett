@@ -46,7 +46,9 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.KasAwal
 
       public IEnumerable<IKasAwalModel> GetAll()
       {
-         throw new NotImplementedException();
+         var dataAccessStatus = new DataAccessStatus();
+
+         return GetAll(() => _context.Conn.GetAll<KasAwalModel>(), dataAccessStatus);
       }
 
       public IKasAwalModel GetById(object id)
@@ -54,32 +56,24 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.KasAwal
          throw new NotImplementedException();
       }
 
-      public IKasAwalModel GetByTanggal(object tanggal)
+      public IKasAwalModel GetByTanggal(object date)
       {
-         var dataAccessStatus = new DataAccessStatus();
+         var model = GetAll().Where(k => k.tanggal.Date == ((DateTime)date).Date).FirstOrDefault();
 
-         return GetBy(() =>
+         if (model == null)
          {
-            var queryStr = "SELECT * FROM kas_awal WHERE tanggal=@tanggal";
-            var tanggalFix = ((DateTime)tanggal).ToMysqlDateFormat();
-
-            var model = _context.Conn.Query<KasAwalModel>(queryStr, new { tanggal = tanggalFix }).FirstOrDefault();
-
-            if (model == null)
+            var kasAwal = new KasAwalModel
             {
-               var kasAwal = new KasAwalModel
-               {
-                  tanggal = ((DateTime)tanggal).Date,
-                  total = 0
-               };
+               tanggal = ((DateTime)date).Date,
+               total = 0
+            };
 
-               Insert(kasAwal);
+            Insert(kasAwal);
 
-               return kasAwal;
-            }
+            return kasAwal;
+         }
 
-            return model;
-         }, dataAccessStatus);
+         return model;
       }
 
       private void ValidateModel(IKasAwalModel model, DataAccessStatus dataAccessStatus)
@@ -107,6 +101,6 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.KasAwal
       {
          return _context.Conn.ExecuteScalar<bool>("SELECT COUNT(1) FROM kas_awal WHERE id=@id",
                                                   new { model.id });
-      }
+      }      
    }
 }

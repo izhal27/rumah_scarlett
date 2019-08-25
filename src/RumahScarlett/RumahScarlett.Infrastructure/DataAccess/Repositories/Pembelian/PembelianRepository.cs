@@ -134,42 +134,11 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Pembelian
 
       public IEnumerable<IPembelianModel> GetAll()
       {
-         throw new NotImplementedException();
-      }
-
-
-      public IEnumerable<IPembelianModel> GetByDate(object date)
-      {
-         var queryStr = StringHelper.QueryStringByDate("pembelian", "tanggal");
-
-         return GetByDate(queryStr, date);
-      }
-
-      public IEnumerable<IPembelianModel> GetByDate(object startDate, object endDate)
-      {
-         var queryStr = StringHelper.QueryStringByBetweenDate("pembelian", "tanggal");
-
-         return GetByDate(queryStr, startDate: startDate, endDate: endDate);
-      }
-
-      private IEnumerable<IPembelianModel> GetByDate(string queryStr, object date = null,
-                                                     object startDate = null, object endDate = null)
-      {
          var dataAccessStatus = new DataAccessStatus();
 
          return GetAll(() =>
          {
-            if (date != null)
-            {
-               date = ((DateTime)date).ToMysqlDateFormat();
-            }
-            else if (startDate != null && endDate != null)
-            {
-               startDate = ((DateTime)startDate).ToMysqlDateFormat();
-               endDate = ((DateTime)endDate).ToMysqlDateFormat();
-            }
-
-            var listPembelians = _context.Conn.Query<PembelianModel>(queryStr, new { date, startDate, endDate }).ToList();
+            var listPembelians = _context.Conn.GetAll<PembelianModel>().ToList();
 
             if (listPembelians.Count > 0)
             {
@@ -186,7 +155,17 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Pembelian
             return listPembelians;
          }, dataAccessStatus);
       }
+      
+      public IEnumerable<IPembelianModel> GetByDate(object date)
+      {
+         return GetAll().Where(p => p.tanggal.Date == ((DateTime)date).Date);
+      }
 
+      public IEnumerable<IPembelianModel> GetByDate(object startDate, object endDate)
+      {
+         return GetAll().Where(p => p.tanggal.Date >= ((DateTime)startDate).Date && p.tanggal.Date <= ((DateTime)endDate).Date);
+      }
+      
       public IPembelianModel GetById(object id)
       {
          throw new NotImplementedException();
