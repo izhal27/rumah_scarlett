@@ -48,7 +48,7 @@ namespace RumahScarlett.Domain.Models.Pembelian
 
       [Range(1, uint.MaxValue, ErrorMessage = "Qty harus diisi !!!")]
       [DisplayName("Qty")]
-      public uint qty { get; set; }
+      public int qty { get; set; }
       
       [DisplayName("HPP")]
       public decimal hpp { get; set; }

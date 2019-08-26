@@ -49,7 +49,7 @@ namespace RumahScarlett.Domain.Models.PenyesuaianStok
 
       [Range(1, uint.MaxValue, ErrorMessage = "Qty harus diisi !!!")]
       [DisplayName("Qty")]
-      public uint qty { get; set; }
+      public int qty { get; set; }
 
       [Range(typeof(decimal), "1", "79228162514264337593543950335", ErrorMessage = "HPP harus diisi !!!")]
       [DisplayName("HPP")]

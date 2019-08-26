@@ -49,7 +49,7 @@ namespace RumahScarlett.Domain.Models.Penjualan
 
       [Range(1, uint.MaxValue, ErrorMessage = "Qty harus diisi !!!")]
       [DisplayName("Qty")]
-      public uint qty { get; set; }
+      public int qty { get; set; }
 
       private decimal _harga_jual;
 

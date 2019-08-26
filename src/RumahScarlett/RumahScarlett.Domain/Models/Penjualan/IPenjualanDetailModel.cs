@@ -10,7 +10,7 @@ namespace RumahScarlett.Domain.Models.Penjualan
       uint barang_id { get; set; }
       string barang_kode { get; }
       string barang_nama { get; }
-      uint qty { get; set; }
+      int qty { get; set; }
       decimal harga_jual { get; set; }
       decimal total { get; }
    }

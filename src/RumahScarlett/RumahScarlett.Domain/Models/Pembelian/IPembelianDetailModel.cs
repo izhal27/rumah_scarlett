@@ -11,7 +11,7 @@ namespace RumahScarlett.Domain.Models.Pembelian
       string barang_kode { get; }
       string barang_nama { get; }
       decimal hpp { get; set; }
-      uint qty { get; set; }
+      int qty { get; set; }
       decimal total { get; }
    }
 }

@@ -9,7 +9,7 @@ namespace RumahScarlett.Domain.Models.Barang
       string kode { get; set; }
       string nama { get; set; }
       uint sub_tipe_id { get; set; }
-      uint stok { get; set; }
+      int stok { get; set; }
       uint penyesuaian_stok_qty { get; }
       uint supplier_id { get; set; }
       decimal harga_jual { get; set; }

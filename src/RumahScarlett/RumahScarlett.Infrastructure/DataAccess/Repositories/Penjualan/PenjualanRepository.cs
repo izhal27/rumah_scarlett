@@ -51,76 +51,46 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Penjualan
                   model.PenjualanDetails = model.PenjualanDetails.Map(p => p.penjualan_id = model.id).ToList();
                   model.PenjualanDetails = model.PenjualanDetails.Map(pd => pd.Barang = _context.Conn.Get<BarangModel>(pd.barang_id));
 
-                  var minimalStokNotPassed = model.PenjualanDetails.Any(pd => pd.Barang.minimal_stok < (pd.Barang.stok - pd.qty));
+                  var barangNotPassed = model.PenjualanDetails.Any(pd => pd.Barang.minimal_stok > (pd.Barang.stok - pd.qty) || pd.Barang.harga_jual == 0);
 
-                  if (minimalStokNotPassed)
+                  if (barangNotPassed)
                   {
                      transaction.Rollback();
                      _context.Dispose();
 
                      var ex = new DataAccessException(dataAccessStatus);
                      SetDataAccessValues(ex, "Salah satu barang yang ingin dimasukan ke dalam tabel penjualan " +
-                                             "melebihi minimal stok.");
+                                             "belum memiliki harga jual atau qty melebihi minimal stok dari barang tersebut.");
                      throw ex;
                   }
                   else
                   {
-                     var hargaJualNotPassed = model.PenjualanDetails.Any(pd => pd.Barang.minimal_stok < (pd.Barang.stok - pd.qty));
-
-                     if (hargaJualNotPassed)
+                     foreach (var pd in model.PenjualanDetails)
                      {
-                        transaction.Rollback();
-                        _context.Dispose();
+                        var barang = _context.Conn.Get<BarangModel>(pd.barang_id, transaction);
 
-                        var ex = new DataAccessException(dataAccessStatus);
-                        SetDataAccessValues(ex, "Salah satu barang yang ingin dimasukan ke dalam tabel penjualan " +
-                                                "belum mempunyai harga jual.");
-                        throw ex;
-                     }
-                     else
-                     {
-                        var stokNotPassed = model.PenjualanDetails.Any(pd => pd.Barang.minimal_stok < (pd.Barang.stok - pd.qty));
+                        if (barang != null)
+                        {
+                           pd.harga_jual = barang.harga_jual;
+                           _pdRepo.Insert(pd, transaction);
 
-                        if (stokNotPassed)
+                           barang.stok -= pd.qty;
+
+                           _context.Conn.Update(barang, transaction);
+                        }
+                        else
                         {
                            transaction.Rollback();
                            _context.Dispose();
 
                            var ex = new DataAccessException(dataAccessStatus);
-                           SetDataAccessValues(ex, "Salah satu barang yang ingin dimasukan ke dalam tabel penjualan " +
-                                                   "belum mempunyai stok.");
+                           SetDataAccessValues(ex, "Salah satu barang yang ingin dimasukkan dalam tabel penjualan tidak ditemukan.");
                            throw ex;
                         }
-                        else
-                        {
-                           foreach (var pd in model.PenjualanDetails)
-                           {
-                              var barang = _context.Conn.Get<BarangModel>(pd.barang_id, transaction);
-
-                              if (barang != null)
-                              {
-                                 pd.harga_jual = barang.harga_jual;
-                                 _pdRepo.Insert(pd, transaction);
-
-                                 barang.stok -= pd.qty;
-
-                                 _context.Conn.Update(barang, transaction);
-                              }
-                              else
-                              {
-                                 transaction.Rollback();
-                                 _context.Dispose();
-
-                                 var ex = new DataAccessException(dataAccessStatus);
-                                 SetDataAccessValues(ex, "Salah satu barang yang ingin dimasukkan dalam tabel penjualan tidak ditemukan.");
-                                 throw ex;
-                              }
-                           }
-
-                           transaction.Commit();
-                        }
                      }
-                  }                  
+
+                     transaction.Commit();
+                  }
                }
             }
          }, dataAccessStatus, () => CheckInsert(model));

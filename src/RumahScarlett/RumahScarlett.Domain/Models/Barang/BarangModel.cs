@@ -42,7 +42,7 @@ namespace RumahScarlett.Domain.Models.Barang
 
       [DefaultValue(0)]
       [DisplayName("Stok")]
-      public uint stok { get; set; }
+      public int stok { get; set; }
 
       [Dp.Write(false)]
       [DisplayName("Penyesuaian Stok")]

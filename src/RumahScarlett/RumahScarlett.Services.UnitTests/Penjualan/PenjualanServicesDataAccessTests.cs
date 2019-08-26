@@ -41,24 +41,24 @@ namespace RumahScarlett.Services.UnitTests.Penjualan
 
          try
          {
-            for (int i = 1; i <= 5; i++)
+            for (int i = 1; i <= 2; i++)
             {
                var listPenjualanDetails = new List<PenjualanDetailModel>
                {
                   new PenjualanDetailModel
                   {
                      barang_id = 1,
-                     qty = 2
+                     qty = 1
                   },
                   new PenjualanDetailModel
                   {
                      barang_id = 2,
-                     qty = 6
+                     qty = 1
                   },
                   new PenjualanDetailModel
                   {
                      barang_id = 3,
-                     qty = 10
+                     qty = 1
                   }
                };
 
@@ -101,15 +101,15 @@ namespace RumahScarlett.Services.UnitTests.Penjualan
 
          try
          {
-            for (uint i = 1; i <= 5; i++)
-            {
+            //for (uint i = 1; i <= 5; i++)
+            //{
                var model = new PenjualanModel()
                {
-                  id = i,
+                  id = 9,
                };
 
                _services.Delete(model);
-            }
+            //}
 
             operationSecceded = true;
          }
