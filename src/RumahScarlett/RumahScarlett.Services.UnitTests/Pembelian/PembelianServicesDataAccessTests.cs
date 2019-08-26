@@ -110,12 +110,22 @@ namespace RumahScarlett.Services.UnitTests.Pembelian
 
          try
          {
-            var model = new PembelianModel()
+            for (uint i = 13; i <= 17; i++)
             {
-               id = 5,
-            };
+               var model = new PembelianModel()
+               {
+                  id = i,
+               };
 
-            _services.Delete(model);
+               _services.Delete(model);
+            }
+
+            //var model = new PembelianModel()
+            //{
+            //   id = 5,
+            //};
+
+            //_services.Delete(model);
             operationSecceded = true;
          }
          catch (DataAccessException ex)

@@ -45,11 +45,28 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Penjualan
                   model.diskon
                }, transaction).Single();
 
-               if (insertedId > 0)
+               if (insertedId > 0 && model.PenjualanDetails.ToList().Count > 0)
                {
                   model.id = insertedId;
                   model.PenjualanDetails = model.PenjualanDetails.Map(p => p.penjualan_id = model.id).ToList();
-                  model.PenjualanDetails = model.PenjualanDetails.Map(pd => pd.Barang = _context.Conn.Get<BarangModel>(pd.barang_id));
+                  model.PenjualanDetails = model.PenjualanDetails.Map(pd =>
+                  {
+                     var barang = _context.Conn.Get<BarangModel>(pd.barang_id);
+
+                     if (barang != null)
+                     {
+                        pd.Barang = barang;
+                     }
+                     else
+                     {
+                        transaction.Rollback();
+                        _context.Dispose();
+
+                        var ex = new DataAccessException(dataAccessStatus);
+                        SetDataAccessValues(ex, "Salah satu barang yang ingin ditambahkan ke dalam tabel penjualan tidak ditemukan.");
+                        throw ex;
+                     }
+                  });
 
                   var barangNotPassed = model.PenjualanDetails.Any(pd => pd.Barang.minimal_stok > (pd.Barang.stok - pd.qty) || pd.Barang.harga_jual == 0);
 
@@ -67,26 +84,12 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Penjualan
                   {
                      foreach (var pd in model.PenjualanDetails)
                      {
-                        var barang = _context.Conn.Get<BarangModel>(pd.barang_id, transaction);
+                        pd.harga_jual = pd.Barang.harga_jual;
+                        _pdRepo.Insert(pd, transaction);
 
-                        if (barang != null)
-                        {
-                           pd.harga_jual = barang.harga_jual;
-                           _pdRepo.Insert(pd, transaction);
+                        pd.Barang.stok -= pd.qty;
 
-                           barang.stok -= pd.qty;
-
-                           _context.Conn.Update(barang, transaction);
-                        }
-                        else
-                        {
-                           transaction.Rollback();
-                           _context.Dispose();
-
-                           var ex = new DataAccessException(dataAccessStatus);
-                           SetDataAccessValues(ex, "Salah satu barang yang ingin dimasukkan dalam tabel penjualan tidak ditemukan.");
-                           throw ex;
-                        }
+                        _context.Conn.Update((BarangModel)pd.Barang, transaction);
                      }
 
                      transaction.Commit();
@@ -109,35 +112,24 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Penjualan
          {
             using (var transaction = _context.Conn.BeginTransaction())
             {
-               var listPenjualanDetails = _pdRepo.GetAll(model).ToList();
+               model.PenjualanDetails = _pdRepo.GetAll(model, transaction);
 
                var success = _context.Conn.Delete((PenjualanModel)model, transaction);
 
                if (success)
                {
-                  foreach (var pd in listPenjualanDetails)
+                  if (model.PenjualanDetails.ToList().Count > 0)
                   {
-                     var barang = _context.Conn.Get<BarangModel>(pd.barang_id, transaction);
-
-                     if (barang != null)
+                     foreach (var pd in model.PenjualanDetails)
                      {
-                        barang.stok += pd.qty;
+                        pd.Barang.stok += pd.qty;
 
-                        _context.Conn.Update(barang, transaction);
+                        _context.Conn.Update((BarangModel)pd.Barang, transaction);
                      }
-                     else
-                     {
-                        transaction.Rollback();
-                        _context.Dispose();
 
-                        var ex = new DataAccessException(dataAccessStatus);
-                        SetDataAccessValues(ex, "Salah satu barang yang ingin dicari dalam tabel penjualan tidak ditemukan.");
-                        throw ex;
-                     }
+                     transaction.Commit();
                   }
                }
-
-               transaction.Commit();
             }
          }, dataAccessStatus, () => CheckUpdateDelete(model));
       }
@@ -154,8 +146,7 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Penjualan
             {
                foreach (var p in listPembelians)
                {
-                  var listPenjualanDetails = _pdRepo.GetAll(p).ToList();
-                  p.PenjualanDetails = listPenjualanDetails;
+                  p.PenjualanDetails = _pdRepo.GetAll(p);
                }
             }
 

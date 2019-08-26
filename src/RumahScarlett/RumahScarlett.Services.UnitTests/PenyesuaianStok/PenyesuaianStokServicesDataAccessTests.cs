@@ -42,27 +42,23 @@ namespace RumahScarlett.Services.UnitTests.PenyesuaianStok
 
          try
          {
-            var barang1 = new BarangServices(new BarangRepository(), _modelDAC).GetById(1);
-            var barang2 = new BarangServices(new BarangRepository(), _modelDAC).GetById(2);
-            var barang3 = new BarangServices(new BarangRepository(), _modelDAC).GetById(3);
-
             var listPenyesuaianStokDetails = new List<PenyesuaianStokDetailModel>
             {
                new PenyesuaianStokDetailModel
                {
-                  Barang = barang1,
+                  barang_id = 1,
                   qty = 1,
                   keterangan = "Tester"
                },
                new PenyesuaianStokDetailModel
                {
-                  Barang = barang2,
+                  barang_id = 2,
                   qty = 2,
                   keterangan = "Tester"
                },
                new PenyesuaianStokDetailModel
                {
-                  Barang = barang3,
+                  barang_id = 3,
                   qty = 3,
                   keterangan = "Tester"
                }
@@ -132,7 +128,7 @@ namespace RumahScarlett.Services.UnitTests.PenyesuaianStok
       [Fact]
       public void ShouldReturnListOfModelsDateNow()
       {
-         var listModels =  _services.GetByDate(DateTime.Now).ToList();
+         var listModels = _services.GetByDate(DateTime.Now).ToList();
 
          Assert.NotEmpty(listModels);
 

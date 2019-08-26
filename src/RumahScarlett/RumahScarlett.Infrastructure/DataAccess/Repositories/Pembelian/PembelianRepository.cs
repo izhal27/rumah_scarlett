@@ -48,30 +48,17 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Pembelian
                   model.tanggal
                }, transaction).Single();
 
-               if (insertedId > 0)
+               if (insertedId > 0 && model.PembelianDetails.ToList().Count > 0)
                {
                   model.id = insertedId;
                   model.PembelianDetails = model.PembelianDetails.Map(p => p.pembelian_id = model.id).ToList();
-
-                  foreach (var pd in model.PembelianDetails)
+                  model.PembelianDetails = model.PembelianDetails.Map(pd =>
                   {
-                     _pdRepo.Insert(pd, transaction);
-                  }
-
-                  foreach (var pd in model.PembelianDetails)
-                  {
-                     var barang = _context.Conn.Get<BarangModel>(pd.barang_id, transaction);
+                     var barang = _context.Conn.Get<BarangModel>(pd.barang_id);
 
                      if (barang != null)
                      {
-                        barang.stok += pd.qty;
-
-                        if (pd.hpp > 0)
-                        {
-                           barang.hpp = pd.hpp;
-                        }
-
-                        _context.Conn.Update(barang, transaction);
+                        pd.Barang = barang;
                      }
                      else
                      {
@@ -79,13 +66,26 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Pembelian
                         _context.Dispose();
 
                         var ex = new DataAccessException(dataAccessStatus);
-                        SetDataAccessValues(ex, "Salah satu barang yang ingin dimasukkan kedalam tabel pembelian tidak ditemukan.");
+                        SetDataAccessValues(ex, "Salah satu barang yang ingin ditambahkan ke dalam tabel pembelian tidak ditemukan.");
                         throw ex;
                      }
-                  }
-               }
+                  });
 
-               transaction.Commit();
+                  foreach (var pd in model.PembelianDetails)
+                  {
+                     _pdRepo.Insert(pd, transaction);
+                     pd.Barang.stok += pd.qty;
+
+                     if (pd.hpp > 0)
+                     {
+                        pd.Barang.hpp = pd.hpp;
+                     }
+
+                     _context.Conn.Update((BarangModel)pd.Barang, transaction);
+                  }
+
+                  transaction.Commit();
+               }
             }
          }, dataAccessStatus, () => CheckInsert(model));
       }
@@ -103,35 +103,24 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Pembelian
          {
             using (var transaction = _context.Conn.BeginTransaction())
             {
-               var listPembelianDetails = _pdRepo.GetAll(model).ToList();
+               model.PembelianDetails = _pdRepo.GetAll(model, transaction).ToList();
 
                var success = _context.Conn.Delete((PembelianModel)model, transaction);
 
                if (success)
                {
-                  foreach (var pd in listPembelianDetails)
+                  if (model.PembelianDetails.ToList().Count > 0)
                   {
-                     var barang = _context.Conn.Get<BarangModel>(pd.barang_id, transaction);
-
-                     if (barang != null)
+                     foreach (var pd in model.PembelianDetails)
                      {
-                        barang.stok -= pd.qty;
+                        pd.Barang.stok -= pd.qty;
 
-                        _context.Conn.Update(barang, transaction);
+                        _context.Conn.Update((BarangModel)pd.Barang, transaction);
                      }
-                     else
-                     {
-                        transaction.Rollback();
-                        _context.Dispose();
 
-                        var ex = new DataAccessException(dataAccessStatus);
-                        SetDataAccessValues(ex, "Salah satu barang yang ingin dicari dalam tabel pembelian tidak ditemukan.");
-                        throw ex;
-                     }
+                     transaction.Commit();
                   }
                }
-
-               transaction.Commit();
             }
          }, dataAccessStatus, () => CheckUpdateDelete(model));
       }
@@ -146,20 +135,18 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Pembelian
 
             if (listPembelians.Count > 0)
             {
-               listPembelians = listPembelians.Map(p => p.Supplier = new SupplierRepository()
-                                                                     .GetById(p.supplier_id)).ToList();
+               listPembelians = listPembelians.Map(p => p.Supplier =_context.Conn.Get<SupplierModel>(p.supplier_id)).ToList();
 
                foreach (var p in listPembelians)
                {
-                  var listPembelianDetails = _pdRepo.GetAll(p).ToList();
-                  p.PembelianDetails = listPembelianDetails;
+                  p.PembelianDetails = _pdRepo.GetAll(p);
                }
             }
 
             return listPembelians;
          }, dataAccessStatus);
       }
-      
+
       public IEnumerable<IPembelianModel> GetByDate(object date)
       {
          return GetAll().Where(p => p.tanggal.Date == ((DateTime)date).Date);
@@ -169,7 +156,7 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Pembelian
       {
          return GetAll().Where(p => p.tanggal.Date >= ((DateTime)startDate).Date && p.tanggal.Date <= ((DateTime)endDate).Date);
       }
-      
+
       public IPembelianModel GetById(object id)
       {
          throw new NotImplementedException();

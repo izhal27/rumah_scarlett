@@ -41,36 +41,33 @@ namespace RumahScarlett.Services.UnitTests.Penjualan
 
          try
          {
-            for (int i = 1; i <= 2; i++)
-            {
-               var listPenjualanDetails = new List<PenjualanDetailModel>
+            var listPenjualanDetails = new List<PenjualanDetailModel>
                {
                   new PenjualanDetailModel
                   {
                      barang_id = 1,
-                     qty = 1
+                     qty = 5
                   },
                   new PenjualanDetailModel
                   {
                      barang_id = 2,
-                     qty = 1
+                     qty = 5
                   },
                   new PenjualanDetailModel
                   {
                      barang_id = 3,
-                     qty = 1
+                     qty = 5
                   }
                };
 
-               var penjualanModel = new PenjualanModel
-               {
-                  tanggal = DateTime.Now,
-                  diskon = i * 1000,
-                  PenjualanDetails = listPenjualanDetails
-               };
+            var penjualanModel = new PenjualanModel
+            {
+               tanggal = DateTime.Now,
+               diskon = 0,
+               PenjualanDetails = listPenjualanDetails
+            };
 
-               _services.Insert(penjualanModel);
-            }
+            _services.Insert(penjualanModel);
 
             operationSecceded = true;
          }
@@ -103,13 +100,20 @@ namespace RumahScarlett.Services.UnitTests.Penjualan
          {
             //for (uint i = 1; i <= 5; i++)
             //{
-               var model = new PenjualanModel()
-               {
-                  id = 9,
-               };
+            //   var model = new PenjualanModel()
+            //   {
+            //      id = i,
+            //   };
 
-               _services.Delete(model);
+            //   _services.Delete(model);
             //}
+
+            var model = new PenjualanModel()
+            {
+               id = 1,
+            };
+
+            _services.Delete(model);
 
             operationSecceded = true;
          }

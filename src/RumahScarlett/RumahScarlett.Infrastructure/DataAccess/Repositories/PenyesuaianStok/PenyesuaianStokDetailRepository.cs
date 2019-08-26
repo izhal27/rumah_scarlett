@@ -1,5 +1,7 @@
 ﻿using Dapper;
+using Dapper.Contrib.Extensions;
 using RumahScarlett.CommonComponents;
+using RumahScarlett.Domain.Models.Barang;
 using RumahScarlett.Domain.Models.PenyesuaianStok;
 using RumahScarlett.Infrastructure.DataAccess.Repositories.Barang;
 using System;
@@ -15,10 +17,9 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.PenyesuaianStok
    {
       void Insert(IPenyesuaianStokDetailModel model, IDbTransaction transaction);
       IEnumerable<IPenyesuaianStokDetailModel> GetAll(IPenyesuaianStokModel penyesuaianStok);
-      uint GetQtyCount(object barangId);
    }
 
-   internal class PenyesuaianStokDetailRepository : IPenyesuaianStokDetailRepository
+   internal class PenyesuaianStokDetailRepository : BaseRepository<IPenyesuaianStokDetailModel>, IPenyesuaianStokDetailRepository
    {
       private DbContext _context;
 
@@ -44,23 +45,32 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.PenyesuaianStok
       
       public IEnumerable<IPenyesuaianStokDetailModel> GetAll(IPenyesuaianStokModel penyesuaianStok)
       {
+         var dataAccessStatus = new DataAccessStatus();
+
          var queryStr = "SELECT * FROM penyesuaian_stok_detail WHERE penyesuaian_stok_id=@id";
 
-         var listPembelianDetails = _context.Conn.Query<PenyesuaianStokDetailModel>(queryStr, new { id = penyesuaianStok.id }).ToList();
+         var listPembelianDetails = _context.Conn.Query<PenyesuaianStokDetailModel>(queryStr, new { id = penyesuaianStok.id });
 
-         if (listPembelianDetails.Count > 0)
+         if (listPembelianDetails.ToList().Count > 0)
          {
-            listPembelianDetails = listPembelianDetails.Map(pd => pd.Barang = new BarangRepository().GetById(pd.barang_id)).ToList();
+            listPembelianDetails = listPembelianDetails.Map(pd =>
+            {
+               var barang = _context.Conn.Get<BarangModel>(pd.barang_id, _context.Transaction);
+
+               if (barang != null)
+               {
+                  pd.Barang = barang;
+               }
+               else
+               {
+                  var ex = new DataAccessException(dataAccessStatus);
+                  SetDataAccessValues(ex, "Salah satu barang yang dicari dalam tabel penjualan tidak ditemukan.");
+                  throw ex;
+               }
+            });
          }
 
          return listPembelianDetails;
-      }
-
-      public uint GetQtyCount(object barangId)
-      {
-         var queryStr = "SELECT SUM(qty) FROM penyesuaian_stok_detail WHERE barang_id=@barangId GROUP BY barang_id";
-
-         return _context.Conn.ExecuteScalar<uint>(queryStr, new { barangId });
       }
    }
 }

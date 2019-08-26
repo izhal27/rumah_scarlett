@@ -1,6 +1,7 @@
 ﻿using Dapper;
 using Dapper.Contrib.Extensions;
 using RumahScarlett.CommonComponents;
+using RumahScarlett.Domain.Models.Barang;
 using RumahScarlett.Domain.Models.Pembelian;
 using RumahScarlett.Infrastructure.DataAccess.Repositories.Barang;
 using System;
@@ -15,10 +16,10 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Pembelian
    internal interface IPembelianDetailRepository
    {
       void Insert(IPembelianDetailModel model, IDbTransaction transaction);
-      IEnumerable<IPembelianDetailModel> GetAll(IPembelianModel pembelian);
+      IEnumerable<IPembelianDetailModel> GetAll(IPembelianModel pembelian, IDbTransaction transaction = null);
    }
 
-   internal class PembelianDetailRepository : IPembelianDetailRepository
+   internal class PembelianDetailRepository : BaseRepository<IPembelianDetailModel>, IPembelianDetailRepository
    {
       private DbContext _context;
 
@@ -41,15 +42,34 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Pembelian
          }, transaction);
       }
 
-      public IEnumerable<IPembelianDetailModel> GetAll(IPembelianModel pembelian)
+      public IEnumerable<IPembelianDetailModel> GetAll(IPembelianModel pembelian, IDbTransaction transaction = null)
       {
+         var dataAccessStatus = new DataAccessStatus();
+
          var queryStr = "SELECT * FROM pembelian_detail WHERE pembelian_id=@id";
 
-         var listPembelianDetails = _context.Conn.Query<PembelianDetailModel>(queryStr, new { id = pembelian.id }).ToList();
+         var listPembelianDetails = _context.Conn.Query<PembelianDetailModel>(queryStr, new { id = pembelian.id }, transaction);
 
-         if (listPembelianDetails.Count > 0)
+         if (listPembelianDetails.ToList().Count > 0)
          {
-            listPembelianDetails = listPembelianDetails.Map(pd => pd.Barang = new BarangRepository().GetById(pd.barang_id)).ToList();
+            listPembelianDetails = listPembelianDetails.Map(pd =>
+            {
+               var barang = _context.Conn.Get<BarangModel>(pd.barang_id);
+
+               if (barang != null)
+               {
+                  pd.Barang = barang;
+               }
+               else
+               {
+                  transaction.Rollback();
+                  _context.Dispose();
+
+                  var ex = new DataAccessException(dataAccessStatus);
+                  SetDataAccessValues(ex, "Salah satu barang yang dicari dalam tabel pembelian tidak ditemukan.");
+                  throw ex;
+               }
+            });
          }
 
          return listPembelianDetails;
