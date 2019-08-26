@@ -41,37 +41,37 @@ namespace RumahScarlett.Services.UnitTests.Penjualan
 
          try
          {
-            var barang1 = new BarangServices(new BarangRepository(), _modelDAC).GetById(1);
-            var barang2 = new BarangServices(new BarangRepository(), _modelDAC).GetById(2);
-            var barang3 = new BarangServices(new BarangRepository(), _modelDAC).GetById(3);
-
-            var listPenjualanDetail = new List<PenjualanDetailModel>
+            for (int i = 1; i <= 5; i++)
             {
-               new PenjualanDetailModel
+               var listPenjualanDetails = new List<PenjualanDetailModel>
                {
-                  Barang = barang1,
-                  qty = 2
-               },
-               new PenjualanDetailModel
-               {
-                  Barang = barang2,
-                  qty = 6
-               },
-               new PenjualanDetailModel
-               {
-                  Barang = barang3,
-                  qty = 10
-               }
-            };
+                  new PenjualanDetailModel
+                  {
+                     barang_id = 1,
+                     qty = 2
+                  },
+                  new PenjualanDetailModel
+                  {
+                     barang_id = 2,
+                     qty = 6
+                  },
+                  new PenjualanDetailModel
+                  {
+                     barang_id = 3,
+                     qty = 10
+                  }
+               };
 
-            var penjualanModel = new PenjualanModel
-            {
-               tanggal = DateTime.Now,
-               diskon = 5000,
-               PenjualanDetails = listPenjualanDetail
-            };
+               var penjualanModel = new PenjualanModel
+               {
+                  tanggal = DateTime.Now,
+                  diskon = i * 1000,
+                  PenjualanDetails = listPenjualanDetails
+               };
 
-            _services.Insert(penjualanModel);
+               _services.Insert(penjualanModel);
+            }
+
             operationSecceded = true;
          }
          catch (DataAccessException ex)
@@ -101,12 +101,16 @@ namespace RumahScarlett.Services.UnitTests.Penjualan
 
          try
          {
-            var model = new PenjualanModel()
+            for (uint i = 1; i <= 5; i++)
             {
-               id = 21,
-            };
+               var model = new PenjualanModel()
+               {
+                  id = i,
+               };
 
-            _services.Delete(model);
+               _services.Delete(model);
+            }
+
             operationSecceded = true;
          }
          catch (DataAccessException ex)

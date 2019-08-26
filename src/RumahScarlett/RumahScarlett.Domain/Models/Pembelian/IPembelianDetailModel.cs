@@ -7,7 +7,7 @@ namespace RumahScarlett.Domain.Models.Pembelian
       uint id { get; set; }
       uint pembelian_id { get; set; }
       IBarangModel Barang { get; set; }
-      uint barang_id { get; set; }
+      uint barang_id { get; set;  }
       string barang_kode { get; }
       string barang_nama { get; }
       decimal hpp { get; set; }

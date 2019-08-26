@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using RumahScarlett.CommonComponents;
+using RumahScarlett.Domain.Models.Barang;
 using RumahScarlett.Domain.Models.Pembelian;
 using RumahScarlett.Domain.Models.Supplier;
 using RumahScarlett.Infrastructure.DataAccess.Repositories.Barang;
@@ -44,42 +45,42 @@ namespace RumahScarlett.Services.UnitTests.Pembelian
 
          try
          {
-            var supplierModel = new SupplierServices(new SupplierRepository(), _modelDAC).GetById(1);
+            var supplierModel = new SupplierServices(new SupplierRepository(), _modelDAC).GetById(1);            
 
-            var barang1 = new BarangServices(new BarangRepository(), _modelDAC).GetById(1);
-            var barang2 = new BarangServices(new BarangRepository(), _modelDAC).GetById(2);
-            var barang3 = new BarangServices(new BarangRepository(), _modelDAC).GetById(3);
-
-            var listPembelianDetail = new List<PembelianDetailModel>
+            for (int i = 1; i <= 5; i++)
             {
-               new PembelianDetailModel
+               var listPembelianDetails = new List<PembelianDetailModel>
                {
-                  Barang = barang1,
-                  qty = 5,
-                  hpp = 10000
-               },
-               new PembelianDetailModel
-               {
-                  Barang = barang2,
-                  qty = 10,
-                  hpp = 20000
-               },
-               new PembelianDetailModel
-               {
-                  Barang = barang3,
-                  qty = 15,
-                  hpp = 30000
-               }
-            };
+                  new PembelianDetailModel
+                  {
+                     barang_id = 1,
+                     qty = 5,
+                     hpp = 10000
+                  },
+                  new PembelianDetailModel
+                  {
+                     barang_id = 2,
+                     qty = 10,
+                     hpp = 20000
+                  },
+                  new PembelianDetailModel
+                  {
+                     barang_id = 3,
+                     qty = 15,
+                     hpp = 30000
+                  }
+               };
 
-            var pembelianModel = new PembelianModel
-            {
-               Supplier = supplierModel,
-               tanggal = DateTime.Now,
-               PembelianDetails = listPembelianDetail
-            };
+               var pembelianModel = new PembelianModel
+               {
+                  Supplier = supplierModel,
+                  tanggal = DateTime.Now,
+                  PembelianDetails = listPembelianDetails
+               };
 
-            _services.Insert(pembelianModel);
+               _services.Insert(pembelianModel);
+            }
+
             operationSecceded = true;
          }
          catch (DataAccessException ex)
@@ -111,7 +112,7 @@ namespace RumahScarlett.Services.UnitTests.Pembelian
          {
             var model = new PembelianModel()
             {
-               id = 17,
+               id = 5,
             };
 
             _services.Delete(model);

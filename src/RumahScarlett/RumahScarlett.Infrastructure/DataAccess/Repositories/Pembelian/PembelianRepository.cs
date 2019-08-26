@@ -75,6 +75,9 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Pembelian
                      }
                      else
                      {
+                        transaction.Rollback();
+                        _context.Dispose();
+
                         var ex = new DataAccessException(dataAccessStatus);
                         SetDataAccessValues(ex, "Salah satu barang yang ingin dimasukkan kedalam tabel pembelian tidak ditemukan.");
                         throw ex;
@@ -100,9 +103,7 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Pembelian
          {
             using (var transaction = _context.Conn.BeginTransaction())
             {
-               var listPembelianDetails = _context.Conn.Query<PembelianDetailModel>(
-                                          "SELECT * FROM pembelian_detail where pembelian_id=@id",
-                                          new { model.id }, transaction).ToList();
+               var listPembelianDetails = _pdRepo.GetAll(model).ToList();
 
                var success = _context.Conn.Delete((PembelianModel)model, transaction);
 
@@ -120,6 +121,9 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Pembelian
                      }
                      else
                      {
+                        transaction.Rollback();
+                        _context.Dispose();
+
                         var ex = new DataAccessException(dataAccessStatus);
                         SetDataAccessValues(ex, "Salah satu barang yang ingin dicari dalam tabel pembelian tidak ditemukan.");
                         throw ex;

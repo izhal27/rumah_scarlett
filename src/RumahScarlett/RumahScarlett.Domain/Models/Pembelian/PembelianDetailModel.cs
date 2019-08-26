@@ -20,7 +20,6 @@ namespace RumahScarlett.Domain.Models.Pembelian
       public uint id { get; set; }
 
       [Browsable(false)]
-      [Range(1, uint.MaxValue, ErrorMessage = "Pembelian ID harus diisi !!!")]
       [DisplayName("Pembelian ID")]
       public uint pembelian_id { get; set; }
 
@@ -35,14 +34,8 @@ namespace RumahScarlett.Domain.Models.Pembelian
       [DisplayName("Barang ID")]
       public uint barang_id
       {
-         get
-         {
-            return Barang.id != default(uint) ? Barang.id : _barang_id;
-         }
-         set
-         {
-            _barang_id = value;
-         }
+         get { return Barang.id != default(uint) ? Barang.id : _barang_id; }
+         set { _barang_id = value; }
       }
 
       [Dp.Write(false)]
@@ -56,8 +49,7 @@ namespace RumahScarlett.Domain.Models.Pembelian
       [Range(1, uint.MaxValue, ErrorMessage = "Qty harus diisi !!!")]
       [DisplayName("Qty")]
       public uint qty { get; set; }
-
-      [Range(typeof(decimal), "1", "79228162514264337593543950335", ErrorMessage = "HPP harus diisi !!!")]
+      
       [DisplayName("HPP")]
       public decimal hpp { get; set; }
 

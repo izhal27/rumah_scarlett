@@ -69,6 +69,9 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.PenyesuaianStok
                      }
                      else
                      {
+                        transaction.Rollback();
+                        _context.Dispose();
+
                         var ex = new DataAccessException(dataAccessStatus);
                         SetDataAccessValues(ex, "Qty salah satu barang yang ingin ditambahkan ke dalam tabel Penyesuaian stok bernilai 0 (Nol).");
                         throw ex;
@@ -115,6 +118,9 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.PenyesuaianStok
                      }
                      else
                      {
+                        transaction.Rollback();
+                        _context.Dispose();
+
                         var ex = new DataAccessException(dataAccessStatus);
                         SetDataAccessValues(ex, "Salah satu barang yang ingin dicari dalam tabel penyesuiaian stok tidak ditemukan.");
                         throw ex;

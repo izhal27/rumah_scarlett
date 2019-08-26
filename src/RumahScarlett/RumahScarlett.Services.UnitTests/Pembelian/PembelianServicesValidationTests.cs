@@ -32,11 +32,11 @@ namespace RumahScarlett.Services.UnitTests.Pembelian
             no_nota = "20190823000001",
             tanggal = DateTime.Now,
          };
-         
+
          _servicesFixture.Model.Supplier = new SupplierModel { id = 1, nama = "Supplier #1" };
          _servicesFixture.Model.PembelianDetails = new List<PembelianDetailModel>
          {
-            new PembelianDetailModel { id = 1,  Barang = new BarangModel { id = 1} }
+            new PembelianDetailModel { id = 1,  Barang = new BarangModel { id = 1}, qty = 5, hpp = 0 }
          };
       }
 
@@ -61,11 +61,11 @@ namespace RumahScarlett.Services.UnitTests.Pembelian
 
          WriteExceptionTestResult(exception);
       }
-      
+
       [Fact]
       public void ShouldThrowExceptionForTanggalEmpty()
       {
-         _servicesFixture.Model.tanggal= default(DateTime);
+         _servicesFixture.Model.tanggal = default(DateTime);
 
          var exception = Record.Exception(() => _servicesFixture
                                                 .Services.ValidateModel(_servicesFixture.Model));

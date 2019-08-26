@@ -34,9 +34,9 @@ namespace RumahScarlett.Services.UnitTests.Penjualan
 
          _servicesFixture.Model.PenjualanDetails = new List<PenjualanDetailModel>
          {
-            new PenjualanDetailModel { id = 1,  Barang = new BarangModel { id = 1}, qty = 1, harga_jual = 1000 },
-            new PenjualanDetailModel { id = 1,  Barang = new BarangModel { id = 2}, qty = 2, harga_jual = 1000 },
-            new PenjualanDetailModel { id = 1,  Barang = new BarangModel { id = 3}, qty = 3, harga_jual = 1000 }
+            new PenjualanDetailModel { id = 1,  Barang = new BarangModel { id = 1, harga_jual = 1000}, qty = 1 },
+            new PenjualanDetailModel { id = 1,  Barang = new BarangModel { id = 2, harga_jual = 1000}, qty = 2 },
+            new PenjualanDetailModel { id = 1,  Barang = new BarangModel { id = 3, harga_jual = 1000}, qty = 3 }
          };
       }
 

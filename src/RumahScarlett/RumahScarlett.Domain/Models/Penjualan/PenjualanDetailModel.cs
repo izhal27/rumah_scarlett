@@ -35,14 +35,8 @@ namespace RumahScarlett.Domain.Models.Penjualan
       [DisplayName("Barang ID")]
       public uint barang_id
       {
-         get
-         {
-            return Barang.id != default(uint) ? Barang.id : _barang_id;
-         }
-         set
-         {
-            _barang_id = value;
-         }
+         get { return Barang.id != default(uint) ? Barang.id : _barang_id; }
+         set { _barang_id = value; }
       }
 
       [Dp.Write(false)]
@@ -59,18 +53,11 @@ namespace RumahScarlett.Domain.Models.Penjualan
 
       private decimal _harga_jual;
 
-      [Range(typeof(decimal), "1", "79228162514264337593543950335", ErrorMessage = "Harga jual harus diisi !!!")]
       [DisplayName("Harga Jual")]
       public decimal harga_jual
       {
-         get
-         {
-            return Barang.harga_jual != default(decimal) ? Barang.harga_jual : _harga_jual;
-         }
-         set
-         {
-            _harga_jual = value;
-         }
+         get { return Barang.harga_jual != default(decimal) ? Barang.harga_jual : _harga_jual; }
+         set { _harga_jual = value; }
       }
 
       [Dp.Write(false)]
