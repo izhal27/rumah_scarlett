@@ -24,17 +24,18 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.PenyesuaianStok
       public void Insert(IPenyesuaianStokModel model)
       {
          var dataAccessStatus = new DataAccessStatus();
-         model.no_nota = DbHelper.GetMaxID("penyesuaian_stok", "no_nota");
 
-         Insert(model, () =>
+         using (var context = new DbContext())
          {
-            using (var context = new DbContext())
+            model.no_nota = DbHelper.GetMaxID(context, "penyesuaian_stok", "no_nota");
+
+            Insert(model, () =>
             {
                context.BeginTransaction();
 
                var queryStr = "INSERT INTO penyesuaian_stok (no_nota, tanggal) " +
-                              "VALUES (@no_nota, @tanggal);" +
-                              "SELECT LAST_INSERT_ID();";
+                           "VALUES (@no_nota, @tanggal);" +
+                           "SELECT LAST_INSERT_ID();";
 
                var insertedId = context.Conn.Query<uint>(queryStr, new
                {
@@ -47,20 +48,20 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.PenyesuaianStok
                   model.id = insertedId;
                   model.PenyesuaianStokDetails = model.PenyesuaianStokDetails.Map(p => p.penyesuaian_stok_id = model.id).ToList();
                   model.PenyesuaianStokDetails = model.PenyesuaianStokDetails.Map(p =>
-                  {
-                     var barang = context.Conn.Get<BarangModel>(p.barang_id);
+               {
+                  var barang = context.Conn.Get<BarangModel>(p.barang_id);
 
-                     if (barang != null)
-                     {
-                        p.Barang = barang;
-                     }
-                     else
-                     {
-                        var ex = new DataAccessException(dataAccessStatus);
-                        SetDataAccessValues(ex, "Salah satu barang yang ingin ditambahkan ke dalam tabel penyesuaian stok tidak ditemukan.");
-                        throw ex;
-                     }
-                  });
+                  if (barang != null)
+                  {
+                     p.Barang = barang;
+                  }
+                  else
+                  {
+                     var ex = new DataAccessException(dataAccessStatus);
+                     SetDataAccessValues(ex, "Salah satu barang yang ingin ditambahkan ke dalam tabel penyesuaian stok tidak ditemukan.");
+                     throw ex;
+                  }
+               });
 
                   var barangNotPassed = model.PenyesuaianStokDetails.Any(pd => pd.Barang.minimal_stok > (pd.Barang.stok - pd.qty));
 
@@ -68,7 +69,7 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.PenyesuaianStok
                   {
                      var ex = new DataAccessException(dataAccessStatus);
                      SetDataAccessValues(ex, "Salah satu barang yang ingin dimasukan ke dalam tabel penyesuaian stok " +
-                                             "qty melebihi minimal stok dari barang tersebut.");
+                                          "qty melebihi minimal stok dari barang tersebut.");
                      throw ex;
                   }
                   else
@@ -87,8 +88,8 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.PenyesuaianStok
                      context.Transaction.Commit();
                   }
                }
-            }
-         }, dataAccessStatus, () => CheckInsert(model));
+            }, dataAccessStatus, () => CheckInsert(model, context));
+         }
       }
 
       public void Update(IPenyesuaianStokModel model)
@@ -100,9 +101,9 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.PenyesuaianStok
       {
          var dataAccessStatus = new DataAccessStatus();
 
-         Delete(model, () =>
+         using (var context = new DbContext())
          {
-            using (var context = new DbContext())
+            Delete(model, () =>
             {
                context.BeginTransaction();
 
@@ -121,17 +122,17 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.PenyesuaianStok
 
                   context.Transaction.Commit();
                }
-            }
-         }, dataAccessStatus, () => CheckUpdateDelete(model));
+            }, dataAccessStatus, () => CheckUpdateDelete(model, context));
+         }
       }
 
       public IEnumerable<IPenyesuaianStokModel> GetAll()
       {
          var dataAccessStatus = new DataAccessStatus();
 
-         return GetAll(() =>
+         using (var context = new DbContext())
          {
-            using (var context = new DbContext())
+            return GetAll(() =>
             {
                var listPenyesuaianStoks = context.Conn.GetAll<PenyesuaianStokModel>().ToList();
 
@@ -146,8 +147,8 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.PenyesuaianStok
                }
 
                return listPenyesuaianStoks;
-            }
-         }, dataAccessStatus);
+            }, dataAccessStatus);
+         }
       }
 
       public IEnumerable<IPenyesuaianStokModel> GetByDate(object date)
@@ -165,24 +166,17 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.PenyesuaianStok
          throw new NotImplementedException();
       }
 
-      private bool CheckInsert(IPenyesuaianStokModel model)
+      private bool CheckInsert(IPenyesuaianStokModel model, DbContext context)
       {
-         using (var context = new DbContext())
-         {
-            return context.Conn.ExecuteScalar<bool>("SELECT COUNT(1) FROM penyesuaian_stok WHERE no_nota=@no_nota "
-                                                     + "AND id=(SELECT id FROM penyesuaian_stok ORDER BY ID DESC LIMIT 1)",
-                                                     new { model.no_nota });
-         }
-
+         return context.Conn.ExecuteScalar<bool>("SELECT COUNT(1) FROM penyesuaian_stok WHERE no_nota=@no_nota "
+                                                  + "AND id=(SELECT id FROM penyesuaian_stok ORDER BY ID DESC LIMIT 1)",
+                                                  new { model.no_nota });
       }
 
-      private bool CheckUpdateDelete(IPenyesuaianStokModel model)
+      private bool CheckUpdateDelete(IPenyesuaianStokModel model, DbContext context)
       {
-         using (var context = new DbContext())
-         {
-            return context.Conn.ExecuteScalar<bool>("SELECT COUNT(1) FROM penyesuaian_stok WHERE id=@id",
-                                                  new { model.id });
-         }
+         return context.Conn.ExecuteScalar<bool>("SELECT COUNT(1) FROM penyesuaian_stok WHERE id=@id",
+                                               new { model.id });
       }
    }
 }
