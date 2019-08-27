@@ -14,29 +14,33 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.KasAwal
 {
    public class KasAwalRepository : BaseRepository<IKasAwalModel>, IKasAwalRepository
    {
-      private DbContext _context;
-
       public KasAwalRepository()
       {
-         _context = new DbContext();
          _modelName = "kas awal";
       }
 
       public void Insert(IKasAwalModel model)
       {
          var dataAccessStatus = new DataAccessStatus();
-         ValidateModel(model, dataAccessStatus);
 
-         Insert(model, () => _context.Conn.Insert((KasAwalModel)model), dataAccessStatus,
-                () => CheckInsert(model));
+         using (var context = new DbContext())
+         {
+            ValidateModel(context, model, dataAccessStatus);
+
+            Insert(model, () => context.Conn.Insert((KasAwalModel)model), dataAccessStatus,
+                  () => CheckInsert(context, model));
+         }
       }
 
       public void Update(IKasAwalModel model)
       {
          var dataAccessStatus = new DataAccessStatus();
 
-         Update(model, () => _context.Conn.Update((KasAwalModel)model), dataAccessStatus,
-                () => CheckUpdateDelete(model));
+         using (var context = new DbContext())
+         {
+            Update(model, () => context.Conn.Update((KasAwalModel)model), dataAccessStatus,
+                () => CheckUpdateDelete(context, model));
+         }
       }
 
       public void Delete(IKasAwalModel model)
@@ -48,7 +52,10 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.KasAwal
       {
          var dataAccessStatus = new DataAccessStatus();
 
-         return GetAll(() => _context.Conn.GetAll<KasAwalModel>(), dataAccessStatus);
+         using (var context = new DbContext())
+         {
+            return GetAll(() => context.Conn.GetAll<KasAwalModel>(), dataAccessStatus);
+         }
       }
 
       public IKasAwalModel GetById(object id)
@@ -76,9 +83,9 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.KasAwal
          return model;
       }
 
-      private void ValidateModel(IKasAwalModel model, DataAccessStatus dataAccessStatus)
+      private void ValidateModel(DbContext context, IKasAwalModel model, DataAccessStatus dataAccessStatus)
       {
-         var exists = _context.Conn.ExecuteScalar<bool>("SELECT COUNT(1) FROM kas_awal WHERE tanggal=@tanggal AND id!=@id",
+         var exists = context.Conn.ExecuteScalar<bool>("SELECT COUNT(1) FROM kas_awal WHERE tanggal=@tanggal AND id!=@id",
                                                                  new { model.tanggal, model.id });
 
          if (exists)
@@ -90,17 +97,17 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.KasAwal
          }
       }
 
-      private bool CheckInsert(IKasAwalModel model)
+      private bool CheckInsert(DbContext context,IKasAwalModel model)
       {
-         return _context.Conn.ExecuteScalar<bool>("SELECT COUNT(1) FROM kas_awal WHERE tanggal=@tanggal "
+         return context.Conn.ExecuteScalar<bool>("SELECT COUNT(1) FROM kas_awal WHERE tanggal=@tanggal "
                                                   + "AND id=(SELECT LAST_INSERT_ID())",
                                                   new { tanggal = model.tanggal.Date.ToString("yyyy-MM-dd") });
       }
 
-      private bool CheckUpdateDelete(IKasAwalModel model)
+      private bool CheckUpdateDelete(DbContext context, IKasAwalModel model)
       {
-         return _context.Conn.ExecuteScalar<bool>("SELECT COUNT(1) FROM kas_awal WHERE id=@id",
+         return context.Conn.ExecuteScalar<bool>("SELECT COUNT(1) FROM kas_awal WHERE id=@id",
                                                   new { model.id });
-      }      
+      }
    }
 }
