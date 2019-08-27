@@ -53,13 +53,13 @@ namespace RumahScarlett.Services.UnitTests.PenyesuaianStok
                new PenyesuaianStokDetailModel
                {
                   barang_id = 2,
-                  qty = 2,
+                  qty = 1,
                   keterangan = "Tester"
                },
                new PenyesuaianStokDetailModel
                {
                   barang_id = 3,
-                  qty = 3,
+                  qty = 1,
                   keterangan = "Tester"
                }
             };
@@ -90,6 +90,7 @@ namespace RumahScarlett.Services.UnitTests.PenyesuaianStok
             _testOutputHelper.WriteLine(formattedJsonStr);
          }
       }
+
       [Fact]
       private void ShouldReturnSuccessForDelete()
       {
@@ -101,7 +102,7 @@ namespace RumahScarlett.Services.UnitTests.PenyesuaianStok
          {
             var model = new PenyesuaianStokModel()
             {
-               id = 23,
+               id = 4,
             };
 
             _services.Delete(model);

@@ -62,13 +62,13 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.PenyesuaianStok
                      }
                   });
 
-                  var barangNotPassed = model.PenyesuaianStokDetails.Any(pd => pd.Barang.hpp == 0 || pd.Barang.minimal_stok > (pd.Barang.stok - pd.qty));
+                  var barangNotPassed = model.PenyesuaianStokDetails.Any(pd => pd.Barang.hpp == 0);
 
                   if (barangNotPassed)
                   {
                      var ex = new DataAccessException(dataAccessStatus);
                      SetDataAccessValues(ex, "Salah satu barang yang ingin dimasukan ke dalam tabel penyesuaian stok " +
-                                             "belum memiliki hpp atau qty melebihi minimal stok dari barang tersebut.");
+                                             "belum memiliki hpp.");
                      throw ex;
                   }
                   else
@@ -82,6 +82,14 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.PenyesuaianStok
                            psdRepo.Insert(pd, context.Transaction);
 
                            pd.Barang.stok -= pd.qty;
+
+                           if (pd.Barang.minimal_stok > pd.Barang.stok)
+                           {
+                              var ex = new DataAccessException(dataAccessStatus);
+                              SetDataAccessValues(ex, "Salah satu qty barang yang ingin dimasukan ke dalam tabel penyesuaian stok " +
+                                                      "melebihi minimal stok dari barang tersebut.");
+                              throw ex;
+                           }
 
                            context.Conn.Update((BarangModel)pd.Barang, context.Transaction);
                         }
@@ -125,7 +133,7 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.PenyesuaianStok
                      }
                   }
 
-                  context.Transaction.Commit();
+                  context.Commit();
                }
             }, dataAccessStatus, () => CheckUpdateDelete(context, model));
          }
