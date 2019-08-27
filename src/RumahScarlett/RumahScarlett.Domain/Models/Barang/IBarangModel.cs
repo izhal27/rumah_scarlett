@@ -16,5 +16,6 @@ namespace RumahScarlett.Domain.Models.Barang
       decimal harga_lama { get; set; }
       decimal hpp { get; set; }
       int minimal_stok { get; set; }
+      IEnumerable<IPenyesuaianStokDetailModel> PenyesuaianStokDetails { get; set; }
    }
 }

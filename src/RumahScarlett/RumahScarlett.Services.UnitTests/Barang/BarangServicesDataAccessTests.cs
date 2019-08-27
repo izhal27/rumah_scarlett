@@ -206,7 +206,7 @@ namespace RumahScarlett.Services.UnitTests.Barang
       [Fact]
       public void ShouldReturnListOfModels()
       {
-         var listModels = (List<BarangModel>)_services.GetAll();
+         var listModels = _services.GetAll().ToList();
 
          Assert.NotEmpty(listModels);
 

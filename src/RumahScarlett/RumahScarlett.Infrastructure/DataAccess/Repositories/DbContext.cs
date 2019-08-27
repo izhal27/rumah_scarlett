@@ -42,7 +42,7 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories
       private IDbConnection GetOpenConnection(string connString, string providerName)
       {
          IDbConnection conn = null;
-         DataAccessStatus dataAccessStatus = new DataAccessStatus();
+         var dataAccessStatus = new DataAccessStatus();
 
          try
          {
@@ -65,7 +65,7 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories
 
       public void BeginTransaction(IsolationLevel isolationLevel = IsolationLevel.ReadCommitted)
       {
-         if (_transaction != null)
+         if (_transaction == null)
          {
             _transaction = Conn.BeginTransaction(isolationLevel);
          }

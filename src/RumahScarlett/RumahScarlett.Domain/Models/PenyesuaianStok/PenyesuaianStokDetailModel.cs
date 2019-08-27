@@ -24,6 +24,14 @@ namespace RumahScarlett.Domain.Models.PenyesuaianStok
       [DisplayName("Penyesuaian Stok ID")]
       public uint penyesuaian_stok_id { get; set; }
 
+      [Dp.Write(false)]
+      [DisplayName("No Nota Penyesuaian Stok")]
+      public string penyesuaian_stok_no_nota { get; set; }
+
+      [Dp.Write(false)]
+      [DisplayName("Tanggal Penyesuaian Stok")]
+      public DateTime penyesuaian_stok_tanggal { get; set; }
+
       [Browsable(false)]
       [Dp.Write(false)]
       public IBarangModel Barang { get; set; }
@@ -35,7 +43,7 @@ namespace RumahScarlett.Domain.Models.PenyesuaianStok
       [DisplayName("Barang ID")]
       public uint barang_id
       {
-         get { return Barang.id != default(uint) ? Barang.id : _barang_id; }
+         get { return Barang != null && Barang.id != default(uint) ? Barang.id : _barang_id; }
          set { _barang_id = value; }
       }
 
@@ -51,21 +59,15 @@ namespace RumahScarlett.Domain.Models.PenyesuaianStok
       [DisplayName("Qty")]
       public int qty { get; set; }
 
-      [Range(typeof(decimal), "1", "79228162514264337593543950335", ErrorMessage = "HPP harus diisi !!!")]
       [DisplayName("HPP")]
       public decimal hpp
       {
-         get { return Barang.id != default(uint) ? Barang.hpp : default(decimal); }
+         get { return Barang != null && Barang.id != default(uint) ? Barang.hpp : default(decimal); }
       }
 
       [Required(ErrorMessage = "Keterangan harus diisi !!!")]
       [StringLength(255, ErrorMessage = "Panjang maksimal keterangan 255 karakter !!!")]
       [DisplayName("Keterangan")]
       public string keterangan { get; set; }
-
-      public PenyesuaianStokDetailModel()
-      {
-         Barang = new BarangModel();
-      }
    }
 }

@@ -47,44 +47,47 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.PenyesuaianStok
                   model.id = insertedId;
                   model.PenyesuaianStokDetails = model.PenyesuaianStokDetails.Map(p => p.penyesuaian_stok_id = model.id).ToList();
                   model.PenyesuaianStokDetails = model.PenyesuaianStokDetails.Map(p =>
-               {
-                  var barang = context.Conn.Get<BarangModel>(p.barang_id);
-
-                  if (barang != null)
                   {
-                     p.Barang = barang;
-                  }
-                  else
-                  {
-                     var ex = new DataAccessException(dataAccessStatus);
-                     SetDataAccessValues(ex, "Salah satu barang yang ingin ditambahkan ke dalam tabel penyesuaian stok tidak ditemukan.");
-                     throw ex;
-                  }
-               });
+                     var barang = context.Conn.Get<BarangModel>(p.barang_id);
 
-                  var barangNotPassed = model.PenyesuaianStokDetails.Any(pd => pd.Barang.minimal_stok > (pd.Barang.stok - pd.qty));
+                     if (barang != null)
+                     {
+                        p.Barang = barang;
+                     }
+                     else
+                     {
+                        var ex = new DataAccessException(dataAccessStatus);
+                        SetDataAccessValues(ex, "Salah satu barang yang ingin ditambahkan ke dalam tabel penyesuaian stok tidak ditemukan.");
+                        throw ex;
+                     }
+                  });
+
+                  var barangNotPassed = model.PenyesuaianStokDetails.Any(pd => pd.Barang.hpp == 0 || pd.Barang.minimal_stok > (pd.Barang.stok - pd.qty));
 
                   if (barangNotPassed)
                   {
                      var ex = new DataAccessException(dataAccessStatus);
                      SetDataAccessValues(ex, "Salah satu barang yang ingin dimasukan ke dalam tabel penyesuaian stok " +
-                                          "qty melebihi minimal stok dari barang tersebut.");
+                                             "belum memiliki hpp atau qty melebihi minimal stok dari barang tersebut.");
                      throw ex;
                   }
                   else
                   {
-                     var psdRepo = new PenyesuaianStokDetailRepository(context);
-
-                     foreach (var pd in model.PenyesuaianStokDetails)
+                     if (model.PenyesuaianStokDetails != null && model.PenyesuaianStokDetails.ToList().Count > 0)
                      {
-                        psdRepo.Insert(pd, context.Transaction);
+                        var psdRepo = new PenyesuaianStokDetailRepository(context);
 
-                        pd.Barang.stok -= pd.qty;
+                        foreach (var pd in model.PenyesuaianStokDetails)
+                        {
+                           psdRepo.Insert(pd, context.Transaction);
 
-                        context.Conn.Update((BarangModel)pd.Barang, context.Transaction);
+                           pd.Barang.stok -= pd.qty;
+
+                           context.Conn.Update((BarangModel)pd.Barang, context.Transaction);
+                        }
                      }
 
-                     context.Transaction.Commit();
+                     context.Commit();
                   }
                }
             }, dataAccessStatus, () => CheckInsert(context, model));
@@ -112,16 +115,19 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.PenyesuaianStok
 
                if (success)
                {
-                  foreach (var pd in model.PenyesuaianStokDetails)
+                  if (model.PenyesuaianStokDetails != null && model.PenyesuaianStokDetails.ToList().Count > 0)
                   {
-                     pd.Barang.stok += pd.qty;
+                     foreach (var pd in model.PenyesuaianStokDetails)
+                     {
+                        pd.Barang.stok += pd.qty;
 
-                     context.Conn.Update((BarangModel)pd.Barang, context.Transaction);
+                        context.Conn.Update((BarangModel)pd.Barang, context.Transaction);
+                     }
                   }
 
                   context.Transaction.Commit();
                }
-            }, dataAccessStatus, () => CheckUpdateDelete(context ,model));
+            }, dataAccessStatus, () => CheckUpdateDelete(context, model));
          }
       }
 
@@ -133,19 +139,19 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.PenyesuaianStok
          {
             return GetAll(() =>
             {
-               var listPenyesuaianStoks = context.Conn.GetAll<PenyesuaianStokModel>().ToList();
+               var listObj = context.Conn.GetAll<PenyesuaianStokModel>();
 
-               if (listPenyesuaianStoks.Count > 0)
+               if (listObj != null && listObj.ToList().Count > 0)
                {
                   var psdRepo = new PenyesuaianStokDetailRepository(context);
 
-                  foreach (var ps in listPenyesuaianStoks)
+                  foreach (var ps in listObj)
                   {
                      ps.PenyesuaianStokDetails = psdRepo.GetAll(ps).ToList();
                   }
                }
 
-               return listPenyesuaianStoks;
+               return listObj;
             }, dataAccessStatus);
          }
       }

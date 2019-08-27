@@ -46,7 +46,18 @@ namespace RumahScarlett.Domain.Models.Barang
 
       [Dp.Write(false)]
       [DisplayName("Penyesuaian Stok")]
-      public int penyesuaian_stok_qty { get; set; }
+      public int penyesuaian_stok_qty
+      {
+         get
+         {
+            if (PenyesuaianStokDetails.ToList().Count > 0)
+            {
+               return PenyesuaianStokDetails.Cast<IPenyesuaianStokDetailModel>().Sum(pd => pd.qty);
+            }
+
+            return 0;
+         }
+      }
 
       [DefaultValue(0)]
       [DisplayName("HPP")]
@@ -62,6 +73,15 @@ namespace RumahScarlett.Domain.Models.Barang
 
       [DefaultValue(0)]
       [DisplayName("Minimal Stok")]
-      public int minimal_stok { get; set; }      
+      public int minimal_stok { get; set; }
+
+      [Dp.Write(false)]
+      [Browsable(false)]
+      public IEnumerable<IPenyesuaianStokDetailModel> PenyesuaianStokDetails { get; set; }
+
+      public BarangModel()
+      {
+         PenyesuaianStokDetails = new List<PenyesuaianStokDetailModel>();
+      }
    }
 }

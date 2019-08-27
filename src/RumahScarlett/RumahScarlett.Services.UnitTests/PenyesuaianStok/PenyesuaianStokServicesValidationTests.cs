@@ -35,7 +35,7 @@ namespace RumahScarlett.Services.UnitTests.PenyesuaianStok
 		 
          _servicesFixture.Model.PenyesuaianStokDetails = new List<PenyesuaianStokDetailModel>
          {
-            new PenyesuaianStokDetailModel { id = 1,  Barang = new BarangModel { id = 1} }
+            new PenyesuaianStokDetailModel { id = 1, barang_id = 1}
          };
       }
 

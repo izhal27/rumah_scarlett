@@ -2,6 +2,7 @@
 using Dapper.Contrib.Extensions;
 using RumahScarlett.CommonComponents;
 using RumahScarlett.Domain.Models.Barang;
+using RumahScarlett.Domain.Models.PenyesuaianStok;
 using RumahScarlett.Services.Services.Barang;
 using System;
 using System.Collections.Generic;
@@ -63,16 +64,24 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Barang
          {
             return GetAll(() =>
             {
-               var listBarangs = context.Conn.GetAll<BarangModel>().ToList();
+               var listObj = context.Conn.GetAll<BarangModel>();
 
-               if (listBarangs.Count > 0)
+               if (listObj != null && listObj.ToList().Count > 0)
                {
-                  var queryStr = "SELECT SUM(qty) FROM penyesuaian_stok_detail WHERE barang_id=@id";
+                  listObj = listObj.Map(b =>
+                  {
+                     var queryStr = "SELECT * FROM penyesuaian_stok_detail where barang_id=@id";
 
-                  listBarangs = listBarangs.Map(b => b.penyesuaian_stok_qty = context.Conn.ExecuteScalar<int>(queryStr, new { b.id })).ToList();
+                     var listObject = context.Conn.Query<PenyesuaianStokDetailModel>(queryStr, new { b.id });
+
+                     if (listObject != null && listObject.ToList().Count > 0)
+                     {
+                        b.PenyesuaianStokDetails = listObject;
+                     }
+                  });
                }
 
-               return listBarangs;
+               return listObj;
             }, dataAccessStatus);
          }
       }

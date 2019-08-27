@@ -3,7 +3,6 @@ using Dapper.Contrib.Extensions;
 using RumahScarlett.CommonComponents;
 using RumahScarlett.Domain.Models.Barang;
 using RumahScarlett.Domain.Models.PenyesuaianStok;
-using RumahScarlett.Infrastructure.DataAccess.Repositories.Barang;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -47,7 +46,10 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.PenyesuaianStok
       {
          var dataAccessStatus = new DataAccessStatus();
 
-         var queryStr = "SELECT * FROM penyesuaian_stok_detail WHERE penyesuaian_stok_id=@id";
+         var queryStr = "SELECT psd.*, ps.no_nota as penyesuaian_stok_no_nota, ps.tanggal as penyesuaian_stok_tanggal "
+                        + "FROM penyesuaian_stok_detail psd "
+                        + "INNER JOIN penyesuaian_stok ps ON psd.penyesuaian_stok_id=ps.id " 
+                        + "WHERE penyesuaian_stok_id=@id";
 
          var listPembelianDetails = _context.Conn.Query<PenyesuaianStokDetailModel>(queryStr, new { id = penyesuaianStok.id });
 
@@ -64,7 +66,7 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.PenyesuaianStok
                else
                {
                   var ex = new DataAccessException(dataAccessStatus);
-                  SetDataAccessValues(ex, "Salah satu barang yang dicari dalam tabel penjualan tidak ditemukan.");
+                  SetDataAccessValues(ex, "Salah satu barang yang dicari dalam tabel penyesuaian stok tidak ditemukan.");
                   throw ex;
                }
             });
