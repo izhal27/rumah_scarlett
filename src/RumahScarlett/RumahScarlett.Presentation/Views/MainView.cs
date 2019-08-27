@@ -8,13 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace RumahScarlett.Presentation
+namespace RumahScarlett.Presentation.Views
 {
-   public partial class Form1 : Form
+   public partial class MainView : Form, IMainView
    {
-      public Form1()
+      public MainView()
       {
          InitializeComponent();
+
+         statusToolStripStatusLabel.Text = DateTime.Now.Date.ToString("dd-MM-yyyy");
       }
    }
 }

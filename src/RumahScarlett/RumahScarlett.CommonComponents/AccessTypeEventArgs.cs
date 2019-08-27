@@ -10,6 +10,7 @@ namespace RumahScarlett.CommonComponents
    {
       public enum AccessType
       {
+         Read,
          Create,
          Update,
          Delete
