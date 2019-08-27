@@ -2,8 +2,6 @@
 using Dapper.Contrib.Extensions;
 using RumahScarlett.CommonComponents;
 using RumahScarlett.Domain.Models.Barang;
-using RumahScarlett.Domain.Models.PenyesuaianStok;
-using RumahScarlett.Infrastructure.DataAccess.Repositories.PenyesuaianStok;
 using RumahScarlett.Services.Services.Barang;
 using System;
 using System.Collections.Generic;

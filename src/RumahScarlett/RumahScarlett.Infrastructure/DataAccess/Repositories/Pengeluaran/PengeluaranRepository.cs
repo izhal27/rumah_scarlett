@@ -1,23 +1,20 @@
-﻿using RumahScarlett.Services.Services.Pengeluaran;
+﻿using Dapper;
+using Dapper.Contrib.Extensions;
+using RumahScarlett.CommonComponents;
+using RumahScarlett.Domain.Models.Pengeluaran;
+using RumahScarlett.Services.Services.Pengeluaran;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using RumahScarlett.Domain.Models.Pengeluaran;
-using RumahScarlett.CommonComponents;
-using Dapper;
-using Dapper.Contrib.Extensions;
 
 namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Pengeluaran
 {
    public class PengeluaranRepository : BaseRepository<IPengeluaranModel>, IPengeluaranRepository
    {
-      private DbContext _context;
-
       public PengeluaranRepository()
       {
-         _context = new DbContext();
          _modelName = "pengeluaran";
       }
 
@@ -25,10 +22,13 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Pengeluaran
       {
          var dataAccessStatus = new DataAccessStatus();
 
-         model.tanggal = DateTime.Now;
+         using (var context = new DbContext())
+         {
+            model.tanggal = DateTime.Now;
 
-         Insert(model, () => _context.Conn.Insert((PengeluaranModel)model), dataAccessStatus,
-               () => CheckInsert(model));
+            Insert(model, () => context.Conn.Insert((PengeluaranModel)model), dataAccessStatus,
+                  () => CheckInsert(context, model));
+         }
       }
 
       public void Update(IPengeluaranModel model)
@@ -40,15 +40,21 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Pengeluaran
       {
          var dataAccessStatus = new DataAccessStatus();
 
-         Delete(model, () => _context.Conn.Delete((PengeluaranModel)model), dataAccessStatus,
-               () => CheckUpdateDelete(model));
+         using (var context = new DbContext())
+         {
+            Delete(model, () => context.Conn.Delete((PengeluaranModel)model), dataAccessStatus,
+               () => CheckUpdateDelete(context, model));
+         }
       }
 
       public IEnumerable<IPengeluaranModel> GetAll()
       {
          var dataAccessStatus = new DataAccessStatus();
 
-         return GetAll(() => _context.Conn.GetAll<PengeluaranModel>(), dataAccessStatus);
+         using (var context = new DbContext())
+         {
+            return GetAll(() => context.Conn.GetAll<PengeluaranModel>(), dataAccessStatus);
+         }
       }
 
       public IPengeluaranModel GetById(object id)
@@ -65,17 +71,17 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Pengeluaran
       {
          return GetAll().Where(p => p.tanggal.Date >= ((DateTime)startDate).Date && p.tanggal.Date <= ((DateTime)endDate).Date);
       }
-      
-      private bool CheckInsert(IPengeluaranModel model)
+
+      private bool CheckInsert(DbContext context, IPengeluaranModel model)
       {
-         return _context.Conn.ExecuteScalar<bool>("SELECT COUNT(1) FROM pengeluaran WHERE nama=@nama "
+         return context.Conn.ExecuteScalar<bool>("SELECT COUNT(1) FROM pengeluaran WHERE nama=@nama "
                                                   + "AND id=(SELECT LAST_INSERT_ID())",
                                                   new { model.nama });
       }
 
-      private bool CheckUpdateDelete(IPengeluaranModel model)
+      private bool CheckUpdateDelete(DbContext context, IPengeluaranModel model)
       {
-         return _context.Conn.ExecuteScalar<bool>("SELECT COUNT(1) FROM pengeluaran WHERE id=@id",
+         return context.Conn.ExecuteScalar<bool>("SELECT COUNT(1) FROM pengeluaran WHERE id=@id",
                                                   new { model.id });
       }
    }
