@@ -131,21 +131,21 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Pembelian
          {
             return GetAll(() =>
             {
-               var listPembelians = context.Conn.GetAll<PembelianModel>().ToList();
+               var listObj = context.Conn.GetAll<PembelianModel>().ToList();
 
-               if (listPembelians.Count > 0)
+               if (listObj != null && listObj.Count > 0)
                {
-                  listPembelians = listPembelians.Map(p => p.Supplier = context.Conn.Get<SupplierModel>(p.supplier_id)).ToList();
+                  listObj = listObj.Map(p => p.Supplier = context.Conn.Get<SupplierModel>(p.supplier_id)).ToList();
 
                   var pdRepo = new PembelianDetailRepository(context);
 
-                  foreach (var p in listPembelians)
+                  foreach (var p in listObj)
                   {
                      p.PembelianDetails = pdRepo.GetAll(p);
                   }
                }
 
-               return listPembelians;
+               return listObj;
             }, dataAccessStatus);
          }
       }
