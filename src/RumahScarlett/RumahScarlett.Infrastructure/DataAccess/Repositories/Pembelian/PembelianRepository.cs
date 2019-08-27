@@ -80,7 +80,7 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Pembelian
                      context.Conn.Update((BarangModel)pd.Barang, context.Transaction);
                   }
 
-                  context.Transaction.Commit();
+                  context.Commit();
                }
             }, dataAccessStatus, () => CheckInsert(model, context));
          }
@@ -116,7 +116,7 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Pembelian
                         context.Conn.Update((BarangModel)pd.Barang, context.Transaction);
                      }
 
-                     context.Transaction.Commit();
+                     context.Commit();
                   }
                }
             }, dataAccessStatus, () => CheckUpdateDelete(model, context));

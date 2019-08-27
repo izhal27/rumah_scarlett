@@ -123,7 +123,7 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.PenyesuaianStok
 
                if (success)
                {
-                  if (model.PenyesuaianStokDetails != null && model.PenyesuaianStokDetails.ToList().Count > 0)
+                  if (model.PenyesuaianStokDetails.ToList().Count > 0)
                   {
                      foreach (var pd in model.PenyesuaianStokDetails)
                      {

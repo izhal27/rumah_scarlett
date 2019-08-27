@@ -62,9 +62,6 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Pembelian
                }
                else
                {
-                  transaction.Rollback();
-                  _context.Dispose();
-
                   var ex = new DataAccessException(dataAccessStatus);
                   SetDataAccessValues(ex, "Salah satu barang yang dicari dalam tabel pembelian tidak ditemukan.");
                   throw ex;

@@ -94,7 +94,7 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Penjualan
                         context.Conn.Update((BarangModel)pd.Barang, context.Transaction);
                      }
 
-                     context.Transaction.Commit();
+                     context.Commit();
                   }
                }
             }, dataAccessStatus, () => CheckInsert(context, model));
@@ -131,7 +131,7 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Penjualan
                         context.Conn.Update((BarangModel)pd.Barang, context.Transaction);
                      }
 
-                     context.Transaction.Commit();
+                     context.Commit();
                   }
                }
             }, dataAccessStatus, () => CheckUpdateDelete(context, model));

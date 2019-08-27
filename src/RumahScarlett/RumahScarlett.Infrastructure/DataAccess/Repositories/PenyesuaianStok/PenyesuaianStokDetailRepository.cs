@@ -57,7 +57,7 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.PenyesuaianStok
          {
             listPembelianDetails = listPembelianDetails.Map(pd =>
             {
-               var barang = _context.Conn.Get<BarangModel>(pd.barang_id, _context.Transaction);
+               var barang = _context.Conn.Get<BarangModel>(pd.barang_id);
 
                if (barang != null)
                {
