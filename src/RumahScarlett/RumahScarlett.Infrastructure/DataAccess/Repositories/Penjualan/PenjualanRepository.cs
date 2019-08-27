@@ -63,13 +63,13 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Penjualan
                      }
                   });
 
-                  var barangNotPassed = model.PenjualanDetails.Any(pd => pd.Barang.minimal_stok > (pd.Barang.stok - pd.qty) || pd.Barang.harga_jual == 0);
+                  var barangNotPassed = model.PenjualanDetails.Any(pd => pd.Barang.harga_jual == 0);
 
                   if (barangNotPassed)
                   {
                      var ex = new DataAccessException(dataAccessStatus);
                      SetDataAccessValues(ex, "Salah satu barang yang ingin dimasukan ke dalam tabel penjualan " +
-                                             "belum memiliki harga jual atau qty melebihi minimal stok dari barang tersebut.");
+                                             "belum memiliki harga jual.");
                      throw ex;
                   }
                   else
@@ -82,6 +82,14 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Penjualan
                         pdRepo.Insert(pd, context.Transaction);
 
                         pd.Barang.stok -= pd.qty;
+
+                        if (pd.Barang.minimal_stok > pd.Barang.stok)
+                        {
+                           var ex = new DataAccessException(dataAccessStatus);
+                           SetDataAccessValues(ex, "Salah satu qty barang yang ingin dimasukan ke dalam tabel penjualan " +
+                                                   "melebihi minimal stok dari barang tersebut.");
+                           throw ex;
+                        }
 
                         context.Conn.Update((BarangModel)pd.Barang, context.Transaction);
                      }
@@ -138,19 +146,19 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Penjualan
          {
             return GetAll(() =>
             {
-               var listPembelians = context.Conn.GetAll<PenjualanModel>().ToList();
+               var listObj = context.Conn.GetAll<PenjualanModel>();
 
-               if (listPembelians.Count > 0)
+               if (listObj != null && listObj.ToList().Count > 0)
                {
                   var pdRepo = new PenjualanDetailRepository(context);
 
-                  foreach (var p in listPembelians)
+                  foreach (var p in listObj)
                   {
                      p.PenjualanDetails = pdRepo.GetAll(p);
                   }
                }
 
-               return listPembelians;
+               return listObj;
             }, dataAccessStatus);
          }
       }
