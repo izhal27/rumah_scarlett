@@ -2,6 +2,7 @@
 using RumahScarlett.Infrastructure.DataAccess.Repositories;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,18 +16,19 @@ namespace RumahScarlett.Infrastructure.DataAccess.CommonRepositories
       /// sesuai dengan tanggal sekarang
       /// </summary>
       /// <param name="context">DbContext object</param>
+      /// <param name="transaction">Db transaction object</param>
       /// <param name="table">Nama table</param>
       /// <param name="column">Nama column</param>
       /// <returns>Mengembalikan maksimal id sesuai tanggal sekarang
       /// contoh: 19870327000002</returns>
-      public static string GetMaxID(DbContext context, string table, string column = "id")
+      public static string GetMaxID(DbContext context, IDbTransaction transaction, string table, string column = "id")
       {
          var maxID = default(int);
          var today = default(string);
 
          today = DateTime.Now.ToString("yyyyMMdd"); // Tanggal sekarang
          var max = context.Conn.Query<string>($"SELECT max({column}) as maxID from {table} " +
-                                              $"WHERE {column} LIKE '{today}%'").FirstOrDefault();
+                                              $"WHERE {column} LIKE '{today}%'", transaction).FirstOrDefault();
 
          // Jika ditemukan maka, ambil 6 digit angka terakhir
          // lalu max id ditambahkan satu,

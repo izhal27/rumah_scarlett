@@ -15,35 +15,33 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Penjualan
 {
    public class PenjualanRepository : BaseRepository<IPenjualanModel>, IPenjualanRepository
    {
-      private DbContext _context;
-      private IPenjualanDetailRepository _pdRepo;
-
       public PenjualanRepository()
       {
-         _context = new DbContext();
          _modelName = "penjualan";
-         _pdRepo = new PenjualanDetailRepository(_context);
       }
 
       public void Insert(IPenjualanModel model)
       {
          var dataAccessStatus = new DataAccessStatus();
-         model.no_nota = DbHelper.GetMaxID("penjualan", "no_nota");
 
-         Insert(model, () =>
+         using (var context = new DbContext())
          {
-            using (var transaction = _context.Conn.BeginTransaction())
+            context.BeginTransaction();
+
+            model.no_nota = DbHelper.GetMaxID(context, context.Transaction, "penjualan", "no_nota");
+
+            Insert(model, () =>
             {
                var queryStr = "INSERT INTO penjualan (no_nota, tanggal, diskon) " +
                               "VALUES (@no_nota, @tanggal, @diskon);" +
                               "SELECT LAST_INSERT_ID();";
 
-               var insertedId = _context.Conn.Query<uint>(queryStr, new
+               var insertedId = context.Conn.Query<uint>(queryStr, new
                {
                   model.no_nota,
                   model.tanggal,
                   model.diskon
-               }, transaction).Single();
+               }, context.Transaction).Single();
 
                if (insertedId > 0 && model.PenjualanDetails.ToList().Count > 0)
                {
@@ -51,7 +49,7 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Penjualan
                   model.PenjualanDetails = model.PenjualanDetails.Map(p => p.penjualan_id = model.id).ToList();
                   model.PenjualanDetails = model.PenjualanDetails.Map(pd =>
                   {
-                     var barang = _context.Conn.Get<BarangModel>(pd.barang_id);
+                     var barang = context.Conn.Get<BarangModel>(pd.barang_id);
 
                      if (barang != null)
                      {
@@ -59,9 +57,6 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Penjualan
                      }
                      else
                      {
-                        transaction.Rollback();
-                        _context.Dispose();
-
                         var ex = new DataAccessException(dataAccessStatus);
                         SetDataAccessValues(ex, "Salah satu barang yang ingin ditambahkan ke dalam tabel penjualan tidak ditemukan.");
                         throw ex;
@@ -72,9 +67,6 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Penjualan
 
                   if (barangNotPassed)
                   {
-                     transaction.Rollback();
-                     _context.Dispose();
-
                      var ex = new DataAccessException(dataAccessStatus);
                      SetDataAccessValues(ex, "Salah satu barang yang ingin dimasukan ke dalam tabel penjualan " +
                                              "belum memiliki harga jual atau qty melebihi minimal stok dari barang tersebut.");
@@ -82,21 +74,23 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Penjualan
                   }
                   else
                   {
+                     var pdRepo = new PenjualanDetailRepository(context);
+
                      foreach (var pd in model.PenjualanDetails)
                      {
                         pd.harga_jual = pd.Barang.harga_jual;
-                        _pdRepo.Insert(pd, transaction);
+                        pdRepo.Insert(pd, context.Transaction);
 
                         pd.Barang.stok -= pd.qty;
 
-                        _context.Conn.Update((BarangModel)pd.Barang, transaction);
+                        context.Conn.Update((BarangModel)pd.Barang, context.Transaction);
                      }
 
-                     transaction.Commit();
+                     context.Transaction.Commit();
                   }
                }
-            }
-         }, dataAccessStatus, () => CheckInsert(model));
+            }, dataAccessStatus, () => CheckInsert(model, context));
+         }
       }
 
       public void Update(IPenjualanModel model)
@@ -108,13 +102,15 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Penjualan
       {
          var dataAccessStatus = new DataAccessStatus();
 
-         Delete(model, () =>
+         using (var context = new DbContext())
          {
-            using (var transaction = _context.Conn.BeginTransaction())
-            {
-               model.PenjualanDetails = _pdRepo.GetAll(model, transaction);
+            context.BeginTransaction();
 
-               var success = _context.Conn.Delete((PenjualanModel)model, transaction);
+            Delete(model, () =>
+            {
+               model.PenjualanDetails = new PenjualanDetailRepository(context).GetAll(model, context.Transaction);
+
+               var success = context.Conn.Delete((PenjualanModel)model, context.Transaction);
 
                if (success)
                {
@@ -124,34 +120,39 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Penjualan
                      {
                         pd.Barang.stok += pd.qty;
 
-                        _context.Conn.Update((BarangModel)pd.Barang, transaction);
+                        context.Conn.Update((BarangModel)pd.Barang, context.Transaction);
                      }
 
-                     transaction.Commit();
+                     context.Transaction.Commit();
                   }
                }
-            }
-         }, dataAccessStatus, () => CheckUpdateDelete(model));
+            }, dataAccessStatus, () => CheckUpdateDelete(model, context));
+         }
       }
 
       public IEnumerable<IPenjualanModel> GetAll()
       {
          var dataAccessStatus = new DataAccessStatus();
 
-         return GetAll(() =>
+         using (var context = new DbContext())
          {
-            var listPembelians = _context.Conn.GetAll<PenjualanModel>().ToList();
-
-            if (listPembelians.Count > 0)
+            return GetAll(() =>
             {
-               foreach (var p in listPembelians)
-               {
-                  p.PenjualanDetails = _pdRepo.GetAll(p);
-               }
-            }
+               var listPembelians = context.Conn.GetAll<PenjualanModel>().ToList();
 
-            return listPembelians;
-         }, dataAccessStatus);
+               if (listPembelians.Count > 0)
+               {
+                  var pdRepo = new PenjualanDetailRepository(context);
+
+                  foreach (var p in listPembelians)
+                  {
+                     p.PenjualanDetails = pdRepo.GetAll(p);
+                  }
+               }
+
+               return listPembelians;
+            }, dataAccessStatus);
+         }
       }
 
       public IEnumerable<IPenjualanModel> GetByDate(object date)
@@ -169,16 +170,16 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Penjualan
          throw new NotImplementedException();
       }
 
-      private bool CheckInsert(IPenjualanModel model)
+      private bool CheckInsert(IPenjualanModel model, DbContext context)
       {
-         return _context.Conn.ExecuteScalar<bool>("SELECT COUNT(1) FROM penjualan WHERE no_nota=@no_nota "
+         return context.Conn.ExecuteScalar<bool>("SELECT COUNT(1) FROM penjualan WHERE no_nota=@no_nota "
                                                   + "AND id=(SELECT id FROM penjualan ORDER BY ID DESC LIMIT 1)",
                                                   new { model.no_nota });
       }
 
-      private bool CheckUpdateDelete(IPenjualanModel model)
+      private bool CheckUpdateDelete(IPenjualanModel model, DbContext context)
       {
-         return _context.Conn.ExecuteScalar<bool>("SELECT COUNT(1) FROM penjualan WHERE id=@id",
+         return context.Conn.ExecuteScalar<bool>("SELECT COUNT(1) FROM penjualan WHERE id=@id",
                                                   new { model.id });
       }
    }
