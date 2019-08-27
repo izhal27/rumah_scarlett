@@ -1,15 +1,15 @@
-﻿using RumahScarlett.Services.Services.Penjualan;
+﻿using Dapper;
+using Dapper.Contrib.Extensions;
+using RumahScarlett.CommonComponents;
+using RumahScarlett.Domain.Models.Barang;
+using RumahScarlett.Domain.Models.Penjualan;
+using RumahScarlett.Infrastructure.DataAccess.CommonRepositories;
+using RumahScarlett.Services.Services.Penjualan;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using RumahScarlett.Domain.Models.Penjualan;
-using RumahScarlett.CommonComponents;
-using RumahScarlett.Infrastructure.DataAccess.CommonRepositories;
-using Dapper;
-using RumahScarlett.Domain.Models.Barang;
-using Dapper.Contrib.Extensions;
 
 namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Penjualan
 {

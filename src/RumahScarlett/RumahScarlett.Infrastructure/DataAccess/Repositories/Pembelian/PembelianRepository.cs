@@ -1,18 +1,17 @@
-﻿using RumahScarlett.Services.Services.Pembelian;
+﻿using Dapper;
+using Dapper.Contrib.Extensions;
+using RumahScarlett.CommonComponents;
+using RumahScarlett.Domain.Models.Barang;
+using RumahScarlett.Domain.Models.Pembelian;
+using RumahScarlett.Domain.Models.Supplier;
+using RumahScarlett.Infrastructure.DataAccess.CommonRepositories;
+using RumahScarlett.Services.Services.Pembelian;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using RumahScarlett.Domain.Models.Pembelian;
-using RumahScarlett.CommonComponents;
-using Dapper.Contrib.Extensions;
-using Dapper;
-using RumahScarlett.Infrastructure.DataAccess.CommonRepositories;
 using System.Transactions;
-using RumahScarlett.Domain.Models.Barang;
-using RumahScarlett.Infrastructure.DataAccess.Repositories.Supplier;
-using RumahScarlett.Domain.Models.Supplier;
 
 namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Pembelian
 {
@@ -29,12 +28,12 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Pembelian
 
          using (var context = new DbContext())
          {
-            model.no_nota = DbHelper.GetMaxID(context, "pembelian", "no_nota");
+            context.BeginTransaction();
+
+            model.no_nota = DbHelper.GetMaxID(context, context.Transaction, "pembelian", "no_nota");
 
             Insert(model, () =>
             {
-               context.BeginTransaction();
-
                var queryStr = "INSERT INTO pembelian (supplier_id, no_nota, tanggal) " +
                               "VALUES (@supplier_id, @no_nota, @tanggal);" +
                               "SELECT LAST_INSERT_ID();";

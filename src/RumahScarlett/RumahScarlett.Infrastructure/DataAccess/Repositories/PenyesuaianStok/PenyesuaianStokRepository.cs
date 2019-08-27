@@ -4,7 +4,6 @@ using RumahScarlett.CommonComponents;
 using RumahScarlett.Domain.Models.Barang;
 using RumahScarlett.Domain.Models.PenyesuaianStok;
 using RumahScarlett.Infrastructure.DataAccess.CommonRepositories;
-using RumahScarlett.Infrastructure.DataAccess.Repositories.Barang;
 using RumahScarlett.Services.Services.PenyesuaianStok;
 using System;
 using System.Collections.Generic;
@@ -27,12 +26,12 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.PenyesuaianStok
 
          using (var context = new DbContext())
          {
-            model.no_nota = DbHelper.GetMaxID(context, "penyesuaian_stok", "no_nota");
+            context.BeginTransaction();
+
+            model.no_nota = DbHelper.GetMaxID(context, context.Transaction, "penyesuaian_stok", "no_nota");
 
             Insert(model, () =>
             {
-               context.BeginTransaction();
-
                var queryStr = "INSERT INTO penyesuaian_stok (no_nota, tanggal) " +
                            "VALUES (@no_nota, @tanggal);" +
                            "SELECT LAST_INSERT_ID();";
