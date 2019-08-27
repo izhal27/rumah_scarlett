@@ -89,7 +89,7 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Penjualan
                      context.Transaction.Commit();
                   }
                }
-            }, dataAccessStatus, () => CheckInsert(model, context));
+            }, dataAccessStatus, () => CheckInsert(context, model));
          }
       }
 
@@ -126,7 +126,7 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Penjualan
                      context.Transaction.Commit();
                   }
                }
-            }, dataAccessStatus, () => CheckUpdateDelete(model, context));
+            }, dataAccessStatus, () => CheckUpdateDelete(context, model));
          }
       }
 
@@ -170,17 +170,17 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Penjualan
          throw new NotImplementedException();
       }
 
-      private bool CheckInsert(IPenjualanModel model, DbContext context)
+      private bool CheckInsert(DbContext context, IPenjualanModel model)
       {
          return context.Conn.ExecuteScalar<bool>("SELECT COUNT(1) FROM penjualan WHERE no_nota=@no_nota "
-                                                  + "AND id=(SELECT id FROM penjualan ORDER BY ID DESC LIMIT 1)",
-                                                  new { model.no_nota });
+                                                 + "AND id=(SELECT id FROM penjualan ORDER BY ID DESC LIMIT 1)",
+                                                 new { model.no_nota });
       }
 
-      private bool CheckUpdateDelete(IPenjualanModel model, DbContext context)
+      private bool CheckUpdateDelete(DbContext context, IPenjualanModel model)
       {
          return context.Conn.ExecuteScalar<bool>("SELECT COUNT(1) FROM penjualan WHERE id=@id",
-                                                  new { model.id });
+                                                 new { model.id });
       }
    }
 }
