@@ -15,69 +15,83 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Barang
 {
    public class BarangRepository : BaseRepository<IBarangModel>, IBarangRepository
    {
-      private DbContext _context;
-
       public BarangRepository()
       {
-         _context = new DbContext();
          _modelName = "barang";
       }
 
       public void Insert(IBarangModel model)
       {
          var dataAccessStatus = new DataAccessStatus();
-         ValidateModel(model, dataAccessStatus);
 
-         Insert(model, () => _context.Conn.Insert((BarangModel)model), dataAccessStatus,
-                () => CheckInsert(model));
+         using (var context = new DbContext())
+         {
+            ValidateModel(context, model, dataAccessStatus);
+
+            Insert(model, () => context.Conn.Insert((BarangModel)model), dataAccessStatus,
+                  () => CheckInsert(context, model));
+         }
       }
 
       public void Update(IBarangModel model)
       {
          var dataAccessStatus = new DataAccessStatus();
-         ValidateModel(model, dataAccessStatus);
 
-         Update(model, () => _context.Conn.Update((BarangModel)model), dataAccessStatus,
-                () => CheckUpdateDelete(model));
+         using (var context = new DbContext())
+         {
+            ValidateModel(context, model, dataAccessStatus);
+
+            Update(model, () => context.Conn.Update((BarangModel)model), dataAccessStatus,
+                  () => CheckUpdateDelete(context, model));
+         }
       }
 
       public void Delete(IBarangModel model)
       {
          var dataAccessStatus = new DataAccessStatus();
 
-         Delete(model, () => _context.Conn.Delete((BarangModel)model), dataAccessStatus,
-                () => CheckUpdateDelete(model));
+         using (var context = new DbContext())
+         {
+            Delete(model, () => context.Conn.Delete((BarangModel)model), dataAccessStatus,
+                  () => CheckUpdateDelete(context, model));
+         }
       }
 
       public IEnumerable<IBarangModel> GetAll()
       {
          var dataAccessStatus = new DataAccessStatus();
 
-         return GetAll(() =>
-         {            
-            var listBarangs = _context.Conn.GetAll<BarangModel>().ToList();
-
-            if (listBarangs.Count > 0)
+         using (var context = new DbContext())
+         {
+            return GetAll(() =>
             {
-               var queryStr = "SELECT SUM(qty) FROM penyesuaian_stok_detail WHERE barang_id=@id";
+               var listBarangs = context.Conn.GetAll<BarangModel>().ToList();
 
-               listBarangs = listBarangs.Map(b => b.penyesuaian_stok_qty = _context.Conn.ExecuteScalar<int>(queryStr, new { b.id })).ToList();
-            }
+               if (listBarangs.Count > 0)
+               {
+                  var queryStr = "SELECT SUM(qty) FROM penyesuaian_stok_detail WHERE barang_id=@id";
 
-            return listBarangs;
-         }, dataAccessStatus);
+                  listBarangs = listBarangs.Map(b => b.penyesuaian_stok_qty = context.Conn.ExecuteScalar<int>(queryStr, new { b.id })).ToList();
+               }
+
+               return listBarangs;
+            }, dataAccessStatus);
+         }
       }
 
       public IBarangModel GetById(object id)
       {
          var dataAccessStatus = new DataAccessStatus();
 
-         return GetBy(() => _context.Conn.Get<BarangModel>(id), dataAccessStatus);
+         using (var context = new DbContext())
+         {
+            return GetBy(() => context.Conn.Get<BarangModel>(id), dataAccessStatus);
+         }
       }
-      
-      private void ValidateModel(IBarangModel model, DataAccessStatus dataAccessStatus)
+
+      private void ValidateModel(DbContext context, IBarangModel model, DataAccessStatus dataAccessStatus)
       {
-         var existsKode = _context.Conn.ExecuteScalar<bool>("SELECT COUNT(1) FROM barang WHERE kode=@kode AND id!=@id",
+         var existsKode = context.Conn.ExecuteScalar<bool>("SELECT COUNT(1) FROM barang WHERE kode=@kode AND id!=@id",
                                                             new { model.kode, model.id });
 
          if (existsKode)
@@ -88,7 +102,7 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Barang
             throw new DataAccessException(dataAccessStatus); ;
          }
 
-         var existsNama = _context.Conn.ExecuteScalar<bool>("SELECT COUNT(1) FROM barang WHERE nama=@nama AND id!=@id",
+         var existsNama = context.Conn.ExecuteScalar<bool>("SELECT COUNT(1) FROM barang WHERE nama=@nama AND id!=@id",
                                                             new { model.nama, model.id });
 
          if (existsNama)
@@ -100,16 +114,16 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Barang
          }
       }
 
-      private bool CheckInsert(IBarangModel model)
+      private bool CheckInsert(DbContext context, IBarangModel model)
       {
-         return _context.Conn.ExecuteScalar<bool>("SELECT COUNT(1) FROM barang WHERE kode=@kode "
+         return context.Conn.ExecuteScalar<bool>("SELECT COUNT(1) FROM barang WHERE kode=@kode "
                                                   + "AND id=(SELECT LAST_INSERT_ID())",
                                                   new { model.kode });
       }
 
-      private bool CheckUpdateDelete(IBarangModel model)
+      private bool CheckUpdateDelete(DbContext context, IBarangModel model)
       {
-         return _context.Conn.ExecuteScalar<bool>("SELECT COUNT(1) FROM barang WHERE id=@id",
+         return context.Conn.ExecuteScalar<bool>("SELECT COUNT(1) FROM barang WHERE id=@id",
                                                   new { model.id });
       }
    }
