@@ -40,10 +40,6 @@ namespace RumahScarlett.Domain.Models.Barang
       [DisplayName("Nama")]
       public string nama { get; set; }
 
-      [DefaultValue(0)]
-      [DisplayName("Stok")]
-      public int stok { get; set; }
-
       [Dp.Write(false)]
       [DisplayName("Penyesuaian Stok")]
       public int penyesuaian_stok_qty
@@ -70,6 +66,10 @@ namespace RumahScarlett.Domain.Models.Barang
       [DefaultValue(0)]
       [DisplayName("Harga Lama")]
       public decimal harga_lama { get; set; }
+
+      [DefaultValue(0)]
+      [DisplayName("Stok")]
+      public int stok { get; set; }
 
       [DefaultValue(0)]
       [DisplayName("Minimal Stok")]
