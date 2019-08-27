@@ -44,7 +44,11 @@ namespace RumahScarlett.Services.UnitTests.Barang
                   sub_tipe_id = (uint)(i % 2 == 0 ? 2 : 1),
                   supplier_id = (uint)(i % 2 == 0 ? 2 : 1),
                   kode = $"kode_barang_{i}",
-                  nama = $"Nama Barang #{i}"
+                  nama = $"Nama Barang #{i}",
+                  stok = 5,
+                  hpp = 1000,
+                  harga_jual = 2000,
+                  minimal_stok = 1,
                };
 
                _services.Insert(model);
