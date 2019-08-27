@@ -19,13 +19,13 @@ namespace RumahScarlett.Services.UnitTests.Tipe
    [Trait("Category", "Data Access Validations")]
    public class SubTipeServicesDataAccessTests
    {
-      private ISubTipeServices _services;
+      private ITipeServices _services;
       private readonly ITestOutputHelper _testOutputHelper;
 
       public SubTipeServicesDataAccessTests(ITestOutputHelper testOutputHelper)
       {
          _testOutputHelper = testOutputHelper;
-         _services = new SubTipeServices(new SubTipeRepository(), new ModelDataAnnotationCheck());
+         _services = new TipeServices(new TipeRepository(), new ModelDataAnnotationCheck());
       }
 
       [Fact]
@@ -196,7 +196,7 @@ namespace RumahScarlett.Services.UnitTests.Tipe
       [Fact]
       public void ShouldReturnListOfModels()
       {
-         var listModels = (List<SubTipeModel>)_services.GetAll();
+         var listModels = _services.GetAllSubTipe().ToList();
 
          Assert.NotEmpty(listModels);
 
@@ -211,7 +211,7 @@ namespace RumahScarlett.Services.UnitTests.Tipe
 
          try
          {
-            model = (SubTipeModel)_services.GetById(idToGet);
+            model = (SubTipeModel)_services.GetSubTipeById(idToGet);
          }
          catch (DataAccessException ex)
          {

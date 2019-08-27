@@ -1,13 +1,14 @@
 ﻿using RumahScarlett.Domain.Models.Tipe;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RumahScarlett.Services.Services.Tipe
 {
-   public interface ITipeRepository : IBaseRepository<ITipeModel>
-   {
-   }
+    public interface ITipeRepository : IBaseRepository<ITipeModel>
+    {
+        void Insert(ISubTipeModel model);
+        void Update(ISubTipeModel model);
+        void Delete(ISubTipeModel model);
+        IEnumerable<ISubTipeModel> GetAllSubTipe();
+        ISubTipeModel GetSubTipeById(object id);
+    }
 }
