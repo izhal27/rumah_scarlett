@@ -102,7 +102,7 @@
     <Compile Include="Pembelian\PembelianServicesDataAccessTests.cs" />
     <Compile Include="Pembelian\PembelianServicesFixture.cs" />
     <Compile Include="Pembelian\PembelianServicesValidationTests.cs" />
-    <Compile Include="Pengeluaran\PeneluaranServicesValidationTests.cs" />
+    <Compile Include="Pengeluaran\PengeluaranServicesValidationTests.cs" />
     <Compile Include="Pengeluaran\PengeluaranServicesDataAccessTests.cs" />
     <Compile Include="Pengeluaran\PengeluaranServicesFixture.cs" />
     <Compile Include="Penjualan\PenjualanServicesDataAccessTests.cs" />

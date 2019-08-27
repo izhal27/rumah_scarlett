@@ -12,12 +12,12 @@ using Xunit.Abstractions;
 namespace RumahScarlett.Services.UnitTests.Pengeluaran
 {
    [Trait("Category", "Model Validations")]
-   public class PeneluaranServicesValidationTests : IClassFixture<PengeluaranServicesFixture>
+   public class PengeluaranServicesValidationTests : IClassFixture<PengeluaranServicesFixture>
    {
       private PengeluaranServicesFixture _servicesFixture;
       private ITestOutputHelper _testOutputHelper;
 
-      public PeneluaranServicesValidationTests(PengeluaranServicesFixture servicesFixture, ITestOutputHelper testOutputHelper)
+      public PengeluaranServicesValidationTests(PengeluaranServicesFixture servicesFixture, ITestOutputHelper testOutputHelper)
       {
          _servicesFixture = servicesFixture;
          _testOutputHelper = testOutputHelper;
