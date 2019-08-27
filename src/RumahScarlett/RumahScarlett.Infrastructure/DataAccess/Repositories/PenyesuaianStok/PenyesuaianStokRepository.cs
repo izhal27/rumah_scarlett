@@ -87,7 +87,7 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.PenyesuaianStok
                      context.Transaction.Commit();
                   }
                }
-            }, dataAccessStatus, () => CheckInsert(model, context));
+            }, dataAccessStatus, () => CheckInsert(context, model));
          }
       }
 
@@ -121,7 +121,7 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.PenyesuaianStok
 
                   context.Transaction.Commit();
                }
-            }, dataAccessStatus, () => CheckUpdateDelete(model, context));
+            }, dataAccessStatus, () => CheckUpdateDelete(context ,model));
          }
       }
 
@@ -165,17 +165,17 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.PenyesuaianStok
          throw new NotImplementedException();
       }
 
-      private bool CheckInsert(IPenyesuaianStokModel model, DbContext context)
+      private bool CheckInsert(DbContext context, IPenyesuaianStokModel model)
       {
          return context.Conn.ExecuteScalar<bool>("SELECT COUNT(1) FROM penyesuaian_stok WHERE no_nota=@no_nota "
-                                                  + "AND id=(SELECT id FROM penyesuaian_stok ORDER BY ID DESC LIMIT 1)",
-                                                  new { model.no_nota });
+                                                 + "AND id=(SELECT id FROM penyesuaian_stok ORDER BY ID DESC LIMIT 1)",
+                                                 new { model.no_nota });
       }
 
-      private bool CheckUpdateDelete(IPenyesuaianStokModel model, DbContext context)
+      private bool CheckUpdateDelete(DbContext context, IPenyesuaianStokModel model)
       {
          return context.Conn.ExecuteScalar<bool>("SELECT COUNT(1) FROM penyesuaian_stok WHERE id=@id",
-                                               new { model.id });
+                                                 new { model.id });
       }
    }
 }
