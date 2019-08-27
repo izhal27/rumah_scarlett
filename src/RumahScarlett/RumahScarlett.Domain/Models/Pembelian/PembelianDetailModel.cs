@@ -46,7 +46,7 @@ namespace RumahScarlett.Domain.Models.Pembelian
       [DisplayName("Nama Barang")]
       public string barang_nama { get { return Barang != null ? Barang.nama : string.Empty; } }
 
-      [Range(1, uint.MaxValue, ErrorMessage = "Qty harus diisi !!!")]
+      [Range(1, int.MaxValue, ErrorMessage = "Qty harus diisi !!!")]
       [DisplayName("Qty")]
       public int qty { get; set; }
       

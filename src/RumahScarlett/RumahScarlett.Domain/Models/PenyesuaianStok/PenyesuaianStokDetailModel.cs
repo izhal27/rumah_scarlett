@@ -47,7 +47,7 @@ namespace RumahScarlett.Domain.Models.PenyesuaianStok
       [DisplayName("Nama Barang")]
       public string barang_nama { get { return Barang != null ? Barang.nama : string.Empty; } }
 
-      [Range(1, uint.MaxValue, ErrorMessage = "Qty harus diisi !!!")]
+      [Range(1, int.MaxValue, ErrorMessage = "Qty harus diisi !!!")]
       [DisplayName("Qty")]
       public int qty { get; set; }
 
@@ -55,7 +55,7 @@ namespace RumahScarlett.Domain.Models.PenyesuaianStok
       [DisplayName("HPP")]
       public decimal hpp
       {
-         get { return Barang.id != default(uint) ? Barang.hpp : default(uint); }
+         get { return Barang.id != default(uint) ? Barang.hpp : default(decimal); }
       }
 
       [Required(ErrorMessage = "Keterangan harus diisi !!!")]
