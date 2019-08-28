@@ -1,13 +1,15 @@
-﻿using RumahScarlett.Presentation.Presenters;
+﻿using RumahScarlett.Infrastructure.DataAccess.Repositories.Tipe;
+using RumahScarlett.Presentation.Presenters;
+using RumahScarlett.Presentation.Presenters.Tipe;
 using RumahScarlett.Presentation.Views;
+using RumahScarlett.Presentation.Views.Tipe;
 using RumahScarlett.Services.Services;
+using RumahScarlett.Services.Services.Tipe;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Unity;
-using Unity.Lifetime;
 
 namespace RumahScarlett.Presentation
 {
@@ -19,19 +21,9 @@ namespace RumahScarlett.Presentation
       [STAThread]
       static void Main()
       {
-         var ioc = new UnityContainer();
-
-         ioc.RegisterType<IMainPresenter, MainPresenter>(new ContainerControlledLifetimeManager());
-         ioc.RegisterType<IMainView, MainView>(new ContainerControlledLifetimeManager());
-         //ioc.RegisterType<IModelDataAnnotationCheck, ModelDataAnnotationCheck>(new ContainerControlledLifetimeManager());
-
          Application.EnableVisualStyles();
          Application.SetCompatibleTextRenderingDefault(false);
-
-         IMainPresenter mainPresenter = ioc.Resolve<MainPresenter>();
-         IMainView mainView = mainPresenter.GetView;
-
-         Application.Run((MainView)mainView);
+         Application.Run(new MainView());
       }
    }
 }

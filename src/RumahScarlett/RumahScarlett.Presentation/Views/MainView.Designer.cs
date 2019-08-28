@@ -37,7 +37,9 @@
          this.operasiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
          this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
          this.masterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+         this.dataTipeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
          this.tipeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+         this.subTipeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
          this.supplierToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
          this.barangToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
          this.transaksiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -120,29 +122,46 @@
          // masterToolStripMenuItem
          // 
          this.masterToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tipeToolStripMenuItem,
+            this.dataTipeToolStripMenuItem,
             this.supplierToolStripMenuItem,
             this.barangToolStripMenuItem});
          this.masterToolStripMenuItem.Name = "masterToolStripMenuItem";
          this.masterToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
          this.masterToolStripMenuItem.Text = "&Master";
          // 
+         // dataTipeToolStripMenuItem
+         // 
+         this.dataTipeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tipeToolStripMenuItem,
+            this.subTipeToolStripMenuItem});
+         this.dataTipeToolStripMenuItem.Name = "dataTipeToolStripMenuItem";
+         this.dataTipeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+         this.dataTipeToolStripMenuItem.Text = "&Tipe";
+         // 
          // tipeToolStripMenuItem
          // 
          this.tipeToolStripMenuItem.Name = "tipeToolStripMenuItem";
-         this.tipeToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+         this.tipeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
          this.tipeToolStripMenuItem.Text = "&Tipe";
+         this.tipeToolStripMenuItem.Click += new System.EventHandler(this.tipeToolStripMenuItem_Click);
+         // 
+         // subTipeToolStripMenuItem
+         // 
+         this.subTipeToolStripMenuItem.Name = "subTipeToolStripMenuItem";
+         this.subTipeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+         this.subTipeToolStripMenuItem.Text = "&Sub Tipe";
+         this.subTipeToolStripMenuItem.Click += new System.EventHandler(this.subTipeToolStripMenuItem_Click);
          // 
          // supplierToolStripMenuItem
          // 
          this.supplierToolStripMenuItem.Name = "supplierToolStripMenuItem";
-         this.supplierToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+         this.supplierToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
          this.supplierToolStripMenuItem.Text = "&Supplier";
          // 
          // barangToolStripMenuItem
          // 
          this.barangToolStripMenuItem.Name = "barangToolStripMenuItem";
-         this.barangToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+         this.barangToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
          this.barangToolStripMenuItem.Text = "&Barang";
          // 
          // transaksiToolStripMenuItem
@@ -375,7 +394,7 @@
       private System.Windows.Forms.ToolStripMenuItem operasiToolStripMenuItem;
       private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
       private System.Windows.Forms.ToolStripMenuItem masterToolStripMenuItem;
-      private System.Windows.Forms.ToolStripMenuItem tipeToolStripMenuItem;
+      private System.Windows.Forms.ToolStripMenuItem dataTipeToolStripMenuItem;
       private System.Windows.Forms.ToolStripMenuItem supplierToolStripMenuItem;
       private System.Windows.Forms.ToolStripMenuItem barangToolStripMenuItem;
       private System.Windows.Forms.ToolStripMenuItem transaksiToolStripMenuItem;
@@ -404,6 +423,8 @@
       private System.Windows.Forms.ToolStripButton supplierToolStripButton;
       private System.Windows.Forms.ToolStripButton barangToolStripButton;
       private System.Windows.Forms.ToolStripButton penjualanToolStripButton;
+      private System.Windows.Forms.ToolStripMenuItem tipeToolStripMenuItem;
+      private System.Windows.Forms.ToolStripMenuItem subTipeToolStripMenuItem;
    }
 }
 

@@ -52,18 +52,24 @@
       <HintPath>..\packages\SSH.NET.2016.1.0\lib\net40\Renci.SshNet.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Syncfusion.Core.WinForms, Version=16.1460.0.24, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.Data.WinForms, Version=16.1460.0.24, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.GridCommon.WinForms, Version=16.1460.0.24, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.SfDataGrid.WinForms, Version=16.1460.0.24, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.SfInput.WinForms, Version=16.1460.0.24, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
     <Reference Include="System.Drawing.Design" />
     <Reference Include="System.Management" />
     <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.2\lib\netstandard1.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Transactions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -74,22 +80,44 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="Unity.Abstractions, Version=5.11.1.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
-      <HintPath>..\packages\Unity.5.11.1\lib\net46\Unity.Abstractions.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Unity.Container, Version=5.11.1.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
-      <HintPath>..\packages\Unity.5.11.1\lib\net46\Unity.Container.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="WeifenLuo.WinFormsUI.Docking, Version=3.0.6.0, Culture=neutral, PublicKeyToken=5cded1a1a0a7b481, processorArchitecture=MSIL">
       <HintPath>..\packages\DockPanelSuite.3.0.6\lib\net40\WeifenLuo.WinFormsUI.Docking.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Helper\WaitCursorHandler.cs" />
     <Compile Include="Presenters\IMainPresenter.cs" />
     <Compile Include="Presenters\MainPresenter.cs" />
+    <Compile Include="Presenters\Tipe\ITipePresenter.cs" />
+    <Compile Include="Presenters\Tipe\TipePresenter.cs" />
+    <Compile Include="Views\CommonControls\BaseDataView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\CommonControls\BaseDataView.Designer.cs">
+      <DependentUpon>BaseDataView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CommonControls\ButtonsCRUD.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\CommonControls\ButtonsCRUD.Designer.cs">
+      <DependentUpon>ButtonsCRUD.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CommonControls\ListDataGrid.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Views\CommonControls\PanelDown.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\CommonControls\PanelDown.Designer.cs">
+      <DependentUpon>PanelDown.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CommonControls\PanelUp.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\CommonControls\PanelUp.Designer.cs">
+      <DependentUpon>PanelUp.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\IMainView.cs" />
     <Compile Include="MainProgram.cs" />
     <Compile Include="Presenters\IBasePresenter.cs" />
@@ -101,6 +129,20 @@
     <Compile Include="Views\MainView.Designer.cs">
       <DependentUpon>MainView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Tipe\ISubTipeView.cs" />
+    <Compile Include="Views\Tipe\ITipeView.cs" />
+    <Compile Include="Views\Tipe\SubTipeView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Tipe\SubTipeView.Designer.cs">
+      <DependentUpon>SubTipeView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Tipe\TipeView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Tipe\TipeView.Designer.cs">
+      <DependentUpon>TipeView.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -111,8 +153,26 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Views\CommonControls\BaseDataView.resx">
+      <DependentUpon>BaseDataView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CommonControls\ButtonsCRUD.resx">
+      <DependentUpon>ButtonsCRUD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CommonControls\PanelDown.resx">
+      <DependentUpon>PanelDown.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CommonControls\PanelUp.resx">
+      <DependentUpon>PanelUp.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\MainView.resx">
       <DependentUpon>MainView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Tipe\SubTipeView.resx">
+      <DependentUpon>SubTipeView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Tipe\TipeView.resx">
+      <DependentUpon>TipeView.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -130,12 +190,19 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Presenters\UserControls\" />
-    <Folder Include="Views\UserControls\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RumahScarlett.CommonComponents\RumahScarlett.CommonComponents.csproj">
       <Project>{8e581912-aa3b-4c65-afb2-aadfe298417b}</Project>
       <Name>RumahScarlett.CommonComponents</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RumahScarlett.Domain\RumahScarlett.Domain.csproj">
+      <Project>{3567E92F-7919-4ECE-A99D-AA577D7C1495}</Project>
+      <Name>RumahScarlett.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RumahScarlett.Infrastructure\RumahScarlett.Infrastructure.csproj">
+      <Project>{BEBD8253-6419-4331-BF18-6BCC42F2FFD3}</Project>
+      <Name>RumahScarlett.Infrastructure</Name>
     </ProjectReference>
     <ProjectReference Include="..\RumahScarlett.Services\RumahScarlett.Services.csproj">
       <Project>{7AC68722-6031-4BDA-B7D3-37B21C05422C}</Project>

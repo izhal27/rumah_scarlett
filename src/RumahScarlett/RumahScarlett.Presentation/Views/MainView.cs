@@ -1,4 +1,6 @@
-﻿using System;
+﻿using RumahScarlett.Presentation.Helper;
+using RumahScarlett.Presentation.Presenters.Tipe;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -30,7 +32,46 @@ namespace RumahScarlett.Presentation.Views
          _dockPanel.ShowDocumentIcon = false;
          //_dockPanel.Theme = new VS2015LightTheme();
          _dockPanel.DockBackColor = Color.Transparent;
+      }
+      
+      private void tipeToolStripMenuItem_Click(object sender, EventArgs e)
+      {
+         var tipeView = (DockContent)new TipePresenter().GetView;
+         ShowChildForm(tipeView);
+      }
+      
+      private void subTipeToolStripMenuItem_Click(object sender, EventArgs e)
+      {
+         var subTipeView = (DockContent)new TipePresenter().GetView;
+         ShowChildForm(subTipeView);
+      }
 
+      /// <summary>
+      /// Method untuk menampilkan Form child
+      /// </summary>
+      /// <param name="form">Form child</param>
+      private void ShowChildForm(DockContent form)
+      {
+         using (new WaitCursorHandler())
+         {
+            // List form yang active
+            var formList = MdiChildren;
+
+            // Cek jika form belum ada di list, maka buka form baru,
+            // sebaliknya aktifkan form jika sudah ada.
+            if (!formList.Any(frm => frm.Name == form.Name))
+            {
+               form.Owner = this;
+               form.Show(_dockPanel, DockState.Document);
+            }
+            else
+            {
+               var activeForm = formList.Where(frm => frm.Name == form.Name)
+                                .FirstOrDefault();
+               activeForm.Activate();
+            }
+
+         }
       }
    }
 }
