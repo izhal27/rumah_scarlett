@@ -1,7 +1,4 @@
-﻿using RumahScarlett.CommonComponents;
-using RumahScarlett.Domain.Models.Tipe;
-using RumahScarlett.Presentation.Helper;
-using RumahScarlett.Presentation.Views.CommonControls;
+﻿using RumahScarlett.Presentation.Views.CommonControls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,17 +8,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using RumahScarlett.CommonComponents;
+using RumahScarlett.Domain.Models.Supplier;
+using RumahScarlett.Presentation.Helper;
 
-namespace RumahScarlett.Presentation.Views.Tipe
+namespace RumahScarlett.Presentation.Views.Supplier
 {
-   public partial class TipeEntryView : BaseEntryView, ITipeEntryView
+   public partial class SupplierEntryView : BaseEntryView, IEntryView
    {
       private bool _isNewData;
-      private ITipeModel _model;
+      private ISupplierModel _model;
       public event EventHandler<ModelEventArgs> OnSaveData;
-      private static string _typeName = "Tipe";
+      private static string _typeName = "Supplier";
 
-      public TipeEntryView(bool isNewData = true, ITipeModel model = null)
+      public SupplierEntryView(bool isNewData = true, ISupplierModel model = null)
       {
          InitializeComponent();
          _isNewData = isNewData;
@@ -31,7 +31,12 @@ namespace RumahScarlett.Presentation.Views.Tipe
          {
             _model = model;
             textBoxNama.Text = model.nama;
-            textBoxKeterangan.Text = model.keterangan;
+            textBoxAlamat.Text = model.alamat;
+            textBoxTelpon.Text = model.telpon;
+            textBoxFax.Text = model.fax;
+            textBoxEmail.Text =  model.email;
+            textBoxWebsite.Text = model.website;
+            textBoxContactPerson.Text = model.contact_person;
          }
 
          operationButtons.OnSaveButtonClick += OperationButtons_OnSaveButtonClick;
@@ -40,10 +45,15 @@ namespace RumahScarlett.Presentation.Views.Tipe
 
       private void OperationButtons_OnSaveButtonClick(object sender, EventArgs e)
       {
-         var model = new TipeModel
+         var model = new SupplierModel
          {
             nama = textBoxNama.Text,
-            keterangan = textBoxKeterangan.Text
+            alamat = textBoxAlamat.Text,
+            telpon = textBoxTelpon.Text,
+            fax = textBoxFax.Text,
+            email =  !string.IsNullOrWhiteSpace(textBoxEmail.Text) ? textBoxEmail.Text : null,
+            website = !string.IsNullOrWhiteSpace(textBoxWebsite.Text) ? textBoxWebsite.Text : null,
+            contact_person = textBoxContactPerson.Text
          };
 
          if (_isNewData && Messages.ConfirmSave(_typeName))

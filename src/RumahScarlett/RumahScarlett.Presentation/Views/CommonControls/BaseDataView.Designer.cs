@@ -28,6 +28,7 @@
       /// </summary>
       private void InitializeComponent()
       {
+         System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BaseDataView));
          this.panelUp = new RumahScarlett.Presentation.Views.CommonControls.PanelUp();
          this.SuspendLayout();
          // 
@@ -48,6 +49,7 @@
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
          this.ClientSize = new System.Drawing.Size(784, 462);
          this.Controls.Add(this.panelUp);
+         this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
          this.Name = "BaseDataView";
          this.Text = "BaseDataView";
          this.Load += new System.EventHandler(this.BaseDataView_Load);

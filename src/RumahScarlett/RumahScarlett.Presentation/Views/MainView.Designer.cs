@@ -135,34 +135,36 @@
             this.tipeToolStripMenuItem,
             this.subTipeToolStripMenuItem});
          this.dataTipeToolStripMenuItem.Name = "dataTipeToolStripMenuItem";
-         this.dataTipeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+         this.dataTipeToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
          this.dataTipeToolStripMenuItem.Text = "&Tipe";
          // 
          // tipeToolStripMenuItem
          // 
          this.tipeToolStripMenuItem.Name = "tipeToolStripMenuItem";
-         this.tipeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+         this.tipeToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
          this.tipeToolStripMenuItem.Text = "&Tipe";
          this.tipeToolStripMenuItem.Click += new System.EventHandler(this.tipeToolStripMenuItem_Click);
          // 
          // subTipeToolStripMenuItem
          // 
          this.subTipeToolStripMenuItem.Name = "subTipeToolStripMenuItem";
-         this.subTipeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+         this.subTipeToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
          this.subTipeToolStripMenuItem.Text = "&Sub Tipe";
          this.subTipeToolStripMenuItem.Click += new System.EventHandler(this.subTipeToolStripMenuItem_Click);
          // 
          // supplierToolStripMenuItem
          // 
          this.supplierToolStripMenuItem.Name = "supplierToolStripMenuItem";
-         this.supplierToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+         this.supplierToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
          this.supplierToolStripMenuItem.Text = "&Supplier";
+         this.supplierToolStripMenuItem.Click += new System.EventHandler(this.supplierToolStripMenuItem_Click);
          // 
          // barangToolStripMenuItem
          // 
          this.barangToolStripMenuItem.Name = "barangToolStripMenuItem";
-         this.barangToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+         this.barangToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
          this.barangToolStripMenuItem.Text = "&Barang";
+         this.barangToolStripMenuItem.Click += new System.EventHandler(this.barangToolStripMenuItem_Click);
          // 
          // transaksiToolStripMenuItem
          // 
@@ -338,6 +340,7 @@
          this.supplierToolStripButton.Padding = new System.Windows.Forms.Padding(5);
          this.supplierToolStripButton.Size = new System.Drawing.Size(46, 46);
          this.supplierToolStripButton.Text = "Supplier";
+         this.supplierToolStripButton.Click += new System.EventHandler(this.supplierToolStripButton_Click);
          // 
          // barangToolStripButton
          // 

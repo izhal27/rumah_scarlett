@@ -1,13 +1,9 @@
-﻿using RumahScarlett.Infrastructure.DataAccess.Repositories.Tipe;
-using RumahScarlett.Presentation.Presenters;
-using RumahScarlett.Presentation.Presenters.Tipe;
+﻿using ExceptionReporting;
 using RumahScarlett.Presentation.Views;
-using RumahScarlett.Presentation.Views.Tipe;
-using RumahScarlett.Services.Services;
-using RumahScarlett.Services.Services.Tipe;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -21,9 +17,34 @@ namespace RumahScarlett.Presentation
       [STAThread]
       static void Main()
       {
+         // Mengubah Exception dihandle oleh ExceptionReporter
+         Application.ThreadException += delegate (object sender, ThreadExceptionEventArgs e)
+         {
+            ReportCrash(e.Exception);
+         };
+
          Application.EnableVisualStyles();
          Application.SetCompatibleTextRenderingDefault(false);
          Application.Run(new MainView());
+      }
+
+      /// <summary>
+      /// Method yang mengubah exception default menjadi ExceptionReporter
+      /// </summary>
+      /// <param name="exception">Exception object</param>
+      public static void ReportCrash(Exception exception)
+      {
+         var reporter = new ExceptionReporter();
+
+         reporter.Config.ShowLessDetailButton = true;
+
+         var productName = Application.ProductName;
+         productName = productName.Substring(0, productName.LastIndexOf('.')) + " ";
+         var productVersion = Application.ProductVersion;
+         // Title form ExceptionReporter
+         reporter.Config.TitleText = productName + productVersion + " Exception Report";
+
+         reporter.Show(exception);
       }
    }
 }

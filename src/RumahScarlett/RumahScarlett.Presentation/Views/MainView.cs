@@ -1,4 +1,5 @@
 ﻿using RumahScarlett.Presentation.Helper;
+using RumahScarlett.Presentation.Presenters.Supplier;
 using RumahScarlett.Presentation.Presenters.Tipe;
 using System;
 using System.Collections.Generic;
@@ -46,6 +47,22 @@ namespace RumahScarlett.Presentation.Views
          ShowChildForm(view);
       }
 
+      private void supplierToolStripMenuItem_Click(object sender, EventArgs e)
+      {
+         var view = (DockContent)new SupplierPresenter().GetView;
+         ShowChildForm(view);
+      }
+      
+      private void supplierToolStripButton_Click(object sender, EventArgs e)
+      {
+         supplierToolStripMenuItem_Click(sender, e);
+      }
+
+      private void barangToolStripMenuItem_Click(object sender, EventArgs e)
+      {
+
+      }
+
       /// <summary>
       /// Method untuk menampilkan Form child
       /// </summary>
@@ -70,7 +87,6 @@ namespace RumahScarlett.Presentation.Views
                                 .FirstOrDefault();
                activeForm.Activate();
             }
-
          }
       }
    }

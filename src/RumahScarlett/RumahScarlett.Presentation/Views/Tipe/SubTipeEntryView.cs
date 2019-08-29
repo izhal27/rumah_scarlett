@@ -39,7 +39,7 @@ namespace RumahScarlett.Presentation.Views.Tipe
          {
             _model = model;
             comboBoxTipe.SelectedValue = model.tipe_id;
-            textBoxNama.Text = model.nama.Trim();
+            textBoxNama.Text = model.nama;
             textBoxKeterangan.Text = model.keterangan;
          }
 

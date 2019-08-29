@@ -1,39 +1,37 @@
 ﻿using Equin.ApplicationFramework;
 using RumahScarlett.CommonComponents;
-using RumahScarlett.Domain.Models.Tipe;
-using RumahScarlett.Infrastructure.DataAccess.Repositories.Tipe;
+using RumahScarlett.Domain.Models.Supplier;
+using RumahScarlett.Infrastructure.DataAccess.Repositories.Supplier;
 using RumahScarlett.Presentation.Helper;
-using RumahScarlett.Presentation.Views.Tipe;
+using RumahScarlett.Presentation.Views.Supplier;
 using RumahScarlett.Services.Services;
-using RumahScarlett.Services.Services.Tipe;
+using RumahScarlett.Services.Services.Supplier;
 using Syncfusion.WinForms.DataGrid.Events;
 using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RumahScarlett.Presentation.Presenters.Tipe
+namespace RumahScarlett.Presentation.Presenters.Supplier
 {
-   public class TipePresenter : ITipePresenter
+   public class SupplierPresenter : ISupplierPresenter
    {
-      private ITipeView _view;
-      private ITipeServices _services;
-      private List<ITipeModel> _listObj;
-      private BindingListView<TipeModel> _bindingView;
-      private static string _typeName = "Tipe";
+      private ISupplierView _view;
+      private ISupplierServices _services;
+      private List<ISupplierModel> _listObj;
+      private BindingListView<SupplierModel> _bindingView;
+      private static string _typeName = "Supplier";
 
-      public ITipeView GetView
+      public ISupplierView GetView
       {
          get { return _view; }
       }
 
-      public TipePresenter()
+      public SupplierPresenter()
       {
-         _view = new TipeView();
-         _services = new TipeServices(new TipeRepository(), new ModelDataAnnotationCheck());
+         _view = new SupplierView();
+         _services = new SupplierServices(new SupplierRepository(), new ModelDataAnnotationCheck());
 
          _view.OnLoadData += _view_LoadDataEvent;
          _view.OnCreateData += _view_OnCreateDataEvent;
@@ -47,13 +45,13 @@ namespace RumahScarlett.Presentation.Presenters.Tipe
       private void _view_LoadDataEvent(object sender, EventArgs e)
       {
          _listObj = _services.GetAll().ToList();
-         _bindingView = new BindingListView<TipeModel>(_listObj);
+         _bindingView = new BindingListView<SupplierModel>(_listObj);
          _view.ListDataGrid.DataSource = _bindingView;
       }
 
       private void _view_OnCreateDataEvent(object sender, EventArgs e)
       {
-         var view = new TipeEntryView();
+         var view = new Views.Supplier.SupplierEntryView();
          view.OnSaveData += TipeEntryView_OnSaveData;
          view.ShowDialog();
       }
@@ -62,17 +60,18 @@ namespace RumahScarlett.Presentation.Presenters.Tipe
       {
          if (_view.ListDataGrid.SelectedItem != null)
          {
-            var view = new TipeEntryView(false, (TipeModel)_view.ListDataGrid.SelectedItem);
+            var view = new SupplierEntryView(false, (SupplierModel)_view.ListDataGrid.SelectedItem);
             view.OnSaveData += TipeEntryView_OnSaveData;
             view.ShowDialog();
          }
       }
+
       private void TipeEntryView_OnSaveData(object sender, ModelEventArgs e)
       {
          try
          {
-            var model = (TipeModel)e.Model;
-            var view = ((TipeEntryView)sender);
+            var model = (SupplierModel)e.Model;
+            var view = ((SupplierEntryView)sender);
 
             if (model.id == default(uint))
             {
@@ -103,7 +102,7 @@ namespace RumahScarlett.Presentation.Presenters.Tipe
       {
          if (_view.ListDataGrid.SelectedItem != null && Messages.ConfirmDelete(_typeName))
          {
-            var model = (TipeModel)_view.ListDataGrid.SelectedItem;
+            var model = (SupplierModel)_view.ListDataGrid.SelectedItem;
 
             try
             {

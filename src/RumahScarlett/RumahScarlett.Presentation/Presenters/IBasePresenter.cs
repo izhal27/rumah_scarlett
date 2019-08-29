@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace RumahScarlett.Presentation.Presenters
 {
-   public interface IBasePresenter<View> where View : IView
+   public interface IBasePresenter<TView> where TView : IView
    {
-      View GetView { get; }
+      TView GetView { get; }
    }
 }

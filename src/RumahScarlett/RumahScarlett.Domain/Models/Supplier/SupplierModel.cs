@@ -13,44 +13,44 @@ namespace RumahScarlett.Domain.Models.Supplier
    public class SupplierModel : ISupplierModel
    {
       [Browsable(false)]
-      [DisplayName("ID")]
+      [Display(Name = "ID")]
       public uint id { get; set; }
 
       [Required(AllowEmptyStrings = false, ErrorMessage = "Nama supplier harus diisi !!!")]
       [StringLength(100, MinimumLength = 3, ErrorMessage = "Nama supplier harus diantara 3 sampai 100 karakter !!!")]
-      [DisplayName("Nama")]
+      [Display(Name = "Nama")]
       public string nama { get; set; }
-      
+
       [DefaultValue("")]
       [StringLength(200, ErrorMessage = "Panjang maksimal Alamat 200 karakter !!!")]
-      [DisplayName("Alamat")]
+      [Display(Name = "Alamat")]
       public string alamat { get; set; }
 
       [DefaultValue("")]
       [StringLength(30, ErrorMessage = "Panjang maksimal Telpon 30 karakter !!!")]
-      [DisplayName("Telpon")]
+      [Display(Name = "Telpon")]
       public string telpon { get; set; }
 
       [DefaultValue("")]
       [StringLength(30, ErrorMessage = "Panjang maksimal Fax 30 karakter !!!")]
-      [DisplayName("Fax")]
+      [Display(Name = "Fax")]
       public string fax { get; set; }
 
       [DefaultValue("")]
       [EmailAddress(ErrorMessage = "Format email tidak valid")]
       [StringLength(150, ErrorMessage = "Panjang maksimal Email 150 karakter !!!")]
-      [DisplayName("Email")]
+      [Display(Name = "Email")]
       public string email { get; set; }
 
       [DefaultValue("")]
       [Url(ErrorMessage = "Format URL Website tidak valid")]
       [StringLength(100, ErrorMessage = "Panjang maksimal Website 100 karakter !!!")]
-      [DisplayName("Website")]
+      [Display(Name = "Website")]
       public string website { get; set; }
-      
+
       [DefaultValue("")]
       [StringLength(100, ErrorMessage = "Panjang maksimal Contact Person 100 karakter !!!")]
-      [DisplayName("Contact Person")]
+      [Display(Name = "Contact Person")]
       public string contact_person { get; set; }
    }
 }

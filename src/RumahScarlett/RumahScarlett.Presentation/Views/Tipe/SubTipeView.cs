@@ -35,7 +35,7 @@ namespace RumahScarlett.Presentation.Views.Tipe
       {
          InitializeComponent();
 
-         panelUp.LabelInfo = "SUB TIPE";
+         panelUp.LabelInfo = "DATA SUB TIPE";
          buttonsCRUD.ButtonCetakVisible = false;
 
          buttonsCRUD.OnTambahClick += ButtonsCRUD_OnTambahClickEvent;

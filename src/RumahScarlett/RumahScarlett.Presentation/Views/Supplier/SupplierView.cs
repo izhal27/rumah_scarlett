@@ -10,9 +10,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace RumahScarlett.Presentation.Views.Tipe
+namespace RumahScarlett.Presentation.Views.Supplier
 {
-   public partial class TipeView : BaseDataView, ITipeView
+   public partial class SupplierView : BaseDataView, ISupplierView
    {
       public event EventHandler OnLoadData;
       public event EventHandler OnCreateData;
@@ -26,46 +26,46 @@ namespace RumahScarlett.Presentation.Views.Tipe
          get { return listDataGrid; }
       }
 
-      public TipeView()
+      public SupplierView()
       {
          InitializeComponent();
 
-         panelUp.LabelInfo = "DATA TIPE";
-         buttonsCRUD.ButtonCetakVisible = false;
+         panelUp.LabelInfo = "DATA SUPPLIER";
+         crudcButtons.ButtonCetakVisible = false;
 
-         buttonsCRUD.OnTambahClick += ButtonsCRUD_OnTambahClick;
-         buttonsCRUD.OnUbahClick += ButtonsCRUD_OnUbahClick;
-         buttonsCRUD.OnHapusClick += ButtonsCRUD_OnHapusClick;
-         buttonsCRUD.OnRefreshClick += ButtonsCRUD_OnRefreshClickEvent;
-         buttonsCRUD.OnTutupClick += ButtonsCRUD_OnTutupClickEvent;
+         crudcButtons.OnTambahClick += crudcButtons_OnTambahClick;
+         crudcButtons.OnUbahClick += crudcButtons_OnUbahClick;
+         crudcButtons.OnHapusClick += crudcButtons_OnHapusClick;
+         crudcButtons.OnRefreshClick += crudcButtons_OnRefreshClickEvent;
+         crudcButtons.OnTutupClick += crudcButtons_OnTutupClickEvent;
       }
 
-      private void TipeView_Load(object sender, EventArgs e)
+      private void SupplierView_Load(object sender, EventArgs e)
       {
          EventHelper.RaiseEvent(this, OnLoadData, e);
       }
 
-      private void ButtonsCRUD_OnTambahClick(object sender, EventArgs e)
+      private void crudcButtons_OnTambahClick(object sender, EventArgs e)
       {
          EventHelper.RaiseEvent(this, OnCreateData, null);
       }
 
-      private void ButtonsCRUD_OnUbahClick(object sender, EventArgs e)
+      private void crudcButtons_OnUbahClick(object sender, EventArgs e)
       {
          EventHelper.RaiseEvent(this, OnUpdateData, null);
       }
 
-      private void ButtonsCRUD_OnHapusClick(object sender, EventArgs e)
+      private void crudcButtons_OnHapusClick(object sender, EventArgs e)
       {
          EventHelper.RaiseEvent(this, OnDeleteData, null);
       }
 
-      private void ButtonsCRUD_OnRefreshClickEvent(object sender, EventArgs e)
+      private void crudcButtons_OnRefreshClickEvent(object sender, EventArgs e)
       {
          EventHelper.RaiseEvent(this, OnRefreshData, e);
       }
 
-      private void ButtonsCRUD_OnTutupClickEvent(object sender, EventArgs e)
+      private void crudcButtons_OnTutupClickEvent(object sender, EventArgs e)
       {
          Close();
       }
