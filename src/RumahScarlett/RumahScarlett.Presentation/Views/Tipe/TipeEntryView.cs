@@ -27,47 +27,17 @@ namespace RumahScarlett.Presentation.Views.Tipe
          _isNewData = isNewData;
          panelUp.LabelInfo = isNewData ? "TAMBAH TIPE" : "UBAH TIPE";
 
-         if (_isNewData)
-         {
-            navigationEntryButtons.Visible = false;
-            Height -= navigationEntryButtons.Height;
-         }
-         else
+         if (!_isNewData)
          {
             _model = model;
             textBoxNama.Text = model.nama.Trim();
             textBoxKeterangan.Text = model.keterangan;
          }
-
-         navigationEntryButtons.OnFirstClick += NavigationEntryButtons_OnFirstClick;
-         navigationEntryButtons.OnReverseClick += NavigationEntryButtons_OnReverseClick;
-         navigationEntryButtons.OnNextClick += NavigationEntryButtons_OnNextClick;
-         navigationEntryButtons.OnLastClick += NavigationEntryButtons_OnLastClick;
-
+         
          operationButtons.OnSaveButtonClick += OperationButtons_OnSaveButtonClick;
          operationButtons.OnCloseButtonClick += OperationButtons_OnCloseButtonClick;
       }
-
-      private void NavigationEntryButtons_OnFirstClick(object sender, EventArgs e)
-      {
-         throw new NotImplementedException();
-      }
-
-      private void NavigationEntryButtons_OnReverseClick(object sender, EventArgs e)
-      {
-         throw new NotImplementedException();
-      }
-
-      private void NavigationEntryButtons_OnNextClick(object sender, EventArgs e)
-      {
-         throw new NotImplementedException();
-      }
-
-      private void NavigationEntryButtons_OnLastClick(object sender, EventArgs e)
-      {
-         throw new NotImplementedException();
-      }
-
+      
       private void OperationButtons_OnSaveButtonClick(object sender, EventArgs e)
       {
          var model = new TipeModel
