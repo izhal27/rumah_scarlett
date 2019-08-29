@@ -57,6 +57,7 @@
     <Reference Include="Syncfusion.GridCommon.WinForms, Version=16.1460.0.24, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
     <Reference Include="Syncfusion.SfDataGrid.WinForms, Version=16.1460.0.24, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
     <Reference Include="Syncfusion.SfInput.WinForms, Version=16.1460.0.24, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.Shared.Base, Version=16.1460.0.24, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
@@ -70,6 +71,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
     <Reference Include="System.Transactions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -86,6 +88,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Helper\Extensions.cs" />
+    <Compile Include="Helper\Messages.cs" />
     <Compile Include="Helper\WaitCursorHandler.cs" />
     <Compile Include="Presenters\IMainPresenter.cs" />
     <Compile Include="Presenters\MainPresenter.cs" />
@@ -105,6 +109,12 @@
     <Compile Include="Views\CommonControls\BaseEntryView.Designer.cs">
       <DependentUpon>BaseEntryView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\CommonControls\BaseTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Views\CommonControls\BaseTextBoxDigit.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Views\CommonControls\CRUDCButtons.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -113,6 +123,12 @@
     </Compile>
     <Compile Include="Views\CommonControls\ListDataGrid.cs">
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Views\CommonControls\NavigationEntryButtons.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\CommonControls\NavigationEntryButtons.Designer.cs">
+      <DependentUpon>NavigationEntryButtons.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\CommonControls\OperationButtons.cs">
       <SubType>UserControl</SubType>
@@ -144,13 +160,21 @@
     <Compile Include="Views\MainView.Designer.cs">
       <DependentUpon>MainView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\IEntryView.cs" />
     <Compile Include="Views\Tipe\ISubTipeView.cs" />
+    <Compile Include="Views\Tipe\ITipeEntryView.cs" />
     <Compile Include="Views\Tipe\ITipeView.cs" />
     <Compile Include="Views\Tipe\SubTipeView.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\Tipe\SubTipeView.Designer.cs">
       <DependentUpon>SubTipeView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Tipe\TipeEntryView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Tipe\TipeEntryView.Designer.cs">
+      <DependentUpon>TipeEntryView.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Tipe\TipeView.cs">
       <SubType>Form</SubType>
@@ -177,6 +201,9 @@
     <EmbeddedResource Include="Views\CommonControls\CRUDCButtons.resx">
       <DependentUpon>CRUDCButtons.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\CommonControls\NavigationEntryButtons.resx">
+      <DependentUpon>NavigationEntryButtons.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\CommonControls\OperationButtons.resx">
       <DependentUpon>OperationButtons.cs</DependentUpon>
     </EmbeddedResource>
@@ -191,6 +218,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Tipe\SubTipeView.resx">
       <DependentUpon>SubTipeView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Tipe\TipeEntryView.resx">
+      <DependentUpon>TipeEntryView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Tipe\TipeView.resx">
       <DependentUpon>TipeView.cs</DependentUpon>

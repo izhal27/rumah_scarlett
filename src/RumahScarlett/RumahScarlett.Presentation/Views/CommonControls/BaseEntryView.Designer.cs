@@ -28,24 +28,32 @@
       /// </summary>
       private void InitializeComponent()
       {
-         this.panelUp1 = new RumahScarlett.Presentation.Views.CommonControls.PanelUp();
+         System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BaseEntryView));
+         this.panelUp = new RumahScarlett.Presentation.Views.CommonControls.PanelUp();
          this.SuspendLayout();
          // 
          // panelUp1
          // 
-         this.panelUp1.LabelInfo = "Info";
-         this.panelUp1.Location = new System.Drawing.Point(12, 12);
-         this.panelUp1.Name = "panelUp1";
-         this.panelUp1.Size = new System.Drawing.Size(460, 40);
-         this.panelUp1.TabIndex = 2;
+         this.panelUp.LabelInfo = "Info";
+         this.panelUp.Location = new System.Drawing.Point(12, 12);
+         this.panelUp.Name = "panelUp1";
+         this.panelUp.Size = new System.Drawing.Size(460, 40);
+         this.panelUp.TabIndex = 2;
+         this.panelUp.TabStop = false;
          // 
          // BaseEntryView
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
          this.ClientSize = new System.Drawing.Size(484, 362);
-         this.Controls.Add(this.panelUp1);
+         this.Controls.Add(this.panelUp);
+         this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+         this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+         this.MaximizeBox = false;
+         this.MinimizeBox = false;
          this.Name = "BaseEntryView";
+         this.ShowInTaskbar = false;
+         this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
          this.Text = "BaseEntryView";
          this.Load += new System.EventHandler(this.BaseEntryView_Load);
          this.ResumeLayout(false);
@@ -53,6 +61,7 @@
       }
 
       #endregion
-      private PanelUp panelUp1;
+
+      protected PanelUp panelUp;
    }
 }

@@ -1,15 +1,15 @@
-﻿using System;
+﻿using Equin.ApplicationFramework;
+using RumahScarlett.Domain.Models.Tipe;
+using RumahScarlett.Infrastructure.DataAccess.Repositories.Tipe;
+using RumahScarlett.Presentation.Helper;
+using RumahScarlett.Presentation.Views.Tipe;
+using RumahScarlett.Services.Services;
+using RumahScarlett.Services.Services.Tipe;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using RumahScarlett.Presentation.Views.Tipe;
-using RumahScarlett.Services.Services.Tipe;
-using RumahScarlett.Domain.Models.Tipe;
-using Equin.ApplicationFramework;
-using RumahScarlett.Infrastructure.DataAccess.Repositories.Tipe;
-using RumahScarlett.Services.Services;
-using RumahScarlett.Presentation.Helper;
 using System.Windows.Forms;
 
 namespace RumahScarlett.Presentation.Presenters.Tipe
@@ -35,11 +35,11 @@ namespace RumahScarlett.Presentation.Presenters.Tipe
          _listTipes = _services.GetAll().ToList();
          _listSubTipes = _services.GetAllSubTipe().ToList();
 
-         _view.OnLoadDataEvent += _view_LoadDataEvent;
-         _view.OnCreateDataEvent += _view_OnCreateDataEvent;
-         _view.OnUpdateDataEvent += _view_OnUpdateDataEvent;
-         _view.OnDeleteDataEvent += _view_OnDeleteDataEvent;
-         _view.OnRefreshDataEvent += _view_OnRefreshDataEvent;
+         _view.OnLoadData += _view_LoadDataEvent;
+         _view.OnCreateData += _view_OnCreateDataEvent;
+         _view.OnUpdateData += _view_OnUpdateDataEvent;
+         _view.OnDeleteData += _view_OnDeleteDataEvent;
+         _view.OnRefreshData += _view_OnRefreshDataEvent;
 
          _view.TreeViewTipe.AfterSelect += TreeViewTipe_AfterSelect;
          _view.ListDataGrid.CellDoubleClick += ListDataGrid_CellDoubleClick;
@@ -48,7 +48,7 @@ namespace RumahScarlett.Presentation.Presenters.Tipe
       private void _view_LoadDataEvent(object sender, EventArgs e)
       {
          SetTipeNodes(_listTipes);
-
+         
          _bindingView = new BindingListView<SubTipeModel>(_listSubTipes);
          _view.ListDataGrid.DataSource = _bindingView;
       }
@@ -86,7 +86,8 @@ namespace RumahScarlett.Presentation.Presenters.Tipe
          {
             if (e.Node.Name.ToLower() != "root")
             {
-               _bindingView.DataSource = _listTipes.Where(t => t.id == uint.Parse(e.Node.Name)).FirstOrDefault().SubTipes.ToList();
+               _bindingView.DataSource = _listTipes.Where(t => t.id == uint.Parse(e.Node.Name))
+                                         .FirstOrDefault().SubTipes.ToList();
             }
             else
             {

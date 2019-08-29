@@ -40,12 +40,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AccessTypeEventArgs.cs" />
     <Compile Include="DataAccessException.cs" />
     <Compile Include="DataAccessStatus.cs" />
     <Compile Include="EventHelper.cs" />
     <Compile Include="Extensions.cs" />
-    <Compile Include="IAccessTypeEventArgs.cs" />
+    <Compile Include="ModelEventArgs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StringHelper.cs" />
   </ItemGroup>

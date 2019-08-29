@@ -72,6 +72,7 @@
          this.btnCancel.Tag = "ignore";
          this.btnCancel.Text = "&Batal";
          this.btnCancel.UseVisualStyleBackColor = true;
+         this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
          // 
          // OperationButtons
          // 

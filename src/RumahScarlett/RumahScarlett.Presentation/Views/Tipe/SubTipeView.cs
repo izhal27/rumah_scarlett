@@ -14,12 +14,12 @@ namespace RumahScarlett.Presentation.Views.Tipe
 {
    public partial class SubTipeView : BaseDataView, ISubTipeView
    {
-      public event EventHandler OnLoadDataEvent;
-      public event EventHandler OnCreateDataEvent;
-      public event EventHandler OnUpdateDataEvent;
-      public event EventHandler OnDeleteDataEvent;
-      public event EventHandler OnRefreshDataEvent;
-      public event EventHandler OnPrintDataEvent;
+      public event EventHandler OnLoadData;
+      public event EventHandler OnCreateData;
+      public event EventHandler OnUpdateData;
+      public event EventHandler OnDeleteData;
+      public event EventHandler OnRefreshData;
+      public event EventHandler OnPrintData;
 
       public ListDataGrid ListDataGrid
       {
@@ -47,27 +47,27 @@ namespace RumahScarlett.Presentation.Views.Tipe
 
       private void SubTipeView_Load(object sender, EventArgs e)
       {
-         EventHelper.RaiseEvent(this, OnLoadDataEvent, e);
+         EventHelper.RaiseEvent(this, OnLoadData, e);
       }
 
       private void ButtonsCRUD_OnTambahClickEvent(object sender, EventArgs e)
       {
-         EventHelper.RaiseEvent(this, OnCreateDataEvent, e);
+         EventHelper.RaiseEvent(this, OnCreateData, e);
       }
 
       private void ButtonsCRUD_OnUbahClickEvent(object sender, EventArgs e)
       {
-         EventHelper.RaiseEvent(this, OnUpdateDataEvent, e);
+         EventHelper.RaiseEvent(this, OnUpdateData, e);
       }
 
       private void ButtonsCRUD_OnHapusClickEvent(object sender, EventArgs e)
       {
-         EventHelper.RaiseEvent(this, OnDeleteDataEvent, e);
+         EventHelper.RaiseEvent(this, OnDeleteData, e);
       }
 
       private void ButtonsCRUD_OnRefreshClickEvent(object sender, EventArgs e)
       {
-         EventHelper.RaiseEvent(this, OnRefreshDataEvent, e);
+         EventHelper.RaiseEvent(this, OnRefreshData, e);
       }
 
       private void ButtonsCRUD_OnTutupClickEvent(object sender, EventArgs e)

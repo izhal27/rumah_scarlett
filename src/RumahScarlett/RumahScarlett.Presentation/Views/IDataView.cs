@@ -1,4 +1,5 @@
-﻿using RumahScarlett.Presentation.Views.CommonControls;
+﻿using RumahScarlett.CommonComponents;
+using RumahScarlett.Presentation.Views.CommonControls;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,12 +10,12 @@ namespace RumahScarlett.Presentation.Views
 {
    public interface IDataView : IView
    {
-      event EventHandler OnLoadDataEvent;
-      event EventHandler OnCreateDataEvent;
-      event EventHandler OnUpdateDataEvent;
-      event EventHandler OnDeleteDataEvent;
-      event EventHandler OnRefreshDataEvent;
-      event EventHandler OnPrintDataEvent;
+      event EventHandler OnLoadData;
+      event EventHandler OnCreateData;
+      event EventHandler OnUpdateData;
+      event EventHandler OnDeleteData;
+      event EventHandler OnRefreshData;
+      event EventHandler OnPrintData;
       ListDataGrid ListDataGrid { get; }
    }
 }

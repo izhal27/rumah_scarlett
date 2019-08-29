@@ -9,8 +9,8 @@ namespace RumahScarlett.CommonComponents
    public class EventHelper
    {
       public static void RaiseEvent(object sender,
-                                    EventHandler<AccessTypeEventArgs> eventHandlerRaised,
-                                    AccessTypeEventArgs accessTypeEventArgs)
+                                    EventHandler<ModelEventArgs> eventHandlerRaised,
+                                    ModelEventArgs accessTypeEventArgs)
       {
          eventHandlerRaised?.Invoke(sender, accessTypeEventArgs);
       }

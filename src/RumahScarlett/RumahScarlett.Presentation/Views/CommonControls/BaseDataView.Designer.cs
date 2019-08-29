@@ -40,6 +40,7 @@
          this.panelUp.Name = "panelUp";
          this.panelUp.Size = new System.Drawing.Size(760, 40);
          this.panelUp.TabIndex = 0;
+         this.panelUp.TabStop = false;
          // 
          // BaseDataView
          // 
