@@ -1,4 +1,5 @@
-﻿using RumahScarlett.Presentation.Views.CommonControls;
+﻿using RumahScarlett.CommonComponents;
+using RumahScarlett.Presentation.Views.CommonControls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,18 +14,65 @@ namespace RumahScarlett.Presentation.Views.Tipe
 {
    public partial class SubTipeView : BaseDataView, ISubTipeView
    {
+      public event EventHandler OnLoadDataEvent;
+      public event EventHandler OnCreateDataEvent;
+      public event EventHandler OnUpdateDataEvent;
+      public event EventHandler OnDeleteDataEvent;
+      public event EventHandler OnRefreshDataEvent;
+      public event EventHandler OnPrintDataEvent;
+
       public ListDataGrid ListDataGrid
       {
-         get
-         {
-            return listDataGrid;
-         }
+         get { return listDataGrid; }
+      }
+
+      public TreeView TreeViewTipe
+      {
+         get { return treeViewTipe; }
       }
 
       public SubTipeView()
       {
          InitializeComponent();
+
          panelUp.LabelInfo = "SUB TIPE";
+         buttonsCRUD.ButtonCetakVisible = false;
+
+         buttonsCRUD.OnTambahClickEvent += ButtonsCRUD_OnTambahClickEvent;
+         buttonsCRUD.OnUbahClickEvent += ButtonsCRUD_OnUbahClickEvent;
+         buttonsCRUD.OnHapusClickEvent += ButtonsCRUD_OnHapusClickEvent;
+         buttonsCRUD.OnRefreshClickEvent += ButtonsCRUD_OnRefreshClickEvent;
+         buttonsCRUD.OnTutupClickEvent += ButtonsCRUD_OnTutupClickEvent;
+      }
+
+      private void SubTipeView_Load(object sender, EventArgs e)
+      {
+         EventHelper.RaiseEvent(this, OnLoadDataEvent, e);
+      }
+
+      private void ButtonsCRUD_OnTambahClickEvent(object sender, EventArgs e)
+      {
+         EventHelper.RaiseEvent(this, OnCreateDataEvent, e);
+      }
+
+      private void ButtonsCRUD_OnUbahClickEvent(object sender, EventArgs e)
+      {
+         EventHelper.RaiseEvent(this, OnUpdateDataEvent, e);
+      }
+
+      private void ButtonsCRUD_OnHapusClickEvent(object sender, EventArgs e)
+      {
+         EventHelper.RaiseEvent(this, OnDeleteDataEvent, e);
+      }
+
+      private void ButtonsCRUD_OnRefreshClickEvent(object sender, EventArgs e)
+      {
+         EventHelper.RaiseEvent(this, OnRefreshDataEvent, e);
+      }
+
+      private void ButtonsCRUD_OnTutupClickEvent(object sender, EventArgs e)
+      {
+         Close();
       }
    }
 }

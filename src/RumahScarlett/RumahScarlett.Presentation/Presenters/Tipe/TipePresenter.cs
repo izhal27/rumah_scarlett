@@ -11,6 +11,7 @@ using Syncfusion.WinForms.DataGrid.Events;
 using System.Data;
 using RumahScarlett.Infrastructure.DataAccess.Repositories.Tipe;
 using RumahScarlett.Services.Services;
+using RumahScarlett.Presentation.Helper;
 
 namespace RumahScarlett.Presentation.Presenters.Tipe
 {
@@ -18,7 +19,8 @@ namespace RumahScarlett.Presentation.Presenters.Tipe
    {
       private ITipeView _view;
       private ITipeServices _services;
-      private BindingListView<TipeModel> _bindingViewTipe;
+      private List<ITipeModel> _listObj;
+      private BindingListView<TipeModel> _bindingView;
 
       public ITipeView GetView
       {
@@ -29,14 +31,47 @@ namespace RumahScarlett.Presentation.Presenters.Tipe
       {
          _services = new TipeServices(new TipeRepository(), new ModelDataAnnotationCheck());
          _view = new TipeView();
-         _view.LoadDataEvent += _view_LoadDataEvent;
+
+         _view.OnLoadDataEvent += _view_LoadDataEvent;
+
+         _view.OnRefreshDataEvent += _view_OnRefreshDataEvent;
+
+         _view.ListDataGrid.CellDoubleClick += ListDataGrid_CellDoubleClick;
       }
 
       private void _view_LoadDataEvent(object sender, EventArgs e)
       {
-         var listTipeModels = _services.GetAll().ToList();
-         _bindingViewTipe = new BindingListView<TipeModel>(listTipeModels);
-         _view.ListDataGrid.DataSource = _bindingViewTipe;
+         _listObj = _services.GetAll().ToList();
+         _bindingView = new BindingListView<TipeModel>(_listObj);
+         _view.ListDataGrid.DataSource = _bindingView;
+      }
+
+      private void _view_OnCreateDataEvent(object sender, EventArgs e)
+      {
+         throw new NotImplementedException();
+      }
+
+      private void _view_OnUpdateDataEvent(object sender, EventArgs e)
+      {
+         throw new NotImplementedException();
+      }
+
+      private void _view_OnDeleteDataEvent(object sender, EventArgs e)
+      {
+         throw new NotImplementedException();
+      }
+
+      private void _view_OnRefreshDataEvent(object sender, EventArgs e)
+      {
+         using (new WaitCursorHandler())
+         {
+            _bindingView.DataSource = _services.GetAll().ToList();
+         }
+      }
+
+      private void ListDataGrid_CellDoubleClick(object sender, CellClickEventArgs e)
+      {
+         _view_OnUpdateDataEvent(null, null);
       }
    }
 }

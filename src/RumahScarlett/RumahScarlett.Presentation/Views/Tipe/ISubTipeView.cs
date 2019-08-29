@@ -1,14 +1,14 @@
-﻿using RumahScarlett.Presentation.Views.CommonControls;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace RumahScarlett.Presentation.Views.Tipe
 {
-   public interface ISubTipeView : IView
+   public interface ISubTipeView : IDataView
    {
-      ListDataGrid ListDataGrid { get; }
+      TreeView TreeViewTipe { get; }
    }
 }

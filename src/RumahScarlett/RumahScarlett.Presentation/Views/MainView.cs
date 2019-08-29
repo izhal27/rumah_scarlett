@@ -36,14 +36,14 @@ namespace RumahScarlett.Presentation.Views
       
       private void tipeToolStripMenuItem_Click(object sender, EventArgs e)
       {
-         var tipeView = (DockContent)new TipePresenter().GetView;
-         ShowChildForm(tipeView);
+         var view = (DockContent)new TipePresenter().GetView;
+         ShowChildForm(view);
       }
       
       private void subTipeToolStripMenuItem_Click(object sender, EventArgs e)
       {
-         var subTipeView = (DockContent)new TipePresenter().GetView;
-         ShowChildForm(subTipeView);
+         var view = (DockContent)new SubTipePresenter().GetView;
+         ShowChildForm(view);
       }
 
       /// <summary>

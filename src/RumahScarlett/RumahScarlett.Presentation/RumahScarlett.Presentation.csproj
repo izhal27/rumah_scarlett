@@ -89,7 +89,9 @@
     <Compile Include="Helper\WaitCursorHandler.cs" />
     <Compile Include="Presenters\IMainPresenter.cs" />
     <Compile Include="Presenters\MainPresenter.cs" />
+    <Compile Include="Presenters\Tipe\ISubTipePresenter.cs" />
     <Compile Include="Presenters\Tipe\ITipePresenter.cs" />
+    <Compile Include="Presenters\Tipe\SubTipePresenter.cs" />
     <Compile Include="Presenters\Tipe\TipePresenter.cs" />
     <Compile Include="Views\CommonControls\BaseDataView.cs">
       <SubType>Form</SubType>
@@ -118,6 +120,7 @@
     <Compile Include="Views\CommonControls\PanelUp.Designer.cs">
       <DependentUpon>PanelUp.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\IDataView.cs" />
     <Compile Include="Views\IMainView.cs" />
     <Compile Include="MainProgram.cs" />
     <Compile Include="Presenters\IBasePresenter.cs" />
