@@ -155,9 +155,16 @@
       <DependentUpon>MainView.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\IEntryView.cs" />
+    <Compile Include="Views\Tipe\ISubTipeEntryView.cs" />
     <Compile Include="Views\Tipe\ISubTipeView.cs" />
     <Compile Include="Views\Tipe\ITipeEntryView.cs" />
     <Compile Include="Views\Tipe\ITipeView.cs" />
+    <Compile Include="Views\Tipe\SubTipeEntryView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Tipe\SubTipeEntryView.Designer.cs">
+      <DependentUpon>SubTipeEntryView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Tipe\SubTipeView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -206,6 +213,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\MainView.resx">
       <DependentUpon>MainView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Tipe\SubTipeEntryView.resx">
+      <DependentUpon>SubTipeEntryView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Tipe\SubTipeView.resx">
       <DependentUpon>SubTipeView.cs</DependentUpon>

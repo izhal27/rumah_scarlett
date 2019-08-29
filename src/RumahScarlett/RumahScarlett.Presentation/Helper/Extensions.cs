@@ -13,7 +13,7 @@ namespace RumahScarlett.Presentation.Helper
       private static Dictionary<Type, Action<Control>> controlDefaults = new Dictionary<Type, Action<Control>>() {
             {typeof(BaseTextBox), c => ((BaseTextBox)c).Clear()},
             {typeof(BaseTextBoxDigit), c => ((BaseTextBoxDigit)c).Text = "0"},
-            {typeof(ComboBox), c => ((ComboBox)c).SelectedIndex = -1},
+            //{typeof(ComboBox), c => ((ComboBox)c).SelectedIndex = -1},
             {typeof(CheckBox), c => ((CheckBox)c).Checked = false},
             {typeof(ListBox), c => ((ListBox)c).Items.Clear()},
             {typeof(RadioButton), c => ((RadioButton)c).Checked = false}
@@ -51,5 +51,22 @@ namespace RumahScarlett.Presentation.Helper
          }
       }
 
+      /// <summary>
+      /// Method yang digunakan untuk mengatur data source ComboBox dari object List KeyValuePair,
+      /// dengan menggunakan class BindingSource
+      /// </summary>
+      /// <param name="comboBox">ComboBox target</param>
+      /// <param name="kvDataSource">KeyValuePair data source</param>
+      /// <param name="clearSelected">True jika ingin mengatur selected index ComboBox -1 </param>
+      public static void SetDataSource(this ComboBox comboBox,
+         List<KeyValuePair<object, string>> kvDataSource, bool clearSelected = true)
+      {
+         var kvpDataSource = kvDataSource;
+         // Atur data source ComboBox menggunakan class BindingSource
+         comboBox.DataSource = new BindingSource(kvpDataSource, null);
+         comboBox.ValueMember = "Key"; // Value member / id item
+         comboBox.DisplayMember = "Value"; // Display member / text item yang ditampilkan di ComboBox
+         if (clearSelected) comboBox.SelectedIndex = -1; // Jangan tampilkan item
+      }
    }
 }

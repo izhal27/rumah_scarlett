@@ -58,6 +58,15 @@ namespace RumahScarlett.Presentation.Presenters.Tipe
          view.ShowDialog();
       }
 
+      private void _view_OnUpdateDataEvent(object sender, EventArgs e)
+      {
+         if (_view.ListDataGrid.SelectedItem != null)
+         {
+            var view = new TipeEntryView(false, (TipeModel)_view.ListDataGrid.SelectedItem);
+            view.OnSaveData += TipeEntryView_OnSaveData;
+            view.ShowDialog();
+         }
+      }
       private void TipeEntryView_OnSaveData(object sender, ModelEventArgs e)
       {
          try
@@ -87,16 +96,6 @@ namespace RumahScarlett.Presentation.Presenters.Tipe
          catch (DataAccessException ex)
          {
             Messages.Error(ex);
-         }
-      }
-
-      private void _view_OnUpdateDataEvent(object sender, EventArgs e)
-      {
-         if (_view.ListDataGrid.SelectedItem != null)
-         {
-            var view = new TipeEntryView(false, (TipeModel)_view.ListDataGrid.SelectedItem);
-            view.OnSaveData += TipeEntryView_OnSaveData;
-            view.ShowDialog();
          }
       }
 

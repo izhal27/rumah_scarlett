@@ -1,4 +1,5 @@
 ﻿using Equin.ApplicationFramework;
+using RumahScarlett.CommonComponents;
 using RumahScarlett.Domain.Models.Tipe;
 using RumahScarlett.Infrastructure.DataAccess.Repositories.Tipe;
 using RumahScarlett.Presentation.Helper;
@@ -21,6 +22,7 @@ namespace RumahScarlett.Presentation.Presenters.Tipe
       private List<ITipeModel> _listTipes;
       private List<ISubTipeModel> _listSubTipes;
       private BindingListView<SubTipeModel> _bindingView;
+      private static string _typeName = "Sub Tipe";
 
       public ISubTipeView GetView
       {
@@ -48,24 +50,84 @@ namespace RumahScarlett.Presentation.Presenters.Tipe
       private void _view_LoadDataEvent(object sender, EventArgs e)
       {
          SetTipeNodes(_listTipes);
-         
+
          _bindingView = new BindingListView<SubTipeModel>(_listSubTipes);
          _view.ListDataGrid.DataSource = _bindingView;
       }
 
       private void _view_OnCreateDataEvent(object sender, EventArgs e)
       {
-         throw new NotImplementedException();
+         var view = new SubTipeEntryView(_listTipes);
+         view.OnSaveData += SubTipeEntryView_OnSaveData;
+         view.ShowDialog();
       }
 
       private void _view_OnUpdateDataEvent(object sender, EventArgs e)
       {
-         throw new NotImplementedException();
+         if (_view.ListDataGrid.SelectedItem != null)
+         {
+            var view = new SubTipeEntryView(_listTipes, false, (SubTipeModel)_view.ListDataGrid.SelectedItem);
+            view.OnSaveData += SubTipeEntryView_OnSaveData;
+            view.ShowDialog();
+         }
+      }
+
+      private void SubTipeEntryView_OnSaveData(object sender, CommonComponents.ModelEventArgs e)
+      {
+         try
+         {
+            var model = (SubTipeModel)e.Model;
+            var view = ((SubTipeEntryView)sender);
+
+            if (model.id == default(uint))
+            {
+               _services.Insert(model);
+               view.Controls.ClearControls();
+               Messages.InfoSave(_typeName);
+            }
+            else
+            {
+               _services.Update(model);
+               Messages.InfoUpdate(_typeName);
+               view.Close();
+            }
+
+            _view_OnRefreshDataEvent(null, null);
+         }
+         catch (ArgumentException ex)
+         {
+            Messages.Error(ex);
+         }
+         catch (DataAccessException ex)
+         {
+            Messages.Error(ex);
+         }
       }
 
       private void _view_OnDeleteDataEvent(object sender, EventArgs e)
       {
-         throw new NotImplementedException();
+         if (_view.ListDataGrid.SelectedItem != null && Messages.ConfirmDelete(_typeName))
+         {
+            var model = (SubTipeModel)_view.ListDataGrid.SelectedItem;
+
+            try
+            {
+               _services.Delete(model);
+               Messages.InfoDelete(_typeName);
+               _view_OnRefreshDataEvent(null, null);
+            }
+            catch (DataAccessException ex)
+            {
+               Messages.Error(ex);
+            }
+            finally
+            {
+               if (_view.ListDataGrid.SelectedItem != null)
+               {
+                  _view.ListDataGrid.SelectedItem = null;
+               }
+            }
+         }
       }
 
       private void _view_OnRefreshDataEvent(object sender, EventArgs e)

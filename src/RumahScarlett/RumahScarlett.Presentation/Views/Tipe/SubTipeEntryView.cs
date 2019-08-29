@@ -14,22 +14,31 @@ using System.Windows.Forms;
 
 namespace RumahScarlett.Presentation.Views.Tipe
 {
-   public partial class TipeEntryView : BaseEntryView, ITipeEntryView
+   public partial class SubTipeEntryView : BaseEntryView, ISubTipeEntryView
    {
+      private List<ITipeModel> _listTipes;
       private bool _isNewData;
-      private ITipeModel _model;
+      private ISubTipeModel _model;
       public event EventHandler<ModelEventArgs> OnSaveData;
-      private static string _typeName = "Tipe";
+      private static string _typeName = "Sub Tipe";
 
-      public TipeEntryView(bool isNewData = true, ITipeModel model = null)
+      public SubTipeEntryView(List<ITipeModel> listTipes, bool isNewData = true, ISubTipeModel model = null)
       {
          InitializeComponent();
+         _listTipes = listTipes;
          _isNewData = isNewData;
-         panelUp.LabelInfo = isNewData ? "TAMBAH TIPE" : "UBAH TIPE";
+         panelUp.LabelInfo = isNewData ? "TAMBAH SUB TIPE" : "UBAH SUB TIPE";
+
+         if (listTipes != null)
+         {
+            var tipeKVP = listTipes.Select(t => new KeyValuePair<object, string>(t.id, t.nama)).ToList();
+            comboBoxTipe.SetDataSource(tipeKVP, false);
+         }
 
          if (!_isNewData)
          {
             _model = model;
+            comboBoxTipe.SelectedValue = model.tipe_id;
             textBoxNama.Text = model.nama.Trim();
             textBoxKeterangan.Text = model.keterangan;
          }
@@ -40,8 +49,9 @@ namespace RumahScarlett.Presentation.Views.Tipe
 
       private void OperationButtons_OnSaveButtonClick(object sender, EventArgs e)
       {
-         var model = new TipeModel
+         var model = new SubTipeModel
          {
+            tipe_id = (uint)comboBoxTipe.SelectedValue,
             nama = textBoxNama.Text,
             keterangan = textBoxKeterangan.Text
          };

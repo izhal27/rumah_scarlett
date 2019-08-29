@@ -35,6 +35,8 @@
          // 
          // panelUp
          // 
+         this.panelUp.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
          this.panelUp.LabelInfo = "Info";
          this.panelUp.Location = new System.Drawing.Point(12, 12);
          this.panelUp.Name = "panelUp";
@@ -59,6 +61,7 @@
          this.Controls.Add(this.panelUp);
          this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
          this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+         this.KeyPreview = true;
          this.MaximizeBox = false;
          this.MinimizeBox = false;
          this.Name = "BaseEntryView";
@@ -66,6 +69,7 @@
          this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
          this.Text = "BaseEntryView";
          this.Load += new System.EventHandler(this.BaseEntryView_Load);
+         this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.BaseEntryView_KeyDown);
          this.ResumeLayout(false);
 
       }

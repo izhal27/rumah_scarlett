@@ -55,7 +55,7 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Tipe
       {
          var dataAccessStatus = new DataAccessStatus();
 
-         Delete(model, () => _context.Conn.Delete((TipeModel)model), dataAccessStatus,
+         Delete(model, () => _context.Conn.Delete((SubTipeModel)model), dataAccessStatus,
              () => CheckUpdateDelete(_context, model));
       }
       
