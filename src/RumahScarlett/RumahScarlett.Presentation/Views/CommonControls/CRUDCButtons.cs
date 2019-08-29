@@ -11,50 +11,50 @@ using RumahScarlett.CommonComponents;
 
 namespace RumahScarlett.Presentation.Views.CommonControls
 {
-   public partial class ButtonsCRUD : UserControl
+   public partial class CRUDCButtons : UserControl
    {
-      public event EventHandler OnTambahClickEvent;
-      public event EventHandler OnUbahClickEvent;
-      public event EventHandler OnHapusClickEvent;
-      public event EventHandler OnRefreshClickEvent;
-      public event EventHandler OnCetakClickEvent;
-      public event EventHandler OnTutupClickEvent;
+      public event EventHandler OnTambahClick;
+      public event EventHandler OnUbahClick;
+      public event EventHandler OnHapusClick;
+      public event EventHandler OnRefreshClick;
+      public event EventHandler OnCetakClick;
+      public event EventHandler OnTutupClick;
 
       public bool ButtonCetakVisible { set { btnCetak.Visible = value; } }
 
-      public ButtonsCRUD()
+      public CRUDCButtons()
       {
          InitializeComponent();
       }
 
       private void btnTambah_Click(object sender, EventArgs e)
       {
-         EventHelper.RaiseEvent(this, OnTambahClickEvent, e);
+         EventHelper.RaiseEvent(this, OnTambahClick, e);
       }
 
       private void btnUbah_Click(object sender, EventArgs e)
       {
-         EventHelper.RaiseEvent(this, OnUbahClickEvent, e);
+         EventHelper.RaiseEvent(this, OnUbahClick, e);
       }
 
       private void btnHapus_Click(object sender, EventArgs e)
       {
-         EventHelper.RaiseEvent(this, OnHapusClickEvent, e);
+         EventHelper.RaiseEvent(this, OnHapusClick, e);
       }
 
       private void btnRefresh_Click(object sender, EventArgs e)
       {
-         EventHelper.RaiseEvent(this, OnRefreshClickEvent, e);
+         EventHelper.RaiseEvent(this, OnRefreshClick, e);
       }
 
       private void btnCetak_Click(object sender, EventArgs e)
       {
-         EventHelper.RaiseEvent(this, OnCetakClickEvent, e);
+         EventHelper.RaiseEvent(this, OnCetakClick, e);
       }
 
       private void btnTutup_Click(object sender, EventArgs e)
       {
-         EventHelper.RaiseEvent(this, OnTutupClickEvent, e);
+         EventHelper.RaiseEvent(this, OnTutupClick, e);
       }
    }
 }

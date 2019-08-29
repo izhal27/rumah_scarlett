@@ -1,6 +1,6 @@
 ﻿namespace RumahScarlett.Presentation.Views.CommonControls
 {
-   partial class ButtonsCRUD
+   partial class CRUDCButtons
    {
       /// <summary> 
       /// Required designer variable.

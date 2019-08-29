@@ -38,11 +38,11 @@ namespace RumahScarlett.Presentation.Views.Tipe
          panelUp.LabelInfo = "SUB TIPE";
          buttonsCRUD.ButtonCetakVisible = false;
 
-         buttonsCRUD.OnTambahClickEvent += ButtonsCRUD_OnTambahClickEvent;
-         buttonsCRUD.OnUbahClickEvent += ButtonsCRUD_OnUbahClickEvent;
-         buttonsCRUD.OnHapusClickEvent += ButtonsCRUD_OnHapusClickEvent;
-         buttonsCRUD.OnRefreshClickEvent += ButtonsCRUD_OnRefreshClickEvent;
-         buttonsCRUD.OnTutupClickEvent += ButtonsCRUD_OnTutupClickEvent;
+         buttonsCRUD.OnTambahClick += ButtonsCRUD_OnTambahClickEvent;
+         buttonsCRUD.OnUbahClick += ButtonsCRUD_OnUbahClickEvent;
+         buttonsCRUD.OnHapusClick += ButtonsCRUD_OnHapusClickEvent;
+         buttonsCRUD.OnRefreshClick += ButtonsCRUD_OnRefreshClickEvent;
+         buttonsCRUD.OnTutupClick += ButtonsCRUD_OnTutupClickEvent;
       }
 
       private void SubTipeView_Load(object sender, EventArgs e)

@@ -29,7 +29,7 @@
       private void InitializeComponent()
       {
          this.listDataGrid = new RumahScarlett.Presentation.Views.CommonControls.ListDataGrid();
-         this.buttonsCRUD = new RumahScarlett.Presentation.Views.CommonControls.ButtonsCRUD();
+         this.buttonsCRUD = new RumahScarlett.Presentation.Views.CommonControls.CRUDCButtons();
          ((System.ComponentModel.ISupportInitialize)(this.listDataGrid)).BeginInit();
          this.SuspendLayout();
          // 
@@ -78,6 +78,6 @@
       #endregion
 
       private CommonControls.ListDataGrid listDataGrid;
-      private CommonControls.ButtonsCRUD buttonsCRUD;
+      private CommonControls.CRUDCButtons buttonsCRUD;
    }
 }

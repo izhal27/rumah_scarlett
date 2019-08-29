@@ -30,7 +30,7 @@
       {
          this.listDataGrid = new RumahScarlett.Presentation.Views.CommonControls.ListDataGrid();
          this.treeViewTipe = new System.Windows.Forms.TreeView();
-         this.buttonsCRUD = new RumahScarlett.Presentation.Views.CommonControls.ButtonsCRUD();
+         this.buttonsCRUD = new RumahScarlett.Presentation.Views.CommonControls.CRUDCButtons();
          ((System.ComponentModel.ISupportInitialize)(this.listDataGrid)).BeginInit();
          this.SuspendLayout();
          // 
@@ -91,6 +91,6 @@
 
       private CommonControls.ListDataGrid listDataGrid;
       private System.Windows.Forms.TreeView treeViewTipe;
-      private CommonControls.ButtonsCRUD buttonsCRUD;
+      private CommonControls.CRUDCButtons buttonsCRUD;
    }
 }

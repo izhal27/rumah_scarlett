@@ -99,14 +99,26 @@
     <Compile Include="Views\CommonControls\BaseDataView.Designer.cs">
       <DependentUpon>BaseDataView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\CommonControls\ButtonsCRUD.cs">
+    <Compile Include="Views\CommonControls\BaseEntryView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\CommonControls\BaseEntryView.Designer.cs">
+      <DependentUpon>BaseEntryView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CommonControls\CRUDCButtons.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Views\CommonControls\ButtonsCRUD.Designer.cs">
-      <DependentUpon>ButtonsCRUD.cs</DependentUpon>
+    <Compile Include="Views\CommonControls\CRUDCButtons.Designer.cs">
+      <DependentUpon>CRUDCButtons.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\CommonControls\ListDataGrid.cs">
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Views\CommonControls\OperationButtons.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\CommonControls\OperationButtons.Designer.cs">
+      <DependentUpon>OperationButtons.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\CommonControls\PanelDown.cs">
       <SubType>UserControl</SubType>
@@ -159,8 +171,14 @@
     <EmbeddedResource Include="Views\CommonControls\BaseDataView.resx">
       <DependentUpon>BaseDataView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\CommonControls\ButtonsCRUD.resx">
-      <DependentUpon>ButtonsCRUD.cs</DependentUpon>
+    <EmbeddedResource Include="Views\CommonControls\BaseEntryView.resx">
+      <DependentUpon>BaseEntryView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CommonControls\CRUDCButtons.resx">
+      <DependentUpon>CRUDCButtons.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CommonControls\OperationButtons.resx">
+      <DependentUpon>OperationButtons.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\CommonControls\PanelDown.resx">
       <DependentUpon>PanelDown.cs</DependentUpon>

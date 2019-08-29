@@ -33,9 +33,9 @@ namespace RumahScarlett.Presentation.Views.Tipe
          panelUp.LabelInfo = "TIPE";
          buttonsCRUD.ButtonCetakVisible = false;
 
-         buttonsCRUD.OnTutupClickEvent += ButtonsCRUD_OnTutupClickEvent;
+         buttonsCRUD.OnTutupClick += ButtonsCRUD_OnTutupClickEvent;
 
-         buttonsCRUD.OnRefreshClickEvent += ButtonsCRUD_OnRefreshClickEvent;
+         buttonsCRUD.OnRefreshClick += ButtonsCRUD_OnRefreshClickEvent;
       }
 
       private void TipeView_Load(object sender, EventArgs e)

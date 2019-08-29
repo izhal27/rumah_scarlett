@@ -50,9 +50,9 @@
          this.lblInfo.ForeColor = System.Drawing.SystemColors.Control;
          this.lblInfo.Location = new System.Drawing.Point(12, 10);
          this.lblInfo.Name = "lblInfo";
-         this.lblInfo.Size = new System.Drawing.Size(44, 20);
+         this.lblInfo.Size = new System.Drawing.Size(37, 20);
          this.lblInfo.TabIndex = 1;
-         this.lblInfo.Text = "Data";
+         this.lblInfo.Text = "Info";
          // 
          // PanelUp
          // 
