@@ -15,6 +15,7 @@ namespace RumahScarlett.Presentation.Views.CommonControls
       public BaseEntryView()
       {
          InitializeComponent();
+         ActiveControl = operationButtons.ButtonCancel;
       }
 
       protected virtual void BaseEntryView_Load(object sender, EventArgs e)

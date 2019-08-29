@@ -60,16 +60,6 @@ namespace RumahScarlett.Presentation.Views.Tipe
       private void OperationButtons_OnCloseButtonClick(object sender, EventArgs e)
       {
          DialogResult = DialogResult.Cancel;
-      }
-
-      public void ShowView()
-      {
-         ShowDialog();
-      }
-
-      public void CloseView()
-      {
-         Close();
-      }
+      }      
    }
 }

@@ -30,22 +30,32 @@
       {
          System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BaseEntryView));
          this.panelUp = new RumahScarlett.Presentation.Views.CommonControls.PanelUp();
+         this.operationButtons = new RumahScarlett.Presentation.Views.CommonControls.OperationButtons();
          this.SuspendLayout();
          // 
-         // panelUp1
+         // panelUp
          // 
          this.panelUp.LabelInfo = "Info";
          this.panelUp.Location = new System.Drawing.Point(12, 12);
-         this.panelUp.Name = "panelUp1";
+         this.panelUp.Name = "panelUp";
          this.panelUp.Size = new System.Drawing.Size(460, 40);
          this.panelUp.TabIndex = 2;
          this.panelUp.TabStop = false;
+         // 
+         // operationButtons
+         // 
+         this.operationButtons.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+         this.operationButtons.Location = new System.Drawing.Point(297, 315);
+         this.operationButtons.Name = "operationButtons";
+         this.operationButtons.Size = new System.Drawing.Size(175, 35);
+         this.operationButtons.TabIndex = 3;
          // 
          // BaseEntryView
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
          this.ClientSize = new System.Drawing.Size(484, 362);
+         this.Controls.Add(this.operationButtons);
          this.Controls.Add(this.panelUp);
          this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
          this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -63,5 +73,6 @@
       #endregion
 
       protected PanelUp panelUp;
+      protected OperationButtons operationButtons;
    }
 }

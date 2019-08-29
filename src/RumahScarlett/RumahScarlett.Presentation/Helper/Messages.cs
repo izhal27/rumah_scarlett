@@ -24,6 +24,17 @@ namespace RumahScarlett.Presentation.Helper
       /// <summary>
       /// Menampilkan pesan error Exception
       /// </summary>
+      /// <param name="ex">Exception object</param>
+      public static void Error(ArgumentException ex)
+      {
+         MessageBox.Show($"Message: {ex.Message}",
+                         "Error", MessageBoxButtons.OK,
+                         MessageBoxIcon.Warning);
+      }
+
+      /// <summary>
+      /// Menampilkan pesan error Exception
+      /// </summary>
       /// <param name="ex">DataAccessException object</param>
       public static void Error(DataAccessException ex)
       {
@@ -138,7 +149,8 @@ namespace RumahScarlett.Presentation.Helper
       /// <returns></returns>
       public static bool ConfirmDelete(string type)
       {
-         return Confirm($"Anda yakin ingin menghapus data {type} terpilih?\n" +
+         return Confirm($"Anda yakin ingin menghapus data {type} terpilih?\n\n" +
+                        $"Proses ini akan menghapus semua data yang berkaitan dengan data {type} yang ingin dihapus.\n\n" +
                         "Anda tidak dapat mengembalikan data tersebut setelah proses " +
                         "penghapusan berhasil.");
       }

@@ -124,12 +124,6 @@
     <Compile Include="Views\CommonControls\ListDataGrid.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Views\CommonControls\NavigationEntryButtons.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Views\CommonControls\NavigationEntryButtons.Designer.cs">
-      <DependentUpon>NavigationEntryButtons.cs</DependentUpon>
-    </Compile>
     <Compile Include="Views\CommonControls\OperationButtons.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -201,9 +195,6 @@
     <EmbeddedResource Include="Views\CommonControls\CRUDCButtons.resx">
       <DependentUpon>CRUDCButtons.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\CommonControls\NavigationEntryButtons.resx">
-      <DependentUpon>NavigationEntryButtons.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Views\CommonControls\OperationButtons.resx">
       <DependentUpon>OperationButtons.cs</DependentUpon>
     </EmbeddedResource>
@@ -239,9 +230,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Presenters\UserControls\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\RumahScarlett.CommonComponents\RumahScarlett.CommonComponents.csproj">
       <Project>{8e581912-aa3b-4c65-afb2-aadfe298417b}</Project>

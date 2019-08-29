@@ -10,7 +10,5 @@ namespace RumahScarlett.Presentation.Views
    public interface IEntryView : IView
    {
       event EventHandler<ModelEventArgs> OnSaveData;
-      void ShowView();
-      void CloseView();
    }
 }

@@ -17,6 +17,16 @@ namespace RumahScarlett.Presentation.Views.CommonControls
       public event EventHandler OnSaveButtonClick;
       public event EventHandler OnCloseButtonClick;
 
+      public Button ButtonSave
+      {
+         get { return btnSave; }
+      }
+
+      public Button ButtonCancel
+      {
+         get { return btnCancel; }
+      }
+
       public OperationButtons()
       {
          InitializeComponent();

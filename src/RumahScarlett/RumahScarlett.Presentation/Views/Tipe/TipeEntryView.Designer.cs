@@ -28,7 +28,6 @@
       /// </summary>
       private void InitializeComponent()
       {
-         this.operationButtons = new RumahScarlett.Presentation.Views.CommonControls.OperationButtons();
          this.groupBoxData = new System.Windows.Forms.GroupBox();
          this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
          this.label1 = new System.Windows.Forms.Label();
@@ -44,18 +43,10 @@
          // 
          // operationButtons
          // 
-         this.operationButtons.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-         this.operationButtons.Location = new System.Drawing.Point(12, 228);
-         this.operationButtons.Name = "operationButtons";
-         this.operationButtons.Size = new System.Drawing.Size(356, 35);
-         this.operationButtons.TabIndex = 3;
-         this.operationButtons.TabStop = false;
+         this.operationButtons.Location = new System.Drawing.Point(192, 230);
          // 
          // groupBoxData
          // 
-         this.groupBoxData.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
          this.groupBoxData.Controls.Add(this.tableLayoutPanel1);
          this.groupBoxData.Location = new System.Drawing.Point(12, 58);
          this.groupBoxData.Name = "groupBoxData";
@@ -142,13 +133,12 @@
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-         this.ClientSize = new System.Drawing.Size(380, 275);
+         this.ClientSize = new System.Drawing.Size(379, 277);
          this.Controls.Add(this.groupBoxData);
-         this.Controls.Add(this.operationButtons);
          this.Name = "TipeEntryView";
          this.Text = "Tipe";
-         this.Controls.SetChildIndex(this.panelUp, 0);
          this.Controls.SetChildIndex(this.operationButtons, 0);
+         this.Controls.SetChildIndex(this.panelUp, 0);
          this.Controls.SetChildIndex(this.groupBoxData, 0);
          this.groupBoxData.ResumeLayout(false);
          this.tableLayoutPanel1.ResumeLayout(false);
@@ -160,8 +150,6 @@
       }
 
       #endregion
-
-      private CommonControls.OperationButtons operationButtons;
       private System.Windows.Forms.GroupBox groupBoxData;
       private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
       private System.Windows.Forms.Label label1;

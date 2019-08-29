@@ -10,6 +10,7 @@ using Syncfusion.WinForms.DataGrid.Events;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -54,7 +55,7 @@ namespace RumahScarlett.Presentation.Presenters.Tipe
       {
          var view = new TipeEntryView();
          view.OnSaveData += TipeEntryView_OnSaveData;
-         view.ShowView();
+         view.ShowDialog();
       }
 
       private void TipeEntryView_OnSaveData(object sender, ModelEventArgs e)
@@ -66,7 +67,6 @@ namespace RumahScarlett.Presentation.Presenters.Tipe
 
             if (model.id == default(uint))
             {
-               _services.ValidateModel(model);
                _services.Insert(model);
                view.Controls.ClearControls();
                Messages.InfoSave(_typeName);
@@ -75,7 +75,7 @@ namespace RumahScarlett.Presentation.Presenters.Tipe
             {
                _services.Update(model);
                Messages.InfoUpdate(_typeName);
-               view.CloseView();
+               view.Close();
             }
 
             _view_OnRefreshDataEvent(null, null);
@@ -96,19 +96,34 @@ namespace RumahScarlett.Presentation.Presenters.Tipe
          {
             var view = new TipeEntryView(false, (TipeModel)_view.ListDataGrid.SelectedItem);
             view.OnSaveData += TipeEntryView_OnSaveData;
-            view.ShowView();
+            view.ShowDialog();
          }
       }
 
       private void _view_OnDeleteDataEvent(object sender, EventArgs e)
       {
-         //finally
-         //{
-         //   if (_view.ListDataGrid.SelectedItem != null)
-         //   {
-         //      _view.ListDataGrid.SelectedItem = null;
-         //   }
-         //}
+         if (_view.ListDataGrid.SelectedItem != null && Messages.ConfirmDelete(_typeName))
+         {
+            var model = (TipeModel)_view.ListDataGrid.SelectedItem;
+
+            try
+            {
+               _services.Delete(model);
+               Messages.InfoDelete(_typeName);
+               _view_OnRefreshDataEvent(null, null);
+            }
+            catch (DataAccessException ex)
+            {
+               Messages.Error(ex);
+            }
+            finally
+            {
+               if (_view.ListDataGrid.SelectedItem != null)
+               {
+                  _view.ListDataGrid.SelectedItem = null;
+               }
+            }
+         }
       }
 
       private void _view_OnRefreshDataEvent(object sender, EventArgs e)
