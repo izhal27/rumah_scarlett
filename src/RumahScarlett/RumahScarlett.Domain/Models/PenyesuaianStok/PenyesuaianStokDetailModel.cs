@@ -39,7 +39,7 @@ namespace RumahScarlett.Domain.Models.PenyesuaianStok
       private uint _barang_id;
 
       [Browsable(false)]
-      [Range(1, uint.MaxValue, ErrorMessage = "Barang ID harus diisi !!!")]
+      [Range(1, uint.MaxValue, ErrorMessage = "Barang harus diisi !!!")]
       [Display(Name = "Barang ID")]
       public uint barang_id
       {

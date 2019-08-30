@@ -6,6 +6,7 @@ namespace RumahScarlett.Domain.Models.Barang
    public interface IBarangModel
    {
       uint id { get; set; }
+      uint tipe_id { get; set; }
       uint sub_tipe_id { get; set; }
       uint supplier_id { get; set; }
       uint satuan_id { get; set; }

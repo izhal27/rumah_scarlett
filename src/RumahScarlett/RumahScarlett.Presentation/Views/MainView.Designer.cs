@@ -352,6 +352,7 @@
          this.barangToolStripButton.Padding = new System.Windows.Forms.Padding(5);
          this.barangToolStripButton.Size = new System.Drawing.Size(46, 46);
          this.barangToolStripButton.Text = "Barang";
+         this.barangToolStripButton.Click += new System.EventHandler(this.barangToolStripButton_Click);
          // 
          // penjualanToolStripButton
          // 

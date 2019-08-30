@@ -1,4 +1,5 @@
 ﻿using RumahScarlett.Presentation.Helper;
+using RumahScarlett.Presentation.Presenters.Barang;
 using RumahScarlett.Presentation.Presenters.Supplier;
 using RumahScarlett.Presentation.Presenters.Tipe;
 using System;
@@ -60,7 +61,14 @@ namespace RumahScarlett.Presentation.Views
 
       private void barangToolStripMenuItem_Click(object sender, EventArgs e)
       {
+         var view = (DockContent)new BarangPresenter().GetView;
+         ShowChildForm(view);
+      }
 
+
+      private void barangToolStripButton_Click(object sender, EventArgs e)
+      {
+         barangToolStripMenuItem_Click(sender, e);
       }
 
       /// <summary>

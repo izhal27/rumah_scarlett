@@ -51,6 +51,7 @@
          this.Controls.Add(this.panelUp);
          this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
          this.Name = "BaseDataView";
+         this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
          this.Text = "BaseDataView";
          this.Load += new System.EventHandler(this.BaseDataView_Load);
          this.ResumeLayout(false);

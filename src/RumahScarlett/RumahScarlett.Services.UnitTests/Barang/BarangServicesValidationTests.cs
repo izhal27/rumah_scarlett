@@ -28,6 +28,7 @@ namespace RumahScarlett.Services.UnitTests.Barang
       {
          _servicesFixture.Model = new BarangModel
          {
+            tipe_id = 1,
             sub_tipe_id = 1,
             supplier_id = 1,
             satuan_id = 1,
@@ -48,6 +49,17 @@ namespace RumahScarlett.Services.UnitTests.Barang
                                                 .Services.ValidateModel(_servicesFixture.Model));
 
          Assert.Null(exception);
+
+         WriteExceptionTestResult(exception);
+      }
+
+      [Fact]
+      public void ShouldThrowExceptionForTipeIdEmpty()
+      {
+         _servicesFixture.Model.tipe_id = default(uint);
+
+         var exception = Record.Exception(() => _servicesFixture
+                                                .Services.ValidateModel(_servicesFixture.Model));
 
          WriteExceptionTestResult(exception);
       }

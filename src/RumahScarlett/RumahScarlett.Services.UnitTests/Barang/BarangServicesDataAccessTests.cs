@@ -41,6 +41,7 @@ namespace RumahScarlett.Services.UnitTests.Barang
             {
                var model = new BarangModel
                {
+                  tipe_id = (uint)(i % 2 == 0 ? 2 : 1),
                   sub_tipe_id = (uint)(i % 2 == 0 ? 2 : 1),
                   supplier_id = (uint)(i % 2 == 0 ? 2 : 1),
                   satuan_id = (uint)(i % 2 == 0 ? 2 : 1),
@@ -86,6 +87,7 @@ namespace RumahScarlett.Services.UnitTests.Barang
             var model = new BarangModel()
             {
                id = 1,
+               tipe_id = 1,
                sub_tipe_id = 1,
                supplier_id = 1,
                kode = "kode_barang_2",
@@ -116,6 +118,7 @@ namespace RumahScarlett.Services.UnitTests.Barang
             var model = new BarangModel()
             {
                id = 1,
+               tipe_id = 1,
                sub_tipe_id = 1,
                supplier_id = 1,
                kode = "kode_barang_1",
@@ -147,6 +150,7 @@ namespace RumahScarlett.Services.UnitTests.Barang
             var model = new BarangModel
             {
                id = 1,
+               tipe_id = 1,
                sub_tipe_id = 1,
                supplier_id = 1,
                kode = "kode_barang_1_Update_",
@@ -185,6 +189,7 @@ namespace RumahScarlett.Services.UnitTests.Barang
             var model = new BarangModel
             {
                id = 1,
+               tipe_id = 1,
                sub_tipe_id = 1,
                supplier_id = 1,
                kode = "kode_barang_2",

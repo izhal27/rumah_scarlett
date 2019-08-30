@@ -44,7 +44,6 @@ namespace RumahScarlett.Presentation.Views.Tipe
          }
 
          operationButtons.OnSaveButtonClick += OperationButtons_OnSaveButtonClick;
-         operationButtons.OnCloseButtonClick += OperationButtons_OnCloseButtonClick;
       }
 
       private void OperationButtons_OnSaveButtonClick(object sender, EventArgs e)

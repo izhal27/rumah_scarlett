@@ -35,30 +35,30 @@ namespace RumahScarlett.Presentation.Presenters.Tipe
          _view = new TipeView();
          _services = new TipeServices(new TipeRepository(), new ModelDataAnnotationCheck());
 
-         _view.OnLoadData += _view_LoadDataEvent;
-         _view.OnCreateData += _view_OnCreateDataEvent;
-         _view.OnUpdateData += _view_OnUpdateDataEvent;
-         _view.OnDeleteData += _view_OnDeleteDataEvent;
-         _view.OnRefreshData += _view_OnRefreshDataEvent;
+         _view.OnLoadData += _view_LoadData;
+         _view.OnCreateData += _view_OnCreateData;
+         _view.OnUpdateData += _view_OnUpdateData;
+         _view.OnDeleteData += _view_OnDeleteData;
+         _view.OnRefreshData += _view_OnRefreshData;
 
          _view.ListDataGrid.CellDoubleClick += ListDataGrid_CellDoubleClick;
       }
 
-      private void _view_LoadDataEvent(object sender, EventArgs e)
+      private void _view_LoadData(object sender, EventArgs e)
       {
          _listObj = _services.GetAll().ToList();
          _bindingView = new BindingListView<TipeModel>(_listObj);
          _view.ListDataGrid.DataSource = _bindingView;
       }
 
-      private void _view_OnCreateDataEvent(object sender, EventArgs e)
+      private void _view_OnCreateData(object sender, EventArgs e)
       {
          var view = new TipeEntryView();
          view.OnSaveData += TipeEntryView_OnSaveData;
          view.ShowDialog();
       }
 
-      private void _view_OnUpdateDataEvent(object sender, EventArgs e)
+      private void _view_OnUpdateData(object sender, EventArgs e)
       {
          if (_view.ListDataGrid.SelectedItem != null)
          {
@@ -89,7 +89,7 @@ namespace RumahScarlett.Presentation.Presenters.Tipe
                view.Close();
             }
 
-            _view_OnRefreshDataEvent(null, null);
+            _view_OnRefreshData(null, null);
          }
          catch (ArgumentException ex)
          {
@@ -101,7 +101,7 @@ namespace RumahScarlett.Presentation.Presenters.Tipe
          }
       }
 
-      private void _view_OnDeleteDataEvent(object sender, EventArgs e)
+      private void _view_OnDeleteData(object sender, EventArgs e)
       {
          if (_view.ListDataGrid.SelectedItem != null && Messages.ConfirmDelete(_typeName))
          {
@@ -111,12 +111,12 @@ namespace RumahScarlett.Presentation.Presenters.Tipe
 
                _services.Delete(model);
                Messages.InfoDelete(_typeName);
-               _view_OnRefreshDataEvent(null, null);
+               _view_OnRefreshData(null, null);
             }
             catch (DataAccessException ex)
             {
                Messages.Error(ex);
-               _view_OnRefreshDataEvent(null, null);
+               _view_OnRefreshData(null, null);
             }
             finally
             {
@@ -128,7 +128,7 @@ namespace RumahScarlett.Presentation.Presenters.Tipe
          }
       }
 
-      private void _view_OnRefreshDataEvent(object sender, EventArgs e)
+      private void _view_OnRefreshData(object sender, EventArgs e)
       {
          using (new WaitCursorHandler())
          {
@@ -138,7 +138,7 @@ namespace RumahScarlett.Presentation.Presenters.Tipe
 
       private void ListDataGrid_CellDoubleClick(object sender, CellClickEventArgs e)
       {
-         _view_OnUpdateDataEvent(null, null);
+         _view_OnUpdateData(null, null);
       }
    }
 }

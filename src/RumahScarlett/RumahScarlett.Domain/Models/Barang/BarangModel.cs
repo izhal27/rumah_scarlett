@@ -20,6 +20,11 @@ namespace RumahScarlett.Domain.Models.Barang
       public uint id { get; set; }
 
       [Browsable(false)]
+      [Range(1, uint.MaxValue, ErrorMessage = "Tipe barang harus diisi !!!")]
+      [Display(Name = "Tipe ID")]
+      public uint tipe_id { get; set; }
+
+      [Browsable(false)]
       [Range(1, uint.MaxValue, ErrorMessage = "Sub Tipe barang harus diisi !!!")]
       [Display(Name = "Sub Tipe ID")]
       public uint sub_tipe_id { get; set; }
@@ -45,6 +50,34 @@ namespace RumahScarlett.Domain.Models.Barang
       [Display(Name = "Nama")]
       public string nama { get; set; }
 
+      [DisplayFormat(DataFormatString = "{0:N0}")]
+      [DefaultValue(0)]
+      [Display(Name = "HPP")]
+      public decimal hpp { get; set; }
+
+      [DisplayFormat(DataFormatString = "{0:N0}")]
+      [DefaultValue(0)]
+      [Display(Name = "Harga Jual")]
+      public decimal harga_jual { get; set; }
+      
+      [Browsable(false)]
+      [DisplayFormat(DataFormatString = "{0:N0}")]
+      [DefaultValue(0)]
+      [Display(Name = "Harga Lama")]
+      public decimal harga_lama { get; set; }
+
+      [DisplayFormat(DataFormatString = "{0:N0}")]
+      [DefaultValue(0)]
+      [Display(Name = "Stok")]
+      public int stok { get; set; }
+      
+      [Browsable(false)]
+      [DisplayFormat(DataFormatString = "{0:N0}")]
+      [DefaultValue(0)]
+      [Display(Name = "Minimal Stok")]
+      public int minimal_stok { get; set; }
+
+      [DisplayFormat(DataFormatString = "{0:N0}")]
       [Dp.Write(false)]
       [Display(Name = "Penyesuaian Stok")]
       public int penyesuaian_stok_qty
@@ -59,26 +92,6 @@ namespace RumahScarlett.Domain.Models.Barang
             return 0;
          }
       }
-
-      [DefaultValue(0)]
-      [Display(Name = "HPP")]
-      public decimal hpp { get; set; }
-
-      [DefaultValue(0)]
-      [Display(Name = "Harga Jual")]
-      public decimal harga_jual { get; set; }
-
-      [DefaultValue(0)]
-      [Display(Name = "Harga Lama")]
-      public decimal harga_lama { get; set; }
-
-      [DefaultValue(0)]
-      [Display(Name = "Stok")]
-      public int stok { get; set; }
-
-      [DefaultValue(0)]
-      [Display(Name = "Minimal Stok")]
-      public int minimal_stok { get; set; }
 
       [Dp.Write(false)]
       [Display(Name = "Satuan")]

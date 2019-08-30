@@ -31,7 +31,7 @@ namespace RumahScarlett.Domain.Models.Penjualan
       private uint _barang_id;
 
       [Browsable(false)]
-      [Required(ErrorMessage = "Barang ID harus diisi !!!")]
+      [Required(ErrorMessage = "Barang harus diisi !!!")]
       [Display(Name = "Barang ID")]
       public uint barang_id
       {

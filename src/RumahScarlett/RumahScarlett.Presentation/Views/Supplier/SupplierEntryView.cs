@@ -24,6 +24,7 @@ namespace RumahScarlett.Presentation.Views.Supplier
       public SupplierEntryView(bool isNewData = true, ISupplierModel model = null)
       {
          InitializeComponent();
+
          _isNewData = isNewData;
          panelUp.LabelInfo = isNewData ? "TAMBAH TIPE" : "UBAH TIPE";
 
@@ -40,7 +41,6 @@ namespace RumahScarlett.Presentation.Views.Supplier
          }
 
          operationButtons.OnSaveButtonClick += OperationButtons_OnSaveButtonClick;
-         operationButtons.OnCloseButtonClick += OperationButtons_OnCloseButtonClick;
       }
 
       private void OperationButtons_OnSaveButtonClick(object sender, EventArgs e)

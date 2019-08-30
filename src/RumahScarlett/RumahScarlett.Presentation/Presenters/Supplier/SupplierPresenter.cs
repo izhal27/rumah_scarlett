@@ -33,40 +33,42 @@ namespace RumahScarlett.Presentation.Presenters.Supplier
          _view = new SupplierView();
          _services = new SupplierServices(new SupplierRepository(), new ModelDataAnnotationCheck());
 
-         _view.OnLoadData += _view_LoadDataEvent;
-         _view.OnCreateData += _view_OnCreateDataEvent;
-         _view.OnUpdateData += _view_OnUpdateDataEvent;
-         _view.OnDeleteData += _view_OnDeleteDataEvent;
-         _view.OnRefreshData += _view_OnRefreshDataEvent;
+         _view.OnLoadData += _view_LoadData;
+         _view.OnCreateData += _view_OnCreateData;
+         _view.OnUpdateData += _view_OnUpdateData;
+         _view.OnDeleteData += _view_OnDeleteData;
+         _view.OnRefreshData += _view_OnRefreshData;
 
          _view.ListDataGrid.CellDoubleClick += ListDataGrid_CellDoubleClick;
       }
 
-      private void _view_LoadDataEvent(object sender, EventArgs e)
+      private void _view_LoadData(object sender, EventArgs e)
       {
          _listObj = _services.GetAll().ToList();
          _bindingView = new BindingListView<SupplierModel>(_listObj);
          _view.ListDataGrid.DataSource = _bindingView;
       }
 
-      private void _view_OnCreateDataEvent(object sender, EventArgs e)
+      private void _view_OnCreateData(object sender, EventArgs e)
       {
-         var view = new Views.Supplier.SupplierEntryView();
-         view.OnSaveData += TipeEntryView_OnSaveData;
+         var view = new SupplierEntryView();
+         view.OnSaveData += SupplierEntryView_OnSaveData;
          view.ShowDialog();
       }
 
-      private void _view_OnUpdateDataEvent(object sender, EventArgs e)
+      private void _view_OnUpdateData(object sender, EventArgs e)
       {
          if (_view.ListDataGrid.SelectedItem != null)
          {
-            var view = new SupplierEntryView(false, (SupplierModel)_view.ListDataGrid.SelectedItem);
-            view.OnSaveData += TipeEntryView_OnSaveData;
+            var model = _services.GetById(((SupplierModel)_view.ListDataGrid.SelectedItem).id);
+
+            var view = new SupplierEntryView(false, model);
+            view.OnSaveData += SupplierEntryView_OnSaveData;
             view.ShowDialog();
          }
       }
 
-      private void TipeEntryView_OnSaveData(object sender, ModelEventArgs e)
+      private void SupplierEntryView_OnSaveData(object sender, ModelEventArgs e)
       {
          try
          {
@@ -86,7 +88,7 @@ namespace RumahScarlett.Presentation.Presenters.Supplier
                view.Close();
             }
 
-            _view_OnRefreshDataEvent(null, null);
+            _view_OnRefreshData(null, null);
          }
          catch (ArgumentException ex)
          {
@@ -98,17 +100,17 @@ namespace RumahScarlett.Presentation.Presenters.Supplier
          }
       }
 
-      private void _view_OnDeleteDataEvent(object sender, EventArgs e)
+      private void _view_OnDeleteData(object sender, EventArgs e)
       {
          if (_view.ListDataGrid.SelectedItem != null && Messages.ConfirmDelete(_typeName))
          {
-            var model = (SupplierModel)_view.ListDataGrid.SelectedItem;
-
             try
             {
+               var model = _services.GetById(((SupplierModel)_view.ListDataGrid.SelectedItem).id);
+
                _services.Delete(model);
                Messages.InfoDelete(_typeName);
-               _view_OnRefreshDataEvent(null, null);
+               _view_OnRefreshData(null, null);
             }
             catch (DataAccessException ex)
             {
@@ -124,7 +126,7 @@ namespace RumahScarlett.Presentation.Presenters.Supplier
          }
       }
 
-      private void _view_OnRefreshDataEvent(object sender, EventArgs e)
+      private void _view_OnRefreshData(object sender, EventArgs e)
       {
          using (new WaitCursorHandler())
          {
@@ -134,7 +136,7 @@ namespace RumahScarlett.Presentation.Presenters.Supplier
 
       private void ListDataGrid_CellDoubleClick(object sender, CellClickEventArgs e)
       {
-         _view_OnUpdateDataEvent(null, null);
+         _view_OnUpdateData(null, null);
       }
    }
 }

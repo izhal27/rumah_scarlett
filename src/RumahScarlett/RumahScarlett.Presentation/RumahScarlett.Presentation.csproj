@@ -107,6 +107,8 @@
     <Compile Include="Helper\Extensions.cs" />
     <Compile Include="Helper\Messages.cs" />
     <Compile Include="Helper\WaitCursorHandler.cs" />
+    <Compile Include="Presenters\Barang\BarangPresenter.cs" />
+    <Compile Include="Presenters\Barang\IBarangPresenter.cs" />
     <Compile Include="Presenters\IMainPresenter.cs" />
     <Compile Include="Presenters\MainPresenter.cs" />
     <Compile Include="Presenters\Supplier\ISupplierPresenter.cs" />
@@ -115,6 +117,20 @@
     <Compile Include="Presenters\Tipe\ITipePresenter.cs" />
     <Compile Include="Presenters\Tipe\SubTipePresenter.cs" />
     <Compile Include="Presenters\Tipe\TipePresenter.cs" />
+    <Compile Include="Views\Barang\BarangEntryView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Barang\BarangEntryView.Designer.cs">
+      <DependentUpon>BarangEntryView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Barang\BarangView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Barang\BarangView.Designer.cs">
+      <DependentUpon>BarangView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Barang\IBarangEntryView.cs" />
+    <Compile Include="Views\Barang\IBarangView.cs" />
     <Compile Include="Views\CommonControls\BaseDataView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -224,6 +240,12 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Views\Barang\BarangEntryView.resx">
+      <DependentUpon>BarangEntryView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Barang\BarangView.resx">
+      <DependentUpon>BarangView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\CommonControls\BaseDataView.resx">
       <DependentUpon>BaseDataView.cs</DependentUpon>
     </EmbeddedResource>
