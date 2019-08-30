@@ -16,20 +16,20 @@ namespace RumahScarlett.Domain.Models.PenyesuaianStok
    public class PenyesuaianStokDetailModel : IPenyesuaianStokDetailModel
    {
       [Browsable(false)]
-      [DisplayName("ID")]
+      [Display(Name = "ID")]
       public uint id { get; set; }
 
       [Browsable(false)]
       [Required(ErrorMessage = "Penyesuaian stok ID harus diisi !!!")]
-      [DisplayName("Penyesuaian Stok ID")]
+      [Display(Name = "Penyesuaian Stok ID")]
       public uint penyesuaian_stok_id { get; set; }
 
       [Dp.Write(false)]
-      [DisplayName("No Nota Penyesuaian Stok")]
+      [Display(Name = "No Nota Penyesuaian Stok")]
       public string penyesuaian_stok_no_nota { get; set; }
 
       [Dp.Write(false)]
-      [DisplayName("Tanggal Penyesuaian Stok")]
+      [Display(Name = "Tanggal Penyesuaian Stok")]
       public DateTime penyesuaian_stok_tanggal { get; set; }
 
       [Browsable(false)]
@@ -40,7 +40,7 @@ namespace RumahScarlett.Domain.Models.PenyesuaianStok
 
       [Browsable(false)]
       [Range(1, uint.MaxValue, ErrorMessage = "Barang ID harus diisi !!!")]
-      [DisplayName("Barang ID")]
+      [Display(Name = "Barang ID")]
       public uint barang_id
       {
          get { return Barang != null && Barang.id != default(uint) ? Barang.id : _barang_id; }
@@ -48,18 +48,18 @@ namespace RumahScarlett.Domain.Models.PenyesuaianStok
       }
 
       [Dp.Write(false)]
-      [DisplayName("Kode Barang")]
+      [Display(Name = "Kode Barang")]
       public string barang_kode { get { return Barang != null ? Barang.kode : string.Empty; } }
 
       [Dp.Write(false)]
-      [DisplayName("Nama Barang")]
+      [Display(Name = "Nama Barang")]
       public string barang_nama { get { return Barang != null ? Barang.nama : string.Empty; } }
 
       [Range(1, int.MaxValue, ErrorMessage = "Qty harus diisi !!!")]
-      [DisplayName("Qty")]
+      [Display(Name = "Qty")]
       public int qty { get; set; }
 
-      [DisplayName("HPP")]
+      [Display(Name = "HPP")]
       public decimal hpp
       {
          get { return Barang != null && Barang.id != default(uint) ? Barang.hpp : default(decimal); }
@@ -67,7 +67,7 @@ namespace RumahScarlett.Domain.Models.PenyesuaianStok
 
       [Required(ErrorMessage = "Keterangan harus diisi !!!")]
       [StringLength(255, ErrorMessage = "Panjang maksimal keterangan 255 karakter !!!")]
-      [DisplayName("Keterangan")]
+      [Display(Name = "Keterangan")]
       public string keterangan { get; set; }
    }
 }

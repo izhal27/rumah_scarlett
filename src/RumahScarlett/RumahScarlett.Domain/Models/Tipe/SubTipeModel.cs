@@ -14,22 +14,22 @@ namespace RumahScarlett.Domain.Models.Tipe
    public class SubTipeModel : ISubTipeModel
    {
       [Browsable(false)]
-      [DisplayName("ID")]
+      [Display(Name = "ID")]
       public uint id { get; set; }
 
       [Browsable(false)]
       [Range(1, uint.MaxValue, ErrorMessage = "Tipe harus diisi !!!")]
-      [DisplayName("Tipe ID")]
+      [Display(Name = "Tipe ID")]
       public uint tipe_id { get; set; }
 
       [Required(AllowEmptyStrings = false, ErrorMessage = "Nama Sub tipe harus diisi !!!")]
       [StringLength(100, MinimumLength = 3, ErrorMessage = "Nama Sub tipe harus diantara 3 sampai 100 karakter !!!")]
-      [DisplayName("Nama")]
+      [Display(Name = "Nama")]
       public string nama { get; set; }
 
       [DefaultValue("")]
       [StringLength(255, ErrorMessage = "Panjang maksimal keterangan 255 karakter !!!")]
-      [DisplayName("Keterangan")]
+      [Display(Name = "Keterangan")]
       public string keterangan { get; set; }
    }
 }

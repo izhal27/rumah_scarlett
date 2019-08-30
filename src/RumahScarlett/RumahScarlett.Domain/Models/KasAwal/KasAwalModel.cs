@@ -13,15 +13,15 @@ namespace RumahScarlett.Domain.Models.KasAwal
    public class KasAwalModel : IKasAwalModel
    {
       [Browsable(false)]
-      [DisplayName("ID")]
+      [Display(Name = "ID")]
       public uint id { get; set; }
 
       [Required]
-      [DisplayName("Tanggal")]
+      [Display(Name = "Tanggal")]
       public DateTime tanggal { get; set; }
 
       [DefaultValue(0)]
-      [DisplayName("Total")]
+      [Display(Name = "Total")]
       public decimal total { get; set; }
 
       public KasAwalModel()

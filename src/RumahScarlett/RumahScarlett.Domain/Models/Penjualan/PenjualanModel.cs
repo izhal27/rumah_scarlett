@@ -14,19 +14,19 @@ namespace RumahScarlett.Domain.Models.Penjualan
    public class PenjualanModel : IPenjualanModel
    {
       [Browsable(false)]
-      [DisplayName("ID")]
+      [Display(Name = "ID")]
       public uint id { get; set; }
       
       [StringLength(255, ErrorMessage = "Panjang maksimal No Nota 255 karakter !!!")]
-      [DisplayName("No Nota")]
+      [Display(Name = "No Nota")]
       public string no_nota { get; set; }
 
       [Range(typeof(DateTime), "1945/08/17", "9999/01/01", ErrorMessage = "Minimal Tanggal 1945/08/17 !!!")]
-      [DisplayName("Tanggal")]
+      [Display(Name = "Tanggal")]
       public DateTime tanggal { get; set; }
 
       [DefaultValue(0)]
-      [DisplayName("Diskon")]
+      [Display(Name = "Diskon")]
       public decimal diskon { get; set; }
 
       [Browsable(false)]

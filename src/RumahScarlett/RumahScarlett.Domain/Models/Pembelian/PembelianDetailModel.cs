@@ -16,11 +16,11 @@ namespace RumahScarlett.Domain.Models.Pembelian
    public class PembelianDetailModel : IPembelianDetailModel
    {
       [Browsable(false)]
-      [DisplayName("ID")]
+      [Display(Name = "ID")]
       public uint id { get; set; }
 
       [Browsable(false)]
-      [DisplayName("Pembelian ID")]
+      [Display(Name = "Pembelian ID")]
       public uint pembelian_id { get; set; }
 
       [Browsable(false)]
@@ -31,7 +31,7 @@ namespace RumahScarlett.Domain.Models.Pembelian
 
       [Browsable(false)]
       [Range(1, uint.MaxValue, ErrorMessage = "Barang ID harus diisi !!!")]
-      [DisplayName("Barang ID")]
+      [Display(Name = "Barang ID")]
       public uint barang_id
       {
          get { return Barang.id != default(uint) ? Barang.id : _barang_id; }
@@ -39,22 +39,22 @@ namespace RumahScarlett.Domain.Models.Pembelian
       }
 
       [Dp.Write(false)]
-      [DisplayName("Kode Barang")]
+      [Display(Name = "Kode Barang")]
       public string barang_kode { get { return Barang != null ? Barang.kode : string.Empty; } }
 
       [Dp.Write(false)]
-      [DisplayName("Nama Barang")]
+      [Display(Name = "Nama Barang")]
       public string barang_nama { get { return Barang != null ? Barang.nama : string.Empty; } }
 
       [Range(1, int.MaxValue, ErrorMessage = "Qty harus diisi !!!")]
-      [DisplayName("Qty")]
+      [Display(Name = "Qty")]
       public int qty { get; set; }
       
-      [DisplayName("HPP")]
+      [Display(Name = "HPP")]
       public decimal hpp { get; set; }
 
       [Dp.Write(false)]
-      [DisplayName("Total")]
+      [Display(Name = "Total")]
       public decimal total
       {
          get

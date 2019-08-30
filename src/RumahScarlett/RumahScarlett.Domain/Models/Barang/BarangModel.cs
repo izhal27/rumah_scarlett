@@ -16,32 +16,32 @@ namespace RumahScarlett.Domain.Models.Barang
    public class BarangModel : IBarangModel
    {
       [Browsable(false)]
-      [DisplayName("ID")]
+      [Display(Name = "ID")]
       public uint id { get; set; }
 
       [Browsable(false)]
       [Range(1, uint.MaxValue, ErrorMessage = "Sub Tipe barang harus diisi !!!")]
-      [DisplayName("Sub Tipe ID")]
+      [Display(Name = "Sub Tipe ID")]
       public uint sub_tipe_id { get; set; }
 
       [Browsable(false)]
       [Range(1, uint.MaxValue, ErrorMessage = "Supplier barang harus diisi !!!")]
-      [DisplayName("Supplier ID")]
+      [Display(Name = "Supplier ID")]
       public uint supplier_id { get; set; }
 
       [Required(AllowEmptyStrings = false, ErrorMessage = "Kode barang harus diisi !!!")]
       [StringLength(100, MinimumLength = 5, ErrorMessage = "Kode barang harus diantara 5 sampai 100 karakter !!!")]
       [RegularExpression(@"^[\w\d-]+$", ErrorMessage = "Format kode barang yang anda masukkan salah !!!")]
-      [DisplayName("Kode")]
+      [Display(Name = "Kode")]
       public string kode { get; set; }
 
       [Required(AllowEmptyStrings = false, ErrorMessage = "Nama barang harus diisi !!!")]
       [StringLength(100, MinimumLength = 5, ErrorMessage = "Nama barang harus diantara 5 sampai 100 karakter !!!")]
-      [DisplayName("Nama")]
+      [Display(Name = "Nama")]
       public string nama { get; set; }
 
       [Dp.Write(false)]
-      [DisplayName("Penyesuaian Stok")]
+      [Display(Name = "Penyesuaian Stok")]
       public int penyesuaian_stok_qty
       {
          get
@@ -56,23 +56,23 @@ namespace RumahScarlett.Domain.Models.Barang
       }
 
       [DefaultValue(0)]
-      [DisplayName("HPP")]
+      [Display(Name = "HPP")]
       public decimal hpp { get; set; }
 
       [DefaultValue(0)]
-      [DisplayName("Harga Jual")]
+      [Display(Name = "Harga Jual")]
       public decimal harga_jual { get; set; }
 
       [DefaultValue(0)]
-      [DisplayName("Harga Lama")]
+      [Display(Name = "Harga Lama")]
       public decimal harga_lama { get; set; }
 
       [DefaultValue(0)]
-      [DisplayName("Stok")]
+      [Display(Name = "Stok")]
       public int stok { get; set; }
 
       [DefaultValue(0)]
-      [DisplayName("Minimal Stok")]
+      [Display(Name = "Minimal Stok")]
       public int minimal_stok { get; set; }
 
       [Dp.Write(false)]

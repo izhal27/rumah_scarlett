@@ -14,24 +14,24 @@ namespace RumahScarlett.Domain.Models.Pengeluaran
    public class PengeluaranModel : IPengeluaranModel
    {
       [Browsable(false)]
-      [DisplayName("ID")]
+      [Display(Name = "ID")]
       public uint id { get; set; }
       
       [Browsable(false)]
-      [DisplayName("Tanggal")]
+      [Display(Name = "Tanggal")]
       public DateTime tanggal { get; set; }
 
       [Required(AllowEmptyStrings = false, ErrorMessage = "Nama pengeluaran harus diisi !!!")]
       [StringLength(100, MinimumLength = 3, ErrorMessage = "Nama pengeluaran harus diantara 3 sampai 100 karakter !!!")]
-      [DisplayName("Nama")]
+      [Display(Name = "Nama")]
       public string nama { get; set; }
       
       [Range(typeof(decimal), "1", "79228162514264337593543950335", ErrorMessage = "Jumlah harus diisi !!!")]
-      [DisplayName("Jumlah")]
+      [Display(Name = "Jumlah")]
       public decimal jumlah { get; set; }
 
       [DefaultValue("")]
-      [DisplayName("Keterangan")]
+      [Display(Name = "Keterangan")]
       public string keterangan { get; set; }
    }
 }
