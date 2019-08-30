@@ -82,7 +82,10 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Pembelian
 
                   context.Commit();
                }
-            }, dataAccessStatus, () => CheckInsert(model, context));
+            }, dataAccessStatus,
+            () => CheckAfterInsert(context, "SELECT COUNT(1) FROM pembelian WHERE no_nota=@no_nota "
+                                   + "AND id=(SELECT id FROM pembelian ORDER BY ID DESC LIMIT 1)",
+                                   new { model.no_nota }));
          }
       }
 
@@ -119,7 +122,7 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Pembelian
                      context.Commit();
                   }
                }
-            }, dataAccessStatus, () => CheckUpdateDelete(model, context));
+            }, dataAccessStatus, () => CheckModelExist(context, model.id));
          }
       }
 
@@ -165,17 +168,10 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Pembelian
          throw new NotImplementedException();
       }
 
-      private bool CheckInsert(IPembelianModel model, DbContext context)
+      private bool CheckModelExist(DbContext context, object id)
       {
-         return context.Conn.ExecuteScalar<bool>("SELECT COUNT(1) FROM pembelian WHERE no_nota=@no_nota "
-                                                  + "AND id=(SELECT id FROM pembelian ORDER BY ID DESC LIMIT 1)",
-                                                  new { model.no_nota });
-      }
-
-      private bool CheckUpdateDelete(IPembelianModel model, DbContext context)
-      {
-         return context.Conn.ExecuteScalar<bool>("SELECT COUNT(1) FROM pembelian WHERE id=@id",
-                                                  new { model.id });
+         return CheckModelExist(context, "SELECT COUNT(1) FROM pembelian WHERE id=@id",
+                                new { id });
       }
    }
 }

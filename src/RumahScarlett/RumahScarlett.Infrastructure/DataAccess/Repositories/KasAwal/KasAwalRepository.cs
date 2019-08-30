@@ -1,6 +1,5 @@
 ﻿using Dapper;
 using Dapper.Contrib.Extensions;
-using MySql.Data.MySqlClient;
 using RumahScarlett.CommonComponents;
 using RumahScarlett.Domain.Models.KasAwal;
 using RumahScarlett.Services.Services.KasAwal;
@@ -28,7 +27,9 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.KasAwal
             ValidateModel(context, model, dataAccessStatus);
 
             Insert(model, () => context.Conn.Insert((KasAwalModel)model), dataAccessStatus,
-                  () => CheckInsert(context, model));
+                  () => CheckAfterInsert(context, "SELECT COUNT(1) FROM kas_awal WHERE tanggal=@tanggal "
+                                         + "AND id=(SELECT LAST_INSERT_ID())",
+                                         new { tanggal = model.tanggal.Date.ToString("yyyy-MM-dd") }));
          }
       }
 
@@ -39,7 +40,8 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.KasAwal
          using (var context = new DbContext())
          {
             Update(model, () => context.Conn.Update((KasAwalModel)model), dataAccessStatus,
-                () => CheckUpdateDelete(context, model));
+                  () => CheckModelExist(context, "SELECT COUNT(1) FROM kas_awal WHERE id=@id",
+                                       new { model.id }));
          }
       }
 
@@ -95,19 +97,6 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.KasAwal
 
             throw new DataAccessException(dataAccessStatus); ;
          }
-      }
-
-      private bool CheckInsert(DbContext context,IKasAwalModel model)
-      {
-         return context.Conn.ExecuteScalar<bool>("SELECT COUNT(1) FROM kas_awal WHERE tanggal=@tanggal "
-                                                  + "AND id=(SELECT LAST_INSERT_ID())",
-                                                  new { tanggal = model.tanggal.Date.ToString("yyyy-MM-dd") });
-      }
-
-      private bool CheckUpdateDelete(DbContext context, IKasAwalModel model)
-      {
-         return context.Conn.ExecuteScalar<bool>("SELECT COUNT(1) FROM kas_awal WHERE id=@id",
-                                                  new { model.id });
       }
    }
 }

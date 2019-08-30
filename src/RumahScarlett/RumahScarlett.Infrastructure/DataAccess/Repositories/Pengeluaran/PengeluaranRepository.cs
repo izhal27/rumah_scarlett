@@ -27,7 +27,8 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Pengeluaran
             model.tanggal = DateTime.Now;
 
             Insert(model, () => context.Conn.Insert((PengeluaranModel)model), dataAccessStatus,
-                  () => CheckInsert(context, model));
+                  () => CheckAfterInsert(context, "SELECT COUNT(1) FROM pengeluaran WHERE nama=@nama "
+                                         + "AND id=(SELECT LAST_INSERT_ID())", new { model.nama }));
          }
       }
 
@@ -43,7 +44,7 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Pengeluaran
          using (var context = new DbContext())
          {
             Delete(model, () => context.Conn.Delete((PengeluaranModel)model), dataAccessStatus,
-               () => CheckUpdateDelete(context, model));
+               () => CheckModelExist(context, model.id));
          }
       }
 
@@ -71,18 +72,11 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Pengeluaran
       {
          return GetAll().Where(p => p.tanggal.Date >= ((DateTime)startDate).Date && p.tanggal.Date <= ((DateTime)endDate).Date);
       }
-
-      private bool CheckInsert(DbContext context, IPengeluaranModel model)
+      
+      private bool CheckModelExist(DbContext context, object id)
       {
-         return context.Conn.ExecuteScalar<bool>("SELECT COUNT(1) FROM pengeluaran WHERE nama=@nama "
-                                                  + "AND id=(SELECT LAST_INSERT_ID())",
-                                                  new { model.nama });
-      }
-
-      private bool CheckUpdateDelete(DbContext context, IPengeluaranModel model)
-      {
-         return context.Conn.ExecuteScalar<bool>("SELECT COUNT(1) FROM pengeluaran WHERE id=@id",
-                                                  new { model.id });
+         return CheckModelExist(context, "SELECT COUNT(1) FROM pengeluaran WHERE id=@id",
+                                new { id });
       }
    }
 }

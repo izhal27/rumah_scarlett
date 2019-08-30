@@ -62,7 +62,9 @@ namespace RumahScarlett.Presentation.Presenters.Tipe
       {
          if (_view.ListDataGrid.SelectedItem != null)
          {
-            var view = new TipeEntryView(false, (TipeModel)_view.ListDataGrid.SelectedItem);
+            var model = _services.GetById(((TipeModel)_view.ListDataGrid.SelectedItem).id);
+
+            var view = new TipeEntryView(false, model);
             view.OnSaveData += TipeEntryView_OnSaveData;
             view.ShowDialog();
          }
@@ -103,10 +105,10 @@ namespace RumahScarlett.Presentation.Presenters.Tipe
       {
          if (_view.ListDataGrid.SelectedItem != null && Messages.ConfirmDelete(_typeName))
          {
-            var model = (TipeModel)_view.ListDataGrid.SelectedItem;
-
             try
             {
+               var model = _services.GetById(((TipeModel)_view.ListDataGrid.SelectedItem).id);
+
                _services.Delete(model);
                Messages.InfoDelete(_typeName);
                _view_OnRefreshDataEvent(null, null);
@@ -114,6 +116,7 @@ namespace RumahScarlett.Presentation.Presenters.Tipe
             catch (DataAccessException ex)
             {
                Messages.Error(ex);
+               _view_OnRefreshDataEvent(null, null);
             }
             finally
             {

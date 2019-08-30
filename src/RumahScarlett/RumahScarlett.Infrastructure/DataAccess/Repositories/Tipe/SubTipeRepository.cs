@@ -34,11 +34,12 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Tipe
       public void Insert(ISubTipeModel model)
       {
          var dataAccessStatus = new DataAccessStatus();
-
          ValidateModel(_context, model, dataAccessStatus);
 
          Insert(model, () => _context.Conn.Insert((SubTipeModel)model), dataAccessStatus,
-                () => CheckInsert(_context, model));
+                () => CheckAfterInsert(_context, "SELECT COUNT(1) FROM sub_tipe WHERE nama=@nama "
+                                       + "AND id=(SELECT LAST_INSERT_ID())",
+                                       new { model.nama }));
       }
 
       public void Update(ISubTipeModel model)
@@ -48,7 +49,7 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Tipe
          ValidateModel(_context, model, dataAccessStatus);
 
          Update(model, () => _context.Conn.Update((SubTipeModel)model), dataAccessStatus,
-                () => CheckUpdateDelete(_context, model));
+                () => CheckModelExist(_context, model));
       }
 
       public void Delete(ISubTipeModel model)
@@ -56,9 +57,9 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Tipe
          var dataAccessStatus = new DataAccessStatus();
 
          Delete(model, () => _context.Conn.Delete((SubTipeModel)model), dataAccessStatus,
-             () => CheckUpdateDelete(_context, model));
+             () => CheckModelExist(_context, model));
       }
-      
+
       public IEnumerable<ISubTipeModel> GetAll()
       {
          var dataAccessStatus = new DataAccessStatus();
@@ -74,10 +75,11 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Tipe
       public ISubTipeModel GetById(object id)
       {
          var dataAccessStatus = new DataAccessStatus();
-         
-         return GetBy(() => { return _context.Conn.Get<SubTipeModel>(id); }, dataAccessStatus);
+
+         return GetBy(() => { return _context.Conn.Get<SubTipeModel>(id); },
+                      dataAccessStatus, () => CheckModelExist(_context, id));
       }
-      
+
       private void ValidateModel(DbContext context, ISubTipeModel model, DataAccessStatus dataAccessStatus)
       {
          var existsNama = context.Conn.ExecuteScalar<bool>("SELECT COUNT(1) FROM sub_tipe WHERE nama=@nama AND id!=@id",
@@ -92,17 +94,9 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Tipe
          }
       }
 
-      private bool CheckInsert(DbContext context, ISubTipeModel model)
+      private bool CheckModelExist(DbContext context, object id)
       {
-         return context.Conn.ExecuteScalar<bool>("SELECT COUNT(1) FROM sub_tipe WHERE nama=@nama "
-                                                  + "AND id=(SELECT LAST_INSERT_ID())",
-                                                  new { model.nama });
-      }
-
-      private bool CheckUpdateDelete(DbContext context, ISubTipeModel model)
-      {
-         return context.Conn.ExecuteScalar<bool>("SELECT COUNT(1) FROM sub_tipe WHERE id=@id",
-                                                  new { model.id });
+         return CheckModelExist(context, "SELECT COUNT(1) FROM sub_tipe WHERE id=@id", new { id });
       }
    }
 }

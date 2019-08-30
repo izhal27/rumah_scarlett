@@ -28,7 +28,8 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Barang
             ValidateModel(context, model, dataAccessStatus);
 
             Insert(model, () => context.Conn.Insert((BarangModel)model), dataAccessStatus,
-                  () => CheckInsert(context, model));
+                  () => CheckAfterInsert(context, "SELECT COUNT(1) FROM barang WHERE kode=@kode "
+                                         + "AND id=(SELECT LAST_INSERT_ID())", new { model.kode }));
          }
       }
 
@@ -41,7 +42,7 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Barang
             ValidateModel(context, model, dataAccessStatus);
 
             Update(model, () => context.Conn.Update((BarangModel)model), dataAccessStatus,
-                  () => CheckUpdateDelete(context, model));
+                  () => CheckModelExist(context, model.id));
          }
       }
 
@@ -52,7 +53,7 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Barang
          using (var context = new DbContext())
          {
             Delete(model, () => context.Conn.Delete((BarangModel)model), dataAccessStatus,
-                  () => CheckUpdateDelete(context, model));
+                  () => CheckModelExist(context, model.id));
          }
       }
 
@@ -94,7 +95,8 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Barang
 
          using (var context = new DbContext())
          {
-            return GetBy(() => context.Conn.Get<BarangModel>(id), dataAccessStatus);
+            return GetBy(() => context.Conn.Get<BarangModel>(id), dataAccessStatus, 
+                        () => CheckModelExist(context, id));
          }
       }
 
@@ -123,17 +125,10 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Barang
          }
       }
 
-      private bool CheckInsert(DbContext context, IBarangModel model)
+      private bool CheckModelExist(DbContext context, object id)
       {
-         return context.Conn.ExecuteScalar<bool>("SELECT COUNT(1) FROM barang WHERE kode=@kode "
-                                                  + "AND id=(SELECT LAST_INSERT_ID())",
-                                                  new { model.kode });
-      }
-
-      private bool CheckUpdateDelete(DbContext context, IBarangModel model)
-      {
-         return context.Conn.ExecuteScalar<bool>("SELECT COUNT(1) FROM barang WHERE id=@id",
-                                                  new { model.id });
+         return CheckModelExist(context, "SELECT COUNT(1) FROM barang WHERE id=@id",
+                                new { id });
       }
    }
 }

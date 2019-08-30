@@ -1,4 +1,5 @@
-﻿using Dapper.Contrib.Extensions;
+﻿using Dapper;
+using Dapper.Contrib.Extensions;
 using MySql.Data.MySqlClient;
 using RumahScarlett.CommonComponents;
 using System;
@@ -19,11 +20,12 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories
 
       protected enum RequestType
       {
-         Insert,
+         //Insert,
          Update,
          Delete,
          ConfirmInsert,
-         ConfirmDelete
+         ConfirmDelete,
+         GetById
       }
 
       protected enum ErrorMessageType
@@ -49,7 +51,7 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories
       protected static string _modelName = "";
 
       protected void Insert(TDomainModel model, Action insertMethod, DataAccessStatus dataAccessStatus,
-                                Func<bool> checkInsert)
+                            Func<bool> checkIAftertInsert)
       {
          try
          {
@@ -65,7 +67,7 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories
          try
          {
             RecordExistsCheck(model, TypeOfExistenceCheck.DoesExistInDB, RequestType.ConfirmInsert,
-                              checkInsert: checkInsert());
+                              checkAfterInsert: checkIAftertInsert());
          }
          catch (DataAccessException ex)
          {
@@ -75,12 +77,12 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories
       }
 
       protected void Update(TDomainModel model, Action updatetMethod, DataAccessStatus dataAccessStatus,
-                                        Func<bool> checkUpdate)
+                                        Func<bool> checkExist)
       {
          try
          {
             RecordExistsCheck(model, TypeOfExistenceCheck.DoesExistInDB, RequestType.Update,
-                              checkUpdateDelete: checkUpdate());
+                              checkExist: checkExist());
          }
          catch (DataAccessException ex)
          {
@@ -101,12 +103,12 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories
       }
 
       protected void Delete(TDomainModel model, Action deleteMethod, DataAccessStatus dataAccessStatus,
-                                Func<bool> checkDelete)
+                                Func<bool> checkExist)
       {
          try
          {
             RecordExistsCheck(model, TypeOfExistenceCheck.DoesExistInDB, RequestType.Delete,
-                              checkUpdateDelete: checkDelete());
+                              checkExist: checkExist());
          }
          catch (DataAccessException ex)
          {
@@ -128,7 +130,7 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories
          try
          {
             RecordExistsCheck(model, TypeOfExistenceCheck.DoesNotExistInDB, RequestType.ConfirmDelete,
-                              checkUpdateDelete: checkDelete());
+                              checkExist: checkExist());
          }
          catch (DataAccessException ex)
          {
@@ -137,7 +139,8 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories
          }
       }
 
-      protected IEnumerable<TDomainModel> GetAll(Func<IEnumerable<TDomainModel>> getAllMethod, DataAccessStatus dataAccessStatus)
+      protected IEnumerable<TDomainModel> GetAll(Func<IEnumerable<TDomainModel>> getAllMethod,
+                                                 DataAccessStatus dataAccessStatus)
       {
          IEnumerable<TDomainModel> listObj = new List<TDomainModel>();
 
@@ -155,9 +158,21 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories
          return listObj;
       }
 
-      protected TDomainModel GetBy(Func<TDomainModel> getByMethod, DataAccessStatus dataAccessStatus)
+      protected TDomainModel GetBy(Func<TDomainModel> getByMethod, DataAccessStatus dataAccessStatus,
+                                   Func<bool> checkExist)
       {
          TDomainModel model = default(TDomainModel);
+
+         try
+         {
+            RecordExistsCheck(model, TypeOfExistenceCheck.DoesExistInDB, RequestType.Delete,
+                              checkExist: checkExist());
+         }
+         catch (DataAccessException ex)
+         {
+            SetDataAccessValues(ex, ErrorMessageType.ModelNotFound);
+            throw ex;
+         }
 
          try
          {
@@ -236,7 +251,7 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories
                break;
             case ErrorMessageType.ModelNotFound:
                customMessage = $"{_modelName.FirstToUpper()} tidak dapat diproses, dikarenakan data {_modelName} " +
-                                "yang ingin di proses tidak ditemukan.";
+                                "yang ingin di proses tidak ditemukan/sudah dihapus.";
                break;
             case ErrorMessageType.FailedDelete:
                customMessage = $"Gagal menghapus data {_modelName}.";
@@ -261,27 +276,39 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories
          ex.DataAccessStatusInfo.StackTrace = !string.IsNullOrWhiteSpace(ex.StackTrace) ? string.Copy(ex.StackTrace) : "";
       }
 
-      protected void RecordExistsCheck(TDomainModel model, TypeOfExistenceCheck typeOfExistenceCheck,
-                                     RequestType requestType, bool checkInsert = false,
-                                     bool checkUpdateDelete = false)
+      private void RecordExistsCheck(TDomainModel model, TypeOfExistenceCheck typeOfExistenceCheck,
+                                     RequestType requestType, bool checkAfterInsert = false,
+                                     bool checkExist = false)
       {
          bool exists = false;
 
          try
          {
-            if (requestType == RequestType.Insert || requestType == RequestType.ConfirmInsert)
+            switch (requestType)
             {
-               exists = checkInsert;
-            }
-            else if (requestType == RequestType.Update || requestType == RequestType.ConfirmDelete ||
-                     requestType == RequestType.Delete)
-            {
-               exists = checkUpdateDelete;
+               //case RequestType.Insert:
+               case RequestType.ConfirmInsert:
+
+                  exists = checkAfterInsert;
+
+                  break;
+               case RequestType.Update:
+               case RequestType.Delete:
+               case RequestType.ConfirmDelete:
+               case RequestType.GetById:
+
+                  exists = checkExist;
+
+                  break;
             }
          }
          catch (MySqlException ex)
          {
-            throw ex;
+            var dataAccessStatus = new DataAccessStatus();
+
+            dataAccessStatus = SetDataAccessValues(ex, ErrorMessageType.Delete);
+            throw new DataAccessException(message: ex.Message, innerException: ex.InnerException,
+                                          dataAccessStatus: dataAccessStatus);
          }
 
          if ((typeOfExistenceCheck == TypeOfExistenceCheck.DoesExistInDB) && !exists)
@@ -292,6 +319,16 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories
          {
             throw new DataAccessException(new DataAccessStatus());
          }
+      }
+
+      protected bool CheckAfterInsert(DbContext context, string queryStr, object param)
+      {
+         return context.Conn.ExecuteScalar<bool>(queryStr, param);
+      }
+
+      protected bool CheckModelExist(DbContext context, string queryStr, object param)
+      {
+         return context.Conn.ExecuteScalar<bool>(queryStr, param);
       }
    }
 }

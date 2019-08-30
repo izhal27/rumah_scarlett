@@ -27,7 +27,7 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Tipe
             ValidateModel(context, model, dataAccessStatus);
 
             Insert(model, () => context.Conn.Insert((TipeModel)model), dataAccessStatus,
-                  () => CheckInsert(context, model));
+                  () => CheckAfterInsert(context, "SELECT COUNT(1) FROM tipe WHERE id=@id", new { id = model.id }));
          }
       }
 
@@ -40,7 +40,7 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Tipe
             ValidateModel(context, model, dataAccessStatus);
 
             Update(model, () => context.Conn.Update((TipeModel)model), dataAccessStatus,
-                  () => CheckUpdateDelete(context, model));
+                  () => CheckModelExist(context, model.id));
          }
       }
 
@@ -51,7 +51,7 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Tipe
          using (var context = new DbContext())
          {
             Delete(model, () => context.Conn.Delete((TipeModel)model), dataAccessStatus,
-                () => CheckUpdateDelete(context, model));
+                  () => CheckModelExist(context, model.id));
          }
       }
 
@@ -83,7 +83,8 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Tipe
 
          using (var context = new DbContext())
          {
-            return GetBy(() => context.Conn.Get<TipeModel>(id), dataAccessStatus);
+            return GetBy(() => context.Conn.Get<TipeModel>(id), dataAccessStatus,
+                        () => CheckModelExist(context, id));
          }
       }
 
@@ -100,18 +101,11 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Tipe
             throw new DataAccessException(dataAccessStatus); ;
          }
       }
-
-      private bool CheckInsert(DbContext context, ITipeModel model)
+      
+      private bool CheckModelExist(DbContext context, object id)
       {
-         return context.Conn.ExecuteScalar<bool>("SELECT COUNT(1) FROM tipe WHERE nama=@nama "
-                                                  + "AND id=(SELECT LAST_INSERT_ID())",
-                                                  new { model.nama });
-      }
-
-      private bool CheckUpdateDelete(DbContext context, ITipeModel model)
-      {
-         return context.Conn.ExecuteScalar<bool>("SELECT COUNT(1) FROM tipe WHERE id=@id",
-                                                  new { model.id });
+         return CheckModelExist(context, "SELECT COUNT(1) FROM tipe WHERE id=@id",
+                                                  new { id });
       }
 
       public void Insert(ISubTipeModel model)
