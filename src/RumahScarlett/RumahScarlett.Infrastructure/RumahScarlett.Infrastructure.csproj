@@ -85,6 +85,7 @@
     <Compile Include="DataAccess\Repositories\Penjualan\PenjualanRepository.cs" />
     <Compile Include="DataAccess\Repositories\PenyesuaianStok\PenyesuaianStokDetailRepository.cs" />
     <Compile Include="DataAccess\Repositories\PenyesuaianStok\PenyesuaianStokRepository.cs" />
+    <Compile Include="DataAccess\Repositories\Satuan\SatuanRepository.cs" />
     <Compile Include="DataAccess\Repositories\Supplier\SupplierRepository.cs" />
     <Compile Include="DataAccess\Repositories\Tipe\SubTipeRepository.cs" />
     <Compile Include="DataAccess\Repositories\Tipe\TipeRepository.cs" />
