@@ -71,6 +71,9 @@
     <Compile Include="Services\PenyesuaianStok\IPenyesuaianStokRepository.cs" />
     <Compile Include="Services\PenyesuaianStok\IPenyesuaianStokServices.cs" />
     <Compile Include="Services\PenyesuaianStok\PenyesuaianStokServices.cs" />
+    <Compile Include="Services\Satuan\ISatuanRepository.cs" />
+    <Compile Include="Services\Satuan\ISatuanServices.cs" />
+    <Compile Include="Services\Satuan\SatuanServices.cs" />
     <Compile Include="Services\Supplier\ISupplierRepository.cs" />
     <Compile Include="Services\Supplier\ISupplierServices.cs" />
     <Compile Include="Services\Supplier\SupplierServices.cs" />
