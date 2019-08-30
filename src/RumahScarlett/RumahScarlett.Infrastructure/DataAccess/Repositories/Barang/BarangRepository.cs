@@ -64,13 +64,15 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Barang
          {
             return GetAll(() =>
             {
-               var listObj = context.Conn.GetAll<BarangModel>();
+               var queryStr = "SELECT b.*, s.id as satuan_id, s.nama as satuan_nama FROM barang b " +
+                              "INNER JOIN satuan s ON b.satuan_id=s.id";
+               var listObj = context.Conn.Query<BarangModel>(queryStr);
 
                if (listObj != null && listObj.ToList().Count > 0)
                {
                   listObj = listObj.Map(b =>
                   {
-                     var queryStr = "SELECT * FROM penyesuaian_stok_detail where barang_id=@id";
+                     queryStr = "SELECT * FROM penyesuaian_stok_detail where barang_id=@id";
 
                      var listObject = context.Conn.Query<PenyesuaianStokDetailModel>(queryStr, new { b.id });
 

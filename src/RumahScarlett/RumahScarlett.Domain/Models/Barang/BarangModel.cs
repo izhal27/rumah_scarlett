@@ -29,6 +29,11 @@ namespace RumahScarlett.Domain.Models.Barang
       [Display(Name = "Supplier ID")]
       public uint supplier_id { get; set; }
 
+      [Browsable(false)]
+      [Range(1, uint.MaxValue, ErrorMessage = "Satuan barang harus diisi !!!")]
+      [Display(Name = "Satuan ID")]
+      public uint satuan_id { get; set; }
+
       [Required(AllowEmptyStrings = false, ErrorMessage = "Kode barang harus diisi !!!")]
       [StringLength(100, MinimumLength = 5, ErrorMessage = "Kode barang harus diantara 5 sampai 100 karakter !!!")]
       [RegularExpression(@"^[\w\d-]+$", ErrorMessage = "Format kode barang yang anda masukkan salah !!!")]
@@ -74,6 +79,10 @@ namespace RumahScarlett.Domain.Models.Barang
       [DefaultValue(0)]
       [Display(Name = "Minimal Stok")]
       public int minimal_stok { get; set; }
+
+      [Dp.Write(false)]
+      [Display(Name = "Satuan")]
+      public string satuan_nama { get; set; }
 
       [Dp.Write(false)]
       [Browsable(false)]

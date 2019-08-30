@@ -43,6 +43,7 @@ namespace RumahScarlett.Services.UnitTests.Barang
                {
                   sub_tipe_id = (uint)(i % 2 == 0 ? 2 : 1),
                   supplier_id = (uint)(i % 2 == 0 ? 2 : 1),
+                  satuan_id = (uint)(i % 2 == 0 ? 2 : 1),
                   kode = $"kode_barang_{i}",
                   nama = $"Nama Barang #{i}",
                   stok = 5,

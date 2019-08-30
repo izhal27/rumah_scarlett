@@ -30,6 +30,7 @@ namespace RumahScarlett.Services.UnitTests.Barang
          {
             sub_tipe_id = 1,
             supplier_id = 1,
+            satuan_id = 1,
             kode = "Tests",
             nama = "Tests",
             stok = 1,
@@ -66,6 +67,17 @@ namespace RumahScarlett.Services.UnitTests.Barang
       public void ShouldThrowExceptionForSupplierIdEmpty()
       {
          _servicesFixture.Model.supplier_id = default(uint);
+
+         var exception = Record.Exception(() => _servicesFixture
+                                                .Services.ValidateModel(_servicesFixture.Model));
+
+         WriteExceptionTestResult(exception);
+      }
+
+      [Fact]
+      public void ShouldThrowExceptionForSatuanIdEmpty()
+      {
+         _servicesFixture.Model.satuan_id = default(uint);
 
          var exception = Record.Exception(() => _servicesFixture
                                                 .Services.ValidateModel(_servicesFixture.Model));
