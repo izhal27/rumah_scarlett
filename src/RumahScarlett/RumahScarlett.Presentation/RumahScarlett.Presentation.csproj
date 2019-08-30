@@ -189,6 +189,18 @@
       <DependentUpon>MainView.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\IEntryView.cs" />
+    <Compile Include="Views\ModelControls\ComboBoxSatuan.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Views\ModelControls\ComboBoxSubTipe.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Views\ModelControls\ComboBoxSupplier.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Views\ModelControls\ComboBoxTipe.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Views\Supplier\ISupplierView.cs" />
     <Compile Include="Views\Supplier\SupplierEntryView.cs">
       <SubType>Form</SubType>

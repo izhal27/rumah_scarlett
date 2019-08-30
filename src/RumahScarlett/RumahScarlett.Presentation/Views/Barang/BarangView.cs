@@ -1,5 +1,6 @@
 ﻿using RumahScarlett.CommonComponents;
 using RumahScarlett.Presentation.Views.CommonControls;
+using RumahScarlett.Presentation.Views.ModelControls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -25,12 +26,42 @@ namespace RumahScarlett.Presentation.Views.Barang
       {
          get { return listDataGrid; }
       }
-
-      public TreeView TreeViewTipe
+      
+      public RadioButton RadioButtonSemua
       {
-         get { return treeViewTipe; }
+         get { return radioButtonSemua; }
       }
 
+      public RadioButton RadioButtonTipe
+      {
+         get { return radioButtonTipe; }
+      }
+
+      public RadioButton RadioButtonSupplier
+      {
+         get { return radioButtonSupplier; }
+      }
+
+      public ComboBox ComboBoxTipe
+      {
+         get { return comboBoxTipe; }
+      }
+
+      public ComboBox ComboBoxSubTipe
+      {
+         get { return comboBoxSubTipe; }
+      }
+
+      public ComboBox ComboBoxSupplier
+      {
+         get { return comboBoxSupplier; }
+      }
+
+      public Button ButtonTampilkan
+      {
+         get { return buttonTampilkan; }
+      }
+      
       public BarangView()
       {
          InitializeComponent();
@@ -47,6 +78,7 @@ namespace RumahScarlett.Presentation.Views.Barang
       private void BarangView_Load(object sender, EventArgs e)
       {
          EventHelper.RaiseEvent(this, OnLoadData, e);
+         ActiveControl = buttonTampilkan;
       }
 
       private void crudcButtons_OnTambahClick(object sender, EventArgs e)
