@@ -12,6 +12,14 @@ using RumahScarlett.CommonComponents;
 using RumahScarlett.Domain.Models.Barang;
 using RumahScarlett.Presentation.Helper;
 using System.Globalization;
+using RumahScarlett.Services.Services.Tipe;
+using RumahScarlett.Domain.Models.Tipe;
+using RumahScarlett.Domain.Models.Supplier;
+using RumahScarlett.Services.Services.Supplier;
+using RumahScarlett.Services.Services;
+using RumahScarlett.Infrastructure.DataAccess.Repositories.Supplier;
+using RumahScarlett.Services.Services.Satuan;
+using RumahScarlett.Infrastructure.DataAccess.Repositories.Satuan;
 
 namespace RumahScarlett.Presentation.Views.Barang
 {
@@ -19,15 +27,41 @@ namespace RumahScarlett.Presentation.Views.Barang
    {
       private bool _isNewData;
       private IBarangModel _model;
+      private List<ITipeModel> _listTipes;
+      private List<ISupplierModel> _listSupplier;
       public event EventHandler<ModelEventArgs> OnSaveData;
       private static string _typeName = "Barang";
 
-      public BarangEntryView(bool isNewData = true, IBarangModel model = null)
+      public BarangEntryView(ITipeServices tipeServices, bool isNewData = true, IBarangModel model = null)
       {
          InitializeComponent();
 
          _isNewData = isNewData;
          panelUp.LabelInfo = isNewData ? "TAMBAH BARANG" : "UBAH BARANG";
+
+         _listTipes = tipeServices.GetAll().ToList();
+
+         if (_listTipes != null && _listTipes.Count > 0)
+         {
+            var tipeKVP = _listTipes.Select(t => new KeyValuePair<object, string>(t.id, t.nama)).ToList();
+            comboBoxTipe.SetDataSource(tipeKVP, true);
+         }
+
+         var listSuppliers = new SupplierServices(new SupplierRepository(), new ModelDataAnnotationCheck()).GetAll().ToList();
+
+         if (listSuppliers != null && listSuppliers.Count > 0)
+         {
+            var supplierKVP = listSuppliers.Select(s => new KeyValuePair<object, string>(s.id, s.nama)).ToList();
+            comboBoxSupplier.SetDataSource(supplierKVP, false);
+         }
+
+         var listSatuans = new SatuanServices(new SatuanRepository(), new ModelDataAnnotationCheck()).GetAll().ToList();
+
+         if (listSatuans != null && listSatuans.Count > 0)
+         {
+            var satuanKVP = listSatuans.Select(s => new KeyValuePair<object, string>(s.id, s.nama)).ToList();
+            comboBoxSatuan.SetDataSource(satuanKVP, false);
+         }
 
          if (!_isNewData)
          {
@@ -48,11 +82,20 @@ namespace RumahScarlett.Presentation.Views.Barang
          operationButtons.OnSaveButtonClick += OperationButtons_OnSaveButtonClick;
       }
 
+      private void BarangEntryView_Load(object sender, EventArgs e)
+      {
+         if (comboBoxTipe.Items.Count > 0)
+         {
+            comboBoxTipe.SelectedIndex = 0;
+         }
+      }
+
       private void OperationButtons_OnSaveButtonClick(object sender, EventArgs e)
       {
          var model = new BarangModel
          {
-            sub_tipe_id = (uint)comboBoxSubTipe.SelectedValue,
+            tipe_id = (uint)comboBoxTipe.SelectedValue,
+            sub_tipe_id = comboBoxSubTipe.SelectedValue != null ? (uint)comboBoxSubTipe.SelectedValue : default(uint),
             supplier_id = (uint)comboBoxSupplier.SelectedValue,
             kode = textBoxKode.Text,
             nama = textBoxNama.Text,
@@ -75,5 +118,17 @@ namespace RumahScarlett.Presentation.Views.Barang
          }
       }
 
+      private void comboBoxTipe_SelectedIndexChanged(object sender, EventArgs e)
+      {
+         if (comboBoxTipe.SelectedIndex != -1)
+         {
+            var tipeId = (uint)comboBoxTipe.SelectedValue;
+
+            var subTipeKVP = _listTipes.Where(t => t.id == tipeId).FirstOrDefault()
+                          .SubTipes.Select(sub => new KeyValuePair<object, string>(sub.id, sub.nama)).ToList();
+
+            comboBoxSubTipe.SetDataSource(subTipeKVP, false);
+         }
+      }
    }
 }

@@ -25,6 +25,7 @@ namespace RumahScarlett.Presentation.Views.Tipe
       public SubTipeEntryView(List<ITipeModel> listTipes, bool isNewData = true, ISubTipeModel model = null)
       {
          InitializeComponent();
+
          _listTipes = listTipes;
          _isNewData = isNewData;
          panelUp.LabelInfo = isNewData ? "TAMBAH SUB TIPE" : "UBAH SUB TIPE";

@@ -260,6 +260,7 @@
          this.comboBoxTipe.Name = "comboBoxTipe";
          this.comboBoxTipe.Size = new System.Drawing.Size(250, 21);
          this.comboBoxTipe.TabIndex = 0;
+         this.comboBoxTipe.SelectedIndexChanged += new System.EventHandler(this.comboBoxTipe_SelectedIndexChanged);
          // 
          // comboBoxSubTipe
          // 
@@ -281,7 +282,7 @@
          // 
          // textBoxKode
          // 
-         this.textBoxKode.BeforeTouchSize = new System.Drawing.Size(250, 100);
+         this.textBoxKode.BeforeTouchSize = new System.Drawing.Size(150, 20);
          this.textBoxKode.Location = new System.Drawing.Point(76, 84);
          this.textBoxKode.MaxLength = 100;
          this.textBoxKode.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
@@ -292,7 +293,7 @@
          // 
          // textBoxNama
          // 
-         this.textBoxNama.BeforeTouchSize = new System.Drawing.Size(250, 100);
+         this.textBoxNama.BeforeTouchSize = new System.Drawing.Size(150, 20);
          this.textBoxNama.Location = new System.Drawing.Point(76, 110);
          this.textBoxNama.MaxLength = 100;
          this.textBoxNama.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
@@ -304,7 +305,7 @@
          // textBoxHpp
          // 
          this.textBoxHpp.BackGroundColor = System.Drawing.SystemColors.Window;
-         this.textBoxHpp.BeforeTouchSize = new System.Drawing.Size(250, 100);
+         this.textBoxHpp.BeforeTouchSize = new System.Drawing.Size(150, 20);
          this.textBoxHpp.IntegerValue = ((long)(0));
          this.textBoxHpp.Location = new System.Drawing.Point(76, 136);
          this.textBoxHpp.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
@@ -320,7 +321,7 @@
          // textBoxHargaJual
          // 
          this.textBoxHargaJual.BackGroundColor = System.Drawing.SystemColors.Window;
-         this.textBoxHargaJual.BeforeTouchSize = new System.Drawing.Size(250, 100);
+         this.textBoxHargaJual.BeforeTouchSize = new System.Drawing.Size(150, 20);
          this.textBoxHargaJual.IntegerValue = ((long)(0));
          this.textBoxHargaJual.Location = new System.Drawing.Point(76, 162);
          this.textBoxHargaJual.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
@@ -336,7 +337,7 @@
          // textBoxHargaLama
          // 
          this.textBoxHargaLama.BackGroundColor = System.Drawing.SystemColors.Window;
-         this.textBoxHargaLama.BeforeTouchSize = new System.Drawing.Size(250, 100);
+         this.textBoxHargaLama.BeforeTouchSize = new System.Drawing.Size(150, 20);
          this.textBoxHargaLama.IntegerValue = ((long)(0));
          this.textBoxHargaLama.Location = new System.Drawing.Point(76, 188);
          this.textBoxHargaLama.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
@@ -352,7 +353,7 @@
          // textBoxStok
          // 
          this.textBoxStok.BackGroundColor = System.Drawing.SystemColors.Window;
-         this.textBoxStok.BeforeTouchSize = new System.Drawing.Size(250, 100);
+         this.textBoxStok.BeforeTouchSize = new System.Drawing.Size(150, 20);
          this.textBoxStok.IntegerValue = ((long)(0));
          this.textBoxStok.Location = new System.Drawing.Point(76, 214);
          this.textBoxStok.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
@@ -368,7 +369,7 @@
          // textBoxMinStok
          // 
          this.textBoxMinStok.BackGroundColor = System.Drawing.SystemColors.Window;
-         this.textBoxMinStok.BeforeTouchSize = new System.Drawing.Size(250, 100);
+         this.textBoxMinStok.BeforeTouchSize = new System.Drawing.Size(150, 20);
          this.textBoxMinStok.IntegerValue = ((long)(0));
          this.textBoxMinStok.Location = new System.Drawing.Point(76, 240);
          this.textBoxMinStok.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
@@ -453,6 +454,7 @@
          this.Controls.Add(this.groupBox1);
          this.Name = "BarangEntryView";
          this.Text = "Barang";
+         this.Load += new System.EventHandler(this.BarangEntryView_Load);
          this.Controls.SetChildIndex(this.groupBox1, 0);
          this.Controls.SetChildIndex(this.panelUp, 0);
          this.Controls.SetChildIndex(this.operationButtons, 0);

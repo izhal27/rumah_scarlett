@@ -63,7 +63,7 @@ namespace RumahScarlett.Presentation.Presenters.Barang
 
       private void _view_OnCreateData(object sender, EventArgs e)
       {
-         var view = new Views.Supplier.SupplierEntryView();
+         var view = new BarangEntryView(_tipeServices);
          view.OnSaveData += BarangEntryView_OnSaveData;
          view.ShowDialog();
       }
@@ -74,7 +74,7 @@ namespace RumahScarlett.Presentation.Presenters.Barang
          {
             var model = _barangServices.GetById(((BarangModel)_view.ListDataGrid.SelectedItem).id);
 
-            var view = new BarangEntryView(false, model);
+            var view = new BarangEntryView(_tipeServices, false, model);
             view.OnSaveData += BarangEntryView_OnSaveData;
             view.ShowDialog();
          }
@@ -142,7 +142,11 @@ namespace RumahScarlett.Presentation.Presenters.Barang
       {
          using (new WaitCursorHandler())
          {
-            _bindingView.DataSource = _barangServices.GetAll().ToList();
+            _listTipes = _tipeServices.GetAll().ToList();
+            SetTipeNodes(_listTipes);
+
+            _listBarangs = _barangServices.GetAll().ToList();
+            _bindingView.DataSource = _listBarangs;
          }
       }
 
@@ -152,17 +156,19 @@ namespace RumahScarlett.Presentation.Presenters.Barang
 
          if (treeView.SelectedNode != null)
          {
-            if (e.Node.Name.ToLower() != "root")
+            var selectedNode = treeView.SelectedNode;
+
+            if (selectedNode.Name.ToLower() != "root")
             {
                List<IBarangModel> listBarang = new List<IBarangModel>();
 
-               if (treeView.SelectedNode.Parent.Name == "root") // Tipe
+               if (selectedNode.Parent.Name == "root") // Tipe
                {
-                  listBarang = _listBarangs.Where(b => b.tipe_id == uint.Parse(e.Node.Name)).ToList();
+                  listBarang = _listBarangs.Where(b => b.tipe_id == uint.Parse(selectedNode.Name)).ToList();
                }
                else
                {
-                  listBarang = _listBarangs.Where(b => b.sub_tipe_id == uint.Parse(e.Node.Name)).ToList();
+                  listBarang = _listBarangs.Where(b => b.sub_tipe_id == uint.Parse(selectedNode.Name)).ToList();
                }
 
                _bindingView.DataSource = listBarang;
@@ -180,29 +186,35 @@ namespace RumahScarlett.Presentation.Presenters.Barang
          {
             if (_view.TreeViewTipe.Nodes.Count == 0)
             {
-               if (_view.TreeViewTipe.Nodes.Count == 0)
+               _view.TreeViewTipe.Nodes.Add("root", "SEMUA BARANG");
+            }
+
+            if (_view.TreeViewTipe.Nodes["root"].Nodes.Count > 0)
+            {
+               _view.TreeViewTipe.Nodes["root"].Nodes.Clear();
+            }
+
+            foreach (var tipe in _listTipes)
+            {
+               var tipeNode = new TreeNode { Name = tipe.id.ToString(), Text = tipe.nama };
+
+               foreach (var subTipe in tipe.SubTipes)
                {
-                  _view.TreeViewTipe.Nodes.Add("root", "SEMUA BARANG");
+                  var subTipeNode = new TreeNode { Name = subTipe.id.ToString(), Text = subTipe.nama };
+
+                  tipeNode.Nodes.Add(subTipeNode);
                }
 
-               foreach (var tipe in _listTipes)
-               {
-                  var tipeNode = new TreeNode { Name = tipe.id.ToString(), Text = tipe.nama };
-                  
-                  foreach (var subTipe in tipe.SubTipes)
-                  {
-                     var subTipeNode = new TreeNode { Name = subTipe.id.ToString(), Text = subTipe.nama };
+               _view.TreeViewTipe.Nodes["root"].Nodes.Add(tipeNode);
+            }
 
-                     tipeNode.Nodes.Add(subTipeNode);
-                  }
-
-                  _view.TreeViewTipe.Nodes["root"].Nodes.Add(tipeNode);
-               }
-
-               if (!_view.TreeViewTipe.Nodes["root"].IsExpanded)
-               {
-                  _view.TreeViewTipe.ExpandAll();
-               }
+            if (!_view.TreeViewTipe.Nodes["root"].IsExpanded)
+            {
+               _view.TreeViewTipe.Nodes["root"].ExpandAll();
+            }
+            else
+            {
+               _view.TreeViewTipe.Nodes["root"].ExpandAll();
             }
          }
       }

@@ -76,7 +76,7 @@
          this.Controls.Add(this.crudcButtons);
          this.Controls.Add(this.listDataGrid);
          this.Name = "BarangView";
-         this.Text = "BarangView";
+         this.Text = "Barang";
          this.Load += new System.EventHandler(this.BarangView_Load);
          this.Controls.SetChildIndex(this.panelUp, 0);
          this.Controls.SetChildIndex(this.listDataGrid, 0);
