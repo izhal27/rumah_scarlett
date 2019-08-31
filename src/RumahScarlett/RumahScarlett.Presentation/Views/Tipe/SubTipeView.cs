@@ -22,24 +22,14 @@ namespace RumahScarlett.Presentation.Views.Tipe
       public event EventHandler OnRefreshData;
       public event EventHandler OnPrintData;
       public event EventHandler<CellClickEventArgs> OnDataGridCellDoubleClick;
-
-      public ListDataGrid ListDataGrid
-      {
-         get { return listDataGrid; }
-      }
-
-      public TreeView TreeViewTipe
-      {
-         get { return treeViewTipe; }
-      }
-
+      
       public SubTipeView()
       {
          InitializeComponent();
 
          panelUp.LabelInfo = "DATA SUB TIPE";
          buttonsCRUD.ButtonCetakVisible = false;
-
+         
          listDataGrid.CellDoubleClick += ListDataGrid_CellDoubleClick;
          buttonsCRUD.OnTambahClick += ButtonsCRUD_OnTambahClickEvent;
          buttonsCRUD.OnUbahClick += ButtonsCRUD_OnUbahClickEvent;

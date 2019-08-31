@@ -14,28 +14,15 @@ namespace RumahScarlett.Presentation.Views.ModelControls
 {
    public class ComboBoxTipe : ComboBox
    {
-      protected ITipeServices _services;
-      protected List<ITipeModel> _listTipes;
-      protected List<ISubTipeModel> _listSubTipes;
-
-      public List<ISubTipeModel> SubTipes
-      {
-         get { return _listSubTipes; }
-      }
+      private ITipeServices _services;
+      private List<ITipeModel> _listTipes;
 
       protected override void OnCreateControl()
       {
          LoadDataSource();
-         GetSubTipes();
       }
 
-      protected override void OnSelectedIndexChanged(EventArgs e)
-      {
-         GetSubTipes();
-         base.OnSelectedIndexChanged(e);
-      }
-
-      protected virtual void LoadDataSource()
+      private void LoadDataSource()
       {
          _services = new TipeServices(new TipeRepository(), new ModelDataAnnotationCheck());
          _listTipes = _services.GetAll().ToList();
@@ -44,24 +31,6 @@ namespace RumahScarlett.Presentation.Views.ModelControls
          {
             var tipeKVP = _listTipes.Select(t => new KeyValuePair<object, string>(t.id, t.nama)).ToList();
             this.SetDataSource(tipeKVP, false);
-         }
-      }
-
-      private void GetSubTipes()
-      {
-         if (_listTipes != null)
-         {
-            var selectedTipeId = default(uint);
-
-            if (uint.TryParse(SelectedValue.ToString(), out selectedTipeId))
-            {
-               var selectedTipe = _listTipes.Where(t => t.id == (uint)SelectedValue).FirstOrDefault();
-
-               if (selectedTipe != null)
-               {
-                  _listSubTipes = selectedTipe.SubTipes.ToList();
-               }
-            }
          }
       }
    }

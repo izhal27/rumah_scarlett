@@ -2,6 +2,7 @@
 using Dapper.Contrib.Extensions;
 using RumahScarlett.CommonComponents;
 using RumahScarlett.Domain.Models.Tipe;
+using RumahScarlett.Services.Services.Tipe;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -11,73 +12,71 @@ using System.Threading.Tasks;
 
 namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Tipe
 {
-   internal interface ISubTipeRepository
+   public class SubTipeRepository : BaseRepository<ISubTipeModel>, ISubTipeRepository
    {
-      void Insert(ISubTipeModel model);
-      void Update(ISubTipeModel model);
-      void Delete(ISubTipeModel model);
-      IEnumerable<ISubTipeModel> GetAll();
-      IEnumerable<ISubTipeModel> GetAll(ITipeModel pembelian);
-      ISubTipeModel GetById(object id);
-   }
-
-   internal class SubTipeRepository : BaseRepository<ISubTipeModel>, ISubTipeRepository
-   {
-      private DbContext _context;
-
-      public SubTipeRepository(DbContext context)
+      public SubTipeRepository()
       {
-         _context = context;
          _modelName = "sub tipe";
       }
 
       public void Insert(ISubTipeModel model)
       {
          var dataAccessStatus = new DataAccessStatus();
-         ValidateModel(_context, model, dataAccessStatus);
 
-         Insert(model, () => _context.Conn.Insert((SubTipeModel)model), dataAccessStatus,
-                () => CheckAfterInsert(_context, "SELECT COUNT(1) FROM sub_tipe WHERE nama=@nama "
-                                       + "AND id=(SELECT LAST_INSERT_ID())",
-                                       new { model.nama }));
+         using (var context = new DbContext())
+         {
+            ValidateModel(context, model, dataAccessStatus);
+
+            Insert(model, () => context.Conn.Insert((SubTipeModel)model), dataAccessStatus,
+                  () => CheckAfterInsert(context, "SELECT COUNT(1) FROM sub_tipe WHERE nama=@nama "
+                                          + "AND id=(SELECT LAST_INSERT_ID())",
+                                          new { model.nama }));
+         }
       }
 
       public void Update(ISubTipeModel model)
       {
          var dataAccessStatus = new DataAccessStatus();
 
-         ValidateModel(_context, model, dataAccessStatus);
+         using (var context = new DbContext())
+         {
+            ValidateModel(context, model, dataAccessStatus);
 
-         Update(model, () => _context.Conn.Update((SubTipeModel)model), dataAccessStatus,
-                () => CheckModelExist(_context, model.id));
+            Update(model, () => context.Conn.Update((SubTipeModel)model), dataAccessStatus,
+                  () => CheckModelExist(context, model.id));
+         }
       }
 
       public void Delete(ISubTipeModel model)
       {
          var dataAccessStatus = new DataAccessStatus();
 
-         Delete(model, () => _context.Conn.Delete((SubTipeModel)model), dataAccessStatus,
-             () => CheckModelExist(_context, model.id));
+         using (var context = new DbContext())
+         {
+            Delete(model, () => context.Conn.Delete((SubTipeModel)model), dataAccessStatus,
+                  () => CheckModelExist(context, model.id));
+         }
       }
 
       public IEnumerable<ISubTipeModel> GetAll()
       {
          var dataAccessStatus = new DataAccessStatus();
 
-         return GetAll(() => { return _context.Conn.GetAll<SubTipeModel>(); }, dataAccessStatus);
+         using (var context = new DbContext())
+         {
+            return GetAll(() => { return context.Conn.GetAll<SubTipeModel>(); }, dataAccessStatus);
+         }
       }
-
-      public IEnumerable<ISubTipeModel> GetAll(ITipeModel tipe)
-      {
-         return GetAll().Where(s => s.tipe_id == tipe.id);
-      }
-
+      
       public ISubTipeModel GetById(object id)
       {
          var dataAccessStatus = new DataAccessStatus();
 
-         return GetBy(() => { return _context.Conn.Get<SubTipeModel>(id); },
-                      dataAccessStatus, () => CheckModelExist(_context, id));
+         using (var context = new DbContext())
+         {
+            return GetBy(() => { return context.Conn.Get<SubTipeModel>(id); },
+                         dataAccessStatus, () => CheckModelExist(context, id));
+         }
       }
 
       private void ValidateModel(DbContext context, ISubTipeModel model, DataAccessStatus dataAccessStatus)

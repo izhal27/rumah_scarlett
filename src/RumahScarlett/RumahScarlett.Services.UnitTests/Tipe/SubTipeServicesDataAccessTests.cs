@@ -19,13 +19,13 @@ namespace RumahScarlett.Services.UnitTests.Tipe
    [Trait("Category", "Data Access Validations")]
    public class SubTipeServicesDataAccessTests
    {
-      private ITipeServices _services;
+      private ISubTipeServices _services;
       private readonly ITestOutputHelper _testOutputHelper;
 
       public SubTipeServicesDataAccessTests(ITestOutputHelper testOutputHelper)
       {
          _testOutputHelper = testOutputHelper;
-         _services = new TipeServices(new TipeRepository(), new ModelDataAnnotationCheck());
+         _services = new SubTipeServices(new SubTipeRepository(), new ModelDataAnnotationCheck());
       }
 
       [Fact]
@@ -40,7 +40,6 @@ namespace RumahScarlett.Services.UnitTests.Tipe
             {
                var model = new SubTipeModel()
                {
-                  tipe_id = (uint)(i % 2 == 0 ? 2 : 1),
                   nama = $"Sub tipe #{i}",
                   keterangan = $"Keterangan Sub tipe #{i}"
                };
@@ -77,7 +76,6 @@ namespace RumahScarlett.Services.UnitTests.Tipe
          {
             var model = new SubTipeModel()
             {
-               tipe_id = 1,
                nama = "Sub tipe #2",
             };
 
@@ -106,7 +104,6 @@ namespace RumahScarlett.Services.UnitTests.Tipe
             var model = new SubTipeModel()
             {
                id = 1,
-               tipe_id = 1,
                nama = "Sub tipe #1 (Update)",
                keterangan = "Keterangan Sub tipe #1 (Update)"
             };
@@ -142,7 +139,6 @@ namespace RumahScarlett.Services.UnitTests.Tipe
             var model = new SubTipeModel()
             {
                id = 2,
-               tipe_id = 1,
                nama = "Sub tipe #3",
             };
 
@@ -196,7 +192,7 @@ namespace RumahScarlett.Services.UnitTests.Tipe
       [Fact]
       public void ShouldReturnListOfModels()
       {
-         var listModels = _services.GetAllSubTipe().ToList();
+         var listModels = _services.GetAll().ToList();
 
          Assert.NotEmpty(listModels);
 
@@ -211,7 +207,7 @@ namespace RumahScarlett.Services.UnitTests.Tipe
 
          try
          {
-            model = (SubTipeModel)_services.GetSubTipeById(idToGet);
+            model = (SubTipeModel)_services.GetById(idToGet);
          }
          catch (DataAccessException ex)
          {

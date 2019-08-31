@@ -227,29 +227,7 @@
         AwAAAAhUaXBlICMxMAs=
 </value>
   </data>
-  <data name="comboBoxTipe.Items10" mimetype="application/x-microsoft.net.object.binary.base64">
-    <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAPcBbXNjb3JsaWIsIFZlcnNpb249NC4wLjAuMCwgQ3VsdHVyZT1u
-        ZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5XSxbU3lzdGVtLlN0cmluZywgbXNj
-        b3JsaWIsIFZlcnNpb249NC4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1iNzdh
-        NWM1NjE5MzRlMDg5XV0sIG1zY29ybGliLCBWZXJzaW9uPTQuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwg
-        UHVibGljS2V5VG9rZW49Yjc3YTVjNTYxOTM0ZTA4OQUBAAAAOFN5c3RlbS5Db2xsZWN0aW9ucy5HZW5l
-        cmljLktleVZhbHVlUGFpcmAyW1tTeXN0ZW0uT2JqZWN0AgAAAANrZXkFdmFsdWUCAQIAAAAIDxEAAAAG
-        AwAAAAN0ZXML
-</value>
-  </data>
-  <data name="comboBoxTipe.Items11" mimetype="application/x-microsoft.net.object.binary.base64">
-    <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAPcBbXNjb3JsaWIsIFZlcnNpb249NC4wLjAuMCwgQ3VsdHVyZT1u
-        ZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5XSxbU3lzdGVtLlN0cmluZywgbXNj
-        b3JsaWIsIFZlcnNpb249NC4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1iNzdh
-        NWM1NjE5MzRlMDg5XV0sIG1zY29ybGliLCBWZXJzaW9uPTQuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwg
-        UHVibGljS2V5VG9rZW49Yjc3YTVjNTYxOTM0ZTA4OQUBAAAAOFN5c3RlbS5Db2xsZWN0aW9ucy5HZW5l
-        cmljLktleVZhbHVlUGFpcmAyW1tTeXN0ZW0uT2JqZWN0AgAAAANrZXkFdmFsdWUCAQIAAAAIDxIAAAAG
-        AwAAAAV0ZXMgMgs=
-</value>
-  </data>
-  <data name="comboBoxSupplier.Items" mimetype="application/x-microsoft.net.object.binary.base64">
+  <data name="comboBoxSubTipe.Items" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAPcBbXNjb3JsaWIsIFZlcnNpb249NC4wLjAuMCwgQ3VsdHVyZT1u
         ZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5XSxbU3lzdGVtLlN0cmluZywgbXNj
@@ -257,10 +235,10 @@
         NWM1NjE5MzRlMDg5XV0sIG1zY29ybGliLCBWZXJzaW9uPTQuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwg
         UHVibGljS2V5VG9rZW49Yjc3YTVjNTYxOTM0ZTA4OQUBAAAAOFN5c3RlbS5Db2xsZWN0aW9ucy5HZW5l
         cmljLktleVZhbHVlUGFpcmAyW1tTeXN0ZW0uT2JqZWN0AgAAAANrZXkFdmFsdWUCAQIAAAAIDwEAAAAG
-        AwAAAAtTdXBwbGllciAjMQs=
+        AwAAAAtTdWIgdGlwZSAjMQs=
 </value>
   </data>
-  <data name="comboBoxSupplier.Items1" mimetype="application/x-microsoft.net.object.binary.base64">
+  <data name="comboBoxSubTipe.Items1" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAPcBbXNjb3JsaWIsIFZlcnNpb249NC4wLjAuMCwgQ3VsdHVyZT1u
         ZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5XSxbU3lzdGVtLlN0cmluZywgbXNj
@@ -268,10 +246,10 @@
         NWM1NjE5MzRlMDg5XV0sIG1zY29ybGliLCBWZXJzaW9uPTQuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwg
         UHVibGljS2V5VG9rZW49Yjc3YTVjNTYxOTM0ZTA4OQUBAAAAOFN5c3RlbS5Db2xsZWN0aW9ucy5HZW5l
         cmljLktleVZhbHVlUGFpcmAyW1tTeXN0ZW0uT2JqZWN0AgAAAANrZXkFdmFsdWUCAQIAAAAIDwIAAAAG
-        AwAAAAtTdXBwbGllciAjMgs=
+        AwAAAAtTdWIgdGlwZSAjMgs=
 </value>
   </data>
-  <data name="comboBoxSupplier.Items2" mimetype="application/x-microsoft.net.object.binary.base64">
+  <data name="comboBoxSubTipe.Items2" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAPcBbXNjb3JsaWIsIFZlcnNpb249NC4wLjAuMCwgQ3VsdHVyZT1u
         ZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5XSxbU3lzdGVtLlN0cmluZywgbXNj
@@ -279,10 +257,10 @@
         NWM1NjE5MzRlMDg5XV0sIG1zY29ybGliLCBWZXJzaW9uPTQuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwg
         UHVibGljS2V5VG9rZW49Yjc3YTVjNTYxOTM0ZTA4OQUBAAAAOFN5c3RlbS5Db2xsZWN0aW9ucy5HZW5l
         cmljLktleVZhbHVlUGFpcmAyW1tTeXN0ZW0uT2JqZWN0AgAAAANrZXkFdmFsdWUCAQIAAAAIDwMAAAAG
-        AwAAAAtTdXBwbGllciAjMws=
+        AwAAAAtTdWIgdGlwZSAjMws=
 </value>
   </data>
-  <data name="comboBoxSupplier.Items3" mimetype="application/x-microsoft.net.object.binary.base64">
+  <data name="comboBoxSubTipe.Items3" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAPcBbXNjb3JsaWIsIFZlcnNpb249NC4wLjAuMCwgQ3VsdHVyZT1u
         ZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5XSxbU3lzdGVtLlN0cmluZywgbXNj
@@ -290,10 +268,10 @@
         NWM1NjE5MzRlMDg5XV0sIG1zY29ybGliLCBWZXJzaW9uPTQuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwg
         UHVibGljS2V5VG9rZW49Yjc3YTVjNTYxOTM0ZTA4OQUBAAAAOFN5c3RlbS5Db2xsZWN0aW9ucy5HZW5l
         cmljLktleVZhbHVlUGFpcmAyW1tTeXN0ZW0uT2JqZWN0AgAAAANrZXkFdmFsdWUCAQIAAAAIDwQAAAAG
-        AwAAAAxTdXBwbGllciAjNDQL
+        AwAAAAtTdWIgdGlwZSAjNAs=
 </value>
   </data>
-  <data name="comboBoxSupplier.Items4" mimetype="application/x-microsoft.net.object.binary.base64">
+  <data name="comboBoxSubTipe.Items4" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAPcBbXNjb3JsaWIsIFZlcnNpb249NC4wLjAuMCwgQ3VsdHVyZT1u
         ZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5XSxbU3lzdGVtLlN0cmluZywgbXNj
@@ -301,10 +279,10 @@
         NWM1NjE5MzRlMDg5XV0sIG1zY29ybGliLCBWZXJzaW9uPTQuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwg
         UHVibGljS2V5VG9rZW49Yjc3YTVjNTYxOTM0ZTA4OQUBAAAAOFN5c3RlbS5Db2xsZWN0aW9ucy5HZW5l
         cmljLktleVZhbHVlUGFpcmAyW1tTeXN0ZW0uT2JqZWN0AgAAAANrZXkFdmFsdWUCAQIAAAAIDwUAAAAG
-        AwAAAAtTdXBwbGllciAjNQs=
+        AwAAAAtTdWIgdGlwZSAjNQs=
 </value>
   </data>
-  <data name="comboBoxSupplier.Items5" mimetype="application/x-microsoft.net.object.binary.base64">
+  <data name="comboBoxSubTipe.Items5" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAPcBbXNjb3JsaWIsIFZlcnNpb249NC4wLjAuMCwgQ3VsdHVyZT1u
         ZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5XSxbU3lzdGVtLlN0cmluZywgbXNj
@@ -312,10 +290,10 @@
         NWM1NjE5MzRlMDg5XV0sIG1zY29ybGliLCBWZXJzaW9uPTQuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwg
         UHVibGljS2V5VG9rZW49Yjc3YTVjNTYxOTM0ZTA4OQUBAAAAOFN5c3RlbS5Db2xsZWN0aW9ucy5HZW5l
         cmljLktleVZhbHVlUGFpcmAyW1tTeXN0ZW0uT2JqZWN0AgAAAANrZXkFdmFsdWUCAQIAAAAIDwYAAAAG
-        AwAAAAtTdXBwbGllciAjNgs=
+        AwAAAAtTdWIgdGlwZSAjNgs=
 </value>
   </data>
-  <data name="comboBoxSupplier.Items6" mimetype="application/x-microsoft.net.object.binary.base64">
+  <data name="comboBoxSubTipe.Items6" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAPcBbXNjb3JsaWIsIFZlcnNpb249NC4wLjAuMCwgQ3VsdHVyZT1u
         ZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5XSxbU3lzdGVtLlN0cmluZywgbXNj
@@ -323,10 +301,10 @@
         NWM1NjE5MzRlMDg5XV0sIG1zY29ybGliLCBWZXJzaW9uPTQuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwg
         UHVibGljS2V5VG9rZW49Yjc3YTVjNTYxOTM0ZTA4OQUBAAAAOFN5c3RlbS5Db2xsZWN0aW9ucy5HZW5l
         cmljLktleVZhbHVlUGFpcmAyW1tTeXN0ZW0uT2JqZWN0AgAAAANrZXkFdmFsdWUCAQIAAAAIDwcAAAAG
-        AwAAAAtTdXBwbGllciAjNws=
+        AwAAAAtTdWIgdGlwZSAjNws=
 </value>
   </data>
-  <data name="comboBoxSupplier.Items7" mimetype="application/x-microsoft.net.object.binary.base64">
+  <data name="comboBoxSubTipe.Items7" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAPcBbXNjb3JsaWIsIFZlcnNpb249NC4wLjAuMCwgQ3VsdHVyZT1u
         ZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5XSxbU3lzdGVtLlN0cmluZywgbXNj
@@ -334,10 +312,10 @@
         NWM1NjE5MzRlMDg5XV0sIG1zY29ybGliLCBWZXJzaW9uPTQuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwg
         UHVibGljS2V5VG9rZW49Yjc3YTVjNTYxOTM0ZTA4OQUBAAAAOFN5c3RlbS5Db2xsZWN0aW9ucy5HZW5l
         cmljLktleVZhbHVlUGFpcmAyW1tTeXN0ZW0uT2JqZWN0AgAAAANrZXkFdmFsdWUCAQIAAAAIDwgAAAAG
-        AwAAAAtTdXBwbGllciAjOAs=
+        AwAAAAtTdWIgdGlwZSAjOAs=
 </value>
   </data>
-  <data name="comboBoxSupplier.Items8" mimetype="application/x-microsoft.net.object.binary.base64">
+  <data name="comboBoxSubTipe.Items8" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAPcBbXNjb3JsaWIsIFZlcnNpb249NC4wLjAuMCwgQ3VsdHVyZT1u
         ZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5XSxbU3lzdGVtLlN0cmluZywgbXNj
@@ -345,10 +323,10 @@
         NWM1NjE5MzRlMDg5XV0sIG1zY29ybGliLCBWZXJzaW9uPTQuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwg
         UHVibGljS2V5VG9rZW49Yjc3YTVjNTYxOTM0ZTA4OQUBAAAAOFN5c3RlbS5Db2xsZWN0aW9ucy5HZW5l
         cmljLktleVZhbHVlUGFpcmAyW1tTeXN0ZW0uT2JqZWN0AgAAAANrZXkFdmFsdWUCAQIAAAAIDwkAAAAG
-        AwAAAAtTdXBwbGllciAjOQs=
+        AwAAAAtTdWIgdGlwZSAjOQs=
 </value>
   </data>
-  <data name="comboBoxSupplier.Items9" mimetype="application/x-microsoft.net.object.binary.base64">
+  <data name="comboBoxSubTipe.Items9" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAPcBbXNjb3JsaWIsIFZlcnNpb249NC4wLjAuMCwgQ3VsdHVyZT1u
         ZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5XSxbU3lzdGVtLlN0cmluZywgbXNj
@@ -356,7 +334,18 @@
         NWM1NjE5MzRlMDg5XV0sIG1zY29ybGliLCBWZXJzaW9uPTQuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwg
         UHVibGljS2V5VG9rZW49Yjc3YTVjNTYxOTM0ZTA4OQUBAAAAOFN5c3RlbS5Db2xsZWN0aW9ucy5HZW5l
         cmljLktleVZhbHVlUGFpcmAyW1tTeXN0ZW0uT2JqZWN0AgAAAANrZXkFdmFsdWUCAQIAAAAIDwoAAAAG
-        AwAAAAxTdXBwbGllciAjMTEL
+        AwAAAAxTdWIgdGlwZSAjMTAL
+</value>
+  </data>
+  <data name="comboBoxSubTipe.Items10" mimetype="application/x-microsoft.net.object.binary.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAPcBbXNjb3JsaWIsIFZlcnNpb249NC4wLjAuMCwgQ3VsdHVyZT1u
+        ZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5XSxbU3lzdGVtLlN0cmluZywgbXNj
+        b3JsaWIsIFZlcnNpb249NC4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1iNzdh
+        NWM1NjE5MzRlMDg5XV0sIG1zY29ybGliLCBWZXJzaW9uPTQuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwg
+        UHVibGljS2V5VG9rZW49Yjc3YTVjNTYxOTM0ZTA4OQUBAAAAOFN5c3RlbS5Db2xsZWN0aW9ucy5HZW5l
+        cmljLktleVZhbHVlUGFpcmAyW1tTeXN0ZW0uT2JqZWN0AgAAAANrZXkFdmFsdWUCAQIAAAAIDwsAAAAG
+        AwAAAAxTdWIgdGlwZSAjMTEL
 </value>
   </data>
 </root>

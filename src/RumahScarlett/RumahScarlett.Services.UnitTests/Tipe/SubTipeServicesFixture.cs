@@ -9,12 +9,12 @@ using System.Threading.Tasks;
 
 namespace RumahScarlett.Services.UnitTests.Tipe
 {
-   public class SubTipeServicesFixture : BaseServicesFixture<ISubTipeModel, ITipeServices>
+   public class SubTipeServicesFixture : BaseServicesFixture<ISubTipeModel, ISubTipeServices>
    {
       public SubTipeServicesFixture()
       {
          Model = new SubTipeModel();
-         Services = new TipeServices(null, new ModelDataAnnotationCheck());
+         Services = new SubTipeServices(null, new ModelDataAnnotationCheck());
       }
    }
 }

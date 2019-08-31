@@ -26,18 +26,5 @@ namespace RumahScarlett.Domain.Models.Tipe
       [StringLength(255, ErrorMessage = "Panjang maksimal keterangan 255 karakter !!!")]
       [Display(Name = "Keterangan")]
       public string keterangan { get; set; }
-
-      [Browsable(false)]
-      [Dp.Write(false)]
-      public IEnumerable<ISubTipeModel> SubTipes
-      {
-         get;
-         set;
-      }
-
-      public TipeModel()
-      {
-         SubTipes = new List<ISubTipeModel>();
-      }
    }
 }

@@ -9,6 +9,5 @@ namespace RumahScarlett.Presentation.Views.Tipe
 {
    public interface ISubTipeView : IDataView
    {
-      TreeView TreeViewTipe { get; }
    }
 }

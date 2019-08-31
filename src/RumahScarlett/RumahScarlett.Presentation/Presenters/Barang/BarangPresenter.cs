@@ -52,7 +52,6 @@ namespace RumahScarlett.Presentation.Presenters.Barang
 
          _view.OnDataGridCellDoubleClick += _view_DataGrid_CellDoubleClick;
          _view.OnRadioButtonTipeChecked += _view_RadioButtonTipe_CheckedChanged;
-         _view.OnComboBoxTipeSelectedIndexChanged += _view_ComboBoxTipe_SelectedIndexChanged;
          _view.OnRadioButtonSupplierChecked += _view_RadioButtonSupplier_CheckedChanged;
          _view.OnButtonTampilkanClick += _view_ButtonTampilkan_Click;
       }
@@ -68,20 +67,7 @@ namespace RumahScarlett.Presentation.Presenters.Barang
          _radioButtonTipeChecked = status;
          _radioButtonSemuaChecked = !status;
       }
-
-      private void _view_ComboBoxTipe_SelectedIndexChanged(object sender, EventArgs e)
-      {
-         var comboBoxTipe = (ComboBoxTipe)sender;
-         var comboBoxSubTipe = (ComboBoxSubTipe)((EventArgs<ComboBox>)e).Value;
-         var subTipes = comboBoxTipe.SubTipes;
-
-         if (subTipes != null)
-         {
-            var subTipeKVP = subTipes.Select(sub => new KeyValuePair<object, string>(sub.id, sub.nama)).ToList();
-            comboBoxSubTipe.SetDataSource(subTipeKVP, false);
-         }
-      }
-
+      
       private void _view_RadioButtonSupplier_CheckedChanged(object sender, EventArgs e)
       {
          var status = ((RadioButton)sender).Checked;
@@ -134,7 +120,6 @@ namespace RumahScarlett.Presentation.Presenters.Barang
       {
          var view = new BarangEntryView(_tipeServices);
          view.OnSaveData += BarangEntryView_OnSaveData;
-         view.OnComboBoxTipeSelectedIndexChanged += _view_ComboBoxTipe_SelectedIndexChanged;
          view.ShowDialog();
       }
 
@@ -157,7 +142,6 @@ namespace RumahScarlett.Presentation.Presenters.Barang
 
             var view = new BarangEntryView(_tipeServices, false, model);
             view.OnSaveData += BarangEntryView_OnSaveData;
-            view.OnComboBoxTipeSelectedIndexChanged += _view_ComboBoxTipe_SelectedIndexChanged;
             view.ShowDialog();
          }
       }

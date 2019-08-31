@@ -40,7 +40,6 @@ namespace RumahScarlett.Presentation.Views.Tipe
       {
          if (!_isNewData && _model != null)
          {
-            comboBoxTipe.SelectedValue = _model.tipe_id;
             textBoxNama.Text = _model.nama;
             textBoxKeterangan.Text = _model.keterangan;
          }
@@ -50,7 +49,6 @@ namespace RumahScarlett.Presentation.Views.Tipe
       {
          var model = new SubTipeModel
          {
-            tipe_id = (uint)comboBoxTipe.SelectedValue,
             nama = textBoxNama.Text,
             keterangan = textBoxKeterangan.Text
          };

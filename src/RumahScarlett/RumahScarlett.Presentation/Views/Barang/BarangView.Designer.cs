@@ -39,9 +39,9 @@
          this.radioButtonTipe = new System.Windows.Forms.RadioButton();
          this.comboBoxTipe = new RumahScarlett.Presentation.Views.ModelControls.ComboBoxTipe();
          this.comboBoxSubTipe = new RumahScarlett.Presentation.Views.ModelControls.ComboBoxSubTipe();
-         this.comboBoxSupplier = new RumahScarlett.Presentation.Views.ModelControls.ComboBoxSupplier();
          this.radioButtonSupplier = new System.Windows.Forms.RadioButton();
          this.buttonTampilkan = new System.Windows.Forms.Button();
+         this.comboBoxSupplier = new RumahScarlett.Presentation.Views.ModelControls.ComboBoxSupplier();
          ((System.ComponentModel.ISupportInitialize)(this.listDataGrid)).BeginInit();
          this.groupBoxFilter.SuspendLayout();
          this.tableLayoutPanel2.SuspendLayout();
@@ -102,9 +102,9 @@
          this.tableLayoutPanel2.Controls.Add(this.radioButtonTipe, 0, 1);
          this.tableLayoutPanel2.Controls.Add(this.comboBoxTipe, 1, 1);
          this.tableLayoutPanel2.Controls.Add(this.comboBoxSubTipe, 3, 1);
-         this.tableLayoutPanel2.Controls.Add(this.comboBoxSupplier, 1, 2);
          this.tableLayoutPanel2.Controls.Add(this.radioButtonSupplier, 0, 2);
          this.tableLayoutPanel2.Controls.Add(this.buttonTampilkan, 1, 3);
+         this.tableLayoutPanel2.Controls.Add(this.comboBoxSupplier, 1, 2);
          this.tableLayoutPanel2.Location = new System.Drawing.Point(6, 19);
          this.tableLayoutPanel2.Name = "tableLayoutPanel2";
          this.tableLayoutPanel2.RowCount = 4;
@@ -164,9 +164,7 @@
             ((object)(resources.GetObject("comboBoxTipe.Items6"))),
             ((object)(resources.GetObject("comboBoxTipe.Items7"))),
             ((object)(resources.GetObject("comboBoxTipe.Items8"))),
-            ((object)(resources.GetObject("comboBoxTipe.Items9"))),
-            ((object)(resources.GetObject("comboBoxTipe.Items10"))),
-            ((object)(resources.GetObject("comboBoxTipe.Items11")))});
+            ((object)(resources.GetObject("comboBoxTipe.Items9")))});
          this.comboBoxTipe.Location = new System.Drawing.Point(72, 26);
          this.comboBoxTipe.Name = "comboBoxTipe";
          this.comboBoxTipe.Size = new System.Drawing.Size(150, 21);
@@ -176,34 +174,26 @@
          // 
          // comboBoxSubTipe
          // 
+         this.comboBoxSubTipe.DisplayMember = "Value";
          this.comboBoxSubTipe.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
          this.comboBoxSubTipe.FormattingEnabled = true;
+         this.comboBoxSubTipe.Items.AddRange(new object[] {
+            ((object)(resources.GetObject("comboBoxSubTipe.Items"))),
+            ((object)(resources.GetObject("comboBoxSubTipe.Items1"))),
+            ((object)(resources.GetObject("comboBoxSubTipe.Items2"))),
+            ((object)(resources.GetObject("comboBoxSubTipe.Items3"))),
+            ((object)(resources.GetObject("comboBoxSubTipe.Items4"))),
+            ((object)(resources.GetObject("comboBoxSubTipe.Items5"))),
+            ((object)(resources.GetObject("comboBoxSubTipe.Items6"))),
+            ((object)(resources.GetObject("comboBoxSubTipe.Items7"))),
+            ((object)(resources.GetObject("comboBoxSubTipe.Items8"))),
+            ((object)(resources.GetObject("comboBoxSubTipe.Items9"))),
+            ((object)(resources.GetObject("comboBoxSubTipe.Items10")))});
          this.comboBoxSubTipe.Location = new System.Drawing.Point(284, 26);
          this.comboBoxSubTipe.Name = "comboBoxSubTipe";
          this.comboBoxSubTipe.Size = new System.Drawing.Size(150, 21);
          this.comboBoxSubTipe.TabIndex = 12;
-         // 
-         // comboBoxSupplier
-         // 
-         this.comboBoxSupplier.DisplayMember = "Value";
-         this.comboBoxSupplier.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-         this.comboBoxSupplier.FormattingEnabled = true;
-         this.comboBoxSupplier.Items.AddRange(new object[] {
-            ((object)(resources.GetObject("comboBoxSupplier.Items"))),
-            ((object)(resources.GetObject("comboBoxSupplier.Items1"))),
-            ((object)(resources.GetObject("comboBoxSupplier.Items2"))),
-            ((object)(resources.GetObject("comboBoxSupplier.Items3"))),
-            ((object)(resources.GetObject("comboBoxSupplier.Items4"))),
-            ((object)(resources.GetObject("comboBoxSupplier.Items5"))),
-            ((object)(resources.GetObject("comboBoxSupplier.Items6"))),
-            ((object)(resources.GetObject("comboBoxSupplier.Items7"))),
-            ((object)(resources.GetObject("comboBoxSupplier.Items8"))),
-            ((object)(resources.GetObject("comboBoxSupplier.Items9")))});
-         this.comboBoxSupplier.Location = new System.Drawing.Point(72, 53);
-         this.comboBoxSupplier.Name = "comboBoxSupplier";
-         this.comboBoxSupplier.Size = new System.Drawing.Size(150, 21);
-         this.comboBoxSupplier.TabIndex = 13;
-         this.comboBoxSupplier.ValueMember = "Key";
+         this.comboBoxSubTipe.ValueMember = "Key";
          // 
          // radioButtonSupplier
          // 
@@ -225,6 +215,16 @@
          this.buttonTampilkan.TabIndex = 8;
          this.buttonTampilkan.Text = "Tam&pilkan";
          this.buttonTampilkan.UseVisualStyleBackColor = true;
+         // 
+         // comboBoxSupplier
+         // 
+         this.comboBoxSupplier.Anchor = System.Windows.Forms.AnchorStyles.Left;
+         this.comboBoxSupplier.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+         this.comboBoxSupplier.FormattingEnabled = true;
+         this.comboBoxSupplier.Location = new System.Drawing.Point(72, 53);
+         this.comboBoxSupplier.Name = "comboBoxSupplier";
+         this.comboBoxSupplier.Size = new System.Drawing.Size(150, 21);
+         this.comboBoxSupplier.TabIndex = 13;
          // 
          // BarangView
          // 
@@ -261,7 +261,7 @@
       private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
       private ModelControls.ComboBoxTipe comboBoxTipe;
       private ModelControls.ComboBoxSubTipe comboBoxSubTipe;
-      private ModelControls.ComboBoxSupplier comboBoxSupplier;
       private System.Windows.Forms.RadioButton radioButtonSupplier;
+      private ModelControls.ComboBoxSupplier comboBoxSupplier;
    }
 }

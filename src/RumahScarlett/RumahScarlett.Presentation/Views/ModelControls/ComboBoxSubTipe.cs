@@ -1,5 +1,8 @@
 ﻿using RumahScarlett.Domain.Models.Tipe;
+using RumahScarlett.Infrastructure.DataAccess.Repositories.Tipe;
 using RumahScarlett.Presentation.Helper;
+using RumahScarlett.Services.Services;
+using RumahScarlett.Services.Services.Tipe;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,24 +14,22 @@ namespace RumahScarlett.Presentation.Views.ModelControls
 {
    public class ComboBoxSubTipe : ComboBox
    {
-      public List<ISubTipeModel> SubTipes { private get; set; }
+      private ISubTipeServices _services;
+      private List<ISubTipeModel> _listSubTipes;
 
       protected override void OnCreateControl()
       {
          LoadDataSource();
       }
-
-      protected override void OnDataSourceChanged(EventArgs e)
-      {
-         base.OnDataSourceChanged(e);
-         LoadDataSource();
-      }
-
+      
       private void LoadDataSource()
       {
-         if (SubTipes != null && SubTipes.ToList().Count > 0)
+         _services = new SubTipeServices(new SubTipeRepository(), new ModelDataAnnotationCheck());
+         _listSubTipes = _services.GetAll().ToList();
+
+         if (_listSubTipes != null && _listSubTipes.Count > 0)
          {
-            var subTipeKVP = SubTipes.Select(sub => new KeyValuePair<object, string>(sub.id, sub.nama)).ToList();
+            var subTipeKVP = _listSubTipes.Select(sub => new KeyValuePair<object, string>(sub.id, sub.nama)).ToList();
             this.SetDataSource(subTipeKVP, false);
          }
       }

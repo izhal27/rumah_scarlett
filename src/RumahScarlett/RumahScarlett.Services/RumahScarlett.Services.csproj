@@ -77,8 +77,11 @@
     <Compile Include="Services\Supplier\ISupplierRepository.cs" />
     <Compile Include="Services\Supplier\ISupplierServices.cs" />
     <Compile Include="Services\Supplier\SupplierServices.cs" />
+    <Compile Include="Services\Tipe\ISubTipeRepository.cs" />
+    <Compile Include="Services\Tipe\ISubTipeServices.cs" />
     <Compile Include="Services\Tipe\ITipeRepository.cs" />
     <Compile Include="Services\Tipe\ITipeServices.cs" />
+    <Compile Include="Services\Tipe\SubTipeServices.cs" />
     <Compile Include="Services\Tipe\TipeServices.cs" />
   </ItemGroup>
   <ItemGroup>

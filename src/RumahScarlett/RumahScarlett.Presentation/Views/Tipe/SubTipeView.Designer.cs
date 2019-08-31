@@ -29,7 +29,6 @@
       private void InitializeComponent()
       {
          this.listDataGrid = new RumahScarlett.Presentation.Views.CommonControls.ListDataGrid();
-         this.treeViewTipe = new System.Windows.Forms.TreeView();
          this.buttonsCRUD = new RumahScarlett.Presentation.Views.CommonControls.CRUDCButtons();
          ((System.ComponentModel.ISupportInitialize)(this.listDataGrid)).BeginInit();
          this.SuspendLayout();
@@ -42,20 +41,11 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
          this.listDataGrid.AutoSizeColumnsMode = Syncfusion.WinForms.DataGrid.Enums.AutoSizeColumnsMode.Fill;
-         this.listDataGrid.Location = new System.Drawing.Point(268, 58);
+         this.listDataGrid.Location = new System.Drawing.Point(12, 58);
          this.listDataGrid.Name = "listDataGrid";
-         this.listDataGrid.Size = new System.Drawing.Size(504, 351);
+         this.listDataGrid.Size = new System.Drawing.Size(760, 351);
          this.listDataGrid.TabIndex = 2;
          this.listDataGrid.Text = "listDataGrid1";
-         // 
-         // treeViewTipe
-         // 
-         this.treeViewTipe.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-         this.treeViewTipe.Location = new System.Drawing.Point(12, 58);
-         this.treeViewTipe.Name = "treeViewTipe";
-         this.treeViewTipe.Size = new System.Drawing.Size(250, 351);
-         this.treeViewTipe.TabIndex = 3;
          // 
          // buttonsCRUD
          // 
@@ -73,14 +63,12 @@
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
          this.ClientSize = new System.Drawing.Size(784, 462);
          this.Controls.Add(this.buttonsCRUD);
-         this.Controls.Add(this.treeViewTipe);
          this.Controls.Add(this.listDataGrid);
          this.Name = "SubTipeView";
          this.Text = "Sub Tipe";
          this.Load += new System.EventHandler(this.SubTipeView_Load);
          this.Controls.SetChildIndex(this.panelUp, 0);
          this.Controls.SetChildIndex(this.listDataGrid, 0);
-         this.Controls.SetChildIndex(this.treeViewTipe, 0);
          this.Controls.SetChildIndex(this.buttonsCRUD, 0);
          ((System.ComponentModel.ISupportInitialize)(this.listDataGrid)).EndInit();
          this.ResumeLayout(false);
@@ -90,7 +78,6 @@
       #endregion
 
       private CommonControls.ListDataGrid listDataGrid;
-      private System.Windows.Forms.TreeView treeViewTipe;
       private CommonControls.CRUDCButtons buttonsCRUD;
    }
 }

@@ -61,19 +61,7 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Tipe
 
          using (var context = new DbContext())
          {
-            return GetAll(() =>
-            {
-               var listObj = context.Conn.GetAll<TipeModel>();
-
-               var stRepo = new SubTipeRepository(context);
-
-               if (listObj != null && listObj.ToList().Count > 0)
-               {
-                  listObj = listObj.Map(t => t.SubTipes = stRepo.GetAll(t));
-               }
-
-               return listObj;
-            }, dataAccessStatus);
+            return GetAll(() => context.Conn.GetAll<TipeModel>(), dataAccessStatus);
          }
       }
 
@@ -101,51 +89,11 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Tipe
             throw new DataAccessException(dataAccessStatus); ;
          }
       }
-      
+
       private bool CheckModelExist(DbContext context, object id)
       {
          return CheckModelExist(context, "SELECT COUNT(1) FROM tipe WHERE id=@id",
                                                   new { id });
-      }
-
-      public void Insert(ISubTipeModel model)
-      {
-         using (var context = new DbContext())
-         {
-            new SubTipeRepository(context).Insert(model);
-         }
-      }
-
-      public void Update(ISubTipeModel model)
-      {
-         using (var context = new DbContext())
-         {
-            new SubTipeRepository(context).Update(model);
-         }
-      }
-
-      public void Delete(ISubTipeModel model)
-      {
-         using (var context = new DbContext())
-         {
-            new SubTipeRepository(context).Delete(model);
-         }
-      }
-      
-      public IEnumerable<ISubTipeModel> GetAllSubTipe()
-      {
-         using (var context = new DbContext())
-         {
-            return new SubTipeRepository(context).GetAll();
-         }
-      }
-
-      public ISubTipeModel GetSubTipeById(object id)
-      {
-         using (var context = new DbContext())
-         {
-            return new SubTipeRepository(context).GetById(id);
-         }
-      }
+      }      
    }
 }

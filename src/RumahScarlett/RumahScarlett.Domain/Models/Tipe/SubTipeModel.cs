@@ -16,12 +16,7 @@ namespace RumahScarlett.Domain.Models.Tipe
       [Browsable(false)]
       [Display(Name = "ID")]
       public uint id { get; set; }
-
-      [Browsable(false)]
-      [Range(1, uint.MaxValue, ErrorMessage = "Tipe harus diisi !!!")]
-      [Display(Name = "Tipe ID")]
-      public uint tipe_id { get; set; }
-
+      
       [Required(AllowEmptyStrings = false, ErrorMessage = "Nama Sub tipe harus diisi !!!")]
       [StringLength(100, MinimumLength = 3, ErrorMessage = "Nama Sub tipe harus diantara 3 sampai 100 karakter !!!")]
       [Display(Name = "Nama")]

@@ -21,7 +21,6 @@ namespace RumahScarlett.Presentation.Views.Barang
       private bool _isNewData;
       private IBarangModel _model;
       public event EventHandler OnSaveData;
-      public event EventHandler OnComboBoxTipeSelectedIndexChanged;
       private static string _typeName = "Barang";
 
       public BarangEntryView(ITipeServices tipeServices, bool isNewData = true, IBarangModel model = null)
@@ -35,8 +34,7 @@ namespace RumahScarlett.Presentation.Views.Barang
          {
             _model = model;
          }
-
-         comboBoxTipe.SelectedIndexChanged += comboBoxTipe_SelectedIndexChanged;
+         
          operationButtons.OnSaveButtonClick += OperationButtons_OnSaveButtonClick;
       }
 
@@ -84,11 +82,6 @@ namespace RumahScarlett.Presentation.Views.Barang
             model.id = _model.id;
             OnSaveData?.Invoke(this, new EventArgs<IBarangModel>(model));
          }
-      }
-
-      private void comboBoxTipe_SelectedIndexChanged(object sender, EventArgs e)
-      {
-         OnComboBoxTipeSelectedIndexChanged?.Invoke(sender, new EventArgs<ComboBox>(comboBoxSubTipe));
-      }
+      }      
    }
 }

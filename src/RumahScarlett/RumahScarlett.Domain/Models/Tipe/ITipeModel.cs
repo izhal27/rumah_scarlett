@@ -7,6 +7,5 @@ namespace RumahScarlett.Domain.Models.Tipe
       uint id { get; set; }
       string nama { get; set; }
       string keterangan { get; set; }
-      IEnumerable<ISubTipeModel> SubTipes { get; set; }
    }
 }

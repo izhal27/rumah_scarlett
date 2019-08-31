@@ -15,7 +15,7 @@ namespace RumahScarlett.Presentation.Views.ModelControls
    public class ComboBoxSupplier : ComboBox
    {
       private ISupplierServices _services;
-      private List<ISupplierModel> _llistSuppliers;
+      private List<ISupplierModel> _listSuppliers;
 
       protected override void OnCreateControl()
       {
@@ -25,11 +25,11 @@ namespace RumahScarlett.Presentation.Views.ModelControls
       private void LoadDataSource()
       {
          _services = new SupplierServices(new SupplierRepository(), new ModelDataAnnotationCheck());
-         _llistSuppliers = _services.GetAll().ToList();
+         _listSuppliers = _services.GetAll().ToList();
 
-         if (_llistSuppliers != null && _llistSuppliers.Count > 0)
+         if (_listSuppliers != null && _listSuppliers.Count > 0)
          {
-            var supplierKVP = _llistSuppliers.Select(s => new KeyValuePair<object, string>(s.id, s.nama)).ToList();
+            var supplierKVP = _listSuppliers.Select(s => new KeyValuePair<object, string>(s.id, s.nama)).ToList();
             this.SetDataSource(supplierKVP, false);
          }
       }

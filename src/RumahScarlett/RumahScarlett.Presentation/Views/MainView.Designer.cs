@@ -53,7 +53,7 @@
          this.dataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
          this.hutangOperasionalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
          this.laporanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-         this.kasOperatorHariIniToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+         this.kasHariIniToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
          this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
          this.penjualanToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
          this.pembelianToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -237,7 +237,7 @@
          // laporanToolStripMenuItem
          // 
          this.laporanToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.kasOperatorHariIniToolStripMenuItem,
+            this.kasHariIniToolStripMenuItem,
             this.toolStripSeparator2,
             this.penjualanToolStripMenuItem1,
             this.pembelianToolStripMenuItem1,
@@ -247,38 +247,38 @@
          this.laporanToolStripMenuItem.Size = new System.Drawing.Size(62, 20);
          this.laporanToolStripMenuItem.Text = "&Laporan";
          // 
-         // kasOperatorHariIniToolStripMenuItem
+         // kasHariIniToolStripMenuItem
          // 
-         this.kasOperatorHariIniToolStripMenuItem.Name = "kasOperatorHariIniToolStripMenuItem";
-         this.kasOperatorHariIniToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
-         this.kasOperatorHariIniToolStripMenuItem.Text = "&Kas Operator hari ini";
+         this.kasHariIniToolStripMenuItem.Name = "kasHariIniToolStripMenuItem";
+         this.kasHariIniToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+         this.kasHariIniToolStripMenuItem.Text = "&Kas hari ini";
          // 
          // toolStripSeparator2
          // 
          this.toolStripSeparator2.Name = "toolStripSeparator2";
-         this.toolStripSeparator2.Size = new System.Drawing.Size(178, 6);
+         this.toolStripSeparator2.Size = new System.Drawing.Size(163, 6);
          // 
          // penjualanToolStripMenuItem1
          // 
          this.penjualanToolStripMenuItem1.Name = "penjualanToolStripMenuItem1";
-         this.penjualanToolStripMenuItem1.Size = new System.Drawing.Size(181, 22);
+         this.penjualanToolStripMenuItem1.Size = new System.Drawing.Size(166, 22);
          this.penjualanToolStripMenuItem1.Text = "Pen&jualan";
          // 
          // pembelianToolStripMenuItem1
          // 
          this.pembelianToolStripMenuItem1.Name = "pembelianToolStripMenuItem1";
-         this.pembelianToolStripMenuItem1.Size = new System.Drawing.Size(181, 22);
+         this.pembelianToolStripMenuItem1.Size = new System.Drawing.Size(166, 22);
          this.pembelianToolStripMenuItem1.Text = "Pem&belian";
          // 
          // toolStripSeparator3
          // 
          this.toolStripSeparator3.Name = "toolStripSeparator3";
-         this.toolStripSeparator3.Size = new System.Drawing.Size(178, 6);
+         this.toolStripSeparator3.Size = new System.Drawing.Size(163, 6);
          // 
          // penyesuaianStokToolStripMenuItem1
          // 
          this.penyesuaianStokToolStripMenuItem1.Name = "penyesuaianStokToolStripMenuItem1";
-         this.penyesuaianStokToolStripMenuItem1.Size = new System.Drawing.Size(181, 22);
+         this.penyesuaianStokToolStripMenuItem1.Size = new System.Drawing.Size(166, 22);
          this.penyesuaianStokToolStripMenuItem1.Text = "Penyesuaian &Stok";
          // 
          // databaseToolStripMenuItem
@@ -412,7 +412,7 @@
       private System.Windows.Forms.ToolStripMenuItem dataToolStripMenuItem;
       private System.Windows.Forms.ToolStripMenuItem hutangOperasionalToolStripMenuItem;
       private System.Windows.Forms.ToolStripMenuItem laporanToolStripMenuItem;
-      private System.Windows.Forms.ToolStripMenuItem kasOperatorHariIniToolStripMenuItem;
+      private System.Windows.Forms.ToolStripMenuItem kasHariIniToolStripMenuItem;
       private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
       private System.Windows.Forms.ToolStripMenuItem penjualanToolStripMenuItem1;
       private System.Windows.Forms.ToolStripMenuItem pembelianToolStripMenuItem1;

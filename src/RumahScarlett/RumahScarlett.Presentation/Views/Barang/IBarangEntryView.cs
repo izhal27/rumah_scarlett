@@ -8,6 +8,5 @@ namespace RumahScarlett.Presentation.Views.Barang
 {
    public interface IBarangEntryView : IEntryView
    {
-      event EventHandler OnComboBoxTipeSelectedIndexChanged;
    }
 }

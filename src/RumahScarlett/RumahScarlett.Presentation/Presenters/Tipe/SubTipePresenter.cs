@@ -20,9 +20,8 @@ namespace RumahScarlett.Presentation.Presenters.Tipe
    public class SubTipePresenter : ISubTipePresenter
    {
       private ISubTipeView _view;
-      private ITipeServices _services;
-      private List<ITipeModel> _listTipes;
-      private List<ISubTipeModel> _listSubTipes;
+      private ISubTipeServices _services;
+      private List<ISubTipeModel> _listObjs;
       private BindingListView<SubTipeModel> _bindingView;
       private static string _typeName = "Sub Tipe";
 
@@ -33,7 +32,7 @@ namespace RumahScarlett.Presentation.Presenters.Tipe
 
       public SubTipePresenter()
       {
-         _services = new TipeServices(new TipeRepository(), new ModelDataAnnotationCheck());
+         _services = new SubTipeServices(new SubTipeRepository(), new ModelDataAnnotationCheck());
          _view = new SubTipeView();
 
          _view.OnLoadData += _view_LoadData;
@@ -41,19 +40,14 @@ namespace RumahScarlett.Presentation.Presenters.Tipe
          _view.OnUpdateData += _view_OnUpdateData;
          _view.OnDeleteData += _view_OnDeleteData;
          _view.OnRefreshData += _view_OnRefreshData;
-
-         _view.TreeViewTipe.AfterSelect += TreeViewTipe_AfterSelect;
+         
          _view.OnDataGridCellDoubleClick += OnDataGrid_CellDoubleClick;
       }
 
       private void _view_LoadData(object sender, EventArgs e)
       {
-         _listTipes = _services.GetAll().ToList();
-         _listSubTipes = _services.GetAllSubTipe().ToList();
-
-         SetTipeNodes(_listTipes);
-
-         _bindingView = new BindingListView<SubTipeModel>(_listSubTipes);
+         _listObjs = _services.GetAll().ToList();
+         _bindingView = new BindingListView<SubTipeModel>(_listObjs);
          ((EventArgs<ListDataGrid>)e).Value.DataSource = _bindingView;
       }
 
@@ -79,7 +73,7 @@ namespace RumahScarlett.Presentation.Presenters.Tipe
 
          if (listDataGrid != null && listDataGrid.SelectedItem != null)
          {
-            var model = _services.GetSubTipeById(((SubTipeModel)listDataGrid.SelectedItem).id);
+            var model = _services.GetById(((SubTipeModel)listDataGrid.SelectedItem).id);
 
             var view = new SubTipeEntryView(false, model);
             view.OnSaveData += SubTipeEntryView_OnSaveData;
@@ -127,7 +121,7 @@ namespace RumahScarlett.Presentation.Presenters.Tipe
          {
             try
             {
-               var model = _services.GetSubTipeById(((SubTipeModel)listDataGrid.SelectedItem).id);
+               var model = _services.GetById(((SubTipeModel)listDataGrid.SelectedItem).id);
 
                _services.Delete(model);
                Messages.InfoDelete(_typeName);
@@ -151,60 +145,11 @@ namespace RumahScarlett.Presentation.Presenters.Tipe
       {
          using (new WaitCursorHandler())
          {
-            _listTipes = _services.GetAll().ToList();
-            _listSubTipes = _services.GetAllSubTipe().ToList();
-
-            SetTipeNodes(_listTipes);
-            _bindingView.DataSource = _listSubTipes;
+            _listObjs = _services.GetAll().ToList();            
+            _bindingView.DataSource = _listObjs;
          }
       }
-
-      private void TreeViewTipe_AfterSelect(object sender, TreeViewEventArgs e)
-      {
-         if (((TreeView)sender).SelectedNode != null)
-         {
-            if (e.Node.Name.ToLower() != "root")
-            {
-               _bindingView.DataSource = _listTipes.Where(t => t.id == uint.Parse(e.Node.Name))
-                                         .FirstOrDefault().SubTipes.ToList();
-            }
-            else
-            {
-               _bindingView.DataSource = _listSubTipes;
-            }
-         }
-      }
-
-      private void SetTipeNodes(List<ITipeModel> listTipes)
-      {
-         if (listTipes != null && listTipes.Count > 0)
-         {
-            if (_view.TreeViewTipe.Nodes.Count == 0)
-            {
-               _view.TreeViewTipe.Nodes.Add("root", "TIPE");
-            }
-
-            if (_view.TreeViewTipe.Nodes["root"].Nodes.Count > 0)
-            {
-               _view.TreeViewTipe.Nodes["root"].Nodes.Clear();
-            }
-
-            var kvpTipe = listTipes.Select(t => new KeyValuePair<uint, string>(t.id, t.nama));
-
-            foreach (var tipe in kvpTipe)
-            {
-               // Key = Key
-               // Text = Value
-               _view.TreeViewTipe.Nodes["root"].Nodes.Add(tipe.Key.ToString(), tipe.Value);
-            }
-
-            if (!_view.TreeViewTipe.Nodes["root"].IsExpanded)
-            {
-               _view.TreeViewTipe.Nodes["root"].Toggle();
-            }
-         }
-      }
-
+      
       private void OnDataGrid_CellDoubleClick(object sender, CellClickEventArgs e)
       {
          _view_OnUpdateData(sender, e);
