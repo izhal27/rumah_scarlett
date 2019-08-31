@@ -84,6 +84,21 @@ namespace RumahScarlett.Presentation.Views
          ShowChildForm(view);
       }
 
+      private void kasAwalToolStripMenuItem1_Click(object sender, EventArgs e)
+      {
+
+      }
+
+      private void hutangOperasionalToolStripMenuItem_Click(object sender, EventArgs e)
+      {
+
+      }
+
+      private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+      {
+         Close();
+      }
+
       /// <summary>
       /// Method untuk menampilkan Form child
       /// </summary>
