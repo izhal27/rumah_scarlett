@@ -6,6 +6,7 @@ using RumahScarlett.Infrastructure.DataAccess.Repositories.Barang;
 using RumahScarlett.Infrastructure.DataAccess.Repositories.Tipe;
 using RumahScarlett.Presentation.Helper;
 using RumahScarlett.Presentation.Views.Barang;
+using RumahScarlett.Presentation.Views.CommonControls;
 using RumahScarlett.Presentation.Views.ModelControls;
 using RumahScarlett.Services.Services;
 using RumahScarlett.Services.Services.Barang;
@@ -49,17 +50,29 @@ namespace RumahScarlett.Presentation.Presenters.Barang
          _view.OnDeleteData += _view_OnDeleteData;
          _view.OnRefreshData += _view_OnRefreshData;
 
-         _view.ListDataGrid.CellDoubleClick += ListDataGrid_CellDoubleClick;
-         _view.OnButtonTampilkanClick += _view_ButtonTampilkan_Click;
+         _view.OnDataGridCellDoubleClick += _view_DataGrid_CellDoubleClick;
          _view.OnRadioButtonTipeChecked += _view_RadioButtonTipe_CheckedChanged;
-         _view.OnComboBoxTipeSelectedIndexChanged += ComboBoxTipe_SelectedIndexChanged;
+         _view.OnComboBoxTipeSelectedIndexChanged += _view_ComboBoxTipe_SelectedIndexChanged;
          _view.OnRadioButtonSupplierChecked += _view_RadioButtonSupplier_CheckedChanged;
+         _view.OnButtonTampilkanClick += _view_ButtonTampilkan_Click;
       }
 
-      private void ComboBoxTipe_SelectedIndexChanged(object sender, EventArgs<ComboBox> e)
+      private void _view_RadioButtonTipe_CheckedChanged(object sender, EventArgs e)
+      {
+         var radioButtonTipe = ((RadioButton)sender);
+         var status = radioButtonTipe.Checked;
+
+         ((EventArgs<Dictionary<string, ComboBox>>)e).Value["comboBoxTipe"].Enabled = status;
+         ((EventArgs<Dictionary<string, ComboBox>>)e).Value["comboBoxSubTipe"].Enabled = status;
+
+         _radioButtonTipeChecked = status;
+         _radioButtonSemuaChecked = !status;
+      }
+
+      private void _view_ComboBoxTipe_SelectedIndexChanged(object sender, EventArgs e)
       {
          var comboBoxTipe = (ComboBoxTipe)sender;
-         var comboBoxSubTipe =  (ComboBoxSubTipe)e.Value;
+         var comboBoxSubTipe = (ComboBoxSubTipe)((EventArgs<ComboBox>)e).Value;
          var subTipes = comboBoxTipe.SubTipes;
 
          if (subTipes != null)
@@ -69,27 +82,15 @@ namespace RumahScarlett.Presentation.Presenters.Barang
          }
       }
 
-      private void _view_RadioButtonTipe_CheckedChanged(object sender, EventArgs<Dictionary<string, ComboBox>> e)
-      {
-         var radioButtonTipe = ((RadioButton)sender);
-         var status = radioButtonTipe.Checked;
-
-         e.Value["comboBoxTipe"].Enabled = status;
-         e.Value["comboBoxSubTipe"].Enabled = status;
-
-         _radioButtonTipeChecked = status;
-         _radioButtonSemuaChecked = !status;
-      }
-
-      private void _view_RadioButtonSupplier_CheckedChanged(object sender, EventArgs<ComboBox> e)
+      private void _view_RadioButtonSupplier_CheckedChanged(object sender, EventArgs e)
       {
          var status = ((RadioButton)sender).Checked;
-         e.Value.Enabled = status;
+         ((EventArgs<ComboBox>)e).Value.Enabled = status;
 
          _radioButtonSemuaChecked = !status;
       }
 
-      private void _view_ButtonTampilkan_Click(object sender, EventArgs<Dictionary<string, ComboBox>> e)
+      private void _view_ButtonTampilkan_Click(object sender, EventArgs e)
       {
          if (_radioButtonSemuaChecked) // Filter by semua barang
          {
@@ -97,8 +98,8 @@ namespace RumahScarlett.Presentation.Presenters.Barang
          }
          else if (_radioButtonTipeChecked) // Filter by tipe
          {
-            var comboBoxTipe = e.Value["comboBoxTipe"];
-            var comboBoxSubTipe = e.Value["comboBoxSubTipe"];
+            var comboBoxTipe = ((EventArgs<Dictionary<string, ComboBox>>)e).Value["comboBoxTipe"];
+            var comboBoxSubTipe = ((EventArgs<Dictionary<string, ComboBox>>)e).Value["comboBoxSubTipe"];
 
             var tipeId = comboBoxTipe.SelectedValue != null ?
                         (uint)comboBoxTipe.SelectedValue : default(uint);
@@ -110,7 +111,7 @@ namespace RumahScarlett.Presentation.Presenters.Barang
          }
          else // Filter by supplier
          {
-            var comboBoxSupplier = e.Value["comboBoxSupplier"];
+            var comboBoxSupplier = ((EventArgs<Dictionary<string, ComboBox>>)e).Value["comboBoxSupplier"];
 
             var supplierId = comboBoxSupplier.SelectedValue != null ?
                              (uint)comboBoxSupplier.SelectedValue : default(uint);
@@ -126,33 +127,46 @@ namespace RumahScarlett.Presentation.Presenters.Barang
          _listTipes = _tipeServices.GetAll().ToList();
 
          _bindingView = new BindingListView<BarangModel>(_listBarangs);
-         _view.ListDataGrid.DataSource = _bindingView;
+         ((EventArgs<ListDataGrid>)e).Value.DataSource = _bindingView;
       }
 
       private void _view_OnCreateData(object sender, EventArgs e)
       {
          var view = new BarangEntryView(_tipeServices);
          view.OnSaveData += BarangEntryView_OnSaveData;
+         view.OnComboBoxTipeSelectedIndexChanged += _view_ComboBoxTipe_SelectedIndexChanged;
          view.ShowDialog();
       }
 
       private void _view_OnUpdateData(object sender, EventArgs e)
       {
-         if (_view.ListDataGrid.SelectedItem != null)
+         ListDataGrid listDataGrid = null;
+
+         if (sender is ListDataGrid)
          {
-            var model = _barangServices.GetById(((BarangModel)_view.ListDataGrid.SelectedItem).id);
+            listDataGrid = (ListDataGrid)sender;
+         }
+         else
+         {
+            listDataGrid = ((EventArgs<ListDataGrid>)e).Value;
+         }
+
+         if (listDataGrid != null && listDataGrid.SelectedItem != null)
+         {
+            var model = _barangServices.GetById(((BarangModel)listDataGrid.SelectedItem).id);
 
             var view = new BarangEntryView(_tipeServices, false, model);
             view.OnSaveData += BarangEntryView_OnSaveData;
+            view.OnComboBoxTipeSelectedIndexChanged += _view_ComboBoxTipe_SelectedIndexChanged;
             view.ShowDialog();
          }
       }
 
-      private void BarangEntryView_OnSaveData(object sender, EventArgs<IBarangModel> e)
+      private void BarangEntryView_OnSaveData(object sender, EventArgs e)
       {
          try
          {
-            var model = (BarangModel)e.Value;
+            var model = (BarangModel)((EventArgs<IBarangModel>)e).Value;
             var view = ((BarangEntryView)sender);
 
             if (model.id == default(uint))
@@ -182,11 +196,13 @@ namespace RumahScarlett.Presentation.Presenters.Barang
 
       private void _view_OnDeleteData(object sender, EventArgs e)
       {
-         if (_view.ListDataGrid.SelectedItem != null && Messages.ConfirmDelete(_typeName))
+         var listDataGrid = ((EventArgs<ListDataGrid>)e).Value;
+
+         if (listDataGrid != null && listDataGrid.SelectedItem != null && Messages.ConfirmDelete(_typeName))
          {
             try
             {
-               var model = _barangServices.GetById(((BarangModel)_view.ListDataGrid.SelectedItem).id);
+               var model = _barangServices.GetById(((BarangModel)listDataGrid.SelectedItem).id);
 
                _barangServices.Delete(model);
                Messages.InfoDelete(_typeName);
@@ -198,9 +214,9 @@ namespace RumahScarlett.Presentation.Presenters.Barang
             }
             finally
             {
-               if (_view.ListDataGrid.SelectedItem != null)
+               if (listDataGrid.SelectedItem != null)
                {
-                  _view.ListDataGrid.SelectedItem = null;
+                  listDataGrid.SelectedItem = null;
                }
             }
          }
@@ -216,10 +232,10 @@ namespace RumahScarlett.Presentation.Presenters.Barang
             _bindingView.DataSource = _listBarangs;
          }
       }
-      
-      private void ListDataGrid_CellDoubleClick(object sender, CellClickEventArgs e)
+
+      private void _view_DataGrid_CellDoubleClick(object sender, CellClickEventArgs e)
       {
-         _view_OnUpdateData(null, null);
+         _view_OnUpdateData(sender, e);
       }
    }
 }

@@ -49,13 +49,18 @@ namespace RumahScarlett.Presentation.Views.ModelControls
 
       private void GetSubTipes()
       {
-         if (DataSource != null && SelectedIndex >= 0)
+         if (_listTipes != null)
          {
-            var selectedTipe = _listTipes.Where(t => t.id == (uint)SelectedValue).FirstOrDefault();
+            var selectedTipeId = default(uint);
 
-            if (selectedTipe != null)
+            if (uint.TryParse(SelectedValue.ToString(), out selectedTipeId))
             {
-               _listSubTipes = selectedTipe.SubTipes.ToList();
+               var selectedTipe = _listTipes.Where(t => t.id == (uint)SelectedValue).FirstOrDefault();
+
+               if (selectedTipe != null)
+               {
+                  _listSubTipes = selectedTipe.SubTipes.ToList();
+               }
             }
          }
       }

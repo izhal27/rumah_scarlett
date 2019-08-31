@@ -16,35 +16,34 @@ namespace RumahScarlett.Presentation.Views.Tipe
 {
    public partial class SubTipeEntryView : BaseEntryView, ISubTipeEntryView
    {
-      private List<ITipeModel> _listTipes;
       private bool _isNewData;
       private ISubTipeModel _model;
-      public event EventHandler<EventArgs<ISubTipeModel>> OnSaveData;
+      public event EventHandler OnSaveData;
       private static string _typeName = "Sub Tipe";
 
-      public SubTipeEntryView(List<ITipeModel> listTipes, bool isNewData = true, ISubTipeModel model = null)
+      public SubTipeEntryView(bool isNewData = true, ISubTipeModel model = null)
       {
          InitializeComponent();
-
-         _listTipes = listTipes;
+         
          _isNewData = isNewData;
          panelUp.LabelInfo = isNewData ? "TAMBAH SUB TIPE" : "UBAH SUB TIPE";
-
-         if (listTipes != null)
-         {
-            var tipeKVP = listTipes.Select(t => new KeyValuePair<object, string>(t.id, t.nama)).ToList();
-            comboBoxTipe.SetDataSource(tipeKVP, false);
-         }
-
+         
          if (!_isNewData)
          {
             _model = model;
-            comboBoxTipe.SelectedValue = model.tipe_id;
-            textBoxNama.Text = model.nama;
-            textBoxKeterangan.Text = model.keterangan;
          }
 
          operationButtons.OnSaveButtonClick += OperationButtons_OnSaveButtonClick;
+      }
+      
+      private void SubTipeEntryView_Load(object sender, EventArgs e)
+      {
+         if (!_isNewData && _model != null)
+         {
+            comboBoxTipe.SelectedValue = _model.tipe_id;
+            textBoxNama.Text = _model.nama;
+            textBoxKeterangan.Text = _model.keterangan;
+         }
       }
 
       private void OperationButtons_OnSaveButtonClick(object sender, EventArgs e)

@@ -28,6 +28,8 @@
       /// </summary>
       private void InitializeComponent()
       {
+         this.components = new System.ComponentModel.Container();
+         System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SubTipeEntryView));
          this.groupBox1 = new System.Windows.Forms.GroupBox();
          this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
          this.label1 = new System.Windows.Forms.Label();
@@ -36,8 +38,8 @@
          this.textBoxNama = new RumahScarlett.Presentation.Views.CommonControls.BaseTextBox();
          this.textBoxKeterangan = new RumahScarlett.Presentation.Views.CommonControls.BaseTextBox();
          this.label4 = new System.Windows.Forms.Label();
-         this.comboBoxTipe = new System.Windows.Forms.ComboBox();
          this.label5 = new System.Windows.Forms.Label();
+         this.comboBoxTipe = new RumahScarlett.Presentation.Views.ModelControls.ComboBoxTipe();
          this.groupBox1.SuspendLayout();
          this.tableLayoutPanel1.SuspendLayout();
          ((System.ComponentModel.ISupportInitialize)(this.textBoxNama)).BeginInit();
@@ -80,8 +82,8 @@
          this.tableLayoutPanel1.Controls.Add(this.textBoxNama, 1, 1);
          this.tableLayoutPanel1.Controls.Add(this.textBoxKeterangan, 1, 2);
          this.tableLayoutPanel1.Controls.Add(this.label4, 0, 0);
-         this.tableLayoutPanel1.Controls.Add(this.comboBoxTipe, 1, 0);
          this.tableLayoutPanel1.Controls.Add(this.label5, 2, 0);
+         this.tableLayoutPanel1.Controls.Add(this.comboBoxTipe, 1, 0);
          this.tableLayoutPanel1.Location = new System.Drawing.Point(6, 19);
          this.tableLayoutPanel1.Name = "tableLayoutPanel1";
          this.tableLayoutPanel1.RowCount = 3;
@@ -153,16 +155,6 @@
          this.label4.TabIndex = 0;
          this.label4.Text = "Tipe";
          // 
-         // comboBoxTipe
-         // 
-         this.comboBoxTipe.Anchor = System.Windows.Forms.AnchorStyles.Left;
-         this.comboBoxTipe.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-         this.comboBoxTipe.FormattingEnabled = true;
-         this.comboBoxTipe.Location = new System.Drawing.Point(71, 3);
-         this.comboBoxTipe.Name = "comboBoxTipe";
-         this.comboBoxTipe.Size = new System.Drawing.Size(250, 21);
-         this.comboBoxTipe.TabIndex = 0;
-         // 
          // label5
          // 
          this.label5.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -174,6 +166,31 @@
          this.label5.TabIndex = 0;
          this.label5.Text = "*";
          // 
+         // comboBoxTipe
+         // 
+         this.comboBoxTipe.Anchor = System.Windows.Forms.AnchorStyles.Left;
+         this.comboBoxTipe.DisplayMember = "Value";
+         this.comboBoxTipe.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+         this.comboBoxTipe.FormattingEnabled = true;
+         this.comboBoxTipe.Items.AddRange(new object[] {
+            ((object)(resources.GetObject("comboBoxTipe.Items"))),
+            ((object)(resources.GetObject("comboBoxTipe.Items1"))),
+            ((object)(resources.GetObject("comboBoxTipe.Items2"))),
+            ((object)(resources.GetObject("comboBoxTipe.Items3"))),
+            ((object)(resources.GetObject("comboBoxTipe.Items4"))),
+            ((object)(resources.GetObject("comboBoxTipe.Items5"))),
+            ((object)(resources.GetObject("comboBoxTipe.Items6"))),
+            ((object)(resources.GetObject("comboBoxTipe.Items7"))),
+            ((object)(resources.GetObject("comboBoxTipe.Items8"))),
+            ((object)(resources.GetObject("comboBoxTipe.Items9"))),
+            ((object)(resources.GetObject("comboBoxTipe.Items10"))),
+            ((object)(resources.GetObject("comboBoxTipe.Items11")))});
+         this.comboBoxTipe.Location = new System.Drawing.Point(71, 3);
+         this.comboBoxTipe.Name = "comboBoxTipe";
+         this.comboBoxTipe.Size = new System.Drawing.Size(250, 21);
+         this.comboBoxTipe.TabIndex = 3;
+         this.comboBoxTipe.ValueMember = "Key";
+         // 
          // SubTipeEntryView
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -182,6 +199,7 @@
          this.Controls.Add(this.groupBox1);
          this.Name = "SubTipeEntryView";
          this.Text = "Sub Tipe";
+         this.Load += new System.EventHandler(this.SubTipeEntryView_Load);
          this.Controls.SetChildIndex(this.panelUp, 0);
          this.Controls.SetChildIndex(this.operationButtons, 0);
          this.Controls.SetChildIndex(this.groupBox1, 0);
@@ -204,7 +222,7 @@
       private CommonControls.BaseTextBox textBoxNama;
       private CommonControls.BaseTextBox textBoxKeterangan;
       private System.Windows.Forms.Label label4;
-      private System.Windows.Forms.ComboBox comboBoxTipe;
       private System.Windows.Forms.Label label5;
+      private ModelControls.ComboBoxTipe comboBoxTipe;
    }
 }

@@ -1,5 +1,6 @@
 ﻿using RumahScarlett.CommonComponents;
 using RumahScarlett.Presentation.Views.CommonControls;
+using Syncfusion.WinForms.DataGrid.Events;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,5 +17,6 @@ namespace RumahScarlett.Presentation.Views
       event EventHandler OnDeleteData;
       event EventHandler OnRefreshData;
       event EventHandler OnPrintData;
+      event EventHandler<CellClickEventArgs> OnDataGridCellDoubleClick;
    }
 }

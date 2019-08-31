@@ -29,10 +29,9 @@ namespace RumahScarlett.Presentation.Views.ModelControls
 
          if (_llistSuppliers != null && _llistSuppliers.Count > 0)
          {
-            var supplierKVP = _llistSuppliers.Select(t => new KeyValuePair<object, string>(t.id, t.nama)).ToList();
+            var supplierKVP = _llistSuppliers.Select(s => new KeyValuePair<object, string>(s.id, s.nama)).ToList();
             this.SetDataSource(supplierKVP, false);
          }
       }
-
    }
 }

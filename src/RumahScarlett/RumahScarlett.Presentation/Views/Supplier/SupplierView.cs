@@ -1,5 +1,6 @@
 ﻿using RumahScarlett.CommonComponents;
 using RumahScarlett.Presentation.Views.CommonControls;
+using Syncfusion.WinForms.DataGrid.Events;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,6 +21,7 @@ namespace RumahScarlett.Presentation.Views.Supplier
       public event EventHandler OnDeleteData;
       public event EventHandler OnRefreshData;
       public event EventHandler OnPrintData;
+      public event EventHandler<CellClickEventArgs> OnDataGridCellDoubleClick;
 
       public ListDataGrid ListDataGrid
       {
@@ -33,6 +35,7 @@ namespace RumahScarlett.Presentation.Views.Supplier
          panelUp.LabelInfo = "DATA SUPPLIER";
          crudcButtons.ButtonCetakVisible = false;
 
+         listDataGrid.CellDoubleClick += ListDataGrid_CellDoubleClick;
          crudcButtons.OnTambahClick += crudcButtons_OnTambahClick;
          crudcButtons.OnUbahClick += crudcButtons_OnUbahClick;
          crudcButtons.OnHapusClick += crudcButtons_OnHapusClick;
@@ -42,7 +45,12 @@ namespace RumahScarlett.Presentation.Views.Supplier
 
       private void SupplierView_Load(object sender, EventArgs e)
       {
-         OnLoadData?.Invoke(sender, e);
+         OnLoadData?.Invoke(sender, new EventArgs<ListDataGrid>(listDataGrid));
+      }
+
+      private void ListDataGrid_CellDoubleClick(object sender, CellClickEventArgs e)
+      {
+         OnDataGridCellDoubleClick?.Invoke(sender, e);
       }
 
       private void crudcButtons_OnTambahClick(object sender, EventArgs e)
@@ -52,12 +60,12 @@ namespace RumahScarlett.Presentation.Views.Supplier
 
       private void crudcButtons_OnUbahClick(object sender, EventArgs e)
       {
-         OnUpdateData?.Invoke(sender, e);
+         OnUpdateData?.Invoke(sender, new EventArgs<ListDataGrid>(listDataGrid));
       }
 
       private void crudcButtons_OnHapusClick(object sender, EventArgs e)
       {
-         OnDeleteData?.Invoke(sender, e);
+         OnDeleteData?.Invoke(sender, new EventArgs<ListDataGrid>(listDataGrid));
       }
 
       private void crudcButtons_OnRefreshClickEvent(object sender, EventArgs e)

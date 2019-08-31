@@ -49,7 +49,7 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Tipe
          ValidateModel(_context, model, dataAccessStatus);
 
          Update(model, () => _context.Conn.Update((SubTipeModel)model), dataAccessStatus,
-                () => CheckModelExist(_context, model));
+                () => CheckModelExist(_context, model.id));
       }
 
       public void Delete(ISubTipeModel model)
@@ -57,7 +57,7 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Tipe
          var dataAccessStatus = new DataAccessStatus();
 
          Delete(model, () => _context.Conn.Delete((SubTipeModel)model), dataAccessStatus,
-             () => CheckModelExist(_context, model));
+             () => CheckModelExist(_context, model.id));
       }
 
       public IEnumerable<ISubTipeModel> GetAll()

@@ -3,6 +3,7 @@ using RumahScarlett.CommonComponents;
 using RumahScarlett.Domain.Models.Tipe;
 using RumahScarlett.Infrastructure.DataAccess.Repositories.Tipe;
 using RumahScarlett.Presentation.Helper;
+using RumahScarlett.Presentation.Views.CommonControls;
 using RumahScarlett.Presentation.Views.Tipe;
 using RumahScarlett.Services.Services;
 using RumahScarlett.Services.Services.Tipe;
@@ -41,14 +42,14 @@ namespace RumahScarlett.Presentation.Presenters.Tipe
          _view.OnDeleteData += _view_OnDeleteData;
          _view.OnRefreshData += _view_OnRefreshData;
 
-         _view.ListDataGrid.CellDoubleClick += ListDataGrid_CellDoubleClick;
+         _view.OnDataGridCellDoubleClick += OnDataGrid_CellDoubleClick;
       }
 
       private void _view_LoadData(object sender, EventArgs e)
       {
          _listObj = _services.GetAll().ToList();
          _bindingView = new BindingListView<TipeModel>(_listObj);
-         _view.ListDataGrid.DataSource = _bindingView;
+         ((EventArgs<ListDataGrid>)e).Value.DataSource = _bindingView;
       }
 
       private void _view_OnCreateData(object sender, EventArgs e)
@@ -60,20 +61,31 @@ namespace RumahScarlett.Presentation.Presenters.Tipe
 
       private void _view_OnUpdateData(object sender, EventArgs e)
       {
-         if (_view.ListDataGrid.SelectedItem != null)
+         ListDataGrid listDataGrid = null;
+
+         if (sender is ListDataGrid)
          {
-            var model = _services.GetById(((TipeModel)_view.ListDataGrid.SelectedItem).id);
+            listDataGrid = (ListDataGrid)sender;
+         }
+         else
+         {
+            listDataGrid = ((EventArgs<ListDataGrid>)e).Value;
+         }
+
+         if (listDataGrid != null && listDataGrid.SelectedItem != null)
+         {
+            var model = _services.GetById(((TipeModel)listDataGrid.SelectedItem).id);
 
             var view = new TipeEntryView(false, model);
             view.OnSaveData += TipeEntryView_OnSaveData;
             view.ShowDialog();
          }
       }
-      private void TipeEntryView_OnSaveData(object sender, EventArgs<ITipeModel> e)
+      private void TipeEntryView_OnSaveData(object sender, EventArgs e)
       {
          try
          {
-            var model = (TipeModel)e.Value;
+            var model = (TipeModel)((EventArgs<ITipeModel>)e).Value;
             var view = ((TipeEntryView)sender);
 
             if (model.id == default(uint))
@@ -103,11 +115,13 @@ namespace RumahScarlett.Presentation.Presenters.Tipe
 
       private void _view_OnDeleteData(object sender, EventArgs e)
       {
-         if (_view.ListDataGrid.SelectedItem != null && Messages.ConfirmDelete(_typeName))
+         var listDataGrid = ((EventArgs<ListDataGrid>)e).Value;
+
+         if (listDataGrid != null && listDataGrid.SelectedItem != null && Messages.ConfirmDelete(_typeName))
          {
             try
             {
-               var model = _services.GetById(((TipeModel)_view.ListDataGrid.SelectedItem).id);
+               var model = _services.GetById(((TipeModel)listDataGrid.SelectedItem).id);
 
                _services.Delete(model);
                Messages.InfoDelete(_typeName);
@@ -120,9 +134,9 @@ namespace RumahScarlett.Presentation.Presenters.Tipe
             }
             finally
             {
-               if (_view.ListDataGrid.SelectedItem != null)
+               if (listDataGrid.SelectedItem != null)
                {
-                  _view.ListDataGrid.SelectedItem = null;
+                  listDataGrid.SelectedItem = null;
                }
             }
          }
@@ -136,9 +150,9 @@ namespace RumahScarlett.Presentation.Presenters.Tipe
          }
       }
 
-      private void ListDataGrid_CellDoubleClick(object sender, CellClickEventArgs e)
+      private void OnDataGrid_CellDoubleClick(object sender, CellClickEventArgs e)
       {
-         _view_OnUpdateData(null, null);
+         _view_OnUpdateData(sender, e);
       }
    }
 }

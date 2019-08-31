@@ -18,7 +18,7 @@ namespace RumahScarlett.Presentation.Views.Tipe
    {
       private bool _isNewData;
       private ITipeModel _model;
-      public event EventHandler<EventArgs<ITipeModel>> OnSaveData;
+      public event EventHandler OnSaveData;
       private static string _typeName = "Tipe";
 
       public TipeEntryView(bool isNewData = true, ITipeModel model = null)

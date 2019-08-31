@@ -3,6 +3,7 @@ using RumahScarlett.CommonComponents;
 using RumahScarlett.Domain.Models.Supplier;
 using RumahScarlett.Infrastructure.DataAccess.Repositories.Supplier;
 using RumahScarlett.Presentation.Helper;
+using RumahScarlett.Presentation.Views.CommonControls;
 using RumahScarlett.Presentation.Views.Supplier;
 using RumahScarlett.Services.Services;
 using RumahScarlett.Services.Services.Supplier;
@@ -39,14 +40,19 @@ namespace RumahScarlett.Presentation.Presenters.Supplier
          _view.OnDeleteData += _view_OnDeleteData;
          _view.OnRefreshData += _view_OnRefreshData;
 
-         _view.ListDataGrid.CellDoubleClick += ListDataGrid_CellDoubleClick;
+         _view.OnDataGridCellDoubleClick += OnDataGrid_CellDoubleClick;
       }
 
       private void _view_LoadData(object sender, EventArgs e)
       {
-         _listObj = _services.GetAll().ToList();
-         _bindingView = new BindingListView<SupplierModel>(_listObj);
-         _view.ListDataGrid.DataSource = _bindingView;
+         var listDataGrid = ((EventArgs<ListDataGrid>)e).Value;
+
+         if (listDataGrid != null)
+         {
+            _listObj = _services.GetAll().ToList();
+            _bindingView = new BindingListView<SupplierModel>(_listObj);
+            listDataGrid.DataSource = _bindingView;
+         }
       }
 
       private void _view_OnCreateData(object sender, EventArgs e)
@@ -58,9 +64,20 @@ namespace RumahScarlett.Presentation.Presenters.Supplier
 
       private void _view_OnUpdateData(object sender, EventArgs e)
       {
-         if (_view.ListDataGrid.SelectedItem != null)
+         ListDataGrid listDataGrid = null;
+         
+         if(sender is ListDataGrid)
          {
-            var model = _services.GetById(((SupplierModel)_view.ListDataGrid.SelectedItem).id);
+            listDataGrid = (ListDataGrid)sender;
+         }
+         else
+         {
+            listDataGrid = ((EventArgs<ListDataGrid>)e).Value;
+         }
+
+         if (listDataGrid != null && listDataGrid.SelectedItem != null)
+         {
+            var model = _services.GetById(((SupplierModel)listDataGrid.SelectedItem).id);
 
             var view = new SupplierEntryView(false, model);
             view.OnSaveData += SupplierEntryView_OnSaveData;
@@ -68,11 +85,11 @@ namespace RumahScarlett.Presentation.Presenters.Supplier
          }
       }
 
-      private void SupplierEntryView_OnSaveData(object sender, EventArgs<ISupplierModel> e)
+      private void SupplierEntryView_OnSaveData(object sender, EventArgs e)
       {
          try
          {
-            var model = (SupplierModel)e.Value;
+            var model = (SupplierModel)((EventArgs<ISupplierModel>)e).Value;
             var view = ((SupplierEntryView)sender);
 
             if (model.id == default(uint))
@@ -102,11 +119,13 @@ namespace RumahScarlett.Presentation.Presenters.Supplier
 
       private void _view_OnDeleteData(object sender, EventArgs e)
       {
-         if (_view.ListDataGrid.SelectedItem != null && Messages.ConfirmDelete(_typeName))
+         var listDataGrid = ((EventArgs<ListDataGrid>)e).Value;
+
+         if (listDataGrid != null && listDataGrid.SelectedItem != null && Messages.ConfirmDelete(_typeName))
          {
             try
             {
-               var model = _services.GetById(((SupplierModel)_view.ListDataGrid.SelectedItem).id);
+               var model = _services.GetById(((SupplierModel)listDataGrid.SelectedItem).id);
 
                _services.Delete(model);
                Messages.InfoDelete(_typeName);
@@ -118,9 +137,9 @@ namespace RumahScarlett.Presentation.Presenters.Supplier
             }
             finally
             {
-               if (_view.ListDataGrid.SelectedItem != null)
+               if (listDataGrid.SelectedItem != null)
                {
-                  _view.ListDataGrid.SelectedItem = null;
+                  listDataGrid.SelectedItem = null;
                }
             }
          }
@@ -134,9 +153,9 @@ namespace RumahScarlett.Presentation.Presenters.Supplier
          }
       }
 
-      private void ListDataGrid_CellDoubleClick(object sender, CellClickEventArgs e)
+      private void OnDataGrid_CellDoubleClick(object sender, CellClickEventArgs e)
       {
-         _view_OnUpdateData(null, null);
+         _view_OnUpdateData(sender, e);
       }
    }
 }

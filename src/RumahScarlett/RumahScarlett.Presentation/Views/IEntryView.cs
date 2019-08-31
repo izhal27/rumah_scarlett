@@ -8,8 +8,8 @@ using System.Threading.Tasks;
 
 namespace RumahScarlett.Presentation.Views
 {
-   public interface IEntryView<TDomainModel> : IView where TDomainModel : class
-   {
-      event EventHandler<EventArgs<TDomainModel>> OnSaveData;
+   public interface IEntryView : IView
+   { 
+      event EventHandler OnSaveData;
    }
 }

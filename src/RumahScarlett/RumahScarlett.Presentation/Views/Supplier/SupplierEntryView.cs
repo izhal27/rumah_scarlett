@@ -1,4 +1,7 @@
-﻿using RumahScarlett.Presentation.Views.CommonControls;
+﻿using RumahScarlett.CommonComponents;
+using RumahScarlett.Domain.Models.Supplier;
+using RumahScarlett.Presentation.Helper;
+using RumahScarlett.Presentation.Views.CommonControls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,17 +11,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using RumahScarlett.CommonComponents;
-using RumahScarlett.Domain.Models.Supplier;
-using RumahScarlett.Presentation.Helper;
 
 namespace RumahScarlett.Presentation.Views.Supplier
 {
-   public partial class SupplierEntryView : BaseEntryView, IEntryView<ISupplierModel>
+   public partial class SupplierEntryView : BaseEntryView, IEntryView
    {
       private bool _isNewData;
       private ISupplierModel _model;
-      public event EventHandler<EventArgs<ISupplierModel>> OnSaveData;
+      public event EventHandler OnSaveData;
       private static string _typeName = "Supplier";
 
       public SupplierEntryView(bool isNewData = true, ISupplierModel model = null)

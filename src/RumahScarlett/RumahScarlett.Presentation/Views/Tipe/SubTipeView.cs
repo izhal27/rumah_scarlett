@@ -1,5 +1,6 @@
 ﻿using RumahScarlett.CommonComponents;
 using RumahScarlett.Presentation.Views.CommonControls;
+using Syncfusion.WinForms.DataGrid.Events;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,6 +21,7 @@ namespace RumahScarlett.Presentation.Views.Tipe
       public event EventHandler OnDeleteData;
       public event EventHandler OnRefreshData;
       public event EventHandler OnPrintData;
+      public event EventHandler<CellClickEventArgs> OnDataGridCellDoubleClick;
 
       public ListDataGrid ListDataGrid
       {
@@ -38,6 +40,7 @@ namespace RumahScarlett.Presentation.Views.Tipe
          panelUp.LabelInfo = "DATA SUB TIPE";
          buttonsCRUD.ButtonCetakVisible = false;
 
+         listDataGrid.CellDoubleClick += ListDataGrid_CellDoubleClick;
          buttonsCRUD.OnTambahClick += ButtonsCRUD_OnTambahClickEvent;
          buttonsCRUD.OnUbahClick += ButtonsCRUD_OnUbahClickEvent;
          buttonsCRUD.OnHapusClick += ButtonsCRUD_OnHapusClickEvent;
@@ -47,7 +50,12 @@ namespace RumahScarlett.Presentation.Views.Tipe
 
       private void SubTipeView_Load(object sender, EventArgs e)
       {
-         OnLoadData?.Invoke(sender, e);
+         OnLoadData?.Invoke(sender, new EventArgs<ListDataGrid>(listDataGrid));
+      }
+
+      private void ListDataGrid_CellDoubleClick(object sender, CellClickEventArgs e)
+      {
+         OnDataGridCellDoubleClick?.Invoke(sender, e);
       }
 
       private void ButtonsCRUD_OnTambahClickEvent(object sender, EventArgs e)
@@ -57,12 +65,12 @@ namespace RumahScarlett.Presentation.Views.Tipe
 
       private void ButtonsCRUD_OnUbahClickEvent(object sender, EventArgs e)
       {
-         OnUpdateData?.Invoke(sender, e);
+         OnUpdateData?.Invoke(sender, new EventArgs<ListDataGrid>(listDataGrid));
       }
 
       private void ButtonsCRUD_OnHapusClickEvent(object sender, EventArgs e)
       {
-         OnDeleteData?.Invoke(sender, e);
+         OnDeleteData?.Invoke(sender, new EventArgs<ListDataGrid>(listDataGrid));
       }
 
       private void ButtonsCRUD_OnRefreshClickEvent(object sender, EventArgs e)

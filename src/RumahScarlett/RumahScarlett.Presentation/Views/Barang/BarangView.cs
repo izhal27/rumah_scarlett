@@ -1,6 +1,6 @@
 ﻿using RumahScarlett.CommonComponents;
 using RumahScarlett.Presentation.Views.CommonControls;
-using RumahScarlett.Presentation.Views.ModelControls;
+using Syncfusion.WinForms.DataGrid.Events;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,7 +10,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Syncfusion.WinForms.DataGrid.Events;
 
 namespace RumahScarlett.Presentation.Views.Barang
 {
@@ -24,10 +23,10 @@ namespace RumahScarlett.Presentation.Views.Barang
       public event EventHandler OnPrintData;
 
       public event EventHandler<CellClickEventArgs> OnDataGridCellDoubleClick;
-      public event EventHandler<EventArgs<Dictionary<string, ComboBox>>> OnButtonTampilkanClick;
-      public event EventHandler<EventArgs<Dictionary<string, ComboBox>>> OnRadioButtonTipeChecked;
-      public event EventHandler<EventArgs<ComboBox>> OnComboBoxTipeSelectedIndexChanged;
-      public event EventHandler<EventArgs<ComboBox>> OnRadioButtonSupplierChecked;
+      public event EventHandler OnButtonTampilkanClick;
+      public event EventHandler OnRadioButtonTipeChecked;
+      public event EventHandler OnComboBoxTipeSelectedIndexChanged;
+      public event EventHandler OnRadioButtonSupplierChecked;
 
       public BarangView()
       {
@@ -38,7 +37,6 @@ namespace RumahScarlett.Presentation.Views.Barang
          radioButtonTipe.CheckedChanged += radioButtonTipe_CheckedChanged;
          radioButtonSupplier.CheckedChanged += radioButtonSupplier_CheckedChanged;
          buttonTampilkan.Click += buttonTampilkan_Click;
-
          crudcButtons.OnTambahClick += crudcButtons_OnTambahClick;
          crudcButtons.OnUbahClick += crudcButtons_OnUbahClick;
          crudcButtons.OnHapusClick += crudcButtons_OnHapusClick;
@@ -48,7 +46,7 @@ namespace RumahScarlett.Presentation.Views.Barang
 
       private void BarangView_Load(object sender, EventArgs e)
       {
-         OnLoadData?.Invoke(sender, e);
+         OnLoadData?.Invoke(sender, new EventArgs<ListDataGrid>(listDataGrid));
 
          comboBoxTipe.Enabled = false;
          comboBoxSubTipe.Enabled = false;
@@ -97,12 +95,12 @@ namespace RumahScarlett.Presentation.Views.Barang
 
       private void crudcButtons_OnUbahClick(object sender, EventArgs e)
       {
-         OnUpdateData?.Invoke(sender, e);
+         OnUpdateData?.Invoke(sender, new EventArgs<ListDataGrid>(listDataGrid));
       }
 
       private void crudcButtons_OnHapusClick(object sender, EventArgs e)
       {
-         OnDeleteData?.Invoke(sender, e);
+         OnDeleteData?.Invoke(sender, new EventArgs<ListDataGrid>(listDataGrid));
       }
 
       private void crudcButtons_OnRefreshClickEvent(object sender, EventArgs e)

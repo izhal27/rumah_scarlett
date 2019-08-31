@@ -1,5 +1,4 @@
-﻿using RumahScarlett.Domain.Models.Tipe;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RumahScarlett.Presentation.Views.Tipe
 {
-   public interface ITipeEntryView : IEntryView<ITipeModel>
+   public interface ITipeEntryView : IEntryView
    {
    }
 }

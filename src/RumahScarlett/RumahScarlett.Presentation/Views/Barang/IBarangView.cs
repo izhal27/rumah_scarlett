@@ -12,10 +12,9 @@ namespace RumahScarlett.Presentation.Views.Barang
 {
    public interface IBarangView : IDataView
    {
-      event EventHandler<CellClickEventArgs> OnDataGridCellDoubleClick;
-      event EventHandler<EventArgs<Dictionary<string, ComboBox>>> OnButtonTampilkanClick;
-      event EventHandler<EventArgs<Dictionary<string, ComboBox>>> OnRadioButtonTipeChecked;
-      event EventHandler<EventArgs<ComboBox>> OnComboBoxTipeSelectedIndexChanged;
-      event EventHandler<EventArgs<ComboBox>> OnRadioButtonSupplierChecked;      
+      event EventHandler OnButtonTampilkanClick;
+      event EventHandler OnRadioButtonTipeChecked;
+      event EventHandler OnComboBoxTipeSelectedIndexChanged;
+      event EventHandler OnRadioButtonSupplierChecked;      
    }
 }
