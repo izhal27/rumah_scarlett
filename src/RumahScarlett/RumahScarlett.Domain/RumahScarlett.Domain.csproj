@@ -52,6 +52,8 @@
   <ItemGroup>
     <Compile Include="Models\Barang\BarangModel.cs" />
     <Compile Include="Models\Barang\IBarangModel.cs" />
+    <Compile Include="Models\HutangOperasional\HutangOperasionalModel.cs" />
+    <Compile Include="Models\HutangOperasional\IHutangOperasionalModel.cs" />
     <Compile Include="Models\KasAwal\IKasAwalModel.cs" />
     <Compile Include="Models\KasAwal\KasAwalModel.cs" />
     <Compile Include="Models\Pelanggan\IPelangganModel.cs" />
