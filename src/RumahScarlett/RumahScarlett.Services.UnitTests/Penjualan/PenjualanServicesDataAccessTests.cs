@@ -62,6 +62,7 @@ namespace RumahScarlett.Services.UnitTests.Penjualan
 
             var penjualanModel = new PenjualanModel
             {
+               pelanggan_id = default(uint),
                tanggal = DateTime.Now,
                diskon = 0,
                PenjualanDetails = listPenjualanDetails

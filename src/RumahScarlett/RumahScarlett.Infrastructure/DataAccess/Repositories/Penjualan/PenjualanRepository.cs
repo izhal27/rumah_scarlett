@@ -32,13 +32,22 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Penjualan
 
             Insert(model, () =>
             {
-               var queryStr = "INSERT INTO penjualan (no_nota, tanggal, diskon) " +
-                              "VALUES (@no_nota, @tanggal, @diskon);" +
+               var queryStr = "INSERT INTO penjualan (no_nota, status_pembayaran, pelanggan_id, tanggal, diskon) " +
+                              "VALUES (@no_nota, @status_pembayaran, @pelanggan_id, @tanggal, @diskon);" +
                               "SELECT LAST_INSERT_ID();";
+
+               object pelanggan_id = DBNull.Value;
+
+               if (model.pelanggan_id != default(uint))
+               {
+                  pelanggan_id = model.pelanggan_id;
+               }
 
                var insertedId = context.Conn.Query<uint>(queryStr, new
                {
                   model.no_nota,
+                  model.status_pembayaran,
+                  pelanggan_id,
                   model.tanggal,
                   model.diskon
                }, context.Transaction).Single();

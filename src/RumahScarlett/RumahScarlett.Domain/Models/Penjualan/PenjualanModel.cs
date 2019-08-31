@@ -16,10 +16,29 @@ namespace RumahScarlett.Domain.Models.Penjualan
       [Browsable(false)]
       [Display(Name = "ID")]
       public uint id { get; set; }
-      
+
       [StringLength(255, ErrorMessage = "Panjang maksimal No Nota 255 karakter !!!")]
       [Display(Name = "No Nota")]
       public string no_nota { get; set; }
+
+      [Dp.Write(false)]
+      [Display(Name = "Status Pembayaran")]
+      public string status_pembayaran_nama
+      {
+         get { return !status_pembayaran ? "Cash" : "Transfer"; }
+      }
+
+      [Browsable(false)]
+      [DefaultValue(0)]
+      public bool status_pembayaran { get; set; }
+
+      [Browsable(false)]
+      [Display(Name = "Pelanggan ID")]
+      public uint pelanggan_id { get; set; }
+
+      [Dp.Write(false)]
+      [Display(Name = "Pelanggan")]
+      public string pelanggan_nama { get; set; }
 
       [Range(typeof(DateTime), "1945/08/17", "9999/01/01", ErrorMessage = "Minimal Tanggal 1945/08/17 !!!")]
       [Display(Name = "Tanggal")]
