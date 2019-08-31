@@ -22,12 +22,7 @@ namespace RumahScarlett.Presentation.Views.Tipe
       public event EventHandler OnRefreshData;
       public event EventHandler OnPrintData;
       public event EventHandler<CellClickEventArgs> OnDataGridCellDoubleClick;
-
-      public ListDataGrid ListDataGrid
-      {
-         get { return listDataGrid; }
-      }
-
+      
       public TipeView()
       {
          InitializeComponent();

@@ -68,6 +68,7 @@
          this.supplierToolStripButton = new System.Windows.Forms.ToolStripButton();
          this.barangToolStripButton = new System.Windows.Forms.ToolStripButton();
          this.penjualanToolStripButton = new System.Windows.Forms.ToolStripButton();
+         this.pelangganToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
          this.statusStrip.SuspendLayout();
          this.menuStripMain.SuspendLayout();
          this.toolStripMain.SuspendLayout();
@@ -124,7 +125,8 @@
          this.masterToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.dataTipeToolStripMenuItem,
             this.supplierToolStripMenuItem,
-            this.barangToolStripMenuItem});
+            this.barangToolStripMenuItem,
+            this.pelangganToolStripMenuItem});
          this.masterToolStripMenuItem.Name = "masterToolStripMenuItem";
          this.masterToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
          this.masterToolStripMenuItem.Text = "&Master";
@@ -135,7 +137,7 @@
             this.tipeToolStripMenuItem,
             this.subTipeToolStripMenuItem});
          this.dataTipeToolStripMenuItem.Name = "dataTipeToolStripMenuItem";
-         this.dataTipeToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+         this.dataTipeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
          this.dataTipeToolStripMenuItem.Text = "&Tipe";
          // 
          // tipeToolStripMenuItem
@@ -155,14 +157,14 @@
          // supplierToolStripMenuItem
          // 
          this.supplierToolStripMenuItem.Name = "supplierToolStripMenuItem";
-         this.supplierToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+         this.supplierToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
          this.supplierToolStripMenuItem.Text = "&Supplier";
          this.supplierToolStripMenuItem.Click += new System.EventHandler(this.supplierToolStripMenuItem_Click);
          // 
          // barangToolStripMenuItem
          // 
          this.barangToolStripMenuItem.Name = "barangToolStripMenuItem";
-         this.barangToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+         this.barangToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
          this.barangToolStripMenuItem.Text = "&Barang";
          this.barangToolStripMenuItem.Click += new System.EventHandler(this.barangToolStripMenuItem_Click);
          // 
@@ -365,6 +367,13 @@
          this.penjualanToolStripButton.Size = new System.Drawing.Size(46, 46);
          this.penjualanToolStripButton.Text = "Penjualan";
          // 
+         // pelangganToolStripMenuItem
+         // 
+         this.pelangganToolStripMenuItem.Name = "pelangganToolStripMenuItem";
+         this.pelangganToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+         this.pelangganToolStripMenuItem.Text = "&Pelanggan";
+         this.pelangganToolStripMenuItem.Click += new System.EventHandler(this.pelangganToolStripMenuItem_Click);
+         // 
          // MainView
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -429,6 +438,7 @@
       private System.Windows.Forms.ToolStripButton penjualanToolStripButton;
       private System.Windows.Forms.ToolStripMenuItem tipeToolStripMenuItem;
       private System.Windows.Forms.ToolStripMenuItem subTipeToolStripMenuItem;
+      private System.Windows.Forms.ToolStripMenuItem pelangganToolStripMenuItem;
    }
 }
 

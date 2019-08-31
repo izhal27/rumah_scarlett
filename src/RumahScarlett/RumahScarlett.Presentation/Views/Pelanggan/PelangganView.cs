@@ -11,9 +11,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace RumahScarlett.Presentation.Views.Supplier
+namespace RumahScarlett.Presentation.Views.Pelanggan
 {
-   public partial class SupplierView : BaseDataView, ISupplierView
+   public partial class PelangganView : BaseDataView, IPelangganView
    {
       public event EventHandler OnLoadData;
       public event EventHandler OnCreateData;
@@ -22,12 +22,12 @@ namespace RumahScarlett.Presentation.Views.Supplier
       public event EventHandler OnRefreshData;
       public event EventHandler OnPrintData;
       public event EventHandler<CellClickEventArgs> OnDataGridCellDoubleClick;
-      
-      public SupplierView()
+
+      public PelangganView()
       {
          InitializeComponent();
 
-         panelUp.LabelInfo = "DATA SUPPLIER";
+         panelUp.LabelInfo = "DATA PELANGGAN";
          crudcButtons.ButtonCetakVisible = false;
 
          listDataGrid.CellDoubleClick += ListDataGrid_CellDoubleClick;
@@ -37,8 +37,8 @@ namespace RumahScarlett.Presentation.Views.Supplier
          crudcButtons.OnRefreshClick += crudcButtons_OnRefreshClickEvent;
          crudcButtons.OnTutupClick += crudcButtons_OnTutupClickEvent;
       }
-
-      private void SupplierView_Load(object sender, EventArgs e)
+      
+      private void PelangganView_Load(object sender, EventArgs e)
       {
          OnLoadData?.Invoke(sender, new EventArgs<ListDataGrid>(listDataGrid));
       }
