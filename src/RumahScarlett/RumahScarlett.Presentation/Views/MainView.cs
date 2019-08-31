@@ -1,5 +1,6 @@
 ﻿using RumahScarlett.Presentation.Helper;
 using RumahScarlett.Presentation.Presenters.Barang;
+using RumahScarlett.Presentation.Presenters.KasAwal;
 using RumahScarlett.Presentation.Presenters.Pelanggan;
 using RumahScarlett.Presentation.Presenters.Satuan;
 using RumahScarlett.Presentation.Presenters.Supplier;
@@ -86,7 +87,7 @@ namespace RumahScarlett.Presentation.Views
 
       private void kasAwalToolStripMenuItem1_Click(object sender, EventArgs e)
       {
-
+         new KasAwalPresenter().GetView.ShowView();
       }
 
       private void hutangOperasionalToolStripMenuItem_Click(object sender, EventArgs e)
