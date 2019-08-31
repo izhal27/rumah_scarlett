@@ -26,7 +26,6 @@ namespace RumahScarlett.Presentation.Views.ModelControls
       protected override void OnCreateControl()
       {
          LoadDataSource();
-
          GetSubTipes();
       }
 

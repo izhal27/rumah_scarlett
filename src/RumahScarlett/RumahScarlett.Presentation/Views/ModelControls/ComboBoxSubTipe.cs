@@ -1,8 +1,5 @@
 ﻿using RumahScarlett.Domain.Models.Tipe;
-using RumahScarlett.Infrastructure.DataAccess.Repositories.Tipe;
 using RumahScarlett.Presentation.Helper;
-using RumahScarlett.Services.Services;
-using RumahScarlett.Services.Services.Tipe;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,8 +20,8 @@ namespace RumahScarlett.Presentation.Views.ModelControls
 
       protected override void OnDataSourceChanged(EventArgs e)
       {
-         LoadDataSource();
          base.OnDataSourceChanged(e);
+         LoadDataSource();
       }
 
       private void LoadDataSource()
