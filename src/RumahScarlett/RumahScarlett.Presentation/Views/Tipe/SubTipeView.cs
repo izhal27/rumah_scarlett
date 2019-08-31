@@ -28,14 +28,14 @@ namespace RumahScarlett.Presentation.Views.Tipe
          InitializeComponent();
 
          panelUp.LabelInfo = "DATA SUB TIPE";
-         buttonsCRUD.ButtonCetakVisible = false;
+         crudcButtons.ButtonCetakVisible = false;
          
          listDataGrid.CellDoubleClick += ListDataGrid_CellDoubleClick;
-         buttonsCRUD.OnTambahClick += ButtonsCRUD_OnTambahClickEvent;
-         buttonsCRUD.OnUbahClick += ButtonsCRUD_OnUbahClickEvent;
-         buttonsCRUD.OnHapusClick += ButtonsCRUD_OnHapusClickEvent;
-         buttonsCRUD.OnRefreshClick += ButtonsCRUD_OnRefreshClickEvent;
-         buttonsCRUD.OnTutupClick += ButtonsCRUD_OnTutupClickEvent;
+         crudcButtons.OnTambahClick += ButtonsCRUD_OnTambahClickEvent;
+         crudcButtons.OnUbahClick += ButtonsCRUD_OnUbahClickEvent;
+         crudcButtons.OnHapusClick += ButtonsCRUD_OnHapusClickEvent;
+         crudcButtons.OnRefreshClick += ButtonsCRUD_OnRefreshClickEvent;
+         crudcButtons.OnTutupClick += ButtonsCRUD_OnTutupClickEvent;
       }
 
       private void SubTipeView_Load(object sender, EventArgs e)
