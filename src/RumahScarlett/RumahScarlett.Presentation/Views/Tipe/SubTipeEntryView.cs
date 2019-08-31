@@ -31,20 +31,13 @@ namespace RumahScarlett.Presentation.Views.Tipe
          if (!_isNewData)
          {
             _model = model;
+            textBoxNama.Text = _model.nama;
+            textBoxKeterangan.Text = _model.keterangan;
          }
 
          operationButtons.OnSaveButtonClick += OperationButtons_OnSaveButtonClick;
       }
       
-      private void SubTipeEntryView_Load(object sender, EventArgs e)
-      {
-         if (!_isNewData && _model != null)
-         {
-            textBoxNama.Text = _model.nama;
-            textBoxKeterangan.Text = _model.keterangan;
-         }
-      }
-
       private void OperationButtons_OnSaveButtonClick(object sender, EventArgs e)
       {
          var model = new SubTipeModel

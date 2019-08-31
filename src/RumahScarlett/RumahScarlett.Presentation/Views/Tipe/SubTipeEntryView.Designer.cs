@@ -145,7 +145,6 @@
          this.Controls.Add(this.groupBox1);
          this.Name = "SubTipeEntryView";
          this.Text = "Sub Tipe";
-         this.Load += new System.EventHandler(this.SubTipeEntryView_Load);
          this.Controls.SetChildIndex(this.panelUp, 0);
          this.Controls.SetChildIndex(this.operationButtons, 0);
          this.Controls.SetChildIndex(this.groupBox1, 0);
