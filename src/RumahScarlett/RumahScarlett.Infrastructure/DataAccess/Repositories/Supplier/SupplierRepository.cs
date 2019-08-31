@@ -27,8 +27,9 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Supplier
             ValidateModel(context, model, dataAccessStatus);
 
             Insert(model, () => context.Conn.Insert((SupplierModel)model), dataAccessStatus,
-                   () => CheckAfterInsert(context, "SELECT COUNT(1) FROM tipe WHERE id=@id",
-                                          new { id = model.id }));
+                   () => CheckAfterInsert(context, "SELECT COUNT(1) FROM supplier WHERE nama=@nama "
+                                          + "AND id=(SELECT LAST_INSERT_ID())",
+                                          new { model.nama }));
          }
       }
 

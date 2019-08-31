@@ -33,8 +33,8 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.PenyesuaianStok
             Insert(model, () =>
             {
                var queryStr = "INSERT INTO penyesuaian_stok (no_nota, tanggal) " +
-                           "VALUES (@no_nota, @tanggal);" +
-                           "SELECT LAST_INSERT_ID();";
+                              "VALUES (@no_nota, @tanggal);" +
+                              "SELECT LAST_INSERT_ID();";
 
                var insertedId = context.Conn.Query<uint>(queryStr, new
                {

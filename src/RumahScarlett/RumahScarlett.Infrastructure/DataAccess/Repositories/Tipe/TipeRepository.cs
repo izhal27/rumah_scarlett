@@ -27,7 +27,9 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Tipe
             ValidateModel(context, model, dataAccessStatus);
 
             Insert(model, () => context.Conn.Insert((TipeModel)model), dataAccessStatus,
-                  () => CheckAfterInsert(context, "SELECT COUNT(1) FROM tipe WHERE id=@id", new { id = model.id }));
+                  () => CheckAfterInsert(context, "SELECT COUNT(1) FROM tipe WHERE nama=@nama "
+                                         + "AND id=(SELECT LAST_INSERT_ID())",
+                                         new { model.nama }));
          }
       }
 

@@ -59,6 +59,9 @@
     <Compile Include="Services\KasAwal\IKasAwalRepository.cs" />
     <Compile Include="Services\KasAwal\IKasAwalServices.cs" />
     <Compile Include="Services\KasAwal\KasAwalServices.cs" />
+    <Compile Include="Services\Pelanggan\IPelangganRepository.cs" />
+    <Compile Include="Services\Pelanggan\IPelangganServices.cs" />
+    <Compile Include="Services\Pelanggan\PelangganServices.cs" />
     <Compile Include="Services\Pembelian\IPembelianRepository.cs" />
     <Compile Include="Services\Pembelian\IPembelianServices.cs" />
     <Compile Include="Services\Pembelian\PembelianServices.cs" />
