@@ -1,6 +1,7 @@
 ﻿using RumahScarlett.Presentation.Helper;
 using RumahScarlett.Presentation.Presenters.Barang;
 using RumahScarlett.Presentation.Presenters.Pelanggan;
+using RumahScarlett.Presentation.Presenters.Satuan;
 using RumahScarlett.Presentation.Presenters.Supplier;
 using RumahScarlett.Presentation.Presenters.Tipe;
 using System;
@@ -63,6 +64,12 @@ namespace RumahScarlett.Presentation.Views
       private void barangToolStripMenuItem_Click(object sender, EventArgs e)
       {
          var view = (DockContent)new BarangPresenter().GetView;
+         ShowChildForm(view);
+      }
+
+      private void satuanToolStripMenuItem_Click(object sender, EventArgs e)
+      {
+         var view = (DockContent)new SatuanPresenter().GetView;
          ShowChildForm(view);
       }
 

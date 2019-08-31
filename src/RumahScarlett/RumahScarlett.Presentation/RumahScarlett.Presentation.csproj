@@ -112,6 +112,7 @@
     <Compile Include="Presenters\IMainPresenter.cs" />
     <Compile Include="Presenters\MainPresenter.cs" />
     <Compile Include="Presenters\Pelanggan\PelangganPresenter.cs" />
+    <Compile Include="Presenters\Satuan\SatuanPresenter.cs" />
     <Compile Include="Presenters\Supplier\ISupplierPresenter.cs" />
     <Compile Include="Presenters\Supplier\SupplierPresenter.cs" />
     <Compile Include="Presenters\Tipe\ISubTipePresenter.cs" />
@@ -216,6 +217,20 @@
       <DependentUpon>PelangganView.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Pelanggan\IPelangganEntryView.cs" />
+    <Compile Include="Views\Satuan\ISatuanEntryView.cs" />
+    <Compile Include="Views\Satuan\ISatuanView.cs" />
+    <Compile Include="Views\Satuan\SatuanEntryView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Satuan\SatuanEntryView.Designer.cs">
+      <DependentUpon>SatuanEntryView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Satuan\SatuanView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Satuan\SatuanView.Designer.cs">
+      <DependentUpon>SatuanView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Supplier\ISupplierView.cs" />
     <Compile Include="Views\Supplier\SupplierEntryView.cs">
       <SubType>Form</SubType>
@@ -299,6 +314,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Pelanggan\PelangganView.resx">
       <DependentUpon>PelangganView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Satuan\SatuanEntryView.resx">
+      <DependentUpon>SatuanEntryView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Satuan\SatuanView.resx">
+      <DependentUpon>SatuanView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Supplier\SupplierEntryView.resx">
       <DependentUpon>SupplierEntryView.cs</DependentUpon>
