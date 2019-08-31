@@ -18,7 +18,7 @@ namespace RumahScarlett.Presentation.Views.Tipe
    {
       private bool _isNewData;
       private ITipeModel _model;
-      public event EventHandler<ModelEventArgs> OnSaveData;
+      public event EventHandler<EventArgs<ITipeModel>> OnSaveData;
       private static string _typeName = "Tipe";
 
       public TipeEntryView(bool isNewData = true, ITipeModel model = null)
@@ -47,12 +47,12 @@ namespace RumahScarlett.Presentation.Views.Tipe
 
          if (_isNewData && Messages.ConfirmSave(_typeName))
          {
-            EventHelper.RaiseEvent(this, OnSaveData, new ModelEventArgs { Model = model });
+            OnSaveData?.Invoke(this, new EventArgs<ITipeModel>(model));
          }
          else if (Messages.ConfirmUpdate(_typeName))
          {
             model.id = _model.id;
-            EventHelper.RaiseEvent(this, OnSaveData, new ModelEventArgs { Model = model });
+            OnSaveData?.Invoke(this, new EventArgs<ITipeModel>(model));
          }
       }
    }

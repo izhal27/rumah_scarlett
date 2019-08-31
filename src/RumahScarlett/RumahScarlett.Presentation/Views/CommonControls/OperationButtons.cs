@@ -34,12 +34,12 @@ namespace RumahScarlett.Presentation.Views.CommonControls
 
       private void btnSave_Click(object sender, EventArgs e)
       {
-         EventHelper.RaiseEvent(this, OnSaveButtonClick, e);
+         OnSaveButtonClick?.Invoke(sender, e);
       }
 
       private void btnCancel_Click(object sender, EventArgs e)
       {
-         EventHelper.RaiseEvent(this, OnCloseButtonClick, e);
+         OnCloseButtonClick?.Invoke(sender, e);
       }
    }
 }

@@ -30,6 +30,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Syncfusion.SfDataGrid.WinForms, Version=16.1460.0.24, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -42,9 +43,8 @@
   <ItemGroup>
     <Compile Include="DataAccessException.cs" />
     <Compile Include="DataAccessStatus.cs" />
-    <Compile Include="EventHelper.cs" />
     <Compile Include="Extensions.cs" />
-    <Compile Include="ModelEventArgs.cs" />
+    <Compile Include="CustomEventArgs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StringHelper.cs" />
   </ItemGroup>

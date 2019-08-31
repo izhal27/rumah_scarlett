@@ -29,32 +29,32 @@ namespace RumahScarlett.Presentation.Views.CommonControls
 
       private void btnTambah_Click(object sender, EventArgs e)
       {
-         EventHelper.RaiseEvent(this, OnTambahClick, e);
+         OnTambahClick?.Invoke(sender, e);
       }
 
       private void btnUbah_Click(object sender, EventArgs e)
       {
-         EventHelper.RaiseEvent(this, OnUbahClick, e);
+         OnUbahClick?.Invoke(sender, e);
       }
 
       private void btnHapus_Click(object sender, EventArgs e)
       {
-         EventHelper.RaiseEvent(this, OnHapusClick, e);
+         OnHapusClick?.Invoke(sender, e);
       }
 
       private void btnRefresh_Click(object sender, EventArgs e)
       {
-         EventHelper.RaiseEvent(this, OnRefreshClick, e);
+         OnRefreshClick?.Invoke(sender, e);
       }
 
       private void btnCetak_Click(object sender, EventArgs e)
       {
-         EventHelper.RaiseEvent(this, OnCetakClick, e);
+         OnCetakClick?.Invoke(sender, e);
       }
 
       private void btnTutup_Click(object sender, EventArgs e)
       {
-         EventHelper.RaiseEvent(this, OnTutupClick, e);
+         OnTutupClick?.Invoke(sender, e);
       }
    }
 }

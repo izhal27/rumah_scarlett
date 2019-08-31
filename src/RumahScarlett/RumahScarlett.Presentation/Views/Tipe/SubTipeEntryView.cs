@@ -19,7 +19,7 @@ namespace RumahScarlett.Presentation.Views.Tipe
       private List<ITipeModel> _listTipes;
       private bool _isNewData;
       private ISubTipeModel _model;
-      public event EventHandler<ModelEventArgs> OnSaveData;
+      public event EventHandler<EventArgs<ISubTipeModel>> OnSaveData;
       private static string _typeName = "Sub Tipe";
 
       public SubTipeEntryView(List<ITipeModel> listTipes, bool isNewData = true, ISubTipeModel model = null)
@@ -58,12 +58,12 @@ namespace RumahScarlett.Presentation.Views.Tipe
 
          if (_isNewData && Messages.ConfirmSave(_typeName))
          {
-            EventHelper.RaiseEvent(this, OnSaveData, new ModelEventArgs { Model = model });
+            OnSaveData?.Invoke(this, new EventArgs<ISubTipeModel>(model));
          }
          else if (Messages.ConfirmUpdate(_typeName))
          {
             model.id = _model.id;
-            EventHelper.RaiseEvent(this, OnSaveData, new ModelEventArgs { Model = model });
+            OnSaveData?.Invoke(this, new EventArgs<ISubTipeModel>(model));
          }
       }
    }

@@ -16,6 +16,5 @@ namespace RumahScarlett.Presentation.Views
       event EventHandler OnDeleteData;
       event EventHandler OnRefreshData;
       event EventHandler OnPrintData;
-      ListDataGrid ListDataGrid { get; }
    }
 }

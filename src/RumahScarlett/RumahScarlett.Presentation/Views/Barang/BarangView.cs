@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Syncfusion.WinForms.DataGrid.Events;
 
 namespace RumahScarlett.Presentation.Views.Barang
 {
@@ -22,51 +23,21 @@ namespace RumahScarlett.Presentation.Views.Barang
       public event EventHandler OnRefreshData;
       public event EventHandler OnPrintData;
 
-      public ListDataGrid ListDataGrid
-      {
-         get { return listDataGrid; }
-      }
-      
-      public RadioButton RadioButtonSemua
-      {
-         get { return radioButtonSemua; }
-      }
+      public event EventHandler<CellClickEventArgs> OnDataGridCellDoubleClick;
+      public event EventHandler<EventArgs<Dictionary<string, ComboBox>>> OnButtonTampilkanClick;
+      public event EventHandler<EventArgs<Dictionary<string, ComboBox>>> OnRadioButtonTipeChecked;
+      public event EventHandler<EventArgs<ComboBox>> OnComboBoxTipeSelectedIndexChanged;
+      public event EventHandler<EventArgs<ComboBox>> OnRadioButtonSupplierChecked;
 
-      public RadioButton RadioButtonTipe
-      {
-         get { return radioButtonTipe; }
-      }
-
-      public RadioButton RadioButtonSupplier
-      {
-         get { return radioButtonSupplier; }
-      }
-
-      public ComboBoxTipe ComboBoxTipe
-      {
-         get { return comboBoxTipe; }
-      }
-
-      public ComboBoxSubTipe ComboBoxSubTipe
-      {
-         get { return comboBoxSubTipe; }
-      }
-
-      public ComboBoxSupplier ComboBoxSupplier
-      {
-         get { return comboBoxSupplier; }
-      }
-
-      public Button ButtonTampilkan
-      {
-         get { return buttonTampilkan; }
-      }
-      
       public BarangView()
       {
          InitializeComponent();
 
          panelUp.LabelInfo = "DATA BARANG";
+
+         radioButtonTipe.CheckedChanged += radioButtonTipe_CheckedChanged;
+         radioButtonSupplier.CheckedChanged += radioButtonSupplier_CheckedChanged;
+         buttonTampilkan.Click += buttonTampilkan_Click;
 
          crudcButtons.OnTambahClick += crudcButtons_OnTambahClick;
          crudcButtons.OnUbahClick += crudcButtons_OnUbahClick;
@@ -77,28 +48,67 @@ namespace RumahScarlett.Presentation.Views.Barang
 
       private void BarangView_Load(object sender, EventArgs e)
       {
-         EventHelper.RaiseEvent(this, OnLoadData, e);
+         OnLoadData?.Invoke(sender, e);
+
+         comboBoxTipe.Enabled = false;
+         comboBoxSubTipe.Enabled = false;
+         comboBoxSupplier.Enabled = false;
          ActiveControl = buttonTampilkan;
+      }
+
+      private void listDataGrid_CellDoubleClick(object sender, CellClickEventArgs e)
+      {
+         OnDataGridCellDoubleClick?.Invoke(sender, e);
+      }
+
+      private void radioButtonTipe_CheckedChanged(object sender, EventArgs e)
+      {
+         var value = new Dictionary<string, ComboBox>();
+         value.Add(comboBoxTipe.Name, comboBoxTipe);
+         value.Add(comboBoxSubTipe.Name, comboBoxSubTipe);
+
+         OnRadioButtonTipeChecked?.Invoke(sender, new EventArgs<Dictionary<string, ComboBox>>(value));
+      }
+
+      private void comboBoxTipe_SelectedIndexChanged(object sender, EventArgs e)
+      {
+         OnComboBoxTipeSelectedIndexChanged?.Invoke(sender, new EventArgs<ComboBox>(comboBoxSubTipe));
+      }
+
+      private void radioButtonSupplier_CheckedChanged(object sender, EventArgs e)
+      {
+         OnRadioButtonSupplierChecked?.Invoke(sender, new EventArgs<ComboBox>(comboBoxSupplier));
+      }
+
+      private void buttonTampilkan_Click(object sender, EventArgs e)
+      {
+         var value = new Dictionary<string, ComboBox>();
+         value.Add(comboBoxTipe.Name, comboBoxTipe);
+         value.Add(comboBoxSubTipe.Name, comboBoxSubTipe);
+         value.Add(comboBoxSupplier.Name, comboBoxSupplier);
+
+         OnButtonTampilkanClick?.Invoke(sender, new EventArgs<Dictionary<string, ComboBox>>(value));
       }
 
       private void crudcButtons_OnTambahClick(object sender, EventArgs e)
       {
-         EventHelper.RaiseEvent(this, OnCreateData, null);
+         OnCreateData?.Invoke(sender, e);
       }
 
       private void crudcButtons_OnUbahClick(object sender, EventArgs e)
       {
-         EventHelper.RaiseEvent(this, OnUpdateData, null);
+         OnUpdateData?.Invoke(sender, e);
       }
 
       private void crudcButtons_OnHapusClick(object sender, EventArgs e)
       {
-         EventHelper.RaiseEvent(this, OnDeleteData, null);
+         OnDeleteData?.Invoke(sender, e);
       }
 
       private void crudcButtons_OnRefreshClickEvent(object sender, EventArgs e)
       {
-         EventHelper.RaiseEvent(this, OnRefreshData, e);
+         radioButtonSemua.Checked = true;
+         OnRefreshData?.Invoke(sender, e);
       }
 
       private void crudcButtons_OnTutupClickEvent(object sender, EventArgs e)

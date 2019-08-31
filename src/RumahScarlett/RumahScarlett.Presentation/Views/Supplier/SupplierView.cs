@@ -42,27 +42,27 @@ namespace RumahScarlett.Presentation.Views.Supplier
 
       private void SupplierView_Load(object sender, EventArgs e)
       {
-         EventHelper.RaiseEvent(this, OnLoadData, e);
+         OnLoadData?.Invoke(sender, e);
       }
 
       private void crudcButtons_OnTambahClick(object sender, EventArgs e)
       {
-         EventHelper.RaiseEvent(this, OnCreateData, null);
+         OnCreateData?.Invoke(sender, e);
       }
 
       private void crudcButtons_OnUbahClick(object sender, EventArgs e)
       {
-         EventHelper.RaiseEvent(this, OnUpdateData, null);
+         OnUpdateData?.Invoke(sender, e);
       }
 
       private void crudcButtons_OnHapusClick(object sender, EventArgs e)
       {
-         EventHelper.RaiseEvent(this, OnDeleteData, null);
+         OnDeleteData?.Invoke(sender, e);
       }
 
       private void crudcButtons_OnRefreshClickEvent(object sender, EventArgs e)
       {
-         EventHelper.RaiseEvent(this, OnRefreshData, e);
+         OnRefreshData?.Invoke(sender, e);
       }
 
       private void crudcButtons_OnTutupClickEvent(object sender, EventArgs e)

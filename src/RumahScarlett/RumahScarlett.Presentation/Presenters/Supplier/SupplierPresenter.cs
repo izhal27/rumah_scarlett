@@ -68,11 +68,11 @@ namespace RumahScarlett.Presentation.Presenters.Supplier
          }
       }
 
-      private void SupplierEntryView_OnSaveData(object sender, ModelEventArgs e)
+      private void SupplierEntryView_OnSaveData(object sender, EventArgs<ISupplierModel> e)
       {
          try
          {
-            var model = (SupplierModel)e.Model;
+            var model = (SupplierModel)e.Value;
             var view = ((SupplierEntryView)sender);
 
             if (model.id == default(uint))

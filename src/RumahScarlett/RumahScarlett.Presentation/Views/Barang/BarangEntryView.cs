@@ -29,7 +29,7 @@ namespace RumahScarlett.Presentation.Views.Barang
       private IBarangModel _model;
       private List<ITipeModel> _listTipes;
       private List<ISupplierModel> _listSupplier;
-      public event EventHandler<ModelEventArgs> OnSaveData;
+      public event EventHandler<EventArgs<IBarangModel>> OnSaveData;
       private static string _typeName = "Barang";
 
       public BarangEntryView(ITipeServices tipeServices, bool isNewData = true, IBarangModel model = null)
@@ -109,12 +109,12 @@ namespace RumahScarlett.Presentation.Views.Barang
 
          if (_isNewData && Messages.ConfirmSave(_typeName))
          {
-            EventHelper.RaiseEvent(this, OnSaveData, new ModelEventArgs { Model = model });
+            OnSaveData?.Invoke(this, new EventArgs<IBarangModel>(model));
          }
          else if (Messages.ConfirmUpdate(_typeName))
          {
             model.id = _model.id;
-            EventHelper.RaiseEvent(this, OnSaveData, new ModelEventArgs { Model = model });
+            OnSaveData?.Invoke(this, new EventArgs<IBarangModel>(model));
          }
       }
 

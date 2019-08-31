@@ -69,11 +69,11 @@ namespace RumahScarlett.Presentation.Presenters.Tipe
             view.ShowDialog();
          }
       }
-      private void TipeEntryView_OnSaveData(object sender, ModelEventArgs e)
+      private void TipeEntryView_OnSaveData(object sender, EventArgs<ITipeModel> e)
       {
          try
          {
-            var model = (TipeModel)e.Model;
+            var model = (TipeModel)e.Value;
             var view = ((TipeEntryView)sender);
 
             if (model.id == default(uint))

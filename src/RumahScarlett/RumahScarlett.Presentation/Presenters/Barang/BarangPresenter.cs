@@ -29,6 +29,8 @@ namespace RumahScarlett.Presentation.Presenters.Barang
       private List<ITipeModel> _listTipes;
       private BindingListView<BarangModel> _bindingView;
       private static string _typeName = "Barang";
+      private bool _radioButtonSemuaChecked = true;
+      private bool _radioButtonTipeChecked;
 
       public IBarangView GetView
       {
@@ -48,58 +50,70 @@ namespace RumahScarlett.Presentation.Presenters.Barang
          _view.OnRefreshData += _view_OnRefreshData;
 
          _view.ListDataGrid.CellDoubleClick += ListDataGrid_CellDoubleClick;
-         _view.ButtonTampilkan.Click += _view_ButtonTampilkan_Click;
-         _view.RadioButtonTipe.CheckedChanged += _view_RadioButtonTipe_CheckedChanged;
-         _view.RadioButtonSupplier.CheckedChanged += _view_RadioButtonSupplier_CheckedChanged;
-         _view.ComboBoxTipe.SelectedIndexChanged += ComboBoxTipe_SelectedIndexChanged;
-
-         _view.ComboBoxTipe.Enabled = false;
-         _view.ComboBoxSubTipe.Enabled = false;
-         _view.ComboBoxSupplier.Enabled = false;
+         _view.OnButtonTampilkanClick += _view_ButtonTampilkan_Click;
+         _view.OnRadioButtonTipeChecked += _view_RadioButtonTipe_CheckedChanged;
+         _view.OnComboBoxTipeSelectedIndexChanged += ComboBoxTipe_SelectedIndexChanged;
+         _view.OnRadioButtonSupplierChecked += _view_RadioButtonSupplier_CheckedChanged;
       }
 
-      private void ComboBoxTipe_SelectedIndexChanged(object sender, EventArgs e)
+      private void ComboBoxTipe_SelectedIndexChanged(object sender, EventArgs<ComboBox> e)
       {
-         var subTipes = ((ComboBoxTipe)_view.ComboBoxTipe).SubTipes;
+         var comboBoxTipe = (ComboBoxTipe)sender;
+         var comboBoxSubTipe =  (ComboBoxSubTipe)e.Value;
+         var subTipes = comboBoxTipe.SubTipes;
+
          if (subTipes != null)
          {
             var subTipeKVP = subTipes.Select(sub => new KeyValuePair<object, string>(sub.id, sub.nama)).ToList();
-            _view.ComboBoxSubTipe.SetDataSource(subTipeKVP, false);
+            comboBoxSubTipe.SetDataSource(subTipeKVP, false);
          }
       }
 
-      private void _view_RadioButtonTipe_CheckedChanged(object sender, EventArgs e)
+      private void _view_RadioButtonTipe_CheckedChanged(object sender, EventArgs<Dictionary<string, ComboBox>> e)
+      {
+         var radioButtonTipe = ((RadioButton)sender);
+         var status = radioButtonTipe.Checked;
+
+         e.Value["comboBoxTipe"].Enabled = status;
+         e.Value["comboBoxSubTipe"].Enabled = status;
+
+         _radioButtonTipeChecked = status;
+         _radioButtonSemuaChecked = !status;
+      }
+
+      private void _view_RadioButtonSupplier_CheckedChanged(object sender, EventArgs<ComboBox> e)
       {
          var status = ((RadioButton)sender).Checked;
-         _view.ComboBoxTipe.Enabled = status;
-         _view.ComboBoxSubTipe.Enabled = status;
+         e.Value.Enabled = status;
+
+         _radioButtonSemuaChecked = !status;
       }
 
-      private void _view_RadioButtonSupplier_CheckedChanged(object sender, EventArgs e)
+      private void _view_ButtonTampilkan_Click(object sender, EventArgs<Dictionary<string, ComboBox>> e)
       {
-         _view.ComboBoxSupplier.Enabled = ((RadioButton)sender).Checked;
-      }
-
-      private void _view_ButtonTampilkan_Click(object sender, EventArgs e)
-      {
-         if (_view.RadioButtonSemua.Checked)
+         if (_radioButtonSemuaChecked) // Filter by semua barang
          {
             _bindingView.DataSource = _listBarangs;
          }
-         else if (_view.RadioButtonTipe.Checked)
+         else if (_radioButtonTipeChecked) // Filter by tipe
          {
-            var tipeId = _view.ComboBoxTipe.SelectedValue != null ?
-                        (uint)_view.ComboBoxTipe.SelectedValue : default(uint);
-            var subTipeId = _view.ComboBoxSubTipe.SelectedValue != null ?
-                           (uint)_view.ComboBoxSubTipe.SelectedValue : default(uint);
+            var comboBoxTipe = e.Value["comboBoxTipe"];
+            var comboBoxSubTipe = e.Value["comboBoxSubTipe"];
+
+            var tipeId = comboBoxTipe.SelectedValue != null ?
+                        (uint)comboBoxTipe.SelectedValue : default(uint);
+            var subTipeId = comboBoxSubTipe.SelectedValue != null ?
+                           (uint)comboBoxSubTipe.SelectedValue : default(uint);
 
             var filterBarang = _listBarangs.Where(b => b.tipe_id == tipeId && b.sub_tipe_id == subTipeId).ToList();
             _bindingView.DataSource = filterBarang;
          }
-         else
+         else // Filter by supplier
          {
-            var supplierId = _view.ComboBoxSupplier.SelectedValue != null ?
-                             (uint)_view.ComboBoxSupplier.SelectedValue : default(uint);
+            var comboBoxSupplier = e.Value["comboBoxSupplier"];
+
+            var supplierId = comboBoxSupplier.SelectedValue != null ?
+                             (uint)comboBoxSupplier.SelectedValue : default(uint);
 
             var filterBarang = _listBarangs.Where(b => b.supplier_id == supplierId).ToList();
             _bindingView.DataSource = filterBarang;
@@ -134,11 +148,11 @@ namespace RumahScarlett.Presentation.Presenters.Barang
          }
       }
 
-      private void BarangEntryView_OnSaveData(object sender, ModelEventArgs e)
+      private void BarangEntryView_OnSaveData(object sender, EventArgs<IBarangModel> e)
       {
          try
          {
-            var model = (BarangModel)e.Model;
+            var model = (BarangModel)e.Value;
             var view = ((BarangEntryView)sender);
 
             if (model.id == default(uint))
@@ -200,40 +214,9 @@ namespace RumahScarlett.Presentation.Presenters.Barang
 
             _listBarangs = _barangServices.GetAll().ToList();
             _bindingView.DataSource = _listBarangs;
-            _view.RadioButtonSemua.Checked = true;
          }
       }
-
-      private void TreeViewTipe_AfterSelect(object sender, TreeViewEventArgs e)
-      {
-         var treeView = ((TreeView)sender);
-
-         if (treeView.SelectedNode != null)
-         {
-            var selectedNode = treeView.SelectedNode;
-
-            if (selectedNode.Name.ToLower() != "root")
-            {
-               List<IBarangModel> listBarang = new List<IBarangModel>();
-
-               if (selectedNode.Parent.Name == "root") // Tipe
-               {
-                  listBarang = _listBarangs.Where(b => b.tipe_id == uint.Parse(selectedNode.Name)).ToList();
-               }
-               else
-               {
-                  listBarang = _listBarangs.Where(b => b.sub_tipe_id == uint.Parse(selectedNode.Name)).ToList();
-               }
-
-               _bindingView.DataSource = listBarang;
-            }
-            else
-            {
-               _bindingView.DataSource = _listBarangs;
-            }
-         }
-      }
-
+      
       private void ListDataGrid_CellDoubleClick(object sender, CellClickEventArgs e)
       {
          _view_OnUpdateData(null, null);

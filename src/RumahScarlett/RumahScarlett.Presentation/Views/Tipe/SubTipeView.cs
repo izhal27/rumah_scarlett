@@ -47,27 +47,27 @@ namespace RumahScarlett.Presentation.Views.Tipe
 
       private void SubTipeView_Load(object sender, EventArgs e)
       {
-         EventHelper.RaiseEvent(this, OnLoadData, e);
+         OnLoadData?.Invoke(sender, e);
       }
 
       private void ButtonsCRUD_OnTambahClickEvent(object sender, EventArgs e)
       {
-         EventHelper.RaiseEvent(this, OnCreateData, e);
+         OnCreateData?.Invoke(sender, e);
       }
 
       private void ButtonsCRUD_OnUbahClickEvent(object sender, EventArgs e)
       {
-         EventHelper.RaiseEvent(this, OnUpdateData, e);
+         OnUpdateData?.Invoke(sender, e);
       }
 
       private void ButtonsCRUD_OnHapusClickEvent(object sender, EventArgs e)
       {
-         EventHelper.RaiseEvent(this, OnDeleteData, e);
+         OnDeleteData?.Invoke(sender, e);
       }
 
       private void ButtonsCRUD_OnRefreshClickEvent(object sender, EventArgs e)
       {
-         EventHelper.RaiseEvent(this, OnRefreshData, e);
+         OnRefreshData?.Invoke(sender, e);
       }
 
       private void ButtonsCRUD_OnTutupClickEvent(object sender, EventArgs e)

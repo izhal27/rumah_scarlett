@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RumahScarlett.Domain.Models.Barang;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RumahScarlett.Presentation.Views.Barang
 {
-   public interface IBarangEntryView : IEntryView
+   public interface IBarangEntryView : IEntryView<IBarangModel>
    {
    }
 }

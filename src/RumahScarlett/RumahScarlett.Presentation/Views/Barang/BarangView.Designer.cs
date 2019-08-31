@@ -64,6 +64,7 @@
          this.listDataGrid.Size = new System.Drawing.Size(954, 207);
          this.listDataGrid.TabIndex = 1;
          this.listDataGrid.Text = "listDataGrid1";
+         this.listDataGrid.CellDoubleClick += new Syncfusion.WinForms.DataGrid.Events.CellClickEventHandler(this.listDataGrid_CellDoubleClick);
          // 
          // crudcButtons
          // 
@@ -164,12 +165,14 @@
             ((object)(resources.GetObject("comboBoxTipe.Items7"))),
             ((object)(resources.GetObject("comboBoxTipe.Items8"))),
             ((object)(resources.GetObject("comboBoxTipe.Items9"))),
-            ((object)(resources.GetObject("comboBoxTipe.Items10")))});
+            ((object)(resources.GetObject("comboBoxTipe.Items10"))),
+            ((object)(resources.GetObject("comboBoxTipe.Items11")))});
          this.comboBoxTipe.Location = new System.Drawing.Point(72, 26);
          this.comboBoxTipe.Name = "comboBoxTipe";
          this.comboBoxTipe.Size = new System.Drawing.Size(150, 21);
          this.comboBoxTipe.TabIndex = 11;
          this.comboBoxTipe.ValueMember = "Key";
+         this.comboBoxTipe.SelectedIndexChanged += new System.EventHandler(this.comboBoxTipe_SelectedIndexChanged);
          // 
          // comboBoxSubTipe
          // 

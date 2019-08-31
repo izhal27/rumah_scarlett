@@ -14,11 +14,11 @@ using RumahScarlett.Presentation.Helper;
 
 namespace RumahScarlett.Presentation.Views.Supplier
 {
-   public partial class SupplierEntryView : BaseEntryView, IEntryView
+   public partial class SupplierEntryView : BaseEntryView, IEntryView<ISupplierModel>
    {
       private bool _isNewData;
       private ISupplierModel _model;
-      public event EventHandler<ModelEventArgs> OnSaveData;
+      public event EventHandler<EventArgs<ISupplierModel>> OnSaveData;
       private static string _typeName = "Supplier";
 
       public SupplierEntryView(bool isNewData = true, ISupplierModel model = null)
@@ -58,12 +58,12 @@ namespace RumahScarlett.Presentation.Views.Supplier
 
          if (_isNewData && Messages.ConfirmSave(_typeName))
          {
-            EventHelper.RaiseEvent(this, OnSaveData, new ModelEventArgs { Model = model });
+            OnSaveData?.Invoke(this, new EventArgs<ISupplierModel>(model));
          }
          else if (Messages.ConfirmUpdate(_typeName))
          {
             model.id = _model.id;
-            EventHelper.RaiseEvent(this, OnSaveData, new ModelEventArgs { Model = model });
+            OnSaveData?.Invoke(this, new EventArgs<ISupplierModel>(model));
          }
       }
    }

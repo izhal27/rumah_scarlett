@@ -74,11 +74,11 @@ namespace RumahScarlett.Presentation.Presenters.Tipe
          }
       }
 
-      private void SubTipeEntryView_OnSaveData(object sender, CommonComponents.ModelEventArgs e)
+      private void SubTipeEntryView_OnSaveData(object sender, EventArgs<ISubTipeModel> e)
       {
          try
          {
-            var model = (SubTipeModel)e.Model;
+            var model = (SubTipeModel)e.Value;
             var view = ((SubTipeEntryView)sender);
 
             if (model.id == default(uint))
