@@ -54,6 +54,8 @@
     <Compile Include="Models\Barang\IBarangModel.cs" />
     <Compile Include="Models\KasAwal\IKasAwalModel.cs" />
     <Compile Include="Models\KasAwal\KasAwalModel.cs" />
+    <Compile Include="Models\Pelanggan\IPelangganModel.cs" />
+    <Compile Include="Models\Pelanggan\PelangganModel.cs" />
     <Compile Include="Models\Pembelian\IPembelianDetailModel.cs" />
     <Compile Include="Models\Pembelian\IPembelianModel.cs" />
     <Compile Include="Models\Pembelian\PembelianDetailModel.cs" />
