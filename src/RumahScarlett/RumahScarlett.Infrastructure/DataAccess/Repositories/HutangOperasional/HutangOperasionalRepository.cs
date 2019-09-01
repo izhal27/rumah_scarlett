@@ -23,11 +23,9 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.HutangOperasional
 
          using (var context = new DbContext())
          {
-            model.tanggal = DateTime.Now;
-
             Insert(model, () => context.Conn.Insert((HutangOperasionalModel)model), dataAccessStatus,
                   () => CheckAfterInsert(context, "SELECT COUNT(1) FROM hutang_operasional WHERE tanggal=@tanggal "
-                                         + "AND id=(SELECT LAST_INSERT_ID())", new { model.tanggal.Date }));
+                                         + "AND id=(SELECT LAST_INSERT_ID())", new { model.tanggal }));
          }
       }
 
