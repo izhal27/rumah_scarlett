@@ -26,7 +26,8 @@ namespace RumahScarlett.Domain.Models.Pengeluaran
       [StringLength(100, MinimumLength = 3, ErrorMessage = "Nama pengeluaran harus diantara 3 sampai 100 karakter !!!")]
       [Display(Name = "Nama")]
       public string nama { get; set; }
-      
+
+      [DisplayFormat(DataFormatString = "{0:N0}")]
       [Range(typeof(decimal), "1", "79228162514264337593543950335", ErrorMessage = "Jumlah harus diisi !!!")]
       [Display(Name = "Jumlah")]
       public decimal jumlah { get; set; }
