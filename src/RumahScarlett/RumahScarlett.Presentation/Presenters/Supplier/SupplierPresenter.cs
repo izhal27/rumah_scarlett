@@ -65,24 +65,27 @@ namespace RumahScarlett.Presentation.Presenters.Supplier
 
       private void _view_OnUpdateData(object sender, EventArgs e)
       {
-         ListDataGrid listDataGrid = null;
-
-         if (sender is ListDataGrid)
+         using (new WaitCursorHandler())
          {
-            listDataGrid = (ListDataGrid)sender;
-         }
-         else
-         {
-            listDataGrid = _view.ListDataGrid;
-         }
+            ListDataGrid listDataGrid = null;
 
-         if (listDataGrid != null && listDataGrid.SelectedItem != null)
-         {
-            var model = _services.GetById(((SupplierModel)listDataGrid.SelectedItem).id);
+            if (sender is ListDataGrid)
+            {
+               listDataGrid = (ListDataGrid)sender;
+            }
+            else
+            {
+               listDataGrid = _view.ListDataGrid;
+            }
 
-            var view = new SupplierEntryView(false, model);
-            view.OnSaveData += SupplierEntryView_OnSaveData;
-            view.ShowDialog();
+            if (listDataGrid != null && listDataGrid.SelectedItem != null)
+            {
+               var model = _services.GetById(((SupplierModel)listDataGrid.SelectedItem).id);
+
+               var view = new SupplierEntryView(false, model);
+               view.OnSaveData += SupplierEntryView_OnSaveData;
+               view.ShowDialog();
+            }
          }
       }
 

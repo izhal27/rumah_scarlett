@@ -65,24 +65,27 @@ namespace RumahScarlett.Presentation.Presenters.Pelanggan
 
       private void _view_OnUpdateData(object sender, EventArgs e)
       {
-         ListDataGrid listDataGrid = null;
-
-         if (sender is ListDataGrid)
+         using (new WaitCursorHandler())
          {
-            listDataGrid = (ListDataGrid)sender;
-         }
-         else
-         {
-            listDataGrid = ((EventArgs<ListDataGrid>)e).Value;
-         }
+            ListDataGrid listDataGrid = null;
 
-         if (listDataGrid != null && listDataGrid.SelectedItem != null)
-         {
-            var model = _services.GetById(((PelangganModel)listDataGrid.SelectedItem).id);
+            if (sender is ListDataGrid)
+            {
+               listDataGrid = (ListDataGrid)sender;
+            }
+            else
+            {
+               listDataGrid = ((EventArgs<ListDataGrid>)e).Value;
+            }
 
-            var view = new PelangganEntryView(false, model);
-            view.OnSaveData += PelangganEntryView_OnSaveData;
-            view.ShowDialog();
+            if (listDataGrid != null && listDataGrid.SelectedItem != null)
+            {
+               var model = _services.GetById(((PelangganModel)listDataGrid.SelectedItem).id);
+
+               var view = new PelangganEntryView(false, model);
+               view.OnSaveData += PelangganEntryView_OnSaveData;
+               view.ShowDialog();
+            }
          }
       }
 

@@ -65,24 +65,27 @@ namespace RumahScarlett.Presentation.Presenters.Satuan
 
       private void _view_OnUpdateData(object sender, EventArgs e)
       {
-         ListDataGrid listDataGrid = null;
-
-         if (sender is ListDataGrid)
+         using (new WaitCursorHandler())
          {
-            listDataGrid = (ListDataGrid)sender;
-         }
-         else
-         {
-            listDataGrid = _view.ListDataGrid;
-         }
+            ListDataGrid listDataGrid = null;
 
-         if (listDataGrid != null && listDataGrid.SelectedItem != null)
-         {
-            var model = _services.GetById(((SatuanModel)listDataGrid.SelectedItem).id);
+            if (sender is ListDataGrid)
+            {
+               listDataGrid = (ListDataGrid)sender;
+            }
+            else
+            {
+               listDataGrid = _view.ListDataGrid;
+            }
 
-            var view = new SatuanEntryView(false, model);
-            view.OnSaveData += SatuanEntryView_OnSaveData;
-            view.ShowDialog();
+            if (listDataGrid != null && listDataGrid.SelectedItem != null)
+            {
+               var model = _services.GetById(((SatuanModel)listDataGrid.SelectedItem).id);
+
+               var view = new SatuanEntryView(false, model);
+               view.OnSaveData += SatuanEntryView_OnSaveData;
+               view.ShowDialog();
+            }
          }
       }
 

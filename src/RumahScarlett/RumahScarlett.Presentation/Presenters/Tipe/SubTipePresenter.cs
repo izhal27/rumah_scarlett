@@ -66,24 +66,27 @@ namespace RumahScarlett.Presentation.Presenters.Tipe
 
       private void _view_OnUpdateData(object sender, EventArgs e)
       {
-         ListDataGrid listDataGrid = null;
-
-         if (sender is ListDataGrid)
+         using (new WaitCursorHandler())
          {
-            listDataGrid = (ListDataGrid)sender;
-         }
-         else
-         {
-            listDataGrid = _view.ListDataGrid;
-         }
+            ListDataGrid listDataGrid = null;
 
-         if (listDataGrid != null && listDataGrid.SelectedItem != null)
-         {
-            var model = _services.GetById(((SubTipeModel)listDataGrid.SelectedItem).id);
+            if (sender is ListDataGrid)
+            {
+               listDataGrid = (ListDataGrid)sender;
+            }
+            else
+            {
+               listDataGrid = _view.ListDataGrid;
+            }
 
-            var view = new SubTipeEntryView(false, model);
-            view.OnSaveData += SubTipeEntryView_OnSaveData;
-            view.ShowDialog();
+            if (listDataGrid != null && listDataGrid.SelectedItem != null)
+            {
+               var model = _services.GetById(((SubTipeModel)listDataGrid.SelectedItem).id);
+
+               var view = new SubTipeEntryView(false, model);
+               view.OnSaveData += SubTipeEntryView_OnSaveData;
+               view.ShowDialog();
+            }
          }
       }
 

@@ -118,24 +118,27 @@ namespace RumahScarlett.Presentation.Presenters.Barang
 
       private void _view_OnUpdateData(object sender, EventArgs e)
       {
-         ListDataGrid listDataGrid = null;
-
-         if (sender is ListDataGrid)
+         using (new WaitCursorHandler())
          {
-            listDataGrid = (ListDataGrid)sender;
-         }
-         else
-         {
-            listDataGrid = _view.ListDataGrid;
-         }
+            ListDataGrid listDataGrid = null;
 
-         if (listDataGrid != null && listDataGrid.SelectedItem != null)
-         {
-            var model = _barangServices.GetById(((BarangModel)listDataGrid.SelectedItem).id);
+            if (sender is ListDataGrid)
+            {
+               listDataGrid = (ListDataGrid)sender;
+            }
+            else
+            {
+               listDataGrid = _view.ListDataGrid;
+            }
 
-            var view = new BarangEntryView(false, model);
-            view.OnSaveData += BarangEntryView_OnSaveData;
-            view.ShowDialog();
+            if (listDataGrid != null && listDataGrid.SelectedItem != null)
+            {
+               var model = _barangServices.GetById(((BarangModel)listDataGrid.SelectedItem).id);
+
+               var view = new BarangEntryView(false, model);
+               view.OnSaveData += BarangEntryView_OnSaveData;
+               view.ShowDialog();
+            }
          }
       }
 

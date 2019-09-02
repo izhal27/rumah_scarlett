@@ -24,7 +24,7 @@ namespace RumahScarlett.Presentation.Presenters.Pengeluaran
       private List<IPengeluaranModel> _listObjs;
       private BindingListView<PengeluaranModel> _bindingView;
       private static string _typeName = "Pengeluaran";
-      
+
       public IPengeluaranView GetView
       {
          get { return _view; }
@@ -70,24 +70,27 @@ namespace RumahScarlett.Presentation.Presenters.Pengeluaran
 
       private void _view_OnUpdateData(object sender, EventArgs e)
       {
-         ListDataGrid listDataGrid = null;
-
-         if (sender is ListDataGrid)
+         using (new WaitCursorHandler())
          {
-            listDataGrid = (ListDataGrid)sender;
-         }
-         else
-         {
-            listDataGrid = _view.ListDataGrid;
-         }
+            ListDataGrid listDataGrid = null;
 
-         if (listDataGrid != null && listDataGrid.SelectedItem != null)
-         {
-            var model = _services.GetById(((PengeluaranModel)listDataGrid.SelectedItem).id);
+            if (sender is ListDataGrid)
+            {
+               listDataGrid = (ListDataGrid)sender;
+            }
+            else
+            {
+               listDataGrid = _view.ListDataGrid;
+            }
 
-            var view = new PengeluaranEntryView(_view.DateTimePickerTanggal, false, model);
-            view.OnSaveData += PengeluaranEntryView_OnSaveData;
-            view.ShowDialog();
+            if (listDataGrid != null && listDataGrid.SelectedItem != null)
+            {
+               var model = _services.GetById(((PengeluaranModel)listDataGrid.SelectedItem).id);
+
+               var view = new PengeluaranEntryView(_view.DateTimePickerTanggal, false, model);
+               view.OnSaveData += PengeluaranEntryView_OnSaveData;
+               view.ShowDialog();
+            }
          }
       }
 
