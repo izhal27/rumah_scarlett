@@ -28,6 +28,21 @@ namespace RumahScarlett.Presentation.Views.HutangOperasional
          get { return listDataGrid; }
       }
 
+      public Label LabelTotal
+      {
+         get { return labelTotal; }
+      }
+
+      public Label LabelLunas
+      {
+         get { return labelLunas; }
+      }
+
+      public Label LabelBelumLunas
+      {
+         get { return labelBelumLunas; }
+      }
+
       public HutangOperasionalView()
       {
          InitializeComponent();
@@ -45,13 +60,7 @@ namespace RumahScarlett.Presentation.Views.HutangOperasional
 
       private void HutangOperasionalView_Load(object sender, EventArgs e)
       {
-         var controlDictionarty = new Dictionary<string, Control>();
-         controlDictionarty.Add(listDataGrid.Name, listDataGrid);
-         controlDictionarty.Add(labelTotal.Name, labelTotal);
-         controlDictionarty.Add(labelLunas.Name, labelLunas);
-         controlDictionarty.Add(labelBelumLunas.Name, labelBelumLunas);
-
-         OnLoadData?.Invoke(sender, new EventArgs<Dictionary<string, Control>>(controlDictionarty));
+         OnLoadData?.Invoke(sender, e);
       }
 
       private void ListDataGrid_CellDoubleClick(object sender, CellClickEventArgs e)

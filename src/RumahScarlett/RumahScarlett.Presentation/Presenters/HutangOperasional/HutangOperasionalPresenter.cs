@@ -25,12 +25,7 @@ namespace RumahScarlett.Presentation.Presenters.HutangOperasional
       private List<IHutangOperasionalModel> _listObjs;
       private BindingListView<HutangOperasionalModel> _bindingView;
       private static string _typeName = "Hutang Operasional";
-
-      private ListDataGrid _view_listDataGrid;
-      private Label _view_labelTotal;
-      private Label _view_labelBelumLunas;
-      private Label _view_labelLunas;
-
+      
       public IHutangOperasionalView GetView
       {
          get { return _view; }
@@ -52,16 +47,11 @@ namespace RumahScarlett.Presentation.Presenters.HutangOperasional
 
       private void _view_LoadData(object sender, EventArgs e)
       {
-         _view_listDataGrid = (ListDataGrid)((EventArgs<Dictionary<string, Control>>)e).Value["listDataGrid"];
-         _view_labelTotal = (Label)((EventArgs<Dictionary<string, Control>>)e).Value["labelTotal"];
-         _view_labelLunas = (Label)((EventArgs<Dictionary<string, Control>>)e).Value["labelLunas"];
-         _view_labelBelumLunas = (Label)((EventArgs<Dictionary<string, Control>>)e).Value["labelBelumLunas"];
-
-         if (_view_listDataGrid != null)
+         if (_view.ListDataGrid != null)
          {
             _listObjs = _services.GetAll().ToList();
             _bindingView = new BindingListView<HutangOperasionalModel>(_listObjs);
-            _view_listDataGrid.DataSource = _bindingView;
+            _view.ListDataGrid.DataSource = _bindingView;
             _bindingView.ListChanged += _bindingView_ListChanged;
 
             HitungTotal();
@@ -79,9 +69,9 @@ namespace RumahScarlett.Presentation.Presenters.HutangOperasional
          var totalLunas = _listObjs.Where(h => h.status_hutang == true).Sum(h => h.jumlah);
          var totalSelisih = total - totalLunas;
 
-         _view_labelTotal.Text = total.ToString("N0");
-         _view_labelLunas.Text = totalLunas.ToString("N0");
-         _view_labelBelumLunas.Text = totalSelisih >= 0 ? totalSelisih.ToString("N0") : "0";
+         _view.LabelTotal.Text = total.ToString("N0");
+         _view.LabelLunas.Text = totalLunas.ToString("N0");
+         _view.LabelBelumLunas.Text = totalSelisih >= 0 ? totalSelisih.ToString("N0") : "0";
       }
 
       private void _view_OnCreateData(object sender, EventArgs e)
@@ -101,7 +91,7 @@ namespace RumahScarlett.Presentation.Presenters.HutangOperasional
          }
          else
          {
-            listDataGrid = _view_listDataGrid;
+            listDataGrid = _view.ListDataGrid;
          }
 
          if (listDataGrid != null && listDataGrid.SelectedItem != null)
@@ -148,11 +138,11 @@ namespace RumahScarlett.Presentation.Presenters.HutangOperasional
 
       private void _view_OnDeleteData(object sender, EventArgs e)
       {
-         if (_view_listDataGrid != null && _view_listDataGrid.SelectedItem != null && Messages.ConfirmDelete(_typeName))
+         if (_view.ListDataGrid != null && _view.ListDataGrid.SelectedItem != null && Messages.ConfirmDelete(_typeName))
          {
             try
             {
-               var model = _services.GetById(((HutangOperasionalModel)_view_listDataGrid.SelectedItem).id);
+               var model = _services.GetById(((HutangOperasionalModel)_view.ListDataGrid.SelectedItem).id);
 
                _services.Delete(model);
                Messages.InfoDelete(_typeName);
@@ -164,9 +154,9 @@ namespace RumahScarlett.Presentation.Presenters.HutangOperasional
             }
             finally
             {
-               if (_view_listDataGrid.SelectedItem != null)
+               if (_view.ListDataGrid.SelectedItem != null)
                {
-                  _view_listDataGrid.SelectedItem = null;
+                  _view.ListDataGrid.SelectedItem = null;
                }
             }
          }
