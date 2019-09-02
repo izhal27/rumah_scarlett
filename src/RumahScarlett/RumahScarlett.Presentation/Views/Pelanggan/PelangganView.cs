@@ -45,7 +45,7 @@ namespace RumahScarlett.Presentation.Views.Pelanggan
       
       private void PelangganView_Load(object sender, EventArgs e)
       {
-         OnLoadData?.Invoke(sender, new EventArgs<ListDataGrid>(listDataGrid));
+         OnLoadData?.Invoke(sender, e);
       }
 
       private void ListDataGrid_CellDoubleClick(object sender, CellClickEventArgs e)
@@ -60,12 +60,12 @@ namespace RumahScarlett.Presentation.Views.Pelanggan
 
       private void crudcButtons_OnUbahClick(object sender, EventArgs e)
       {
-         OnUpdateData?.Invoke(sender, new EventArgs<ListDataGrid>(listDataGrid));
+         OnUpdateData?.Invoke(sender, e);
       }
 
       private void crudcButtons_OnHapusClick(object sender, EventArgs e)
       {
-         OnDeleteData?.Invoke(sender, new EventArgs<ListDataGrid>(listDataGrid));
+         OnDeleteData?.Invoke(sender, e);
       }
 
       private void crudcButtons_OnRefreshClickEvent(object sender, EventArgs e)
