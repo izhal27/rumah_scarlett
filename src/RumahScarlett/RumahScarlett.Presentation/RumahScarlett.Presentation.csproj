@@ -115,6 +115,7 @@
     <Compile Include="Presenters\KasAwal\IKasAwalPresenter.cs" />
     <Compile Include="Presenters\KasAwal\KasAwalPresenter.cs" />
     <Compile Include="Presenters\MainPresenter.cs" />
+    <Compile Include="Presenters\Pelanggan\IPelangganPresenter.cs" />
     <Compile Include="Presenters\Pelanggan\PelangganPresenter.cs" />
     <Compile Include="Presenters\Satuan\SatuanPresenter.cs" />
     <Compile Include="Presenters\Supplier\ISupplierPresenter.cs" />

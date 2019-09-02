@@ -16,7 +16,7 @@ using System.Threading.Tasks;
 
 namespace RumahScarlett.Presentation.Presenters.Pelanggan
 {
-   public class PelangganPresenter : IBasePresenter<IPelangganView>
+   public class PelangganPresenter : IPelangganPresenter
    {
       private IPelangganView _view;
       private IPelangganServices _services;
@@ -149,7 +149,8 @@ namespace RumahScarlett.Presentation.Presenters.Pelanggan
       {
          using (new WaitCursorHandler())
          {
-            _bindingView.DataSource = _services.GetAll().ToList();
+            _listObjs = _services.GetAll().ToList();
+            _bindingView.DataSource = _listObjs;
          }
       }
 
