@@ -61,6 +61,7 @@
          this.listDataGrid.AutoSizeColumnsMode = Syncfusion.WinForms.DataGrid.Enums.AutoSizeColumnsMode.Fill;
          this.listDataGrid.Location = new System.Drawing.Point(12, 202);
          this.listDataGrid.Name = "listDataGrid";
+         this.listDataGrid.ShowRowHeader = true;
          this.listDataGrid.Size = new System.Drawing.Size(954, 207);
          this.listDataGrid.TabIndex = 1;
          this.listDataGrid.Text = "listDataGrid1";
@@ -164,13 +165,14 @@
             ((object)(resources.GetObject("comboBoxTipe.Items6"))),
             ((object)(resources.GetObject("comboBoxTipe.Items7"))),
             ((object)(resources.GetObject("comboBoxTipe.Items8"))),
-            ((object)(resources.GetObject("comboBoxTipe.Items9")))});
+            ((object)(resources.GetObject("comboBoxTipe.Items9"))),
+            ((object)(resources.GetObject("comboBoxTipe.Items10"))),
+            ((object)(resources.GetObject("comboBoxTipe.Items11")))});
          this.comboBoxTipe.Location = new System.Drawing.Point(72, 26);
          this.comboBoxTipe.Name = "comboBoxTipe";
          this.comboBoxTipe.Size = new System.Drawing.Size(150, 21);
          this.comboBoxTipe.TabIndex = 11;
          this.comboBoxTipe.ValueMember = "Key";
-         this.comboBoxTipe.SelectedIndexChanged += new System.EventHandler(this.comboBoxTipe_SelectedIndexChanged);
          // 
          // comboBoxSubTipe
          // 
@@ -187,8 +189,7 @@
             ((object)(resources.GetObject("comboBoxSubTipe.Items6"))),
             ((object)(resources.GetObject("comboBoxSubTipe.Items7"))),
             ((object)(resources.GetObject("comboBoxSubTipe.Items8"))),
-            ((object)(resources.GetObject("comboBoxSubTipe.Items9"))),
-            ((object)(resources.GetObject("comboBoxSubTipe.Items10")))});
+            ((object)(resources.GetObject("comboBoxSubTipe.Items9")))});
          this.comboBoxSubTipe.Location = new System.Drawing.Point(284, 26);
          this.comboBoxSubTipe.Name = "comboBoxSubTipe";
          this.comboBoxSubTipe.Size = new System.Drawing.Size(150, 21);
@@ -219,12 +220,23 @@
          // comboBoxSupplier
          // 
          this.comboBoxSupplier.Anchor = System.Windows.Forms.AnchorStyles.Left;
+         this.comboBoxSupplier.DisplayMember = "Value";
          this.comboBoxSupplier.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
          this.comboBoxSupplier.FormattingEnabled = true;
+         this.comboBoxSupplier.Items.AddRange(new object[] {
+            ((object)(resources.GetObject("comboBoxSupplier.Items"))),
+            ((object)(resources.GetObject("comboBoxSupplier.Items1"))),
+            ((object)(resources.GetObject("comboBoxSupplier.Items2"))),
+            ((object)(resources.GetObject("comboBoxSupplier.Items3"))),
+            ((object)(resources.GetObject("comboBoxSupplier.Items4"))),
+            ((object)(resources.GetObject("comboBoxSupplier.Items5"))),
+            ((object)(resources.GetObject("comboBoxSupplier.Items6"))),
+            ((object)(resources.GetObject("comboBoxSupplier.Items7")))});
          this.comboBoxSupplier.Location = new System.Drawing.Point(72, 53);
          this.comboBoxSupplier.Name = "comboBoxSupplier";
          this.comboBoxSupplier.Size = new System.Drawing.Size(150, 21);
          this.comboBoxSupplier.TabIndex = 13;
+         this.comboBoxSupplier.ValueMember = "Key";
          // 
          // BarangView
          // 

@@ -23,7 +23,7 @@ namespace RumahScarlett.Presentation.Views.Barang
       public event EventHandler OnSaveData;
       private static string _typeName = "Barang";
 
-      public BarangEntryView(ITipeServices tipeServices, bool isNewData = true, IBarangModel model = null)
+      public BarangEntryView(bool isNewData = true, IBarangModel model = null)
       {
          InitializeComponent();
 

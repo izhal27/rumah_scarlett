@@ -25,7 +25,6 @@ namespace RumahScarlett.Presentation.Views.Barang
       public event EventHandler<CellClickEventArgs> OnDataGridCellDoubleClick;
       public event EventHandler OnButtonTampilkanClick;
       public event EventHandler OnRadioButtonTipeChecked;
-      public event EventHandler OnComboBoxTipeSelectedIndexChanged;
       public event EventHandler OnRadioButtonSupplierChecked;
 
       public BarangView()
@@ -46,12 +45,17 @@ namespace RumahScarlett.Presentation.Views.Barang
 
       private void BarangView_Load(object sender, EventArgs e)
       {
-         OnLoadData?.Invoke(sender, new EventArgs<ListDataGrid>(listDataGrid));
+         var dictionaryControl = new Dictionary<string, Control>();
+         dictionaryControl.Add(listDataGrid.Name, listDataGrid);
+         dictionaryControl.Add(radioButtonSemua.Name, radioButtonSemua);
+         dictionaryControl.Add(radioButtonTipe.Name, radioButtonTipe);
+         dictionaryControl.Add(radioButtonSupplier.Name, radioButtonSupplier);
+         dictionaryControl.Add(comboBoxTipe.Name, comboBoxTipe);
+         dictionaryControl.Add(comboBoxSubTipe.Name, comboBoxSubTipe);
+         dictionaryControl.Add(comboBoxSupplier.Name, comboBoxSupplier);
+         dictionaryControl.Add(buttonTampilkan.Name, buttonTampilkan);
 
-         comboBoxTipe.Enabled = false;
-         comboBoxSubTipe.Enabled = false;
-         comboBoxSupplier.Enabled = false;
-         ActiveControl = buttonTampilkan;
+         OnLoadData?.Invoke(sender, new EventArgs<Dictionary<string, Control>>(dictionaryControl));         
       }
 
       private void listDataGrid_CellDoubleClick(object sender, CellClickEventArgs e)
@@ -61,31 +65,19 @@ namespace RumahScarlett.Presentation.Views.Barang
 
       private void radioButtonTipe_CheckedChanged(object sender, EventArgs e)
       {
-         var value = new Dictionary<string, ComboBox>();
-         value.Add(comboBoxTipe.Name, comboBoxTipe);
-         value.Add(comboBoxSubTipe.Name, comboBoxSubTipe);
-
-         OnRadioButtonTipeChecked?.Invoke(sender, new EventArgs<Dictionary<string, ComboBox>>(value));
-      }
-
-      private void comboBoxTipe_SelectedIndexChanged(object sender, EventArgs e)
-      {
-         OnComboBoxTipeSelectedIndexChanged?.Invoke(sender, new EventArgs<ComboBox>(comboBoxSubTipe));
+         OnRadioButtonTipeChecked?.Invoke(sender, e);
       }
 
       private void radioButtonSupplier_CheckedChanged(object sender, EventArgs e)
       {
-         OnRadioButtonSupplierChecked?.Invoke(sender, new EventArgs<ComboBox>(comboBoxSupplier));
+         OnRadioButtonSupplierChecked?.Invoke(sender, e);
       }
 
       private void buttonTampilkan_Click(object sender, EventArgs e)
       {
          var value = new Dictionary<string, ComboBox>();
-         value.Add(comboBoxTipe.Name, comboBoxTipe);
-         value.Add(comboBoxSubTipe.Name, comboBoxSubTipe);
-         value.Add(comboBoxSupplier.Name, comboBoxSupplier);
 
-         OnButtonTampilkanClick?.Invoke(sender, new EventArgs<Dictionary<string, ComboBox>>(value));
+         OnButtonTampilkanClick?.Invoke(sender, e);
       }
 
       private void crudcButtons_OnTambahClick(object sender, EventArgs e)
@@ -95,17 +87,16 @@ namespace RumahScarlett.Presentation.Views.Barang
 
       private void crudcButtons_OnUbahClick(object sender, EventArgs e)
       {
-         OnUpdateData?.Invoke(sender, new EventArgs<ListDataGrid>(listDataGrid));
+         OnUpdateData?.Invoke(sender, e);
       }
 
       private void crudcButtons_OnHapusClick(object sender, EventArgs e)
       {
-         OnDeleteData?.Invoke(sender, new EventArgs<ListDataGrid>(listDataGrid));
+         OnDeleteData?.Invoke(sender, e);
       }
 
       private void crudcButtons_OnRefreshClickEvent(object sender, EventArgs e)
       {
-         radioButtonSemua.Checked = true;
          OnRefreshData?.Invoke(sender, e);
       }
 

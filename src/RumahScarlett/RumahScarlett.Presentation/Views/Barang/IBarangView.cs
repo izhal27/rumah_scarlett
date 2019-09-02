@@ -14,7 +14,6 @@ namespace RumahScarlett.Presentation.Views.Barang
    {
       event EventHandler OnButtonTampilkanClick;
       event EventHandler OnRadioButtonTipeChecked;
-      event EventHandler OnComboBoxTipeSelectedIndexChanged;
       event EventHandler OnRadioButtonSupplierChecked;      
    }
 }
