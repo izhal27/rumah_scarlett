@@ -45,13 +45,14 @@ namespace RumahScarlett.Presentation.Presenters.Supplier
 
       private void _view_LoadData(object sender, EventArgs e)
       {
-         var listDataGrid = ((EventArgs<ListDataGrid>)e).Value;
-
-         if (listDataGrid != null)
+         using (new WaitCursorHandler())
          {
-            _listObj = _services.GetAll().ToList();
-            _bindingView = new BindingListView<SupplierModel>(_listObj);
-            listDataGrid.DataSource = _bindingView;
+            if (_view.ListDataGrid != null)
+            {
+               _listObj = _services.GetAll().ToList();
+               _bindingView = new BindingListView<SupplierModel>(_listObj);
+               _view.ListDataGrid.DataSource = _bindingView;
+            }
          }
       }
 
@@ -65,14 +66,14 @@ namespace RumahScarlett.Presentation.Presenters.Supplier
       private void _view_OnUpdateData(object sender, EventArgs e)
       {
          ListDataGrid listDataGrid = null;
-         
-         if(sender is ListDataGrid)
+
+         if (sender is ListDataGrid)
          {
             listDataGrid = (ListDataGrid)sender;
          }
          else
          {
-            listDataGrid = ((EventArgs<ListDataGrid>)e).Value;
+            listDataGrid = _view.ListDataGrid;
          }
 
          if (listDataGrid != null && listDataGrid.SelectedItem != null)
@@ -87,59 +88,63 @@ namespace RumahScarlett.Presentation.Presenters.Supplier
 
       private void SupplierEntryView_OnSaveData(object sender, EventArgs e)
       {
-         try
-         {
-            var model = (SupplierModel)((EventArgs<ISupplierModel>)e).Value;
-            var view = ((SupplierEntryView)sender);
-
-            if (model.id == default(uint))
-            {
-               _services.Insert(model);
-               view.Controls.ClearControls();
-               Messages.InfoSave(_typeName);
-            }
-            else
-            {
-               _services.Update(model);
-               Messages.InfoUpdate(_typeName);
-               view.Close();
-            }
-
-            _view_OnRefreshData(null, null);
-         }
-         catch (ArgumentException ex)
-         {
-            Messages.Error(ex);
-         }
-         catch (DataAccessException ex)
-         {
-            Messages.Error(ex);
-         }
-      }
-
-      private void _view_OnDeleteData(object sender, EventArgs e)
-      {
-         var listDataGrid = ((EventArgs<ListDataGrid>)e).Value;
-
-         if (listDataGrid != null && listDataGrid.SelectedItem != null && Messages.ConfirmDelete(_typeName))
+         using (new WaitCursorHandler())
          {
             try
             {
-               var model = _services.GetById(((SupplierModel)listDataGrid.SelectedItem).id);
+               var model = (SupplierModel)((EventArgs<ISupplierModel>)e).Value;
+               var view = ((SupplierEntryView)sender);
 
-               _services.Delete(model);
-               Messages.InfoDelete(_typeName);
+               if (model.id == default(uint))
+               {
+                  _services.Insert(model);
+                  view.Controls.ClearControls();
+                  Messages.InfoSave(_typeName);
+               }
+               else
+               {
+                  _services.Update(model);
+                  Messages.InfoUpdate(_typeName);
+                  view.Close();
+               }
+
                _view_OnRefreshData(null, null);
+            }
+            catch (ArgumentException ex)
+            {
+               Messages.Error(ex);
             }
             catch (DataAccessException ex)
             {
                Messages.Error(ex);
             }
-            finally
+         }
+      }
+
+      private void _view_OnDeleteData(object sender, EventArgs e)
+      {
+         using (new WaitCursorHandler())
+         {
+            if (_view.ListDataGrid != null && _view.ListDataGrid.SelectedItem != null && Messages.ConfirmDelete(_typeName))
             {
-               if (listDataGrid.SelectedItem != null)
+               try
                {
-                  listDataGrid.SelectedItem = null;
+                  var model = _services.GetById(((SupplierModel)_view.ListDataGrid.SelectedItem).id);
+
+                  _services.Delete(model);
+                  Messages.InfoDelete(_typeName);
+                  _view_OnRefreshData(null, null);
+               }
+               catch (DataAccessException ex)
+               {
+                  Messages.Error(ex);
+               }
+               finally
+               {
+                  if (_view.ListDataGrid.SelectedItem != null)
+                  {
+                     _view.ListDataGrid.SelectedItem = null;
+                  }
                }
             }
          }
@@ -147,11 +152,8 @@ namespace RumahScarlett.Presentation.Presenters.Supplier
 
       private void _view_OnRefreshData(object sender, EventArgs e)
       {
-         using (new WaitCursorHandler())
-         {
-            _listObj = _services.GetAll().ToList();
-            _bindingView.DataSource = _listObj;
-         }
+         _listObj = _services.GetAll().ToList();
+         _bindingView.DataSource = _listObj;
       }
 
       private void OnDataGrid_CellDoubleClick(object sender, CellClickEventArgs e)
