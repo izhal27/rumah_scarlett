@@ -23,6 +23,11 @@ namespace RumahScarlett.Presentation.Views.HutangOperasional
       public event EventHandler OnPrintData;
       public event EventHandler<CellClickEventArgs> OnDataGridCellDoubleClick;
 
+      public ListDataGrid ListDataGrid
+      {
+         get { return listDataGrid; }
+      }
+
       public HutangOperasionalView()
       {
          InitializeComponent();

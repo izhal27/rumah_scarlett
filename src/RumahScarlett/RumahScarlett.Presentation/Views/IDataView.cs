@@ -18,5 +18,7 @@ namespace RumahScarlett.Presentation.Views
       event EventHandler OnRefreshData;
       event EventHandler OnPrintData;
       event EventHandler<CellClickEventArgs> OnDataGridCellDoubleClick;
+
+      ListDataGrid ListDataGrid { get; }
    }
 }

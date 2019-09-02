@@ -27,6 +27,46 @@ namespace RumahScarlett.Presentation.Views.Barang
       public event EventHandler OnRadioButtonTipeChecked;
       public event EventHandler OnRadioButtonSupplierChecked;
 
+      public ListDataGrid ListDataGrid
+      {
+         get { return listDataGrid; }
+      }
+
+      public RadioButton RadioButtonSemua
+      {
+         get { return radioButtonSemua; }
+      }
+
+      public RadioButton RadioButtonTipe
+      {
+         get { return radioButtonTipe; }
+      }
+
+      public RadioButton RadioButtonSupplier
+      {
+         get { return radioButtonSupplier; }
+      }
+
+      public ComboBox ComboBoxTipe
+      {
+         get { return comboBoxTipe; }
+      }
+
+      public ComboBox ComboBoxSubTipe
+      {
+         get { return comboBoxSubTipe; }
+      }
+
+      public ComboBox ComboBoxSupplier
+      {
+         get { return comboBoxSupplier; }
+      }
+
+      public Button ButtonTampilkan
+      {
+         get { return buttonTampilkan; }
+      }
+
       public BarangView()
       {
          InitializeComponent();
@@ -41,21 +81,12 @@ namespace RumahScarlett.Presentation.Views.Barang
          crudcButtons.OnHapusClick += crudcButtons_OnHapusClick;
          crudcButtons.OnRefreshClick += crudcButtons_OnRefreshClickEvent;
          crudcButtons.OnTutupClick += crudcButtons_OnTutupClickEvent;
+         crudcButtons.OnCetakClick += CrudcButtons_OnCetakClick;
       }
 
       private void BarangView_Load(object sender, EventArgs e)
       {
-         var dictionaryControl = new Dictionary<string, Control>();
-         dictionaryControl.Add(listDataGrid.Name, listDataGrid);
-         dictionaryControl.Add(radioButtonSemua.Name, radioButtonSemua);
-         dictionaryControl.Add(radioButtonTipe.Name, radioButtonTipe);
-         dictionaryControl.Add(radioButtonSupplier.Name, radioButtonSupplier);
-         dictionaryControl.Add(comboBoxTipe.Name, comboBoxTipe);
-         dictionaryControl.Add(comboBoxSubTipe.Name, comboBoxSubTipe);
-         dictionaryControl.Add(comboBoxSupplier.Name, comboBoxSupplier);
-         dictionaryControl.Add(buttonTampilkan.Name, buttonTampilkan);
-
-         OnLoadData?.Invoke(sender, new EventArgs<Dictionary<string, Control>>(dictionaryControl));         
+         OnLoadData?.Invoke(sender, e);
       }
 
       private void listDataGrid_CellDoubleClick(object sender, CellClickEventArgs e)
@@ -75,8 +106,6 @@ namespace RumahScarlett.Presentation.Views.Barang
 
       private void buttonTampilkan_Click(object sender, EventArgs e)
       {
-         var value = new Dictionary<string, ComboBox>();
-
          OnButtonTampilkanClick?.Invoke(sender, e);
       }
 
@@ -98,6 +127,11 @@ namespace RumahScarlett.Presentation.Views.Barang
       private void crudcButtons_OnRefreshClickEvent(object sender, EventArgs e)
       {
          OnRefreshData?.Invoke(sender, e);
+      }
+
+      private void CrudcButtons_OnCetakClick(object sender, EventArgs e)
+      {
+         OnPrintData?.Invoke(sender, e);
       }
 
       private void crudcButtons_OnTutupClickEvent(object sender, EventArgs e)

@@ -24,16 +24,7 @@ namespace RumahScarlett.Presentation.Presenters.Barang
       private List<IBarangModel> _listObjs;
       private BindingListView<BarangModel> _bindingView;
       private static string _typeName = "Barang";
-
-      private ListDataGrid _view_listDataGrid;
-      private RadioButton _view_radioButtonSemua;
-      private RadioButton _view_radioButtonTipe;
-      private RadioButton _view_radioButtonSupplier;
-      private ComboBox _view_comboBoxTipe;
-      private ComboBox _view_comboBoxSubTipe;
-      private ComboBox _view_comboBoxSupplier;
-      private Button _view_buttonTampilkan;
-
+      
       public IBarangView GetView
       {
          get { return _view; }
@@ -58,65 +49,56 @@ namespace RumahScarlett.Presentation.Presenters.Barang
 
       private void _view_LoadData(object sender, EventArgs e)
       {
-         _view_listDataGrid = (ListDataGrid)((EventArgs<Dictionary<string, Control>>)e).Value["listDataGrid"];
-         _view_radioButtonSemua = (RadioButton)((EventArgs<Dictionary<string, Control>>)e).Value["radioButtonSemua"];
-         _view_radioButtonTipe = (RadioButton)((EventArgs<Dictionary<string, Control>>)e).Value["radioButtonTipe"];
-         _view_radioButtonSupplier = (RadioButton)((EventArgs<Dictionary<string, Control>>)e).Value["radioButtonSupplier"];
-         _view_comboBoxTipe = (ComboBox)((EventArgs<Dictionary<string, Control>>)e).Value["comboBoxTipe"];
-         _view_comboBoxSubTipe = (ComboBox)((EventArgs<Dictionary<string, Control>>)e).Value["comboBoxSubTipe"];
-         _view_comboBoxSupplier = (ComboBox)((EventArgs<Dictionary<string, Control>>)e).Value["comboBoxSupplier"];
-         _view_buttonTampilkan = (Button)((EventArgs<Dictionary<string, Control>>)e).Value["buttonTampilkan"];
-
          _listObjs = _barangServices.GetAll().ToList();
 
-         if (_view_listDataGrid != null && _view_comboBoxTipe != null &&
-             _view_comboBoxSubTipe != null && _view_comboBoxSupplier != null)
+         if (_view.ListDataGrid != null && _view.ComboBoxTipe != null &&
+             _view.ComboBoxSubTipe != null && _view.ComboBoxSupplier != null)
          {
             _bindingView = new BindingListView<BarangModel>(_listObjs);
-            _view_listDataGrid.DataSource = _bindingView;
+            _view.ListDataGrid.DataSource = _bindingView;
 
-            _view_comboBoxTipe.Enabled = false;
-            _view_comboBoxSubTipe.Enabled = false;
-            _view_comboBoxSupplier.Enabled = false;
-            ((Form)_view).ActiveControl = _view_buttonTampilkan;
+            _view.ComboBoxTipe.Enabled = false;
+            _view.ComboBoxSubTipe.Enabled = false;
+            _view.ComboBoxSupplier.Enabled = false;
+            ((Form)_view).ActiveControl = _view.ButtonTampilkan;
          }
       }
 
       private void _view_RadioButtonTipe_CheckedChanged(object sender, EventArgs e)
       {
-         var status = _view_radioButtonTipe.Checked;
+         var status = _view.RadioButtonTipe.Checked;
 
-         _view_comboBoxTipe.Enabled = status;
-         _view_comboBoxSubTipe.Enabled = status;
+         _view.ComboBoxTipe.Enabled = status;
+         _view.ComboBoxSubTipe.Enabled = status;
       }
 
       private void _view_RadioButtonSupplier_CheckedChanged(object sender, EventArgs e)
       {
-         _view_comboBoxSupplier.Enabled = _view_radioButtonSupplier.Checked;
+         _view.ComboBoxSupplier.Enabled = _view.RadioButtonSupplier.Checked;
       }
 
       private void _view_ButtonTampilkan_Click(object sender, EventArgs e)
       {
          using (new WaitCursorHandler())
          {
-            if (_view_radioButtonSemua.Checked) // Filter by semua barang
+            if (_view.RadioButtonSemua.Checked) // Filter by semua barang
             {
                _bindingView.DataSource = _listObjs;
             }
-            else if (_view_radioButtonTipe.Checked) // Filter by tipe
+            else if (_view.RadioButtonTipe.Checked) // Filter by tipe
             {
-               var tipeId = _view_comboBoxTipe.SelectedValue != null ?
-                           (uint)_view_comboBoxTipe.SelectedValue : default(uint);
-               var subTipeId = _view_comboBoxSubTipe.SelectedValue != null ?
-                              (uint)_view_comboBoxSubTipe.SelectedValue : default(uint);
+               var tipeId = _view.ComboBoxTipe.SelectedValue != null ?
+                           (uint)_view.ComboBoxTipe.SelectedValue : default(uint);
+               var subTipeId = _view.ComboBoxSubTipe.SelectedValue != null ?
+                              (uint)_view.ComboBoxSubTipe.SelectedValue : default(uint);
 
                var filterBarang = _listObjs.Where(b => b.tipe_id == tipeId && b.sub_tipe_id == subTipeId).ToList();
                _bindingView.DataSource = filterBarang;
             }
             else // Filter by supplier
             {
-               var supplierId = _view_comboBoxSupplier.SelectedValue != null ?
-                                (uint)_view_comboBoxSupplier.SelectedValue : default(uint);
+               var supplierId = _view.ComboBoxSupplier.SelectedValue != null ?
+                                (uint)_view.ComboBoxSupplier.SelectedValue : default(uint);
 
                var filterBarang = _listObjs.Where(b => b.supplier_id == supplierId).ToList();
                _bindingView.DataSource = filterBarang;
@@ -141,7 +123,7 @@ namespace RumahScarlett.Presentation.Presenters.Barang
          }
          else
          {
-            listDataGrid = _view_listDataGrid;
+            listDataGrid = _view.ListDataGrid;
          }
 
          if (listDataGrid != null && listDataGrid.SelectedItem != null)
@@ -191,11 +173,11 @@ namespace RumahScarlett.Presentation.Presenters.Barang
 
       private void _view_OnDeleteData(object sender, EventArgs e)
       {
-         if (_view_listDataGrid != null && _view_listDataGrid.SelectedItem != null && Messages.ConfirmDelete(_typeName))
+         if (_view.ListDataGrid != null && _view.ListDataGrid.SelectedItem != null && Messages.ConfirmDelete(_typeName))
          {
             try
             {
-               var model = _barangServices.GetById(((BarangModel)_view_listDataGrid.SelectedItem).id);
+               var model = _barangServices.GetById(((BarangModel)_view.ListDataGrid.SelectedItem).id);
 
                _barangServices.Delete(model);
                Messages.InfoDelete(_typeName);
@@ -207,9 +189,9 @@ namespace RumahScarlett.Presentation.Presenters.Barang
             }
             finally
             {
-               if (_view_listDataGrid.SelectedItem != null)
+               if (_view.ListDataGrid.SelectedItem != null)
                {
-                  _view_listDataGrid.SelectedItem = null;
+                  _view.ListDataGrid.SelectedItem = null;
                }
             }
          }
