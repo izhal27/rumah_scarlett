@@ -25,7 +25,7 @@ namespace RumahScarlett.Presentation.Presenters.HutangOperasional
       private List<IHutangOperasionalModel> _listObjs;
       private BindingListView<HutangOperasionalModel> _bindingView;
       private static string _typeName = "Hutang Operasional";
-      
+
       public IHutangOperasionalView GetView
       {
          get { return _view; }
@@ -47,14 +47,17 @@ namespace RumahScarlett.Presentation.Presenters.HutangOperasional
 
       private void _view_LoadData(object sender, EventArgs e)
       {
-         if (_view.ListDataGrid != null)
+         using (new WaitCursorHandler())
          {
-            _listObjs = _services.GetAll().ToList();
-            _bindingView = new BindingListView<HutangOperasionalModel>(_listObjs);
-            _view.ListDataGrid.DataSource = _bindingView;
-            _bindingView.ListChanged += _bindingView_ListChanged;
+            if (_view.ListDataGrid != null)
+            {
+               _listObjs = _services.GetAll().ToList();
+               _bindingView = new BindingListView<HutangOperasionalModel>(_listObjs);
+               _view.ListDataGrid.DataSource = _bindingView;
+               _bindingView.ListChanged += _bindingView_ListChanged;
 
-            HitungTotal();
+               HitungTotal();
+            }
          }
       }
 
@@ -106,57 +109,63 @@ namespace RumahScarlett.Presentation.Presenters.HutangOperasional
 
       private void HutangOperasionalEntryView_OnSaveData(object sender, EventArgs e)
       {
-         try
-         {
-            var model = (HutangOperasionalModel)((EventArgs<IHutangOperasionalModel>)e).Value;
-            var view = ((HutangOperasionalEntryView)sender);
-
-            if (model.id == default(uint))
-            {
-               _services.Insert(model);
-               view.Controls.ClearControls();
-               Messages.InfoSave(_typeName);
-            }
-            else
-            {
-               _services.Update(model);
-               Messages.InfoUpdate(_typeName);
-               view.Close();
-            }
-
-            _view_OnRefreshData(null, null);
-         }
-         catch (ArgumentException ex)
-         {
-            Messages.Error(ex);
-         }
-         catch (DataAccessException ex)
-         {
-            Messages.Error(ex);
-         }
-      }
-
-      private void _view_OnDeleteData(object sender, EventArgs e)
-      {
-         if (_view.ListDataGrid != null && _view.ListDataGrid.SelectedItem != null && Messages.ConfirmDelete(_typeName))
+         using (new WaitCursorHandler())
          {
             try
             {
-               var model = _services.GetById(((HutangOperasionalModel)_view.ListDataGrid.SelectedItem).id);
+               var model = (HutangOperasionalModel)((EventArgs<IHutangOperasionalModel>)e).Value;
+               var view = ((HutangOperasionalEntryView)sender);
 
-               _services.Delete(model);
-               Messages.InfoDelete(_typeName);
+               if (model.id == default(uint))
+               {
+                  _services.Insert(model);
+                  view.Controls.ClearControls();
+                  Messages.InfoSave(_typeName);
+               }
+               else
+               {
+                  _services.Update(model);
+                  Messages.InfoUpdate(_typeName);
+                  view.Close();
+               }
+
                _view_OnRefreshData(null, null);
+            }
+            catch (ArgumentException ex)
+            {
+               Messages.Error(ex);
             }
             catch (DataAccessException ex)
             {
                Messages.Error(ex);
             }
-            finally
+         }
+      }
+
+      private void _view_OnDeleteData(object sender, EventArgs e)
+      {
+         using (new WaitCursorHandler())
+         {
+            if (_view.ListDataGrid != null && _view.ListDataGrid.SelectedItem != null && Messages.ConfirmDelete(_typeName))
             {
-               if (_view.ListDataGrid.SelectedItem != null)
+               try
                {
-                  _view.ListDataGrid.SelectedItem = null;
+                  var model = _services.GetById(((HutangOperasionalModel)_view.ListDataGrid.SelectedItem).id);
+
+                  _services.Delete(model);
+                  Messages.InfoDelete(_typeName);
+                  _view_OnRefreshData(null, null);
+               }
+               catch (DataAccessException ex)
+               {
+                  Messages.Error(ex);
+               }
+               finally
+               {
+                  if (_view.ListDataGrid.SelectedItem != null)
+                  {
+                     _view.ListDataGrid.SelectedItem = null;
+                  }
                }
             }
          }
@@ -164,11 +173,8 @@ namespace RumahScarlett.Presentation.Presenters.HutangOperasional
 
       private void _view_OnRefreshData(object sender, EventArgs e)
       {
-         using (new WaitCursorHandler())
-         {
-            _listObjs = _services.GetAll().ToList();
-            _bindingView.DataSource = _listObjs;
-         }
+         _listObjs = _services.GetAll().ToList();
+         _bindingView.DataSource = _listObjs;
       }
 
       private void OnDataGrid_CellDoubleClick(object sender, CellClickEventArgs e)
