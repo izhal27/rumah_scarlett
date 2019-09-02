@@ -16,7 +16,7 @@ using System.Threading.Tasks;
 
 namespace RumahScarlett.Presentation.Presenters.Satuan
 {
-   public class SatuanPresenter : IBasePresenter<ISatuanView>
+   public class SatuanPresenter : ISatuanPresenter
    {
       private ISatuanView _view;
       private ISatuanServices _services;
@@ -144,7 +144,8 @@ namespace RumahScarlett.Presentation.Presenters.Satuan
       {
          using (new WaitCursorHandler())
          {
-            _bindingView.DataSource = _services.GetAll().ToList();
+            _listObjs = _services.GetAll().ToList();
+            _bindingView.DataSource = _listObjs;
          }
       }
 
