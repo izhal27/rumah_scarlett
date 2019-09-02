@@ -1,5 +1,6 @@
 ﻿using RumahScarlett.Presentation.Helper;
 using RumahScarlett.Presentation.Presenters.Barang;
+using RumahScarlett.Presentation.Presenters.HutangOperasional;
 using RumahScarlett.Presentation.Presenters.KasAwal;
 using RumahScarlett.Presentation.Presenters.Pelanggan;
 using RumahScarlett.Presentation.Presenters.Satuan;
@@ -92,7 +93,8 @@ namespace RumahScarlett.Presentation.Views
 
       private void hutangOperasionalToolStripMenuItem_Click(object sender, EventArgs e)
       {
-
+         var view = (DockContent)new HutangOperasionalPresenter().GetView;
+         ShowChildForm(view);
       }
 
       private void exitToolStripMenuItem_Click(object sender, EventArgs e)

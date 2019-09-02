@@ -21,6 +21,7 @@ namespace RumahScarlett.Domain.Models.HutangOperasional
       [Display(Name = "Tanggal")]
       public DateTime tanggal { get; set; }
 
+      [DisplayFormat(DataFormatString = "{0:N0}")]
       [Range(1, uint.MaxValue, ErrorMessage = "Jumlah harus diisi !!!")]
       [Display(Name = "Jumlah")]
       public decimal jumlah { get; set; }

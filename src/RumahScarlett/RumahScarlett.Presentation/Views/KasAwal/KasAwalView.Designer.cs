@@ -28,7 +28,6 @@
       /// </summary>
       private void InitializeComponent()
       {
-         System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(KasAwalView));
          this.label1 = new System.Windows.Forms.Label();
          this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
          this.textBoxTotal = new RumahScarlett.Presentation.Views.CommonControls.BaseTextBoxDigit();
@@ -101,11 +100,11 @@
          this.ClientSize = new System.Drawing.Size(219, 81);
          this.Controls.Add(this.tableLayoutPanel1);
          this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-         this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
          this.KeyPreview = true;
          this.MaximizeBox = false;
          this.MinimizeBox = false;
          this.Name = "KasAwalView";
+         this.ShowIcon = false;
          this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
          this.Text = "Kas Awal";
          this.Load += new System.EventHandler(this.KasAwalView_Load);

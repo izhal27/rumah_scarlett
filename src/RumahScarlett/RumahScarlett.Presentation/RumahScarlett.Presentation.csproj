@@ -109,6 +109,8 @@
     <Compile Include="Helper\WaitCursorHandler.cs" />
     <Compile Include="Presenters\Barang\BarangPresenter.cs" />
     <Compile Include="Presenters\Barang\IBarangPresenter.cs" />
+    <Compile Include="Presenters\HutangOperasional\HutangOperasionalPresenter.cs" />
+    <Compile Include="Presenters\HutangOperasional\IHutangOperasionalPresenter.cs" />
     <Compile Include="Presenters\IMainPresenter.cs" />
     <Compile Include="Presenters\KasAwal\KasAwalPresenter.cs" />
     <Compile Include="Presenters\MainPresenter.cs" />
@@ -179,6 +181,20 @@
     <Compile Include="Views\CommonControls\PanelUp.Designer.cs">
       <DependentUpon>PanelUp.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\HutangOperasional\HutangOperasionalEntryView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\HutangOperasional\HutangOperasionalEntryView.Designer.cs">
+      <DependentUpon>HutangOperasionalEntryView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\HutangOperasional\HutangOperasionalView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\HutangOperasional\HutangOperasionalView.Designer.cs">
+      <DependentUpon>HutangOperasionalView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\HutangOperasional\IHutangOperasionalEntryView.cs" />
+    <Compile Include="Views\HutangOperasional\IHutangOperasionalView.cs" />
     <Compile Include="Views\IDataView.cs" />
     <Compile Include="Views\KasAwal\IKasAwalView.cs" />
     <Compile Include="Views\IMainView.cs" />
@@ -200,6 +216,9 @@
     </Compile>
     <Compile Include="Views\IEntryView.cs" />
     <Compile Include="Views\ModelControls\ComboBoxSatuan.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Views\ModelControls\ComboBoxStatusHutang.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Views\ModelControls\ComboBoxSubTipe.cs">
@@ -313,6 +332,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\CommonControls\PanelUp.resx">
       <DependentUpon>PanelUp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\HutangOperasional\HutangOperasionalEntryView.resx">
+      <DependentUpon>HutangOperasionalEntryView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\HutangOperasional\HutangOperasionalView.resx">
+      <DependentUpon>HutangOperasionalView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\KasAwal\KasAwalView.resx">
       <DependentUpon>KasAwalView.cs</DependentUpon>

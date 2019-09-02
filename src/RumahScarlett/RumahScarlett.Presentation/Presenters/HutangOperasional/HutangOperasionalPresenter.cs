@@ -1,38 +1,43 @@
 ﻿using Equin.ApplicationFramework;
 using RumahScarlett.CommonComponents;
-using RumahScarlett.Domain.Models.Pelanggan;
-using RumahScarlett.Infrastructure.DataAccess.Repositories.Pelanggan;
+using RumahScarlett.Domain.Models.HutangOperasional;
+using RumahScarlett.Infrastructure.DataAccess.Repositories.HutangOperasional;
 using RumahScarlett.Presentation.Helper;
 using RumahScarlett.Presentation.Views.CommonControls;
-using RumahScarlett.Presentation.Views.Pelanggan;
+using RumahScarlett.Presentation.Views.HutangOperasional;
 using RumahScarlett.Services.Services;
-using RumahScarlett.Services.Services.Pelanggan;
+using RumahScarlett.Services.Services.HutangOperasional;
 using Syncfusion.WinForms.DataGrid.Events;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
-namespace RumahScarlett.Presentation.Presenters.Pelanggan
+namespace RumahScarlett.Presentation.Presenters.HutangOperasional
 {
-   public class PelangganPresenter : IBasePresenter<IPelangganView>
+   public class HutangOperasionalPresenter : IHutangOperasionalPresenter
    {
-      private IPelangganView _view;
-      private IPelangganServices _services;
-      private List<IPelangganModel> _listObjs;
-      private BindingListView<PelangganModel> _bindingView;
-      private static string _typeName = "Pelanggan";
+      IHutangOperasionalView _view;
+      IHutangOperasionalServices _services;
+      private List<IHutangOperasionalModel> _listObjs;
+      private BindingListView<HutangOperasionalModel> _bindingView;
+      private static string _typeName = "Hutang Operasional";
+      private Control _labelTotal;
+      private Control _labelBelumLunas;
+      private Control _labelLunas;
 
-      public IPelangganView GetView
+      public IHutangOperasionalView GetView
       {
          get { return _view; }
       }
 
-      public PelangganPresenter()
+      public HutangOperasionalPresenter()
       {
-         _view = new PelangganView();
-         _services = new PelangganServices(new PelangganRepository(), new ModelDataAnnotationCheck());
+         _view = new HutangOperasionalView();
+         _services = new HutangOperasionalServices(new HutangOperasionalRepository(), new ModelDataAnnotationCheck());
 
          _view.OnLoadData += _view_LoadData;
          _view.OnCreateData += _view_OnCreateData;
@@ -42,23 +47,44 @@ namespace RumahScarlett.Presentation.Presenters.Pelanggan
 
          _view.OnDataGridCellDoubleClick += OnDataGrid_CellDoubleClick;
       }
-
       private void _view_LoadData(object sender, EventArgs e)
       {
-         var listDataGrid = ((EventArgs<ListDataGrid>)e).Value;
+         var listDataGrid = (ListDataGrid)((EventArgs<Dictionary<string, Control>>)e).Value["listDataGrid"];
+         _labelTotal = ((EventArgs<Dictionary<string, Control>>)e).Value["labelTotal"];
+         _labelLunas = ((EventArgs<Dictionary<string, Control>>)e).Value["labelLunas"];
+         _labelBelumLunas = ((EventArgs<Dictionary<string, Control>>)e).Value["labelBelumLunas"];
 
          if (listDataGrid != null)
          {
             _listObjs = _services.GetAll().ToList();
-            _bindingView = new BindingListView<PelangganModel>(_listObjs);
+            _bindingView = new BindingListView<HutangOperasionalModel>(_listObjs);
             listDataGrid.DataSource = _bindingView;
+            _bindingView.ListChanged += _bindingView_ListChanged;
+
+            HitungTotal();
          }
+      }
+
+      private void _bindingView_ListChanged(object sender, ListChangedEventArgs e)
+      {
+         HitungTotal();
+      }
+
+      private void HitungTotal()
+      {
+         var total = _listObjs.Sum(h => h.jumlah);
+         var totalLunas = _listObjs.Where(h => h.status_hutang == true).Sum(h => h.jumlah);
+         var totalSelisih = total - totalLunas;
+
+         _labelTotal.Text = total.ToString("N0");
+         _labelLunas.Text = totalLunas.ToString("N0");
+         _labelBelumLunas.Text = totalSelisih >= 0 ? totalSelisih.ToString("N0") : "0";
       }
 
       private void _view_OnCreateData(object sender, EventArgs e)
       {
-         var view = new PelangganEntryView();
-         view.OnSaveData += PelangganEntryView_OnSaveData;
+         var view = new HutangOperasionalEntryView();
+         view.OnSaveData += HutangOperasionalEntryView_OnSaveData;
          view.ShowDialog();
       }
 
@@ -77,20 +103,20 @@ namespace RumahScarlett.Presentation.Presenters.Pelanggan
 
          if (listDataGrid != null && listDataGrid.SelectedItem != null)
          {
-            var model = _services.GetById(((PelangganModel)listDataGrid.SelectedItem).id);
+            var model = _services.GetById(((HutangOperasionalModel)listDataGrid.SelectedItem).id);
 
-            var view = new PelangganEntryView(false, model);
-            view.OnSaveData += PelangganEntryView_OnSaveData;
+            var view = new HutangOperasionalEntryView(false, model);
+            view.OnSaveData += HutangOperasionalEntryView_OnSaveData;
             view.ShowDialog();
          }
       }
 
-      private void PelangganEntryView_OnSaveData(object sender, EventArgs e)
+      private void HutangOperasionalEntryView_OnSaveData(object sender, EventArgs e)
       {
          try
          {
-            var model = (PelangganModel)((EventArgs<IPelangganModel>)e).Value;
-            var view = ((PelangganEntryView)sender);
+            var model = (HutangOperasionalModel)((EventArgs<IHutangOperasionalModel>)e).Value;
+            var view = ((HutangOperasionalEntryView)sender);
 
             if (model.id == default(uint))
             {
@@ -125,7 +151,7 @@ namespace RumahScarlett.Presentation.Presenters.Pelanggan
          {
             try
             {
-               var model = _services.GetById(((PelangganModel)listDataGrid.SelectedItem).id);
+               var model = _services.GetById(((HutangOperasionalModel)listDataGrid.SelectedItem).id);
 
                _services.Delete(model);
                Messages.InfoDelete(_typeName);
@@ -149,7 +175,8 @@ namespace RumahScarlett.Presentation.Presenters.Pelanggan
       {
          using (new WaitCursorHandler())
          {
-            _bindingView.DataSource = _services.GetAll().ToList();
+            _listObjs = _services.GetAll().ToList();
+            _bindingView.DataSource = _listObjs;
          }
       }
 
