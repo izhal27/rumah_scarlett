@@ -37,32 +37,35 @@ namespace RumahScarlett.Presentation.Presenters.KasAwal
 
       private void _view_OnLoadData(object sender, EventArgs e)
       {
-         _model = _services.GetByTanggal(DateTime.Now.Date);
-
-         var textBoxTotal = ((EventArgs<TextBox>)e).Value;
-         textBoxTotal.Text = _model.total.ToString("N0");
+         using (new WaitCursorHandler())
+         {
+            _model = _services.GetByTanggal(DateTime.Now.Date);
+            _view.TextBoxTotal.Text = _model.total.ToString("N0");
+            ((Form)_view).ActiveControl = _view.ButtonSave;
+         }
       }
 
       private void _view_OnSaveData(object sender, EventArgs e)
       {
-         var textBoxTotal = ((EventArgs<TextBox>)e).Value;
-
-         try
+         using (new WaitCursorHandler())
          {
-            _model.total = uint.Parse(textBoxTotal.Text, NumberStyles.Number);
-            _services.Update(_model);
-         }
-         catch (ArgumentException ex)
-         {
-            Messages.Error(ex);
-         }
-         catch (DataAccessException ex)
-         {
-            Messages.Error(ex);
-         }
-         finally
-         {
-            ((Form)_view).Close();
+            try
+            {
+               _model.total = uint.Parse(_view.TextBoxTotal.Text, NumberStyles.Number);
+               _services.Update(_model);
+            }
+            catch (ArgumentException ex)
+            {
+               Messages.Error(ex);
+            }
+            catch (DataAccessException ex)
+            {
+               Messages.Error(ex);
+            }
+            finally
+            {
+               ((Form)_view).Close();
+            }
          }
       }
    }

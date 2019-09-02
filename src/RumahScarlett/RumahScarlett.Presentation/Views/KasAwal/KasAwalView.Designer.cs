@@ -105,6 +105,7 @@
          this.MinimizeBox = false;
          this.Name = "KasAwalView";
          this.ShowIcon = false;
+         this.ShowInTaskbar = false;
          this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
          this.Text = "Kas Awal";
          this.Load += new System.EventHandler(this.KasAwalView_Load);
