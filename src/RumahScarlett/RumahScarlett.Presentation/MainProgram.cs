@@ -1,4 +1,5 @@
 ﻿using ExceptionReporting;
+using RumahScarlett.Presentation.Presenters;
 using RumahScarlett.Presentation.Views;
 using System;
 using System.Collections.Generic;
@@ -25,7 +26,9 @@ namespace RumahScarlett.Presentation
 
          Application.EnableVisualStyles();
          Application.SetCompatibleTextRenderingDefault(false);
-         Application.Run(new MainView());
+
+         var view = new MainPresenter().GetView;
+         Application.Run((Form)view);
       }
 
       /// <summary>

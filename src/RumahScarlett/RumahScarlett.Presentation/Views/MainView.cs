@@ -1,4 +1,5 @@
-﻿using RumahScarlett.Presentation.Helper;
+﻿using RumahScarlett.CommonComponents;
+using RumahScarlett.Presentation.Helper;
 using RumahScarlett.Presentation.Presenters.Barang;
 using RumahScarlett.Presentation.Presenters.HutangOperasional;
 using RumahScarlett.Presentation.Presenters.KasAwal;
@@ -23,6 +24,19 @@ namespace RumahScarlett.Presentation.Views
    {
       private DockPanel _dockPanel;
 
+      public event EventHandler OnTipeViewOpen;
+      public event EventHandler OnSubTipeViewOpen;
+      public event EventHandler OnSupplierViewOpen;
+      public event EventHandler OnSatuanViewOpen;
+      public event EventHandler OnBarangViewOpen;
+      public event EventHandler OnPelangganViewOpen;
+      public event EventHandler OnKasAwalViewOpen;
+      public event EventHandler OnHutangOperasionalViewOpen;
+      public event EventHandler OnPenjualanViewOpen;
+      public event EventHandler OnPembelianViewOpen;
+      public event EventHandler OnPengeluaranViewOpen;
+      public event EventHandler OnPenyesuaianStokViewOpen;
+
       public MainView()
       {
          InitializeComponent();
@@ -42,20 +56,17 @@ namespace RumahScarlett.Presentation.Views
       
       private void tipeToolStripMenuItem_Click(object sender, EventArgs e)
       {
-         var view = (DockContent)new TipePresenter().GetView;
-         ShowChildForm(view);
+         OnTipeViewOpen?.Invoke(sender, new EventArgs<DockPanel>(_dockPanel));
       }
       
       private void subTipeToolStripMenuItem_Click(object sender, EventArgs e)
       {
-         var view = (DockContent)new SubTipePresenter().GetView;
-         ShowChildForm(view);
+         OnSubTipeViewOpen?.Invoke(sender, new EventArgs<DockPanel>(_dockPanel));
       }
 
       private void supplierToolStripMenuItem_Click(object sender, EventArgs e)
       {
-         var view = (DockContent)new SupplierPresenter().GetView;
-         ShowChildForm(view);
+         OnSupplierViewOpen?.Invoke(sender, new EventArgs<DockPanel>(_dockPanel));
       }
       
       private void supplierToolStripButton_Click(object sender, EventArgs e)
@@ -65,14 +76,7 @@ namespace RumahScarlett.Presentation.Views
 
       private void barangToolStripMenuItem_Click(object sender, EventArgs e)
       {
-         var view = (DockContent)new BarangPresenter().GetView;
-         ShowChildForm(view);
-      }
-
-      private void satuanToolStripMenuItem_Click(object sender, EventArgs e)
-      {
-         var view = (DockContent)new SatuanPresenter().GetView;
-         ShowChildForm(view);
+         OnBarangViewOpen?.Invoke(sender, new EventArgs<DockPanel>(_dockPanel));
       }
 
       private void barangToolStripButton_Click(object sender, EventArgs e)
@@ -80,21 +84,24 @@ namespace RumahScarlett.Presentation.Views
          barangToolStripMenuItem_Click(sender, e);
       }
 
+      private void satuanToolStripMenuItem_Click(object sender, EventArgs e)
+      {
+         OnSatuanViewOpen?.Invoke(sender, new EventArgs<DockPanel>(_dockPanel));
+      }
+
       private void pelangganToolStripMenuItem_Click(object sender, EventArgs e)
       {
-         var view = (DockContent)new PelangganPresenter().GetView;
-         ShowChildForm(view);
+         OnPelangganViewOpen?.Invoke(sender, new EventArgs<DockPanel>(_dockPanel));
       }
 
       private void kasAwalToolStripMenuItem1_Click(object sender, EventArgs e)
       {
-         new KasAwalPresenter().GetView.ShowView();
+         OnKasAwalViewOpen?.Invoke(sender, e);
       }
 
       private void hutangOperasionalToolStripMenuItem_Click(object sender, EventArgs e)
       {
-         var view = (DockContent)new HutangOperasionalPresenter().GetView;
-         ShowChildForm(view);
+         OnHutangOperasionalViewOpen?.Invoke(sender, new EventArgs<DockPanel>(_dockPanel));
       }
 
       private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -102,31 +109,29 @@ namespace RumahScarlett.Presentation.Views
          Close();
       }
 
-      /// <summary>
-      /// Method untuk menampilkan Form child
-      /// </summary>
-      /// <param name="form">Form child</param>
-      private void ShowChildForm(DockContent form)
+      private void penjualanToolStripMenuItem_Click(object sender, EventArgs e)
       {
-         using (new WaitCursorHandler())
-         {
-            // List form yang active
-            var formList = MdiChildren;
+         OnPenjualanViewOpen?.Invoke(sender, new EventArgs<DockPanel>(_dockPanel));
+      }
 
-            // Cek jika form belum ada di list, maka buka form baru,
-            // sebaliknya aktifkan form jika sudah ada.
-            if (!formList.Any(frm => frm.Name == form.Name))
-            {
-               form.Owner = this;
-               form.Show(_dockPanel, DockState.Document);
-            }
-            else
-            {
-               var activeForm = formList.Where(frm => frm.Name == form.Name)
-                                .FirstOrDefault();
-               activeForm.Activate();
-            }
-         }
+      private void penjualanToolStripButton_Click(object sender, EventArgs e)
+      {
+         penjualanToolStripMenuItem_Click(sender, e);
+      }
+
+      private void pembelianToolStripMenuItem_Click(object sender, EventArgs e)
+      {
+         OnPembelianViewOpen?.Invoke(sender, new EventArgs<DockPanel>(_dockPanel));
+      }
+
+      private void pengeluaranToolStripMenuItem_Click(object sender, EventArgs e)
+      {
+         OnPengeluaranViewOpen?.Invoke(sender, new EventArgs<DockPanel>(_dockPanel));
+      }
+
+      private void penyesuaianStokToolStripMenuItem_Click(object sender, EventArgs e)
+      {
+         OnPenyesuaianStokViewOpen?.Invoke(sender, new EventArgs<DockPanel>(_dockPanel));
       }
    }
 }
