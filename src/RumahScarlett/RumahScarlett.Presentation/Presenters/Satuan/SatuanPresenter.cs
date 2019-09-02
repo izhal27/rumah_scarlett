@@ -45,9 +45,14 @@ namespace RumahScarlett.Presentation.Presenters.Satuan
 
       private void _view_LoadData(object sender, EventArgs e)
       {
-         _listObjs = _services.GetAll().ToList();
-         _bindingView = new BindingListView<SatuanModel>(_listObjs);
-         ((EventArgs<ListDataGrid>)e).Value.DataSource = _bindingView;
+         var listDataGrid = ((EventArgs<ListDataGrid>)e).Value;
+
+         if (listDataGrid != null)
+         {
+            _listObjs = _services.GetAll().ToList();
+            _bindingView = new BindingListView<SatuanModel>(_listObjs);
+            listDataGrid.DataSource = _bindingView;
+         }
       }
 
       private void _view_OnCreateData(object sender, EventArgs e)

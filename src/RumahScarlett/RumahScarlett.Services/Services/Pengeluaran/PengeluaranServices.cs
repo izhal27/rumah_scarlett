@@ -26,7 +26,8 @@ namespace RumahScarlett.Services.Services.Pengeluaran
 
       public void Update(IPengeluaranModel model)
       {
-         throw new NotImplementedException();
+         ValidateModel(model);
+         _repo.Update(model);
       }
 
       public void Delete(IPengeluaranModel model)
@@ -41,7 +42,7 @@ namespace RumahScarlett.Services.Services.Pengeluaran
 
       public IPengeluaranModel GetById(object id)
       {
-         throw new NotImplementedException();
+         return _repo.GetById(id);
       }
 
       public IEnumerable<IPengeluaranModel> GetByDate(object date)

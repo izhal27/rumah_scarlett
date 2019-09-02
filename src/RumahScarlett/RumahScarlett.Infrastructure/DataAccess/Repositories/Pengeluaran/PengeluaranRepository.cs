@@ -1,5 +1,4 @@
-﻿using Dapper;
-using Dapper.Contrib.Extensions;
+﻿using Dapper.Contrib.Extensions;
 using RumahScarlett.CommonComponents;
 using RumahScarlett.Domain.Models.Pengeluaran;
 using RumahScarlett.Services.Services.Pengeluaran;
@@ -24,8 +23,6 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Pengeluaran
 
          using (var context = new DbContext())
          {
-            model.tanggal = DateTime.Now;
-
             Insert(model, () => context.Conn.Insert((PengeluaranModel)model), dataAccessStatus,
                   () => CheckAfterInsert(context, "SELECT COUNT(1) FROM pengeluaran WHERE nama=@nama "
                                          + "AND id=(SELECT LAST_INSERT_ID())", new { model.nama }));
@@ -34,7 +31,13 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Pengeluaran
 
       public void Update(IPengeluaranModel model)
       {
-         throw new NotImplementedException();
+         var dataAccessStatus = new DataAccessStatus();
+
+         using (var context = new DbContext())
+         {
+            Update(model, () => context.Conn.Update((PengeluaranModel)model), dataAccessStatus,
+                   () => CheckModelExist(context, model.id));
+         }
       }
 
       public void Delete(IPengeluaranModel model)
@@ -60,7 +63,13 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Pengeluaran
 
       public IPengeluaranModel GetById(object id)
       {
-         throw new NotImplementedException();
+         var dataAccessStatus = new DataAccessStatus();
+
+         using (var context = new DbContext())
+         {
+            return GetBy(() => context.Conn.Get<PengeluaranModel>(id), dataAccessStatus,
+                        () => CheckModelExist(context, id));
+         }
       }
 
       public IEnumerable<IPengeluaranModel> GetByDate(object date)

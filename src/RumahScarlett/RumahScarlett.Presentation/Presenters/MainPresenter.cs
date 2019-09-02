@@ -4,6 +4,7 @@ using RumahScarlett.Presentation.Presenters.Barang;
 using RumahScarlett.Presentation.Presenters.HutangOperasional;
 using RumahScarlett.Presentation.Presenters.KasAwal;
 using RumahScarlett.Presentation.Presenters.Pelanggan;
+using RumahScarlett.Presentation.Presenters.Pengeluaran;
 using RumahScarlett.Presentation.Presenters.Satuan;
 using RumahScarlett.Presentation.Presenters.Supplier;
 using RumahScarlett.Presentation.Presenters.Tipe;
@@ -39,6 +40,10 @@ namespace RumahScarlett.Presentation.Presenters
          _view.OnPelangganViewOpen += _view_OnPelangganViewOpen;
          _view.OnKasAwalViewOpen += _view_OnKasAwalViewOpen;
          _view.OnHutangOperasionalViewOpen += _view_OnHutangOperasionalViewOpen;
+
+
+
+         _view.OnPengeluaranViewOpen += _view_OnPengeluaranViewOpen;
       }
 
       private void _view_OnTipeViewOpen(object sender, EventArgs e)
@@ -87,7 +92,25 @@ namespace RumahScarlett.Presentation.Presenters
          var view = (DockContent)new HutangOperasionalPresenter().GetView;
          ShowChildForm(view, e);
       }
-            
+
+
+
+
+
+
+
+
+      private void _view_OnPengeluaranViewOpen(object sender, EventArgs e)
+      {
+         var view = (DockContent)new PengeluaranPresenter().GetView;
+         ShowChildForm(view, e);
+      }
+
+
+
+
+
+
       /// <summary>
       /// Method untuk menampilkan Form child
       /// </summary>

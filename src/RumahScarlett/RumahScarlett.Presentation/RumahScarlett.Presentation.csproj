@@ -117,6 +117,8 @@
     <Compile Include="Presenters\MainPresenter.cs" />
     <Compile Include="Presenters\Pelanggan\IPelangganPresenter.cs" />
     <Compile Include="Presenters\Pelanggan\PelangganPresenter.cs" />
+    <Compile Include="Presenters\Pengeluaran\IPengeluaranPresenter.cs" />
+    <Compile Include="Presenters\Pengeluaran\PengeluaranPresenter.cs" />
     <Compile Include="Presenters\Satuan\ISatuanPresenter.cs" />
     <Compile Include="Presenters\Satuan\SatuanPresenter.cs" />
     <Compile Include="Presenters\Supplier\ISupplierPresenter.cs" />
@@ -247,6 +249,20 @@
       <DependentUpon>PelangganView.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Pelanggan\IPelangganEntryView.cs" />
+    <Compile Include="Views\Pengeluaran\IPengeluaranEntryView.cs" />
+    <Compile Include="Views\Pengeluaran\IPengeluaranView.cs" />
+    <Compile Include="Views\Pengeluaran\PengeluaranEntryView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Pengeluaran\PengeluaranEntryView.Designer.cs">
+      <DependentUpon>PengeluaranEntryView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Pengeluaran\PengeluaranView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Pengeluaran\PengeluaranView.Designer.cs">
+      <DependentUpon>PengeluaranView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Satuan\ISatuanEntryView.cs" />
     <Compile Include="Views\Satuan\ISatuanView.cs" />
     <Compile Include="Views\Satuan\SatuanEntryView.cs">
@@ -353,6 +369,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Pelanggan\PelangganView.resx">
       <DependentUpon>PelangganView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Pengeluaran\PengeluaranEntryView.resx">
+      <DependentUpon>PengeluaranEntryView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Pengeluaran\PengeluaranView.resx">
+      <DependentUpon>PengeluaranView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Satuan\SatuanEntryView.resx">
       <DependentUpon>SatuanEntryView.cs</DependentUpon>

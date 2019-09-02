@@ -18,6 +18,7 @@ namespace RumahScarlett.Domain.Models.Pengeluaran
       public uint id { get; set; }
       
       [Browsable(false)]
+      [Range(typeof(DateTime), "1945/08/17", "9999/01/01", ErrorMessage = "Minimal Tanggal 1945/08/17 !!!")]
       [Display(Name = "Tanggal")]
       public DateTime tanggal { get; set; }
 

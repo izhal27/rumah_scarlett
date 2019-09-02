@@ -47,6 +47,7 @@ namespace RumahScarlett.Presentation.Presenters.HutangOperasional
 
          _view.OnDataGridCellDoubleClick += OnDataGrid_CellDoubleClick;
       }
+
       private void _view_LoadData(object sender, EventArgs e)
       {
          var listDataGrid = (ListDataGrid)((EventArgs<Dictionary<string, Control>>)e).Value["listDataGrid"];
