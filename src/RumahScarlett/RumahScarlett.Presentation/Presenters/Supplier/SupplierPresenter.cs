@@ -149,7 +149,8 @@ namespace RumahScarlett.Presentation.Presenters.Supplier
       {
          using (new WaitCursorHandler())
          {
-            _bindingView.DataSource = _services.GetAll().ToList();
+            _listObj = _services.GetAll().ToList();
+            _bindingView.DataSource = _listObj;
          }
       }
 
