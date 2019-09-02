@@ -25,9 +25,11 @@ namespace RumahScarlett.Presentation.Presenters.HutangOperasional
       private List<IHutangOperasionalModel> _listObjs;
       private BindingListView<HutangOperasionalModel> _bindingView;
       private static string _typeName = "Hutang Operasional";
-      private Control _labelTotal;
-      private Control _labelBelumLunas;
-      private Control _labelLunas;
+
+      private ListDataGrid _view_listDataGrid;
+      private Label _view_labelTotal;
+      private Label _view_labelBelumLunas;
+      private Label _view_labelLunas;
 
       public IHutangOperasionalView GetView
       {
@@ -50,16 +52,16 @@ namespace RumahScarlett.Presentation.Presenters.HutangOperasional
 
       private void _view_LoadData(object sender, EventArgs e)
       {
-         var listDataGrid = (ListDataGrid)((EventArgs<Dictionary<string, Control>>)e).Value["listDataGrid"];
-         _labelTotal = ((EventArgs<Dictionary<string, Control>>)e).Value["labelTotal"];
-         _labelLunas = ((EventArgs<Dictionary<string, Control>>)e).Value["labelLunas"];
-         _labelBelumLunas = ((EventArgs<Dictionary<string, Control>>)e).Value["labelBelumLunas"];
+         _view_listDataGrid = (ListDataGrid)((EventArgs<Dictionary<string, Control>>)e).Value["listDataGrid"];
+         _view_labelTotal = (Label)((EventArgs<Dictionary<string, Control>>)e).Value["labelTotal"];
+         _view_labelLunas = (Label)((EventArgs<Dictionary<string, Control>>)e).Value["labelLunas"];
+         _view_labelBelumLunas = (Label)((EventArgs<Dictionary<string, Control>>)e).Value["labelBelumLunas"];
 
-         if (listDataGrid != null)
+         if (_view_listDataGrid != null)
          {
             _listObjs = _services.GetAll().ToList();
             _bindingView = new BindingListView<HutangOperasionalModel>(_listObjs);
-            listDataGrid.DataSource = _bindingView;
+            _view_listDataGrid.DataSource = _bindingView;
             _bindingView.ListChanged += _bindingView_ListChanged;
 
             HitungTotal();
@@ -77,9 +79,9 @@ namespace RumahScarlett.Presentation.Presenters.HutangOperasional
          var totalLunas = _listObjs.Where(h => h.status_hutang == true).Sum(h => h.jumlah);
          var totalSelisih = total - totalLunas;
 
-         _labelTotal.Text = total.ToString("N0");
-         _labelLunas.Text = totalLunas.ToString("N0");
-         _labelBelumLunas.Text = totalSelisih >= 0 ? totalSelisih.ToString("N0") : "0";
+         _view_labelTotal.Text = total.ToString("N0");
+         _view_labelLunas.Text = totalLunas.ToString("N0");
+         _view_labelBelumLunas.Text = totalSelisih >= 0 ? totalSelisih.ToString("N0") : "0";
       }
 
       private void _view_OnCreateData(object sender, EventArgs e)
@@ -99,7 +101,7 @@ namespace RumahScarlett.Presentation.Presenters.HutangOperasional
          }
          else
          {
-            listDataGrid = ((EventArgs<ListDataGrid>)e).Value;
+            listDataGrid = _view_listDataGrid;
          }
 
          if (listDataGrid != null && listDataGrid.SelectedItem != null)
@@ -146,13 +148,11 @@ namespace RumahScarlett.Presentation.Presenters.HutangOperasional
 
       private void _view_OnDeleteData(object sender, EventArgs e)
       {
-         var listDataGrid = ((EventArgs<ListDataGrid>)e).Value;
-
-         if (listDataGrid != null && listDataGrid.SelectedItem != null && Messages.ConfirmDelete(_typeName))
+         if (_view_listDataGrid != null && _view_listDataGrid.SelectedItem != null && Messages.ConfirmDelete(_typeName))
          {
             try
             {
-               var model = _services.GetById(((HutangOperasionalModel)listDataGrid.SelectedItem).id);
+               var model = _services.GetById(((HutangOperasionalModel)_view_listDataGrid.SelectedItem).id);
 
                _services.Delete(model);
                Messages.InfoDelete(_typeName);
@@ -164,9 +164,9 @@ namespace RumahScarlett.Presentation.Presenters.HutangOperasional
             }
             finally
             {
-               if (listDataGrid.SelectedItem != null)
+               if (_view_listDataGrid.SelectedItem != null)
                {
-                  listDataGrid.SelectedItem = null;
+                  _view_listDataGrid.SelectedItem = null;
                }
             }
          }
