@@ -24,7 +24,7 @@ namespace RumahScarlett.Presentation.Presenters.Barang
       private List<IBarangModel> _listObjs;
       private BindingListView<BarangModel> _bindingView;
       private static string _typeName = "Barang";
-      
+
       public IBarangView GetView
       {
          get { return _view; }
@@ -49,18 +49,21 @@ namespace RumahScarlett.Presentation.Presenters.Barang
 
       private void _view_LoadData(object sender, EventArgs e)
       {
-         _listObjs = _barangServices.GetAll().ToList();
-
-         if (_view.ListDataGrid != null && _view.ComboBoxTipe != null &&
-             _view.ComboBoxSubTipe != null && _view.ComboBoxSupplier != null)
+         using (new WaitCursorHandler())
          {
-            _bindingView = new BindingListView<BarangModel>(_listObjs);
-            _view.ListDataGrid.DataSource = _bindingView;
+            _listObjs = _barangServices.GetAll().ToList();
 
-            _view.ComboBoxTipe.Enabled = false;
-            _view.ComboBoxSubTipe.Enabled = false;
-            _view.ComboBoxSupplier.Enabled = false;
-            ((Form)_view).ActiveControl = _view.ButtonTampilkan;
+            if (_view.ListDataGrid != null && _view.ComboBoxTipe != null &&
+                _view.ComboBoxSubTipe != null && _view.ComboBoxSupplier != null)
+            {
+               _bindingView = new BindingListView<BarangModel>(_listObjs);
+               _view.ListDataGrid.DataSource = _bindingView;
+
+               _view.ComboBoxTipe.Enabled = false;
+               _view.ComboBoxSubTipe.Enabled = false;
+               _view.ComboBoxSupplier.Enabled = false;
+               ((Form)_view).ActiveControl = _view.ButtonTampilkan;
+            }
          }
       }
 
@@ -173,25 +176,28 @@ namespace RumahScarlett.Presentation.Presenters.Barang
 
       private void _view_OnDeleteData(object sender, EventArgs e)
       {
-         if (_view.ListDataGrid != null && _view.ListDataGrid.SelectedItem != null && Messages.ConfirmDelete(_typeName))
+         using (new WaitCursorHandler())
          {
-            try
+            if (_view.ListDataGrid != null && _view.ListDataGrid.SelectedItem != null && Messages.ConfirmDelete(_typeName))
             {
-               var model = _barangServices.GetById(((BarangModel)_view.ListDataGrid.SelectedItem).id);
-
-               _barangServices.Delete(model);
-               Messages.InfoDelete(_typeName);
-               _view_OnRefreshData(null, null);
-            }
-            catch (DataAccessException ex)
-            {
-               Messages.Error(ex);
-            }
-            finally
-            {
-               if (_view.ListDataGrid.SelectedItem != null)
+               try
                {
-                  _view.ListDataGrid.SelectedItem = null;
+                  var model = _barangServices.GetById(((BarangModel)_view.ListDataGrid.SelectedItem).id);
+
+                  _barangServices.Delete(model);
+                  Messages.InfoDelete(_typeName);
+                  _view_OnRefreshData(null, null);
+               }
+               catch (DataAccessException ex)
+               {
+                  Messages.Error(ex);
+               }
+               finally
+               {
+                  if (_view.ListDataGrid.SelectedItem != null)
+                  {
+                     _view.ListDataGrid.SelectedItem = null;
+                  }
                }
             }
          }
