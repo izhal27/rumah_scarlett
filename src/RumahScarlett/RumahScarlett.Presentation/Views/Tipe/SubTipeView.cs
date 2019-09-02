@@ -45,7 +45,7 @@ namespace RumahScarlett.Presentation.Views.Tipe
 
       private void SubTipeView_Load(object sender, EventArgs e)
       {
-         OnLoadData?.Invoke(sender, new EventArgs<ListDataGrid>(listDataGrid));
+         OnLoadData?.Invoke(sender, e);
       }
 
       private void ListDataGrid_CellDoubleClick(object sender, CellClickEventArgs e)
@@ -60,12 +60,12 @@ namespace RumahScarlett.Presentation.Views.Tipe
 
       private void ButtonsCRUD_OnUbahClickEvent(object sender, EventArgs e)
       {
-         OnUpdateData?.Invoke(sender, new EventArgs<ListDataGrid>(listDataGrid));
+         OnUpdateData?.Invoke(sender, e);
       }
 
       private void ButtonsCRUD_OnHapusClickEvent(object sender, EventArgs e)
       {
-         OnDeleteData?.Invoke(sender, new EventArgs<ListDataGrid>(listDataGrid));
+         OnDeleteData?.Invoke(sender, e);
       }
 
       private void ButtonsCRUD_OnRefreshClickEvent(object sender, EventArgs e)
