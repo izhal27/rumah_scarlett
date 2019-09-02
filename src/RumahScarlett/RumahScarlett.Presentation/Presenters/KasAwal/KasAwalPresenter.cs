@@ -39,9 +39,12 @@ namespace RumahScarlett.Presentation.Presenters.KasAwal
       {
          using (new WaitCursorHandler())
          {
-            _model = _services.GetByTanggal(DateTime.Now.Date);
-            _view.TextBoxTotal.Text = _model.total.ToString("N0");
-            ((Form)_view).ActiveControl = _view.ButtonSave;
+            if (_view.TextBoxTotal != null)
+            {
+               _model = _services.GetByTanggal(DateTime.Now.Date);
+               _view.TextBoxTotal.Text = _model.total.ToString("N0");
+               ((Form)_view).ActiveControl = _view.ButtonSave;
+            }
          }
       }
 
@@ -51,8 +54,11 @@ namespace RumahScarlett.Presentation.Presenters.KasAwal
          {
             try
             {
-               _model.total = uint.Parse(_view.TextBoxTotal.Text, NumberStyles.Number);
-               _services.Update(_model);
+               if (_view.TextBoxTotal != null)
+               {
+                  _model.total = uint.Parse(_view.TextBoxTotal.Text, NumberStyles.Number);
+                  _services.Update(_model);
+               }
             }
             catch (ArgumentException ex)
             {
