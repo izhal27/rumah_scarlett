@@ -38,6 +38,7 @@
          this.dateTimePickerTanggal = new System.Windows.Forms.DateTimePicker();
          this.textBoxDigitJumlah = new RumahScarlett.Presentation.Views.CommonControls.BaseTextBoxDigit();
          this.comboBoxStatusHutang = new RumahScarlett.Presentation.Views.ModelControls.ComboBoxStatusHutang();
+         this.label8 = new System.Windows.Forms.Label();
          this.groupBox1.SuspendLayout();
          this.tableLayoutPanel1.SuspendLayout();
          ((System.ComponentModel.ISupportInitialize)(this.textBoxKeterangan)).BeginInit();
@@ -46,11 +47,11 @@
          // 
          // panelUp
          // 
-         this.panelUp.Size = new System.Drawing.Size(354, 40);
+         this.panelUp.Size = new System.Drawing.Size(371, 40);
          // 
          // operationButtons
          // 
-         this.operationButtons.Location = new System.Drawing.Point(191, 281);
+         this.operationButtons.Location = new System.Drawing.Point(208, 281);
          // 
          // groupBox1
          // 
@@ -60,7 +61,7 @@
          this.groupBox1.Controls.Add(this.tableLayoutPanel1);
          this.groupBox1.Location = new System.Drawing.Point(12, 58);
          this.groupBox1.Name = "groupBox1";
-         this.groupBox1.Size = new System.Drawing.Size(354, 217);
+         this.groupBox1.Size = new System.Drawing.Size(371, 217);
          this.groupBox1.TabIndex = 4;
          this.groupBox1.TabStop = false;
          this.groupBox1.Text = "[ DATA ]";
@@ -70,9 +71,10 @@
          this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-         this.tableLayoutPanel1.ColumnCount = 2;
+         this.tableLayoutPanel1.ColumnCount = 3;
          this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-         this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+         this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+         this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
          this.tableLayoutPanel1.Controls.Add(this.textBoxKeterangan, 1, 2);
          this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
          this.tableLayoutPanel1.Controls.Add(this.label2, 0, 1);
@@ -81,6 +83,7 @@
          this.tableLayoutPanel1.Controls.Add(this.dateTimePickerTanggal, 1, 0);
          this.tableLayoutPanel1.Controls.Add(this.textBoxDigitJumlah, 1, 1);
          this.tableLayoutPanel1.Controls.Add(this.comboBoxStatusHutang, 1, 3);
+         this.tableLayoutPanel1.Controls.Add(this.label8, 2, 1);
          this.tableLayoutPanel1.Location = new System.Drawing.Point(6, 19);
          this.tableLayoutPanel1.Name = "tableLayoutPanel1";
          this.tableLayoutPanel1.RowCount = 4;
@@ -88,12 +91,12 @@
          this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
          this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
          this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-         this.tableLayoutPanel1.Size = new System.Drawing.Size(342, 192);
+         this.tableLayoutPanel1.Size = new System.Drawing.Size(359, 192);
          this.tableLayoutPanel1.TabIndex = 0;
          // 
          // textBoxKeterangan
          // 
-         this.textBoxKeterangan.BeforeTouchSize = new System.Drawing.Size(150, 20);
+         this.textBoxKeterangan.BeforeTouchSize = new System.Drawing.Size(250, 20);
          this.textBoxKeterangan.Location = new System.Drawing.Point(84, 55);
          this.textBoxKeterangan.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
          this.textBoxKeterangan.Multiline = true;
@@ -153,7 +156,7 @@
          // textBoxDigitJumlah
          // 
          this.textBoxDigitJumlah.BackGroundColor = System.Drawing.SystemColors.Window;
-         this.textBoxDigitJumlah.BeforeTouchSize = new System.Drawing.Size(150, 20);
+         this.textBoxDigitJumlah.BeforeTouchSize = new System.Drawing.Size(250, 20);
          this.textBoxDigitJumlah.IntegerValue = ((long)(0));
          this.textBoxDigitJumlah.Location = new System.Drawing.Point(84, 29);
          this.textBoxDigitJumlah.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
@@ -179,11 +182,22 @@
          this.comboBoxStatusHutang.Size = new System.Drawing.Size(150, 21);
          this.comboBoxStatusHutang.TabIndex = 4;
          // 
+         // label8
+         // 
+         this.label8.Anchor = System.Windows.Forms.AnchorStyles.Left;
+         this.label8.AutoSize = true;
+         this.label8.ForeColor = System.Drawing.Color.Red;
+         this.label8.Location = new System.Drawing.Point(340, 32);
+         this.label8.Name = "label8";
+         this.label8.Size = new System.Drawing.Size(11, 13);
+         this.label8.TabIndex = 5;
+         this.label8.Text = "*";
+         // 
          // HutangOperasionalEntryView
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-         this.ClientSize = new System.Drawing.Size(378, 328);
+         this.ClientSize = new System.Drawing.Size(395, 328);
          this.Controls.Add(this.groupBox1);
          this.Name = "HutangOperasionalEntryView";
          this.Text = "Hutang Operasional";
@@ -212,5 +226,6 @@
       private CommonControls.BaseTextBoxDigit textBoxDigitJumlah;
       private CommonControls.BaseTextBox textBoxKeterangan;
       private ModelControls.ComboBoxStatusHutang comboBoxStatusHutang;
+      private System.Windows.Forms.Label label8;
    }
 }
