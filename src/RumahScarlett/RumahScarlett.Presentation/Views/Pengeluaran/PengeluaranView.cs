@@ -28,6 +28,16 @@ namespace RumahScarlett.Presentation.Views.Pengeluaran
          get { return listDataGrid; }
       }
 
+      public DateTimePicker DateTimePickerTanggal
+      {
+         get { return dateTimePickerTanggal; }
+      }
+
+      public Label LabelTotal
+      {
+         get { return labelTotal; }
+      }
+
       public PengeluaranView()
       {
          InitializeComponent();
@@ -45,11 +55,7 @@ namespace RumahScarlett.Presentation.Views.Pengeluaran
 
       private void PengeluaranView_Load(object sender, EventArgs e)
       {
-         var dictionaryControl = new Dictionary<string, Control>();
-         dictionaryControl.Add(listDataGrid.Name, listDataGrid);
-         dictionaryControl.Add(dateTimePickerTanggal.Name, dateTimePickerTanggal);
-
-         OnLoadData?.Invoke(sender, new EventArgs<Dictionary<string, Control>>(dictionaryControl));
+         OnLoadData?.Invoke(sender, e);
       }
 
       private void ListDataGrid_CellDoubleClick(object sender, CellClickEventArgs e)

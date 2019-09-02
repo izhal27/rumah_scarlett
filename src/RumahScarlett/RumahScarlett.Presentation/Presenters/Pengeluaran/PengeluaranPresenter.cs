@@ -24,10 +24,7 @@ namespace RumahScarlett.Presentation.Presenters.Pengeluaran
       private List<IPengeluaranModel> _listObjs;
       private BindingListView<PengeluaranModel> _bindingView;
       private static string _typeName = "Pengeluaran";
-
-      private ListDataGrid _view_listDataGrid;
-      private DateTimePicker _view_dateTimePickerTanggal;
-
+      
       public IPengeluaranView GetView
       {
          get { return _view; }
@@ -51,23 +48,21 @@ namespace RumahScarlett.Presentation.Presenters.Pengeluaran
       {
          using (new WaitCursorHandler())
          {
-            _view_listDataGrid = (ListDataGrid)((EventArgs<Dictionary<string, Control>>)e).Value["listDataGrid"];
-            _view_dateTimePickerTanggal = (DateTimePicker)((EventArgs<Dictionary<string, Control>>)e).Value["dateTimePickerTanggal"];
-
-            if (_view_listDataGrid != null && _view_dateTimePickerTanggal != null)
+            if (_view.ListDataGrid != null && _view.DateTimePickerTanggal != null)
             {
-               _listObjs = _services.GetByDate(_view_dateTimePickerTanggal.Value.Date).ToList();
+               _listObjs = _services.GetByDate(_view.DateTimePickerTanggal.Value.Date).ToList();
                _bindingView = new BindingListView<PengeluaranModel>(_listObjs);
-               _view_listDataGrid.DataSource = _bindingView;
+               _view.ListDataGrid.DataSource = _bindingView;
+               _view.LabelTotal.Text = _listObjs.Sum(p => p.jumlah).ToString("N0");
             }
          }
       }
 
       private void _view_OnCreateData(object sender, EventArgs e)
       {
-         if (_view_dateTimePickerTanggal != null)
+         if (_view.DateTimePickerTanggal != null)
          {
-            var view = new PengeluaranEntryView(_view_dateTimePickerTanggal);
+            var view = new PengeluaranEntryView(_view.DateTimePickerTanggal);
             view.OnSaveData += PengeluaranEntryView_OnSaveData;
             view.ShowDialog();
          }
@@ -83,14 +78,14 @@ namespace RumahScarlett.Presentation.Presenters.Pengeluaran
          }
          else
          {
-            listDataGrid = _view_listDataGrid;
+            listDataGrid = _view.ListDataGrid;
          }
 
          if (listDataGrid != null && listDataGrid.SelectedItem != null)
          {
             var model = _services.GetById(((PengeluaranModel)listDataGrid.SelectedItem).id);
 
-            var view = new PengeluaranEntryView(_view_dateTimePickerTanggal, false, model);
+            var view = new PengeluaranEntryView(_view.DateTimePickerTanggal, false, model);
             view.OnSaveData += PengeluaranEntryView_OnSaveData;
             view.ShowDialog();
          }
@@ -135,11 +130,11 @@ namespace RumahScarlett.Presentation.Presenters.Pengeluaran
       {
          using (new WaitCursorHandler())
          {
-            if (_view_listDataGrid != null && _view_listDataGrid.SelectedItem != null && Messages.ConfirmDelete(_typeName))
+            if (_view.ListDataGrid != null && _view.ListDataGrid.SelectedItem != null && Messages.ConfirmDelete(_typeName))
             {
                try
                {
-                  var model = _services.GetById(((PengeluaranModel)_view_listDataGrid.SelectedItem).id);
+                  var model = _services.GetById(((PengeluaranModel)_view.ListDataGrid.SelectedItem).id);
 
                   _services.Delete(model);
                   Messages.InfoDelete(_typeName);
@@ -151,9 +146,9 @@ namespace RumahScarlett.Presentation.Presenters.Pengeluaran
                }
                finally
                {
-                  if (_view_listDataGrid.SelectedItem != null)
+                  if (_view.ListDataGrid.SelectedItem != null)
                   {
-                     _view_listDataGrid.SelectedItem = null;
+                     _view.ListDataGrid.SelectedItem = null;
                   }
                }
             }
@@ -162,14 +157,14 @@ namespace RumahScarlett.Presentation.Presenters.Pengeluaran
 
       private void _view_OnRefreshData(object sender, EventArgs e)
       {
-         _listObjs = _services.GetByDate(_view_dateTimePickerTanggal.Value.Date).ToList();
+         _listObjs = _services.GetByDate(_view.DateTimePickerTanggal.Value.Date).ToList();
          _bindingView.DataSource = _listObjs;
+         _view.LabelTotal.Text = _listObjs.Sum(p => p.jumlah).ToString("N0");
       }
 
       private void OnDataGrid_CellDoubleClick(object sender, CellClickEventArgs e)
       {
          _view_OnUpdateData(sender, e);
       }
-
    }
 }
