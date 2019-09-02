@@ -49,11 +49,11 @@
          // 
          // panelUp
          // 
-         this.panelUp.Size = new System.Drawing.Size(336, 40);
+         this.panelUp.Size = new System.Drawing.Size(354, 40);
          // 
          // operationButtons
          // 
-         this.operationButtons.Location = new System.Drawing.Point(173, 197);
+         this.operationButtons.Location = new System.Drawing.Point(191, 197);
          // 
          // groupBox1
          // 
@@ -63,7 +63,7 @@
          this.groupBox1.Controls.Add(this.tableLayoutPanel1);
          this.groupBox1.Location = new System.Drawing.Point(12, 58);
          this.groupBox1.Name = "groupBox1";
-         this.groupBox1.Size = new System.Drawing.Size(336, 133);
+         this.groupBox1.Size = new System.Drawing.Size(354, 133);
          this.groupBox1.TabIndex = 5;
          this.groupBox1.TabStop = false;
          this.groupBox1.Text = "[ DATA ]";
@@ -93,7 +93,7 @@
          this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
          this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
          this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-         this.tableLayoutPanel1.Size = new System.Drawing.Size(324, 108);
+         this.tableLayoutPanel1.Size = new System.Drawing.Size(342, 108);
          this.tableLayoutPanel1.TabIndex = 0;
          // 
          // label1
@@ -199,7 +199,7 @@
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-         this.ClientSize = new System.Drawing.Size(360, 244);
+         this.ClientSize = new System.Drawing.Size(378, 244);
          this.Controls.Add(this.groupBox1);
          this.Name = "PelangganEntryView";
          this.Text = "Pelanggan";
