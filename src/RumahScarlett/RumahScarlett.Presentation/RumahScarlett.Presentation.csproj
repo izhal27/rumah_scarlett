@@ -112,6 +112,7 @@
     <Compile Include="Presenters\HutangOperasional\HutangOperasionalPresenter.cs" />
     <Compile Include="Presenters\HutangOperasional\IHutangOperasionalPresenter.cs" />
     <Compile Include="Presenters\IMainPresenter.cs" />
+    <Compile Include="Presenters\KasAwal\IKasAwalPresenter.cs" />
     <Compile Include="Presenters\KasAwal\KasAwalPresenter.cs" />
     <Compile Include="Presenters\MainPresenter.cs" />
     <Compile Include="Presenters\Pelanggan\PelangganPresenter.cs" />

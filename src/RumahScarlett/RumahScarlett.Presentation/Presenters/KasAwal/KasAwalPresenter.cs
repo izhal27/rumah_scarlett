@@ -15,7 +15,7 @@ using System.Windows.Forms;
 
 namespace RumahScarlett.Presentation.Presenters.KasAwal
 {
-   public class KasAwalPresenter : IBasePresenter<IKasAwalView>
+   public class KasAwalPresenter : IKasAwalPresenter
    {
       private IKasAwalView _view;
       private IKasAwalServices _services;
