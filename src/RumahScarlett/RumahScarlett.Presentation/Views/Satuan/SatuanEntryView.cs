@@ -24,7 +24,7 @@ namespace RumahScarlett.Presentation.Views.Satuan
       public SatuanEntryView(bool isNewData = true, ISatuanModel model = null)
       {
          InitializeComponent();
-         
+
          _isNewData = isNewData;
          panelUp.LabelInfo = isNewData ? "TAMBAH SATUAN" : "UBAH SATUAN";
 
@@ -46,9 +46,12 @@ namespace RumahScarlett.Presentation.Views.Satuan
             keterangan = textBoxKeterangan.Text
          };
 
-         if (_isNewData && Messages.ConfirmSave(_typeName))
+         if (_isNewData)
          {
-            OnSaveData?.Invoke(this, new EventArgs<ISatuanModel>(model));
+            if (Messages.ConfirmSave(_typeName))
+            {
+               OnSaveData?.Invoke(this, new EventArgs<ISatuanModel>(model));
+            }
          }
          else if (Messages.ConfirmUpdate(_typeName))
          {

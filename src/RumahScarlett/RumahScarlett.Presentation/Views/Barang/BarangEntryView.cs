@@ -29,12 +29,12 @@ namespace RumahScarlett.Presentation.Views.Barang
 
          _isNewData = isNewData;
          panelUp.LabelInfo = isNewData ? "TAMBAH BARANG" : "UBAH BARANG";
-         
+
          if (!_isNewData)
          {
             _model = model;
          }
-         
+
          operationButtons.OnSaveButtonClick += OperationButtons_OnSaveButtonClick;
       }
 
@@ -73,15 +73,18 @@ namespace RumahScarlett.Presentation.Views.Barang
             satuan_id = comboBoxSatuan.SelectedValue != null ? (uint)comboBoxSatuan.SelectedValue : default(uint)
          };
 
-         if (_isNewData && Messages.ConfirmSave(_typeName))
+         if (_isNewData)
          {
-            OnSaveData?.Invoke(this, new EventArgs<IBarangModel>(model));
+            if (Messages.ConfirmSave(_typeName))
+            {
+               OnSaveData?.Invoke(this, new EventArgs<IBarangModel>(model));
+            }
          }
          else if (Messages.ConfirmUpdate(_typeName))
          {
             model.id = _model.id;
             OnSaveData?.Invoke(this, new EventArgs<IBarangModel>(model));
          }
-      }      
+      }
    }
 }

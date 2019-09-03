@@ -24,7 +24,7 @@ namespace RumahScarlett.Presentation.Views.Pengeluaran
       private static string _typeName = "Pengeluaran";
 
 
-      public PengeluaranEntryView(DateTimePicker dateTimePickerTanggal, 
+      public PengeluaranEntryView(DateTimePicker dateTimePickerTanggal,
                                   bool isNewData = true, IPengeluaranModel model = null)
       {
          InitializeComponent();
@@ -43,7 +43,7 @@ namespace RumahScarlett.Presentation.Views.Pengeluaran
 
          operationButtons.OnSaveButtonClick += OperationButtons_OnSaveButtonClick;
       }
-            
+
       private void OperationButtons_OnSaveButtonClick(object sender, EventArgs e)
       {
          var model = new PengeluaranModel
@@ -54,9 +54,12 @@ namespace RumahScarlett.Presentation.Views.Pengeluaran
             keterangan = textBoxKeterangan.Text
          };
 
-         if (_isNewData && Messages.ConfirmSave(_typeName))
+         if (_isNewData)
          {
-            OnSaveData?.Invoke(this, new EventArgs<IPengeluaranModel>(model));
+            if (Messages.ConfirmSave(_typeName))
+            {
+               OnSaveData?.Invoke(this, new EventArgs<IPengeluaranModel>(model));
+            }
          }
          else if (Messages.ConfirmUpdate(_typeName))
          {

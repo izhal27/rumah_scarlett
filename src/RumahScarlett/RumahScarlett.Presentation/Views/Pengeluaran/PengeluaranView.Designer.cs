@@ -125,7 +125,7 @@
          this.groupBox2.Size = new System.Drawing.Size(220, 55);
          this.groupBox2.TabIndex = 4;
          this.groupBox2.TabStop = false;
-         this.groupBox2.Text = "[ DATA ]";
+         this.groupBox2.Text = "[ RINGKASAN ]";
          // 
          // tableLayoutPanel2
          // 

@@ -50,9 +50,12 @@ namespace RumahScarlett.Presentation.Views.Pelanggan
             keterangan = textBoxKeterangan.Text,
          };
 
-         if (_isNewData && Messages.ConfirmSave(_typeName))
+         if (_isNewData)
          {
-            OnSaveData?.Invoke(this, new EventArgs<IPelangganModel>(model));
+            if (Messages.ConfirmSave(_typeName))
+            {
+               OnSaveData?.Invoke(this, new EventArgs<IPelangganModel>(model));
+            }
          }
          else if (Messages.ConfirmUpdate(_typeName))
          {

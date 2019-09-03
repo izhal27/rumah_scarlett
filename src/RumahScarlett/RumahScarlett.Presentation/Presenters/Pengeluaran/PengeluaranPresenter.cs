@@ -19,8 +19,8 @@ namespace RumahScarlett.Presentation.Presenters.Pengeluaran
 {
    public class PengeluaranPresenter : IPengeluaranPresenter
    {
-      IPengeluaranView _view;
-      IPengeluaranServices _services;
+      private IPengeluaranView _view;
+      private IPengeluaranServices _services;
       private List<IPengeluaranModel> _listObjs;
       private BindingListView<PengeluaranModel> _bindingView;
       private static string _typeName = "Pengeluaran";

@@ -24,10 +24,10 @@ namespace RumahScarlett.Presentation.Views.Tipe
       public SubTipeEntryView(bool isNewData = true, ISubTipeModel model = null)
       {
          InitializeComponent();
-         
+
          _isNewData = isNewData;
          panelUp.LabelInfo = isNewData ? "TAMBAH SUB TIPE" : "UBAH SUB TIPE";
-         
+
          if (!_isNewData)
          {
             _model = model;
@@ -37,7 +37,7 @@ namespace RumahScarlett.Presentation.Views.Tipe
 
          operationButtons.OnSaveButtonClick += OperationButtons_OnSaveButtonClick;
       }
-      
+
       private void OperationButtons_OnSaveButtonClick(object sender, EventArgs e)
       {
          var model = new SubTipeModel
@@ -46,9 +46,12 @@ namespace RumahScarlett.Presentation.Views.Tipe
             keterangan = textBoxKeterangan.Text
          };
 
-         if (_isNewData && Messages.ConfirmSave(_typeName))
+         if (_isNewData)
          {
-            OnSaveData?.Invoke(this, new EventArgs<ISubTipeModel>(model));
+            if (Messages.ConfirmSave(_typeName))
+            {
+               OnSaveData?.Invoke(this, new EventArgs<ISubTipeModel>(model));
+            }
          }
          else if (Messages.ConfirmUpdate(_typeName))
          {

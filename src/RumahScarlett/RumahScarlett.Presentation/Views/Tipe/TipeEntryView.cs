@@ -45,9 +45,12 @@ namespace RumahScarlett.Presentation.Views.Tipe
             keterangan = textBoxKeterangan.Text
          };
 
-         if (_isNewData && Messages.ConfirmSave(_typeName))
+         if (_isNewData)
          {
-            OnSaveData?.Invoke(this, new EventArgs<ITipeModel>(model));
+            if (Messages.ConfirmSave(_typeName))
+            {
+               OnSaveData?.Invoke(this, new EventArgs<ITipeModel>(model));
+            }
          }
          else if (Messages.ConfirmUpdate(_typeName))
          {
