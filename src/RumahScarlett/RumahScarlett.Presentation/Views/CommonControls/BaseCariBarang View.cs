@@ -14,6 +14,8 @@ namespace RumahScarlett.Presentation.Views.CommonControls
 {
    public partial class BaseCariBarangView : Form
    {
+      protected event EventHandler OnEnterKeyDown;
+
       public BaseCariBarangView()
       {
          InitializeComponent();
@@ -37,25 +39,23 @@ namespace RumahScarlett.Presentation.Views.CommonControls
          {
             case Keys.F2:
 
-               if (!textBoxPencarian.Focused)
-               {
-                  textBoxPencarian.Focus();
-               }
+               listDataGrid.ClearSelection();
+               textBoxPencarian.SelectAll();
+               textBoxPencarian.Focus();
 
                break;
+            case Keys.Up:
             case Keys.Down:
 
-               if (listDataGrid.RowCount > 0 && listDataGrid.SelectedIndex == -1)
+               if (textBoxPencarian.Focused)
                {
                   listDataGrid.SelectedIndex = 0;
                }
-               else
-               {
-                  if (listDataGrid.SelectedIndex > 0)
-                  {
-                     listDataGrid.SelectedIndex = -1;
-                  }
-               }
+
+               break;
+            case Keys.Enter:
+
+               OnEnterKeyDown?.Invoke(sender, e);
 
                break;
             case Keys.Escape:

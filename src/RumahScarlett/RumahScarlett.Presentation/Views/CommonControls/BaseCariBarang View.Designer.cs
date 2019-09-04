@@ -35,10 +35,15 @@
          this.textBoxPencarian = new RumahScarlett.Presentation.Views.CommonControls.BaseTextBox();
          this.panelUp = new RumahScarlett.Presentation.Views.CommonControls.PanelUp();
          this.listDataGrid = new RumahScarlett.Presentation.Views.CommonControls.ListDataGrid();
+         this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+         this.label4 = new System.Windows.Forms.Label();
+         this.label2 = new System.Windows.Forms.Label();
+         this.label3 = new System.Windows.Forms.Label();
          this.groupBox1.SuspendLayout();
          this.tableLayoutPanel1.SuspendLayout();
          ((System.ComponentModel.ISupportInitialize)(this.textBoxPencarian)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.listDataGrid)).BeginInit();
+         this.tableLayoutPanel3.SuspendLayout();
          this.SuspendLayout();
          // 
          // groupBox1
@@ -101,6 +106,7 @@
          this.panelUp.Name = "panelUp";
          this.panelUp.Size = new System.Drawing.Size(760, 40);
          this.panelUp.TabIndex = 2;
+         this.panelUp.TabStop = false;
          // 
          // listDataGrid
          // 
@@ -113,15 +119,71 @@
          this.listDataGrid.Location = new System.Drawing.Point(13, 121);
          this.listDataGrid.Name = "listDataGrid";
          this.listDataGrid.ShowRowHeader = true;
-         this.listDataGrid.Size = new System.Drawing.Size(759, 329);
+         this.listDataGrid.Size = new System.Drawing.Size(759, 298);
          this.listDataGrid.TabIndex = 1;
          this.listDataGrid.Text = "listDataGrid1";
+         // 
+         // tableLayoutPanel3
+         // 
+         this.tableLayoutPanel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+         this.tableLayoutPanel3.ColumnCount = 3;
+         this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+         this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+         this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+         this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+         this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+         this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+         this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+         this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+         this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+         this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+         this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+         this.tableLayoutPanel3.Controls.Add(this.label4, 0, 0);
+         this.tableLayoutPanel3.Controls.Add(this.label2, 1, 0);
+         this.tableLayoutPanel3.Controls.Add(this.label3, 2, 0);
+         this.tableLayoutPanel3.Location = new System.Drawing.Point(12, 425);
+         this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+         this.tableLayoutPanel3.RowCount = 1;
+         this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+         this.tableLayoutPanel3.Size = new System.Drawing.Size(760, 25);
+         this.tableLayoutPanel3.TabIndex = 7;
+         // 
+         // label4
+         // 
+         this.label4.Anchor = System.Windows.Forms.AnchorStyles.Left;
+         this.label4.AutoSize = true;
+         this.label4.Location = new System.Drawing.Point(3, 6);
+         this.label4.Name = "label4";
+         this.label4.Size = new System.Drawing.Size(163, 13);
+         this.label4.TabIndex = 0;
+         this.label4.Text = "F2 Fokus ke kotak Kode / Nama";
+         // 
+         // label2
+         // 
+         this.label2.Anchor = System.Windows.Forms.AnchorStyles.Left;
+         this.label2.AutoSize = true;
+         this.label2.Location = new System.Drawing.Point(172, 6);
+         this.label2.Name = "label2";
+         this.label2.Size = new System.Drawing.Size(9, 13);
+         this.label2.TabIndex = 0;
+         this.label2.Text = "|";
+         // 
+         // label3
+         // 
+         this.label3.Anchor = System.Windows.Forms.AnchorStyles.Left;
+         this.label3.AutoSize = true;
+         this.label3.Location = new System.Drawing.Point(192, 6);
+         this.label3.Name = "label3";
+         this.label3.Size = new System.Drawing.Size(56, 13);
+         this.label3.TabIndex = 0;
+         this.label3.Text = "Esc Tutup";
          // 
          // BaseCariBarangView
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
          this.ClientSize = new System.Drawing.Size(784, 462);
+         this.Controls.Add(this.tableLayoutPanel3);
          this.Controls.Add(this.panelUp);
          this.Controls.Add(this.listDataGrid);
          this.Controls.Add(this.groupBox1);
@@ -139,6 +201,8 @@
          this.tableLayoutPanel1.PerformLayout();
          ((System.ComponentModel.ISupportInitialize)(this.textBoxPencarian)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.listDataGrid)).EndInit();
+         this.tableLayoutPanel3.ResumeLayout(false);
+         this.tableLayoutPanel3.PerformLayout();
          this.ResumeLayout(false);
 
       }
@@ -151,5 +215,9 @@
       protected BaseTextBox textBoxPencarian;
       protected ListDataGrid listDataGrid;
       protected PanelUp panelUp;
+      private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+      private System.Windows.Forms.Label label4;
+      private System.Windows.Forms.Label label2;
+      private System.Windows.Forms.Label label3;
    }
 }
