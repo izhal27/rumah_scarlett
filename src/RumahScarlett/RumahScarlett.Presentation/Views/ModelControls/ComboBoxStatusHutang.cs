@@ -20,6 +20,7 @@ namespace RumahScarlett.Presentation.Views.ModelControls
          Items.Add("Lunas");
 
          SelectedIndex = 0;
+         DropDownStyle = ComboBoxStyle.DropDownList;
       }
    }
 }

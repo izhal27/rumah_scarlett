@@ -117,6 +117,8 @@
     <Compile Include="Presenters\MainPresenter.cs" />
     <Compile Include="Presenters\Pelanggan\IPelangganPresenter.cs" />
     <Compile Include="Presenters\Pelanggan\PelangganPresenter.cs" />
+    <Compile Include="Presenters\Pembelian\IPembelianPresenter.cs" />
+    <Compile Include="Presenters\Pembelian\PembelianPresenter.cs" />
     <Compile Include="Presenters\Pengeluaran\IPengeluaranPresenter.cs" />
     <Compile Include="Presenters\Pengeluaran\PengeluaranPresenter.cs" />
     <Compile Include="Presenters\Satuan\ISatuanPresenter.cs" />
@@ -158,6 +160,12 @@
     </Compile>
     <Compile Include="Views\CommonControls\BaseTextBoxDigit.cs">
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Views\CommonControls\BaseCariBarang View.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\CommonControls\BaseCariBarang View.Designer.cs">
+      <DependentUpon>BaseCariBarang View.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\CommonControls\CRUDCButtons.cs">
       <SubType>UserControl</SubType>
@@ -249,6 +257,19 @@
       <DependentUpon>PelangganView.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Pelanggan\IPelangganEntryView.cs" />
+    <Compile Include="Views\Pembelian\CariBarangPembelianView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Pembelian\CariBarangPembelianView.Designer.cs">
+      <DependentUpon>CariBarangPembelianView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Pembelian\IPembelianView.cs" />
+    <Compile Include="Views\Pembelian\PembelianView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Pembelian\PembelianView.Designer.cs">
+      <DependentUpon>PembelianView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Pengeluaran\IPengeluaranEntryView.cs" />
     <Compile Include="Views\Pengeluaran\IPengeluaranView.cs" />
     <Compile Include="Views\Pengeluaran\PengeluaranEntryView.cs">
@@ -340,6 +361,9 @@
     <EmbeddedResource Include="Views\CommonControls\BaseEntryView.resx">
       <DependentUpon>BaseEntryView.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\CommonControls\BaseCariBarang View.resx">
+      <DependentUpon>BaseCariBarang View.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\CommonControls\CRUDCButtons.resx">
       <DependentUpon>CRUDCButtons.cs</DependentUpon>
     </EmbeddedResource>
@@ -369,6 +393,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Pelanggan\PelangganView.resx">
       <DependentUpon>PelangganView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Pembelian\CariBarangPembelianView.resx">
+      <DependentUpon>CariBarangPembelianView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Pembelian\PembelianView.resx">
+      <DependentUpon>PembelianView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Pengeluaran\PengeluaranEntryView.resx">
       <DependentUpon>PengeluaranEntryView.cs</DependentUpon>
