@@ -1,4 +1,5 @@
 ﻿using Syncfusion.WinForms.DataGrid;
+using Syncfusion.WinForms.DataGrid.Events;
 using Syncfusion.WinForms.DataGrid.Interactivity;
 using System;
 using System.Collections.Generic;
@@ -21,16 +22,8 @@ namespace RumahScarlett.Presentation.Views.CommonControls
          InitializeComponent();
 
          panelUp.LabelInfo = "CARI BARANG";
-      }
 
-      protected virtual void ShowView()
-      {
-         ShowDialog();
-      }
-
-      protected virtual void textBoxPencarian_TextChanged(object sender, EventArgs e)
-      {
-
+         listDataGrid.CurrentCellKeyDown += ListDataGrid_CurrentCellKeyDown;
       }
 
       private void BaseCariBarangView_KeyDown(object sender, KeyEventArgs e)
@@ -64,6 +57,24 @@ namespace RumahScarlett.Presentation.Views.CommonControls
 
                break;
          }
+      }
+
+      private void ListDataGrid_CurrentCellKeyDown(object sender, CurrentCellKeyEventArgs e)
+      {
+         if (e.KeyEventArgs.KeyCode == Keys.Enter)
+         {
+            e.KeyEventArgs.Handled = true;
+         }
+      }
+
+      protected virtual void textBoxPencarian_TextChanged(object sender, EventArgs e)
+      {
+
+      }
+
+      protected virtual void ShowView()
+      {
+         ShowDialog();
       }
    }
 }

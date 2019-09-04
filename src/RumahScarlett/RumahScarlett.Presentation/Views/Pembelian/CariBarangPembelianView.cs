@@ -1,4 +1,5 @@
 ﻿using Equin.ApplicationFramework;
+using RumahScarlett.CommonComponents;
 using RumahScarlett.Domain.Models.Barang;
 using RumahScarlett.Presentation.Views.CommonControls;
 using System;
@@ -15,6 +16,8 @@ namespace RumahScarlett.Presentation.Views.Pembelian
 {
    public partial class CariBarangPembelianView : BaseCariBarangView
    {
+      public event EventHandler OnSendData;
+
       private List<BarangModel> _listsBarang;
       private BindingListView<BarangModel> _bindingView;
 
@@ -25,6 +28,16 @@ namespace RumahScarlett.Presentation.Views.Pembelian
          _listsBarang = listsBarang;
          _bindingView = new BindingListView<BarangModel>(_listsBarang);
          listDataGrid.DataSource = _bindingView;
+
+         OnEnterKeyDown += CariBarangPembelianView_OnEnterKeyDown;
+      }
+
+      private void CariBarangPembelianView_OnEnterKeyDown(object sender, EventArgs e)
+      {
+         if (listDataGrid.SelectedItem != null)
+         {
+            OnSendData?.Invoke(this, new EventArgs<BarangModel>((BarangModel)listDataGrid.SelectedItem));
+         }
       }
 
       protected override void textBoxPencarian_TextChanged(object sender, EventArgs e)
