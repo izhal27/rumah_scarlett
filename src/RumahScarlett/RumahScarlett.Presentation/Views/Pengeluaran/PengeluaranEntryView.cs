@@ -17,19 +17,16 @@ namespace RumahScarlett.Presentation.Views.Pengeluaran
 {
    public partial class PengeluaranEntryView : BaseEntryView, IPengeluaranEntryView
    {
-      private DateTimePicker _dateTimePickerTanggal;
       private bool _isNewData;
       private IPengeluaranModel _model;
       public event EventHandler OnSaveData;
       private static string _typeName = "Pengeluaran";
 
 
-      public PengeluaranEntryView(DateTimePicker dateTimePickerTanggal,
-                                  bool isNewData = true, IPengeluaranModel model = null)
+      public PengeluaranEntryView(bool isNewData = true, IPengeluaranModel model = null)
       {
          InitializeComponent();
-
-         _dateTimePickerTanggal = dateTimePickerTanggal;
+         
          _isNewData = isNewData;
          panelUp.LabelInfo = isNewData ? "TAMBAH PENGELUARAN" : "UBAH PENGELUARAN";
 
@@ -48,7 +45,6 @@ namespace RumahScarlett.Presentation.Views.Pengeluaran
       {
          var model = new PengeluaranModel
          {
-            tanggal = _dateTimePickerTanggal.Value,
             nama = textBoxNama.Text,
             jumlah = uint.Parse(textBoxJumlah.Text, NumberStyles.Number),
             keterangan = textBoxKeterangan.Text

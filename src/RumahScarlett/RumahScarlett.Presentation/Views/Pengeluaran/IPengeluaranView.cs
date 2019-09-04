@@ -9,7 +9,6 @@ namespace RumahScarlett.Presentation.Views.Pengeluaran
 {
    public interface IPengeluaranView : IDataView
    {
-      DateTimePicker DateTimePickerTanggal { get; }
       Label LabelTotal { get; }
    }
 }

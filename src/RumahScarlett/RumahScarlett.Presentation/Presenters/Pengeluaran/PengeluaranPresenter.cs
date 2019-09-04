@@ -48,9 +48,9 @@ namespace RumahScarlett.Presentation.Presenters.Pengeluaran
       {
          using (new WaitCursorHandler())
          {
-            if (_view.ListDataGrid != null && _view.DateTimePickerTanggal != null)
+            if (_view.ListDataGrid != null)
             {
-               _listObjs = _services.GetByDate(_view.DateTimePickerTanggal.Value.Date).ToList();
+               _listObjs = _services.GetByDate(DateTime.Now.Date).ToList();
                _bindingView = new BindingListView<PengeluaranModel>(_listObjs);
                _view.ListDataGrid.DataSource = _bindingView;
                _view.LabelTotal.Text = _listObjs.Sum(p => p.jumlah).ToString("N0");
@@ -60,12 +60,9 @@ namespace RumahScarlett.Presentation.Presenters.Pengeluaran
 
       private void _view_OnCreateData(object sender, EventArgs e)
       {
-         if (_view.DateTimePickerTanggal != null)
-         {
-            var view = new PengeluaranEntryView(_view.DateTimePickerTanggal);
+            var view = new PengeluaranEntryView();
             view.OnSaveData += PengeluaranEntryView_OnSaveData;
             view.ShowDialog();
-         }
       }
 
       private void _view_OnUpdateData(object sender, EventArgs e)
@@ -87,7 +84,7 @@ namespace RumahScarlett.Presentation.Presenters.Pengeluaran
             {
                var model = _services.GetById(((PengeluaranModel)listDataGrid.SelectedItem).id);
 
-               var view = new PengeluaranEntryView(_view.DateTimePickerTanggal, false, model);
+               var view = new PengeluaranEntryView(false, model);
                view.OnSaveData += PengeluaranEntryView_OnSaveData;
                view.ShowDialog();
             }
@@ -160,7 +157,7 @@ namespace RumahScarlett.Presentation.Presenters.Pengeluaran
 
       private void _view_OnRefreshData(object sender, EventArgs e)
       {
-         _listObjs = _services.GetByDate(_view.DateTimePickerTanggal.Value.Date).ToList();
+         _listObjs = _services.GetByDate(DateTime.Now.Date).ToList();
          _bindingView.DataSource = _listObjs;
          _view.LabelTotal.Text = _listObjs.Sum(p => p.jumlah).ToString("N0");
       }

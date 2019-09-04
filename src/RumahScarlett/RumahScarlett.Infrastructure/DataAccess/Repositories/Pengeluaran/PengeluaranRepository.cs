@@ -23,6 +23,8 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Pengeluaran
 
          using (var context = new DbContext())
          {
+            model.tanggal = DateTime.Now;
+
             Insert(model, () => context.Conn.Insert((PengeluaranModel)model), dataAccessStatus,
                   () => CheckAfterInsert(context, "SELECT COUNT(1) FROM pengeluaran WHERE nama=@nama "
                                          + "AND id=(SELECT LAST_INSERT_ID())", new { model.nama }));

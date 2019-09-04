@@ -27,12 +27,7 @@ namespace RumahScarlett.Presentation.Views.Pengeluaran
       {
          get { return listDataGrid; }
       }
-
-      public DateTimePicker DateTimePickerTanggal
-      {
-         get { return dateTimePickerTanggal; }
-      }
-
+      
       public Label LabelTotal
       {
          get { return labelTotal; }
