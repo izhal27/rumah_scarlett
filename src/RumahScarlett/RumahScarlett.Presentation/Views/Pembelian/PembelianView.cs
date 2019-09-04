@@ -1,4 +1,7 @@
-﻿using RumahScarlett.Presentation.Views.CommonControls;
+﻿using RumahScarlett.CommonComponents;
+using RumahScarlett.Presentation.Views.CommonControls;
+using Syncfusion.WinForms.DataGrid.Enums;
+using Syncfusion.WinForms.DataGrid.Events;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,7 +17,11 @@ namespace RumahScarlett.Presentation.Views.Pembelian
    public partial class PembelianView : BaseDataView, IPembelianView
    {
       public event EventHandler OnLoadData;
-      public event EventHandler OnTambahData;
+      public event EventHandler OnCariData;
+      public event EventHandler<CurrentCellKeyEventArgs> OnCellKodeKeyDown;
+      public event EventHandler<CurrentCellKeyEventArgs> OnCellNamaKeyDown;
+      public event EventHandler<CurrentCellKeyEventArgs> OnCellQtyKeyDown;
+      public event EventHandler<CurrentCellKeyEventArgs> OnCellHppKeyDown;
       public event EventHandler OnHapusData;
       public event EventHandler OnSimpanData;
       public event EventHandler OnBersihkanData;
@@ -44,6 +51,39 @@ namespace RumahScarlett.Presentation.Views.Pembelian
          InitializeComponent();
 
          panelUp.LabelInfo = "TRANSAKSI PEMBELIAN BARANG";
+
+         listDataGrid.CurrentCellKeyDown += ListDataGrid_CurrentCellKeyDown;
+      }
+      
+      private void ListDataGrid_CurrentCellKeyDown(object sender, CurrentCellKeyEventArgs e)
+      {
+         if (e.KeyEventArgs.KeyCode == Keys.Return)
+         {
+            switch (e.ColumnIndex)
+            {
+               case 1: // Kode
+
+                  OnCellKodeKeyDown?.Invoke(sender, e);
+
+                  break;
+
+               case 2: // Nama
+
+                  OnCellNamaKeyDown?.Invoke(sender, e);
+
+                  break;
+               case 3: // Qty
+
+                  OnCellQtyKeyDown?.Invoke(sender, e);
+
+                  break;
+               case 4: // HPP
+
+                  OnCellHppKeyDown?.Invoke(sender, e);
+
+                  break;
+            }
+         }
       }
 
       private void PembelianView_Load(object sender, EventArgs e)
@@ -55,9 +95,9 @@ namespace RumahScarlett.Presentation.Views.Pembelian
       {
          switch (e.KeyCode)
          {
-            case Keys.F2: // Tambah
+            case Keys.F2: // Cari
 
-               OnTambahData?.Invoke(sender, e);
+               OnCariData?.Invoke(sender, e);
 
                break;
             case Keys.F3: // Hapus

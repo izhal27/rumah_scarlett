@@ -8,8 +8,8 @@ namespace RumahScarlett.Domain.Models.Pembelian
       uint pembelian_id { get; set; }
       IBarangModel Barang { get; set; }
       uint barang_id { get; set;  }
-      string barang_kode { get; }
-      string barang_nama { get; }
+      string barang_kode { get; set; }
+      string barang_nama { get; set; }
       decimal hpp { get; set; }
       int qty { get; set; }
       decimal total { get; }

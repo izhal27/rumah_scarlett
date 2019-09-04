@@ -38,21 +38,36 @@ namespace RumahScarlett.Domain.Models.Pembelian
          set { _barang_id = value; }
       }
 
+      private string _kode_barang;
+
       [Dp.Write(false)]
       [Display(Name = "Kode Barang")]
-      public string barang_kode { get { return Barang != null ? Barang.kode : string.Empty; } }
+      public string barang_kode
+      {
+         get { return Barang != null ? Barang.kode : _kode_barang; }
+         set { _kode_barang = value; }
+      }
+
+      private string _nama_barang;
 
       [Dp.Write(false)]
       [Display(Name = "Nama Barang")]
-      public string barang_nama { get { return Barang != null ? Barang.nama : string.Empty; } }
+      public string barang_nama
+      {
+         get { return Barang != null ? Barang.nama : _nama_barang; }
+         set { _nama_barang = value; }
+      }
 
+      [DisplayFormat(DataFormatString = "{0:N0}")]
       [Range(1, int.MaxValue, ErrorMessage = "Qty harus diisi !!!")]
       [Display(Name = "Qty")]
       public int qty { get; set; }
-      
+
+      [DisplayFormat(DataFormatString = "{0:N0}")]
       [Display(Name = "HPP")]
       public decimal hpp { get; set; }
 
+      [DisplayFormat(DataFormatString = "{0:N0}")]
       [Dp.Write(false)]
       [Display(Name = "Total")]
       public decimal total

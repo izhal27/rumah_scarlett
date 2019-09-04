@@ -67,6 +67,11 @@ namespace RumahScarlett.Presentation.Views.CommonControls
          }
       }
 
+      private void listDataGrid_CellDoubleClick(object sender, CellClickEventArgs e)
+      {
+         OnEnterKeyDown?.Invoke(sender, e);
+      }
+
       protected virtual void textBoxPencarian_TextChanged(object sender, EventArgs e)
       {
 
