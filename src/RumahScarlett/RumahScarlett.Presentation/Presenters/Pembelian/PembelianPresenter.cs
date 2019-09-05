@@ -30,7 +30,6 @@ namespace RumahScarlett.Presentation.Presenters.Pembelian
       private List<PembelianDetailModel> _listsPembelianDetails;
       private List<BarangModel> _listsBarangs;
       private BindingListView<PembelianDetailModel> _bindingView;
-      private bool _newModelIsSended = false;
 
       public IPembelianView GetView
       {
@@ -47,6 +46,7 @@ namespace RumahScarlett.Presentation.Presenters.Pembelian
          _view.ListDataGrid.EditorSelectionBehavior = EditorSelectionBehavior.SelectAll;
          _view.ListDataGrid.EditMode = EditMode.SingleClick;
          _view.ListDataGrid.AllowEditing = true;
+         _view.ListDataGrid.AllowSorting = false;
 
          _view.OnLoadData += _view_OnLoadData;
          _view.OnCariData += _view_OnCariData;
@@ -55,28 +55,33 @@ namespace RumahScarlett.Presentation.Presenters.Pembelian
          _view.OnCellQtyKeyDown += _view_OnCellQtyKeyDown;
          _view.OnCellHppKeyDown += _view_OnCellHppKeyDown;
          _view.OnHapusData += _view_OnHapusData;
-         _view.OnSimpanData += _view_OnSimpanData1;
          _view.OnSimpanData += _view_OnSimpanData;
          _view.OnBersihkanData += _view_OnBersihkanData;
 
+         _view.ListDataGrid.CurrentCellActivated += ListDataGrid_CurrentCellActivated;
          _view.ListDataGrid.CurrentCellEndEdit += ListDataGrid_CurrentCellEndEdit;
          _view.ListDataGrid.PreviewKeyDown += ListDataGrid_PreviewKeyDown;
       }
 
       private void _view_OnLoadData(object sender, EventArgs e)
       {
+         ((Form)_view).ActiveControl = _view.ListDataGrid;
+
          _listsPembelianDetails = new List<PembelianDetailModel>();
 
-         for (int i = 0; i < 30; i++)
-         {
-            _listsPembelianDetails.Add(new PembelianDetailModel());
-         }
+         AddDummyPembelianModel(30);
 
          _bindingView = new BindingListView<PembelianDetailModel>(_listsPembelianDetails);
          _view.ListDataGrid.DataSource = _bindingView;
+         _bindingView.ListChanged += _bindingView_ListChanged;
 
-         ((Form)_view).ActiveControl = _view.ListDataGrid;
          _view.ListDataGrid.MoveToCurrentCell(new RowColumnIndex(1, 1));
+         _view.ListDataGrid.CurrentCell.BeginEdit();
+      }
+
+      private void _bindingView_ListChanged(object sender, System.ComponentModel.ListChangedEventArgs e)
+      {
+         HitungRingkasan();
       }
 
       private void _view_OnCariData(object sender, EventArgs e)
@@ -88,65 +93,48 @@ namespace RumahScarlett.Presentation.Presenters.Pembelian
 
       private void CariBarangPembelianView_OnSendData(object sender, EventArgs e)
       {
+         var listDataGrid = _view.ListDataGrid;
+         var rowIndex = listDataGrid.CurrentCell.RowIndex;
+
          var view = (CariBarangPembelianView)sender;
          var model = ((EventArgs<BarangModel>)e).Value;
 
          if (model != null)
          {
-            _newModelIsSended = true;
+            _listsPembelianDetails[(rowIndex - 1)].Barang = model;
+            _listsPembelianDetails[(rowIndex - 1)].barang_id = model.id;
+            _listsPembelianDetails[(rowIndex - 1)].hpp = model.hpp;
+            _listsPembelianDetails[(rowIndex - 1)].qty = 1;
 
-            var pembelianDetailNullValue = _listsPembelianDetails.Where(pd => string.IsNullOrEmpty(pd.barang_nama)).FirstOrDefault();
-
-            if (pembelianDetailNullValue != null)
-            {
-               pembelianDetailNullValue.Barang = model;
-               pembelianDetailNullValue.hpp = model.hpp;
-               pembelianDetailNullValue.qty = 1;
-            }
-            else
-            {
-               _listsPembelianDetails.Add(new PembelianDetailModel
-               {
-                  Barang = model,
-                  barang_id = model.id,
-                  hpp = model.hpp,
-                  qty = 1
-               });
-            }
-
-            _bindingView.Refresh();
+            _view.ListDataGrid.MoveToCurrentCell(new RowColumnIndex(listDataGrid.CurrentCell.RowIndex, 3));
+            _view.ListDataGrid.CurrentCell.BeginEdit();
             view.Close();
-         }
-         else
-         {
-            _newModelIsSended = false;
          }
       }
 
       private void _view_OnCellKodeKeyDown(object sender, CurrentCellKeyEventArgs e)
       {
-         var listDataGrid = (ListDataGrid)sender;
-         var rowIndex = listDataGrid.CurrentCell.RowIndex;
-         var cellValue = listDataGrid.CurrentCell.CellRenderer.GetControlValue();
+         var listDataGrid = _view.ListDataGrid;
 
-         if (cellValue != null)
+         if (CurrCellValue != null)
          {
-            var kode = cellValue.ToString();
+            var kode = CurrCellValue.ToString();
             var model = _listsBarangs.Where(b => b.kode.Equals(kode)).FirstOrDefault();
 
             if (model != null)
             {
-               _listsPembelianDetails[(rowIndex - 1)].Barang = model;
-               _listsPembelianDetails[(rowIndex - 1)].hpp = model.hpp;
-               _listsPembelianDetails[(rowIndex - 1)].qty = 1;
+               _listsPembelianDetails[(CurrCellRowIndex - 1)].Barang = model;
+               _listsPembelianDetails[(CurrCellRowIndex - 1)].hpp = model.hpp;
+               _listsPembelianDetails[(CurrCellRowIndex - 1)].qty = 1;
 
-               listDataGrid.MoveToCurrentCell(new RowColumnIndex(rowIndex, (e.ColumnIndex + 2)));
+               listDataGrid.MoveToCurrentCell(new RowColumnIndex(CurrCellRowIndex, (e.ColumnIndex + 2)));
+               listDataGrid.CurrentCell.BeginEdit();
                e.KeyEventArgs.Handled = true;
             }
             else
             {
-               listDataGrid.MoveToCurrentCell(new RowColumnIndex(rowIndex, (e.ColumnIndex + 1)));
-
+               listDataGrid.MoveToCurrentCell(new RowColumnIndex(CurrCellRowIndex, (e.ColumnIndex + 1)));
+               listDataGrid.CurrentCell.BeginEdit();
                e.KeyEventArgs.Handled = true;
             }
          }
@@ -154,33 +142,25 @@ namespace RumahScarlett.Presentation.Presenters.Pembelian
 
       private void _view_OnCellNamaKeyDown(object sender, CurrentCellKeyEventArgs e)
       {
-         var listDataGrid = (ListDataGrid)sender;
-         var rowIndex = listDataGrid.CurrentCell.RowIndex;
-         var cellValue = listDataGrid.CurrentCell.CellRenderer.GetControlValue();
+         var listDataGrid = _view.ListDataGrid;
 
-         if (cellValue != null)
+         if (CurrCellValue != null)
          {
-            var nama = cellValue.ToString();
+            var nama = CurrCellValue.ToString();
             var model = _listsBarangs.Where(b => b.nama.ToLower().Equals(nama.ToLower())).FirstOrDefault();
 
             if (model != null)
             {
-               _listsPembelianDetails[(rowIndex - 1)].Barang = model;
-               _listsPembelianDetails[(rowIndex - 1)].hpp = model.hpp;
-               _listsPembelianDetails[(rowIndex - 1)].qty = 1;
+               _listsPembelianDetails[(CurrCellRowIndex - 1)].Barang = model;
+               _listsPembelianDetails[(CurrCellRowIndex - 1)].hpp = model.hpp;
+               _listsPembelianDetails[(CurrCellRowIndex - 1)].qty = 1;
 
-               listDataGrid.MoveToCurrentCell(new RowColumnIndex(rowIndex, (e.ColumnIndex + 1)));
+               listDataGrid.MoveToCurrentCell(new RowColumnIndex(CurrCellRowIndex, (e.ColumnIndex + 1)));
                e.KeyEventArgs.Handled = true;
             }
             else
             {
                _view_OnCariData(null, null);
-
-               if (_newModelIsSended)
-               {
-                  listDataGrid.MoveToCurrentCell(new RowColumnIndex(rowIndex, (e.ColumnIndex + 1)));
-               }
-
                e.KeyEventArgs.Handled = true;
             }
          }
@@ -188,40 +168,57 @@ namespace RumahScarlett.Presentation.Presenters.Pembelian
 
       private void _view_OnCellQtyKeyDown(object sender, CurrentCellKeyEventArgs e)
       {
-         var listDataGrid = (ListDataGrid)sender;
-         var cellValue = listDataGrid.CurrentCell.CellRenderer.GetControlValue();
-         var rowindex = listDataGrid.CurrentCell.RowIndex;
+         var listDataGrid = _view.ListDataGrid;
 
-         if (cellValue != null && int.Parse(cellValue.ToString(), NumberStyles.Number) > 0)
+         if (CurrCellValue != null)
          {
-            listDataGrid.MoveToCurrentCell(new RowColumnIndex(rowindex, (e.ColumnIndex + 1)));
-            e.KeyEventArgs.Handled = true;
+            if (int.Parse(CurrCellValue.ToString(), NumberStyles.Number) > 0)
+            {
+               listDataGrid.MoveToCurrentCell(new RowColumnIndex(CurrCellRowIndex, (e.ColumnIndex + 1)));
+               listDataGrid.CurrentCell.BeginEdit();
+            }
          }
+
+         e.KeyEventArgs.Handled = true;
       }
 
       private void _view_OnCellHppKeyDown(object sender, CurrentCellKeyEventArgs e)
       {
-         var listDataGrid = (ListDataGrid)sender;
-         var cellValue = listDataGrid.CurrentCell.CellRenderer.GetControlValue();
-         var rowindex = listDataGrid.CurrentCell.RowIndex;
+         var listDataGrid = _view.ListDataGrid;
 
-         if (rowindex != (listDataGrid.RowCount - 1))
+         if (CurrCellValue != null)
          {
-            if (cellValue != null && decimal.Parse(cellValue.ToString(), NumberStyles.Number) > 0)
+            if (CurrCellRowIndex != (listDataGrid.RowCount - 1))
             {
-               listDataGrid.MoveToCurrentCell(new RowColumnIndex((rowindex + 1), 1));
+               if (decimal.Parse(CurrCellValue.ToString(), NumberStyles.Number) > 0)
+               {
+
+                  listDataGrid.MoveToCurrentCell(new RowColumnIndex((CurrCellRowIndex + 1), 1));
+                  listDataGrid.CurrentCell.BeginEdit();
+               }
+
                e.KeyEventArgs.Handled = true;
             }
-         }
-         else
-         {
-            _listsPembelianDetails.Add(new PembelianDetailModel());
-            _bindingView.Refresh();
-            listDataGrid.MoveToCurrentCell(new RowColumnIndex((rowindex + 1), 1));
+            else
+            {
+               _listsPembelianDetails.Add(new PembelianDetailModel());
+               listDataGrid.MoveToCurrentCell(new RowColumnIndex((CurrCellRowIndex + 1), 1));
+               listDataGrid.CurrentCell.BeginEdit();
+            }
          }
       }
 
+      private void ListDataGrid_CurrentCellActivated(object sender, CurrentCellActivatedEventArgs e)
+      {
+         _view.ListDataGrid.CurrentCell.BeginEdit();
+      }
+
       private void ListDataGrid_CurrentCellEndEdit(object sender, CurrentCellEndEditEventArgs e)
+      {
+         HitungRingkasan();
+      }
+
+      private void HitungRingkasan()
       {
          _view.LabelTotalQty.Text = _listsPembelianDetails.Where(pd => !string.IsNullOrWhiteSpace(pd.barang_nama)).ToList().Sum(pd => pd.qty).ToString("N0");
          _view.LabelTotalPembelian.Text = _listsPembelianDetails.Where(pd => !string.IsNullOrWhiteSpace(pd.barang_nama)).ToList().Sum(pd => pd.total).ToString("N0");
@@ -229,7 +226,7 @@ namespace RumahScarlett.Presentation.Presenters.Pembelian
 
       private void ListDataGrid_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
       {
-         var listDataGrid = (ListDataGrid)sender;
+         var listDataGrid = _view.ListDataGrid;
 
          if (!listDataGrid.CurrentCell.IsEditing)
          {
@@ -237,14 +234,30 @@ namespace RumahScarlett.Presentation.Presenters.Pembelian
          }
       }
 
-      private void _view_OnHapusData(object sender, EventArgs e)
+      public int CurrCellRowIndex
       {
-         throw new NotImplementedException();
+         get { return _view.ListDataGrid.CurrentCell.RowIndex; }
       }
 
-      private void _view_OnSimpanData1(object sender, EventArgs e)
+      public object CurrCellValue
       {
-         throw new NotImplementedException();
+         get
+         {
+            return _view.ListDataGrid.CurrentCell.CellRenderer.GetControlValue();
+         }
+      }
+
+      private void _view_OnHapusData(object sender, EventArgs e)
+      {
+         if (CurrCellValue != null)
+         {
+            if (!string.IsNullOrWhiteSpace(CurrCellValue.ToString()))
+            {
+               _listsPembelianDetails.RemoveAt((CurrCellRowIndex - 1));
+               _listsPembelianDetails.Add(new PembelianDetailModel());
+               _bindingView.DataSource = _listsPembelianDetails;
+            }
+         }
       }
 
       private void _view_OnSimpanData(object sender, EventArgs e)
@@ -254,7 +267,19 @@ namespace RumahScarlett.Presentation.Presenters.Pembelian
 
       private void _view_OnBersihkanData(object sender, EventArgs e)
       {
-         throw new NotImplementedException();
+         _listsPembelianDetails.Clear();
+         AddDummyPembelianModel(30);
+         _bindingView.DataSource = _listsPembelianDetails;
+         _view.ListDataGrid.MoveToCurrentCell(new RowColumnIndex(1, 1));
       }
+
+      private void AddDummyPembelianModel(int length)
+      {
+         for (int i = 0; i < length; i++)
+         {
+            _listsPembelianDetails.Add(new PembelianDetailModel());
+         }
+      }
+
    }
 }

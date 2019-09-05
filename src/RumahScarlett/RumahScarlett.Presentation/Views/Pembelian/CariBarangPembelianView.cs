@@ -36,7 +36,17 @@ namespace RumahScarlett.Presentation.Views.Pembelian
       {
          if (listDataGrid.SelectedItem != null)
          {
-            OnSendData?.Invoke(this, new EventArgs<BarangModel>((BarangModel)listDataGrid.SelectedItem));
+            var model = (BarangModel)listDataGrid.SelectedItem;
+
+            OnSendData?.Invoke(this, new EventArgs<BarangModel>(
+               new BarangModel
+               {
+                  id = model.id,
+                  kode = model.kode,
+                  nama  = model.nama,
+                  hpp = model.hpp,
+               }
+               ));
          }
       }
 
