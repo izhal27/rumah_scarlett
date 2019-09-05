@@ -1,14 +1,14 @@
-﻿using Dp = Dapper.Contrib.Extensions;
+﻿using RumahScarlett.Domain.Models.PenyesuaianStok;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Configuration;
-using RumahScarlett.Domain.Models.PenyesuaianStok;
+using Dp = Dapper.Contrib.Extensions;
 
 namespace RumahScarlett.Domain.Models.Barang
 {
@@ -52,6 +52,15 @@ namespace RumahScarlett.Domain.Models.Barang
 
       [DisplayFormat(DataFormatString = "{0:N0}")]
       [DefaultValue(0)]
+      [Display(Name = "Stok")]
+      public int stok { get; set; }
+
+      [Dp.Write(false)]
+      [Display(Name = "Satuan")]
+      public string satuan_nama { get; set; }
+
+      [DisplayFormat(DataFormatString = "{0:N0}")]
+      [DefaultValue(0)]
       [Display(Name = "HPP")]
       public decimal hpp { get; set; }
 
@@ -65,13 +74,7 @@ namespace RumahScarlett.Domain.Models.Barang
       [DefaultValue(0)]
       [Display(Name = "Harga Lama")]
       public decimal harga_lama { get; set; }
-
-      [DisplayFormat(DataFormatString = "{0:N0}")]
-      [DefaultValue(0)]
-      [Display(Name = "Stok")]
-      public int stok { get; set; }
       
-      [Browsable(false)]
       [DisplayFormat(DataFormatString = "{0:N0}")]
       [DefaultValue(0)]
       [Display(Name = "Minimal Stok")]
@@ -92,10 +95,6 @@ namespace RumahScarlett.Domain.Models.Barang
             return 0;
          }
       }
-
-      [Dp.Write(false)]
-      [Display(Name = "Satuan")]
-      public string satuan_nama { get; set; }
 
       [Dp.Write(false)]
       [Browsable(false)]
