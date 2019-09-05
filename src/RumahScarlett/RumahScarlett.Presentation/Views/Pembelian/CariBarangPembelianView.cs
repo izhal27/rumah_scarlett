@@ -29,6 +29,11 @@ namespace RumahScarlett.Presentation.Views.Pembelian
          _bindingView = new BindingListView<BarangModel>(_listsBarang);
          listDataGrid.DataSource = _bindingView;
 
+         for (int i = 2; i <= 7; i++)
+         {
+            listDataGrid.Columns[i].Visible = false;
+         }
+         
          OnEnterKeyDown += CariBarangPembelianView_OnEnterKeyDown;
       }
 
@@ -38,15 +43,7 @@ namespace RumahScarlett.Presentation.Views.Pembelian
          {
             var model = (BarangModel)listDataGrid.SelectedItem;
 
-            OnSendData?.Invoke(this, new EventArgs<BarangModel>(
-               new BarangModel
-               {
-                  id = model.id,
-                  kode = model.kode,
-                  nama  = model.nama,
-                  hpp = model.hpp,
-               }
-               ));
+            OnSendData?.Invoke(this, new EventArgs<BarangModel>((BarangModel)listDataGrid.SelectedItem));
          }
       }
 

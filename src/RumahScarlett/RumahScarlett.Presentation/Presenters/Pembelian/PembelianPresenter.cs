@@ -191,7 +191,7 @@ namespace RumahScarlett.Presentation.Presenters.Pembelian
                   _view_OnListDataGridCellQtyKeyDown(sender, e);
 
                   break;
-               case 4: // HPP
+               case 5: // HPP
 
                   _view_OnListDataGridCellHppKeyDown(sender, e);
 
@@ -262,7 +262,7 @@ namespace RumahScarlett.Presentation.Presenters.Pembelian
          {
             if (int.Parse(CurrCellValue.ToString(), NumberStyles.Number) > 0)
             {
-               listDataGrid.MoveToCurrentCell(new RowColumnIndex(CurrCellRowIndex, (e.ColumnIndex + 1)));
+               listDataGrid.MoveToCurrentCell(new RowColumnIndex(CurrCellRowIndex, (e.ColumnIndex + 2)));
                listDataGrid.CurrentCell.BeginEdit();
             }
          }
