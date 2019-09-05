@@ -69,17 +69,12 @@ namespace RumahScarlett.Presentation.Views
          OnSupplierViewOpen?.Invoke(sender, new EventArgs<DockPanel>(_dockPanel));
       }
       
-      private void supplierToolStripButton_Click(object sender, EventArgs e)
-      {
-         supplierToolStripMenuItem_Click(sender, e);
-      }
-
       private void barangToolStripMenuItem_Click(object sender, EventArgs e)
       {
          OnBarangViewOpen?.Invoke(sender, new EventArgs<DockPanel>(_dockPanel));
       }
 
-      private void barangToolStripButton_Click(object sender, EventArgs e)
+      private void toolStripButtonBarang_Click(object sender, EventArgs e)
       {
          barangToolStripMenuItem_Click(sender, e);
       }
@@ -114,7 +109,7 @@ namespace RumahScarlett.Presentation.Views
          OnPenjualanViewOpen?.Invoke(sender, new EventArgs<DockPanel>(_dockPanel));
       }
 
-      private void penjualanToolStripButton_Click(object sender, EventArgs e)
+      private void toolStripButtonPenjualan_Click(object sender, EventArgs e)
       {
          penjualanToolStripMenuItem_Click(sender, e);
       }
@@ -122,6 +117,11 @@ namespace RumahScarlett.Presentation.Views
       private void pembelianToolStripMenuItem_Click(object sender, EventArgs e)
       {
          OnPembelianViewOpen?.Invoke(sender, new EventArgs<DockPanel>(_dockPanel));
+      }
+      
+      private void toolStripButtonPembelian_Click(object sender, EventArgs e)
+      {
+         pembelianToolStripMenuItem_Click(sender, e);
       }
 
       private void pengeluaranToolStripMenuItem_Click(object sender, EventArgs e)

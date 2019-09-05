@@ -474,6 +474,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="make_up_icon_64.ico" />
+    <None Include="Resources\buy_32.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

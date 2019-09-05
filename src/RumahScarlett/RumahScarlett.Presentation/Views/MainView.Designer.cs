@@ -64,9 +64,9 @@
          this.bantuanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
          this.tentangToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
          this.toolStripMain = new System.Windows.Forms.ToolStrip();
-         this.supplierToolStripButton = new System.Windows.Forms.ToolStripButton();
-         this.barangToolStripButton = new System.Windows.Forms.ToolStripButton();
-         this.penjualanToolStripButton = new System.Windows.Forms.ToolStripButton();
+         this.toolStripButtonBarang = new System.Windows.Forms.ToolStripButton();
+         this.toolStripButtonPembelian = new System.Windows.Forms.ToolStripButton();
+         this.toolStripButtonPenjualan = new System.Windows.Forms.ToolStripButton();
          this.statusStrip.SuspendLayout();
          this.menuStripMain.SuspendLayout();
          this.toolStripMain.SuspendLayout();
@@ -324,51 +324,54 @@
          // 
          this.toolStripMain.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
          this.toolStripMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.supplierToolStripButton,
-            this.barangToolStripButton,
-            this.penjualanToolStripButton});
+            this.toolStripButtonBarang,
+            this.toolStripButtonPembelian,
+            this.toolStripButtonPenjualan});
          this.toolStripMain.Location = new System.Drawing.Point(0, 24);
          this.toolStripMain.Name = "toolStripMain";
-         this.toolStripMain.Size = new System.Drawing.Size(632, 49);
+         this.toolStripMain.Size = new System.Drawing.Size(632, 64);
          this.toolStripMain.TabIndex = 5;
          this.toolStripMain.Text = "toolStrip1";
          // 
-         // supplierToolStripButton
+         // toolStripButtonBarang
          // 
-         this.supplierToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-         this.supplierToolStripButton.Image = global::RumahScarlett.Presentation.Properties.Resources.supplier_32;
-         this.supplierToolStripButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-         this.supplierToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-         this.supplierToolStripButton.Margin = new System.Windows.Forms.Padding(10, 1, 0, 2);
-         this.supplierToolStripButton.Name = "supplierToolStripButton";
-         this.supplierToolStripButton.Padding = new System.Windows.Forms.Padding(5);
-         this.supplierToolStripButton.Size = new System.Drawing.Size(46, 46);
-         this.supplierToolStripButton.Text = "Supplier";
-         this.supplierToolStripButton.Click += new System.EventHandler(this.supplierToolStripButton_Click);
+         this.toolStripButtonBarang.Image = global::RumahScarlett.Presentation.Properties.Resources.cream_32;
+         this.toolStripButtonBarang.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+         this.toolStripButtonBarang.ImageTransparentColor = System.Drawing.Color.Magenta;
+         this.toolStripButtonBarang.Margin = new System.Windows.Forms.Padding(10, 1, 0, 2);
+         this.toolStripButtonBarang.Name = "toolStripButtonBarang";
+         this.toolStripButtonBarang.Padding = new System.Windows.Forms.Padding(5);
+         this.toolStripButtonBarang.Size = new System.Drawing.Size(58, 61);
+         this.toolStripButtonBarang.Text = "Barang";
+         this.toolStripButtonBarang.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+         this.toolStripButtonBarang.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+         this.toolStripButtonBarang.Click += new System.EventHandler(this.toolStripButtonBarang_Click);
          // 
-         // barangToolStripButton
+         // toolStripButtonPembelian
          // 
-         this.barangToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-         this.barangToolStripButton.Image = global::RumahScarlett.Presentation.Properties.Resources.cream_32;
-         this.barangToolStripButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-         this.barangToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-         this.barangToolStripButton.Name = "barangToolStripButton";
-         this.barangToolStripButton.Padding = new System.Windows.Forms.Padding(5);
-         this.barangToolStripButton.Size = new System.Drawing.Size(46, 46);
-         this.barangToolStripButton.Text = "Barang";
-         this.barangToolStripButton.Click += new System.EventHandler(this.barangToolStripButton_Click);
+         this.toolStripButtonPembelian.Image = global::RumahScarlett.Presentation.Properties.Resources.buy_32;
+         this.toolStripButtonPembelian.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+         this.toolStripButtonPembelian.ImageTransparentColor = System.Drawing.Color.Magenta;
+         this.toolStripButtonPembelian.Name = "toolStripButtonPembelian";
+         this.toolStripButtonPembelian.Padding = new System.Windows.Forms.Padding(5);
+         this.toolStripButtonPembelian.Size = new System.Drawing.Size(77, 61);
+         this.toolStripButtonPembelian.Text = "Pembelian";
+         this.toolStripButtonPembelian.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+         this.toolStripButtonPembelian.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+         this.toolStripButtonPembelian.Click += new System.EventHandler(this.toolStripButtonPembelian_Click);
          // 
-         // penjualanToolStripButton
+         // toolStripButtonPenjualan
          // 
-         this.penjualanToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-         this.penjualanToolStripButton.Image = global::RumahScarlett.Presentation.Properties.Resources.sale_32;
-         this.penjualanToolStripButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-         this.penjualanToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-         this.penjualanToolStripButton.Name = "penjualanToolStripButton";
-         this.penjualanToolStripButton.Padding = new System.Windows.Forms.Padding(5);
-         this.penjualanToolStripButton.Size = new System.Drawing.Size(46, 46);
-         this.penjualanToolStripButton.Text = "Penjualan";
-         this.penjualanToolStripButton.Click += new System.EventHandler(this.penjualanToolStripButton_Click);
+         this.toolStripButtonPenjualan.Image = global::RumahScarlett.Presentation.Properties.Resources.sale_32;
+         this.toolStripButtonPenjualan.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+         this.toolStripButtonPenjualan.ImageTransparentColor = System.Drawing.Color.Magenta;
+         this.toolStripButtonPenjualan.Name = "toolStripButtonPenjualan";
+         this.toolStripButtonPenjualan.Padding = new System.Windows.Forms.Padding(5);
+         this.toolStripButtonPenjualan.Size = new System.Drawing.Size(73, 61);
+         this.toolStripButtonPenjualan.Text = "Penjualan";
+         this.toolStripButtonPenjualan.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+         this.toolStripButtonPenjualan.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+         this.toolStripButtonPenjualan.Click += new System.EventHandler(this.toolStripButtonPenjualan_Click);
          // 
          // MainView
          // 
@@ -422,9 +425,8 @@
       private System.Windows.Forms.ToolStripMenuItem bantuanToolStripMenuItem;
       private System.Windows.Forms.ToolStripMenuItem tentangToolStripMenuItem;
       private System.Windows.Forms.ToolStrip toolStripMain;
-      private System.Windows.Forms.ToolStripButton supplierToolStripButton;
-      private System.Windows.Forms.ToolStripButton barangToolStripButton;
-      private System.Windows.Forms.ToolStripButton penjualanToolStripButton;
+      private System.Windows.Forms.ToolStripButton toolStripButtonBarang;
+      private System.Windows.Forms.ToolStripButton toolStripButtonPenjualan;
       private System.Windows.Forms.ToolStripMenuItem tipeToolStripMenuItem;
       private System.Windows.Forms.ToolStripMenuItem subTipeToolStripMenuItem;
       private System.Windows.Forms.ToolStripMenuItem pelangganToolStripMenuItem;
@@ -433,6 +435,7 @@
       private System.Windows.Forms.ToolStripMenuItem pengeluaranToolStripMenuItem1;
       private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
       private System.Windows.Forms.ToolStripMenuItem transaksiHariIniToolStripMenuItem;
+      private System.Windows.Forms.ToolStripButton toolStripButtonPembelian;
    }
 }
 
