@@ -18,13 +18,13 @@ namespace RumahScarlett.Presentation.Views.Pembelian
    {
       public event EventHandler OnLoadData;
       public event EventHandler OnCariData;
-      public event EventHandler<CurrentCellKeyEventArgs> OnCellKodeKeyDown;
-      public event EventHandler<CurrentCellKeyEventArgs> OnCellNamaKeyDown;
-      public event EventHandler<CurrentCellKeyEventArgs> OnCellQtyKeyDown;
-      public event EventHandler<CurrentCellKeyEventArgs> OnCellHppKeyDown;
       public event EventHandler OnHapusData;
       public event EventHandler OnSimpanData;
       public event EventHandler OnBersihkanData;
+      public event EventHandler<CurrentCellKeyEventArgs> OnListDataGridCurrentCellKeyDown;      
+      public event EventHandler<CurrentCellActivatedEventArgs> OnListDataGridCurrentCellActivated;
+      public event EventHandler<CurrentCellEndEditEventArgs> OnListDataGridCurrentCellEndEdit;
+      public event EventHandler<PreviewKeyDownEventArgs> OnListDataGridPreviewKeyDown;
 
       public ListDataGrid ListDataGrid
       {
@@ -52,38 +52,14 @@ namespace RumahScarlett.Presentation.Views.Pembelian
 
          panelUp.LabelInfo = "TRANSAKSI PEMBELIAN BARANG";
 
+         listDataGrid.EditMode = EditMode.SingleClick;
+         listDataGrid.AllowEditing = true;
+         listDataGrid.AllowSorting = false;
+
+         listDataGrid.CurrentCellActivated += ListDataGrid_CurrentCellActivated;
+         listDataGrid.CurrentCellEndEdit += ListDataGrid_CurrentCellEndEdit;
+         listDataGrid.PreviewKeyDown += ListDataGrid_PreviewKeyDown;
          listDataGrid.CurrentCellKeyDown += ListDataGrid_CurrentCellKeyDown;
-      }
-      
-      private void ListDataGrid_CurrentCellKeyDown(object sender, CurrentCellKeyEventArgs e)
-      {
-         if (e.KeyEventArgs.KeyCode == Keys.Return)
-         {
-            switch (e.ColumnIndex)
-            {
-               case 1: // Kode
-
-                  OnCellKodeKeyDown?.Invoke(sender, e);
-
-                  break;
-
-               case 2: // Nama
-
-                  OnCellNamaKeyDown?.Invoke(sender, e);
-
-                  break;
-               case 3: // Qty
-
-                  OnCellQtyKeyDown?.Invoke(sender, e);
-
-                  break;
-               case 4: // HPP
-
-                  OnCellHppKeyDown?.Invoke(sender, e);
-
-                  break;
-            }
-         }
       }
 
       private void PembelianView_Load(object sender, EventArgs e)
@@ -121,6 +97,26 @@ namespace RumahScarlett.Presentation.Views.Pembelian
 
                break;
          }
+      }
+      
+      private void ListDataGrid_CurrentCellKeyDown(object sender, CurrentCellKeyEventArgs e)
+      {
+         OnListDataGridCurrentCellKeyDown?.Invoke(sender, e);
+      }
+
+      private void ListDataGrid_CurrentCellActivated(object sender, CurrentCellActivatedEventArgs e)
+      {
+         OnListDataGridCurrentCellActivated?.Invoke(sender, e);
+      }
+
+      private void ListDataGrid_CurrentCellEndEdit(object sender, CurrentCellEndEditEventArgs e)
+      {
+         OnListDataGridCurrentCellEndEdit?.Invoke(sender, e);
+      }
+
+      private void ListDataGrid_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+      {
+         OnListDataGridPreviewKeyDown?.Invoke(sender, e);
       }
    }
 }

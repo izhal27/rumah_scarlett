@@ -13,13 +13,13 @@ namespace RumahScarlett.Presentation.Views.Pembelian
    {
       event EventHandler OnLoadData;
       event EventHandler OnCariData;
-      event EventHandler<CurrentCellKeyEventArgs> OnCellKodeKeyDown;
-      event EventHandler<CurrentCellKeyEventArgs> OnCellNamaKeyDown;
-      event EventHandler<CurrentCellKeyEventArgs> OnCellQtyKeyDown;
-      event EventHandler<CurrentCellKeyEventArgs> OnCellHppKeyDown;
       event EventHandler OnHapusData;
       event EventHandler OnSimpanData;
       event EventHandler OnBersihkanData;
+      event EventHandler<CurrentCellKeyEventArgs> OnListDataGridCurrentCellKeyDown;
+      event EventHandler<CurrentCellActivatedEventArgs> OnListDataGridCurrentCellActivated;
+      event EventHandler<CurrentCellEndEditEventArgs> OnListDataGridCurrentCellEndEdit;
+      event EventHandler<PreviewKeyDownEventArgs> OnListDataGridPreviewKeyDown;
 
       ListDataGrid ListDataGrid { get; }
       ComboBox ComboBoxSupplier { get; }

@@ -53,6 +53,8 @@
          this.label12 = new System.Windows.Forms.Label();
          this.label13 = new System.Windows.Forms.Label();
          this.label14 = new System.Windows.Forms.Label();
+         this.label15 = new System.Windows.Forms.Label();
+         this.label16 = new System.Windows.Forms.Label();
          this.groupBox1.SuspendLayout();
          this.tableLayoutPanel1.SuspendLayout();
          ((System.ComponentModel.ISupportInitialize)(this.listDataGrid)).BeginInit();
@@ -230,8 +232,9 @@
          // 
          // tableLayoutPanel3
          // 
-         this.tableLayoutPanel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-         this.tableLayoutPanel3.ColumnCount = 9;
+         this.tableLayoutPanel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+         this.tableLayoutPanel3.ColumnCount = 11;
          this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
          this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
          this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
@@ -241,6 +244,8 @@
          this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
          this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
          this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+         this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+         this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
          this.tableLayoutPanel3.Controls.Add(this.label4, 0, 0);
          this.tableLayoutPanel3.Controls.Add(this.label7, 1, 0);
          this.tableLayoutPanel3.Controls.Add(this.label8, 2, 0);
@@ -250,11 +255,13 @@
          this.tableLayoutPanel3.Controls.Add(this.label12, 6, 0);
          this.tableLayoutPanel3.Controls.Add(this.label13, 7, 0);
          this.tableLayoutPanel3.Controls.Add(this.label14, 8, 0);
+         this.tableLayoutPanel3.Controls.Add(this.label15, 9, 0);
+         this.tableLayoutPanel3.Controls.Add(this.label16, 10, 0);
          this.tableLayoutPanel3.Location = new System.Drawing.Point(12, 425);
          this.tableLayoutPanel3.Name = "tableLayoutPanel3";
          this.tableLayoutPanel3.RowCount = 1;
          this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-         this.tableLayoutPanel3.Size = new System.Drawing.Size(534, 25);
+         this.tableLayoutPanel3.Size = new System.Drawing.Size(760, 25);
          this.tableLayoutPanel3.TabIndex = 6;
          // 
          // label4
@@ -343,9 +350,29 @@
          this.label14.AutoSize = true;
          this.label14.Location = new System.Drawing.Point(330, 6);
          this.label14.Name = "label14";
-         this.label14.Size = new System.Drawing.Size(56, 13);
+         this.label14.Size = new System.Drawing.Size(74, 13);
          this.label14.TabIndex = 0;
-         this.label14.Text = "F12 Tutup";
+         this.label14.Text = "F6 Cetak nota";
+         // 
+         // label15
+         // 
+         this.label15.Anchor = System.Windows.Forms.AnchorStyles.Left;
+         this.label15.AutoSize = true;
+         this.label15.Location = new System.Drawing.Point(410, 6);
+         this.label15.Name = "label15";
+         this.label15.Size = new System.Drawing.Size(9, 13);
+         this.label15.TabIndex = 0;
+         this.label15.Text = "|";
+         // 
+         // label16
+         // 
+         this.label16.Anchor = System.Windows.Forms.AnchorStyles.Left;
+         this.label16.AutoSize = true;
+         this.label16.Location = new System.Drawing.Point(430, 6);
+         this.label16.Name = "label16";
+         this.label16.Size = new System.Drawing.Size(56, 13);
+         this.label16.TabIndex = 0;
+         this.label16.Text = "F12 Tutup";
          // 
          // PembelianView
          // 
@@ -404,5 +431,7 @@
       private System.Windows.Forms.Label label12;
       private System.Windows.Forms.Label label13;
       private System.Windows.Forms.Label label14;
+      private System.Windows.Forms.Label label15;
+      private System.Windows.Forms.Label label16;
    }
 }
