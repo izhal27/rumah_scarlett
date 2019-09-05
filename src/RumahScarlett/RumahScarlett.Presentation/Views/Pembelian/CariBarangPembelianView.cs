@@ -31,6 +31,11 @@ namespace RumahScarlett.Presentation.Views.Pembelian
 
          for (int i = 2; i <= 7; i++)
          {
+            if (i == 4) // HPP
+            {
+               continue;
+            }
+
             listDataGrid.Columns[i].Visible = false;
          }
          
