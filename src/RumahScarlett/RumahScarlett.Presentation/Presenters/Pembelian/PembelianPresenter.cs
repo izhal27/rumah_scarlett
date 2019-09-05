@@ -4,6 +4,7 @@ using RumahScarlett.Domain.Models.Barang;
 using RumahScarlett.Domain.Models.Pembelian;
 using RumahScarlett.Infrastructure.DataAccess.Repositories.Barang;
 using RumahScarlett.Infrastructure.DataAccess.Repositories.Pembelian;
+using RumahScarlett.Presentation.Helper;
 using RumahScarlett.Presentation.Views.CommonControls;
 using RumahScarlett.Presentation.Views.Pembelian;
 using RumahScarlett.Services.Services;
@@ -262,7 +263,36 @@ namespace RumahScarlett.Presentation.Presenters.Pembelian
 
       private void _view_OnSimpanData(object sender, EventArgs e)
       {
-         throw new NotImplementedException();
+         var status = _listsPembelianDetails.Any(pd => pd.Barang.id != default(uint));
+
+         try
+         {
+            if (status)
+            {
+               if (Messages.Confirm("Simpan data Pembelian?"))
+               {
+                  var pembelianDetailsFixed = _listsPembelianDetails.Where(pd => pd.Barang.id != default(int)).ToList();
+
+                  var model = new PembelianModel
+                  {
+                     supplier_id = _view.ComboBoxSupplier.SelectedIndex != -1 ?
+                                   (uint)_view.ComboBoxSupplier.SelectedValue : default(uint),
+                     PembelianDetails = pembelianDetailsFixed
+                  };
+                  _pembelianServices.Insert(model);
+                  Messages.Info("Data Pembelian berhasil disimpan.");
+                  _view_OnBersihkanData(null, null);
+               }
+            }
+         }
+         catch (ArgumentException ex)
+         {
+            Messages.Error(ex);
+         }
+         catch (DataAccessException ex)
+         {
+            Messages.Error(ex);
+         }
       }
 
       private void _view_OnBersihkanData(object sender, EventArgs e)

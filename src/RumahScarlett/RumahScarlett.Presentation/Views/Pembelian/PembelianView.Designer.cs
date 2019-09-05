@@ -112,9 +112,7 @@
             ((object)(resources.GetObject("comboBoxSupplier.Items4"))),
             ((object)(resources.GetObject("comboBoxSupplier.Items5"))),
             ((object)(resources.GetObject("comboBoxSupplier.Items6"))),
-            ((object)(resources.GetObject("comboBoxSupplier.Items7"))),
-            ((object)(resources.GetObject("comboBoxSupplier.Items8"))),
-            ((object)(resources.GetObject("comboBoxSupplier.Items9")))});
+            ((object)(resources.GetObject("comboBoxSupplier.Items7")))});
          this.comboBoxSupplier.Location = new System.Drawing.Point(54, 7);
          this.comboBoxSupplier.Name = "comboBoxSupplier";
          this.comboBoxSupplier.Size = new System.Drawing.Size(150, 21);
@@ -124,6 +122,7 @@
          // listDataGrid
          // 
          this.listDataGrid.AccessibleName = "Table";
+         this.listDataGrid.AllowEditing = false;
          this.listDataGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -324,15 +323,15 @@
          this.label12.AutoSize = true;
          this.label12.Location = new System.Drawing.Point(216, 6);
          this.label12.Name = "label12";
-         this.label12.Size = new System.Drawing.Size(50, 13);
+         this.label12.Size = new System.Drawing.Size(93, 13);
          this.label12.TabIndex = 0;
-         this.label12.Text = "F5 Reset";
+         this.label12.Text = "F5 Bersihkan data";
          // 
          // label13
          // 
          this.label13.Anchor = System.Windows.Forms.AnchorStyles.Left;
          this.label13.AutoSize = true;
-         this.label13.Location = new System.Drawing.Point(272, 6);
+         this.label13.Location = new System.Drawing.Point(315, 6);
          this.label13.Name = "label13";
          this.label13.Size = new System.Drawing.Size(9, 13);
          this.label13.TabIndex = 0;
@@ -342,7 +341,7 @@
          // 
          this.label14.Anchor = System.Windows.Forms.AnchorStyles.Left;
          this.label14.AutoSize = true;
-         this.label14.Location = new System.Drawing.Point(287, 6);
+         this.label14.Location = new System.Drawing.Point(330, 6);
          this.label14.Name = "label14";
          this.label14.Size = new System.Drawing.Size(56, 13);
          this.label14.TabIndex = 0;

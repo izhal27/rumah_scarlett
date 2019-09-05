@@ -31,6 +31,7 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Pembelian
             context.BeginTransaction();
 
             model.no_nota = DbHelper.GetMaxID(context, context.Transaction, "pembelian", "no_nota");
+            model.tanggal = DateTime.Now;
 
             Insert(model, () =>
             {
@@ -56,6 +57,7 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Pembelian
                      if (barang != null)
                      {
                         pd.Barang = barang;
+                        pd.Barang.supplier_id = model.supplier_id;
                      }
                      else
                      {

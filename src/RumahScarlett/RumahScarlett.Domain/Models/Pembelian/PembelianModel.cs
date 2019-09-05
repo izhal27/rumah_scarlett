@@ -41,7 +41,7 @@ namespace RumahScarlett.Domain.Models.Pembelian
       [Display(Name = "No Nota")]
       public string no_nota { get; set; }
       
-      [Range(typeof(DateTime), "1945/08/17", "9999/01/01", ErrorMessage = "Minimal Tanggal 1945/08/17 !!!")]
+      //[Range(typeof(DateTime), "1945/08/17", "9999/01/01", ErrorMessage = "Minimal Tanggal 1945/08/17 !!!")]
       [Display(Name = "Tanggal")]
       public DateTime tanggal { get; set; }
 
