@@ -106,15 +106,6 @@
          this.comboBoxSupplier.DisplayMember = "Value";
          this.comboBoxSupplier.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
          this.comboBoxSupplier.FormattingEnabled = true;
-         this.comboBoxSupplier.Items.AddRange(new object[] {
-            ((object)(resources.GetObject("comboBoxSupplier.Items"))),
-            ((object)(resources.GetObject("comboBoxSupplier.Items1"))),
-            ((object)(resources.GetObject("comboBoxSupplier.Items2"))),
-            ((object)(resources.GetObject("comboBoxSupplier.Items3"))),
-            ((object)(resources.GetObject("comboBoxSupplier.Items4"))),
-            ((object)(resources.GetObject("comboBoxSupplier.Items5"))),
-            ((object)(resources.GetObject("comboBoxSupplier.Items6"))),
-            ((object)(resources.GetObject("comboBoxSupplier.Items7")))});
          this.comboBoxSupplier.Location = new System.Drawing.Point(54, 7);
          this.comboBoxSupplier.Name = "comboBoxSupplier";
          this.comboBoxSupplier.Size = new System.Drawing.Size(150, 21);
