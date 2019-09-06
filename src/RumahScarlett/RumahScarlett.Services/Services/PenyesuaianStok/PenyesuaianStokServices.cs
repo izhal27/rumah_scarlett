@@ -26,11 +26,13 @@ namespace RumahScarlett.Services.Services.PenyesuaianStok
 
       public void Update(IPenyesuaianStokModel model)
       {
-         throw new NotImplementedException();
+         ValidateModel(model);
+         _repo.Update(model);
       }
 
       public void Delete(IPenyesuaianStokModel model)
       {
+         ValidateModel(model);
          _repo.Delete(model);
       }
 
@@ -57,7 +59,6 @@ namespace RumahScarlett.Services.Services.PenyesuaianStok
       public void ValidateModel(IPenyesuaianStokModel model)
       {
          _modelDAC.ValidateModel(model);
-         _modelDAC.ValidateModels(model.PenyesuaianStokDetails);
       }
    }
 }

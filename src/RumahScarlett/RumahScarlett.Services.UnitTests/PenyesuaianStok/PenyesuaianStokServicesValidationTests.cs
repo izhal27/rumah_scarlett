@@ -29,14 +29,12 @@ namespace RumahScarlett.Services.UnitTests.PenyesuaianStok
          _servicesFixture.Model = new PenyesuaianStokModel
          {
             id = 1,
-            no_nota = "20190825000001",
+            barang_id = 1,
+            satuan_id = 1,
             tanggal = DateTime.Now,
-         };
-		 
-         _servicesFixture.Model.PenyesuaianStokDetails = new List<PenyesuaianStokDetailModel>
-         {
-            new PenyesuaianStokDetailModel { id = 1, barang_id = 1}
-         };
+            qty = 1,
+            keterangan = "Tests"
+         };		 
       }
 
       [Fact]
@@ -51,9 +49,53 @@ namespace RumahScarlett.Services.UnitTests.PenyesuaianStok
       }
 
       [Fact]
+      public void ShouldThrowExceptionForBarangIdEmpty()
+      {
+         _servicesFixture.Model.barang_id = default(uint);
+
+         var exception = Record.Exception(() => _servicesFixture
+                                                .Services.ValidateModel(_servicesFixture.Model));
+
+         WriteExceptionTestResult(exception);
+      }
+
+      [Fact]
+      public void ShouldThrowExceptionForSatuanIdEmpty()
+      {
+         _servicesFixture.Model.satuan_id = default(uint);
+
+         var exception = Record.Exception(() => _servicesFixture
+                                                .Services.ValidateModel(_servicesFixture.Model));
+
+         WriteExceptionTestResult(exception);
+      }
+
+      [Fact]
       public void ShouldThrowExceptionForTanggalEmpty()
       {
          _servicesFixture.Model.tanggal = default(DateTime);
+
+         var exception = Record.Exception(() => _servicesFixture
+                                                .Services.ValidateModel(_servicesFixture.Model));
+
+         WriteExceptionTestResult(exception);
+      }
+
+      [Fact]
+      public void ShouldThrowExceptionForQtyEmpty()
+      {
+         _servicesFixture.Model.qty = default(int);
+
+         var exception = Record.Exception(() => _servicesFixture
+                                                .Services.ValidateModel(_servicesFixture.Model));
+
+         WriteExceptionTestResult(exception);
+      }
+
+      [Fact]
+      public void ShouldThrowExceptionForKeteranganEmpty()
+      {
+         _servicesFixture.Model.keterangan = default(string);
 
          var exception = Record.Exception(() => _servicesFixture
                                                 .Services.ValidateModel(_servicesFixture.Model));

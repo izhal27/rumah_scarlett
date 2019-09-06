@@ -7,6 +7,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using RumahScarlett.Domain.Models.Barang;
+using RumahScarlett.Domain.Models.Satuan;
 
 namespace RumahScarlett.Domain.Models.PenyesuaianStok
 {
@@ -17,21 +19,82 @@ namespace RumahScarlett.Domain.Models.PenyesuaianStok
       [Display(Name = "ID")]
       public uint id { get; set; }
       
-      [StringLength(255, ErrorMessage = "Panjang maksimal No Nota 255 karakter !!!")]
-      [Display(Name = "No Nota")]
-      public string no_nota { get; set; }
-      
       [Range(typeof(DateTime), "1945/08/17", "9999/01/01", ErrorMessage = "Minimal Tanggal 1945/08/17 !!!")]
       [Display(Name = "Tanggal")]
       public DateTime tanggal { get; set; }
 
       [Browsable(false)]
       [Dp.Write(false)]
-      public IEnumerable<IPenyesuaianStokDetailModel> PenyesuaianStokDetails { get; set; }
+      public IBarangModel Barang { get; set; }
+
+      private uint _barang_id;
+
+      [Browsable(false)]
+      [Range(1, uint.MaxValue, ErrorMessage = "Barang harus diisi !!!")]
+      [Display(Name = "Barang ID")]
+      public uint barang_id
+      {
+         get { return Barang.id != default(uint) ? Barang.id : _barang_id; }
+         set { _barang_id = value; }
+      }
+
+      [Dp.Write(false)]
+      [Display(Name = "Kode Barang")]
+      public string barang_kode
+      {
+         get { return Barang.id != default(uint) ? Barang.kode : string.Empty; }
+      }
+
+      [Dp.Write(false)]
+      [Display(Name = "Nama Barang")]
+      public string barang_nama
+      {
+         get { return Barang.id != default(uint) ? Barang.nama : string.Empty; }
+      }
+      
+      [Range(1, int.MaxValue, ErrorMessage = "Qty harus diisi !!!")]
+      [Display(Name = "Qty")]
+      public int qty { get; set; }
+
+      [Browsable(false)]
+      [Dp.Write(false)]
+      public ISatuanModel Satuan { get; set; }
+
+      private uint _satuan_id;
+
+      [Browsable(false)]
+      [Range(1, uint.MaxValue, ErrorMessage = "Satuan harus diisi !!!")]
+      [Display(Name = "Satuan ID")]
+      public uint satuan_id {
+         get { return Satuan.id != default(uint) ? Satuan.id : _satuan_id; }
+         set { _satuan_id = value; }
+      }
+
+      [Dp.Write(false)]
+      [Display(Name = "Satuan")]
+      public string satuan_nama
+      {
+         get { return Satuan.id != default(uint) ? Satuan.nama : string.Empty; }
+      }
+
+      private decimal _hpp;
+      
+      [Display(Name = "HPP")]
+      public decimal hpp
+      {
+         get { return Barang.id != default(uint) ? Barang.hpp : _hpp; }
+         set { _hpp = value; }
+      }
+
+      [Required(ErrorMessage = "Keterangan harus diisi !!!")]
+      [StringLength(255, ErrorMessage = "Panjang maksimal keterangan 255 karakter !!!")]
+      [Display(Name = "Keterangan")]
+      public string keterangan { get; set; }
 
       public PenyesuaianStokModel()
       {
-         PenyesuaianStokDetails = new List<IPenyesuaianStokDetailModel>();
+         Barang = new BarangModel();
+         Satuan = new SatuanModel();
       }
    }
 }

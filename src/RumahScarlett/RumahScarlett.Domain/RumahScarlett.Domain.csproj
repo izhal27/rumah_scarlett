@@ -69,9 +69,7 @@
     <Compile Include="Models\Penjualan\PenjualanModel.cs" />
     <Compile Include="Models\Penjualan\PenjualanDetailModel.cs" />
     <Compile Include="Models\PenyesuaianStok\IPenyesuaianStokModel.cs" />
-    <Compile Include="Models\PenyesuaianStok\IPenyesuaianStokDetailModel.cs" />
     <Compile Include="Models\PenyesuaianStok\PenyesuaianStokModel.cs" />
-    <Compile Include="Models\PenyesuaianStok\PenyesuaianStokDetailModel.cs" />
     <Compile Include="Models\Satuan\ISatuanModel.cs" />
     <Compile Include="Models\Satuan\SatuanModel.cs" />
     <Compile Include="Models\Tipe\ISubTipeModel.cs" />

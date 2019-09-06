@@ -3,7 +3,6 @@ using Dapper.Contrib.Extensions;
 using RumahScarlett.CommonComponents;
 using RumahScarlett.Domain.Models.Barang;
 using RumahScarlett.Domain.Models.PenyesuaianStok;
-using RumahScarlett.Infrastructure.DataAccess.CommonRepositories;
 using RumahScarlett.Services.Services.PenyesuaianStok;
 using System;
 using System.Collections.Generic;
@@ -28,86 +27,82 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.PenyesuaianStok
          {
             context.BeginTransaction();
 
-            model.no_nota = DbHelper.GetMaxID(context, context.Transaction, "penyesuaian_stok", "no_nota");
-
             Insert(model, () =>
             {
-               var queryStr = "INSERT INTO penyesuaian_stok (no_nota, tanggal) " +
-                              "VALUES (@no_nota, @tanggal);" +
-                              "SELECT LAST_INSERT_ID();";
+               var barang = context.Conn.Get<BarangModel>(model.barang_id);
 
-               var insertedId = context.Conn.Query<uint>(queryStr, new
+               if (barang != null)
                {
-                  model.no_nota,
-                  model.tanggal
-               }, context.Transaction).Single();
-
-               if (insertedId > 0)
-               {
-                  model.id = insertedId;
-                  model.PenyesuaianStokDetails = model.PenyesuaianStokDetails.Map(p => p.penyesuaian_stok_id = model.id).ToList();
-                  model.PenyesuaianStokDetails = model.PenyesuaianStokDetails.Map(p =>
-                  {
-                     var barang = context.Conn.Get<BarangModel>(p.barang_id);
-
-                     if (barang != null)
-                     {
-                        p.Barang = barang;
-                     }
-                     else
-                     {
-                        var ex = new DataAccessException(dataAccessStatus);
-                        SetDataAccessValues(ex, "Salah satu barang yang ingin ditambahkan ke dalam tabel penyesuaian stok tidak ditemukan.");
-                        throw ex;
-                     }
-                  });
-
-                  var barangNotPassed = model.PenyesuaianStokDetails.Any(pd => pd.Barang.hpp == 0);
-
-                  if (barangNotPassed)
-                  {
-                     var ex = new DataAccessException(dataAccessStatus);
-                     SetDataAccessValues(ex, "Salah satu barang yang ingin dimasukan ke dalam tabel penyesuaian stok " +
-                                             "belum memiliki hpp.");
-                     throw ex;
-                  }
-                  else
-                  {
-                     if (model.PenyesuaianStokDetails != null && model.PenyesuaianStokDetails.ToList().Count > 0)
-                     {
-                        var psdRepo = new PenyesuaianStokDetailRepository(context);
-
-                        foreach (var pd in model.PenyesuaianStokDetails)
-                        {
-                           psdRepo.Insert(pd, context.Transaction);
-
-                           pd.Barang.stok -= pd.qty;
-
-                           if (pd.Barang.minimal_stok > pd.Barang.stok)
-                           {
-                              var ex = new DataAccessException(dataAccessStatus);
-                              SetDataAccessValues(ex, "Salah satu qty barang yang ingin dimasukan ke dalam tabel penyesuaian stok " +
-                                                      "melebihi minimal stok dari barang tersebut.");
-                              throw ex;
-                           }
-
-                           context.Conn.Update((BarangModel)pd.Barang, context.Transaction);
-                        }
-                     }
-
-                     context.Commit();
-                  }
+                  model.Barang = barang;
                }
-            }, dataAccessStatus, 
-            () => CheckAfterInsert(context, "SELECT COUNT(1) FROM penyesuaian_stok WHERE no_nota=@no_nota "
-                                   + "AND id=(SELECT id FROM penyesuaian_stok ORDER BY ID DESC LIMIT 1)",
-                                   new { model.no_nota }));
+               else
+               {
+                  var ex = new DataAccessException(dataAccessStatus);
+                  SetDataAccessValues(ex, "Salah satu barang yang ingin ditambahkan ke dalam tabel penyesuaian stok tidak ditemukan.");
+                  throw ex;
+               }
+
+               if (model.Barang.hpp == 0)
+               {
+                  var ex = new DataAccessException(dataAccessStatus);
+                  SetDataAccessValues(ex, "Salah satu barang yang ingin dimasukan ke dalam tabel penyesuaian stok " +
+                                          "belum memiliki hpp.");
+                  throw ex;
+               }
+               else
+               {
+                  context.Conn.Insert((PenyesuaianStokModel)model, context.Transaction);
+
+                  CheckBarangStok(model, dataAccessStatus);
+
+                  context.Conn.Update((BarangModel)model.Barang, context.Transaction);
+
+                  context.Commit();
+               }
+            }, dataAccessStatus,
+            () => CheckAfterInsert(context, "SELECT COUNT(1) FROM penyesuaian_stok WHERE tanggal=@tanggal "
+                                   + "AND id=(SELECT LAST_INSERT_ID())", new { model.tanggal }));
          }
       }
 
       public void Update(IPenyesuaianStokModel model)
       {
-         throw new NotImplementedException();
+         var dataAccessStatus = new DataAccessStatus();
+
+         using (var context = new DbContext())
+         {
+            context.BeginTransaction();
+
+            Update(model, () =>
+            {
+               var barang = context.Conn.Get<BarangModel>(model.barang_id, context.Transaction);
+               model.Barang = barang;
+
+               var qtyOld = context.Conn.Get<PenyesuaianStokModel>(model.id, context.Transaction).qty;
+               model.Barang.stok += qtyOld;
+
+               context.Conn.Update((PenyesuaianStokModel)model, context.Transaction);
+
+               CheckBarangStok(model, dataAccessStatus);
+
+               context.Conn.Update((BarangModel)model.Barang, context.Transaction);
+
+               context.Commit();
+            }, dataAccessStatus, () => CheckModelExist(context, model.id));
+         }
+      }
+
+      private void CheckBarangStok(IPenyesuaianStokModel model, DataAccessStatus dataAccessStatus)
+      {
+         model.Barang.stok -= model.qty;
+
+         if (model.Barang.minimal_stok > model.Barang.stok)
+         {
+            var ex = new DataAccessException(dataAccessStatus);
+            SetDataAccessValues(ex, "Salah satu qty barang yang ingin dimasukan ke dalam tabel penyesuaian stok " +
+                                    "melebihi minimal stok dari barang tersebut.");
+            throw ex;
+         }
       }
 
       public void Delete(IPenyesuaianStokModel model)
@@ -120,25 +115,20 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.PenyesuaianStok
             {
                context.BeginTransaction();
 
-               model.PenyesuaianStokDetails = new PenyesuaianStokDetailRepository(context).GetAll(model);
-
                var success = context.Conn.Delete((PenyesuaianStokModel)model, context.Transaction);
 
                if (success)
                {
-                  if (model.PenyesuaianStokDetails.ToList().Count > 0)
-                  {
-                     foreach (var pd in model.PenyesuaianStokDetails)
-                     {
-                        pd.Barang.stok += pd.qty;
+                  var barang = context.Conn.Get<BarangModel>(model.barang_id, context.Transaction);
+                  model.Barang = barang;
 
-                        context.Conn.Update((BarangModel)pd.Barang, context.Transaction);
-                     }
-                  }
+                  model.Barang.stok += model.qty;
+
+                  context.Conn.Update((BarangModel)model.Barang, context.Transaction);
 
                   context.Commit();
                }
-            }, dataAccessStatus, () => CheckUpdateDelete(context, model.id));
+            }, dataAccessStatus, () => CheckModelExist(context, model.id));
          }
       }
 
@@ -154,12 +144,7 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.PenyesuaianStok
 
                if (listObj != null && listObj.ToList().Count > 0)
                {
-                  var psdRepo = new PenyesuaianStokDetailRepository(context);
-
-                  foreach (var ps in listObj)
-                  {
-                     ps.PenyesuaianStokDetails = psdRepo.GetAll(ps).ToList();
-                  }
+                  listObj = listObj.Map(ps => ps.Barang = context.Conn.Get<BarangModel>(ps.barang_id));
                }
 
                return listObj;
@@ -181,8 +166,8 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.PenyesuaianStok
       {
          throw new NotImplementedException();
       }
-      
-      private bool CheckUpdateDelete(DbContext context, object id)
+
+      private bool CheckModelExist(DbContext context, object id)
       {
          return CheckModelExist(context, "SELECT COUNT(1) FROM penyesuaian_stok WHERE id=@id",
                                 new { id });

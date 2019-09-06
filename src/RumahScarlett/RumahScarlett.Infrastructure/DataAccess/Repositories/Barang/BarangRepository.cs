@@ -73,13 +73,13 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Barang
                {
                   listObj = listObj.Map(b =>
                   {
-                     queryStr = "SELECT * FROM penyesuaian_stok_detail where barang_id=@id";
+                     queryStr = "SELECT * FROM penyesuaian_stok where barang_id=@id";
 
-                     var listObject = context.Conn.Query<PenyesuaianStokDetailModel>(queryStr, new { b.id });
+                     var listObject = context.Conn.Query<PenyesuaianStokModel>(queryStr, new { b.id });
 
                      if (listObject != null && listObject.ToList().Count > 0)
                      {
-                        b.PenyesuaianStokDetails = listObject;
+                        b.PenyesuaianStoks = listObject;
                      }
                   });
                }

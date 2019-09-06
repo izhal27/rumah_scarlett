@@ -42,32 +42,13 @@ namespace RumahScarlett.Services.UnitTests.PenyesuaianStok
 
          try
          {
-            var listPenyesuaianStokDetails = new List<PenyesuaianStokDetailModel>
-            {
-               new PenyesuaianStokDetailModel
-               {
-                  barang_id = 1,
-                  qty = 1,
-                  keterangan = "Tester"
-               },
-               new PenyesuaianStokDetailModel
-               {
-                  barang_id = 2,
-                  qty = 1,
-                  keterangan = "Tester"
-               },
-               new PenyesuaianStokDetailModel
-               {
-                  barang_id = 3,
-                  qty = 1,
-                  keterangan = "Tester"
-               }
-            };
-
             var penyesuaianStokModel = new PenyesuaianStokModel
             {
-               tanggal = DateTime.Now,
-               PenyesuaianStokDetails = listPenyesuaianStokDetails
+               barang_id = 1,
+               satuan_id = 1,
+               tanggal = DateTime.Now.Date,
+               qty = 5,
+               keterangan = "Penyesuaian Stok"
             };
 
             _services.Insert(penyesuaianStokModel);
@@ -92,6 +73,47 @@ namespace RumahScarlett.Services.UnitTests.PenyesuaianStok
       }
 
       [Fact]
+      private void ShouldReturnSuccessForUpdate()
+      {
+         var operationSecceded = false;
+         var dataAccessJsonStr = string.Empty;
+         var formattedJsonStr = string.Empty;
+
+         try
+         {
+            var model = new PenyesuaianStokModel()
+            {
+               id = 6,
+               barang_id = 1,
+               satuan_id = 1,
+               tanggal = new DateTime(2019, 9, 6).Date,
+               qty = 5,
+               hpp = 6000,
+               keterangan = "Penyesuaian Stok (Update)"
+            };
+
+            _services.Update(model);
+            operationSecceded = true;
+         }
+         catch (DataAccessException ex)
+         {
+            operationSecceded = ex.DataAccessStatusInfo.OperationSucceeded;
+            dataAccessJsonStr = JsonConvert.SerializeObject(ex.DataAccessStatusInfo);
+            formattedJsonStr = JToken.Parse(dataAccessJsonStr).ToString();
+         }
+
+         try
+         {
+            Assert.True(operationSecceded);
+            _testOutputHelper.WriteLine("Data berhasil diubah.");
+         }
+         finally
+         {
+            _testOutputHelper.WriteLine(formattedJsonStr);
+         }
+      }
+
+      [Fact]
       private void ShouldReturnSuccessForDelete()
       {
          var operationSecceded = false;
@@ -102,7 +124,13 @@ namespace RumahScarlett.Services.UnitTests.PenyesuaianStok
          {
             var model = new PenyesuaianStokModel()
             {
-               id = 4,
+               id = 8,
+               barang_id = 1,
+               satuan_id = 1,
+               tanggal = new DateTime(2019, 9, 6).Date,
+               qty = 5,
+               hpp = 6000,
+               keterangan = "Penyesuaian Stok (Update)"
             };
 
             _services.Delete(model);

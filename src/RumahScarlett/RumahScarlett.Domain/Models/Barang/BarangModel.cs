@@ -87,9 +87,9 @@ namespace RumahScarlett.Domain.Models.Barang
       {
          get
          {
-            if (PenyesuaianStokDetails.ToList().Count > 0)
+            if (PenyesuaianStoks.ToList().Count > 0)
             {
-               return PenyesuaianStokDetails.Cast<IPenyesuaianStokDetailModel>().Sum(pd => pd.qty);
+               return PenyesuaianStoks.Cast<PenyesuaianStokModel>().Sum(pd => pd.qty);
             }
 
             return 0;
@@ -98,11 +98,11 @@ namespace RumahScarlett.Domain.Models.Barang
 
       [Dp.Write(false)]
       [Browsable(false)]
-      public IEnumerable<IPenyesuaianStokDetailModel> PenyesuaianStokDetails { get; set; }
+      public IEnumerable<IPenyesuaianStokModel> PenyesuaianStoks { get; set; }
 
       public BarangModel()
       {
-         PenyesuaianStokDetails = new List<PenyesuaianStokDetailModel>();
+         PenyesuaianStoks = new List<PenyesuaianStokModel>();
       }
    }
 }

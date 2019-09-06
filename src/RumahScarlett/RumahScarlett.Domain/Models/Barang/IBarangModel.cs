@@ -19,6 +19,6 @@ namespace RumahScarlett.Domain.Models.Barang
       int stok { get; set; }
       int minimal_stok { get; set; }
       string satuan_nama { get; set; }
-      IEnumerable<IPenyesuaianStokDetailModel> PenyesuaianStokDetails { get; set; }
+      IEnumerable<IPenyesuaianStokModel> PenyesuaianStoks { get; set; }
    }
 }
