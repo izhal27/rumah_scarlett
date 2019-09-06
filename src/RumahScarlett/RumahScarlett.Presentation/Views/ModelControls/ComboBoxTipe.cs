@@ -17,12 +17,15 @@ namespace RumahScarlett.Presentation.Views.ModelControls
       private ITipeServices _services;
       private List<ITipeModel> _listTipes;
 
-      protected override void OnCreateControl()
+      public ComboBoxTipe()
       {
-         LoadDataSource();
-         DropDownStyle = ComboBoxStyle.DropDownList;
+         if (!DesignMode)
+         {
+            LoadDataSource();
+            DropDownStyle = ComboBoxStyle.DropDownList;
+         }
       }
-
+      
       private void LoadDataSource()
       {
          _services = new TipeServices(new TipeRepository(), new ModelDataAnnotationCheck());

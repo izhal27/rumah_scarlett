@@ -17,12 +17,15 @@ namespace RumahScarlett.Presentation.Views.ModelControls
       private ISatuanServices _services;
       private List<ISatuanModel> _llistSatuans;
 
-      protected override void OnCreateControl()
+      public ComboBoxSatuan()
       {
-         LoadDataSource();
-         DropDownStyle = ComboBoxStyle.DropDownList;
+         if (!DesignMode)
+         {
+            LoadDataSource();
+            DropDownStyle = ComboBoxStyle.DropDownList;
+         }
       }
-
+      
       private void LoadDataSource()
       {
          _services = new SatuanServices(new SatuanRepository(), new ModelDataAnnotationCheck());

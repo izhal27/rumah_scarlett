@@ -59,6 +59,7 @@
          this.comboBoxTipe = new RumahScarlett.Presentation.Views.ModelControls.ComboBoxTipe();
          this.comboBoxSupplier = new RumahScarlett.Presentation.Views.ModelControls.ComboBoxSupplier();
          this.comboBoxSatuan = new RumahScarlett.Presentation.Views.ModelControls.ComboBoxSatuan();
+         this.label17 = new System.Windows.Forms.Label();
          this.groupBox1.SuspendLayout();
          this.tableLayoutPanel1.SuspendLayout();
          ((System.ComponentModel.ISupportInitialize)(this.textBoxKode)).BeginInit();
@@ -72,11 +73,11 @@
          // 
          // panelUp
          // 
-         this.panelUp.Size = new System.Drawing.Size(365, 40);
+         this.panelUp.Size = new System.Drawing.Size(364, 40);
          // 
          // operationButtons
          // 
-         this.operationButtons.Location = new System.Drawing.Point(202, 381);
+         this.operationButtons.Location = new System.Drawing.Point(201, 380);
          // 
          // groupBox1
          // 
@@ -86,7 +87,7 @@
          this.groupBox1.Controls.Add(this.tableLayoutPanel1);
          this.groupBox1.Location = new System.Drawing.Point(12, 58);
          this.groupBox1.Name = "groupBox1";
-         this.groupBox1.Size = new System.Drawing.Size(365, 317);
+         this.groupBox1.Size = new System.Drawing.Size(364, 316);
          this.groupBox1.TabIndex = 4;
          this.groupBox1.TabStop = false;
          this.groupBox1.Text = "[ DATA ]";
@@ -103,21 +104,11 @@
          this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
          this.tableLayoutPanel1.Controls.Add(this.label2, 0, 1);
          this.tableLayoutPanel1.Controls.Add(this.label3, 0, 2);
+         this.tableLayoutPanel1.Controls.Add(this.label10, 0, 10);
          this.tableLayoutPanel1.Controls.Add(this.label4, 0, 3);
          this.tableLayoutPanel1.Controls.Add(this.label5, 0, 4);
-         this.tableLayoutPanel1.Controls.Add(this.label6, 0, 5);
-         this.tableLayoutPanel1.Controls.Add(this.label7, 0, 6);
-         this.tableLayoutPanel1.Controls.Add(this.label8, 0, 7);
-         this.tableLayoutPanel1.Controls.Add(this.label9, 0, 8);
-         this.tableLayoutPanel1.Controls.Add(this.label10, 0, 9);
-         this.tableLayoutPanel1.Controls.Add(this.label11, 0, 10);
          this.tableLayoutPanel1.Controls.Add(this.textBoxKode, 1, 3);
          this.tableLayoutPanel1.Controls.Add(this.textBoxNama, 1, 4);
-         this.tableLayoutPanel1.Controls.Add(this.textBoxHpp, 1, 5);
-         this.tableLayoutPanel1.Controls.Add(this.textBoxHargaJual, 1, 6);
-         this.tableLayoutPanel1.Controls.Add(this.textBoxHargaLama, 1, 7);
-         this.tableLayoutPanel1.Controls.Add(this.textBoxStok, 1, 8);
-         this.tableLayoutPanel1.Controls.Add(this.textBoxMinStok, 1, 9);
          this.tableLayoutPanel1.Controls.Add(this.label12, 2, 0);
          this.tableLayoutPanel1.Controls.Add(this.label13, 2, 1);
          this.tableLayoutPanel1.Controls.Add(this.label14, 2, 2);
@@ -126,7 +117,18 @@
          this.tableLayoutPanel1.Controls.Add(this.comboBoxSubTipe, 1, 1);
          this.tableLayoutPanel1.Controls.Add(this.comboBoxTipe, 1, 0);
          this.tableLayoutPanel1.Controls.Add(this.comboBoxSupplier, 1, 2);
-         this.tableLayoutPanel1.Controls.Add(this.comboBoxSatuan, 1, 10);
+         this.tableLayoutPanel1.Controls.Add(this.textBoxStok, 1, 5);
+         this.tableLayoutPanel1.Controls.Add(this.label8, 0, 9);
+         this.tableLayoutPanel1.Controls.Add(this.label7, 0, 8);
+         this.tableLayoutPanel1.Controls.Add(this.label6, 0, 7);
+         this.tableLayoutPanel1.Controls.Add(this.label9, 0, 5);
+         this.tableLayoutPanel1.Controls.Add(this.label11, 0, 6);
+         this.tableLayoutPanel1.Controls.Add(this.textBoxMinStok, 1, 10);
+         this.tableLayoutPanel1.Controls.Add(this.comboBoxSatuan, 1, 6);
+         this.tableLayoutPanel1.Controls.Add(this.textBoxHpp, 1, 7);
+         this.tableLayoutPanel1.Controls.Add(this.textBoxHargaJual, 1, 8);
+         this.tableLayoutPanel1.Controls.Add(this.textBoxHargaLama, 1, 9);
+         this.tableLayoutPanel1.Controls.Add(this.label17, 2, 6);
          this.tableLayoutPanel1.Location = new System.Drawing.Point(6, 19);
          this.tableLayoutPanel1.Name = "tableLayoutPanel1";
          this.tableLayoutPanel1.RowCount = 11;
@@ -141,7 +143,7 @@
          this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
          this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
          this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-         this.tableLayoutPanel1.Size = new System.Drawing.Size(353, 292);
+         this.tableLayoutPanel1.Size = new System.Drawing.Size(352, 291);
          this.tableLayoutPanel1.TabIndex = 0;
          // 
          // label1
@@ -198,7 +200,7 @@
          // 
          this.label6.Anchor = System.Windows.Forms.AnchorStyles.Left;
          this.label6.AutoSize = true;
-         this.label6.Location = new System.Drawing.Point(3, 139);
+         this.label6.Location = new System.Drawing.Point(3, 192);
          this.label6.Name = "label6";
          this.label6.Size = new System.Drawing.Size(29, 13);
          this.label6.TabIndex = 0;
@@ -208,7 +210,7 @@
          // 
          this.label7.Anchor = System.Windows.Forms.AnchorStyles.Left;
          this.label7.AutoSize = true;
-         this.label7.Location = new System.Drawing.Point(3, 165);
+         this.label7.Location = new System.Drawing.Point(3, 218);
          this.label7.Name = "label7";
          this.label7.Size = new System.Drawing.Size(58, 13);
          this.label7.TabIndex = 0;
@@ -218,7 +220,7 @@
          // 
          this.label8.Anchor = System.Windows.Forms.AnchorStyles.Left;
          this.label8.AutoSize = true;
-         this.label8.Location = new System.Drawing.Point(3, 191);
+         this.label8.Location = new System.Drawing.Point(3, 244);
          this.label8.Name = "label8";
          this.label8.Size = new System.Drawing.Size(65, 13);
          this.label8.TabIndex = 0;
@@ -228,7 +230,7 @@
          // 
          this.label9.Anchor = System.Windows.Forms.AnchorStyles.Left;
          this.label9.AutoSize = true;
-         this.label9.Location = new System.Drawing.Point(3, 217);
+         this.label9.Location = new System.Drawing.Point(3, 139);
          this.label9.Name = "label9";
          this.label9.Size = new System.Drawing.Size(29, 13);
          this.label9.TabIndex = 0;
@@ -238,7 +240,7 @@
          // 
          this.label10.Anchor = System.Windows.Forms.AnchorStyles.Left;
          this.label10.AutoSize = true;
-         this.label10.Location = new System.Drawing.Point(3, 243);
+         this.label10.Location = new System.Drawing.Point(3, 271);
          this.label10.Name = "label10";
          this.label10.Size = new System.Drawing.Size(67, 13);
          this.label10.TabIndex = 0;
@@ -248,7 +250,7 @@
          // 
          this.label11.Anchor = System.Windows.Forms.AnchorStyles.Left;
          this.label11.AutoSize = true;
-         this.label11.Location = new System.Drawing.Point(3, 271);
+         this.label11.Location = new System.Drawing.Point(3, 166);
          this.label11.Name = "label11";
          this.label11.Size = new System.Drawing.Size(41, 13);
          this.label11.TabIndex = 0;
@@ -256,6 +258,7 @@
          // 
          // textBoxKode
          // 
+         this.textBoxKode.Anchor = System.Windows.Forms.AnchorStyles.Left;
          this.textBoxKode.BeforeTouchSize = new System.Drawing.Size(150, 20);
          this.textBoxKode.Location = new System.Drawing.Point(76, 84);
          this.textBoxKode.MaxLength = 100;
@@ -267,6 +270,7 @@
          // 
          // textBoxNama
          // 
+         this.textBoxNama.Anchor = System.Windows.Forms.AnchorStyles.Left;
          this.textBoxNama.BeforeTouchSize = new System.Drawing.Size(150, 20);
          this.textBoxNama.Location = new System.Drawing.Point(76, 110);
          this.textBoxNama.MaxLength = 100;
@@ -278,10 +282,11 @@
          // 
          // textBoxHpp
          // 
+         this.textBoxHpp.Anchor = System.Windows.Forms.AnchorStyles.Left;
          this.textBoxHpp.BackGroundColor = System.Drawing.SystemColors.Window;
          this.textBoxHpp.BeforeTouchSize = new System.Drawing.Size(150, 20);
          this.textBoxHpp.IntegerValue = ((long)(0));
-         this.textBoxHpp.Location = new System.Drawing.Point(76, 136);
+         this.textBoxHpp.Location = new System.Drawing.Point(76, 189);
          this.textBoxHpp.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
          this.textBoxHpp.MinValue = ((long)(0));
          this.textBoxHpp.Name = "textBoxHpp";
@@ -294,10 +299,11 @@
          // 
          // textBoxHargaJual
          // 
+         this.textBoxHargaJual.Anchor = System.Windows.Forms.AnchorStyles.Left;
          this.textBoxHargaJual.BackGroundColor = System.Drawing.SystemColors.Window;
          this.textBoxHargaJual.BeforeTouchSize = new System.Drawing.Size(150, 20);
          this.textBoxHargaJual.IntegerValue = ((long)(0));
-         this.textBoxHargaJual.Location = new System.Drawing.Point(76, 162);
+         this.textBoxHargaJual.Location = new System.Drawing.Point(76, 215);
          this.textBoxHargaJual.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
          this.textBoxHargaJual.MinValue = ((long)(0));
          this.textBoxHargaJual.Name = "textBoxHargaJual";
@@ -310,10 +316,11 @@
          // 
          // textBoxHargaLama
          // 
+         this.textBoxHargaLama.Anchor = System.Windows.Forms.AnchorStyles.Left;
          this.textBoxHargaLama.BackGroundColor = System.Drawing.SystemColors.Window;
          this.textBoxHargaLama.BeforeTouchSize = new System.Drawing.Size(150, 20);
          this.textBoxHargaLama.IntegerValue = ((long)(0));
-         this.textBoxHargaLama.Location = new System.Drawing.Point(76, 188);
+         this.textBoxHargaLama.Location = new System.Drawing.Point(76, 241);
          this.textBoxHargaLama.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
          this.textBoxHargaLama.MinValue = ((long)(0));
          this.textBoxHargaLama.Name = "textBoxHargaLama";
@@ -326,10 +333,11 @@
          // 
          // textBoxStok
          // 
+         this.textBoxStok.Anchor = System.Windows.Forms.AnchorStyles.Left;
          this.textBoxStok.BackGroundColor = System.Drawing.SystemColors.Window;
          this.textBoxStok.BeforeTouchSize = new System.Drawing.Size(150, 20);
          this.textBoxStok.IntegerValue = ((long)(0));
-         this.textBoxStok.Location = new System.Drawing.Point(76, 214);
+         this.textBoxStok.Location = new System.Drawing.Point(76, 136);
          this.textBoxStok.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
          this.textBoxStok.MinValue = ((long)(0));
          this.textBoxStok.Name = "textBoxStok";
@@ -342,10 +350,11 @@
          // 
          // textBoxMinStok
          // 
+         this.textBoxMinStok.Anchor = System.Windows.Forms.AnchorStyles.Left;
          this.textBoxMinStok.BackGroundColor = System.Drawing.SystemColors.Window;
          this.textBoxMinStok.BeforeTouchSize = new System.Drawing.Size(150, 20);
          this.textBoxMinStok.IntegerValue = ((long)(0));
-         this.textBoxMinStok.Location = new System.Drawing.Point(76, 240);
+         this.textBoxMinStok.Location = new System.Drawing.Point(76, 267);
          this.textBoxMinStok.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
          this.textBoxMinStok.MinValue = ((long)(0));
          this.textBoxMinStok.Name = "textBoxMinStok";
@@ -414,12 +423,14 @@
          // comboBoxSubTipe
          // 
          this.comboBoxSubTipe.Anchor = System.Windows.Forms.AnchorStyles.Left;
+         this.comboBoxSubTipe.DisplayMember = "Value";
          this.comboBoxSubTipe.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
          this.comboBoxSubTipe.FormattingEnabled = true;
          this.comboBoxSubTipe.Location = new System.Drawing.Point(76, 30);
          this.comboBoxSubTipe.Name = "comboBoxSubTipe";
          this.comboBoxSubTipe.Size = new System.Drawing.Size(250, 21);
          this.comboBoxSubTipe.TabIndex = 11;
+         this.comboBoxSubTipe.ValueMember = "Key";
          // 
          // comboBoxTipe
          // 
@@ -427,19 +438,6 @@
          this.comboBoxTipe.DisplayMember = "Value";
          this.comboBoxTipe.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
          this.comboBoxTipe.FormattingEnabled = true;
-         this.comboBoxTipe.Items.AddRange(new object[] {
-            ((object)(resources.GetObject("comboBoxTipe.Items"))),
-            ((object)(resources.GetObject("comboBoxTipe.Items1"))),
-            ((object)(resources.GetObject("comboBoxTipe.Items2"))),
-            ((object)(resources.GetObject("comboBoxTipe.Items3"))),
-            ((object)(resources.GetObject("comboBoxTipe.Items4"))),
-            ((object)(resources.GetObject("comboBoxTipe.Items5"))),
-            ((object)(resources.GetObject("comboBoxTipe.Items6"))),
-            ((object)(resources.GetObject("comboBoxTipe.Items7"))),
-            ((object)(resources.GetObject("comboBoxTipe.Items8"))),
-            ((object)(resources.GetObject("comboBoxTipe.Items9"))),
-            ((object)(resources.GetObject("comboBoxTipe.Items10"))),
-            ((object)(resources.GetObject("comboBoxTipe.Items11")))});
          this.comboBoxTipe.Location = new System.Drawing.Point(76, 3);
          this.comboBoxTipe.Name = "comboBoxTipe";
          this.comboBoxTipe.Size = new System.Drawing.Size(250, 21);
@@ -452,17 +450,6 @@
          this.comboBoxSupplier.DisplayMember = "Value";
          this.comboBoxSupplier.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
          this.comboBoxSupplier.FormattingEnabled = true;
-         this.comboBoxSupplier.Items.AddRange(new object[] {
-            ((object)(resources.GetObject("comboBoxSupplier.Items"))),
-            ((object)(resources.GetObject("comboBoxSupplier.Items1"))),
-            ((object)(resources.GetObject("comboBoxSupplier.Items2"))),
-            ((object)(resources.GetObject("comboBoxSupplier.Items3"))),
-            ((object)(resources.GetObject("comboBoxSupplier.Items4"))),
-            ((object)(resources.GetObject("comboBoxSupplier.Items5"))),
-            ((object)(resources.GetObject("comboBoxSupplier.Items6"))),
-            ((object)(resources.GetObject("comboBoxSupplier.Items7"))),
-            ((object)(resources.GetObject("comboBoxSupplier.Items8"))),
-            ((object)(resources.GetObject("comboBoxSupplier.Items9")))});
          this.comboBoxSupplier.Location = new System.Drawing.Point(76, 57);
          this.comboBoxSupplier.Name = "comboBoxSupplier";
          this.comboBoxSupplier.Size = new System.Drawing.Size(250, 21);
@@ -474,16 +461,27 @@
          this.comboBoxSatuan.Anchor = System.Windows.Forms.AnchorStyles.Left;
          this.comboBoxSatuan.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
          this.comboBoxSatuan.FormattingEnabled = true;
-         this.comboBoxSatuan.Location = new System.Drawing.Point(76, 267);
+         this.comboBoxSatuan.Location = new System.Drawing.Point(76, 162);
          this.comboBoxSatuan.Name = "comboBoxSatuan";
          this.comboBoxSatuan.Size = new System.Drawing.Size(150, 21);
          this.comboBoxSatuan.TabIndex = 14;
+         // 
+         // label17
+         // 
+         this.label17.Anchor = System.Windows.Forms.AnchorStyles.Left;
+         this.label17.AutoSize = true;
+         this.label17.ForeColor = System.Drawing.Color.Red;
+         this.label17.Location = new System.Drawing.Point(332, 166);
+         this.label17.Name = "label17";
+         this.label17.Size = new System.Drawing.Size(11, 13);
+         this.label17.TabIndex = 0;
+         this.label17.Text = "*";
          // 
          // BarangEntryView
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-         this.ClientSize = new System.Drawing.Size(389, 428);
+         this.ClientSize = new System.Drawing.Size(388, 427);
          this.Controls.Add(this.groupBox1);
          this.Name = "BarangEntryView";
          this.Text = "Barang";
@@ -536,5 +534,6 @@
       private ModelControls.ComboBoxTipe comboBoxTipe;
       private ModelControls.ComboBoxSupplier comboBoxSupplier;
       private ModelControls.ComboBoxSatuan comboBoxSatuan;
+      private System.Windows.Forms.Label label17;
    }
 }

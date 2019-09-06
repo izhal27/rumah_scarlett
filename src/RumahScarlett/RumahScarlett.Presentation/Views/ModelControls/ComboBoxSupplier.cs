@@ -17,10 +17,13 @@ namespace RumahScarlett.Presentation.Views.ModelControls
       private ISupplierServices _services;
       private List<ISupplierModel> _listSuppliers;
 
-      protected override void OnCreateControl()
+      public ComboBoxSupplier()
       {
-         LoadDataSource();
-         DropDownStyle = ComboBoxStyle.DropDownList;
+         if (!DesignMode)
+         {
+            LoadDataSource();
+            DropDownStyle = ComboBoxStyle.DropDownList;
+         }
       }
       
       private void LoadDataSource()

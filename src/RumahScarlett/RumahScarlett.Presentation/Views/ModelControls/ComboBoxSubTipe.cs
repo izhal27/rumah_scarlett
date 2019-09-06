@@ -17,10 +17,13 @@ namespace RumahScarlett.Presentation.Views.ModelControls
       private ISubTipeServices _services;
       private List<ISubTipeModel> _listSubTipes;
 
-      protected override void OnCreateControl()
+      public ComboBoxSubTipe()
       {
-         LoadDataSource();
-         DropDownStyle = ComboBoxStyle.DropDownList;
+         if (!DesignMode)
+         {
+            LoadDataSource();
+            DropDownStyle = ComboBoxStyle.DropDownList;
+         }
       }
       
       private void LoadDataSource()
