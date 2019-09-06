@@ -12,6 +12,6 @@ namespace RumahScarlett.Presentation.Views.PenyesuaianStok
    {
       Label LabelTotalQty { get; }
       Label LabelTotalHpp { get; }
-      event EventHandler<FilterEventArgs> OnTampilkanClick;
+      event EventHandler<FilterDateEventArgs> OnTampilkanClick;
    }
 }

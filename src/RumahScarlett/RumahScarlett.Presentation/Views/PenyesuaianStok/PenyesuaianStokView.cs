@@ -21,7 +21,7 @@ namespace RumahScarlett.Presentation.Views.PenyesuaianStok
       public event EventHandler OnRefreshData;
       public event EventHandler OnPrintData;
       public event EventHandler<CellClickEventArgs> OnDataGridCellDoubleClick;
-      public event EventHandler<FilterEventArgs> OnTampilkanClick;
+      public event EventHandler<FilterDateEventArgs> OnTampilkanClick;
 
       public ListDataGrid ListDataGrid
       {
@@ -90,7 +90,7 @@ namespace RumahScarlett.Presentation.Views.PenyesuaianStok
          Close();
       }
 
-      private void DateTimePickerFilter_OnTampilkanClick(object sender, FilterEventArgs e)
+      private void DateTimePickerFilter_OnTampilkanClick(object sender, FilterDateEventArgs e)
       {
          OnTampilkanClick?.Invoke(sender, e);
       }

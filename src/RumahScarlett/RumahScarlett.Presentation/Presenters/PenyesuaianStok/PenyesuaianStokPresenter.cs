@@ -183,7 +183,7 @@ namespace RumahScarlett.Presentation.Presenters.PenyesuaianStok
          _view_OnUpdateData(sender, e);
       }
 
-      private void _view_OnTampilkanClick(object sender, FilterEventArgs e)
+      private void _view_OnTampilkanClick(object sender, FilterDateEventArgs e)
       {
          switch (e.TampilkanStatus)
          {

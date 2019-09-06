@@ -14,7 +14,7 @@ namespace RumahScarlett.Presentation.Views.CommonControls
    public partial class DateTimePickerFilter : UserControl
    {
       public TampilkanStatus TampilkanStatus { get; private set; }
-      public event EventHandler<FilterEventArgs> OnTampilkanClick;
+      public event EventHandler<FilterDateEventArgs> OnTampilkanClick;
 
       public DateTimePickerFilter()
       {
@@ -40,7 +40,7 @@ namespace RumahScarlett.Presentation.Views.CommonControls
 
       private void buttonTampilkan_Click(object sender, EventArgs e)
       {
-         var filterEventArgs = new FilterEventArgs();
+         var filterEventArgs = new FilterDateEventArgs();
 
          if (radioButtonSemua.Checked)
          {
@@ -79,7 +79,7 @@ namespace RumahScarlett.Presentation.Views.CommonControls
       Periode,
    }
 
-   public class FilterEventArgs : EventArgs
+   public class FilterDateEventArgs : EventArgs
    {
       public TampilkanStatus TampilkanStatus { get; set; }
       public DateTime Tanggal { get; set; }
