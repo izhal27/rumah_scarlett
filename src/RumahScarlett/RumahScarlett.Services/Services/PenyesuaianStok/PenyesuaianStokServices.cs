@@ -40,17 +40,7 @@ namespace RumahScarlett.Services.Services.PenyesuaianStok
       {
          return _repo.GetAll();
       }
-
-      public IEnumerable<IPenyesuaianStokModel> GetByDate(object date)
-      {
-         return _repo.GetByDate(date);
-      }
-
-      public IEnumerable<IPenyesuaianStokModel> GetByDate(object startDate, object endDate)
-      {
-         return _repo.GetByDate(startDate, endDate);
-      }
-
+      
       public IPenyesuaianStokModel GetById(object id)
       {
          return _repo.GetById(id);

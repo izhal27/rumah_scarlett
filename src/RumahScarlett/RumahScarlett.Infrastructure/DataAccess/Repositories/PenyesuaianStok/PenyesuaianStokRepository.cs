@@ -3,6 +3,7 @@ using Dapper.Contrib.Extensions;
 using RumahScarlett.CommonComponents;
 using RumahScarlett.Domain.Models.Barang;
 using RumahScarlett.Domain.Models.PenyesuaianStok;
+using RumahScarlett.Domain.Models.Satuan;
 using RumahScarlett.Services.Services.PenyesuaianStok;
 using System;
 using System.Collections.Generic;
@@ -145,26 +146,33 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.PenyesuaianStok
                if (listObj != null && listObj.ToList().Count > 0)
                {
                   listObj = listObj.Map(ps => ps.Barang = context.Conn.Get<BarangModel>(ps.barang_id));
+                  listObj = listObj.Map(ps => ps.Satuan = context.Conn.Get<SatuanModel>(ps.satuan_id));
                }
 
                return listObj;
             }, dataAccessStatus);
          }
       }
-
-      public IEnumerable<IPenyesuaianStokModel> GetByDate(object date)
-      {
-         return GetAll().Where(ps => ps.tanggal.Date == ((DateTime)date).Date);
-      }
-
-      public IEnumerable<IPenyesuaianStokModel> GetByDate(object startDate, object endDate)
-      {
-         return GetAll().Where(ps => ps.tanggal.Date >= ((DateTime)startDate).Date && ps.tanggal.Date <= ((DateTime)endDate).Date);
-      }
-
+      
       public IPenyesuaianStokModel GetById(object id)
       {
-         throw new NotImplementedException();
+         var dataAccessStatus = new DataAccessStatus();
+
+         using (var context = new DbContext())
+         {
+            return GetBy(() =>
+            {
+               var model = context.Conn.Get<PenyesuaianStokModel>(id);
+
+               if (model != null)
+               {
+                  model.Barang = context.Conn.Get<BarangModel>(model.barang_id);
+                  model.Satuan = context.Conn.Get<SatuanModel>(model.satuan_id);
+               }
+
+               return model;
+            }, dataAccessStatus, () => CheckModelExist(context, id));
+         }
       }
 
       private bool CheckModelExist(DbContext context, object id)

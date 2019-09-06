@@ -155,23 +155,37 @@ namespace RumahScarlett.Services.UnitTests.PenyesuaianStok
       }
 
       [Fact]
-      public void ShouldReturnListOfModelsDateNow()
+      public void ShouldReturnListOfModels()
       {
-         var listModels = _services.GetByDate(DateTime.Now).ToList();
+         var listModels = _services.GetAll().ToList();
 
          Assert.NotEmpty(listModels);
 
          TestsHelper.WriteListModels(_testOutputHelper, listModels);
       }
-
+      
       [Fact]
-      public void ShouldReturnListOfModelsBetweenDate()
+      public void ShouldReturnModelMatchingId()
       {
-         var listModels = _services.GetByDate(DateTime.Now.AddDays(-3), DateTime.Now.AddDays(3)).ToList();
+         PenyesuaianStokModel model = null;
+         var idToGet = 1;
 
-         Assert.NotEmpty(listModels);
+         try
+         {
+            model = (PenyesuaianStokModel)_services.GetById(idToGet);
+         }
+         catch (DataAccessException ex)
+         {
+            _testOutputHelper.WriteLine(ex.DataAccessStatusInfo.GetFormatedValues());
+         }
 
-         TestsHelper.WriteListModels(_testOutputHelper, listModels);
+         Assert.True(model != null);
+         Assert.True(model.id == idToGet);
+
+         if (model != null)
+         {
+            TestsHelper.WriteModel(_testOutputHelper, model);
+         }
       }
    }
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RumahScarlett.Services.Services.PenyesuaianStok
 {
-   public interface IPenyesuaianStokRepository : IBaseRepositoryGetByDate<IPenyesuaianStokModel>
+   public interface IPenyesuaianStokRepository : IBaseRepository<IPenyesuaianStokModel>
    {
    }
 }
