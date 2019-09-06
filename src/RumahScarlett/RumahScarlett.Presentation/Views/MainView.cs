@@ -24,18 +24,18 @@ namespace RumahScarlett.Presentation.Views
    {
       private DockPanel _dockPanel;
 
-      public event EventHandler OnTipeViewOpen;
-      public event EventHandler OnSubTipeViewOpen;
-      public event EventHandler OnSupplierViewOpen;
-      public event EventHandler OnSatuanViewOpen;
-      public event EventHandler OnBarangViewOpen;
-      public event EventHandler OnPelangganViewOpen;
+      public event EventHandler<MainViewEventArgs> OnTipeViewOpen;
+      public event EventHandler<MainViewEventArgs> OnSubTipeViewOpen;
+      public event EventHandler<MainViewEventArgs> OnSupplierViewOpen;
+      public event EventHandler<MainViewEventArgs> OnSatuanViewOpen;
+      public event EventHandler<MainViewEventArgs> OnBarangViewOpen;
+      public event EventHandler<MainViewEventArgs> OnPelangganViewOpen;
       public event EventHandler OnKasAwalViewOpen;
-      public event EventHandler OnHutangOperasionalViewOpen;
-      public event EventHandler OnPenjualanViewOpen;
-      public event EventHandler OnPembelianViewOpen;
-      public event EventHandler OnPengeluaranViewOpen;
-      public event EventHandler OnPenyesuaianStokViewOpen;
+      public event EventHandler<MainViewEventArgs> OnHutangOperasionalViewOpen;
+      public event EventHandler<MainViewEventArgs> OnPenjualanViewOpen;
+      public event EventHandler<MainViewEventArgs> OnPembelianViewOpen;
+      public event EventHandler<MainViewEventArgs> OnPengeluaranViewOpen;
+      public event EventHandler<MainViewEventArgs> OnPenyesuaianStokViewOpen;
 
       public MainView()
       {
@@ -56,22 +56,22 @@ namespace RumahScarlett.Presentation.Views
       
       private void tipeToolStripMenuItem_Click(object sender, EventArgs e)
       {
-         OnTipeViewOpen?.Invoke(sender, new EventArgs<DockPanel>(_dockPanel));
+         OnTipeViewOpen?.Invoke(sender, new MainViewEventArgs(_dockPanel));
       }
       
       private void subTipeToolStripMenuItem_Click(object sender, EventArgs e)
       {
-         OnSubTipeViewOpen?.Invoke(sender, new EventArgs<DockPanel>(_dockPanel));
+         OnSubTipeViewOpen?.Invoke(sender, new MainViewEventArgs(_dockPanel));
       }
 
       private void supplierToolStripMenuItem_Click(object sender, EventArgs e)
       {
-         OnSupplierViewOpen?.Invoke(sender, new EventArgs<DockPanel>(_dockPanel));
+         OnSupplierViewOpen?.Invoke(sender, new MainViewEventArgs(_dockPanel));
       }
       
       private void barangToolStripMenuItem_Click(object sender, EventArgs e)
       {
-         OnBarangViewOpen?.Invoke(sender, new EventArgs<DockPanel>(_dockPanel));
+         OnBarangViewOpen?.Invoke(sender, new MainViewEventArgs(_dockPanel));
       }
 
       private void toolStripButtonBarang_Click(object sender, EventArgs e)
@@ -81,12 +81,12 @@ namespace RumahScarlett.Presentation.Views
 
       private void satuanToolStripMenuItem_Click(object sender, EventArgs e)
       {
-         OnSatuanViewOpen?.Invoke(sender, new EventArgs<DockPanel>(_dockPanel));
+         OnSatuanViewOpen?.Invoke(sender, new MainViewEventArgs(_dockPanel));
       }
 
       private void pelangganToolStripMenuItem_Click(object sender, EventArgs e)
       {
-         OnPelangganViewOpen?.Invoke(sender, new EventArgs<DockPanel>(_dockPanel));
+         OnPelangganViewOpen?.Invoke(sender, new MainViewEventArgs(_dockPanel));
       }
 
       private void kasAwalToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -96,7 +96,7 @@ namespace RumahScarlett.Presentation.Views
 
       private void hutangOperasionalToolStripMenuItem_Click(object sender, EventArgs e)
       {
-         OnHutangOperasionalViewOpen?.Invoke(sender, new EventArgs<DockPanel>(_dockPanel));
+         OnHutangOperasionalViewOpen?.Invoke(sender, new MainViewEventArgs(_dockPanel));
       }
 
       private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -106,7 +106,7 @@ namespace RumahScarlett.Presentation.Views
 
       private void penjualanToolStripMenuItem_Click(object sender, EventArgs e)
       {
-         OnPenjualanViewOpen?.Invoke(sender, new EventArgs<DockPanel>(_dockPanel));
+         OnPenjualanViewOpen?.Invoke(sender, new MainViewEventArgs(_dockPanel));
       }
 
       private void toolStripButtonPenjualan_Click(object sender, EventArgs e)
@@ -116,7 +116,7 @@ namespace RumahScarlett.Presentation.Views
 
       private void pembelianToolStripMenuItem_Click(object sender, EventArgs e)
       {
-         OnPembelianViewOpen?.Invoke(sender, new EventArgs<DockPanel>(_dockPanel));
+         OnPembelianViewOpen?.Invoke(sender, new MainViewEventArgs(_dockPanel));
       }
       
       private void toolStripButtonPembelian_Click(object sender, EventArgs e)
@@ -126,12 +126,22 @@ namespace RumahScarlett.Presentation.Views
 
       private void pengeluaranToolStripMenuItem_Click(object sender, EventArgs e)
       {
-         OnPengeluaranViewOpen?.Invoke(sender, new EventArgs<DockPanel>(_dockPanel));
+         OnPengeluaranViewOpen?.Invoke(sender, new MainViewEventArgs(_dockPanel));
       }
 
       private void penyesuaianStokToolStripMenuItem_Click(object sender, EventArgs e)
       {
-         OnPenyesuaianStokViewOpen?.Invoke(sender, new EventArgs<DockPanel>(_dockPanel));
+         OnPenyesuaianStokViewOpen?.Invoke(sender, new MainViewEventArgs(_dockPanel));
+      }
+   }
+
+   public class MainViewEventArgs : EventArgs
+   {
+      public DockPanel DockPanel { get; private set; }
+
+      public MainViewEventArgs(DockPanel dockPanel)
+      {
+         DockPanel = dockPanel;
       }
    }
 }

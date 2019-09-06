@@ -49,48 +49,48 @@ namespace RumahScarlett.Presentation.Presenters
          _view.OnPenyesuaianStokViewOpen += _view_OnPenyesuaianStokViewOpen;
       }
 
-      private void _view_OnTipeViewOpen(object sender, EventArgs e)
+      private void _view_OnTipeViewOpen(object sender, MainViewEventArgs e)
       {
          var view = (DockContent)new TipePresenter().GetView;
          ShowChildForm(view, e);
       }
 
-      private void _view_OnSubTipeViewOpen(object sender, EventArgs e)
+      private void _view_OnSubTipeViewOpen(object sender, MainViewEventArgs e)
       {
          var view = (DockContent)new SubTipePresenter().GetView;
          ShowChildForm(view, e);
       }
 
-      private void _view_OnSupplierViewOpen(object sender, EventArgs e)
+      private void _view_OnSupplierViewOpen(object sender, MainViewEventArgs e)
       {
          var view = (DockContent)new SupplierPresenter().GetView;
          ShowChildForm(view, e);
       }
 
-      private void _view_OnBarangViewOpen(object sender, EventArgs e)
+      private void _view_OnBarangViewOpen(object sender, MainViewEventArgs e)
       {
          var view = (DockContent)new BarangPresenter().GetView;
          ShowChildForm(view, e);
       }
 
-      private void _view_OnSatuanViewOpen(object sender, EventArgs e)
+      private void _view_OnSatuanViewOpen(object sender, MainViewEventArgs e)
       {
          var view = (DockContent)new SatuanPresenter().GetView;
          ShowChildForm(view, e);
       }
 
-      private void _view_OnPelangganViewOpen(object sender, EventArgs e)
+      private void _view_OnPelangganViewOpen(object sender, MainViewEventArgs e)
       {
          var view = (DockContent)new PelangganPresenter().GetView;
          ShowChildForm(view, e);
       }
 
-      private void _view_OnKasAwalViewOpen(object sender, EventArgs e)
+      private void _view_OnKasAwalViewOpen(object sender,EventArgs e)
       {
          new KasAwalPresenter().GetView.ShowView();
       }
 
-      private void _view_OnHutangOperasionalViewOpen(object sender, EventArgs e)
+      private void _view_OnHutangOperasionalViewOpen(object sender, MainViewEventArgs e)
       {
          var view = (DockContent)new HutangOperasionalPresenter().GetView;
          ShowChildForm(view, e);
@@ -103,19 +103,19 @@ namespace RumahScarlett.Presentation.Presenters
 
 
 
-      private void _view_OnPembelianViewOpen(object sender, EventArgs e)
+      private void _view_OnPembelianViewOpen(object sender, MainViewEventArgs e)
       {
          var view = (DockContent)new PembelianPresenter().GetView;
          ShowChildForm(view, e);
       }
       
-      private void _view_OnPengeluaranViewOpen(object sender, EventArgs e)
+      private void _view_OnPengeluaranViewOpen(object sender, MainViewEventArgs e)
       {
          var view = (DockContent)new PengeluaranPresenter().GetView;
          ShowChildForm(view, e);
       }
 
-      private void _view_OnPenyesuaianStokViewOpen(object sender, EventArgs e)
+      private void _view_OnPenyesuaianStokViewOpen(object sender, MainViewEventArgs e)
       {
          var view = (DockContent)new PenyesuaianStokPresenter().GetView;
          ShowChildForm(view, e);
@@ -130,7 +130,7 @@ namespace RumahScarlett.Presentation.Presenters
       /// Method untuk menampilkan Form child
       /// </summary>
       /// <param name="form">Form child</param>
-      private void ShowChildForm(DockContent form, EventArgs e)
+      private void ShowChildForm(DockContent form, MainViewEventArgs e)
       {
          using (new WaitCursorHandler())
          {
@@ -142,7 +142,7 @@ namespace RumahScarlett.Presentation.Presenters
             if (!formList.Any(frm => frm.Name == form.Name))
             {
                form.Owner = ((Form)_view);
-               form.Show(((EventArgs<DockPanel>)e).Value, DockState.Document);
+               form.Show(e.DockPanel, DockState.Document);
             }
             else
             {
