@@ -97,7 +97,7 @@ namespace RumahScarlett.Presentation.Presenters.Pengeluaran
          {
             try
             {
-               var model = (PengeluaranModel)((EventArgs<IPengeluaranModel>)e).Value;
+               var model = ((ModelEventArgs<PengeluaranModel>)e).Value;
                var view = ((PengeluaranEntryView)sender);
 
                if (model.id == default(uint))

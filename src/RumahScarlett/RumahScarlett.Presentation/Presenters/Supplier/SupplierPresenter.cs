@@ -95,7 +95,7 @@ namespace RumahScarlett.Presentation.Presenters.Supplier
          {
             try
             {
-               var model = (SupplierModel)((EventArgs<ISupplierModel>)e).Value;
+               var model = ((ModelEventArgs<SupplierModel>)e).Value;
                var view = ((SupplierEntryView)sender);
 
                if (model.id == default(uint))

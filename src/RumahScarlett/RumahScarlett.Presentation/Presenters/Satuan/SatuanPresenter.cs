@@ -95,7 +95,7 @@ namespace RumahScarlett.Presentation.Presenters.Satuan
          {
             try
             {
-               var model = (SatuanModel)((EventArgs<ISatuanModel>)e).Value;
+               var model = ((ModelEventArgs<SatuanModel>)e).Value;
                var view = ((SatuanEntryView)sender);
 
                if (model.id == default(uint))

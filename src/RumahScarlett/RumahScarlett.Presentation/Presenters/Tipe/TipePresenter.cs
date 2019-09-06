@@ -97,7 +97,7 @@ namespace RumahScarlett.Presentation.Presenters.Tipe
          {
             try
             {
-               var model = (TipeModel)((EventArgs<ITipeModel>)e).Value;
+               var model = ((ModelEventArgs<TipeModel>)e).Value;
                var view = ((TipeEntryView)sender);
 
                if (model.id == default(uint))

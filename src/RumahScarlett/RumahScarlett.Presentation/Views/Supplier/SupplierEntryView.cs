@@ -56,17 +56,19 @@ namespace RumahScarlett.Presentation.Views.Supplier
             contact_person = textBoxContactPerson.Text
          };
 
+         var modelArgs = new ModelEventArgs<SupplierModel>(model);
+
          if (_isNewData)
          {
             if (Messages.ConfirmSave(_typeName))
             {
-               OnSaveData?.Invoke(this, new EventArgs<ISupplierModel>(model));
+               OnSaveData?.Invoke(this, modelArgs);
             }
          }
          else if (Messages.ConfirmUpdate(_typeName))
          {
             model.id = _model.id;
-            OnSaveData?.Invoke(this, new EventArgs<ISupplierModel>(model));
+            OnSaveData?.Invoke(this, modelArgs);
          }
       }
    }

@@ -53,23 +53,25 @@ namespace RumahScarlett.Presentation.Views.HutangOperasional
       {
          var model = new HutangOperasionalModel
          {
-            tanggal = dateTimePickerTanggal.Value,
+            tanggal = dateTimePickerTanggal.Value.Date,
             jumlah = decimal.Parse(textBoxDigitJumlah.Text, NumberStyles.Number),
             keterangan = textBoxKeterangan.Text,
             status_hutang = comboBoxStatusHutang.SelectedIndex == 0 ? false : true
          };
 
+         var modelArgs = new ModelEventArgs<HutangOperasionalModel>(model);
+
          if (_isNewData)
          {
             if (Messages.ConfirmSave(_typeName))
             {
-               OnSaveData?.Invoke(this, new EventArgs<IHutangOperasionalModel>(model));
+               OnSaveData?.Invoke(this, modelArgs);
             }
          }
          else if (Messages.ConfirmUpdate(_typeName))
          {
             model.id = _model.id;
-            OnSaveData?.Invoke(this, new EventArgs<IHutangOperasionalModel>(model));
+            OnSaveData?.Invoke(this, modelArgs);
          }
       }
    }

@@ -50,18 +50,20 @@ namespace RumahScarlett.Presentation.Views.Pengeluaran
             keterangan = textBoxKeterangan.Text
          };
 
+         var modelArgs = new ModelEventArgs<PengeluaranModel>(model);
+
          if (_isNewData)
          {
             if (Messages.ConfirmSave(_typeName))
             {
-               OnSaveData?.Invoke(this, new EventArgs<IPengeluaranModel>(model));
+               OnSaveData?.Invoke(this, modelArgs);
             }
          }
          else if (Messages.ConfirmUpdate(_typeName))
          {
             model.id = _model.id;
             model.tanggal = _model.tanggal;
-            OnSaveData?.Invoke(this, new EventArgs<IPengeluaranModel>(model));
+            OnSaveData?.Invoke(this, modelArgs);
          }
       }
    }

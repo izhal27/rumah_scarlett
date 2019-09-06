@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace RumahScarlett.CommonComponents
 {
-   public class EventArgs<T> : EventArgs
+   public class ModelEventArgs<T> : EventArgs
    {
       public T Value { get; set; }
 
-      public EventArgs(T value)
+      public ModelEventArgs(T value)
       {
          Value = value;
       }

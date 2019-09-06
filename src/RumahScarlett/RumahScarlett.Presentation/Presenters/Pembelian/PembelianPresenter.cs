@@ -99,7 +99,7 @@ namespace RumahScarlett.Presentation.Presenters.Pembelian
          var rowIndex = listDataGrid.CurrentCell.RowIndex;
 
          var view = (CariBarangPembelianView)sender;
-         var model = ((EventArgs<BarangModel>)e).Value;
+         var model = ((ModelEventArgs<BarangModel>)e).Value;
 
          if (model != null)
          {

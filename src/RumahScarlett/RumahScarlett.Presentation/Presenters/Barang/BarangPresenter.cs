@@ -148,7 +148,7 @@ namespace RumahScarlett.Presentation.Presenters.Barang
          {
             try
             {
-               var model = (BarangModel)((EventArgs<IBarangModel>)e).Value;
+               var model = ((ModelEventArgs<BarangModel>)e).Value;
                var view = ((BarangEntryView)sender);
 
                if (model.id == default(uint))

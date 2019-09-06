@@ -73,17 +73,19 @@ namespace RumahScarlett.Presentation.Views.Barang
             satuan_id = comboBoxSatuan.SelectedValue != null ? (uint)comboBoxSatuan.SelectedValue : default(uint)
          };
 
+         var modelArgs = new ModelEventArgs<BarangModel>(model);
+
          if (_isNewData)
          {
             if (Messages.ConfirmSave(_typeName))
             {
-               OnSaveData?.Invoke(this, new EventArgs<IBarangModel>(model));
+               OnSaveData?.Invoke(this, modelArgs);
             }
          }
          else if (Messages.ConfirmUpdate(_typeName))
          {
             model.id = _model.id;
-            OnSaveData?.Invoke(this, new EventArgs<IBarangModel>(model));
+            OnSaveData?.Invoke(this, modelArgs);
          }
       }
    }

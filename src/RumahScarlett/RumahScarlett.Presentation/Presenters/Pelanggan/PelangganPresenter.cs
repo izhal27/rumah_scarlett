@@ -75,7 +75,7 @@ namespace RumahScarlett.Presentation.Presenters.Pelanggan
             }
             else
             {
-               listDataGrid = ((EventArgs<ListDataGrid>)e).Value;
+               listDataGrid = ((ModelEventArgs<ListDataGrid>)e).Value;
             }
 
             if (listDataGrid != null && listDataGrid.SelectedItem != null)
@@ -95,7 +95,7 @@ namespace RumahScarlett.Presentation.Presenters.Pelanggan
          {
             try
             {
-               var model = (PelangganModel)((EventArgs<IPelangganModel>)e).Value;
+               var model = ((ModelEventArgs<PelangganModel>)e).Value;
                var view = ((PelangganEntryView)sender);
 
                if (model.id == default(uint))

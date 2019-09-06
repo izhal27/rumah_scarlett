@@ -116,7 +116,7 @@ namespace RumahScarlett.Presentation.Presenters.HutangOperasional
          {
             try
             {
-               var model = (HutangOperasionalModel)((EventArgs<IHutangOperasionalModel>)e).Value;
+               var model = ((ModelEventArgs<HutangOperasionalModel>)e).Value;
                var view = ((HutangOperasionalEntryView)sender);
 
                if (model.id == default(uint))
