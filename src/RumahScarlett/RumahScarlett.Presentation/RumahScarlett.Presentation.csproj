@@ -121,6 +121,8 @@
     <Compile Include="Presenters\Pembelian\PembelianPresenter.cs" />
     <Compile Include="Presenters\Pengeluaran\IPengeluaranPresenter.cs" />
     <Compile Include="Presenters\Pengeluaran\PengeluaranPresenter.cs" />
+    <Compile Include="Presenters\PenyesuaianStok\IPenyesuaianStokPresenter.cs" />
+    <Compile Include="Presenters\PenyesuaianStok\PenyesuaianStokPresenter.cs" />
     <Compile Include="Presenters\Satuan\ISatuanPresenter.cs" />
     <Compile Include="Presenters\Satuan\SatuanPresenter.cs" />
     <Compile Include="Presenters\Supplier\ISupplierPresenter.cs" />
@@ -290,6 +292,13 @@
     <Compile Include="Views\Pengeluaran\PengeluaranView.Designer.cs">
       <DependentUpon>PengeluaranView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\PenyesuaianStok\IPenyesuaianStokView.cs" />
+    <Compile Include="Views\PenyesuaianStok\PenyesuaianStokView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\PenyesuaianStok\PenyesuaianStokView.Designer.cs">
+      <DependentUpon>PenyesuaianStokView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Satuan\ISatuanEntryView.cs" />
     <Compile Include="Views\Satuan\ISatuanView.cs" />
     <Compile Include="Views\Satuan\SatuanEntryView.cs">
@@ -414,6 +423,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Pengeluaran\PengeluaranView.resx">
       <DependentUpon>PengeluaranView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\PenyesuaianStok\PenyesuaianStokView.resx">
+      <DependentUpon>PenyesuaianStokView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Satuan\SatuanEntryView.resx">
       <DependentUpon>SatuanEntryView.cs</DependentUpon>

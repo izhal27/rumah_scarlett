@@ -38,7 +38,7 @@ namespace RumahScarlett.Services.Services.PenyesuaianStok
 
       public IEnumerable<IPenyesuaianStokModel> GetAll()
       {
-         throw new NotImplementedException();
+         return _repo.GetAll();
       }
 
       public IEnumerable<IPenyesuaianStokModel> GetByDate(object date)
@@ -53,7 +53,7 @@ namespace RumahScarlett.Services.Services.PenyesuaianStok
 
       public IPenyesuaianStokModel GetById(object id)
       {
-         throw new NotImplementedException();
+         return _repo.GetById(id);
       }
 
       public void ValidateModel(IPenyesuaianStokModel model)
