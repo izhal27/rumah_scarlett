@@ -20,8 +20,8 @@ namespace RumahScarlett.Presentation.Presenters.HutangOperasional
 {
    public class HutangOperasionalPresenter : IHutangOperasionalPresenter
    {
-      IHutangOperasionalView _view;
-      IHutangOperasionalServices _services;
+      private IHutangOperasionalView _view;
+      private IHutangOperasionalServices _services;
       private List<IHutangOperasionalModel> _listObjs;
       private BindingListView<HutangOperasionalModel> _bindingView;
       private static string _typeName = "Hutang Operasional";
