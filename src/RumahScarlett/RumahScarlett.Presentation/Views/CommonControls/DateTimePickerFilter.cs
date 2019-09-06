@@ -19,11 +19,15 @@ namespace RumahScarlett.Presentation.Views.CommonControls
       public DateTimePickerFilter()
       {
          InitializeComponent();
+
+         dateTimePickerTanggal.Enabled = false;
+         dateTimePickerPeriodeAwal.Enabled = false;
+         dateTimePickerPeriodeAkhir.Enabled = false;
       }
 
       private void radioButtonTanggal_CheckedChanged(object sender, EventArgs e)
       {
-         dateTimePickerPeriodeAkhir.Enabled = ((RadioButton)sender).Checked;
+         dateTimePickerTanggal.Enabled = ((RadioButton)sender).Checked;
       }
 
       private void radioButtonPeriode_CheckedChanged(object sender, EventArgs e)

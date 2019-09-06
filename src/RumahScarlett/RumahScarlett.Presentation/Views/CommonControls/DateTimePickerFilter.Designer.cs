@@ -90,6 +90,7 @@
          // 
          this.radioButtonSemua.Anchor = System.Windows.Forms.AnchorStyles.Left;
          this.radioButtonSemua.AutoSize = true;
+         this.radioButtonSemua.Checked = true;
          this.radioButtonSemua.Location = new System.Drawing.Point(3, 6);
          this.radioButtonSemua.Name = "radioButtonSemua";
          this.radioButtonSemua.Size = new System.Drawing.Size(58, 17);
@@ -106,7 +107,6 @@
          this.radioButtonTanggal.Name = "radioButtonTanggal";
          this.radioButtonTanggal.Size = new System.Drawing.Size(64, 17);
          this.radioButtonTanggal.TabIndex = 0;
-         this.radioButtonTanggal.TabStop = true;
          this.radioButtonTanggal.Text = "Tanggal";
          this.radioButtonTanggal.UseVisualStyleBackColor = true;
          this.radioButtonTanggal.CheckedChanged += new System.EventHandler(this.radioButtonTanggal_CheckedChanged);
@@ -119,7 +119,6 @@
          this.radioButtonPeriode.Name = "radioButtonPeriode";
          this.radioButtonPeriode.Size = new System.Drawing.Size(61, 17);
          this.radioButtonPeriode.TabIndex = 0;
-         this.radioButtonPeriode.TabStop = true;
          this.radioButtonPeriode.Text = "Periode";
          this.radioButtonPeriode.UseVisualStyleBackColor = true;
          this.radioButtonPeriode.CheckedChanged += new System.EventHandler(this.radioButtonPeriode_CheckedChanged);
