@@ -1,4 +1,5 @@
 ﻿using RumahScarlett.Presentation.Views.CommonControls;
+using RumahScarlett.Presentation.Views.ModelControls;
 using Syncfusion.WinForms.DataGrid.Events;
 using System;
 using System.Collections.Generic;
@@ -22,7 +23,7 @@ namespace RumahScarlett.Presentation.Views.Pembelian
       event EventHandler<PreviewKeyDownEventArgs> OnListDataGridPreviewKeyDown;
 
       ListDataGrid ListDataGrid { get; }
-      ComboBox ComboBoxSupplier { get; }
+      ComboBoxSupplier ComboBoxSupplier { get; }
       Label LabelTotalQty { get; }
       Label LabelTotalPembelian { get; }
    }

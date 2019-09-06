@@ -90,18 +90,18 @@ namespace RumahScarlett.Presentation.Presenters.Barang
             }
             else if (_view.RadioButtonTipe.Checked) // Filter by tipe
             {
-               var tipeId = _view.ComboBoxTipe.SelectedValue != null ?
-                           (uint)_view.ComboBoxTipe.SelectedValue : default(uint);
-               var subTipeId = _view.ComboBoxSubTipe.SelectedValue != null ?
-                              (uint)_view.ComboBoxSubTipe.SelectedValue : default(uint);
+               var tipeId = _view.ComboBoxTipe.CombBox.SelectedValue != null ?
+                           (uint)_view.ComboBoxTipe.CombBox.SelectedValue : default(uint);
+               var subTipeId = _view.ComboBoxSubTipe.ComboBox.SelectedValue != null ?
+                              (uint)_view.ComboBoxSubTipe.ComboBox.SelectedValue : default(uint);
 
                var filterBarang = _listObjs.Where(b => b.tipe_id == tipeId && b.sub_tipe_id == subTipeId).ToList();
                _bindingView.DataSource = filterBarang;
             }
             else // Filter by supplier
             {
-               var supplierId = _view.ComboBoxSupplier.SelectedValue != null ?
-                                (uint)_view.ComboBoxSupplier.SelectedValue : default(uint);
+               var supplierId = _view.ComboBoxSupplier.ComboBox.SelectedValue != null ?
+                                (uint)_view.ComboBoxSupplier.ComboBox.SelectedValue : default(uint);
 
                var filterBarang = _listObjs.Where(b => b.supplier_id == supplierId).ToList();
                _bindingView.DataSource = filterBarang;

@@ -141,8 +141,8 @@ namespace RumahScarlett.Presentation.Presenters.Pembelian
 
                   var model = new PembelianModel
                   {
-                     supplier_id = _view.ComboBoxSupplier.SelectedIndex != -1 ?
-                                   (uint)_view.ComboBoxSupplier.SelectedValue : default(uint),
+                     supplier_id = _view.ComboBoxSupplier.ComboBox.SelectedIndex != -1 ?
+                                   (uint)_view.ComboBoxSupplier.ComboBox.SelectedValue : default(uint),
                      PembelianDetails = pembelianDetailsFixed
                   };
                   _pembelianServices.Insert(model);

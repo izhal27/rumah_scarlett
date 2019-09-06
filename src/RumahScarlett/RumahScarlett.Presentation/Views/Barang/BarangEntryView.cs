@@ -42,9 +42,9 @@ namespace RumahScarlett.Presentation.Views.Barang
       {
          if (!_isNewData && _model != null)
          {
-            comboBoxTipe.SelectedValue = _model.tipe_id;
-            comboBoxSubTipe.SelectedValue = _model.sub_tipe_id;
-            comboBoxSupplier.SelectedValue = _model.supplier_id;
+            comboBoxTipe.CombBox.SelectedValue = _model.tipe_id;
+            comboBoxSubTipe.ComboBox.SelectedValue = _model.sub_tipe_id;
+            comboBoxSupplier.ComboBox.SelectedValue = _model.supplier_id;
             textBoxKode.Text = _model.kode;
             textBoxNama.Text = _model.nama;
             textBoxHpp.Text = _model.hpp.ToString("N0");
@@ -52,7 +52,7 @@ namespace RumahScarlett.Presentation.Views.Barang
             textBoxHargaLama.Text = _model.harga_lama.ToString("N0");
             textBoxStok.Text = _model.stok.ToString("N0");
             textBoxMinStok.Text = _model.minimal_stok.ToString("N0");
-            comboBoxSatuan.SelectedValue = _model.satuan_id;
+            comboBoxSatuan.ComboBox.SelectedValue = _model.satuan_id;
          }
       }
 
@@ -60,9 +60,9 @@ namespace RumahScarlett.Presentation.Views.Barang
       {
          var model = new BarangModel
          {
-            tipe_id = comboBoxTipe.SelectedValue != null ? (uint)comboBoxTipe.SelectedValue : default(uint),
-            sub_tipe_id = comboBoxSubTipe.SelectedValue != null ? (uint)comboBoxSubTipe.SelectedValue : default(uint),
-            supplier_id = comboBoxSupplier.SelectedValue != null ? (uint)comboBoxSupplier.SelectedValue : default(uint),
+            tipe_id = comboBoxTipe.CombBox.SelectedValue != null ? (uint)comboBoxTipe.CombBox.SelectedValue : default(uint),
+            sub_tipe_id = comboBoxSubTipe.ComboBox.SelectedValue != null ? (uint)comboBoxSubTipe.ComboBox.SelectedValue : default(uint),
+            supplier_id = comboBoxSupplier.ComboBox.SelectedValue != null ? (uint)comboBoxSupplier.ComboBox.SelectedValue : default(uint),
             kode = textBoxKode.Text,
             nama = textBoxNama.Text,
             hpp = decimal.Parse(textBoxHpp.Text, NumberStyles.Number),
@@ -70,7 +70,7 @@ namespace RumahScarlett.Presentation.Views.Barang
             harga_lama = decimal.Parse(textBoxHargaLama.Text, NumberStyles.Number),
             stok = int.Parse(textBoxStok.Text, NumberStyles.Number),
             minimal_stok = int.Parse(textBoxMinStok.Text, NumberStyles.Number),
-            satuan_id = comboBoxSatuan.SelectedValue != null ? (uint)comboBoxSatuan.SelectedValue : default(uint)
+            satuan_id = comboBoxSatuan.ComboBox.SelectedValue != null ? (uint)comboBoxSatuan.ComboBox.SelectedValue : default(uint)
          };
 
          var modelArgs = new ModelEventArgs<BarangModel>(model);

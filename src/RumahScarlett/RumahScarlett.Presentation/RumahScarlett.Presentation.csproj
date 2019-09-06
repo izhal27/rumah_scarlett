@@ -237,19 +237,31 @@
     </Compile>
     <Compile Include="Views\IEntryView.cs" />
     <Compile Include="Views\ModelControls\ComboBoxSatuan.cs">
-      <SubType>Component</SubType>
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\ModelControls\ComboBoxSatuan.Designer.cs">
+      <DependentUpon>ComboBoxSatuan.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\ModelControls\ComboBoxStatusHutang.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Views\ModelControls\ComboBoxSubTipe.cs">
-      <SubType>Component</SubType>
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\ModelControls\ComboBoxSubTipe.Designer.cs">
+      <DependentUpon>ComboBoxSubTipe.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\ModelControls\ComboBoxSupplier.cs">
-      <SubType>Component</SubType>
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\ModelControls\ComboBoxSupplier.Designer.cs">
+      <DependentUpon>ComboBoxSupplier.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\ModelControls\ComboBoxTipe.cs">
-      <SubType>Component</SubType>
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\ModelControls\ComboBoxTipe.Designer.cs">
+      <DependentUpon>ComboBoxTipe.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Pelanggan\IPelangganView.cs" />
     <Compile Include="Views\Pelanggan\PelangganEntryView.cs">
@@ -413,6 +425,18 @@
     <EmbeddedResource Include="Views\MainView.resx">
       <DependentUpon>MainView.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\ModelControls\ComboBoxSatuan.resx">
+      <DependentUpon>ComboBoxSatuan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ModelControls\ComboBoxSubTipe.resx">
+      <DependentUpon>ComboBoxSubTipe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ModelControls\ComboBoxSupplier.resx">
+      <DependentUpon>ComboBoxSupplier.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ModelControls\ComboBoxTipe.resx">
+      <DependentUpon>ComboBoxTipe.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Pelanggan\PelangganEntryView.resx">
       <DependentUpon>PelangganEntryView.cs</DependentUpon>
     </EmbeddedResource>
@@ -505,6 +529,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="make_up_icon_64.ico" />
+    <None Include="Resources\searching_16.png" />
     <None Include="Resources\buy_32.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

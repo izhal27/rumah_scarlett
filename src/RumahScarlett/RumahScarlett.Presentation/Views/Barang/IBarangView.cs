@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RumahScarlett.Presentation.Views.ModelControls;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,9 +17,9 @@ namespace RumahScarlett.Presentation.Views.Barang
       RadioButton RadioButtonSemua { get; }
       RadioButton RadioButtonTipe { get; }
       RadioButton RadioButtonSupplier { get; }
-      ComboBox ComboBoxTipe { get; }
-      ComboBox ComboBoxSubTipe { get; }
-      ComboBox ComboBoxSupplier { get; }
+      ComboBoxTipe ComboBoxTipe { get; }
+      ComboBoxSubTipe ComboBoxSubTipe { get; }
+      ComboBoxSupplier ComboBoxSupplier { get; }
       Button ButtonTampilkan { get; }
    }
 }

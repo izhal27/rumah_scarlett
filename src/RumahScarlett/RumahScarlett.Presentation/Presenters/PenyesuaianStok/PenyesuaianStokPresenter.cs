@@ -77,9 +77,9 @@ namespace RumahScarlett.Presentation.Presenters.PenyesuaianStok
 
       private void _view_OnCreateData(object sender, EventArgs e)
       {
-         //var view = new HutangOperasionalEntryView();
-         //view.OnSaveData += HutangOperasionalEntryView_OnSaveData;
-         //view.ShowDialog();
+         var view = new PenyesuaianStokEntryView();
+         view.OnSaveData += PenyesuaianStokEntryView_OnSaveData;
+         view.ShowDialog();
       }
 
       private void _view_OnUpdateData(object sender, EventArgs e)
@@ -99,38 +99,38 @@ namespace RumahScarlett.Presentation.Presenters.PenyesuaianStok
 
             if (listDataGrid != null && listDataGrid.SelectedItem != null)
             {
-               //var model = _services.GetById(((PenyesuaianStokModel)listDataGrid.SelectedItem).id);
+               var model = _services.GetById(((PenyesuaianStokModel)listDataGrid.SelectedItem).id);
 
-               //var view = new HutangOperasionalEntryView(false, model);
-               //view.OnSaveData += HutangOperasionalEntryView_OnSaveData;
-               //view.ShowDialog();
+               var view = new PenyesuaianStokEntryView(false, model);
+               view.OnSaveData += PenyesuaianStokEntryView_OnSaveData;
+               view.ShowDialog();
             }
          }
       }
 
-      private void HutangOperasionalEntryView_OnSaveData(object sender, EventArgs e)
+      private void PenyesuaianStokEntryView_OnSaveData(object sender, EventArgs e)
       {
          using (new WaitCursorHandler())
          {
             try
             {
-               //var model = (PenyesuaianStokModel)((EventArgs<IPenyesuaianStokModel>)e).Value;
-               //var view = ((PenyesuaianStokEntryView)sender);
+               var model = ((ModelEventArgs<PenyesuaianStokModel>)e).Value;
+               var view = ((PenyesuaianStokEntryView)sender);
 
-               //if (model.id == default(uint))
-               //{
-               //   _services.Insert(model);
-               //   view.Controls.ClearControls();
-               //   Messages.InfoSave(_typeName);
-               //}
-               //else
-               //{
-               //   _services.Update(model);
-               //   Messages.InfoUpdate(_typeName);
-               //   view.Close();
-               //}
+               if (model.id == default(uint))
+               {
+                  _services.Insert(model);
+                  view.Controls.ClearControls();
+                  Messages.InfoSave(_typeName);
+               }
+               else
+               {
+                  _services.Update(model);
+                  Messages.InfoUpdate(_typeName);
+                  view.Close();
+               }
 
-               //_view_OnRefreshData(null, null);
+               _view_OnRefreshData(null, null);
             }
             catch (ArgumentException ex)
             {

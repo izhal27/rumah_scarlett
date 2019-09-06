@@ -1,5 +1,6 @@
 ﻿using RumahScarlett.CommonComponents;
 using RumahScarlett.Presentation.Views.CommonControls;
+using RumahScarlett.Presentation.Views.ModelControls;
 using Syncfusion.WinForms.DataGrid.Events;
 using System;
 using System.Collections.Generic;
@@ -47,17 +48,17 @@ namespace RumahScarlett.Presentation.Views.Barang
          get { return radioButtonSupplier; }
       }
 
-      public ComboBox ComboBoxTipe
+      public ComboBoxTipe ComboBoxTipe
       {
          get { return comboBoxTipe; }
       }
 
-      public ComboBox ComboBoxSubTipe
+      public ComboBoxSubTipe ComboBoxSubTipe
       {
          get { return comboBoxSubTipe; }
       }
 
-      public ComboBox ComboBoxSupplier
+      public ComboBoxSupplier ComboBoxSupplier
       {
          get { return comboBoxSupplier; }
       }

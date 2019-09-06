@@ -423,44 +423,30 @@
          // comboBoxSubTipe
          // 
          this.comboBoxSubTipe.Anchor = System.Windows.Forms.AnchorStyles.Left;
-         this.comboBoxSubTipe.DisplayMember = "Value";
-         this.comboBoxSubTipe.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-         this.comboBoxSubTipe.FormattingEnabled = true;
          this.comboBoxSubTipe.Location = new System.Drawing.Point(76, 30);
          this.comboBoxSubTipe.Name = "comboBoxSubTipe";
          this.comboBoxSubTipe.Size = new System.Drawing.Size(250, 21);
          this.comboBoxSubTipe.TabIndex = 11;
-         this.comboBoxSubTipe.ValueMember = "Key";
          // 
          // comboBoxTipe
          // 
          this.comboBoxTipe.Anchor = System.Windows.Forms.AnchorStyles.Left;
-         this.comboBoxTipe.DisplayMember = "Value";
-         this.comboBoxTipe.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-         this.comboBoxTipe.FormattingEnabled = true;
          this.comboBoxTipe.Location = new System.Drawing.Point(76, 3);
          this.comboBoxTipe.Name = "comboBoxTipe";
          this.comboBoxTipe.Size = new System.Drawing.Size(250, 21);
          this.comboBoxTipe.TabIndex = 12;
-         this.comboBoxTipe.ValueMember = "Key";
          // 
          // comboBoxSupplier
          // 
          this.comboBoxSupplier.Anchor = System.Windows.Forms.AnchorStyles.Left;
-         this.comboBoxSupplier.DisplayMember = "Value";
-         this.comboBoxSupplier.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-         this.comboBoxSupplier.FormattingEnabled = true;
          this.comboBoxSupplier.Location = new System.Drawing.Point(76, 57);
          this.comboBoxSupplier.Name = "comboBoxSupplier";
          this.comboBoxSupplier.Size = new System.Drawing.Size(250, 21);
          this.comboBoxSupplier.TabIndex = 13;
-         this.comboBoxSupplier.ValueMember = "Key";
          // 
          // comboBoxSatuan
          // 
          this.comboBoxSatuan.Anchor = System.Windows.Forms.AnchorStyles.Left;
-         this.comboBoxSatuan.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-         this.comboBoxSatuan.FormattingEnabled = true;
          this.comboBoxSatuan.Location = new System.Drawing.Point(76, 162);
          this.comboBoxSatuan.Name = "comboBoxSatuan";
          this.comboBoxSatuan.Size = new System.Drawing.Size(150, 21);

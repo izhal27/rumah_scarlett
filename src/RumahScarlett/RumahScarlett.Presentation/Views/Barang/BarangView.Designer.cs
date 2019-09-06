@@ -173,30 +173,20 @@
          // 
          // comboBoxTipe
          // 
-         this.comboBoxTipe.DisplayMember = "Value";
-         this.comboBoxTipe.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-         this.comboBoxTipe.FormattingEnabled = true;
          this.comboBoxTipe.Location = new System.Drawing.Point(72, 26);
          this.comboBoxTipe.Name = "comboBoxTipe";
          this.comboBoxTipe.Size = new System.Drawing.Size(150, 21);
          this.comboBoxTipe.TabIndex = 14;
-         this.comboBoxTipe.ValueMember = "Key";
          // 
          // comboBoxSubTipe
          // 
-         this.comboBoxSubTipe.DisplayMember = "Value";
-         this.comboBoxSubTipe.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-         this.comboBoxSubTipe.FormattingEnabled = true;
          this.comboBoxSubTipe.Location = new System.Drawing.Point(284, 26);
          this.comboBoxSubTipe.Name = "comboBoxSubTipe";
          this.comboBoxSubTipe.Size = new System.Drawing.Size(150, 21);
          this.comboBoxSubTipe.TabIndex = 15;
-         this.comboBoxSubTipe.ValueMember = "Key";
          // 
          // comboBoxSupplier
          // 
-         this.comboBoxSupplier.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-         this.comboBoxSupplier.FormattingEnabled = true;
          this.comboBoxSupplier.Location = new System.Drawing.Point(72, 53);
          this.comboBoxSupplier.Name = "comboBoxSupplier";
          this.comboBoxSupplier.Size = new System.Drawing.Size(150, 21);

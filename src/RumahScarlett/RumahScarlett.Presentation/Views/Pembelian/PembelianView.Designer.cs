@@ -103,14 +103,10 @@
          // comboBoxSupplier
          // 
          this.comboBoxSupplier.Anchor = System.Windows.Forms.AnchorStyles.Left;
-         this.comboBoxSupplier.DisplayMember = "Value";
-         this.comboBoxSupplier.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-         this.comboBoxSupplier.FormattingEnabled = true;
          this.comboBoxSupplier.Location = new System.Drawing.Point(54, 7);
          this.comboBoxSupplier.Name = "comboBoxSupplier";
          this.comboBoxSupplier.Size = new System.Drawing.Size(150, 21);
          this.comboBoxSupplier.TabIndex = 1;
-         this.comboBoxSupplier.ValueMember = "Key";
          // 
          // listDataGrid
          // 

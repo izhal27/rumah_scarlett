@@ -1,5 +1,5 @@
-﻿using RumahScarlett.CommonComponents;
-using RumahScarlett.Presentation.Views.CommonControls;
+﻿using RumahScarlett.Presentation.Views.CommonControls;
+using RumahScarlett.Presentation.Views.ModelControls;
 using Syncfusion.WinForms.DataGrid.Enums;
 using Syncfusion.WinForms.DataGrid.Events;
 using System;
@@ -31,7 +31,7 @@ namespace RumahScarlett.Presentation.Views.Pembelian
          get { return listDataGrid; }
       }
 
-      public ComboBox ComboBoxSupplier
+      public ComboBoxSupplier ComboBoxSupplier
       {
          get { return comboBoxSupplier; }
       }
