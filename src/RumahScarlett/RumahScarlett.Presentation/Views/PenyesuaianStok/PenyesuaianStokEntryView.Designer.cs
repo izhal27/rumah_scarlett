@@ -30,6 +30,7 @@
       {
          this.components = new System.ComponentModel.Container();
          this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+         this.comboBoxSatuan = new RumahScarlett.Presentation.Views.ModelControls.ComboBoxSatuan();
          this.textBoxKeterangan = new RumahScarlett.Presentation.Views.CommonControls.BaseTextBox();
          this.label1 = new System.Windows.Forms.Label();
          this.label2 = new System.Windows.Forms.Label();
@@ -37,7 +38,7 @@
          this.dateTimePickerTanggal = new System.Windows.Forms.DateTimePicker();
          this.textBoxQty = new RumahScarlett.Presentation.Views.CommonControls.BaseTextBoxDigit();
          this.label7 = new System.Windows.Forms.Label();
-         this.textBoxNamaBarang = new RumahScarlett.Presentation.Views.CommonControls.BaseTextBox();
+         this.textBoxBarang = new RumahScarlett.Presentation.Views.CommonControls.BaseTextBox();
          this.label4 = new System.Windows.Forms.Label();
          this.label9 = new System.Windows.Forms.Label();
          this.label10 = new System.Windows.Forms.Label();
@@ -49,12 +50,14 @@
          this.label8 = new System.Windows.Forms.Label();
          this.label14 = new System.Windows.Forms.Label();
          this.label6 = new System.Windows.Forms.Label();
+         this.label15 = new System.Windows.Forms.Label();
+         this.textBoxHpp = new RumahScarlett.Presentation.Views.CommonControls.BaseTextBoxDigit();
          this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-         this.comboBoxSatuan = new RumahScarlett.Presentation.Views.ModelControls.ComboBoxSatuan();
          this.tableLayoutPanel1.SuspendLayout();
          ((System.ComponentModel.ISupportInitialize)(this.textBoxKeterangan)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.textBoxQty)).BeginInit();
-         ((System.ComponentModel.ISupportInitialize)(this.textBoxNamaBarang)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.textBoxBarang)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.textBoxHpp)).BeginInit();
          this.SuspendLayout();
          // 
          // panelUp
@@ -63,7 +66,7 @@
          // 
          // operationButtons
          // 
-         this.operationButtons.Location = new System.Drawing.Point(233, 282);
+         this.operationButtons.Location = new System.Drawing.Point(233, 312);
          // 
          // tableLayoutPanel1
          // 
@@ -77,47 +80,58 @@
          this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
          this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
          this.tableLayoutPanel1.Controls.Add(this.comboBoxSatuan, 2, 3);
-         this.tableLayoutPanel1.Controls.Add(this.textBoxKeterangan, 2, 4);
+         this.tableLayoutPanel1.Controls.Add(this.textBoxKeterangan, 2, 5);
          this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
          this.tableLayoutPanel1.Controls.Add(this.label2, 0, 2);
-         this.tableLayoutPanel1.Controls.Add(this.label3, 0, 4);
+         this.tableLayoutPanel1.Controls.Add(this.label3, 0, 5);
          this.tableLayoutPanel1.Controls.Add(this.dateTimePickerTanggal, 2, 0);
          this.tableLayoutPanel1.Controls.Add(this.textBoxQty, 2, 2);
          this.tableLayoutPanel1.Controls.Add(this.label7, 0, 1);
-         this.tableLayoutPanel1.Controls.Add(this.textBoxNamaBarang, 2, 1);
+         this.tableLayoutPanel1.Controls.Add(this.textBoxBarang, 2, 1);
          this.tableLayoutPanel1.Controls.Add(this.label4, 1, 0);
          this.tableLayoutPanel1.Controls.Add(this.label9, 1, 1);
          this.tableLayoutPanel1.Controls.Add(this.label10, 1, 2);
-         this.tableLayoutPanel1.Controls.Add(this.label11, 1, 4);
+         this.tableLayoutPanel1.Controls.Add(this.label11, 1, 5);
          this.tableLayoutPanel1.Controls.Add(this.label12, 0, 3);
          this.tableLayoutPanel1.Controls.Add(this.label5, 3, 0);
          this.tableLayoutPanel1.Controls.Add(this.label13, 3, 1);
          this.tableLayoutPanel1.Controls.Add(this.buttonCari, 4, 1);
          this.tableLayoutPanel1.Controls.Add(this.label8, 3, 2);
          this.tableLayoutPanel1.Controls.Add(this.label14, 3, 3);
-         this.tableLayoutPanel1.Controls.Add(this.label6, 3, 4);
+         this.tableLayoutPanel1.Controls.Add(this.label6, 3, 5);
+         this.tableLayoutPanel1.Controls.Add(this.label15, 0, 4);
+         this.tableLayoutPanel1.Controls.Add(this.textBoxHpp, 2, 4);
          this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 58);
          this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-         this.tableLayoutPanel1.RowCount = 5;
+         this.tableLayoutPanel1.RowCount = 6;
          this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
          this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
          this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
          this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+         this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
          this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-         this.tableLayoutPanel1.Size = new System.Drawing.Size(396, 218);
+         this.tableLayoutPanel1.Size = new System.Drawing.Size(396, 248);
          this.tableLayoutPanel1.TabIndex = 4;
+         // 
+         // comboBoxSatuan
+         // 
+         this.comboBoxSatuan.Anchor = System.Windows.Forms.AnchorStyles.Left;
+         this.comboBoxSatuan.Location = new System.Drawing.Point(87, 84);
+         this.comboBoxSatuan.Name = "comboBoxSatuan";
+         this.comboBoxSatuan.Size = new System.Drawing.Size(150, 21);
+         this.comboBoxSatuan.TabIndex = 3;
          // 
          // textBoxKeterangan
          // 
          this.textBoxKeterangan.Anchor = System.Windows.Forms.AnchorStyles.Left;
-         this.textBoxKeterangan.BeforeTouchSize = new System.Drawing.Size(250, 20);
-         this.textBoxKeterangan.Location = new System.Drawing.Point(87, 113);
+         this.textBoxKeterangan.BeforeTouchSize = new System.Drawing.Size(150, 20);
+         this.textBoxKeterangan.Location = new System.Drawing.Point(87, 143);
          this.textBoxKeterangan.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
          this.textBoxKeterangan.Multiline = true;
          this.textBoxKeterangan.Name = "textBoxKeterangan";
          this.textBoxKeterangan.Size = new System.Drawing.Size(250, 100);
          this.textBoxKeterangan.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
-         this.textBoxKeterangan.TabIndex = 3;
+         this.textBoxKeterangan.TabIndex = 5;
          // 
          // label1
          // 
@@ -143,7 +157,7 @@
          // 
          this.label3.Anchor = System.Windows.Forms.AnchorStyles.Left;
          this.label3.AutoSize = true;
-         this.label3.Location = new System.Drawing.Point(3, 156);
+         this.label3.Location = new System.Drawing.Point(3, 186);
          this.label3.Name = "label3";
          this.label3.Size = new System.Drawing.Size(62, 13);
          this.label3.TabIndex = 0;
@@ -151,17 +165,18 @@
          // 
          // dateTimePickerTanggal
          // 
+         this.dateTimePickerTanggal.Anchor = System.Windows.Forms.AnchorStyles.Left;
          this.dateTimePickerTanggal.Location = new System.Drawing.Point(87, 3);
          this.dateTimePickerTanggal.MinDate = new System.DateTime(1945, 8, 17, 0, 0, 0, 0);
          this.dateTimePickerTanggal.Name = "dateTimePickerTanggal";
          this.dateTimePickerTanggal.Size = new System.Drawing.Size(150, 20);
-         this.dateTimePickerTanggal.TabIndex = 1;
+         this.dateTimePickerTanggal.TabIndex = 0;
          // 
          // textBoxQty
          // 
          this.textBoxQty.Anchor = System.Windows.Forms.AnchorStyles.Left;
          this.textBoxQty.BackGroundColor = System.Drawing.SystemColors.Window;
-         this.textBoxQty.BeforeTouchSize = new System.Drawing.Size(250, 20);
+         this.textBoxQty.BeforeTouchSize = new System.Drawing.Size(150, 20);
          this.textBoxQty.IntegerValue = ((long)(0));
          this.textBoxQty.Location = new System.Drawing.Point(87, 58);
          this.textBoxQty.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
@@ -184,17 +199,17 @@
          this.label7.TabIndex = 0;
          this.label7.Text = "Barang";
          // 
-         // textBoxNamaBarang
+         // textBoxBarang
          // 
-         this.textBoxNamaBarang.Anchor = System.Windows.Forms.AnchorStyles.Left;
-         this.textBoxNamaBarang.BeforeTouchSize = new System.Drawing.Size(250, 20);
-         this.textBoxNamaBarang.Location = new System.Drawing.Point(87, 30);
-         this.textBoxNamaBarang.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
-         this.textBoxNamaBarang.Name = "textBoxNamaBarang";
-         this.textBoxNamaBarang.ReadOnly = true;
-         this.textBoxNamaBarang.Size = new System.Drawing.Size(250, 20);
-         this.textBoxNamaBarang.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
-         this.textBoxNamaBarang.TabIndex = 6;
+         this.textBoxBarang.Anchor = System.Windows.Forms.AnchorStyles.Left;
+         this.textBoxBarang.BeforeTouchSize = new System.Drawing.Size(150, 20);
+         this.textBoxBarang.Location = new System.Drawing.Point(87, 30);
+         this.textBoxBarang.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
+         this.textBoxBarang.Name = "textBoxBarang";
+         this.textBoxBarang.ReadOnly = true;
+         this.textBoxBarang.Size = new System.Drawing.Size(250, 20);
+         this.textBoxBarang.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
+         this.textBoxBarang.TabIndex = 6;
          // 
          // label4
          // 
@@ -230,7 +245,7 @@
          // 
          this.label11.Anchor = System.Windows.Forms.AnchorStyles.Left;
          this.label11.AutoSize = true;
-         this.label11.Location = new System.Drawing.Point(71, 156);
+         this.label11.Location = new System.Drawing.Point(71, 186);
          this.label11.Name = "label11";
          this.label11.Size = new System.Drawing.Size(10, 13);
          this.label11.TabIndex = 0;
@@ -275,9 +290,10 @@
          this.buttonCari.Location = new System.Drawing.Point(360, 29);
          this.buttonCari.Name = "buttonCari";
          this.buttonCari.Size = new System.Drawing.Size(30, 23);
-         this.buttonCari.TabIndex = 7;
+         this.buttonCari.TabIndex = 1;
          this.toolTip.SetToolTip(this.buttonCari, "Cari Barang");
          this.buttonCari.UseVisualStyleBackColor = true;
+         this.buttonCari.Click += new System.EventHandler(this.buttonCari_Click);
          // 
          // label8
          // 
@@ -306,25 +322,45 @@
          this.label6.Anchor = System.Windows.Forms.AnchorStyles.Left;
          this.label6.AutoSize = true;
          this.label6.ForeColor = System.Drawing.Color.Red;
-         this.label6.Location = new System.Drawing.Point(343, 156);
+         this.label6.Location = new System.Drawing.Point(343, 186);
          this.label6.Name = "label6";
          this.label6.Size = new System.Drawing.Size(11, 13);
          this.label6.TabIndex = 5;
          this.label6.Text = "*";
          // 
-         // comboBoxSatuan
+         // label15
          // 
-         this.comboBoxSatuan.Anchor = System.Windows.Forms.AnchorStyles.Left;
-         this.comboBoxSatuan.Location = new System.Drawing.Point(87, 84);
-         this.comboBoxSatuan.Name = "comboBoxSatuan";
-         this.comboBoxSatuan.Size = new System.Drawing.Size(150, 21);
-         this.comboBoxSatuan.TabIndex = 5;
+         this.label15.Anchor = System.Windows.Forms.AnchorStyles.Left;
+         this.label15.AutoSize = true;
+         this.label15.Location = new System.Drawing.Point(3, 116);
+         this.label15.Name = "label15";
+         this.label15.Size = new System.Drawing.Size(27, 13);
+         this.label15.TabIndex = 0;
+         this.label15.Text = "Hpp";
+         // 
+         // textBoxHpp
+         // 
+         this.textBoxHpp.Anchor = System.Windows.Forms.AnchorStyles.Left;
+         this.textBoxHpp.BackGroundColor = System.Drawing.SystemColors.Window;
+         this.textBoxHpp.BeforeTouchSize = new System.Drawing.Size(150, 20);
+         this.textBoxHpp.IntegerValue = ((long)(0));
+         this.textBoxHpp.Location = new System.Drawing.Point(87, 113);
+         this.textBoxHpp.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
+         this.textBoxHpp.MinValue = ((long)(0));
+         this.textBoxHpp.Name = "textBoxHpp";
+         this.textBoxHpp.NullString = "";
+         this.textBoxHpp.ReadOnly = true;
+         this.textBoxHpp.Size = new System.Drawing.Size(150, 20);
+         this.textBoxHpp.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
+         this.textBoxHpp.TabIndex = 4;
+         this.textBoxHpp.Text = "0";
+         this.textBoxHpp.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
          // 
          // PenyesuaianStokEntryView
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-         this.ClientSize = new System.Drawing.Size(420, 329);
+         this.ClientSize = new System.Drawing.Size(420, 359);
          this.Controls.Add(this.tableLayoutPanel1);
          this.Name = "PenyesuaianStokEntryView";
          this.Text = "Penyesuaian Stok";
@@ -335,7 +371,8 @@
          this.tableLayoutPanel1.PerformLayout();
          ((System.ComponentModel.ISupportInitialize)(this.textBoxKeterangan)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.textBoxQty)).EndInit();
-         ((System.ComponentModel.ISupportInitialize)(this.textBoxNamaBarang)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.textBoxBarang)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.textBoxHpp)).EndInit();
          this.ResumeLayout(false);
 
       }
@@ -352,7 +389,7 @@
       private System.Windows.Forms.Label label8;
       private System.Windows.Forms.Label label6;
       private System.Windows.Forms.Label label7;
-      private CommonControls.BaseTextBox textBoxNamaBarang;
+      private CommonControls.BaseTextBox textBoxBarang;
       private System.Windows.Forms.Button buttonCari;
       private System.Windows.Forms.Label label4;
       private System.Windows.Forms.Label label9;
@@ -364,5 +401,7 @@
       private System.Windows.Forms.Label label5;
       private System.Windows.Forms.ToolTip toolTip;
       private ModelControls.ComboBoxSatuan comboBoxSatuan;
+      private System.Windows.Forms.Label label15;
+      private CommonControls.BaseTextBoxDigit textBoxHpp;
    }
 }

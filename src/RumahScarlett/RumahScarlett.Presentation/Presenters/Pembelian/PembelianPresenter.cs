@@ -5,6 +5,7 @@ using RumahScarlett.Domain.Models.Pembelian;
 using RumahScarlett.Infrastructure.DataAccess.Repositories.Barang;
 using RumahScarlett.Infrastructure.DataAccess.Repositories.Pembelian;
 using RumahScarlett.Presentation.Helper;
+using RumahScarlett.Presentation.Views.ModelControls;
 using RumahScarlett.Presentation.Views.Pembelian;
 using RumahScarlett.Services.Services;
 using RumahScarlett.Services.Services.Barang;
@@ -27,7 +28,7 @@ namespace RumahScarlett.Presentation.Presenters.Pembelian
       private IPembelianServices _pembelianServices;
       private IBarangServices _barangServices;
       private List<PembelianDetailModel> _listsPembelianDetails;
-      private List<BarangModel> _listsBarangs;
+      private List<IBarangModel> _listsBarangs;
       private BindingListView<PembelianDetailModel> _bindingView;
 
       public IPembelianView GetView
@@ -53,7 +54,7 @@ namespace RumahScarlett.Presentation.Presenters.Pembelian
          _view = new PembelianView();
          _pembelianServices = new PembelianServices(new PembelianRepository(), new ModelDataAnnotationCheck());
          _barangServices = new BarangServices(new BarangRepository(), new ModelDataAnnotationCheck());
-         _listsBarangs = _barangServices.GetAll().Where(b => b.hpp > 0).Cast<BarangModel>().ToList();
+         _listsBarangs = _barangServices.GetAll().Where(b => b.hpp > 0).ToList();
 
          _view.OnLoadData += _view_OnLoadData;
          _view.OnCariData += _view_OnCariData;
@@ -88,7 +89,7 @@ namespace RumahScarlett.Presentation.Presenters.Pembelian
 
       private void _view_OnCariData(object sender, EventArgs e)
       {
-         var view = new CariBarangPembelianView(_listsBarangs);
+         var view = new CariBarangView(_listsBarangs, TipePencarian.Pembelian);
          view.OnSendData += CariBarangPembelianView_OnSendData;
          view.ShowDialog();
       }
@@ -98,7 +99,7 @@ namespace RumahScarlett.Presentation.Presenters.Pembelian
          var listDataGrid = _view.ListDataGrid;
          var rowIndex = listDataGrid.CurrentCell.RowIndex;
 
-         var view = (CariBarangPembelianView)sender;
+         var view = (CariBarangView)sender;
          var model = ((ModelEventArgs<BarangModel>)e).Value;
 
          if (model != null)

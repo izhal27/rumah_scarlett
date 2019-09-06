@@ -1,6 +1,6 @@
-﻿namespace RumahScarlett.Presentation.Views.Pembelian
+﻿namespace RumahScarlett.Presentation.Views.ModelControls
 {
-   partial class CariBarangPembelianView
+   partial class CariBarangView
    {
       /// <summary>
       /// Required designer variable.

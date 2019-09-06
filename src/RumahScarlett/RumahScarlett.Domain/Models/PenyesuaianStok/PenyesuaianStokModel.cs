@@ -18,7 +18,7 @@ namespace RumahScarlett.Domain.Models.PenyesuaianStok
       [Browsable(false)]
       [Display(Name = "ID")]
       public uint id { get; set; }
-      
+
       [Range(typeof(DateTime), "1945/08/17", "9999/01/01", ErrorMessage = "Minimal Tanggal 1945/08/17 !!!")]
       [Display(Name = "Tanggal")]
       public DateTime tanggal { get; set; }
@@ -51,7 +51,8 @@ namespace RumahScarlett.Domain.Models.PenyesuaianStok
       {
          get { return Barang.id != default(uint) ? Barang.nama : string.Empty; }
       }
-      
+
+      [DisplayFormat(DataFormatString = "{0:N0}")]
       [Range(1, int.MaxValue, ErrorMessage = "Qty harus diisi !!!")]
       [Display(Name = "Qty")]
       public int qty { get; set; }
@@ -65,7 +66,8 @@ namespace RumahScarlett.Domain.Models.PenyesuaianStok
       [Browsable(false)]
       [Range(1, uint.MaxValue, ErrorMessage = "Satuan harus diisi !!!")]
       [Display(Name = "Satuan ID")]
-      public uint satuan_id {
+      public uint satuan_id
+      {
          get { return Satuan.id != default(uint) ? Satuan.id : _satuan_id; }
          set { _satuan_id = value; }
       }
@@ -76,15 +78,10 @@ namespace RumahScarlett.Domain.Models.PenyesuaianStok
       {
          get { return Satuan.id != default(uint) ? Satuan.nama : string.Empty; }
       }
-
-      private decimal _hpp;
       
+      [DisplayFormat(DataFormatString = "{0:N0}")]
       [Display(Name = "HPP")]
-      public decimal hpp
-      {
-         get { return Barang.id != default(uint) ? Barang.hpp : _hpp; }
-         set { _hpp = value; }
-      }
+      public decimal hpp { get; set; }
 
       [Required(ErrorMessage = "Keterangan harus diisi !!!")]
       [StringLength(255, ErrorMessage = "Panjang maksimal keterangan 255 karakter !!!")]

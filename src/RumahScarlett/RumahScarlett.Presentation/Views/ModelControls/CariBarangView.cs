@@ -12,16 +12,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace RumahScarlett.Presentation.Views.Pembelian
+namespace RumahScarlett.Presentation.Views.ModelControls
 {
-   public partial class CariBarangPembelianView : BaseCariBarangView
+   public partial class CariBarangView : BaseCariBarangView
    {
       public event EventHandler OnSendData;
 
-      private List<BarangModel> _listsBarang;
+      private List<IBarangModel> _listsBarang;
       private BindingListView<BarangModel> _bindingView;
 
-      public CariBarangPembelianView(List<BarangModel> listsBarang)
+      public CariBarangView(List<IBarangModel> listsBarang, TipePencarian tipePencarian)
       {
          InitializeComponent();
 
@@ -29,16 +29,18 @@ namespace RumahScarlett.Presentation.Views.Pembelian
          _bindingView = new BindingListView<BarangModel>(_listsBarang);
          listDataGrid.DataSource = _bindingView;
 
-         for (int i = 2; i <= 7; i++)
-         {
-            if (i == 4) // HPP
-            {
-               continue;
-            }
+         listDataGrid.Columns[5].Visible = false; // Harga jual
+         listDataGrid.Columns[7].Visible = false; // Penyesuaian stok
 
-            listDataGrid.Columns[i].Visible = false;
+         switch (tipePencarian)
+         {
+            case TipePencarian.Pembelian:
+               
+               listDataGrid.Columns[6].Visible = false; // Minimal stok
+
+               break;
          }
-         
+
          OnEnterKeyDown += CariBarangPembelianView_OnEnterKeyDown;
       }
 
@@ -67,5 +69,11 @@ namespace RumahScarlett.Presentation.Views.Pembelian
             _bindingView.DataSource = _listsBarang;
          }
       }
+   }
+
+   public enum TipePencarian
+   {
+      Pembelian,
+      PenyesuaianStok,
    }
 }

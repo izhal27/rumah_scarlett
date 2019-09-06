@@ -43,7 +43,7 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.PenyesuaianStok
                   throw ex;
                }
 
-               if (model.Barang.hpp == 0)
+               if (barang.hpp == 0)
                {
                   var ex = new DataAccessException(dataAccessStatus);
                   SetDataAccessValues(ex, "Salah satu barang yang ingin dimasukan ke dalam tabel penyesuaian stok " +

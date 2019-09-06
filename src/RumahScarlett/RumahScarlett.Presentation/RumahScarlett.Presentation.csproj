@@ -277,11 +277,11 @@
       <DependentUpon>PelangganView.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Pelanggan\IPelangganEntryView.cs" />
-    <Compile Include="Views\Pembelian\CariBarangPembelianView.cs">
+    <Compile Include="Views\ModelControls\CariBarangView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\Pembelian\CariBarangPembelianView.Designer.cs">
-      <DependentUpon>CariBarangPembelianView.cs</DependentUpon>
+    <Compile Include="Views\ModelControls\CariBarangView.Designer.cs">
+      <DependentUpon>CariBarangView.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Pembelian\IPembelianView.cs" />
     <Compile Include="Views\Pembelian\PembelianView.cs">
@@ -443,8 +443,8 @@
     <EmbeddedResource Include="Views\Pelanggan\PelangganView.resx">
       <DependentUpon>PelangganView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Pembelian\CariBarangPembelianView.resx">
-      <DependentUpon>CariBarangPembelianView.cs</DependentUpon>
+    <EmbeddedResource Include="Views\ModelControls\CariBarangView.resx">
+      <DependentUpon>CariBarangView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Pembelian\PembelianView.resx">
       <DependentUpon>PembelianView.cs</DependentUpon>
