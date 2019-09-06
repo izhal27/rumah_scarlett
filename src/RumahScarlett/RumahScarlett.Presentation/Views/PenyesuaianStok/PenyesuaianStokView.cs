@@ -81,6 +81,7 @@ namespace RumahScarlett.Presentation.Views.PenyesuaianStok
 
       private void crudcButtons_OnRefreshClickEvent(object sender, EventArgs e)
       {
+         dateTimePickerFilter.RefreshFilter();
          OnRefreshData?.Invoke(sender, e);
       }
 

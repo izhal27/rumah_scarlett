@@ -186,12 +186,17 @@ namespace RumahScarlett.Presentation.Presenters.PenyesuaianStok
       private void _view_OnTampilkanClick(object sender, EventArgs e)
       {
          var status = ((DateTimePickerFilter)sender).TampilkanStatus;
-         var dictTanggal = ((EventArgs<Dictionary<string, DateTime>>)e).Value;
+         Dictionary<string, DateTime> dictTanggal = new Dictionary<string, DateTime>();
+
+         if (e != null)
+         {
+            dictTanggal = ((EventArgs<Dictionary<string, DateTime>>)e).Value;
+         }
 
          switch (status)
          {
             case TampilkanStatus.Tanggal:
-               
+
                _bindingView.DataSource = _listObjs.Where(ps => ps.tanggal == dictTanggal["tanggal"].Date).ToList();
 
                break;

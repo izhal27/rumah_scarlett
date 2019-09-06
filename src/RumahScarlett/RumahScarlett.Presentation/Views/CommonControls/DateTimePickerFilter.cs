@@ -66,6 +66,12 @@ namespace RumahScarlett.Presentation.Views.CommonControls
             OnTampilkanClick?.Invoke(this, new EventArgs<Dictionary<string, DateTime>>(dictTanggal));
          }
       }
+
+      public void RefreshFilter()
+      {
+         radioButtonSemua.Checked = true;
+         buttonTampilkan_Click(this, null);
+      }
    }
 
    public enum TampilkanStatus
@@ -73,5 +79,10 @@ namespace RumahScarlett.Presentation.Views.CommonControls
       Semua,
       Tanggal,
       Periode,
+   }
+
+   public interface RefreshFilter
+   {
+      event EventHandler OnRefreshFilter;
    }
 }
