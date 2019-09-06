@@ -14,7 +14,7 @@ namespace RumahScarlett.Presentation.Views.CommonControls
    public partial class DateTimePickerFilter : UserControl
    {
       public TampilkanStatus TampilkanStatus { get; private set; }
-      public event EventHandler OnTampilkanClick;
+      public event EventHandler<FilterEventArgs> OnTampilkanClick;
 
       public DateTimePickerFilter()
       {
@@ -40,30 +40,28 @@ namespace RumahScarlett.Presentation.Views.CommonControls
 
       private void buttonTampilkan_Click(object sender, EventArgs e)
       {
+         var filterEventArgs = new FilterEventArgs();
+
          if (radioButtonSemua.Checked)
          {
-            TampilkanStatus = TampilkanStatus.Semua;
+            filterEventArgs.TampilkanStatus = TampilkanStatus.Semua;
 
-            OnTampilkanClick?.Invoke(this, e);
+            OnTampilkanClick?.Invoke(this, filterEventArgs);
          }
          else if (radioButtonTanggal.Checked)
          {
-            TampilkanStatus = TampilkanStatus.Tanggal;
-
-            var dictTanggal = new Dictionary<string, DateTime>();
-            dictTanggal.Add("tanggal", dateTimePickerTanggal.Value);
-
-            OnTampilkanClick?.Invoke(this, new EventArgs<Dictionary<string, DateTime>>(dictTanggal));
+            filterEventArgs.TampilkanStatus = TampilkanStatus.Tanggal;
+            filterEventArgs.Tanggal = dateTimePickerTanggal.Value;
+            
+            OnTampilkanClick?.Invoke(this, filterEventArgs);
          }
          else if (radioButtonPeriode.Checked)
          {
-            TampilkanStatus = TampilkanStatus.Periode;
+            filterEventArgs.TampilkanStatus = TampilkanStatus.Periode;
+            filterEventArgs.TanggalAwal = dateTimePickerPeriodeAwal.Value;
+            filterEventArgs.TanggalAkhir = dateTimePickerPeriodeAkhir.Value;
 
-            var dictTanggal = new Dictionary<string, DateTime>();
-            dictTanggal.Add("tanggalAwal", dateTimePickerPeriodeAwal.Value);
-            dictTanggal.Add("tanggalAkhir", dateTimePickerPeriodeAkhir.Value);
-
-            OnTampilkanClick?.Invoke(this, new EventArgs<Dictionary<string, DateTime>>(dictTanggal));
+            OnTampilkanClick?.Invoke(this, filterEventArgs);
          }
       }
 
@@ -81,8 +79,11 @@ namespace RumahScarlett.Presentation.Views.CommonControls
       Periode,
    }
 
-   public interface RefreshFilter
+   public class FilterEventArgs : EventArgs
    {
-      event EventHandler OnRefreshFilter;
+      public TampilkanStatus TampilkanStatus { get; set; }
+      public DateTime Tanggal { get; set; }
+      public DateTime TanggalAwal { get; set; }
+      public DateTime TanggalAkhir { get; set; }
    }
 }

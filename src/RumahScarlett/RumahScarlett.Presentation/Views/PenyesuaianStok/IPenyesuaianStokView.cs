@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RumahScarlett.Presentation.Views.CommonControls;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +12,6 @@ namespace RumahScarlett.Presentation.Views.PenyesuaianStok
    {
       Label LabelTotalQty { get; }
       Label LabelTotalHpp { get; }
-      event EventHandler OnTampilkanClick;
+      event EventHandler<FilterEventArgs> OnTampilkanClick;
    }
 }
