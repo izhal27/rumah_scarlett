@@ -12,20 +12,23 @@ using System.Windows.Forms;
 
 namespace RumahScarlett.Presentation.Views.ModelControls
 {
-   public class ComboBoxSubTipe : ComboBox
+   public partial class ComboBoxSubTipe : UserControl
    {
       private ISubTipeServices _services;
       private List<ISubTipeModel> _listSubTipes;
 
+      public ComboBox ComboBox
+      {
+         get { return comboBox; }
+      }
+
       public ComboBoxSubTipe()
       {
-         if (!DesignMode)
-         {
-            LoadDataSource();
-            DropDownStyle = ComboBoxStyle.DropDownList;
-         }
+         InitializeComponent();
+
+         LoadDataSource();
       }
-      
+
       private void LoadDataSource()
       {
          _services = new SubTipeServices(new SubTipeRepository(), new ModelDataAnnotationCheck());
@@ -34,7 +37,7 @@ namespace RumahScarlett.Presentation.Views.ModelControls
          if (_listSubTipes != null && _listSubTipes.Count > 0)
          {
             var subTipeKVP = _listSubTipes.Select(sub => new KeyValuePair<object, string>(sub.id, sub.nama)).ToList();
-            this.SetDataSource(subTipeKVP, false);
+            comboBox.SetDataSource(subTipeKVP, false);
          }
       }
    }

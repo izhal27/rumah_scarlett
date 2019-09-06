@@ -5,6 +5,10 @@ using RumahScarlett.Services.Services;
 using RumahScarlett.Services.Services.Satuan;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.ComponentModel.Design;
+using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,29 +16,32 @@ using System.Windows.Forms;
 
 namespace RumahScarlett.Presentation.Views.ModelControls
 {
-   public class ComboBoxSatuan : ComboBox
+   public partial class ComboBoxSatuan : UserControl
    {
       private ISatuanServices _services;
-      private List<ISatuanModel> _llistSatuans;
+      private List<ISatuanModel> _listSatuans;
+
+      public ComboBox ComboBox
+      {
+         get { return comboBox; }
+      }
 
       public ComboBoxSatuan()
       {
-         if (!DesignMode)
-         {
-            LoadDataSource();
-            DropDownStyle = ComboBoxStyle.DropDownList;
-         }
+         InitializeComponent();
+
+         LoadDataSource();
       }
-      
+
       private void LoadDataSource()
       {
          _services = new SatuanServices(new SatuanRepository(), new ModelDataAnnotationCheck());
-         _llistSatuans = _services.GetAll().ToList();
+         _listSatuans = _services.GetAll().ToList();
 
-         if (_llistSatuans != null && _llistSatuans.Count > 0)
+         if (_listSatuans != null && _listSatuans.Count > 0)
          {
-            var supplierKVP = _llistSatuans.Select(s => new KeyValuePair<object, string>(s.id, s.nama)).ToList();
-            this.SetDataSource(supplierKVP, false);
+            var satuanKVP = _listSatuans.Select(s => new KeyValuePair<object, string>(s.id, s.nama)).ToList();
+            comboBox.SetDataSource(satuanKVP, false);
          }
       }
    }

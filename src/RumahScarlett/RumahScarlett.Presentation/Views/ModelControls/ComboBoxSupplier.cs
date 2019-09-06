@@ -12,20 +12,23 @@ using System.Windows.Forms;
 
 namespace RumahScarlett.Presentation.Views.ModelControls
 {
-   public class ComboBoxSupplier : ComboBox
+   public partial class ComboBoxSupplier : UserControl
    {
       private ISupplierServices _services;
       private List<ISupplierModel> _listSuppliers;
 
+      public ComboBox ComboBox
+      {
+        get { return comboBox; }
+      }
+
       public ComboBoxSupplier()
       {
-         if (!DesignMode)
-         {
-            LoadDataSource();
-            DropDownStyle = ComboBoxStyle.DropDownList;
-         }
+         InitializeComponent();
+
+         LoadDataSource();
       }
-      
+
       private void LoadDataSource()
       {
          _services = new SupplierServices(new SupplierRepository(), new ModelDataAnnotationCheck());
@@ -34,7 +37,7 @@ namespace RumahScarlett.Presentation.Views.ModelControls
          if (_listSuppliers != null && _listSuppliers.Count > 0)
          {
             var supplierKVP = _listSuppliers.Select(s => new KeyValuePair<object, string>(s.id, s.nama)).ToList();
-            this.SetDataSource(supplierKVP, false);
+            comboBox.SetDataSource(supplierKVP, false);
          }
       }
    }

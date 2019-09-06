@@ -12,20 +12,23 @@ using System.Windows.Forms;
 
 namespace RumahScarlett.Presentation.Views.ModelControls
 {
-   public class ComboBoxTipe : ComboBox
+   public partial class ComboBoxTipe : UserControl
    {
       private ITipeServices _services;
       private List<ITipeModel> _listTipes;
 
+      public ComboBox CombBox
+      {
+         get { return comboBox; }
+      }
+
       public ComboBoxTipe()
       {
-         if (!DesignMode)
-         {
-            LoadDataSource();
-            DropDownStyle = ComboBoxStyle.DropDownList;
-         }
+         InitializeComponent();
+
+         LoadDataSource();
       }
-      
+
       private void LoadDataSource()
       {
          _services = new TipeServices(new TipeRepository(), new ModelDataAnnotationCheck());
@@ -34,7 +37,7 @@ namespace RumahScarlett.Presentation.Views.ModelControls
          if (_listTipes != null && _listTipes.Count > 0)
          {
             var tipeKVP = _listTipes.Select(t => new KeyValuePair<object, string>(t.id, t.nama)).ToList();
-            this.SetDataSource(tipeKVP, false);
+            comboBox.SetDataSource(tipeKVP, false);
          }
       }
    }
