@@ -43,24 +43,27 @@ namespace RumahScarlett.Presentation.Views.CommonControls
          if (radioButtonSemua.Checked)
          {
             TampilkanStatus = TampilkanStatus.Semua;
-            OnTampilkanClick?.Invoke(sender, e);
+
+            OnTampilkanClick?.Invoke(this, e);
          }
          else if (radioButtonTanggal.Checked)
          {
             TampilkanStatus = TampilkanStatus.Tanggal;
+
             var dictTanggal = new Dictionary<string, DateTime>();
             dictTanggal.Add("tanggal", dateTimePickerTanggal.Value);
 
-            OnTampilkanClick?.Invoke(sender, new EventArgs<Dictionary<string, DateTime>>(dictTanggal));
+            OnTampilkanClick?.Invoke(this, new EventArgs<Dictionary<string, DateTime>>(dictTanggal));
          }
          else if (radioButtonPeriode.Checked)
          {
-            TampilkanStatus = TampilkanStatus.Tanggal;
+            TampilkanStatus = TampilkanStatus.Periode;
+
             var dictTanggal = new Dictionary<string, DateTime>();
             dictTanggal.Add("tanggalAwal", dateTimePickerPeriodeAwal.Value);
             dictTanggal.Add("tanggalAkhir", dateTimePickerPeriodeAkhir.Value);
 
-            OnTampilkanClick?.Invoke(sender, new EventArgs<Dictionary<string, DateTime>>(dictTanggal));
+            OnTampilkanClick?.Invoke(this, new EventArgs<Dictionary<string, DateTime>>(dictTanggal));
          }
       }
    }
