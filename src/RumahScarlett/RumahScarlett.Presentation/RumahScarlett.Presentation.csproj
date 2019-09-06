@@ -292,7 +292,14 @@
     <Compile Include="Views\Pengeluaran\PengeluaranView.Designer.cs">
       <DependentUpon>PengeluaranView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\PenyesuaianStok\IPenyesuaianStokEntryView.cs" />
     <Compile Include="Views\PenyesuaianStok\IPenyesuaianStokView.cs" />
+    <Compile Include="Views\PenyesuaianStok\PenyesuaianStokEntryView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\PenyesuaianStok\PenyesuaianStokEntryView.Designer.cs">
+      <DependentUpon>PenyesuaianStokEntryView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\PenyesuaianStok\PenyesuaianStokView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -423,6 +430,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Pengeluaran\PengeluaranView.resx">
       <DependentUpon>PengeluaranView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\PenyesuaianStok\PenyesuaianStokEntryView.resx">
+      <DependentUpon>PenyesuaianStokEntryView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\PenyesuaianStok\PenyesuaianStokView.resx">
       <DependentUpon>PenyesuaianStokView.cs</DependentUpon>
