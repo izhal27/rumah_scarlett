@@ -28,12 +28,14 @@
       /// </summary>
       private void InitializeComponent()
       {
-         this.components = new System.ComponentModel.Container();
-         System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PembelianView));
          this.groupBox1 = new System.Windows.Forms.GroupBox();
          this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-         this.label1 = new System.Windows.Forms.Label();
+         this.textBoxTanggal1 = new RumahScarlett.Presentation.Views.CommonControls.TextBoxTanggal();
          this.comboBoxSupplier = new RumahScarlett.Presentation.Views.ModelControls.ComboBoxSupplier();
+         this.label17 = new System.Windows.Forms.Label();
+         this.label1 = new System.Windows.Forms.Label();
+         this.label18 = new System.Windows.Forms.Label();
+         this.textBoxNoNota = new RumahScarlett.Presentation.Views.CommonControls.BaseTextBox();
          this.listDataGrid = new RumahScarlett.Presentation.Views.CommonControls.ListDataGrid();
          this.groupBox2 = new System.Windows.Forms.GroupBox();
          this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -55,8 +57,13 @@
          this.label14 = new System.Windows.Forms.Label();
          this.label15 = new System.Windows.Forms.Label();
          this.label16 = new System.Windows.Forms.Label();
+         this.label19 = new System.Windows.Forms.Label();
+         this.label20 = new System.Windows.Forms.Label();
+         this.label21 = new System.Windows.Forms.Label();
          this.groupBox1.SuspendLayout();
          this.tableLayoutPanel1.SuspendLayout();
+         ((System.ComponentModel.ISupportInitialize)(this.textBoxTanggal1)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.textBoxNoNota)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.listDataGrid)).BeginInit();
          this.groupBox2.SuspendLayout();
          this.tableLayoutPanel2.SuspendLayout();
@@ -68,7 +75,7 @@
          this.groupBox1.Controls.Add(this.tableLayoutPanel1);
          this.groupBox1.Location = new System.Drawing.Point(12, 58);
          this.groupBox1.Name = "groupBox1";
-         this.groupBox1.Size = new System.Drawing.Size(221, 60);
+         this.groupBox1.Size = new System.Drawing.Size(241, 115);
          this.groupBox1.TabIndex = 1;
          this.groupBox1.TabStop = false;
          this.groupBox1.Text = "[ DATA ]";
@@ -78,35 +85,92 @@
          this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-         this.tableLayoutPanel1.ColumnCount = 2;
+         this.tableLayoutPanel1.ColumnCount = 3;
          this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
          this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+         this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+         this.tableLayoutPanel1.Controls.Add(this.textBoxTanggal1, 2, 1);
+         this.tableLayoutPanel1.Controls.Add(this.comboBoxSupplier, 2, 0);
+         this.tableLayoutPanel1.Controls.Add(this.label17, 0, 1);
+         this.tableLayoutPanel1.Controls.Add(this.label18, 0, 2);
+         this.tableLayoutPanel1.Controls.Add(this.textBoxNoNota, 2, 2);
          this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
-         this.tableLayoutPanel1.Controls.Add(this.comboBoxSupplier, 1, 0);
+         this.tableLayoutPanel1.Controls.Add(this.label19, 1, 0);
+         this.tableLayoutPanel1.Controls.Add(this.label20, 1, 1);
+         this.tableLayoutPanel1.Controls.Add(this.label21, 1, 2);
          this.tableLayoutPanel1.Location = new System.Drawing.Point(6, 19);
          this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-         this.tableLayoutPanel1.RowCount = 1;
-         this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-         this.tableLayoutPanel1.Size = new System.Drawing.Size(209, 35);
+         this.tableLayoutPanel1.RowCount = 3;
+         this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+         this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+         this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+         this.tableLayoutPanel1.Size = new System.Drawing.Size(229, 90);
          this.tableLayoutPanel1.TabIndex = 0;
+         // 
+         // textBoxTanggal1
+         // 
+         this.textBoxTanggal1.Anchor = System.Windows.Forms.AnchorStyles.Left;
+         this.textBoxTanggal1.BeforeTouchSize = new System.Drawing.Size(148, 20);
+         this.textBoxTanggal1.Location = new System.Drawing.Point(72, 33);
+         this.textBoxTanggal1.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
+         this.textBoxTanggal1.Name = "textBoxTanggal1";
+         this.textBoxTanggal1.ReadOnly = true;
+         this.textBoxTanggal1.Size = new System.Drawing.Size(149, 20);
+         this.textBoxTanggal1.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
+         this.textBoxTanggal1.TabIndex = 7;
+         this.textBoxTanggal1.TabStop = false;
+         this.textBoxTanggal1.Text = "07/09/2019";
+         // 
+         // comboBoxSupplier
+         // 
+         this.comboBoxSupplier.Anchor = System.Windows.Forms.AnchorStyles.Left;
+         this.comboBoxSupplier.Location = new System.Drawing.Point(72, 4);
+         this.comboBoxSupplier.Name = "comboBoxSupplier";
+         this.comboBoxSupplier.Size = new System.Drawing.Size(150, 21);
+         this.comboBoxSupplier.TabIndex = 1;
+         // 
+         // label17
+         // 
+         this.label17.Anchor = System.Windows.Forms.AnchorStyles.Left;
+         this.label17.AutoSize = true;
+         this.label17.Location = new System.Drawing.Point(3, 37);
+         this.label17.Name = "label17";
+         this.label17.Size = new System.Drawing.Size(46, 13);
+         this.label17.TabIndex = 0;
+         this.label17.Text = "Tanggal";
          // 
          // label1
          // 
          this.label1.Anchor = System.Windows.Forms.AnchorStyles.Left;
          this.label1.AutoSize = true;
-         this.label1.Location = new System.Drawing.Point(3, 11);
+         this.label1.Location = new System.Drawing.Point(3, 8);
          this.label1.Name = "label1";
          this.label1.Size = new System.Drawing.Size(45, 13);
          this.label1.TabIndex = 0;
          this.label1.Text = "Supplier";
          // 
-         // comboBoxSupplier
+         // label18
          // 
-         this.comboBoxSupplier.Anchor = System.Windows.Forms.AnchorStyles.Left;
-         this.comboBoxSupplier.Location = new System.Drawing.Point(54, 7);
-         this.comboBoxSupplier.Name = "comboBoxSupplier";
-         this.comboBoxSupplier.Size = new System.Drawing.Size(150, 21);
-         this.comboBoxSupplier.TabIndex = 1;
+         this.label18.Anchor = System.Windows.Forms.AnchorStyles.Left;
+         this.label18.AutoSize = true;
+         this.label18.Location = new System.Drawing.Point(3, 67);
+         this.label18.Name = "label18";
+         this.label18.Size = new System.Drawing.Size(47, 13);
+         this.label18.TabIndex = 0;
+         this.label18.Text = "No Nota";
+         // 
+         // textBoxNoNota
+         // 
+         this.textBoxNoNota.Anchor = System.Windows.Forms.AnchorStyles.Left;
+         this.textBoxNoNota.BeforeTouchSize = new System.Drawing.Size(148, 20);
+         this.textBoxNoNota.Location = new System.Drawing.Point(72, 64);
+         this.textBoxNoNota.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
+         this.textBoxNoNota.Name = "textBoxNoNota";
+         this.textBoxNoNota.ReadOnly = true;
+         this.textBoxNoNota.Size = new System.Drawing.Size(148, 20);
+         this.textBoxNoNota.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
+         this.textBoxNoNota.TabIndex = 8;
+         this.textBoxNoNota.TabStop = false;
          // 
          // listDataGrid
          // 
@@ -116,10 +180,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
          this.listDataGrid.AutoSizeColumnsMode = Syncfusion.WinForms.DataGrid.Enums.AutoSizeColumnsMode.Fill;
-         this.listDataGrid.Location = new System.Drawing.Point(12, 124);
+         this.listDataGrid.Location = new System.Drawing.Point(12, 179);
          this.listDataGrid.Name = "listDataGrid";
          this.listDataGrid.ShowRowHeader = true;
-         this.listDataGrid.Size = new System.Drawing.Size(534, 295);
+         this.listDataGrid.Size = new System.Drawing.Size(534, 240);
          this.listDataGrid.TabIndex = 2;
          this.listDataGrid.Text = "listDataGrid1";
          // 
@@ -127,7 +191,7 @@
          // 
          this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
          this.groupBox2.Controls.Add(this.tableLayoutPanel2);
-         this.groupBox2.Location = new System.Drawing.Point(552, 124);
+         this.groupBox2.Location = new System.Drawing.Point(552, 179);
          this.groupBox2.Name = "groupBox2";
          this.groupBox2.Size = new System.Drawing.Size(220, 85);
          this.groupBox2.TabIndex = 5;
@@ -232,7 +296,7 @@
          this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
          this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
          this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-         this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+         this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 333F));
          this.tableLayoutPanel3.Controls.Add(this.label4, 0, 0);
          this.tableLayoutPanel3.Controls.Add(this.label7, 1, 0);
          this.tableLayoutPanel3.Controls.Add(this.label8, 2, 0);
@@ -361,6 +425,36 @@
          this.label16.TabIndex = 0;
          this.label16.Text = "F12 Tutup";
          // 
+         // label19
+         // 
+         this.label19.Anchor = System.Windows.Forms.AnchorStyles.Left;
+         this.label19.AutoSize = true;
+         this.label19.Location = new System.Drawing.Point(56, 8);
+         this.label19.Name = "label19";
+         this.label19.Size = new System.Drawing.Size(10, 13);
+         this.label19.TabIndex = 0;
+         this.label19.Text = ":";
+         // 
+         // label20
+         // 
+         this.label20.Anchor = System.Windows.Forms.AnchorStyles.Left;
+         this.label20.AutoSize = true;
+         this.label20.Location = new System.Drawing.Point(56, 37);
+         this.label20.Name = "label20";
+         this.label20.Size = new System.Drawing.Size(10, 13);
+         this.label20.TabIndex = 0;
+         this.label20.Text = ":";
+         // 
+         // label21
+         // 
+         this.label21.Anchor = System.Windows.Forms.AnchorStyles.Left;
+         this.label21.AutoSize = true;
+         this.label21.Location = new System.Drawing.Point(56, 67);
+         this.label21.Name = "label21";
+         this.label21.Size = new System.Drawing.Size(10, 13);
+         this.label21.TabIndex = 0;
+         this.label21.Text = ":";
+         // 
          // PembelianView
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -383,6 +477,8 @@
          this.groupBox1.ResumeLayout(false);
          this.tableLayoutPanel1.ResumeLayout(false);
          this.tableLayoutPanel1.PerformLayout();
+         ((System.ComponentModel.ISupportInitialize)(this.textBoxTanggal1)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.textBoxNoNota)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.listDataGrid)).EndInit();
          this.groupBox2.ResumeLayout(false);
          this.tableLayoutPanel2.ResumeLayout(false);
@@ -420,5 +516,12 @@
       private System.Windows.Forms.Label label14;
       private System.Windows.Forms.Label label15;
       private System.Windows.Forms.Label label16;
+      private CommonControls.TextBoxTanggal textBoxTanggal1;
+      private System.Windows.Forms.Label label17;
+      private System.Windows.Forms.Label label18;
+      private CommonControls.BaseTextBox textBoxNoNota;
+      private System.Windows.Forms.Label label19;
+      private System.Windows.Forms.Label label20;
+      private System.Windows.Forms.Label label21;
    }
 }

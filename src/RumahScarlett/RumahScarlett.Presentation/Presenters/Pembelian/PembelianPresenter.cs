@@ -146,9 +146,13 @@ namespace RumahScarlett.Presentation.Presenters.Pembelian
                                    (uint)_view.ComboBoxSupplier.ComboBox.SelectedValue : default(uint),
                      PembelianDetails = pembelianDetailsFixed
                   };
+
                   _pembelianServices.Insert(model);
                   Messages.Info("Data Pembelian berhasil disimpan.");
-                  _view_OnBersihkanData(null, null);
+
+                  _view.TextBoxNoNota.Text = model.no_nota;
+                  _view.ComboBoxSupplier.Enabled = false;
+                  _view.ListDataGrid.Enabled = false;
                }
             }
          }
@@ -164,6 +168,14 @@ namespace RumahScarlett.Presentation.Presenters.Pembelian
 
       private void _view_OnBersihkanData(object sender, EventArgs e)
       {
+         if (!_view.ListDataGrid.Enabled)
+         {
+            _view.ListDataGrid.Enabled = true;
+            _view.ComboBoxSupplier.Enabled = true;
+            _view.ComboBoxSupplier.ComboBox.SelectedIndex = 0;
+            _view.TextBoxNoNota.Text = string.Empty;
+         }
+
          _listsPembelianDetails.Clear();
          AddDummyPembelianModel(30);
          _bindingView.DataSource = _listsPembelianDetails;

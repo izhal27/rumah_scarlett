@@ -46,6 +46,11 @@ namespace RumahScarlett.Presentation.Views.Pembelian
          get { return labelTotalPembelian; }
       }
 
+      public TextBox TextBoxNoNota
+      {
+         get { return textBoxNoNota; }
+      }
+
       public PembelianView()
       {
          InitializeComponent();
