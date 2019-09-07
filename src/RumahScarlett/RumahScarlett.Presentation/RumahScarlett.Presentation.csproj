@@ -202,6 +202,9 @@
     <Compile Include="Views\CommonControls\PanelUp.Designer.cs">
       <DependentUpon>PanelUp.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\CommonControls\TextBoxTanggal.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Views\HutangOperasional\HutangOperasionalEntryView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -217,6 +220,7 @@
     <Compile Include="Views\HutangOperasional\IHutangOperasionalEntryView.cs" />
     <Compile Include="Views\HutangOperasional\IHutangOperasionalView.cs" />
     <Compile Include="Views\IDataView.cs" />
+    <Compile Include="Views\ITransaksiView.cs" />
     <Compile Include="Views\KasAwal\IKasAwalView.cs" />
     <Compile Include="Views\IMainView.cs" />
     <Compile Include="MainProgram.cs" />
@@ -303,6 +307,13 @@
     </Compile>
     <Compile Include="Views\Pengeluaran\PengeluaranView.Designer.cs">
       <DependentUpon>PengeluaranView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Penjualan\IPenjualanView.cs" />
+    <Compile Include="Views\Penjualan\PenjualanView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Penjualan\PenjualanView.Designer.cs">
+      <DependentUpon>PenjualanView.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\PenyesuaianStok\IPenyesuaianStokEntryView.cs" />
     <Compile Include="Views\PenyesuaianStok\IPenyesuaianStokView.cs" />
@@ -454,6 +465,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Pengeluaran\PengeluaranView.resx">
       <DependentUpon>PengeluaranView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Penjualan\PenjualanView.resx">
+      <DependentUpon>PenjualanView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\PenyesuaianStok\PenyesuaianStokEntryView.resx">
       <DependentUpon>PenyesuaianStokEntryView.cs</DependentUpon>
