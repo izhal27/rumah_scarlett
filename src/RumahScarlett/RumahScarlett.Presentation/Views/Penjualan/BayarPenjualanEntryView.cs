@@ -23,8 +23,8 @@ namespace RumahScarlett.Presentation.Views.Penjualan
       {
          InitializeComponent();
 
-         panelUp.LabelInfo = "BAYAR PENJUALAN";
-         
+         panelUp.LabelInfo = Text.ToUpper();
+
          var penjualanDetailsFixed = listPenjualanDetails.Where(pd => pd.Barang.id != default(int)).ToList();
 
          textBoxTotalItem.Text = penjualanDetailsFixed.Count.ToString("N0");
