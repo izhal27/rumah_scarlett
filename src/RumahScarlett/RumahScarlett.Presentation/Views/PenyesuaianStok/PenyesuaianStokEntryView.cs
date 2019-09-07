@@ -36,7 +36,7 @@ namespace RumahScarlett.Presentation.Views.PenyesuaianStok
          _listsBarangs = _barangServices.GetAll().Where(b => b.stok > b.minimal_stok).ToList();
 
          _isNewData = isNewData;
-         panelUp.LabelInfo = isNewData ? "TAMBAH PENYESUAIAN STOK" : "UBAH PENYESUAIAN STOK";
+         panelUp.LabelInfo = isNewData ?  $"TAMBAH {_typeName.ToUpper()}" : $"UBAH {_typeName.ToUpper()}";
 
          if (!_isNewData)
          {

@@ -51,8 +51,10 @@
          this.label6 = new System.Windows.Forms.Label();
          this.label15 = new System.Windows.Forms.Label();
          this.textBoxHpp = new RumahScarlett.Presentation.Views.CommonControls.BaseTextBoxDigit();
-         this.toolTip = new System.Windows.Forms.ToolTip(this.components);
          this.label16 = new System.Windows.Forms.Label();
+         this.label5 = new System.Windows.Forms.Label();
+         this.label17 = new System.Windows.Forms.Label();
+         this.toolTip = new System.Windows.Forms.ToolTip(this.components);
          this.tableLayoutPanel1.SuspendLayout();
          ((System.ComponentModel.ISupportInitialize)(this.textBoxKeterangan)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.textBoxQty)).BeginInit();
@@ -101,6 +103,8 @@
          this.tableLayoutPanel1.Controls.Add(this.label15, 0, 4);
          this.tableLayoutPanel1.Controls.Add(this.textBoxHpp, 2, 4);
          this.tableLayoutPanel1.Controls.Add(this.label16, 3, 4);
+         this.tableLayoutPanel1.Controls.Add(this.label5, 1, 3);
+         this.tableLayoutPanel1.Controls.Add(this.label17, 1, 4);
          this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 58);
          this.tableLayoutPanel1.Name = "tableLayoutPanel1";
          this.tableLayoutPanel1.RowCount = 6;
@@ -358,6 +362,26 @@
          this.label16.TabIndex = 5;
          this.label16.Text = "*";
          // 
+         // label5
+         // 
+         this.label5.Anchor = System.Windows.Forms.AnchorStyles.Left;
+         this.label5.AutoSize = true;
+         this.label5.Location = new System.Drawing.Point(71, 88);
+         this.label5.Name = "label5";
+         this.label5.Size = new System.Drawing.Size(10, 13);
+         this.label5.TabIndex = 0;
+         this.label5.Text = ":";
+         // 
+         // label17
+         // 
+         this.label17.Anchor = System.Windows.Forms.AnchorStyles.Left;
+         this.label17.AutoSize = true;
+         this.label17.Location = new System.Drawing.Point(71, 116);
+         this.label17.Name = "label17";
+         this.label17.Size = new System.Drawing.Size(10, 13);
+         this.label17.TabIndex = 0;
+         this.label17.Text = ":";
+         // 
          // PenyesuaianStokEntryView
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -405,5 +429,7 @@
       private System.Windows.Forms.Label label15;
       private CommonControls.BaseTextBoxDigit textBoxHpp;
       private System.Windows.Forms.Label label16;
+      private System.Windows.Forms.Label label5;
+      private System.Windows.Forms.Label label17;
    }
 }
