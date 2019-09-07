@@ -113,7 +113,7 @@
          this.textBoxKeterangan.Name = "textBoxKeterangan";
          this.textBoxKeterangan.Size = new System.Drawing.Size(250, 100);
          this.textBoxKeterangan.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
-         this.textBoxKeterangan.TabIndex = 3;
+         this.textBoxKeterangan.TabIndex = 2;
          // 
          // label1
          // 
@@ -162,7 +162,7 @@
          this.dateTimePickerTanggal.MinDate = new System.DateTime(1945, 8, 17, 0, 0, 0, 0);
          this.dateTimePickerTanggal.Name = "dateTimePickerTanggal";
          this.dateTimePickerTanggal.Size = new System.Drawing.Size(150, 20);
-         this.dateTimePickerTanggal.TabIndex = 1;
+         this.dateTimePickerTanggal.TabIndex = 0;
          // 
          // textBoxDigitJumlah
          // 
@@ -177,7 +177,7 @@
          this.textBoxDigitJumlah.NullString = "";
          this.textBoxDigitJumlah.Size = new System.Drawing.Size(150, 20);
          this.textBoxDigitJumlah.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
-         this.textBoxDigitJumlah.TabIndex = 2;
+         this.textBoxDigitJumlah.TabIndex = 1;
          this.textBoxDigitJumlah.Text = "0";
          this.textBoxDigitJumlah.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
          // 
@@ -192,7 +192,7 @@
          this.comboBoxStatusHutang.Location = new System.Drawing.Point(100, 164);
          this.comboBoxStatusHutang.Name = "comboBoxStatusHutang";
          this.comboBoxStatusHutang.Size = new System.Drawing.Size(150, 21);
-         this.comboBoxStatusHutang.TabIndex = 4;
+         this.comboBoxStatusHutang.TabIndex = 3;
          // 
          // label8
          // 
