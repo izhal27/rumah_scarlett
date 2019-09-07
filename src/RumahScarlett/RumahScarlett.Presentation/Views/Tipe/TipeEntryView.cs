@@ -25,7 +25,7 @@ namespace RumahScarlett.Presentation.Views.Tipe
       {
          InitializeComponent();
          _isNewData = isNewData;
-         panelUp.LabelInfo = isNewData ? "TAMBAH TIPE" : "UBAH TIPE";
+         panelUp.LabelInfo = isNewData ?  $"TAMBAH {_typeName.ToUpper()}" : $"UBAH {_typeName.ToUpper()}";
 
          if (!_isNewData)
          {
