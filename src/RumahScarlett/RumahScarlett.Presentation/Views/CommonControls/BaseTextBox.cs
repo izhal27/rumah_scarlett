@@ -13,12 +13,18 @@ namespace RumahScarlett.Presentation.Views.CommonControls
    {
       protected override void OnEnter(EventArgs e)
       {
-         BackColor = Color.FromArgb(240, 248, 255);
+         if (!ReadOnly)
+         {
+            BackColor = Color.FromArgb(240, 248, 255);
+         }
       }
 
       protected override void OnLeave(EventArgs e)
       {
-         BackColor = SystemColors.Window;
+         if (!ReadOnly)
+         {
+            BackColor = SystemColors.Window;
+         }
       }
 
       public override string Text
@@ -30,7 +36,7 @@ namespace RumahScarlett.Presentation.Views.CommonControls
 
          set
          {
-            base.Text = value !=  null ? value.Trim() : string.Empty;
+            base.Text = value != null ? value.Trim() : string.Empty;
          }
       }
    }
