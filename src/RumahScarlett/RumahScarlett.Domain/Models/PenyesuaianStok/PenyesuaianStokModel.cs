@@ -80,6 +80,7 @@ namespace RumahScarlett.Domain.Models.PenyesuaianStok
       }
       
       [DisplayFormat(DataFormatString = "{0:N0}")]
+      [Range(typeof(decimal), "1", "79228162514264337593543950335", ErrorMessage = "HPP harus diisi !!!")]
       [Display(Name = "HPP")]
       public decimal hpp { get; set; }
 
