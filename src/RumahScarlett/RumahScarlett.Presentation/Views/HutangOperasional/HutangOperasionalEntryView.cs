@@ -27,7 +27,7 @@ namespace RumahScarlett.Presentation.Views.HutangOperasional
          InitializeComponent();
 
          _isNewData = isNewData;
-         panelUp.LabelInfo = isNewData ? "TAMBAH HUTANG OPERASIONAL" : "UBAH HUTANG OPERASIONAL";
+         panelUp.LabelInfo = isNewData ? $"TAMBAH {_typeName.ToUpper()}" : $"UBAH {_typeName.ToUpper()}";
 
          if (!_isNewData)
          {
