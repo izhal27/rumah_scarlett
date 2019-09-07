@@ -39,35 +39,48 @@ namespace RumahScarlett.Domain.Models.Penjualan
          set { _barang_id = value; }
       }
 
+      private string _barang_kode;
+
       [Dp.Write(false)]
       [Display(Name = "Kode Barang")]
-      public string barang_kode { get { return Barang != null ? Barang.kode : string.Empty; } }
+      public string barang_kode
+      {
+         get { return Barang != null && Barang.id != default(uint) ? Barang.kode : _barang_kode; }
+         set { _barang_kode = value; }
+      }
+
+      private string _barang_nama;
 
       [Dp.Write(false)]
       [Display(Name = "Nama Barang")]
-      public string barang_nama { get { return Barang != null ? Barang.nama : string.Empty; } }
+      public string barang_nama
+      {
+         get { return Barang != null ? Barang.nama : _barang_nama; }
+         set { _barang_nama = value; }
+      }
 
+      [DisplayFormat(DataFormatString = "{0:N0}")]
       [Range(1, int.MaxValue, ErrorMessage = "Qty harus diisi !!!")]
       [Display(Name = "Qty")]
       public int qty { get; set; }
 
-      private decimal _harga_jual;
-
-      [Display(Name = "Harga Jual")]
-      public decimal harga_jual
+      [Dp.Write(false)]
+      [Display(Name = "Satuan")]
+      public string barang_satuan
       {
-         get { return Barang.harga_jual != default(decimal) ? Barang.harga_jual : _harga_jual; }
-         set { _harga_jual = value; }
+         get { return Barang != null ? Barang.satuan_nama : string.Empty; }
       }
 
+      [DisplayFormat(DataFormatString = "{0:N0}")]
+      [Display(Name = "Harga Jual")]
+      public decimal harga_jual { get; set; }
+
+      [DisplayFormat(DataFormatString = "{0:N0}")]
       [Dp.Write(false)]
       [Display(Name = "Total")]
       public decimal total
       {
-         get
-         {
-            return qty > 0M ? decimal.Parse((qty * harga_jual).ToString()) : 0M;
-         }
+         get { return qty > 0M ? decimal.Parse((qty * harga_jual).ToString()) : 0M; }
       }
 
       public PenjualanDetailModel()

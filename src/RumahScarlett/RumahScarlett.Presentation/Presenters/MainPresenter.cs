@@ -6,6 +6,7 @@ using RumahScarlett.Presentation.Presenters.KasAwal;
 using RumahScarlett.Presentation.Presenters.Pelanggan;
 using RumahScarlett.Presentation.Presenters.Pembelian;
 using RumahScarlett.Presentation.Presenters.Pengeluaran;
+using RumahScarlett.Presentation.Presenters.Penjualan;
 using RumahScarlett.Presentation.Presenters.PenyesuaianStok;
 using RumahScarlett.Presentation.Presenters.Satuan;
 using RumahScarlett.Presentation.Presenters.Supplier;
@@ -43,7 +44,7 @@ namespace RumahScarlett.Presentation.Presenters
          _view.OnKasAwalViewOpen += _view_OnKasAwalViewOpen;
          _view.OnHutangOperasionalViewOpen += _view_OnHutangOperasionalViewOpen;
 
-
+         _view.OnPenjualanViewOpen += _view_OnPenjualanViewOpen;
          _view.OnPembelianViewOpen += _view_OnPembelianViewOpen;
          _view.OnPengeluaranViewOpen += _view_OnPengeluaranViewOpen;
          _view.OnPenyesuaianStokViewOpen += _view_OnPenyesuaianStokViewOpen;
@@ -95,13 +96,19 @@ namespace RumahScarlett.Presentation.Presenters
          var view = (DockContent)new HutangOperasionalPresenter().GetView;
          ShowChildForm(view, e);
       }
-      
 
 
 
 
 
 
+
+
+      private void _view_OnPenjualanViewOpen(object sender, MainViewEventArgs e)
+      {
+         var view = (DockContent)new PenjualanPresenter().GetView;
+         ShowChildForm(view, e);
+      }
 
       private void _view_OnPembelianViewOpen(object sender, MainViewEventArgs e)
       {

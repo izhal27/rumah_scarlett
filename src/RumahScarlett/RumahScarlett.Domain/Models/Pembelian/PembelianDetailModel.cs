@@ -38,14 +38,14 @@ namespace RumahScarlett.Domain.Models.Pembelian
          set { _barang_id = value; }
       }
 
-      private string _kode_barang;
+      private string _baran_kodeg;
 
       [Dp.Write(false)]
       [Display(Name = "Kode Barang")]
       public string barang_kode
       {
-         get { return Barang != null ? Barang.kode : _kode_barang; }
-         set { _kode_barang = value; }
+         get { return Barang != null ? Barang.kode : _baran_kodeg; }
+         set { _baran_kodeg = value; }
       }
 
       private string _nama_barang;

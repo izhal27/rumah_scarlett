@@ -29,6 +29,7 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Penjualan
             context.BeginTransaction();
 
             model.no_nota = DbHelper.GetMaxID(context, context.Transaction, "penjualan", "no_nota");
+            model.tanggal = DateTime.Now;
 
             Insert(model, () =>
             {

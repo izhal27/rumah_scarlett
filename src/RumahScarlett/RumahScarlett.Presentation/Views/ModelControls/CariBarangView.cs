@@ -20,8 +20,9 @@ namespace RumahScarlett.Presentation.Views.ModelControls
 
       private List<IBarangModel> _listsBarang;
       private BindingListView<BarangModel> _bindingView;
+      private string _kodeOrNamaValue;
 
-      public CariBarangView(List<IBarangModel> listsBarang, TipePencarian tipePencarian)
+      public CariBarangView(List<IBarangModel> listsBarang, TipePencarian tipePencarian, string kodeOrNamaValue = default(string))
       {
          InitializeComponent();
 
@@ -29,19 +30,40 @@ namespace RumahScarlett.Presentation.Views.ModelControls
          _bindingView = new BindingListView<BarangModel>(_listsBarang);
          listDataGrid.DataSource = _bindingView;
 
-         listDataGrid.Columns[5].Visible = false; // Harga jual
          listDataGrid.Columns[7].Visible = false; // Penyesuaian stok
 
          switch (tipePencarian)
          {
-            case TipePencarian.Pembelian:
-               
+            case TipePencarian.Penjualan:
+
+               listDataGrid.Columns[4].Visible = false; // Hpp
                listDataGrid.Columns[6].Visible = false; // Minimal stok
+
+               break;
+            case TipePencarian.Pembelian:
+
+               listDataGrid.Columns[5].Visible = false; // Harga jual
+               listDataGrid.Columns[6].Visible = false; // Minimal stok
+
+               break;
+            case TipePencarian.PenyesuaianStok:
+
+               listDataGrid.Columns[5].Visible = false; // Harga jual
 
                break;
          }
 
+         _kodeOrNamaValue = kodeOrNamaValue;
+
          OnEnterKeyDown += CariBarangPembelianView_OnEnterKeyDown;
+      }
+      
+      private void CariBarangView_Load(object sender, EventArgs e)
+      {
+         if (!string.IsNullOrWhiteSpace(_kodeOrNamaValue))
+         {
+            textBoxPencarian.Text = _kodeOrNamaValue;
+         }
       }
 
       private void CariBarangPembelianView_OnEnterKeyDown(object sender, EventArgs e)
@@ -74,6 +96,7 @@ namespace RumahScarlett.Presentation.Views.ModelControls
    public enum TipePencarian
    {
       Pembelian,
+      Penjualan,
       PenyesuaianStok,
    }
 }

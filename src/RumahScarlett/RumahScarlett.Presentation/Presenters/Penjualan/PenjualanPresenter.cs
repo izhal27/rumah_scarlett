@@ -1,37 +1,39 @@
-﻿using Equin.ApplicationFramework;
-using RumahScarlett.CommonComponents;
-using RumahScarlett.Domain.Models.Barang;
-using RumahScarlett.Domain.Models.Pembelian;
-using RumahScarlett.Infrastructure.DataAccess.Repositories.Barang;
-using RumahScarlett.Infrastructure.DataAccess.Repositories.Pembelian;
-using RumahScarlett.Presentation.Helper;
-using RumahScarlett.Presentation.Views.ModelControls;
-using RumahScarlett.Presentation.Views.Pembelian;
-using RumahScarlett.Services.Services;
-using RumahScarlett.Services.Services.Barang;
-using RumahScarlett.Services.Services.Pembelian;
-using Syncfusion.WinForms.DataGrid.Events;
-using Syncfusion.WinForms.GridCommon.ScrollAxis;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using RumahScarlett.Presentation.Views.Penjualan;
+using RumahScarlett.Services.Services.Penjualan;
+using RumahScarlett.Services.Services.Barang;
+using RumahScarlett.Domain.Models.Penjualan;
+using RumahScarlett.Domain.Models.Barang;
+using Equin.ApplicationFramework;
+using RumahScarlett.Infrastructure.DataAccess.Repositories.Penjualan;
+using RumahScarlett.Services.Services;
+using RumahScarlett.Infrastructure.DataAccess.Repositories.Barang;
 using System.Windows.Forms;
+using Syncfusion.WinForms.GridCommon.ScrollAxis;
+using RumahScarlett.Presentation.Helper;
+using RumahScarlett.CommonComponents;
+using Syncfusion.WinForms.DataGrid.Events;
+using RumahScarlett.Presentation.Views.ModelControls;
+using System.Globalization;
 
-namespace RumahScarlett.Presentation.Presenters.Pembelian
+namespace RumahScarlett.Presentation.Presenters.Penjualan
 {
-   public class PembelianPresenter : IPembelianPresenter
+   public class PenjualanPresenter : IPenjualanPresenter
    {
-      private IPembelianView _view;
-      private IPembelianServices _pembelianServices;
-      private IBarangServices _barangServices;
-      private List<PembelianDetailModel> _listsPembelianDetails;
-      private List<IBarangModel> _listsBarangs;
-      private BindingListView<PembelianDetailModel> _bindingView;
 
-      public IPembelianView GetView
+      private IPenjualanView _view;
+      private IPenjualanServices _penjualannServices;
+      private IBarangServices _barangServices;
+      private List<PenjualanDetailModel> _listPenjualanDetails;
+      private List<IBarangModel> _listsBarangs;
+      private BindingListView<PenjualanDetailModel> _bindingView;
+      private string _kodeOrNamaForSearching = "";
+
+      public IPenjualanView GetView
       {
          get { return _view; }
       }
@@ -49,17 +51,17 @@ namespace RumahScarlett.Presentation.Presenters.Pembelian
          }
       }
 
-      public PembelianPresenter()
+      public PenjualanPresenter()
       {
-         _view = new PembelianView();
-         _pembelianServices = new PembelianServices(new PembelianRepository(), new ModelDataAnnotationCheck());
+         _view = new PenjualanView();
+         _penjualannServices = new PenjualanServices(new PenjualanRepository(), new ModelDataAnnotationCheck());
          _barangServices = new BarangServices(new BarangRepository(), new ModelDataAnnotationCheck());
          _listsBarangs = _barangServices.GetAll().Where(b => b.hpp > 0).ToList();
 
          _view.OnLoadData += _view_OnLoadData;
          _view.OnCariData += _view_OnCariData;
          _view.OnHapusData += _view_OnHapusData;
-         _view.OnBayarPenjualan += _view_OnSimpanData;
+         _view.OnBayarPenjualan += _view_OnBayarPenjualan;
          _view.OnBersihkanData += _view_OnBersihkanData;
          _view.OnListDataGridCurrentCellKeyDown += _view_OnListDataGridCurrentCellKeyDown;
          _view.OnListDataGridCurrentCellActivated += _view_OnListDataGridCurrentCellActivated;
@@ -71,10 +73,10 @@ namespace RumahScarlett.Presentation.Presenters.Pembelian
       {
          ((Form)_view).ActiveControl = _view.ListDataGrid;
 
-         _listsPembelianDetails = new List<PembelianDetailModel>();
-         AddDummyPembelianModel(30);
+         _listPenjualanDetails = new List<PenjualanDetailModel>();
+         AddDummyPenjualanModel(30);
 
-         _bindingView = new BindingListView<PembelianDetailModel>(_listsPembelianDetails);
+         _bindingView = new BindingListView<PenjualanDetailModel>(_listPenjualanDetails);
          _bindingView.ListChanged += _bindingView_ListChanged;
 
          _view.ListDataGrid.DataSource = _bindingView;
@@ -84,17 +86,17 @@ namespace RumahScarlett.Presentation.Presenters.Pembelian
 
       private void _bindingView_ListChanged(object sender, System.ComponentModel.ListChangedEventArgs e)
       {
-         HitungRingkasan();
+         //HitungRingkasan();
       }
 
       private void _view_OnCariData(object sender, EventArgs e)
       {
-         var view = new CariBarangView(_listsBarangs, TipePencarian.Pembelian);
-         view.OnSendData += CariBarangPembelianView_OnSendData;
+         var view = new CariBarangView(_listsBarangs, TipePencarian.Penjualan, _kodeOrNamaForSearching);
+         view.OnSendData += CariBarangPenjualanView_OnSendData;
          view.ShowDialog();
       }
 
-      private void CariBarangPembelianView_OnSendData(object sender, EventArgs e)
+      private void CariBarangPenjualanView_OnSendData(object sender, EventArgs e)
       {
          var listDataGrid = _view.ListDataGrid;
          var rowIndex = listDataGrid.CurrentCell.RowIndex;
@@ -104,10 +106,10 @@ namespace RumahScarlett.Presentation.Presenters.Pembelian
 
          if (model != null)
          {
-            _listsPembelianDetails[(rowIndex - 1)].Barang = model;
-            _listsPembelianDetails[(rowIndex - 1)].barang_id = model.id;
-            _listsPembelianDetails[(rowIndex - 1)].hpp = model.hpp;
-            _listsPembelianDetails[(rowIndex - 1)].qty = 1;
+            _listPenjualanDetails[(rowIndex - 1)].Barang = model;
+            _listPenjualanDetails[(rowIndex - 1)].barang_id = model.id;
+            _listPenjualanDetails[(rowIndex - 1)].qty = 1;
+            _listPenjualanDetails[(rowIndex - 1)].harga_jual = model.hpp;
 
             _view.ListDataGrid.MoveToCurrentCell(new RowColumnIndex(listDataGrid.CurrentCell.RowIndex, 3));
             _view.ListDataGrid.CurrentCell.BeginEdit();
@@ -121,38 +123,41 @@ namespace RumahScarlett.Presentation.Presenters.Pembelian
          {
             if (!string.IsNullOrWhiteSpace(CurrCellValue.ToString()))
             {
-               _listsPembelianDetails.RemoveAt((CurrCellRowIndex - 1));
-               _listsPembelianDetails.Add(new PembelianDetailModel());
-               _bindingView.DataSource = _listsPembelianDetails;
+               _listPenjualanDetails.RemoveAt((CurrCellRowIndex - 1));
+               _listPenjualanDetails.Add(new PenjualanDetailModel());
+               _bindingView.DataSource = _listPenjualanDetails;
             }
          }
       }
 
-      private void _view_OnSimpanData(object sender, EventArgs e)
+      private void _view_OnBayarPenjualan(object sender, EventArgs e)
       {
-         var status = _listsPembelianDetails.Any(pd => pd.Barang.id != default(uint));
+         var status = _listPenjualanDetails.Any(pd => pd.Barang.id != default(uint));
 
          try
          {
-            if (status)
+            if (_view.ListDataGrid.Enabled && status)
             {
-               if (Messages.Confirm("Simpan data Pembelian?"))
+               if (Messages.Confirm("Simpan data Penjualan?"))
                {
-                  var pembelianDetailsFixed = _listsPembelianDetails.Where(pd => pd.Barang.id != default(int)).ToList();
+                  var penjualanDetailsFixed = _listPenjualanDetails.Where(pd => pd.Barang.id != default(int)).ToList();
 
-                  var model = new PembelianModel
+                  var model = new PenjualanModel
                   {
-                     supplier_id = _view.ComboBoxSupplier.ComboBox.SelectedIndex != -1 ?
-                                   (uint)_view.ComboBoxSupplier.ComboBox.SelectedValue : default(uint),
-                     PembelianDetails = pembelianDetailsFixed
+                     pelanggan_id = _view.ComboBoxPelanggan.ComboBox.SelectedIndex != -1 ?
+                                   (uint)_view.ComboBoxPelanggan.ComboBox.SelectedValue : default(uint),
+                     status_pembayaran = _view.ComboBoxStatusPenjualan.SelectedIndex == 1,
+                     PenjualanDetails = penjualanDetailsFixed
                   };
 
-                  _pembelianServices.Insert(model);
-                  Messages.Info("Data Pembelian berhasil disimpan.");
+                  _penjualannServices.Insert(model);
+                  Messages.Info("Data Penjualan berhasil disimpan.");
 
-                  _view.TextBoxNoNota.Text = model.no_nota;
-                  _view.ComboBoxSupplier.Enabled = false;
+                  _view.ComboBoxPelanggan.Enabled = false;
+                  _view.ComboBoxStatusPenjualan.Enabled = false;
                   _view.ListDataGrid.Enabled = false;
+                  ((Form)_view).ActiveControl = _view.TextBoxNoNota;
+                  _view.TextBoxNoNota.Text = model.no_nota;
                }
             }
          }
@@ -171,14 +176,16 @@ namespace RumahScarlett.Presentation.Presenters.Pembelian
          if (!_view.ListDataGrid.Enabled)
          {
             _view.ListDataGrid.Enabled = true;
-            _view.ComboBoxSupplier.Enabled = true;
-            _view.ComboBoxSupplier.ComboBox.SelectedIndex = 0;
+            _view.ComboBoxPelanggan.Enabled = true;
+            _view.ComboBoxPelanggan.ComboBox.SelectedIndex = -1;
+            _view.ComboBoxStatusPenjualan.Enabled = true;
+            _view.ComboBoxStatusPenjualan.SelectedIndex = 1;
             _view.TextBoxNoNota.Text = string.Empty;
          }
 
-         _listsPembelianDetails.Clear();
-         AddDummyPembelianModel(30);
-         _bindingView.DataSource = _listsPembelianDetails;
+         _listPenjualanDetails.Clear();
+         AddDummyPenjualanModel(30);
+         _bindingView.DataSource = _listPenjualanDetails;
          _view.ListDataGrid.MoveToCurrentCell(new RowColumnIndex(1, 1));
       }
 
@@ -189,7 +196,7 @@ namespace RumahScarlett.Presentation.Presenters.Pembelian
             switch (e.ColumnIndex)
             {
                case 1: // Kode
-                  
+
                   _view_OnListDataGridCellKodeKeyDown(sender, e);
 
                   break;
@@ -202,11 +209,6 @@ namespace RumahScarlett.Presentation.Presenters.Pembelian
                case 3: // Qty
 
                   _view_OnListDataGridCellQtyKeyDown(sender, e);
-
-                  break;
-               case 5: // HPP
-
-                  _view_OnListDataGridCellHppKeyDown(sender, e);
 
                   break;
             }
@@ -224,9 +226,9 @@ namespace RumahScarlett.Presentation.Presenters.Pembelian
 
             if (model != null)
             {
-               _listsPembelianDetails[(CurrCellRowIndex - 1)].Barang = model;
-               _listsPembelianDetails[(CurrCellRowIndex - 1)].hpp = model.hpp;
-               _listsPembelianDetails[(CurrCellRowIndex - 1)].qty = 1;
+               _listPenjualanDetails[(CurrCellRowIndex - 1)].Barang = model;
+               _listPenjualanDetails[(CurrCellRowIndex - 1)].qty = 1;
+               _listPenjualanDetails[(CurrCellRowIndex - 1)].harga_jual = model.harga_jual;
 
                listDataGrid.MoveToCurrentCell(new RowColumnIndex(CurrCellRowIndex, (e.ColumnIndex + 2)));
                listDataGrid.CurrentCell.BeginEdit();
@@ -234,8 +236,18 @@ namespace RumahScarlett.Presentation.Presenters.Pembelian
             }
             else
             {
-               listDataGrid.MoveToCurrentCell(new RowColumnIndex(CurrCellRowIndex, (e.ColumnIndex + 1)));
-               listDataGrid.CurrentCell.BeginEdit();
+               if (!string.IsNullOrWhiteSpace(CurrCellValue.ToString()))
+               {
+                  _kodeOrNamaForSearching = CurrCellValue.ToString();
+                  _view_OnCariData(null, null);
+               }
+               else
+               {
+                  _kodeOrNamaForSearching = "";
+                  listDataGrid.MoveToCurrentCell(new RowColumnIndex(CurrCellRowIndex, (e.ColumnIndex + 1)));
+                  listDataGrid.CurrentCell.BeginEdit();
+               }
+
                e.KeyEventArgs.Handled = true;
             }
          }
@@ -252,38 +264,32 @@ namespace RumahScarlett.Presentation.Presenters.Pembelian
 
             if (model != null)
             {
-               _listsPembelianDetails[(CurrCellRowIndex - 1)].Barang = model;
-               _listsPembelianDetails[(CurrCellRowIndex - 1)].hpp = model.hpp;
-               _listsPembelianDetails[(CurrCellRowIndex - 1)].qty = 1;
+               _listPenjualanDetails[(CurrCellRowIndex - 1)].Barang = model;
+               _listPenjualanDetails[(CurrCellRowIndex - 1)].qty = 1;
+               _listPenjualanDetails[(CurrCellRowIndex - 1)].harga_jual = model.hpp;
 
                listDataGrid.MoveToCurrentCell(new RowColumnIndex(CurrCellRowIndex, (e.ColumnIndex + 1)));
                e.KeyEventArgs.Handled = true;
             }
             else
             {
-               _view_OnCariData(null, null);
+               if (!string.IsNullOrWhiteSpace(CurrCellValue.ToString()))
+               {
+                  _kodeOrNamaForSearching = CurrCellValue.ToString();
+                  _view_OnCariData(null, null);
+               }
+               else
+               {
+                  _kodeOrNamaForSearching = "";
+                  _view_OnCariData(null, null);
+               }
+
                e.KeyEventArgs.Handled = true;
             }
          }
       }
 
       private void _view_OnListDataGridCellQtyKeyDown(object sender, CurrentCellKeyEventArgs e)
-      {
-         var listDataGrid = _view.ListDataGrid;
-
-         if (CurrCellValue != null)
-         {
-            if (int.Parse(CurrCellValue.ToString(), NumberStyles.Number) > 0)
-            {
-               listDataGrid.MoveToCurrentCell(new RowColumnIndex(CurrCellRowIndex, (e.ColumnIndex + 2)));
-               listDataGrid.CurrentCell.BeginEdit();
-            }
-         }
-
-         e.KeyEventArgs.Handled = true;
-      }
-
-      private void _view_OnListDataGridCellHppKeyDown(object sender, CurrentCellKeyEventArgs e)
       {
          var listDataGrid = _view.ListDataGrid;
 
@@ -302,7 +308,7 @@ namespace RumahScarlett.Presentation.Presenters.Pembelian
             }
             else
             {
-               _listsPembelianDetails.Add(new PembelianDetailModel());
+               _listPenjualanDetails.Add(new PenjualanDetailModel());
                listDataGrid.MoveToCurrentCell(new RowColumnIndex((CurrCellRowIndex + 1), 1));
                listDataGrid.CurrentCell.BeginEdit();
             }
@@ -321,8 +327,7 @@ namespace RumahScarlett.Presentation.Presenters.Pembelian
 
       private void HitungRingkasan()
       {
-         _view.LabelTotalQty.Text = _listsPembelianDetails.Where(pd => !string.IsNullOrWhiteSpace(pd.barang_nama)).ToList().Sum(pd => pd.qty).ToString("N0");
-         _view.LabelTotalPembelian.Text = _listsPembelianDetails.Where(pd => !string.IsNullOrWhiteSpace(pd.barang_nama)).ToList().Sum(pd => pd.total).ToString("N0");
+
       }
 
       private void _view_OnListDataGridPreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
@@ -335,11 +340,11 @@ namespace RumahScarlett.Presentation.Presenters.Pembelian
          }
       }
 
-      private void AddDummyPembelianModel(int length)
+      private void AddDummyPenjualanModel(int length)
       {
          for (int i = 0; i < length; i++)
          {
-            _listsPembelianDetails.Add(new PembelianDetailModel());
+            _listPenjualanDetails.Add(new PenjualanDetailModel());
          }
       }
    }

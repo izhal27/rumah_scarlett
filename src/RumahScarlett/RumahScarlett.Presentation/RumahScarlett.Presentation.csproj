@@ -121,6 +121,8 @@
     <Compile Include="Presenters\Pembelian\PembelianPresenter.cs" />
     <Compile Include="Presenters\Pengeluaran\IPengeluaranPresenter.cs" />
     <Compile Include="Presenters\Pengeluaran\PengeluaranPresenter.cs" />
+    <Compile Include="Presenters\Penjualan\IPenjualanPresenter.cs" />
+    <Compile Include="Presenters\Penjualan\PenjualanPresenter.cs" />
     <Compile Include="Presenters\PenyesuaianStok\IPenyesuaianStokPresenter.cs" />
     <Compile Include="Presenters\PenyesuaianStok\PenyesuaianStokPresenter.cs" />
     <Compile Include="Presenters\Satuan\ISatuanPresenter.cs" />

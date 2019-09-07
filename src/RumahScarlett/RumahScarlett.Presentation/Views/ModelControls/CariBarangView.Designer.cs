@@ -31,13 +31,14 @@
          ((System.ComponentModel.ISupportInitialize)(this.listDataGrid)).BeginInit();
          this.SuspendLayout();
          // 
-         // CariBarangPembelianView
+         // CariBarangView
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
          this.ClientSize = new System.Drawing.Size(784, 462);
-         this.Name = "CariBarangPembelianView";
+         this.Name = "CariBarangView";
          this.Text = "Cari Barang";
+         this.Load += new System.EventHandler(this.CariBarangView_Load);
          ((System.ComponentModel.ISupportInitialize)(this.listDataGrid)).EndInit();
          this.ResumeLayout(false);
 

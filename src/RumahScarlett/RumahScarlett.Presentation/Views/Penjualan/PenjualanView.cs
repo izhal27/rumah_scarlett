@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using RumahScarlett.Presentation.Views.ModelControls;
 
 namespace RumahScarlett.Presentation.Views.Penjualan
 {
@@ -18,7 +19,7 @@ namespace RumahScarlett.Presentation.Views.Penjualan
       public event EventHandler OnLoadData;
       public event EventHandler OnCariData;
       public event EventHandler OnHapusData;
-      public event EventHandler OnSimpanData;
+      public event EventHandler OnBayarPenjualan;
       public event EventHandler OnBersihkanData;
       public event EventHandler<CurrentCellKeyEventArgs> OnListDataGridCurrentCellKeyDown;
       public event EventHandler<CurrentCellActivatedEventArgs> OnListDataGridCurrentCellActivated;
@@ -30,9 +31,26 @@ namespace RumahScarlett.Presentation.Views.Penjualan
          get { return listDataGrid; }
       }
 
+      public ComboBoxPelanggan ComboBoxPelanggan
+      {
+         get { return comboBoxPelanggan; }
+      }
+
+      public ComboBox ComboBoxStatusPenjualan
+      {
+         get { return comboBoxStatusPenjualan; }
+      }
+
+      public TextBox TextBoxNoNota
+      {
+         get { return textBoxNoNota; }
+      }
+
       public PenjualanView()
       {
-         panelUp.LabelInfo = "TRANSAKSI PEMBELIAN BARANG";
+         InitializeComponent();
+
+         panelUp.LabelInfo = "TRANSAKSI PENJUALAN BARANG";
 
          listDataGrid.EditMode = EditMode.SingleClick;
          listDataGrid.AllowEditing = true;
@@ -43,12 +61,13 @@ namespace RumahScarlett.Presentation.Views.Penjualan
          listDataGrid.PreviewKeyDown += ListDataGrid_PreviewKeyDown;
          listDataGrid.CurrentCellKeyDown += ListDataGrid_CurrentCellKeyDown;
       }
-      private void PembelianView_Load(object sender, EventArgs e)
+
+      private void PenjualanView_Load(object sender, EventArgs e)
       {
          OnLoadData?.Invoke(sender, e);
       }
 
-      private void PembelianView_KeyDown(object sender, KeyEventArgs e)
+      private void PenjualanView_KeyDown(object sender, KeyEventArgs e)
       {
          switch (e.KeyCode)
          {
@@ -62,9 +81,9 @@ namespace RumahScarlett.Presentation.Views.Penjualan
                OnHapusData?.Invoke(sender, e);
 
                break;
-            case Keys.F4: // Simpan
+            case Keys.F4: // Bayar
 
-               OnSimpanData?.Invoke(sender, e);
+               OnBayarPenjualan?.Invoke(sender, e);
 
                break;
             case Keys.F5: // Bersihkan
