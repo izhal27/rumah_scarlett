@@ -20,6 +20,8 @@ namespace RumahScarlett.Presentation.Views.Pembelian
       {
          InitializeComponent();
 
+         panelUp.LabelInfo = Text.ToUpper();
+
          textBoxTotalItem.Text = listPembelianDetails.Count.ToString("N0");
          textBoxTotalQty.Text = listPembelianDetails.Sum(pd => pd.qty).ToString("N0");
          textBoxGrandTotal.Text = listPembelianDetails.Sum(pd => pd.total).ToString("N0");
@@ -54,6 +56,11 @@ namespace RumahScarlett.Presentation.Views.Pembelian
             case Keys.F3:
 
                buttonSimpan_Click(null, null);
+
+               break;
+            case Keys.F12:
+
+               Close();
 
                break;
          }

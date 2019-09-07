@@ -344,7 +344,7 @@
          this.Name = "SimpanPembelianEntryView";
          this.ShowInTaskbar = false;
          this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-         this.Text = "Bayar Pembelian";
+         this.Text = "Simpan Pembelian";
          this.Load += new System.EventHandler(this.SimpanPembelianEntryView_Load);
          this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SimpanPembelianEntryView_KeyDown);
          this.tlpButtons.ResumeLayout(false);
