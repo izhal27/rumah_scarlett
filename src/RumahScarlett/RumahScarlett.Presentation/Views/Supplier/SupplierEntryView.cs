@@ -26,7 +26,7 @@ namespace RumahScarlett.Presentation.Views.Supplier
          InitializeComponent();
 
          _isNewData = isNewData;
-         panelUp.LabelInfo = isNewData ? "TAMBAH SUPPLIER" : "UBAH SUPPLIER";
+         panelUp.LabelInfo = isNewData ? $"TAMBAH {_typeName.ToUpper()}" : $"UBAH {_typeName.ToUpper()}";
 
          if (!_isNewData)
          {
