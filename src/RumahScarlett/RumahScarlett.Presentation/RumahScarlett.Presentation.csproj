@@ -240,6 +240,12 @@
       <DependentUpon>MainView.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\IEntryView.cs" />
+    <Compile Include="Views\ModelControls\ComboBoxPelanggan.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\ModelControls\ComboBoxPelanggan.Designer.cs">
+      <DependentUpon>ComboBoxPelanggan.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\ModelControls\ComboBoxSatuan.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -247,6 +253,9 @@
       <DependentUpon>ComboBoxSatuan.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\ModelControls\ComboBoxStatusHutang.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Views\ModelControls\ComboBoxStatusPenjualan.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Views\ModelControls\ComboBoxSubTipe.cs">
@@ -435,6 +444,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\MainView.resx">
       <DependentUpon>MainView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ModelControls\ComboBoxPelanggan.resx">
+      <DependentUpon>ComboBoxPelanggan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\ModelControls\ComboBoxSatuan.resx">
       <DependentUpon>ComboBoxSatuan.cs</DependentUpon>
