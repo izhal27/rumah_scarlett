@@ -68,8 +68,8 @@ namespace RumahScarlett.Presentation.Presenters.PenyesuaianStok
 
       private void HitungTotal()
       {
-         var totalQty = _bindingView.DataSource.Cast<IPenyesuaianStokModel>().Sum(h => h.qty);
-         var totalHpp = _bindingView.DataSource.Cast<IPenyesuaianStokModel>().Sum(h => h.hpp);
+         var totalQty = _bindingView.Cast<IPenyesuaianStokModel>().Sum(h => h.qty);
+         var totalHpp = _bindingView.Cast<IPenyesuaianStokModel>().Sum(h => h.hpp);
 
          _view.LabelTotalQty.Text = totalQty.ToString("N0");
          _view.LabelTotalHpp.Text = totalHpp.ToString("N0");
