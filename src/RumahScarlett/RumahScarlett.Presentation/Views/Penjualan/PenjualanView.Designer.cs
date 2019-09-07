@@ -65,6 +65,8 @@
          this.labelGrandTotal = new System.Windows.Forms.Label();
          this.label22 = new System.Windows.Forms.Label();
          this.label23 = new System.Windows.Forms.Label();
+         this.comboBoxPelanggan1 = new RumahScarlett.Presentation.Views.ModelControls.ComboBoxPelanggan();
+         this.comboBoxStatusPenjualan1 = new RumahScarlett.Presentation.Views.ModelControls.ComboBoxStatusPenjualan();
          ((System.ComponentModel.ISupportInitialize)(this.listDataGrid)).BeginInit();
          this.tableLayoutPanel3.SuspendLayout();
          this.groupBox1.SuspendLayout();
@@ -238,7 +240,7 @@
          this.groupBox1.Controls.Add(this.tableLayoutPanel1);
          this.groupBox1.Location = new System.Drawing.Point(12, 58);
          this.groupBox1.Name = "groupBox1";
-         this.groupBox1.Size = new System.Drawing.Size(241, 115);
+         this.groupBox1.Size = new System.Drawing.Size(258, 115);
          this.groupBox1.TabIndex = 8;
          this.groupBox1.TabStop = false;
          this.groupBox1.Text = "[ DATA ]";
@@ -259,13 +261,15 @@
          this.tableLayoutPanel1.Controls.Add(this.textBoxTanggal1, 2, 0);
          this.tableLayoutPanel1.Controls.Add(this.label25, 1, 1);
          this.tableLayoutPanel1.Controls.Add(this.label26, 1, 2);
+         this.tableLayoutPanel1.Controls.Add(this.comboBoxPelanggan1, 2, 1);
+         this.tableLayoutPanel1.Controls.Add(this.comboBoxStatusPenjualan1, 2, 2);
          this.tableLayoutPanel1.Location = new System.Drawing.Point(6, 19);
          this.tableLayoutPanel1.Name = "tableLayoutPanel1";
          this.tableLayoutPanel1.RowCount = 3;
          this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
          this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
          this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-         this.tableLayoutPanel1.Size = new System.Drawing.Size(229, 90);
+         this.tableLayoutPanel1.Size = new System.Drawing.Size(246, 90);
          this.tableLayoutPanel1.TabIndex = 0;
          // 
          // label1
@@ -282,7 +286,7 @@
          // 
          this.label2.Anchor = System.Windows.Forms.AnchorStyles.Left;
          this.label2.AutoSize = true;
-         this.label2.Location = new System.Drawing.Point(3, 37);
+         this.label2.Location = new System.Drawing.Point(3, 38);
          this.label2.Name = "label2";
          this.label2.Size = new System.Drawing.Size(58, 13);
          this.label2.TabIndex = 0;
@@ -302,7 +306,7 @@
          // 
          this.label3.Anchor = System.Windows.Forms.AnchorStyles.Left;
          this.label3.AutoSize = true;
-         this.label3.Location = new System.Drawing.Point(3, 67);
+         this.label3.Location = new System.Drawing.Point(3, 68);
          this.label3.Name = "label3";
          this.label3.Size = new System.Drawing.Size(66, 13);
          this.label3.TabIndex = 0;
@@ -311,12 +315,12 @@
          // textBoxTanggal1
          // 
          this.textBoxTanggal1.Anchor = System.Windows.Forms.AnchorStyles.Left;
-         this.textBoxTanggal1.BeforeTouchSize = new System.Drawing.Size(129, 20);
-         this.textBoxTanggal1.Location = new System.Drawing.Point(91, 4);
+         this.textBoxTanggal1.BeforeTouchSize = new System.Drawing.Size(150, 20);
+         this.textBoxTanggal1.Location = new System.Drawing.Point(91, 5);
          this.textBoxTanggal1.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
          this.textBoxTanggal1.Name = "textBoxTanggal1";
          this.textBoxTanggal1.ReadOnly = true;
-         this.textBoxTanggal1.Size = new System.Drawing.Size(129, 20);
+         this.textBoxTanggal1.Size = new System.Drawing.Size(150, 20);
          this.textBoxTanggal1.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
          this.textBoxTanggal1.TabIndex = 1;
          this.textBoxTanggal1.Text = "07/09/2019";
@@ -325,7 +329,7 @@
          // 
          this.label25.Anchor = System.Windows.Forms.AnchorStyles.None;
          this.label25.AutoSize = true;
-         this.label25.Location = new System.Drawing.Point(75, 37);
+         this.label25.Location = new System.Drawing.Point(75, 38);
          this.label25.Name = "label25";
          this.label25.Size = new System.Drawing.Size(10, 13);
          this.label25.TabIndex = 0;
@@ -335,7 +339,7 @@
          // 
          this.label26.Anchor = System.Windows.Forms.AnchorStyles.None;
          this.label26.AutoSize = true;
-         this.label26.Location = new System.Drawing.Point(75, 67);
+         this.label26.Location = new System.Drawing.Point(75, 68);
          this.label26.Name = "label26";
          this.label26.Size = new System.Drawing.Size(10, 13);
          this.label26.TabIndex = 0;
@@ -517,6 +521,27 @@
          this.label23.TabIndex = 0;
          this.label23.Text = ":";
          // 
+         // comboBoxPelanggan1
+         // 
+         this.comboBoxPelanggan1.Anchor = System.Windows.Forms.AnchorStyles.Left;
+         this.comboBoxPelanggan1.Location = new System.Drawing.Point(91, 34);
+         this.comboBoxPelanggan1.Name = "comboBoxPelanggan1";
+         this.comboBoxPelanggan1.Size = new System.Drawing.Size(150, 21);
+         this.comboBoxPelanggan1.TabIndex = 2;
+         // 
+         // comboBoxStatusPenjualan1
+         // 
+         this.comboBoxStatusPenjualan1.Anchor = System.Windows.Forms.AnchorStyles.Left;
+         this.comboBoxStatusPenjualan1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+         this.comboBoxStatusPenjualan1.FormattingEnabled = true;
+         this.comboBoxStatusPenjualan1.Items.AddRange(new object[] {
+            "Transfer",
+            "Cash"});
+         this.comboBoxStatusPenjualan1.Location = new System.Drawing.Point(91, 64);
+         this.comboBoxStatusPenjualan1.Name = "comboBoxStatusPenjualan1";
+         this.comboBoxStatusPenjualan1.Size = new System.Drawing.Size(150, 21);
+         this.comboBoxStatusPenjualan1.TabIndex = 3;
+         // 
          // PenjualanView
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -586,5 +611,7 @@
       private System.Windows.Forms.Label label24;
       private System.Windows.Forms.Label label25;
       private System.Windows.Forms.Label label26;
+      private ModelControls.ComboBoxPelanggan comboBoxPelanggan1;
+      private ModelControls.ComboBoxStatusPenjualan comboBoxStatusPenjualan1;
    }
 }
