@@ -21,7 +21,7 @@ namespace RumahScarlett.Presentation.Views.Pembelian
       public event EventHandler OnHapusData;
       public event EventHandler OnBayarPenjualan;
       public event EventHandler OnBersihkanData;
-      public event EventHandler<CurrentCellKeyEventArgs> OnListDataGridCurrentCellKeyDown;      
+      public event EventHandler<CurrentCellKeyEventArgs> OnListDataGridCurrentCellKeyDown;
       public event EventHandler<CurrentCellActivatedEventArgs> OnListDataGridCurrentCellActivated;
       public event EventHandler<CurrentCellEndEditEventArgs> OnListDataGridCurrentCellEndEdit;
       public event EventHandler<PreviewKeyDownEventArgs> OnListDataGridPreviewKeyDown;
@@ -31,24 +31,14 @@ namespace RumahScarlett.Presentation.Views.Pembelian
          get { return listDataGrid; }
       }
 
-      public ComboBoxSupplier ComboBoxSupplier
-      {
-         get { return comboBoxSupplier; }
-      }
-
-      public Label LabelTotalQty
-      {
-         get { return labelTotalQty; }
-      }
-
-      public Label LabelTotalPembelian
-      {
-         get { return labelTotalPembelian; }
-      }
-
       public TextBox TextBoxNoNota
       {
          get { return textBoxNoNota; }
+      }
+
+      public Label LabelGrandTotal
+      {
+         get { return panelInfoDigital.LabelInfo; }
       }
 
       public PembelianView()
@@ -98,12 +88,15 @@ namespace RumahScarlett.Presentation.Views.Pembelian
                break;
             case Keys.F12: // Tutup
 
-               Close();
+               if (!listDataGrid.CurrentCell.IsEditing)
+               {
+                  Close();
+               }
 
                break;
          }
       }
-      
+
       private void ListDataGrid_CurrentCellKeyDown(object sender, CurrentCellKeyEventArgs e)
       {
          OnListDataGridCurrentCellKeyDown?.Invoke(sender, e);

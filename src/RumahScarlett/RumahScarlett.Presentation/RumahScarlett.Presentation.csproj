@@ -198,6 +198,12 @@
     <Compile Include="Views\CommonControls\PanelDown.Designer.cs">
       <DependentUpon>PanelDown.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\CommonControls\PanelInfoDigital.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\CommonControls\PanelInfoDigital.Designer.cs">
+      <DependentUpon>PanelInfoDigital.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\CommonControls\PanelUp.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -298,6 +304,13 @@
     <Compile Include="Views\ModelControls\CariBarangView.Designer.cs">
       <DependentUpon>CariBarangView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Pembelian\SimpanPembelianEntryView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Pembelian\SimpanPembelianEntryView.Designer.cs">
+      <DependentUpon>SimpanPembelianEntryView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Pembelian\IBayarPembelianEntryView.cs" />
     <Compile Include="Views\Pembelian\IPembelianView.cs" />
     <Compile Include="Views\Pembelian\PembelianView.cs">
       <SubType>Form</SubType>
@@ -439,6 +452,9 @@
     <EmbeddedResource Include="Views\CommonControls\PanelDown.resx">
       <DependentUpon>PanelDown.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\CommonControls\PanelInfoDigital.resx">
+      <DependentUpon>PanelInfoDigital.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\CommonControls\PanelUp.resx">
       <DependentUpon>PanelUp.cs</DependentUpon>
     </EmbeddedResource>
@@ -477,6 +493,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\ModelControls\CariBarangView.resx">
       <DependentUpon>CariBarangView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Pembelian\SimpanPembelianEntryView.resx">
+      <DependentUpon>SimpanPembelianEntryView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Pembelian\PembelianView.resx">
       <DependentUpon>PembelianView.cs</DependentUpon>

@@ -30,6 +30,7 @@ namespace RumahScarlett.Presentation.Presenters.Pembelian
       private List<PembelianDetailModel> _listsPembelianDetails;
       private List<IBarangModel> _listsBarangs;
       private BindingListView<PembelianDetailModel> _bindingView;
+      private string _kodeOrNamaForSearching;
 
       public IPembelianView GetView
       {
@@ -89,7 +90,7 @@ namespace RumahScarlett.Presentation.Presenters.Pembelian
 
       private void _view_OnCariData(object sender, EventArgs e)
       {
-         var view = new CariBarangView(_listsBarangs, TipePencarian.Pembelian);
+         var view = new CariBarangView(_listsBarangs, TipePencarian.Pembelian, _kodeOrNamaForSearching);
          view.OnSendData += CariBarangPembelianView_OnSendData;
          view.ShowDialog();
       }
@@ -132,29 +133,35 @@ namespace RumahScarlett.Presentation.Presenters.Pembelian
       {
          var status = _listsPembelianDetails.Any(pd => pd.Barang.id != default(uint));
 
+         if (_view.ListDataGrid.Enabled && status)
+         {
+            var simpanPembelianEntryView = new SimpanPembelianEntryView(_listsPembelianDetails);
+            simpanPembelianEntryView.OnSimpanPembelian += SimpanPembelianEntryView_OnSimpanPembelian;
+            simpanPembelianEntryView.ShowDialog();
+         }
+      }
+
+      private void SimpanPembelianEntryView_OnSimpanPembelian(object sender, PembelianEventArgs e)
+      {
          try
          {
-            if (status)
+            var simpanPembelianEntryView = ((Form)sender);
+            var pembelianDetailsFixed = _listsPembelianDetails.Where(pd => pd.Barang.id != default(int)).ToList();
+
+            var model = new PembelianModel
             {
-               if (Messages.Confirm("Simpan data Pembelian?"))
-               {
-                  var pembelianDetailsFixed = _listsPembelianDetails.Where(pd => pd.Barang.id != default(int)).ToList();
+               supplier_id = (uint)e.SupplierId,
+               PembelianDetails = pembelianDetailsFixed
+            };
 
-                  var model = new PembelianModel
-                  {
-                     supplier_id = _view.ComboBoxSupplier.ComboBox.SelectedIndex != -1 ?
-                                   (uint)_view.ComboBoxSupplier.ComboBox.SelectedValue : default(uint),
-                     PembelianDetails = pembelianDetailsFixed
-                  };
+            _pembelianServices.Insert(model);
+            Messages.Info("Data Pembelian berhasil disimpan.");
 
-                  _pembelianServices.Insert(model);
-                  Messages.Info("Data Pembelian berhasil disimpan.");
+            _view.TextBoxNoNota.Text = model.no_nota;
+            _view.ListDataGrid.Enabled = false;
 
-                  _view.TextBoxNoNota.Text = model.no_nota;
-                  _view.ComboBoxSupplier.Enabled = false;
-                  _view.ListDataGrid.Enabled = false;
-               }
-            }
+            simpanPembelianEntryView.Close();
+            ((Form)_view).ActiveControl = _view.TextBoxNoNota;
          }
          catch (ArgumentException ex)
          {
@@ -171,11 +178,11 @@ namespace RumahScarlett.Presentation.Presenters.Pembelian
          if (!_view.ListDataGrid.Enabled)
          {
             _view.ListDataGrid.Enabled = true;
-            _view.ComboBoxSupplier.Enabled = true;
-            _view.ComboBoxSupplier.ComboBox.SelectedIndex = 0;
             _view.TextBoxNoNota.Text = string.Empty;
+            _listsBarangs = _barangServices.GetAll().ToList();
          }
 
+         _kodeOrNamaForSearching = string.Empty;
          _listsPembelianDetails.Clear();
          AddDummyPembelianModel(30);
          _bindingView.DataSource = _listsPembelianDetails;
@@ -189,7 +196,7 @@ namespace RumahScarlett.Presentation.Presenters.Pembelian
             switch (e.ColumnIndex)
             {
                case 1: // Kode
-                  
+
                   _view_OnListDataGridCellKodeKeyDown(sender, e);
 
                   break;
@@ -234,8 +241,18 @@ namespace RumahScarlett.Presentation.Presenters.Pembelian
             }
             else
             {
-               listDataGrid.MoveToCurrentCell(new RowColumnIndex(CurrCellRowIndex, (e.ColumnIndex + 1)));
-               listDataGrid.CurrentCell.BeginEdit();
+               if (!string.IsNullOrWhiteSpace(CurrCellValue.ToString()))
+               {
+                  _kodeOrNamaForSearching = CurrCellValue.ToString();
+                  _view_OnCariData(null, null);
+               }
+               else
+               {
+                  _kodeOrNamaForSearching = "";
+                  listDataGrid.MoveToCurrentCell(new RowColumnIndex(CurrCellRowIndex, (e.ColumnIndex + 1)));
+                  listDataGrid.CurrentCell.BeginEdit();
+               }
+
                e.KeyEventArgs.Handled = true;
             }
          }
@@ -261,7 +278,17 @@ namespace RumahScarlett.Presentation.Presenters.Pembelian
             }
             else
             {
-               _view_OnCariData(null, null);
+               if (!string.IsNullOrWhiteSpace(CurrCellValue.ToString()))
+               {
+                  _kodeOrNamaForSearching = CurrCellValue.ToString();
+                  _view_OnCariData(null, null);
+               }
+               else
+               {
+                  _kodeOrNamaForSearching = "";
+                  _view_OnCariData(null, null);
+               }
+
                e.KeyEventArgs.Handled = true;
             }
          }
@@ -321,8 +348,7 @@ namespace RumahScarlett.Presentation.Presenters.Pembelian
 
       private void HitungRingkasan()
       {
-         _view.LabelTotalQty.Text = _listsPembelianDetails.Where(pd => !string.IsNullOrWhiteSpace(pd.barang_nama)).ToList().Sum(pd => pd.qty).ToString("N0");
-         _view.LabelTotalPembelian.Text = _listsPembelianDetails.Where(pd => !string.IsNullOrWhiteSpace(pd.barang_nama)).ToList().Sum(pd => pd.total).ToString("N0");
+         _view.LabelGrandTotal.Text = _bindingView.Cast<IPembelianDetailModel>().Sum(pd => pd.total).ToString("N0");
       }
 
       private void _view_OnListDataGridPreviewKeyDown(object sender, PreviewKeyDownEventArgs e)

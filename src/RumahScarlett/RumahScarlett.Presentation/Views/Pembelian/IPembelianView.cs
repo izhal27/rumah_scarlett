@@ -10,9 +10,7 @@ namespace RumahScarlett.Presentation.Views.Pembelian
 {
    public interface IPembelianView : ITransaksiView
    {
-      ComboBoxSupplier ComboBoxSupplier { get; }
       TextBox TextBoxNoNota { get; }
-      Label LabelTotalQty { get; }
-      Label LabelTotalPembelian { get; }
+      Label LabelGrandTotal { get; }
    }
 }
