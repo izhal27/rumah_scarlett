@@ -28,6 +28,9 @@ namespace RumahScarlett.Presentation.Views.Penjualan
          
          var penjualanDetailsFixed = listPenjualanDetails.Where(pd => pd.Barang.id != default(int)).ToList();
 
+         textBoxTotalItem.Text = penjualanDetailsFixed.Count.ToString("N0");
+         textBoxTotalQty.Text = penjualanDetailsFixed.Sum(pd => pd.qty).ToString("N0");
+
          var subTotal = penjualanDetailsFixed.Sum(pd => pd.total);
          textBoxDiskon.MaxValue = long.Parse(subTotal.ToString(), NumberStyles.Number);
 

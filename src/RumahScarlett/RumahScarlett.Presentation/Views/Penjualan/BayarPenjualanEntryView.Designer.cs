@@ -63,8 +63,8 @@
          this.textBoxGrandTotal = new RumahScarlett.Presentation.Views.CommonControls.BaseTextBoxDigit();
          this.textBoxBayar = new RumahScarlett.Presentation.Views.CommonControls.BaseTextBoxDigit();
          this.textBoxKembali = new RumahScarlett.Presentation.Views.CommonControls.BaseTextBoxDigit();
-         this.extBoxTotalItem = new RumahScarlett.Presentation.Views.CommonControls.BaseTextBox();
-         this.textTotalQty = new RumahScarlett.Presentation.Views.CommonControls.BaseTextBox();
+         this.textBoxTotalItem = new RumahScarlett.Presentation.Views.CommonControls.BaseTextBox();
+         this.textBoxTotalQty = new RumahScarlett.Presentation.Views.CommonControls.BaseTextBox();
          this.groupBox1.SuspendLayout();
          this.tableLayoutPanel1.SuspendLayout();
          this.tlpButtons.SuspendLayout();
@@ -74,8 +74,8 @@
          ((System.ComponentModel.ISupportInitialize)(this.textBoxGrandTotal)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.textBoxBayar)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.textBoxKembali)).BeginInit();
-         ((System.ComponentModel.ISupportInitialize)(this.extBoxTotalItem)).BeginInit();
-         ((System.ComponentModel.ISupportInitialize)(this.textTotalQty)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.textBoxTotalItem)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.textBoxTotalQty)).BeginInit();
          this.SuspendLayout();
          // 
          // groupBox1
@@ -128,8 +128,8 @@
          this.tableLayoutPanel1.Controls.Add(this.label13, 1, 9);
          this.tableLayoutPanel1.Controls.Add(this.label14, 0, 3);
          this.tableLayoutPanel1.Controls.Add(this.label15, 0, 4);
-         this.tableLayoutPanel1.Controls.Add(this.extBoxTotalItem, 2, 3);
-         this.tableLayoutPanel1.Controls.Add(this.textTotalQty, 2, 4);
+         this.tableLayoutPanel1.Controls.Add(this.textBoxTotalItem, 2, 3);
+         this.tableLayoutPanel1.Controls.Add(this.textBoxTotalQty, 2, 4);
          this.tableLayoutPanel1.Location = new System.Drawing.Point(6, 19);
          this.tableLayoutPanel1.Name = "tableLayoutPanel1";
          this.tableLayoutPanel1.RowCount = 10;
@@ -162,15 +162,15 @@
          this.label2.AutoSize = true;
          this.label2.Location = new System.Drawing.Point(3, 38);
          this.label2.Name = "label2";
-         this.label2.Size = new System.Drawing.Size(85, 13);
+         this.label2.Size = new System.Drawing.Size(79, 13);
          this.label2.TabIndex = 0;
-         this.label2.Text = "Pelanggan [ F2 ]";
+         this.label2.Text = "Pelanggan (F2)";
          // 
          // label24
          // 
          this.label24.Anchor = System.Windows.Forms.AnchorStyles.None;
          this.label24.AutoSize = true;
-         this.label24.Location = new System.Drawing.Point(102, 8);
+         this.label24.Location = new System.Drawing.Point(96, 8);
          this.label24.Name = "label24";
          this.label24.Size = new System.Drawing.Size(10, 13);
          this.label24.TabIndex = 0;
@@ -182,15 +182,15 @@
          this.label3.AutoSize = true;
          this.label3.Location = new System.Drawing.Point(3, 68);
          this.label3.Name = "label3";
-         this.label3.Size = new System.Drawing.Size(93, 13);
+         this.label3.Size = new System.Drawing.Size(87, 13);
          this.label3.TabIndex = 0;
-         this.label3.Text = "Pembayaran [ F3 ]";
+         this.label3.Text = "Pembayaran (F3)";
          // 
          // label25
          // 
          this.label25.Anchor = System.Windows.Forms.AnchorStyles.None;
          this.label25.AutoSize = true;
-         this.label25.Location = new System.Drawing.Point(102, 38);
+         this.label25.Location = new System.Drawing.Point(96, 38);
          this.label25.Name = "label25";
          this.label25.Size = new System.Drawing.Size(10, 13);
          this.label25.TabIndex = 0;
@@ -200,7 +200,7 @@
          // 
          this.label26.Anchor = System.Windows.Forms.AnchorStyles.None;
          this.label26.AutoSize = true;
-         this.label26.Location = new System.Drawing.Point(102, 68);
+         this.label26.Location = new System.Drawing.Point(96, 68);
          this.label26.Name = "label26";
          this.label26.Size = new System.Drawing.Size(10, 13);
          this.label26.TabIndex = 0;
@@ -210,7 +210,7 @@
          // 
          this.label28.Anchor = System.Windows.Forms.AnchorStyles.None;
          this.label28.AutoSize = true;
-         this.label28.Location = new System.Drawing.Point(102, 158);
+         this.label28.Location = new System.Drawing.Point(96, 158);
          this.label28.Name = "label28";
          this.label28.Size = new System.Drawing.Size(10, 13);
          this.label28.TabIndex = 0;
@@ -220,7 +220,7 @@
          // 
          this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
          this.label4.AutoSize = true;
-         this.label4.Location = new System.Drawing.Point(102, 188);
+         this.label4.Location = new System.Drawing.Point(96, 188);
          this.label4.Name = "label4";
          this.label4.Size = new System.Drawing.Size(10, 13);
          this.label4.TabIndex = 0;
@@ -230,7 +230,7 @@
          // 
          this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
          this.label5.AutoSize = true;
-         this.label5.Location = new System.Drawing.Point(102, 218);
+         this.label5.Location = new System.Drawing.Point(96, 218);
          this.label5.Name = "label5";
          this.label5.Size = new System.Drawing.Size(10, 13);
          this.label5.TabIndex = 0;
@@ -240,7 +240,7 @@
          // 
          this.label6.Anchor = System.Windows.Forms.AnchorStyles.None;
          this.label6.AutoSize = true;
-         this.label6.Location = new System.Drawing.Point(102, 248);
+         this.label6.Location = new System.Drawing.Point(96, 248);
          this.label6.Name = "label6";
          this.label6.Size = new System.Drawing.Size(10, 13);
          this.label6.TabIndex = 0;
@@ -262,9 +262,9 @@
          this.label8.AutoSize = true;
          this.label8.Location = new System.Drawing.Point(3, 188);
          this.label8.Name = "label8";
-         this.label8.Size = new System.Drawing.Size(67, 13);
+         this.label8.Size = new System.Drawing.Size(61, 13);
          this.label8.TabIndex = 0;
-         this.label8.Text = "Diskon [ F4 ]";
+         this.label8.Text = "Diskon (F4)";
          // 
          // label9
          // 
@@ -292,9 +292,9 @@
          this.label10.AutoSize = true;
          this.label10.Location = new System.Drawing.Point(3, 248);
          this.label10.Name = "label10";
-         this.label10.Size = new System.Drawing.Size(61, 13);
+         this.label10.Size = new System.Drawing.Size(55, 13);
          this.label10.TabIndex = 0;
-         this.label10.Text = "Bayar [ F5 ]";
+         this.label10.Text = "Bayar (F5)";
          // 
          // tlpButtons
          // 
@@ -340,7 +340,7 @@
          // 
          this.label11.Anchor = System.Windows.Forms.AnchorStyles.None;
          this.label11.AutoSize = true;
-         this.label11.Location = new System.Drawing.Point(102, 98);
+         this.label11.Location = new System.Drawing.Point(96, 98);
          this.label11.Name = "label11";
          this.label11.Size = new System.Drawing.Size(10, 13);
          this.label11.TabIndex = 0;
@@ -350,7 +350,7 @@
          // 
          this.label12.Anchor = System.Windows.Forms.AnchorStyles.None;
          this.label12.AutoSize = true;
-         this.label12.Location = new System.Drawing.Point(102, 128);
+         this.label12.Location = new System.Drawing.Point(96, 128);
          this.label12.Name = "label12";
          this.label12.Size = new System.Drawing.Size(10, 13);
          this.label12.TabIndex = 0;
@@ -360,7 +360,7 @@
          // 
          this.label13.Anchor = System.Windows.Forms.AnchorStyles.None;
          this.label13.AutoSize = true;
-         this.label13.Location = new System.Drawing.Point(102, 278);
+         this.label13.Location = new System.Drawing.Point(96, 278);
          this.label13.Name = "label13";
          this.label13.Size = new System.Drawing.Size(10, 13);
          this.label13.TabIndex = 0;
@@ -398,7 +398,7 @@
          // 
          this.textBoxTanggal.Anchor = System.Windows.Forms.AnchorStyles.Left;
          this.textBoxTanggal.BeforeTouchSize = new System.Drawing.Size(150, 20);
-         this.textBoxTanggal.Location = new System.Drawing.Point(118, 5);
+         this.textBoxTanggal.Location = new System.Drawing.Point(112, 5);
          this.textBoxTanggal.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
          this.textBoxTanggal.Name = "textBoxTanggal";
          this.textBoxTanggal.ReadOnly = true;
@@ -411,7 +411,7 @@
          // comboBoxPelanggan
          // 
          this.comboBoxPelanggan.Anchor = System.Windows.Forms.AnchorStyles.Left;
-         this.comboBoxPelanggan.Location = new System.Drawing.Point(118, 34);
+         this.comboBoxPelanggan.Location = new System.Drawing.Point(112, 34);
          this.comboBoxPelanggan.Name = "comboBoxPelanggan";
          this.comboBoxPelanggan.Size = new System.Drawing.Size(150, 21);
          this.comboBoxPelanggan.TabIndex = 0;
@@ -424,7 +424,7 @@
          this.comboBoxStatusPenjualan.Items.AddRange(new object[] {
             "Transfer",
             "Cash"});
-         this.comboBoxStatusPenjualan.Location = new System.Drawing.Point(118, 64);
+         this.comboBoxStatusPenjualan.Location = new System.Drawing.Point(112, 64);
          this.comboBoxStatusPenjualan.Name = "comboBoxStatusPenjualan";
          this.comboBoxStatusPenjualan.Size = new System.Drawing.Size(150, 21);
          this.comboBoxStatusPenjualan.TabIndex = 1;
@@ -433,7 +433,7 @@
          // 
          this.textBoxSubTotal.Anchor = System.Windows.Forms.AnchorStyles.Left;
          this.textBoxSubTotal.BeforeTouchSize = new System.Drawing.Size(150, 20);
-         this.textBoxSubTotal.Location = new System.Drawing.Point(118, 155);
+         this.textBoxSubTotal.Location = new System.Drawing.Point(112, 155);
          this.textBoxSubTotal.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
          this.textBoxSubTotal.Name = "textBoxSubTotal";
          this.textBoxSubTotal.ReadOnly = true;
@@ -450,7 +450,7 @@
          this.textBoxDiskon.BackGroundColor = System.Drawing.SystemColors.Window;
          this.textBoxDiskon.BeforeTouchSize = new System.Drawing.Size(150, 20);
          this.textBoxDiskon.IntegerValue = ((long)(0));
-         this.textBoxDiskon.Location = new System.Drawing.Point(118, 185);
+         this.textBoxDiskon.Location = new System.Drawing.Point(112, 185);
          this.textBoxDiskon.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
          this.textBoxDiskon.MinValue = ((long)(0));
          this.textBoxDiskon.Name = "textBoxDiskon";
@@ -468,7 +468,7 @@
          this.textBoxGrandTotal.BackGroundColor = System.Drawing.SystemColors.Window;
          this.textBoxGrandTotal.BeforeTouchSize = new System.Drawing.Size(150, 20);
          this.textBoxGrandTotal.IntegerValue = ((long)(0));
-         this.textBoxGrandTotal.Location = new System.Drawing.Point(118, 215);
+         this.textBoxGrandTotal.Location = new System.Drawing.Point(112, 215);
          this.textBoxGrandTotal.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
          this.textBoxGrandTotal.Name = "textBoxGrandTotal";
          this.textBoxGrandTotal.NullString = "";
@@ -486,7 +486,7 @@
          this.textBoxBayar.BackGroundColor = System.Drawing.SystemColors.Window;
          this.textBoxBayar.BeforeTouchSize = new System.Drawing.Size(150, 20);
          this.textBoxBayar.IntegerValue = ((long)(0));
-         this.textBoxBayar.Location = new System.Drawing.Point(118, 245);
+         this.textBoxBayar.Location = new System.Drawing.Point(112, 245);
          this.textBoxBayar.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
          this.textBoxBayar.Name = "textBoxBayar";
          this.textBoxBayar.NullString = "";
@@ -503,7 +503,7 @@
          this.textBoxKembali.BackGroundColor = System.Drawing.SystemColors.Window;
          this.textBoxKembali.BeforeTouchSize = new System.Drawing.Size(150, 20);
          this.textBoxKembali.IntegerValue = ((long)(0));
-         this.textBoxKembali.Location = new System.Drawing.Point(118, 275);
+         this.textBoxKembali.Location = new System.Drawing.Point(112, 275);
          this.textBoxKembali.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
          this.textBoxKembali.Name = "textBoxKembali";
          this.textBoxKembali.NullString = "";
@@ -515,35 +515,35 @@
          this.textBoxKembali.Text = "0";
          this.textBoxKembali.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
          // 
-         // extBoxTotalItem
+         // textBoxTotalItem
          // 
-         this.extBoxTotalItem.Anchor = System.Windows.Forms.AnchorStyles.Left;
-         this.extBoxTotalItem.BeforeTouchSize = new System.Drawing.Size(150, 20);
-         this.extBoxTotalItem.Location = new System.Drawing.Point(118, 95);
-         this.extBoxTotalItem.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
-         this.extBoxTotalItem.Name = "extBoxTotalItem";
-         this.extBoxTotalItem.ReadOnly = true;
-         this.extBoxTotalItem.Size = new System.Drawing.Size(150, 20);
-         this.extBoxTotalItem.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
-         this.extBoxTotalItem.TabIndex = 11;
-         this.extBoxTotalItem.TabStop = false;
-         this.extBoxTotalItem.Text = "0";
-         this.extBoxTotalItem.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+         this.textBoxTotalItem.Anchor = System.Windows.Forms.AnchorStyles.Left;
+         this.textBoxTotalItem.BeforeTouchSize = new System.Drawing.Size(150, 20);
+         this.textBoxTotalItem.Location = new System.Drawing.Point(112, 95);
+         this.textBoxTotalItem.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
+         this.textBoxTotalItem.Name = "textBoxTotalItem";
+         this.textBoxTotalItem.ReadOnly = true;
+         this.textBoxTotalItem.Size = new System.Drawing.Size(150, 20);
+         this.textBoxTotalItem.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
+         this.textBoxTotalItem.TabIndex = 11;
+         this.textBoxTotalItem.TabStop = false;
+         this.textBoxTotalItem.Text = "0";
+         this.textBoxTotalItem.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
          // 
-         // textTotalQty
+         // textBoxTotalQty
          // 
-         this.textTotalQty.Anchor = System.Windows.Forms.AnchorStyles.Left;
-         this.textTotalQty.BeforeTouchSize = new System.Drawing.Size(150, 20);
-         this.textTotalQty.Location = new System.Drawing.Point(118, 125);
-         this.textTotalQty.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
-         this.textTotalQty.Name = "textTotalQty";
-         this.textTotalQty.ReadOnly = true;
-         this.textTotalQty.Size = new System.Drawing.Size(150, 20);
-         this.textTotalQty.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
-         this.textTotalQty.TabIndex = 11;
-         this.textTotalQty.TabStop = false;
-         this.textTotalQty.Text = "0";
-         this.textTotalQty.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+         this.textBoxTotalQty.Anchor = System.Windows.Forms.AnchorStyles.Left;
+         this.textBoxTotalQty.BeforeTouchSize = new System.Drawing.Size(150, 20);
+         this.textBoxTotalQty.Location = new System.Drawing.Point(112, 125);
+         this.textBoxTotalQty.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
+         this.textBoxTotalQty.Name = "textBoxTotalQty";
+         this.textBoxTotalQty.ReadOnly = true;
+         this.textBoxTotalQty.Size = new System.Drawing.Size(150, 20);
+         this.textBoxTotalQty.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
+         this.textBoxTotalQty.TabIndex = 11;
+         this.textBoxTotalQty.TabStop = false;
+         this.textBoxTotalQty.Text = "0";
+         this.textBoxTotalQty.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
          // 
          // BayarPenjualanEntryView
          // 
@@ -574,8 +574,8 @@
          ((System.ComponentModel.ISupportInitialize)(this.textBoxGrandTotal)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.textBoxBayar)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.textBoxKembali)).EndInit();
-         ((System.ComponentModel.ISupportInitialize)(this.extBoxTotalItem)).EndInit();
-         ((System.ComponentModel.ISupportInitialize)(this.textTotalQty)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.textBoxTotalItem)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.textBoxTotalQty)).EndInit();
          this.ResumeLayout(false);
 
       }
@@ -616,7 +616,7 @@
       private System.Windows.Forms.Label label13;
       private System.Windows.Forms.Label label14;
       private System.Windows.Forms.Label label15;
-      private CommonControls.BaseTextBox extBoxTotalItem;
-      private CommonControls.BaseTextBox textTotalQty;
+      private CommonControls.BaseTextBox textBoxTotalItem;
+      private CommonControls.BaseTextBox textBoxTotalQty;
    }
 }
