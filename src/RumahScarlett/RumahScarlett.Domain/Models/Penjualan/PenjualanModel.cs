@@ -17,7 +17,7 @@ namespace RumahScarlett.Domain.Models.Penjualan
       [Display(Name = "ID")]
       public uint id { get; set; }
 
-      [StringLength(255, ErrorMessage = "Panjang maksimal No Nota 255 karakter !!!")]
+      //[StringLength(255, ErrorMessage = "Panjang maksimal No Nota 255 karakter !!!")]
       [Display(Name = "No Nota")]
       public string no_nota { get; set; }
 
