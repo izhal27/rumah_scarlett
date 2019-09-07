@@ -30,12 +30,12 @@ namespace RumahScarlett.Presentation.Views
       public event EventHandler<MainViewEventArgs> OnSatuanViewOpen;
       public event EventHandler<MainViewEventArgs> OnBarangViewOpen;
       public event EventHandler<MainViewEventArgs> OnPelangganViewOpen;
-      public event EventHandler OnKasAwalViewOpen;
+      public event EventHandler<MainViewEventArgs> OnPenyesuaianStokViewOpen;
       public event EventHandler<MainViewEventArgs> OnHutangOperasionalViewOpen;
+      public event EventHandler OnKasAwalViewOpen;
       public event EventHandler<MainViewEventArgs> OnPenjualanViewOpen;
       public event EventHandler<MainViewEventArgs> OnPembelianViewOpen;
       public event EventHandler<MainViewEventArgs> OnPengeluaranViewOpen;
-      public event EventHandler<MainViewEventArgs> OnPenyesuaianStokViewOpen;
 
       public MainView()
       {
@@ -53,85 +53,85 @@ namespace RumahScarlett.Presentation.Views
          //_dockPanel.Theme = new VS2015LightTheme();
          _dockPanel.DockBackColor = Color.Transparent;
       }
-      
-      private void tipeToolStripMenuItem_Click(object sender, EventArgs e)
+
+      private void toolStripMenuItemExit_Click(object sender, EventArgs e)
+      {
+         Close();
+      }
+
+      private void toolStripMenuItemTipe_Click(object sender, EventArgs e)
       {
          OnTipeViewOpen?.Invoke(sender, new MainViewEventArgs(_dockPanel));
       }
       
-      private void subTipeToolStripMenuItem_Click(object sender, EventArgs e)
+      private void toolStripMenuItemSubTipe_Click(object sender, EventArgs e)
       {
          OnSubTipeViewOpen?.Invoke(sender, new MainViewEventArgs(_dockPanel));
       }
 
-      private void supplierToolStripMenuItem_Click(object sender, EventArgs e)
+      private void toolStripMenuItemSupplier_Click(object sender, EventArgs e)
       {
          OnSupplierViewOpen?.Invoke(sender, new MainViewEventArgs(_dockPanel));
       }
       
-      private void barangToolStripMenuItem_Click(object sender, EventArgs e)
+      private void toolStripMenuItemBarang_Click(object sender, EventArgs e)
       {
          OnBarangViewOpen?.Invoke(sender, new MainViewEventArgs(_dockPanel));
       }
 
       private void toolStripButtonBarang_Click(object sender, EventArgs e)
       {
-         barangToolStripMenuItem_Click(sender, e);
+         toolStripMenuItemBarang_Click(sender, e);
       }
 
-      private void satuanToolStripMenuItem_Click(object sender, EventArgs e)
+      private void toolStripMenuItemSatuan_Click(object sender, EventArgs e)
       {
          OnSatuanViewOpen?.Invoke(sender, new MainViewEventArgs(_dockPanel));
       }
 
-      private void pelangganToolStripMenuItem_Click(object sender, EventArgs e)
+      private void toolStripMenuItemPelanggan_Click(object sender, EventArgs e)
       {
          OnPelangganViewOpen?.Invoke(sender, new MainViewEventArgs(_dockPanel));
       }
 
-      private void kasAwalToolStripMenuItem1_Click(object sender, EventArgs e)
+      private void toolStripMenuItemPenyesuaianStok_Click(object sender, EventArgs e)
+      {
+         OnPenyesuaianStokViewOpen?.Invoke(sender, new MainViewEventArgs(_dockPanel));
+      }
+
+      private void toolStripMenuItemHutangOperasional_Click(object sender, EventArgs e)
+      {
+         OnHutangOperasionalViewOpen?.Invoke(sender, new MainViewEventArgs(_dockPanel));
+      }
+      
+      private void toolStripMenuItemKasAwal_Click(object sender, EventArgs e)
       {
          OnKasAwalViewOpen?.Invoke(sender, e);
       }
 
-      private void hutangOperasionalToolStripMenuItem_Click(object sender, EventArgs e)
-      {
-         OnHutangOperasionalViewOpen?.Invoke(sender, new MainViewEventArgs(_dockPanel));
-      }
-
-      private void exitToolStripMenuItem_Click(object sender, EventArgs e)
-      {
-         Close();
-      }
-
-      private void penjualanToolStripMenuItem_Click(object sender, EventArgs e)
+      private void toolStripMenuItemPenjualan_Click(object sender, EventArgs e)
       {
          OnPenjualanViewOpen?.Invoke(sender, new MainViewEventArgs(_dockPanel));
       }
 
       private void toolStripButtonPenjualan_Click(object sender, EventArgs e)
       {
-         penjualanToolStripMenuItem_Click(sender, e);
+         toolStripMenuItemPenjualan_Click(sender, e);
       }
 
-      private void pembelianToolStripMenuItem_Click(object sender, EventArgs e)
+      private void toolStripMenuItemPembelian_Click(object sender, EventArgs e)
       {
          OnPembelianViewOpen?.Invoke(sender, new MainViewEventArgs(_dockPanel));
       }
       
       private void toolStripButtonPembelian_Click(object sender, EventArgs e)
       {
-         pembelianToolStripMenuItem_Click(sender, e);
+         toolStripMenuItemPembelian_Click(sender, e);
       }
 
-      private void pengeluaranToolStripMenuItem_Click(object sender, EventArgs e)
+      private void toolStripMenuItemPengeluaran_Click(object sender, EventArgs e)
       {
          OnPengeluaranViewOpen?.Invoke(sender, new MainViewEventArgs(_dockPanel));
-      }
-
-      private void penyesuaianStokToolStripMenuItem_Click(object sender, EventArgs e)
-      {
-         OnPenyesuaianStokViewOpen?.Invoke(sender, new MainViewEventArgs(_dockPanel));
       }
    }
 

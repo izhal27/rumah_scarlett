@@ -14,11 +14,11 @@ namespace RumahScarlett.Presentation.Views
       event EventHandler<MainViewEventArgs> OnSatuanViewOpen;
       event EventHandler<MainViewEventArgs> OnBarangViewOpen;
       event EventHandler<MainViewEventArgs> OnPelangganViewOpen;
-      event EventHandler OnKasAwalViewOpen;
+      event EventHandler<MainViewEventArgs> OnPenyesuaianStokViewOpen;
       event EventHandler<MainViewEventArgs> OnHutangOperasionalViewOpen;
+      event EventHandler OnKasAwalViewOpen;
       event EventHandler<MainViewEventArgs> OnPenjualanViewOpen;
       event EventHandler<MainViewEventArgs> OnPembelianViewOpen;
       event EventHandler<MainViewEventArgs> OnPengeluaranViewOpen;
-      event EventHandler<MainViewEventArgs> OnPenyesuaianStokViewOpen;
    }
 }
