@@ -34,6 +34,8 @@
          this.label3 = new System.Windows.Forms.Label();
          this.textBoxNama = new RumahScarlett.Presentation.Views.CommonControls.BaseTextBox();
          this.textBoxKeterangan = new RumahScarlett.Presentation.Views.CommonControls.BaseTextBox();
+         this.label4 = new System.Windows.Forms.Label();
+         this.label5 = new System.Windows.Forms.Label();
          this.tableLayoutPanel1.SuspendLayout();
          ((System.ComponentModel.ISupportInitialize)(this.textBoxNama)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.textBoxKeterangan)).BeginInit();
@@ -41,33 +43,35 @@
          // 
          // panelUp
          // 
-         this.panelUp.Size = new System.Drawing.Size(346, 40);
+         this.panelUp.Size = new System.Drawing.Size(363, 40);
          // 
          // operationButtons
          // 
-         this.operationButtons.Location = new System.Drawing.Point(183, 199);
+         this.operationButtons.Location = new System.Drawing.Point(200, 199);
          // 
          // tableLayoutPanel1
          // 
          this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-         this.tableLayoutPanel1.ColumnCount = 3;
+         this.tableLayoutPanel1.ColumnCount = 4;
+         this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
          this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
          this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
          this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
          this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
-         this.tableLayoutPanel1.Controls.Add(this.label2, 2, 0);
+         this.tableLayoutPanel1.Controls.Add(this.label2, 3, 0);
          this.tableLayoutPanel1.Controls.Add(this.label3, 0, 1);
-         this.tableLayoutPanel1.Controls.Add(this.textBoxNama, 1, 0);
-         this.tableLayoutPanel1.Controls.Add(this.textBoxKeterangan, 1, 1);
+         this.tableLayoutPanel1.Controls.Add(this.textBoxNama, 2, 0);
+         this.tableLayoutPanel1.Controls.Add(this.textBoxKeterangan, 2, 1);
+         this.tableLayoutPanel1.Controls.Add(this.label4, 1, 0);
+         this.tableLayoutPanel1.Controls.Add(this.label5, 1, 1);
          this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 58);
          this.tableLayoutPanel1.Name = "tableLayoutPanel1";
          this.tableLayoutPanel1.RowCount = 2;
          this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
          this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-         this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-         this.tableLayoutPanel1.Size = new System.Drawing.Size(346, 135);
+         this.tableLayoutPanel1.Size = new System.Drawing.Size(363, 135);
          this.tableLayoutPanel1.TabIndex = 4;
          // 
          // label1
@@ -85,7 +89,7 @@
          this.label2.Anchor = System.Windows.Forms.AnchorStyles.Left;
          this.label2.AutoSize = true;
          this.label2.ForeColor = System.Drawing.Color.Red;
-         this.label2.Location = new System.Drawing.Point(327, 6);
+         this.label2.Location = new System.Drawing.Point(343, 6);
          this.label2.Name = "label2";
          this.label2.Size = new System.Drawing.Size(11, 13);
          this.label2.TabIndex = 0;
@@ -103,30 +107,52 @@
          // 
          // textBoxNama
          // 
+         this.textBoxNama.Anchor = System.Windows.Forms.AnchorStyles.Left;
          this.textBoxNama.BeforeTouchSize = new System.Drawing.Size(250, 100);
-         this.textBoxNama.Location = new System.Drawing.Point(71, 3);
+         this.textBoxNama.Location = new System.Drawing.Point(87, 3);
          this.textBoxNama.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
          this.textBoxNama.Name = "textBoxNama";
          this.textBoxNama.Size = new System.Drawing.Size(250, 20);
          this.textBoxNama.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
-         this.textBoxNama.TabIndex = 1;
+         this.textBoxNama.TabIndex = 0;
          // 
          // textBoxKeterangan
          // 
+         this.textBoxKeterangan.Anchor = System.Windows.Forms.AnchorStyles.Left;
          this.textBoxKeterangan.BeforeTouchSize = new System.Drawing.Size(250, 100);
-         this.textBoxKeterangan.Location = new System.Drawing.Point(71, 29);
+         this.textBoxKeterangan.Location = new System.Drawing.Point(87, 30);
          this.textBoxKeterangan.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
          this.textBoxKeterangan.Multiline = true;
          this.textBoxKeterangan.Name = "textBoxKeterangan";
          this.textBoxKeterangan.Size = new System.Drawing.Size(250, 100);
          this.textBoxKeterangan.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
-         this.textBoxKeterangan.TabIndex = 2;
+         this.textBoxKeterangan.TabIndex = 1;
+         // 
+         // label4
+         // 
+         this.label4.Anchor = System.Windows.Forms.AnchorStyles.Left;
+         this.label4.AutoSize = true;
+         this.label4.Location = new System.Drawing.Point(71, 6);
+         this.label4.Name = "label4";
+         this.label4.Size = new System.Drawing.Size(10, 13);
+         this.label4.TabIndex = 0;
+         this.label4.Text = ":";
+         // 
+         // label5
+         // 
+         this.label5.Anchor = System.Windows.Forms.AnchorStyles.Left;
+         this.label5.AutoSize = true;
+         this.label5.Location = new System.Drawing.Point(71, 74);
+         this.label5.Name = "label5";
+         this.label5.Size = new System.Drawing.Size(10, 13);
+         this.label5.TabIndex = 0;
+         this.label5.Text = ":";
          // 
          // SatuanEntryView
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-         this.ClientSize = new System.Drawing.Size(370, 246);
+         this.ClientSize = new System.Drawing.Size(387, 246);
          this.Controls.Add(this.tableLayoutPanel1);
          this.Name = "SatuanEntryView";
          this.Text = "Satuan";
@@ -149,5 +175,7 @@
       private System.Windows.Forms.Label label3;
       private CommonControls.BaseTextBox textBoxNama;
       private CommonControls.BaseTextBox textBoxKeterangan;
+      private System.Windows.Forms.Label label4;
+      private System.Windows.Forms.Label label5;
    }
 }
