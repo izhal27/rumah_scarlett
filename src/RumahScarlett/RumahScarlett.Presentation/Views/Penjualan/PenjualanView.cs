@@ -30,17 +30,7 @@ namespace RumahScarlett.Presentation.Views.Penjualan
       {
          get { return listDataGrid; }
       }
-
-      public ComboBoxPelanggan ComboBoxPelanggan
-      {
-         get { return comboBoxPelanggan; }
-      }
-
-      public ComboBox ComboBoxStatusPenjualan
-      {
-         get { return comboBoxStatusPenjualan; }
-      }
-
+      
       public TextBox TextBoxNoNota
       {
          get { return textBoxNoNota; }

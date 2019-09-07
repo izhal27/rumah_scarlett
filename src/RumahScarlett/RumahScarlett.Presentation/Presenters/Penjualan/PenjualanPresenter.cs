@@ -138,28 +138,43 @@ namespace RumahScarlett.Presentation.Presenters.Penjualan
          {
             if (_view.ListDataGrid.Enabled && status)
             {
-               if (Messages.Confirm("Simpan data Penjualan?"))
-               {
-                  var penjualanDetailsFixed = _listPenjualanDetails.Where(pd => pd.Barang.id != default(int)).ToList();
-
-                  var model = new PenjualanModel
-                  {
-                     pelanggan_id = _view.ComboBoxPelanggan.ComboBox.SelectedIndex != -1 ?
-                                   (uint)_view.ComboBoxPelanggan.ComboBox.SelectedValue : default(uint),
-                     status_pembayaran = _view.ComboBoxStatusPenjualan.SelectedIndex == 1,
-                     PenjualanDetails = penjualanDetailsFixed
-                  };
-
-                  _penjualannServices.Insert(model);
-                  Messages.Info("Data Penjualan berhasil disimpan.");
-
-                  _view.ComboBoxPelanggan.Enabled = false;
-                  _view.ComboBoxStatusPenjualan.Enabled = false;
-                  _view.ListDataGrid.Enabled = false;
-                  ((Form)_view).ActiveControl = _view.TextBoxNoNota;
-                  _view.TextBoxNoNota.Text = model.no_nota;
-               }
+               var view = new BayarPenjualanEntryView(_listPenjualanDetails);
+               view.OnBayarPenjualan += View_OnBayarPenjualan;
+               view.ShowDialog();
             }
+         }
+         catch (ArgumentException ex)
+         {
+            Messages.Error(ex);
+         }
+         catch (DataAccessException ex)
+         {
+            Messages.Error(ex);
+         }
+      }
+
+      private void View_OnBayarPenjualan(object sender, PembayaranEventArgs e)
+      {
+         try
+         {
+            var bayarPenjualanEntryView = ((Form)sender);
+            var penjualanDetailsFixed = _listPenjualanDetails.Where(pd => pd.Barang.id != default(int)).ToList();
+
+            var model = new PenjualanModel
+            {
+               pelanggan_id = (uint)e.PelangganId,
+               status_pembayaran = e.StatusPenjualan,
+               diskon = e.Diskon,
+               PenjualanDetails = penjualanDetailsFixed
+            };
+
+            _penjualannServices.Insert(model);
+            Messages.Info("Data Penjualan berhasil disimpan.");
+            _view.ListDataGrid.Enabled = false;
+            _view.TextBoxNoNota.Text = model.no_nota;
+
+            bayarPenjualanEntryView.Close();
+            ((Form)_view).ActiveControl = _view.TextBoxNoNota;
          }
          catch (ArgumentException ex)
          {
@@ -176,10 +191,6 @@ namespace RumahScarlett.Presentation.Presenters.Penjualan
          if (!_view.ListDataGrid.Enabled)
          {
             _view.ListDataGrid.Enabled = true;
-            _view.ComboBoxPelanggan.Enabled = true;
-            _view.ComboBoxPelanggan.ComboBox.SelectedIndex = -1;
-            _view.ComboBoxStatusPenjualan.Enabled = true;
-            _view.ComboBoxStatusPenjualan.SelectedIndex = 1;
             _view.TextBoxNoNota.Text = string.Empty;
          }
 

@@ -319,6 +319,12 @@
     <Compile Include="Views\Pengeluaran\PengeluaranView.Designer.cs">
       <DependentUpon>PengeluaranView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Penjualan\BayarPenjualanEntryView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Penjualan\BayarPenjualanEntryView.Designer.cs">
+      <DependentUpon>BayarPenjualanEntryView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Penjualan\IPenjualanView.cs" />
     <Compile Include="Views\Penjualan\PenjualanView.cs">
       <SubType>Form</SubType>
@@ -479,6 +485,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Pengeluaran\PengeluaranView.resx">
       <DependentUpon>PengeluaranView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Penjualan\BayarPenjualanEntryView.resx">
+      <DependentUpon>BayarPenjualanEntryView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Penjualan\PenjualanView.resx">
       <DependentUpon>PenjualanView.cs</DependentUpon>

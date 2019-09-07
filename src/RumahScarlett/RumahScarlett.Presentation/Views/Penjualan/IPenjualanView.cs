@@ -10,8 +10,6 @@ namespace RumahScarlett.Presentation.Views.Penjualan
 {
    public interface IPenjualanView : ITransaksiView
    {
-      ComboBoxPelanggan ComboBoxPelanggan { get; }
-      ComboBox ComboBoxStatusPenjualan { get; }
       TextBox TextBoxNoNota { get; }
    }
 }
