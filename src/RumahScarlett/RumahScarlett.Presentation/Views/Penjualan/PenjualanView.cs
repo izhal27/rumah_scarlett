@@ -10,7 +10,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using RumahScarlett.Presentation.Views.ModelControls;
 
 namespace RumahScarlett.Presentation.Views.Penjualan
 {
@@ -30,7 +29,7 @@ namespace RumahScarlett.Presentation.Views.Penjualan
       {
          get { return listDataGrid; }
       }
-      
+
       public TextBox TextBoxNoNota
       {
          get { return textBoxNoNota; }
@@ -38,7 +37,7 @@ namespace RumahScarlett.Presentation.Views.Penjualan
 
       public Label LabelGrandTotal
       {
-         get { return labelGrandTotal; }
+         get { return panelInfoDigital.LabelInfo; }
       }
 
       public PenjualanView()
@@ -88,7 +87,10 @@ namespace RumahScarlett.Presentation.Views.Penjualan
                break;
             case Keys.F12: // Tutup
 
-               Close();
+               if (!listDataGrid.CurrentCell.IsEditing)
+               {
+                  Close();
+               }
 
                break;
          }
