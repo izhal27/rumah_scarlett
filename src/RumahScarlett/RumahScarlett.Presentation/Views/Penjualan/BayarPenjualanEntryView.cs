@@ -1,6 +1,5 @@
 ﻿using RumahScarlett.Domain.Models.Penjualan;
 using RumahScarlett.Presentation.Helper;
-using RumahScarlett.Presentation.Views.CommonControls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,7 +13,7 @@ using System.Windows.Forms;
 
 namespace RumahScarlett.Presentation.Views.Penjualan
 {
-   public partial class BayarPenjualanEntryView : Form
+   public partial class BayarPenjualanEntryView : Form, IBayarPenjualanEntryView
    {
       public event EventHandler<PembayaranEventArgs> OnBayarPenjualan;
 

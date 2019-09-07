@@ -325,6 +325,7 @@
     <Compile Include="Views\Penjualan\BayarPenjualanEntryView.Designer.cs">
       <DependentUpon>BayarPenjualanEntryView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Penjualan\IBayarPenjualanEntryView.cs" />
     <Compile Include="Views\Penjualan\IPenjualanView.cs" />
     <Compile Include="Views\Penjualan\PenjualanView.cs">
       <SubType>Form</SubType>
