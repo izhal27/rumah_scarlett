@@ -42,7 +42,9 @@ namespace RumahScarlett.Presentation.Views.PenyesuaianStok
          {
             dateTimePickerTanggal.Enabled = false;
             buttonCari.Enabled = false;
+            textBoxQty.Enabled = false;
             comboBoxSatuan.Enabled = false;
+
             _model = model;
             dateTimePickerTanggal.Value = model.tanggal;
             textBoxBarang.Text = model.Barang.nama;

@@ -44,7 +44,6 @@
          this.label10 = new System.Windows.Forms.Label();
          this.label11 = new System.Windows.Forms.Label();
          this.label12 = new System.Windows.Forms.Label();
-         this.label5 = new System.Windows.Forms.Label();
          this.label13 = new System.Windows.Forms.Label();
          this.buttonCari = new System.Windows.Forms.Button();
          this.label8 = new System.Windows.Forms.Label();
@@ -53,6 +52,7 @@
          this.label15 = new System.Windows.Forms.Label();
          this.textBoxHpp = new RumahScarlett.Presentation.Views.CommonControls.BaseTextBoxDigit();
          this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+         this.label16 = new System.Windows.Forms.Label();
          this.tableLayoutPanel1.SuspendLayout();
          ((System.ComponentModel.ISupportInitialize)(this.textBoxKeterangan)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.textBoxQty)).BeginInit();
@@ -93,7 +93,6 @@
          this.tableLayoutPanel1.Controls.Add(this.label10, 1, 2);
          this.tableLayoutPanel1.Controls.Add(this.label11, 1, 5);
          this.tableLayoutPanel1.Controls.Add(this.label12, 0, 3);
-         this.tableLayoutPanel1.Controls.Add(this.label5, 3, 0);
          this.tableLayoutPanel1.Controls.Add(this.label13, 3, 1);
          this.tableLayoutPanel1.Controls.Add(this.buttonCari, 4, 1);
          this.tableLayoutPanel1.Controls.Add(this.label8, 3, 2);
@@ -101,6 +100,7 @@
          this.tableLayoutPanel1.Controls.Add(this.label6, 3, 5);
          this.tableLayoutPanel1.Controls.Add(this.label15, 0, 4);
          this.tableLayoutPanel1.Controls.Add(this.textBoxHpp, 2, 4);
+         this.tableLayoutPanel1.Controls.Add(this.label16, 3, 4);
          this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 58);
          this.tableLayoutPanel1.Name = "tableLayoutPanel1";
          this.tableLayoutPanel1.RowCount = 6;
@@ -210,6 +210,7 @@
          this.textBoxBarang.Size = new System.Drawing.Size(250, 20);
          this.textBoxBarang.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
          this.textBoxBarang.TabIndex = 6;
+         this.textBoxBarang.TabStop = false;
          // 
          // label4
          // 
@@ -260,17 +261,6 @@
          this.label12.Size = new System.Drawing.Size(41, 13);
          this.label12.TabIndex = 0;
          this.label12.Text = "Satuan";
-         // 
-         // label5
-         // 
-         this.label5.Anchor = System.Windows.Forms.AnchorStyles.Left;
-         this.label5.AutoSize = true;
-         this.label5.ForeColor = System.Drawing.Color.Red;
-         this.label5.Location = new System.Drawing.Point(343, 6);
-         this.label5.Name = "label5";
-         this.label5.Size = new System.Drawing.Size(11, 13);
-         this.label5.TabIndex = 5;
-         this.label5.Text = "*";
          // 
          // label13
          // 
@@ -353,8 +343,20 @@
          this.textBoxHpp.Size = new System.Drawing.Size(150, 20);
          this.textBoxHpp.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
          this.textBoxHpp.TabIndex = 4;
+         this.textBoxHpp.TabStop = false;
          this.textBoxHpp.Text = "0";
          this.textBoxHpp.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+         // 
+         // label16
+         // 
+         this.label16.Anchor = System.Windows.Forms.AnchorStyles.Left;
+         this.label16.AutoSize = true;
+         this.label16.ForeColor = System.Drawing.Color.Red;
+         this.label16.Location = new System.Drawing.Point(343, 116);
+         this.label16.Name = "label16";
+         this.label16.Size = new System.Drawing.Size(11, 13);
+         this.label16.TabIndex = 5;
+         this.label16.Text = "*";
          // 
          // PenyesuaianStokEntryView
          // 
@@ -398,10 +400,10 @@
       private System.Windows.Forms.Label label12;
       private System.Windows.Forms.Label label13;
       private System.Windows.Forms.Label label14;
-      private System.Windows.Forms.Label label5;
       private System.Windows.Forms.ToolTip toolTip;
       private ModelControls.ComboBoxSatuan comboBoxSatuan;
       private System.Windows.Forms.Label label15;
       private CommonControls.BaseTextBoxDigit textBoxHpp;
+      private System.Windows.Forms.Label label16;
    }
 }
