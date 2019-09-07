@@ -26,9 +26,9 @@ namespace RumahScarlett.Presentation.Views.Pengeluaran
       public PengeluaranEntryView(bool isNewData = true, IPengeluaranModel model = null)
       {
          InitializeComponent();
-         
+
          _isNewData = isNewData;
-         panelUp.LabelInfo = isNewData ? "TAMBAH PENGELUARAN" : "UBAH PENGELUARAN";
+         panelUp.LabelInfo = isNewData ? $"TAMBAH {_typeName.ToUpper()}" : $"UBAH {_typeName.ToUpper()}";
 
          if (!_isNewData)
          {
