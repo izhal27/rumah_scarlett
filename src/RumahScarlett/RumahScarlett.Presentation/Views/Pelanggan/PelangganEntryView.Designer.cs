@@ -167,7 +167,7 @@
          this.textBoxAlamat.Name = "textBoxAlamat";
          this.textBoxAlamat.Size = new System.Drawing.Size(250, 20);
          this.textBoxAlamat.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
-         this.textBoxAlamat.TabIndex = 0;
+         this.textBoxAlamat.TabIndex = 1;
          // 
          // textBoxTelpon
          // 
@@ -179,7 +179,7 @@
          this.textBoxTelpon.Name = "textBoxTelpon";
          this.textBoxTelpon.Size = new System.Drawing.Size(250, 20);
          this.textBoxTelpon.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
-         this.textBoxTelpon.TabIndex = 0;
+         this.textBoxTelpon.TabIndex = 2;
          // 
          // textBoxKeterangan
          // 
@@ -191,7 +191,7 @@
          this.textBoxKeterangan.Name = "textBoxKeterangan";
          this.textBoxKeterangan.Size = new System.Drawing.Size(250, 20);
          this.textBoxKeterangan.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
-         this.textBoxKeterangan.TabIndex = 0;
+         this.textBoxKeterangan.TabIndex = 3;
          // 
          // label8
          // 
