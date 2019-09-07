@@ -37,9 +37,18 @@ namespace RumahScarlett.Presentation.Views.KasAwal
 
       private void KasAwalView_KeyDown(object sender, KeyEventArgs e)
       {
-         if (e.KeyCode == Keys.Enter)
+         switch (e.KeyCode)
          {
-            OnSaveData?.Invoke(sender, e);
+            case Keys.Enter:
+
+               OnSaveData?.Invoke(sender, e);
+
+               break;
+            case Keys.Escape:
+
+               Close();
+
+               break;
          }
       }
 
