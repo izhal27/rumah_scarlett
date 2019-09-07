@@ -42,6 +42,7 @@
          this.label1 = new System.Windows.Forms.Label();
          this.label6 = new System.Windows.Forms.Label();
          this.label7 = new System.Windows.Forms.Label();
+         this.dateTimePickerFilter = new RumahScarlett.Presentation.Views.CommonControls.DateTimePickerFilter();
          ((System.ComponentModel.ISupportInitialize)(this.listDataGrid)).BeginInit();
          this.groupBox1.SuspendLayout();
          this.tableLayoutPanel1.SuspendLayout();
@@ -65,10 +66,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
          this.listDataGrid.AutoSizeColumnsMode = Syncfusion.WinForms.DataGrid.Enums.AutoSizeColumnsMode.Fill;
-         this.listDataGrid.Location = new System.Drawing.Point(12, 58);
+         this.listDataGrid.Location = new System.Drawing.Point(12, 209);
          this.listDataGrid.Name = "listDataGrid";
          this.listDataGrid.ShowRowHeader = true;
-         this.listDataGrid.Size = new System.Drawing.Size(534, 351);
+         this.listDataGrid.Size = new System.Drawing.Size(534, 200);
          this.listDataGrid.TabIndex = 2;
          this.listDataGrid.Text = "listDataGrid1";
          // 
@@ -76,7 +77,7 @@
          // 
          this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
          this.groupBox1.Controls.Add(this.tableLayoutPanel1);
-         this.groupBox1.Location = new System.Drawing.Point(552, 58);
+         this.groupBox1.Location = new System.Drawing.Point(552, 209);
          this.groupBox1.Name = "groupBox1";
          this.groupBox1.Size = new System.Drawing.Size(220, 145);
          this.groupBox1.TabIndex = 3;
@@ -213,11 +214,19 @@
          this.label7.TabIndex = 0;
          this.label7.Text = ":";
          // 
+         // dateTimePickerFilter1
+         // 
+         this.dateTimePickerFilter.Location = new System.Drawing.Point(12, 58);
+         this.dateTimePickerFilter.Name = "dateTimePickerFilter1";
+         this.dateTimePickerFilter.Size = new System.Drawing.Size(446, 145);
+         this.dateTimePickerFilter.TabIndex = 4;
+         // 
          // HutangOperasionalView
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
          this.ClientSize = new System.Drawing.Size(784, 462);
+         this.Controls.Add(this.dateTimePickerFilter);
          this.Controls.Add(this.groupBox1);
          this.Controls.Add(this.listDataGrid);
          this.Controls.Add(this.crudcButtons);
@@ -228,6 +237,7 @@
          this.Controls.SetChildIndex(this.crudcButtons, 0);
          this.Controls.SetChildIndex(this.listDataGrid, 0);
          this.Controls.SetChildIndex(this.groupBox1, 0);
+         this.Controls.SetChildIndex(this.dateTimePickerFilter, 0);
          ((System.ComponentModel.ISupportInitialize)(this.listDataGrid)).EndInit();
          this.groupBox1.ResumeLayout(false);
          this.tableLayoutPanel1.ResumeLayout(false);
@@ -252,5 +262,6 @@
       private System.Windows.Forms.Label label1;
       private System.Windows.Forms.Label label6;
       private System.Windows.Forms.Label label7;
+      private CommonControls.DateTimePickerFilter dateTimePickerFilter;
    }
 }

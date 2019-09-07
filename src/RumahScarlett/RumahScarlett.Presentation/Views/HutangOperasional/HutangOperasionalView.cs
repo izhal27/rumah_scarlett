@@ -22,6 +22,7 @@ namespace RumahScarlett.Presentation.Views.HutangOperasional
       public event EventHandler OnRefreshData;
       public event EventHandler OnPrintData;
       public event EventHandler<CellClickEventArgs> OnDataGridCellDoubleClick;
+      public event EventHandler<FilterDateEventArgs> OnTampilkanClick;
 
       public ListDataGrid ListDataGrid
       {
@@ -47,7 +48,7 @@ namespace RumahScarlett.Presentation.Views.HutangOperasional
       {
          InitializeComponent();
 
-         panelUp.LabelInfo = "DATA HUTANG OPERASIONAL";
+         panelUp.LabelInfo = $"DATA {Text.ToUpper()}";
          crudcButtons.ButtonCetakVisible = false;
 
          listDataGrid.CellDoubleClick += ListDataGrid_CellDoubleClick;
@@ -56,6 +57,8 @@ namespace RumahScarlett.Presentation.Views.HutangOperasional
          crudcButtons.OnHapusClick += crudcButtons_OnHapusClick;
          crudcButtons.OnRefreshClick += crudcButtons_OnRefreshClickEvent;
          crudcButtons.OnTutupClick += crudcButtons_OnTutupClickEvent;
+
+         dateTimePickerFilter.OnTampilkanClick += DateTimePickerFilter_OnTampilkanClick;
       }
 
       private void HutangOperasionalView_Load(object sender, EventArgs e)
@@ -91,6 +94,11 @@ namespace RumahScarlett.Presentation.Views.HutangOperasional
       private void crudcButtons_OnTutupClickEvent(object sender, EventArgs e)
       {
          Close();
+      }
+
+      private void DateTimePickerFilter_OnTampilkanClick(object sender, FilterDateEventArgs e)
+      {
+         OnTampilkanClick?.Invoke(sender, e);
       }
    }
 }

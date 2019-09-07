@@ -43,6 +43,7 @@ namespace RumahScarlett.Presentation.Presenters.HutangOperasional
          _view.OnRefreshData += _view_OnRefreshData;
 
          _view.OnDataGridCellDoubleClick += OnDataGrid_CellDoubleClick;
+         _view.OnTampilkanClick += _view_OnTampilkanClick;
       }
 
       private void _view_LoadData(object sender, EventArgs e)
@@ -68,8 +69,8 @@ namespace RumahScarlett.Presentation.Presenters.HutangOperasional
 
       private void HitungTotal()
       {
-         var total = _listObjs.Sum(h => h.jumlah);
-         var totalLunas = _listObjs.Where(h => h.status_hutang == true).Sum(h => h.jumlah);
+         var total = _bindingView.Cast<IHutangOperasionalModel>().Sum(h => h.jumlah);
+         var totalLunas = _bindingView.Cast<IHutangOperasionalModel>().Where(h => h.status_hutang == true).Sum(h => h.jumlah);
          var totalSelisih = total - totalLunas;
 
          _view.LabelTotal.Text = total.ToString("N0");
@@ -184,5 +185,29 @@ namespace RumahScarlett.Presentation.Presenters.HutangOperasional
       {
          _view_OnUpdateData(sender, e);
       }
+
+      private void _view_OnTampilkanClick(object sender, FilterDateEventArgs e)
+      {
+         switch (e.TampilkanStatus)
+         {
+            case TampilkanStatus.Tanggal:
+
+               _bindingView.DataSource = _listObjs.Where(ps => ps.tanggal == e.Tanggal.Date).ToList();
+
+               break;
+            case TampilkanStatus.Periode:
+
+               _bindingView.DataSource = _listObjs.Where(ps => ps.tanggal >= e.TanggalAwal.Date &&
+                                                         ps.tanggal <= e.TanggalAkhir.Date).ToList();
+
+               break;
+            default:
+
+               _bindingView.DataSource = _listObjs;
+
+               break;
+         }
+      }
+
    }
 }

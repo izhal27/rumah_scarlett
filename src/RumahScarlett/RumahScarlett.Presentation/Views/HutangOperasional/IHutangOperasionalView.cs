@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RumahScarlett.Presentation.Views.CommonControls;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,5 +13,6 @@ namespace RumahScarlett.Presentation.Views.HutangOperasional
       Label LabelTotal { get; }
       Label LabelLunas { get; }
       Label LabelBelumLunas { get; }
+      event EventHandler<FilterDateEventArgs> OnTampilkanClick;
    }
 }
