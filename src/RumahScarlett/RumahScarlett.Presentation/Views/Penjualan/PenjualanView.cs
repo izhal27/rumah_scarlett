@@ -36,6 +36,11 @@ namespace RumahScarlett.Presentation.Views.Penjualan
          get { return textBoxNoNota; }
       }
 
+      public Label LabelGrandTotal
+      {
+         get { return labelGrandTotal; }
+      }
+
       public PenjualanView()
       {
          InitializeComponent();

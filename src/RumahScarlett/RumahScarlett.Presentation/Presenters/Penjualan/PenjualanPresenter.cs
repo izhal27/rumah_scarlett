@@ -86,7 +86,7 @@ namespace RumahScarlett.Presentation.Presenters.Penjualan
 
       private void _bindingView_ListChanged(object sender, System.ComponentModel.ListChangedEventArgs e)
       {
-         //HitungRingkasan();
+         HitungGrandTotal();
       }
 
       private void _view_OnCariData(object sender, EventArgs e)
@@ -194,6 +194,7 @@ namespace RumahScarlett.Presentation.Presenters.Penjualan
             _view.TextBoxNoNota.Text = string.Empty;
          }
 
+         _kodeOrNamaForSearching = string.Empty;
          _listPenjualanDetails.Clear();
          AddDummyPenjualanModel(30);
          _bindingView.DataSource = _listPenjualanDetails;
@@ -333,12 +334,12 @@ namespace RumahScarlett.Presentation.Presenters.Penjualan
 
       private void _view_OnListDataGridCurrentCellEndEdit(object sender, CurrentCellEndEditEventArgs e)
       {
-         HitungRingkasan();
+         HitungGrandTotal();
       }
 
-      private void HitungRingkasan()
+      private void HitungGrandTotal()
       {
-
+         _view.LabelGrandTotal.Text = _bindingView.Cast<IPenjualanDetailModel>().Sum(pd => pd.total).ToString("N0");
       }
 
       private void _view_OnListDataGridPreviewKeyDown(object sender, PreviewKeyDownEventArgs e)

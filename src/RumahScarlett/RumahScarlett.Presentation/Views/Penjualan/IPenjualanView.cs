@@ -11,5 +11,6 @@ namespace RumahScarlett.Presentation.Views.Penjualan
    public interface IPenjualanView : ITransaksiView
    {
       TextBox TextBoxNoNota { get; }
+      Label LabelGrandTotal { get; }
    }
 }

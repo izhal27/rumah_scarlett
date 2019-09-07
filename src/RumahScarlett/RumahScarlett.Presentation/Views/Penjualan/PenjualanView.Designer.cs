@@ -46,11 +46,14 @@
          this.label27 = new System.Windows.Forms.Label();
          this.label28 = new System.Windows.Forms.Label();
          this.listDataGrid = new RumahScarlett.Presentation.Views.CommonControls.ListDataGrid();
+         this.panelGrandTotal = new System.Windows.Forms.Panel();
+         this.labelGrandTotal = new System.Windows.Forms.Label();
          this.tableLayoutPanel3.SuspendLayout();
          this.groupBox1.SuspendLayout();
          this.tableLayoutPanel1.SuspendLayout();
          ((System.ComponentModel.ISupportInitialize)(this.textBoxNoNota)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.listDataGrid)).BeginInit();
+         this.panelGrandTotal.SuspendLayout();
          this.SuspendLayout();
          // 
          // tableLayoutPanel3
@@ -223,16 +226,16 @@
          this.tableLayoutPanel1.Name = "tableLayoutPanel1";
          this.tableLayoutPanel1.RowCount = 1;
          this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-         this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-         this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-         this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+         this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+         this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+         this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
          this.tableLayoutPanel1.Size = new System.Drawing.Size(246, 30);
          this.tableLayoutPanel1.TabIndex = 0;
          // 
          // textBoxNoNota
          // 
          this.textBoxNoNota.Anchor = System.Windows.Forms.AnchorStyles.Left;
-         this.textBoxNoNota.BeforeTouchSize = new System.Drawing.Size(150, 20);
+         this.textBoxNoNota.BeforeTouchSize = new System.Drawing.Size(148, 20);
          this.textBoxNoNota.Location = new System.Drawing.Point(72, 5);
          this.textBoxNoNota.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
          this.textBoxNoNota.Name = "textBoxNoNota";
@@ -277,11 +280,34 @@
          this.listDataGrid.TabIndex = 1;
          this.listDataGrid.Text = "listDataGrid1";
          // 
+         // panelGrandTotal
+         // 
+         this.panelGrandTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+         this.panelGrandTotal.BackColor = System.Drawing.SystemColors.ControlText;
+         this.panelGrandTotal.Controls.Add(this.labelGrandTotal);
+         this.panelGrandTotal.Location = new System.Drawing.Point(350, 58);
+         this.panelGrandTotal.Name = "panelGrandTotal";
+         this.panelGrandTotal.Size = new System.Drawing.Size(422, 55);
+         this.panelGrandTotal.TabIndex = 9;
+         // 
+         // labelGrandTotal
+         // 
+         this.labelGrandTotal.Dock = System.Windows.Forms.DockStyle.Fill;
+         this.labelGrandTotal.Font = new System.Drawing.Font("Digital-7 Italic", 36F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.labelGrandTotal.ForeColor = System.Drawing.Color.Yellow;
+         this.labelGrandTotal.Location = new System.Drawing.Point(0, 0);
+         this.labelGrandTotal.Name = "labelGrandTotal";
+         this.labelGrandTotal.Size = new System.Drawing.Size(422, 55);
+         this.labelGrandTotal.TabIndex = 0;
+         this.labelGrandTotal.Text = "0";
+         this.labelGrandTotal.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+         // 
          // PenjualanView
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
          this.ClientSize = new System.Drawing.Size(784, 462);
+         this.Controls.Add(this.panelGrandTotal);
          this.Controls.Add(this.groupBox1);
          this.Controls.Add(this.tableLayoutPanel3);
          this.Controls.Add(this.listDataGrid);
@@ -294,6 +320,7 @@
          this.Controls.SetChildIndex(this.tableLayoutPanel3, 0);
          this.Controls.SetChildIndex(this.groupBox1, 0);
          this.Controls.SetChildIndex(this.panelUp, 0);
+         this.Controls.SetChildIndex(this.panelGrandTotal, 0);
          this.tableLayoutPanel3.ResumeLayout(false);
          this.tableLayoutPanel3.PerformLayout();
          this.groupBox1.ResumeLayout(false);
@@ -301,6 +328,7 @@
          this.tableLayoutPanel1.PerformLayout();
          ((System.ComponentModel.ISupportInitialize)(this.textBoxNoNota)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.listDataGrid)).EndInit();
+         this.panelGrandTotal.ResumeLayout(false);
          this.ResumeLayout(false);
 
       }
@@ -324,5 +352,7 @@
       private System.Windows.Forms.Label label27;
       private System.Windows.Forms.Label label28;
       private CommonControls.ListDataGrid listDataGrid;
+      private System.Windows.Forms.Panel panelGrandTotal;
+      private System.Windows.Forms.Label labelGrandTotal;
    }
 }
