@@ -157,7 +157,11 @@ namespace RumahScarlett.Presentation.Presenters.Pelanggan
 
                   _services.Delete(model);
                   Messages.InfoDelete(_typeName);
-                  _view_OnRefreshData(null, null);
+
+                  if (_listObjs.Remove((PelangganModel)_view.ListDataGrid.SelectedItem))
+                  {
+                     _bindingView.DataSource = _listObjs;
+                  }
                }
                catch (DataAccessException ex)
                {
