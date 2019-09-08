@@ -55,7 +55,6 @@ namespace RumahScarlett.Presentation.Presenters.PenyesuaianStok
                _bindingView = new BindingListView<PenyesuaianStokModel>(_listObjs);
                _view.ListDataGrid.DataSource = _bindingView;
                _bindingView.ListChanged += _bindingView_ListChanged;
-
                HitungTotal();
             }
          }
@@ -68,8 +67,8 @@ namespace RumahScarlett.Presentation.Presenters.PenyesuaianStok
 
       private void HitungTotal()
       {
-         var totalQty = _bindingView.Cast<IPenyesuaianStokModel>().Sum(h => h.qty);
-         var totalHpp = _bindingView.Cast<IPenyesuaianStokModel>().Sum(h => h.hpp);
+         var totalQty = _bindingView.Sum(h => h.qty);
+         var totalHpp = _bindingView.Sum(h => h.hpp);
 
          _view.LabelTotalQty.Text = totalQty.ToString("N0");
          _view.LabelTotalHpp.Text = totalHpp.ToString("N0");
@@ -114,23 +113,46 @@ namespace RumahScarlett.Presentation.Presenters.PenyesuaianStok
          {
             try
             {
-               var model = ((ModelEventArgs<PenyesuaianStokModel>)e).Value;
+               var listDataGrid = _view.ListDataGrid;
+               var newModel = ((ModelEventArgs<PenyesuaianStokModel>)e).Value;
                var view = ((PenyesuaianStokEntryView)sender);
 
-               if (model.id == default(uint))
+               if (newModel.id == default(uint))
                {
-                  _services.Insert(model);
+                  _services.Insert(newModel);
                   view.Controls.ClearControls();
                   Messages.InfoSave(_typeName);
+
+                  _listObjs.Add(newModel);
+                  _bindingView.DataSource = _listObjs;
+
+                  if (listDataGrid.SelectedItem != null)
+                  {
+                     listDataGrid.SelectedItem = null;
+                  }
+
+                  listDataGrid.SelectedItem = newModel;
                }
                else
                {
-                  _services.Update(model);
+                  _services.Update(newModel);
                   Messages.InfoUpdate(_typeName);
                   view.Close();
-               }
 
-               _view_OnRefreshData(null, null);
+                  var model = _bindingView.Where(b => b.id == newModel.id).FirstOrDefault();
+
+                  if (model != null)
+                  {
+                     //model.tanggal = newModel.tanggal;
+                     //model.Barang = newModel.Barang;
+                     //model.hpp = newModel.hpp;
+                     //model.qty = newModel.qty;
+                     //model.satuan_id = newModel.satuan_id;
+                     model.keterangan = newModel.keterangan;
+
+                     _bindingView.Refresh();
+                  }
+               }
             }
             catch (ArgumentException ex)
             {
@@ -155,7 +177,11 @@ namespace RumahScarlett.Presentation.Presenters.PenyesuaianStok
 
                   _services.Delete(model);
                   Messages.InfoDelete(_typeName);
-                  _view_OnRefreshData(null, null);
+
+                  if (_listObjs.Remove((PenyesuaianStokModel)_view.ListDataGrid.SelectedItem))
+                  {
+                     _bindingView.DataSource = _listObjs;
+                  }
                }
                catch (DataAccessException ex)
                {
@@ -194,7 +220,7 @@ namespace RumahScarlett.Presentation.Presenters.PenyesuaianStok
                break;
             case TampilkanStatus.Periode:
 
-               _bindingView.DataSource = _listObjs.Where(ps => ps.tanggal >=e.TanggalAwal.Date &&
+               _bindingView.DataSource = _listObjs.Where(ps => ps.tanggal >= e.TanggalAwal.Date &&
                                                          ps.tanggal <= e.TanggalAkhir.Date).ToList();
 
                break;

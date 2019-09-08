@@ -16,7 +16,7 @@ namespace RumahScarlett.Domain.Models.PenyesuaianStok
       int qty { get; set; }
       ISatuanModel Satuan { get; set; }
       uint satuan_id { get; set; }
-      string satuan_nama { get; }
+      string satuan_nama { get; set; }
       decimal hpp { get; set; }
       string keterangan { get; set; }
    }

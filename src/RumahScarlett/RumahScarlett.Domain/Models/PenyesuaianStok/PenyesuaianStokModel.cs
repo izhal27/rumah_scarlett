@@ -72,11 +72,14 @@ namespace RumahScarlett.Domain.Models.PenyesuaianStok
          set { _satuan_id = value; }
       }
 
+      private string _satuan_nama;
+
       [Dp.Write(false)]
       [Display(Name = "Satuan")]
       public string satuan_nama
       {
-         get { return Satuan.id != default(uint) ? Satuan.nama : string.Empty; }
+         get { return Satuan.id != default(uint) ? Satuan.nama : _satuan_nama; }
+         set { _satuan_nama = value; }
       }
       
       [DisplayFormat(DataFormatString = "{0:N0}")]

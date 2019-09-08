@@ -26,17 +26,16 @@ namespace RumahScarlett.Presentation.Views.PenyesuaianStok
       private IPenyesuaianStokModel _model;
       public event EventHandler OnSaveData;
       private IBarangServices _barangServices;
-      private List<IBarangModel> _listsBarangs;
+      private List<IBarangModel> _listBarangs;
       private static string _typeName = "Penyesuaian Stok";
 
       public PenyesuaianStokEntryView(bool isNewData = true, IPenyesuaianStokModel model = null)
       {
          InitializeComponent();
          _barangServices = new BarangServices(new BarangRepository(), new ModelDataAnnotationCheck());
-         _listsBarangs = _barangServices.GetAll().Where(b => b.stok > b.minimal_stok).ToList();
 
          _isNewData = isNewData;
-         panelUp.LabelInfo = isNewData ?  $"TAMBAH {_typeName.ToUpper()}" : $"UBAH {_typeName.ToUpper()}";
+         panelUp.LabelInfo = isNewData ? $"TAMBAH {_typeName.ToUpper()}" : $"UBAH {_typeName.ToUpper()}";
 
          if (!_isNewData)
          {
@@ -70,6 +69,8 @@ namespace RumahScarlett.Presentation.Views.PenyesuaianStok
             qty = int.Parse(textBoxQty.Text, NumberStyles.Number),
             satuan_id = comboBoxSatuan.ComboBox.SelectedValue != null ?
                         (uint)comboBoxSatuan.ComboBox.SelectedValue : default(uint),
+            satuan_nama = comboBoxSatuan.ComboBox.SelectedValue != null ?
+                          comboBoxSatuan.ComboBox.Text : string.Empty,
             keterangan = textBoxKeterangan.Text
          };
 
@@ -91,7 +92,9 @@ namespace RumahScarlett.Presentation.Views.PenyesuaianStok
 
       private void buttonCari_Click(object sender, EventArgs e)
       {
-         var view = new CariBarangView(_listsBarangs, TipePencarian.PenyesuaianStok);
+         _listBarangs = _barangServices.GetAll().Where(b => b.stok > b.minimal_stok).ToList();
+
+         var view = new CariBarangView(_listBarangs, TipePencarian.PenyesuaianStok);
          view.OnSendData += CariBarangPembelianView_OnSendData;
          view.ShowDialog();
       }
