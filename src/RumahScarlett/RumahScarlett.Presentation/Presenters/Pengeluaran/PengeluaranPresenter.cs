@@ -53,16 +53,27 @@ namespace RumahScarlett.Presentation.Presenters.Pengeluaran
                _listObjs = _services.GetByDate(DateTime.Now.Date).ToList();
                _bindingView = new BindingListView<PengeluaranModel>(_listObjs);
                _view.ListDataGrid.DataSource = _bindingView;
-               _view.LabelTotal.Text = _listObjs.Sum(p => p.jumlah).ToString("N0");
+               _bindingView.ListChanged += _bindingView_ListChanged;
+               HitungRingkasan();
             }
          }
       }
 
+      private void _bindingView_ListChanged(object sender, System.ComponentModel.ListChangedEventArgs e)
+      {
+         HitungRingkasan();
+      }
+
+      private void HitungRingkasan()
+      {
+         _view.LabelTotal.Text = _bindingView.Sum(p => p.jumlah).ToString("N0");
+      }
+
       private void _view_OnCreateData(object sender, EventArgs e)
       {
-            var view = new PengeluaranEntryView();
-            view.OnSaveData += PengeluaranEntryView_OnSaveData;
-            view.ShowDialog();
+         var view = new PengeluaranEntryView();
+         view.OnSaveData += PengeluaranEntryView_OnSaveData;
+         view.ShowDialog();
       }
 
       private void _view_OnUpdateData(object sender, EventArgs e)
@@ -97,23 +108,43 @@ namespace RumahScarlett.Presentation.Presenters.Pengeluaran
          {
             try
             {
-               var model = ((ModelEventArgs<PengeluaranModel>)e).Value;
+               var listDataGrid = _view.ListDataGrid;
+               var newModel = ((ModelEventArgs<PengeluaranModel>)e).Value;
                var view = ((PengeluaranEntryView)sender);
 
-               if (model.id == default(uint))
+               if (newModel.id == default(uint))
                {
-                  _services.Insert(model);
+                  _services.Insert(newModel);
                   view.Controls.ClearControls();
                   Messages.InfoSave(_typeName);
+
+                  _listObjs.Add(newModel);
+                  _bindingView.DataSource = _listObjs;
+
+                  if (listDataGrid.SelectedItem != null)
+                  {
+                     listDataGrid.SelectedItem = null;
+                  }
+
+                  listDataGrid.SelectedItem = newModel;
                }
                else
                {
-                  _services.Update(model);
+                  _services.Update(newModel);
                   Messages.InfoUpdate(_typeName);
                   view.Close();
-               }
 
-               _view_OnRefreshData(null, null);
+                  var model = _bindingView.Where(b => b.id == newModel.id).FirstOrDefault();
+
+                  if (model != null)
+                  {
+                     model.nama = newModel.nama;
+                     model.jumlah = newModel.jumlah;
+                     model.keterangan = newModel.keterangan;
+
+                     _bindingView.Refresh();
+                  }
+               }
             }
             catch (ArgumentException ex)
             {
@@ -138,7 +169,11 @@ namespace RumahScarlett.Presentation.Presenters.Pengeluaran
 
                   _services.Delete(model);
                   Messages.InfoDelete(_typeName);
-                  _view_OnRefreshData(null, null);
+
+                  if (_listObjs.Remove((PengeluaranModel)_view.ListDataGrid.SelectedItem))
+                  {
+                     _bindingView.DataSource = _listObjs;
+                  }
                }
                catch (DataAccessException ex)
                {
