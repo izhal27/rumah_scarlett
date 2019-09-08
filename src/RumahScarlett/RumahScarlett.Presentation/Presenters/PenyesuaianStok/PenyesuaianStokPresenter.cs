@@ -100,9 +100,12 @@ namespace RumahScarlett.Presentation.Presenters.PenyesuaianStok
             {
                var model = _services.GetById(((PenyesuaianStokModel)listDataGrid.SelectedItem).id);
 
-               var view = new PenyesuaianStokEntryView(false, model);
-               view.OnSaveData += PenyesuaianStokEntryView_OnSaveData;
-               view.ShowDialog();
+               if (model != null)
+               {
+                  var view = new PenyesuaianStokEntryView(false, model);
+                  view.OnSaveData += PenyesuaianStokEntryView_OnSaveData;
+                  view.ShowDialog();
+               }
             }
          }
       }
