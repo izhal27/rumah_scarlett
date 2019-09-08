@@ -83,9 +83,12 @@ namespace RumahScarlett.Presentation.Presenters.Tipe
             {
                var model = _services.GetById(((SubTipeModel)listDataGrid.SelectedItem).id);
 
-               var view = new SubTipeEntryView(false, model);
-               view.OnSaveData += SubTipeEntryView_OnSaveData;
-               view.ShowDialog();
+               if (model != null)
+               {
+                  var view = new SubTipeEntryView(false, model);
+                  view.OnSaveData += SubTipeEntryView_OnSaveData;
+                  view.ShowDialog();
+               }
             }
          }
       }
