@@ -32,7 +32,7 @@ namespace RumahScarlett.Presentation.Views.Tipe
       {
          InitializeComponent();
 
-         panelUp.LabelInfo = "DATA TIPE";
+         panelUp.LabelInfo = $"DATA {Text.ToUpper()}";
          crudcButtons.ButtonCetakVisible = false;
 
          listDataGrid.CellDoubleClick += ListDataGrid_CellDoubleClick;
