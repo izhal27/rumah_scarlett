@@ -234,6 +234,7 @@
     <Compile Include="Views\HutangOperasional\IHutangOperasionalEntryView.cs" />
     <Compile Include="Views\HutangOperasional\IHutangOperasionalView.cs" />
     <Compile Include="Views\IDataView.cs" />
+    <Compile Include="Views\ILaporanView.cs" />
     <Compile Include="Views\ITransaksiView.cs" />
     <Compile Include="Views\KasAwal\IKasAwalView.cs" />
     <Compile Include="Views\IMainView.cs" />
@@ -346,6 +347,12 @@
     </Compile>
     <Compile Include="Views\Penjualan\IBayarPenjualanEntryView.cs" />
     <Compile Include="Views\Penjualan\IPenjualanView.cs" />
+    <Compile Include="Views\Penjualan\LaporanPenjualanView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Penjualan\LaporanPenjualanView.Designer.cs">
+      <DependentUpon>LaporanPenjualanView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Penjualan\PenjualanView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -517,6 +524,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Penjualan\BayarPenjualanEntryView.resx">
       <DependentUpon>BayarPenjualanEntryView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Penjualan\LaporanPenjualanView.resx">
+      <DependentUpon>LaporanPenjualanView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Penjualan\PenjualanView.resx">
       <DependentUpon>PenjualanView.cs</DependentUpon>
