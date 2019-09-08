@@ -189,7 +189,11 @@ namespace RumahScarlett.Presentation.Presenters.Barang
 
                   _barangServices.Delete(model);
                   Messages.InfoDelete(_typeName);
-                  _view_OnRefreshData(null, null);
+
+                  if (_listObjs.Remove((BarangModel)_view.ListDataGrid.SelectedItem))
+                  {
+                     _bindingView.DataSource = _listObjs;
+                  }
                }
                catch (DataAccessException ex)
                {
