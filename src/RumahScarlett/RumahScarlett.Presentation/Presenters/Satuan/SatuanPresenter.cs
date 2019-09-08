@@ -82,9 +82,12 @@ namespace RumahScarlett.Presentation.Presenters.Satuan
             {
                var model = _services.GetById(((SatuanModel)listDataGrid.SelectedItem).id);
 
-               var view = new SatuanEntryView(false, model);
-               view.OnSaveData += SatuanEntryView_OnSaveData;
-               view.ShowDialog();
+               if (model != null)
+               {
+                  var view = new SatuanEntryView(false, model);
+                  view.OnSaveData += SatuanEntryView_OnSaveData;
+                  view.ShowDialog();
+               }
             }
          }
       }
