@@ -20,6 +20,8 @@ namespace RumahScarlett.Presentation.Views.CommonControls
       {
          InitializeComponent();
 
+         dateTimePickerPeriodeAwal.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+
          dateTimePickerTanggal.Enabled = false;
          dateTimePickerPeriodeAwal.Enabled = false;
          dateTimePickerPeriodeAkhir.Enabled = false;
