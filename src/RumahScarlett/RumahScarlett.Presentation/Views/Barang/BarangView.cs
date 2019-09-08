@@ -72,7 +72,7 @@ namespace RumahScarlett.Presentation.Views.Barang
       {
          InitializeComponent();
 
-         panelUp.LabelInfo = "DATA BARANG";
+         panelUp.LabelInfo = $"DATA {Text.ToUpper()}";
 
          radioButtonTipe.CheckedChanged += radioButtonTipe_CheckedChanged;
          radioButtonSupplier.CheckedChanged += radioButtonSupplier_CheckedChanged;
