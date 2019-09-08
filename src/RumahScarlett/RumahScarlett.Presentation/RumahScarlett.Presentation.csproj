@@ -171,6 +171,12 @@
     <Compile Include="Views\CommonControls\BaseCariBarang View.Designer.cs">
       <DependentUpon>BaseCariBarang View.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\CommonControls\ButtonsDeletePrintDetail.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\CommonControls\ButtonsDeletePrintDetail.Designer.cs">
+      <DependentUpon>ButtonsDeletePrintDetail.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\CommonControls\CRUDCButtons.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -452,6 +458,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\CommonControls\BaseCariBarang View.resx">
       <DependentUpon>BaseCariBarang View.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CommonControls\ButtonsDeletePrintDetail.resx">
+      <DependentUpon>ButtonsDeletePrintDetail.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\CommonControls\CRUDCButtons.resx">
       <DependentUpon>CRUDCButtons.cs</DependentUpon>
