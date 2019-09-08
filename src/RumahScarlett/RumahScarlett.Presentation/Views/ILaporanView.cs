@@ -1,4 +1,5 @@
 ﻿using RumahScarlett.Presentation.Views.CommonControls;
+using Syncfusion.WinForms.DataGrid.Events;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,7 @@ namespace RumahScarlett.Presentation.Views
       event EventHandler OnPrintData;
       event EventHandler OnDetailClick;
       event EventHandler OnTampilkanClick;
+      event EventHandler<CellClickEventArgs> OnDataGridCellDoubleClick;
 
       DateTimePickerFilterTransaksi DateTimePickerFilterTransaksi { get; }
       ListDataGrid ListDataGrid { get; }
