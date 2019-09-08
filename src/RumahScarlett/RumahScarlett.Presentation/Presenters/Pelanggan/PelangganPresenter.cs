@@ -82,9 +82,12 @@ namespace RumahScarlett.Presentation.Presenters.Pelanggan
             {
                var model = _services.GetById(((PelangganModel)listDataGrid.SelectedItem).id);
 
-               var view = new PelangganEntryView(false, model);
-               view.OnSaveData += PelangganEntryView_OnSaveData;
-               view.ShowDialog();
+               if (model != null)
+               {
+                  var view = new PelangganEntryView(false, model);
+                  view.OnSaveData += PelangganEntryView_OnSaveData;
+                  view.ShowDialog();
+               }
             }
          }
       }
