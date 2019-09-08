@@ -135,9 +135,12 @@ namespace RumahScarlett.Presentation.Presenters.Barang
             {
                var model = _barangServices.GetById(((BarangModel)listDataGrid.SelectedItem).id);
 
-               var view = new BarangEntryView(false, model);
-               view.OnSaveData += BarangEntryView_OnSaveData;
-               view.ShowDialog();
+               if (model != null)
+               {
+                  var view = new BarangEntryView(false, model);
+                  view.OnSaveData += BarangEntryView_OnSaveData;
+                  view.ShowDialog();
+               }
             }
          }
       }
@@ -148,23 +151,44 @@ namespace RumahScarlett.Presentation.Presenters.Barang
          {
             try
             {
-               var model = ((ModelEventArgs<BarangModel>)e).Value;
-               var view = ((BarangEntryView)sender);
+               var newModel = ((ModelEventArgs<BarangModel>)e).Value;
+               var barangEntryView = ((BarangEntryView)sender);
 
-               if (model.id == default(uint))
+               if (newModel.id == default(uint))
                {
-                  _barangServices.Insert(model);
-                  view.Controls.ClearControls();
+                  _barangServices.Insert(newModel);
+                  barangEntryView.Controls.ClearControls();
                   Messages.InfoSave(_typeName);
+
+                  _listObjs.Add(newModel);
+                  _bindingView.DataSource = _listObjs;
                }
                else
                {
-                  _barangServices.Update(model);
+                  _barangServices.Update(newModel);
                   Messages.InfoUpdate(_typeName);
-                  view.Close();
-               }
+                  barangEntryView.Close();
 
-               _view_OnRefreshData(null, null);
+                  var model = _bindingView.Where(b => b.id == newModel.id).FirstOrDefault();
+
+                  if (model != null)
+                  {
+                     model.tipe_id = newModel.tipe_id;
+                     model.sub_tipe_id = newModel.sub_tipe_id;
+                     model.supplier_id = newModel.supplier_id;
+                     model.kode = newModel.kode;
+                     model.nama = newModel.nama;
+                     model.hpp = newModel.hpp;
+                     model.harga_jual = newModel.harga_jual;
+                     model.harga_lama = newModel.harga_lama;
+                     model.stok = newModel.stok;
+                     model.minimal_stok = newModel.minimal_stok;
+                     model.satuan_id = newModel.satuan_id;
+                     model.satuan_nama = newModel.satuan_nama;
+
+                     _bindingView.Refresh();
+                  }
+               }
             }
             catch (ArgumentException ex)
             {
