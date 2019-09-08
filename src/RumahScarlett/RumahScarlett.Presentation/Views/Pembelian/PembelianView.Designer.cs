@@ -297,7 +297,7 @@
          this.Controls.Add(this.groupBox1);
          this.KeyPreview = true;
          this.Name = "PembelianView";
-         this.Text = "Pembelian";
+         this.Text = "Pembelian Barang";
          this.Load += new System.EventHandler(this.PembelianView_Load);
          this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PembelianView_KeyDown);
          this.Controls.SetChildIndex(this.panelUp, 0);

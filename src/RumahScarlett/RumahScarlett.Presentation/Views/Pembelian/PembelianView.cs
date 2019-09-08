@@ -45,7 +45,7 @@ namespace RumahScarlett.Presentation.Views.Pembelian
       {
          InitializeComponent();
 
-         panelUp.LabelInfo = "TRANSAKSI PEMBELIAN BARANG";
+         panelUp.LabelInfo = $"TRANSAKSI {Text.ToUpper()}";
 
          listDataGrid.EditMode = EditMode.SingleClick;
          listDataGrid.AllowEditing = true;
