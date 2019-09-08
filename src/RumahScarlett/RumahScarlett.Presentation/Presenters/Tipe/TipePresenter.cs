@@ -22,7 +22,7 @@ namespace RumahScarlett.Presentation.Presenters.Tipe
    {
       private ITipeView _view;
       private ITipeServices _services;
-      private List<ITipeModel> _listObj;
+      private List<ITipeModel> _listObjs;
       private BindingListView<TipeModel> _bindingView;
       private static string _typeName = "Tipe";
 
@@ -51,8 +51,8 @@ namespace RumahScarlett.Presentation.Presenters.Tipe
          {
             if (_view.ListDataGrid != null)
             {
-               _listObj = _services.GetAll().ToList();
-               _bindingView = new BindingListView<TipeModel>(_listObj);
+               _listObjs = _services.GetAll().ToList();
+               _bindingView = new BindingListView<TipeModel>(_listObjs);
                _view.ListDataGrid.DataSource = _bindingView;
             }
          }
@@ -138,7 +138,11 @@ namespace RumahScarlett.Presentation.Presenters.Tipe
 
                   _services.Delete(model);
                   Messages.InfoDelete(_typeName);
-                  _view_OnRefreshData(null, null);
+
+                  if (_listObjs.Remove((TipeModel)_view.ListDataGrid.SelectedItem))
+                  {
+                     _bindingView.DataSource = _listObjs;
+                  }
                }
                catch (DataAccessException ex)
                {
@@ -158,8 +162,8 @@ namespace RumahScarlett.Presentation.Presenters.Tipe
 
       private void _view_OnRefreshData(object sender, EventArgs e)
       {
-         _listObj = _services.GetAll().ToList();
-         _bindingView.DataSource = _listObj;
+         _listObjs = _services.GetAll().ToList();
+         _bindingView.DataSource = _listObjs;
       }
 
       private void OnDataGrid_CellDoubleClick(object sender, CellClickEventArgs e)
