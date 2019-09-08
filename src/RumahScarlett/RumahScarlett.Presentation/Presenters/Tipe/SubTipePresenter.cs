@@ -137,7 +137,11 @@ namespace RumahScarlett.Presentation.Presenters.Tipe
 
                   _services.Delete(model);
                   Messages.InfoDelete(_typeName);
-                  _view_OnRefreshData(null, null);
+
+                  if (_listObjs.Remove((SubTipeModel)_view.ListDataGrid.SelectedItem))
+                  {
+                     _bindingView.DataSource = _listObjs;
+                  }
                }
                catch (DataAccessException ex)
                {
