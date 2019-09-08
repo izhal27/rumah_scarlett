@@ -42,7 +42,7 @@ namespace RumahScarlett.Presentation.Views.PenyesuaianStok
       {
          InitializeComponent();
 
-         panelUp.LabelInfo = "DATA PENYESUAIAN STOK";
+         panelUp.LabelInfo = $"DATA {Text.ToUpper()}";
          
          listDataGrid.CellDoubleClick += ListDataGrid_CellDoubleClick;
          crudcButtons.OnTambahClick += crudcButtons_OnTambahClick;
