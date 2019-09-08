@@ -1,6 +1,6 @@
 ﻿namespace RumahScarlett.Presentation.Views.CommonControls
 {
-   partial class DateTimePickerFilter
+   partial class DateTimePickerFilterTransaksi
    {
       /// <summary> 
       /// Required designer variable.
@@ -30,7 +30,6 @@
       {
          this.groupBox1 = new System.Windows.Forms.GroupBox();
          this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-         this.radioButtonSemua = new System.Windows.Forms.RadioButton();
          this.radioButtonTanggal = new System.Windows.Forms.RadioButton();
          this.radioButtonPeriode = new System.Windows.Forms.RadioButton();
          this.dateTimePickerTanggal = new System.Windows.Forms.DateTimePicker();
@@ -50,8 +49,8 @@
          this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
          this.groupBox1.Location = new System.Drawing.Point(0, 0);
          this.groupBox1.Name = "groupBox1";
-         this.groupBox1.Size = new System.Drawing.Size(446, 145);
-         this.groupBox1.TabIndex = 0;
+         this.groupBox1.Size = new System.Drawing.Size(446, 115);
+         this.groupBox1.TabIndex = 1;
          this.groupBox1.TabStop = false;
          this.groupBox1.Text = "[ FILTER BY ]";
          // 
@@ -66,47 +65,34 @@
          this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
          this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
          this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-         this.tableLayoutPanel1.Controls.Add(this.radioButtonSemua, 0, 0);
-         this.tableLayoutPanel1.Controls.Add(this.radioButtonTanggal, 0, 1);
-         this.tableLayoutPanel1.Controls.Add(this.radioButtonPeriode, 0, 2);
-         this.tableLayoutPanel1.Controls.Add(this.dateTimePickerTanggal, 2, 1);
-         this.tableLayoutPanel1.Controls.Add(this.dateTimePickerPeriodeAwal, 2, 2);
-         this.tableLayoutPanel1.Controls.Add(this.label1, 3, 2);
-         this.tableLayoutPanel1.Controls.Add(this.dateTimePickerPeriodeAkhir, 4, 2);
-         this.tableLayoutPanel1.Controls.Add(this.buttonTampilkan, 2, 3);
-         this.tableLayoutPanel1.Controls.Add(this.label3, 1, 1);
-         this.tableLayoutPanel1.Controls.Add(this.label4, 1, 2);
+         this.tableLayoutPanel1.Controls.Add(this.radioButtonTanggal, 0, 0);
+         this.tableLayoutPanel1.Controls.Add(this.radioButtonPeriode, 0, 1);
+         this.tableLayoutPanel1.Controls.Add(this.dateTimePickerTanggal, 2, 0);
+         this.tableLayoutPanel1.Controls.Add(this.dateTimePickerPeriodeAwal, 2, 1);
+         this.tableLayoutPanel1.Controls.Add(this.label1, 3, 1);
+         this.tableLayoutPanel1.Controls.Add(this.dateTimePickerPeriodeAkhir, 4, 1);
+         this.tableLayoutPanel1.Controls.Add(this.buttonTampilkan, 2, 2);
+         this.tableLayoutPanel1.Controls.Add(this.label3, 1, 0);
+         this.tableLayoutPanel1.Controls.Add(this.label4, 1, 1);
          this.tableLayoutPanel1.Location = new System.Drawing.Point(6, 19);
          this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-         this.tableLayoutPanel1.RowCount = 4;
-         this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-         this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-         this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-         this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-         this.tableLayoutPanel1.Size = new System.Drawing.Size(434, 120);
+         this.tableLayoutPanel1.RowCount = 3;
+         this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+         this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+         this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+         this.tableLayoutPanel1.Size = new System.Drawing.Size(434, 90);
          this.tableLayoutPanel1.TabIndex = 0;
-         // 
-         // radioButtonSemua
-         // 
-         this.radioButtonSemua.Anchor = System.Windows.Forms.AnchorStyles.Left;
-         this.radioButtonSemua.AutoSize = true;
-         this.radioButtonSemua.Checked = true;
-         this.radioButtonSemua.Location = new System.Drawing.Point(3, 6);
-         this.radioButtonSemua.Name = "radioButtonSemua";
-         this.radioButtonSemua.Size = new System.Drawing.Size(58, 17);
-         this.radioButtonSemua.TabIndex = 0;
-         this.radioButtonSemua.TabStop = true;
-         this.radioButtonSemua.Text = "Semua";
-         this.radioButtonSemua.UseVisualStyleBackColor = true;
          // 
          // radioButtonTanggal
          // 
          this.radioButtonTanggal.Anchor = System.Windows.Forms.AnchorStyles.Left;
          this.radioButtonTanggal.AutoSize = true;
-         this.radioButtonTanggal.Location = new System.Drawing.Point(3, 36);
+         this.radioButtonTanggal.Checked = true;
+         this.radioButtonTanggal.Location = new System.Drawing.Point(3, 6);
          this.radioButtonTanggal.Name = "radioButtonTanggal";
          this.radioButtonTanggal.Size = new System.Drawing.Size(64, 17);
          this.radioButtonTanggal.TabIndex = 0;
+         this.radioButtonTanggal.TabStop = true;
          this.radioButtonTanggal.Text = "Tanggal";
          this.radioButtonTanggal.UseVisualStyleBackColor = true;
          this.radioButtonTanggal.CheckedChanged += new System.EventHandler(this.radioButtonTanggal_CheckedChanged);
@@ -115,7 +101,7 @@
          // 
          this.radioButtonPeriode.Anchor = System.Windows.Forms.AnchorStyles.Left;
          this.radioButtonPeriode.AutoSize = true;
-         this.radioButtonPeriode.Location = new System.Drawing.Point(3, 66);
+         this.radioButtonPeriode.Location = new System.Drawing.Point(3, 36);
          this.radioButtonPeriode.Name = "radioButtonPeriode";
          this.radioButtonPeriode.Size = new System.Drawing.Size(61, 17);
          this.radioButtonPeriode.TabIndex = 0;
@@ -126,7 +112,7 @@
          // dateTimePickerTanggal
          // 
          this.dateTimePickerTanggal.Anchor = System.Windows.Forms.AnchorStyles.Left;
-         this.dateTimePickerTanggal.Location = new System.Drawing.Point(89, 35);
+         this.dateTimePickerTanggal.Location = new System.Drawing.Point(89, 5);
          this.dateTimePickerTanggal.MinDate = new System.DateTime(1945, 8, 17, 0, 0, 0, 0);
          this.dateTimePickerTanggal.Name = "dateTimePickerTanggal";
          this.dateTimePickerTanggal.Size = new System.Drawing.Size(150, 20);
@@ -135,7 +121,7 @@
          // dateTimePickerPeriodeAwal
          // 
          this.dateTimePickerPeriodeAwal.Anchor = System.Windows.Forms.AnchorStyles.Left;
-         this.dateTimePickerPeriodeAwal.Location = new System.Drawing.Point(89, 65);
+         this.dateTimePickerPeriodeAwal.Location = new System.Drawing.Point(89, 35);
          this.dateTimePickerPeriodeAwal.MinDate = new System.DateTime(1945, 8, 17, 0, 0, 0, 0);
          this.dateTimePickerPeriodeAwal.Name = "dateTimePickerPeriodeAwal";
          this.dateTimePickerPeriodeAwal.Size = new System.Drawing.Size(150, 20);
@@ -145,7 +131,7 @@
          // 
          this.label1.Anchor = System.Windows.Forms.AnchorStyles.Left;
          this.label1.AutoSize = true;
-         this.label1.Location = new System.Drawing.Point(245, 68);
+         this.label1.Location = new System.Drawing.Point(245, 38);
          this.label1.Name = "label1";
          this.label1.Size = new System.Drawing.Size(23, 13);
          this.label1.TabIndex = 2;
@@ -154,7 +140,7 @@
          // dateTimePickerPeriodeAkhir
          // 
          this.dateTimePickerPeriodeAkhir.Anchor = System.Windows.Forms.AnchorStyles.Left;
-         this.dateTimePickerPeriodeAkhir.Location = new System.Drawing.Point(274, 65);
+         this.dateTimePickerPeriodeAkhir.Location = new System.Drawing.Point(274, 35);
          this.dateTimePickerPeriodeAkhir.MinDate = new System.DateTime(1945, 8, 17, 0, 0, 0, 0);
          this.dateTimePickerPeriodeAkhir.Name = "dateTimePickerPeriodeAkhir";
          this.dateTimePickerPeriodeAkhir.Size = new System.Drawing.Size(150, 20);
@@ -163,7 +149,7 @@
          // buttonTampilkan
          // 
          this.buttonTampilkan.Anchor = System.Windows.Forms.AnchorStyles.Left;
-         this.buttonTampilkan.Location = new System.Drawing.Point(89, 93);
+         this.buttonTampilkan.Location = new System.Drawing.Point(89, 63);
          this.buttonTampilkan.Name = "buttonTampilkan";
          this.buttonTampilkan.Size = new System.Drawing.Size(75, 23);
          this.buttonTampilkan.TabIndex = 3;
@@ -175,7 +161,7 @@
          // 
          this.label3.Anchor = System.Windows.Forms.AnchorStyles.Left;
          this.label3.AutoSize = true;
-         this.label3.Location = new System.Drawing.Point(73, 38);
+         this.label3.Location = new System.Drawing.Point(73, 8);
          this.label3.Name = "label3";
          this.label3.Size = new System.Drawing.Size(10, 13);
          this.label3.TabIndex = 2;
@@ -185,19 +171,19 @@
          // 
          this.label4.Anchor = System.Windows.Forms.AnchorStyles.Left;
          this.label4.AutoSize = true;
-         this.label4.Location = new System.Drawing.Point(73, 68);
+         this.label4.Location = new System.Drawing.Point(73, 38);
          this.label4.Name = "label4";
          this.label4.Size = new System.Drawing.Size(10, 13);
          this.label4.TabIndex = 2;
          this.label4.Text = ":";
          // 
-         // DateTimePickerFilter
+         // DateTimePickerFilterTransaksi
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
          this.Controls.Add(this.groupBox1);
-         this.Name = "DateTimePickerFilter";
-         this.Size = new System.Drawing.Size(446, 145);
+         this.Name = "DateTimePickerFilterTransaksi";
+         this.Size = new System.Drawing.Size(446, 115);
          this.groupBox1.ResumeLayout(false);
          this.tableLayoutPanel1.ResumeLayout(false);
          this.tableLayoutPanel1.PerformLayout();
@@ -209,7 +195,6 @@
 
       private System.Windows.Forms.GroupBox groupBox1;
       private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-      private System.Windows.Forms.RadioButton radioButtonSemua;
       private System.Windows.Forms.RadioButton radioButtonTanggal;
       private System.Windows.Forms.RadioButton radioButtonPeriode;
       private System.Windows.Forms.DateTimePicker dateTimePickerTanggal;

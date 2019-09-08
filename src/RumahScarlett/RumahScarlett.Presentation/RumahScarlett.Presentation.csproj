@@ -177,11 +177,17 @@
     <Compile Include="Views\CommonControls\CRUDCButtons.Designer.cs">
       <DependentUpon>CRUDCButtons.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\CommonControls\DateTimePickerFilter.cs">
+    <Compile Include="Views\CommonControls\DateTimePickerFilterData.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Views\CommonControls\DateTimePickerFilter.Designer.cs">
-      <DependentUpon>DateTimePickerFilter.cs</DependentUpon>
+    <Compile Include="Views\CommonControls\DateTimePickerFilterData.Designer.cs">
+      <DependentUpon>DateTimePickerFilterData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CommonControls\DateTimePickerFilterTransaksi.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\CommonControls\DateTimePickerFilterTransaksi.Designer.cs">
+      <DependentUpon>DateTimePickerFilterTransaksi.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\CommonControls\ListDataGrid.cs">
       <SubType>Component</SubType>
@@ -443,8 +449,11 @@
     <EmbeddedResource Include="Views\CommonControls\CRUDCButtons.resx">
       <DependentUpon>CRUDCButtons.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\CommonControls\DateTimePickerFilter.resx">
-      <DependentUpon>DateTimePickerFilter.cs</DependentUpon>
+    <EmbeddedResource Include="Views\CommonControls\DateTimePickerFilterData.resx">
+      <DependentUpon>DateTimePickerFilterData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CommonControls\DateTimePickerFilterTransaksi.resx">
+      <DependentUpon>DateTimePickerFilterTransaksi.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\CommonControls\OperationButtons.resx">
       <DependentUpon>OperationButtons.cs</DependentUpon>

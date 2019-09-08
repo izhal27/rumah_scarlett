@@ -1,9 +1,8 @@
-﻿using RumahScarlett.CommonComponents;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,18 +10,17 @@ using System.Windows.Forms;
 
 namespace RumahScarlett.Presentation.Views.CommonControls
 {
-   public partial class DateTimePickerFilter : UserControl
+   public partial class DateTimePickerFilterTransaksi : UserControl
    {
       public TampilkanStatus TampilkanStatus { get; private set; }
       public event EventHandler<FilterDateEventArgs> OnTampilkanClick;
 
-      public DateTimePickerFilter()
+      public DateTimePickerFilterTransaksi()
       {
          InitializeComponent();
 
          dateTimePickerPeriodeAwal.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
 
-         dateTimePickerTanggal.Enabled = false;
          dateTimePickerPeriodeAwal.Enabled = false;
          dateTimePickerPeriodeAkhir.Enabled = false;
       }
@@ -44,17 +42,11 @@ namespace RumahScarlett.Presentation.Views.CommonControls
       {
          var filterEventArgs = new FilterDateEventArgs();
 
-         if (radioButtonSemua.Checked)
-         {
-            filterEventArgs.TampilkanStatus = TampilkanStatus.Semua;
-
-            OnTampilkanClick?.Invoke(this, filterEventArgs);
-         }
-         else if (radioButtonTanggal.Checked)
+         if (radioButtonTanggal.Checked)
          {
             filterEventArgs.TampilkanStatus = TampilkanStatus.Tanggal;
             filterEventArgs.Tanggal = dateTimePickerTanggal.Value;
-            
+
             OnTampilkanClick?.Invoke(this, filterEventArgs);
          }
          else if (radioButtonPeriode.Checked)
@@ -66,26 +58,5 @@ namespace RumahScarlett.Presentation.Views.CommonControls
             OnTampilkanClick?.Invoke(this, filterEventArgs);
          }
       }
-
-      public void RefreshFilter()
-      {
-         radioButtonSemua.Checked = true;
-         buttonTampilkan_Click(this, null);
-      }
-   }
-
-   public enum TampilkanStatus
-   {
-      Semua,
-      Tanggal,
-      Periode,
-   }
-
-   public class FilterDateEventArgs : EventArgs
-   {
-      public TampilkanStatus TampilkanStatus { get; set; }
-      public DateTime Tanggal { get; set; }
-      public DateTime TanggalAwal { get; set; }
-      public DateTime TanggalAkhir { get; set; }
    }
 }

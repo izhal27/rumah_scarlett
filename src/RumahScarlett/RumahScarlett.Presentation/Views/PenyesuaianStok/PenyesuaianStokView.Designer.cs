@@ -30,7 +30,7 @@
       {
          this.listDataGrid = new RumahScarlett.Presentation.Views.CommonControls.ListDataGrid();
          this.crudcButtons = new RumahScarlett.Presentation.Views.CommonControls.CRUDCButtons();
-         this.dateTimePickerFilter = new RumahScarlett.Presentation.Views.CommonControls.DateTimePickerFilter();
+         this.dateTimePickerFilter = new RumahScarlett.Presentation.Views.CommonControls.DateTimePickerFilterData();
          this.label1 = new System.Windows.Forms.Label();
          this.labelTotalHpp = new System.Windows.Forms.Label();
          this.label5 = new System.Windows.Forms.Label();
@@ -199,7 +199,7 @@
 
       private CommonControls.ListDataGrid listDataGrid;
       private CommonControls.CRUDCButtons crudcButtons;
-      private CommonControls.DateTimePickerFilter dateTimePickerFilter;
+      private CommonControls.DateTimePickerFilterData dateTimePickerFilter;
       private System.Windows.Forms.Label label1;
       private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
       private System.Windows.Forms.Label labelTotalHpp;

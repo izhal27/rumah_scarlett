@@ -42,7 +42,7 @@
          this.label1 = new System.Windows.Forms.Label();
          this.label6 = new System.Windows.Forms.Label();
          this.label7 = new System.Windows.Forms.Label();
-         this.dateTimePickerFilter = new RumahScarlett.Presentation.Views.CommonControls.DateTimePickerFilter();
+         this.dateTimePickerFilter = new RumahScarlett.Presentation.Views.CommonControls.DateTimePickerFilterData();
          ((System.ComponentModel.ISupportInitialize)(this.listDataGrid)).BeginInit();
          this.groupBox1.SuspendLayout();
          this.tableLayoutPanel1.SuspendLayout();
@@ -262,6 +262,6 @@
       private System.Windows.Forms.Label label1;
       private System.Windows.Forms.Label label6;
       private System.Windows.Forms.Label label7;
-      private CommonControls.DateTimePickerFilter dateTimePickerFilter;
+      private CommonControls.DateTimePickerFilterData dateTimePickerFilter;
    }
 }
