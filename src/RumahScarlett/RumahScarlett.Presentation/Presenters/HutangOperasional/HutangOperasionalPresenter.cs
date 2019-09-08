@@ -104,9 +104,12 @@ namespace RumahScarlett.Presentation.Presenters.HutangOperasional
             {
                var model = _services.GetById(((HutangOperasionalModel)listDataGrid.SelectedItem).id);
 
-               var view = new HutangOperasionalEntryView(false, model);
-               view.OnSaveData += HutangOperasionalEntryView_OnSaveData;
-               view.ShowDialog();
+               if (model != null)
+               {
+                  var view = new HutangOperasionalEntryView(false, model);
+                  view.OnSaveData += HutangOperasionalEntryView_OnSaveData;
+                  view.ShowDialog();
+               }
             }
          }
       }
@@ -117,23 +120,44 @@ namespace RumahScarlett.Presentation.Presenters.HutangOperasional
          {
             try
             {
-               var model = ((ModelEventArgs<HutangOperasionalModel>)e).Value;
+               var listDataGrid = _view.ListDataGrid;
+               var newModel = ((ModelEventArgs<HutangOperasionalModel>)e).Value;
                var view = ((HutangOperasionalEntryView)sender);
 
-               if (model.id == default(uint))
+               if (newModel.id == default(uint))
                {
-                  _services.Insert(model);
+                  _services.Insert(newModel);
                   view.Controls.ClearControls();
                   Messages.InfoSave(_typeName);
+
+                  _listObjs.Add(newModel);
+                  _bindingView.DataSource = _listObjs;
+
+                  if (listDataGrid.SelectedItem != null)
+                  {
+                     listDataGrid.SelectedItem = null;
+                  }
+
+                  listDataGrid.SelectedItem = newModel;
                }
                else
                {
-                  _services.Update(model);
+                  _services.Update(newModel);
                   Messages.InfoUpdate(_typeName);
                   view.Close();
-               }
 
-               _view_OnRefreshData(null, null);
+                  var model = _bindingView.Where(b => b.id == newModel.id).FirstOrDefault();
+
+                  if (model != null)
+                  {
+                     model.tanggal = newModel.tanggal;
+                     model.jumlah = newModel.jumlah;
+                     model.keterangan = newModel.keterangan;
+                     model.status_hutang = newModel.status_hutang;
+
+                     _bindingView.Refresh();
+                  }
+               }
             }
             catch (ArgumentException ex)
             {
@@ -158,7 +182,11 @@ namespace RumahScarlett.Presentation.Presenters.HutangOperasional
 
                   _services.Delete(model);
                   Messages.InfoDelete(_typeName);
-                  _view_OnRefreshData(null, null);
+
+                  if (_listObjs.Remove((HutangOperasionalModel)_view.ListDataGrid.SelectedItem))
+                  {
+                     _bindingView.DataSource = _listObjs;
+                  }
                }
                catch (DataAccessException ex)
                {
