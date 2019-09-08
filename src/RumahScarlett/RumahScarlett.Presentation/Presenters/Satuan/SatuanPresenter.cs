@@ -95,23 +95,42 @@ namespace RumahScarlett.Presentation.Presenters.Satuan
          {
             try
             {
-               var model = ((ModelEventArgs<SatuanModel>)e).Value;
+               var listDataGrid = _view.ListDataGrid;
+               var newModel = ((ModelEventArgs<SatuanModel>)e).Value;
                var view = ((SatuanEntryView)sender);
 
-               if (model.id == default(uint))
+               if (newModel.id == default(uint))
                {
-                  _services.Insert(model);
+                  _services.Insert(newModel);
                   view.Controls.ClearControls();
                   Messages.InfoSave(_typeName);
+
+                  _listObjs.Add(newModel);
+                  _bindingView.DataSource = _listObjs;
+
+                  if (listDataGrid.SelectedItem != null)
+                  {
+                     listDataGrid.SelectedItem = null;
+                  }
+
+                  listDataGrid.SelectedItem = newModel;
                }
                else
                {
-                  _services.Update(model);
+                  _services.Update(newModel);
                   Messages.InfoUpdate(_typeName);
                   view.Close();
-               }
 
-               _view_OnRefreshData(null, null);
+                  var model = _bindingView.Where(b => b.id == newModel.id).FirstOrDefault();
+
+                  if (model != null)
+                  {
+                     model.nama = newModel.nama;
+                     model.keterangan = newModel.keterangan;
+
+                     _bindingView.Refresh();
+                  }
+               }
             }
             catch (ArgumentException ex)
             {
@@ -136,7 +155,11 @@ namespace RumahScarlett.Presentation.Presenters.Satuan
 
                   _services.Delete(model);
                   Messages.InfoDelete(_typeName);
-                  _view_OnRefreshData(null, null);
+
+                  if (_listObjs.Remove((SatuanModel)_view.ListDataGrid.SelectedItem))
+                  {
+                     _bindingView.DataSource = _listObjs;
+                  }
                }
                catch (DataAccessException ex)
                {
