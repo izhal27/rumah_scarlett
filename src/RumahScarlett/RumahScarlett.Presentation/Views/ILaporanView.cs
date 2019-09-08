@@ -11,10 +11,10 @@ namespace RumahScarlett.Presentation.Views
    public interface ILaporanView : IView
    {
       event EventHandler OnLoadData;
-      event EventHandler OnDeleteData;
-      event EventHandler OnPrintData;
+      event EventHandler OnDeleteClick;
+      event EventHandler OnPrintClick;
       event EventHandler OnDetailClick;
-      event EventHandler OnTampilkanClick;
+      event EventHandler<FilterDateEventArgs> OnTampilkanClick;
       event EventHandler<CellClickEventArgs> OnDataGridCellDoubleClick;
 
       DateTimePickerFilterTransaksi DateTimePickerFilterTransaksi { get; }

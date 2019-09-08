@@ -48,11 +48,11 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Penjualan
 
          var queryStr = "SELECT * FROM penjualan_detail WHERE penjualan_id=@id";
 
-         var listPembelianDetails = _context.Conn.Query<PenjualanDetailModel>(queryStr, new { id = penjualan.id }, transaction);
+         var listPenjualanDetails = _context.Conn.Query<PenjualanDetailModel>(queryStr, new { id = penjualan.id }, transaction);
 
-         if (listPembelianDetails.ToList().Count > 0)
+         if (listPenjualanDetails.ToList().Count > 0)
          {
-            listPembelianDetails = listPembelianDetails.Map(pd =>
+            listPenjualanDetails = listPenjualanDetails.Map(pd =>
             {
                var barang = _context.Conn.Get<BarangModel>(pd.barang_id, transaction);
 
@@ -69,7 +69,7 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Penjualan
             });
          }
 
-         return listPembelianDetails;
+         return listPenjualanDetails;
       }
    }
 }

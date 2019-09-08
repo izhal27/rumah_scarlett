@@ -2,6 +2,7 @@
 using Dapper.Contrib.Extensions;
 using RumahScarlett.CommonComponents;
 using RumahScarlett.Domain.Models.Barang;
+using RumahScarlett.Domain.Models.Pelanggan;
 using RumahScarlett.Domain.Models.Penjualan;
 using RumahScarlett.Infrastructure.DataAccess.CommonRepositories;
 using RumahScarlett.Services.Services.Penjualan;
@@ -107,7 +108,7 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Penjualan
                      context.Commit();
                   }
                }
-            }, dataAccessStatus, 
+            }, dataAccessStatus,
             () => CheckAfterInsert(context, "SELECT COUNT(1) FROM penjualan WHERE no_nota=@no_nota "
                                    + "AND id=(SELECT id FROM penjualan ORDER BY ID DESC LIMIT 1)",
                                    new { model.no_nota }));
@@ -163,6 +164,14 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Penjualan
 
                if (listObj != null && listObj.ToList().Count > 0)
                {
+                  listObj = listObj.Map(p =>
+                  {
+                     if (p.pelanggan_id != default(uint))
+                     {
+                        p.Pelanggan = context.Conn.Get<PelangganModel>(p.pelanggan_id);
+                     }
+                  });
+
                   var pdRepo = new PenjualanDetailRepository(context);
 
                   foreach (var p in listObj)
@@ -188,9 +197,15 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Penjualan
 
       public IPenjualanModel GetById(object id)
       {
-         throw new NotImplementedException();
+         var dataAccessStatus = new DataAccessStatus();
+
+         using (var context = new DbContext())
+         {
+            return GetBy(() => context.Conn.Get<PenjualanModel>(id), dataAccessStatus,
+                        () => CheckModelExist(context, id));
+         }
       }
-      
+
       private bool CheckModelExist(DbContext context, object id)
       {
          return CheckModelExist(context, "SELECT COUNT(1) FROM penjualan WHERE id=@id",

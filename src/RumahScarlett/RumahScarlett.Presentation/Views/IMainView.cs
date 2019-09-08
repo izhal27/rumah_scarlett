@@ -8,17 +8,18 @@ namespace RumahScarlett.Presentation.Views
 {
    public interface IMainView : IView
    {
-      event EventHandler<MainViewEventArgs> OnTipeViewOpen;
-      event EventHandler<MainViewEventArgs> OnSubTipeViewOpen;
-      event EventHandler<MainViewEventArgs> OnSupplierViewOpen;
-      event EventHandler<MainViewEventArgs> OnSatuanViewOpen;
-      event EventHandler<MainViewEventArgs> OnBarangViewOpen;
-      event EventHandler<MainViewEventArgs> OnPelangganViewOpen;
-      event EventHandler<MainViewEventArgs> OnPenyesuaianStokViewOpen;
-      event EventHandler<MainViewEventArgs> OnHutangOperasionalViewOpen;
-      event EventHandler OnKasAwalViewOpen;
-      event EventHandler<MainViewEventArgs> OnPenjualanViewOpen;
-      event EventHandler<MainViewEventArgs> OnPembelianViewOpen;
-      event EventHandler<MainViewEventArgs> OnPengeluaranViewOpen;
+      event EventHandler<MainViewEventArgs> OnTipeViewClick;
+      event EventHandler<MainViewEventArgs> OnSubTipeViewClick;
+      event EventHandler<MainViewEventArgs> OnSupplierViewClick;
+      event EventHandler<MainViewEventArgs> OnSatuanViewClick;
+      event EventHandler<MainViewEventArgs> OnBarangViewClick;
+      event EventHandler<MainViewEventArgs> OnPelangganViewClick;
+      event EventHandler<MainViewEventArgs> OnPenyesuaianStokViewClick;
+      event EventHandler<MainViewEventArgs> OnHutangOperasionalViewClick;
+      event EventHandler OnKasAwalViewClick;
+      event EventHandler<MainViewEventArgs> OnPenjualanViewClick;
+      event EventHandler<MainViewEventArgs> OnPembelianViewClick;
+      event EventHandler<MainViewEventArgs> OnPengeluaranViewClick;
+      event EventHandler<MainViewEventArgs> OnLaporanPenjualanViewClick;
    }
 }

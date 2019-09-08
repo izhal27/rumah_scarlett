@@ -121,7 +121,9 @@
     <Compile Include="Presenters\Pembelian\PembelianPresenter.cs" />
     <Compile Include="Presenters\Pengeluaran\IPengeluaranPresenter.cs" />
     <Compile Include="Presenters\Pengeluaran\PengeluaranPresenter.cs" />
+    <Compile Include="Presenters\Penjualan\ILaporanPenjualanPresenter.cs" />
     <Compile Include="Presenters\Penjualan\IPenjualanPresenter.cs" />
+    <Compile Include="Presenters\Penjualan\LaporanPenjualanPresenter.cs" />
     <Compile Include="Presenters\Penjualan\PenjualanPresenter.cs" />
     <Compile Include="Presenters\PenyesuaianStok\IPenyesuaianStokPresenter.cs" />
     <Compile Include="Presenters\PenyesuaianStok\PenyesuaianStokPresenter.cs" />
@@ -352,6 +354,7 @@
       <DependentUpon>BayarPenjualanEntryView.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Penjualan\IBayarPenjualanEntryView.cs" />
+    <Compile Include="Views\Penjualan\ILaporanPenjualanView.cs" />
     <Compile Include="Views\Penjualan\IPenjualanView.cs" />
     <Compile Include="Views\Penjualan\LaporanPenjualanView.cs">
       <SubType>Form</SubType>

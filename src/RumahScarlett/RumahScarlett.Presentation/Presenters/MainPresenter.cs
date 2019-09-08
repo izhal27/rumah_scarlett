@@ -35,96 +35,95 @@ namespace RumahScarlett.Presentation.Presenters
       {
          _view = new MainView();
 
-         _view.OnTipeViewOpen += _view_OnTipeViewOpen;
-         _view.OnSubTipeViewOpen += _view_OnSubTipeViewOpen;
-         _view.OnSupplierViewOpen += _view_OnSupplierViewOpen;
-         _view.OnBarangViewOpen += _view_OnBarangViewOpen;
-         _view.OnSatuanViewOpen += _view_OnSatuanViewOpen;
-         _view.OnPelangganViewOpen += _view_OnPelangganViewOpen;
-         _view.OnKasAwalViewOpen += _view_OnKasAwalViewOpen;
-         _view.OnHutangOperasionalViewOpen += _view_OnHutangOperasionalViewOpen;
-
-         _view.OnPenjualanViewOpen += _view_OnPenjualanViewOpen;
-         _view.OnPembelianViewOpen += _view_OnPembelianViewOpen;
-         _view.OnPengeluaranViewOpen += _view_OnPengeluaranViewOpen;
-         _view.OnPenyesuaianStokViewOpen += _view_OnPenyesuaianStokViewOpen;
+         _view.OnTipeViewClick += _view_OnTipeViewClick;
+         _view.OnSubTipeViewClick += _view_OnSubTipeViewClick;
+         _view.OnSupplierViewClick += _view_OnSupplierViewClick;
+         _view.OnBarangViewClick += _view_OnBarangViewClick;
+         _view.OnSatuanViewClick += _view_OnSatuanViewClick;
+         _view.OnPelangganViewClick += _view_OnPelangganViewClick;
+         _view.OnKasAwalViewClick += _view_OnKasAwalViewClick;
+         _view.OnHutangOperasionalViewClick += _view_OnHutangOperasionalViewClick;
+         _view.OnPenjualanViewClick += _view_OnPenjualanViewClick;
+         _view.OnPembelianViewClick += _view_OnPembelianViewClick;
+         _view.OnPengeluaranViewClick += _view_OnPengeluaranViewClick;
+         _view.OnPenyesuaianStokViewClick += _view_OnPenyesuaianStokViewClick;
+         _view.OnLaporanPenjualanViewClick += _view_OnLaporanPenjualanViewClick;
       }
 
-      private void _view_OnTipeViewOpen(object sender, MainViewEventArgs e)
+      private void _view_OnTipeViewClick(object sender, MainViewEventArgs e)
       {
          var view = (DockContent)new TipePresenter().GetView;
          ShowChildForm(view, e);
       }
 
-      private void _view_OnSubTipeViewOpen(object sender, MainViewEventArgs e)
+      private void _view_OnSubTipeViewClick(object sender, MainViewEventArgs e)
       {
          var view = (DockContent)new SubTipePresenter().GetView;
          ShowChildForm(view, e);
       }
 
-      private void _view_OnSupplierViewOpen(object sender, MainViewEventArgs e)
+      private void _view_OnSupplierViewClick(object sender, MainViewEventArgs e)
       {
          var view = (DockContent)new SupplierPresenter().GetView;
          ShowChildForm(view, e);
       }
 
-      private void _view_OnBarangViewOpen(object sender, MainViewEventArgs e)
+      private void _view_OnBarangViewClick(object sender, MainViewEventArgs e)
       {
          var view = (DockContent)new BarangPresenter().GetView;
          ShowChildForm(view, e);
       }
 
-      private void _view_OnSatuanViewOpen(object sender, MainViewEventArgs e)
+      private void _view_OnSatuanViewClick(object sender, MainViewEventArgs e)
       {
          var view = (DockContent)new SatuanPresenter().GetView;
          ShowChildForm(view, e);
       }
 
-      private void _view_OnPelangganViewOpen(object sender, MainViewEventArgs e)
+      private void _view_OnPelangganViewClick(object sender, MainViewEventArgs e)
       {
          var view = (DockContent)new PelangganPresenter().GetView;
          ShowChildForm(view, e);
       }
 
-      private void _view_OnKasAwalViewOpen(object sender,EventArgs e)
+      private void _view_OnKasAwalViewClick(object sender,EventArgs e)
       {
          new KasAwalPresenter().GetView.ShowView();
       }
 
-      private void _view_OnHutangOperasionalViewOpen(object sender, MainViewEventArgs e)
+      private void _view_OnHutangOperasionalViewClick(object sender, MainViewEventArgs e)
       {
          var view = (DockContent)new HutangOperasionalPresenter().GetView;
          ShowChildForm(view, e);
       }
-
-
-
-
-
-
-
-
-      private void _view_OnPenjualanViewOpen(object sender, MainViewEventArgs e)
+      
+      private void _view_OnPenjualanViewClick(object sender, MainViewEventArgs e)
       {
          var view = (DockContent)new PenjualanPresenter().GetView;
          ShowChildForm(view, e);
       }
 
-      private void _view_OnPembelianViewOpen(object sender, MainViewEventArgs e)
+      private void _view_OnPembelianViewClick(object sender, MainViewEventArgs e)
       {
          var view = (DockContent)new PembelianPresenter().GetView;
          ShowChildForm(view, e);
       }
       
-      private void _view_OnPengeluaranViewOpen(object sender, MainViewEventArgs e)
+      private void _view_OnPengeluaranViewClick(object sender, MainViewEventArgs e)
       {
          var view = (DockContent)new PengeluaranPresenter().GetView;
          ShowChildForm(view, e);
       }
 
-      private void _view_OnPenyesuaianStokViewOpen(object sender, MainViewEventArgs e)
+      private void _view_OnPenyesuaianStokViewClick(object sender, MainViewEventArgs e)
       {
          var view = (DockContent)new PenyesuaianStokPresenter().GetView;
+         ShowChildForm(view, e);
+      }
+
+      private void _view_OnLaporanPenjualanViewClick(object sender, MainViewEventArgs e)
+      {
+         var view = (DockContent)new LaporanPenjualanPresenter().GetView;
          ShowChildForm(view, e);
       }
 

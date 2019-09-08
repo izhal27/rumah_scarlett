@@ -51,7 +51,7 @@ namespace RumahScarlett.Services.Services.Penjualan
 
       public IPenjualanModel GetById(object id)
       {
-         throw new NotImplementedException();
+         return _repo.GetById(id);
       }
 
       public void ValidateModel(IPenjualanModel model)

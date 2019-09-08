@@ -12,13 +12,13 @@ using System.Windows.Forms;
 
 namespace RumahScarlett.Presentation.Views.Penjualan
 {
-   public partial class LaporanPenjualanView : BaseDataView, ILaporanView
+   public partial class LaporanPenjualanView : BaseDataView, ILaporanPenjualanView
    {
       public event EventHandler OnLoadData;
-      public event EventHandler OnDeleteData;
-      public event EventHandler OnPrintData;
+      public event EventHandler OnDeleteClick;
+      public event EventHandler OnPrintClick;
       public event EventHandler OnDetailClick;
-      public event EventHandler OnTampilkanClick;
+      public event EventHandler<FilterDateEventArgs> OnTampilkanClick;
       public event EventHandler<CellClickEventArgs> OnDataGridCellDoubleClick;
 
       public DateTimePickerFilterTransaksi DateTimePickerFilterTransaksi
@@ -35,12 +35,13 @@ namespace RumahScarlett.Presentation.Views.Penjualan
       {
          InitializeComponent();
 
-         panelUp.LabelInfo = $"LAPORAN {Text.ToUpper()}";
+         panelUp.LabelInfo = $"{Text.ToUpper()}";
 
          dateTimePickerFilterTransaksi.OnTampilkanClick += DateTimePickerFilterTransaksi_OnTampilkanClick;
          buttonsDeletePrintDetail.OnHapusClick += ButtonsDeletePrintDetail_OnHapusClick;
          buttonsDeletePrintDetail.OnCetakClick += ButtonsDeletePrintDetail_OnCetakClick;
          buttonsDeletePrintDetail.OnDetailClick += ButtonsDeletePrintDetail_OnDetailClick;
+         buttonsDeletePrintDetail.OnTutupClick += ButtonsDeletePrintDetail_OnTutupClick;
       }
 
       private void LaporanPenjualanView_Load(object sender, EventArgs e)
@@ -55,12 +56,12 @@ namespace RumahScarlett.Presentation.Views.Penjualan
 
       private void ButtonsDeletePrintDetail_OnHapusClick(object sender, EventArgs e)
       {
-         OnDeleteData?.Invoke(sender, e);
+         OnDeleteClick?.Invoke(sender, e);
       }
 
       private void ButtonsDeletePrintDetail_OnCetakClick(object sender, EventArgs e)
       {
-         OnPrintData?.Invoke(sender, e);
+         OnPrintClick?.Invoke(sender, e);
       }
 
       private void ButtonsDeletePrintDetail_OnDetailClick(object sender, EventArgs e)
@@ -73,5 +74,9 @@ namespace RumahScarlett.Presentation.Views.Penjualan
          OnTampilkanClick?.Invoke(sender, e);
       }
 
+      private void ButtonsDeletePrintDetail_OnTutupClick(object sender, EventArgs e)
+      {
+         Close();
+      }
    }
 }
