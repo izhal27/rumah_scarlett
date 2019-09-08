@@ -37,7 +37,7 @@ namespace RumahScarlett.Presentation.Views.Pengeluaran
       {
          InitializeComponent();
 
-         panelUp.LabelInfo = "TRANSAKSI PENGELUARAN";
+         panelUp.LabelInfo = $"TRANSAKSI {Text.ToUpper()}";
          crudcButtons.ButtonCetakVisible = false;
 
          listDataGrid.CellDoubleClick += ListDataGrid_CellDoubleClick;
