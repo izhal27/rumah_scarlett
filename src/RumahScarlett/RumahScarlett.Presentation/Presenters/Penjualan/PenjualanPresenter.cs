@@ -192,6 +192,7 @@ namespace RumahScarlett.Presentation.Presenters.Penjualan
          {
             _view.ListDataGrid.Enabled = true;
             _view.TextBoxNoNota.Text = string.Empty;
+            _listsBarangs = _barangServices.GetAll().ToList();
          }
 
          _kodeOrNamaForSearching = string.Empty;
