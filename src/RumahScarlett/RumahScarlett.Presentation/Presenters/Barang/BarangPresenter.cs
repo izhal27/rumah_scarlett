@@ -151,6 +151,7 @@ namespace RumahScarlett.Presentation.Presenters.Barang
          {
             try
             {
+               var listDataGrid = _view.ListDataGrid;
                var newModel = ((ModelEventArgs<BarangModel>)e).Value;
                var barangEntryView = ((BarangEntryView)sender);
 
@@ -162,6 +163,13 @@ namespace RumahScarlett.Presentation.Presenters.Barang
 
                   _listObjs.Add(newModel);
                   _bindingView.DataSource = _listObjs;
+
+                  if (listDataGrid.SelectedItem != null)
+                  {
+                     listDataGrid.SelectedItem = null;
+                  }
+
+                  listDataGrid.SelectedItem = newModel;
                }
                else
                {
