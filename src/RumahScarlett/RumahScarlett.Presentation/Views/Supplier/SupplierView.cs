@@ -32,7 +32,7 @@ namespace RumahScarlett.Presentation.Views.Supplier
       {
          InitializeComponent();
 
-         panelUp.LabelInfo = "DATA SUPPLIER";
+         panelUp.LabelInfo = $"DATA {Text.ToUpper()}";
          crudcButtons.ButtonCetakVisible = false;
 
          listDataGrid.CellDoubleClick += ListDataGrid_CellDoubleClick;
