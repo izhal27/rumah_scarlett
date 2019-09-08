@@ -20,7 +20,7 @@ namespace RumahScarlett.Presentation.Presenters.Supplier
    {
       private ISupplierView _view;
       private ISupplierServices _services;
-      private List<ISupplierModel> _listObj;
+      private List<ISupplierModel> _listObjs;
       private BindingListView<SupplierModel> _bindingView;
       private static string _typeName = "Supplier";
 
@@ -49,8 +49,8 @@ namespace RumahScarlett.Presentation.Presenters.Supplier
          {
             if (_view.ListDataGrid != null)
             {
-               _listObj = _services.GetAll().ToList();
-               _bindingView = new BindingListView<SupplierModel>(_listObj);
+               _listObjs = _services.GetAll().ToList();
+               _bindingView = new BindingListView<SupplierModel>(_listObjs);
                _view.ListDataGrid.DataSource = _bindingView;
             }
          }
@@ -95,23 +95,47 @@ namespace RumahScarlett.Presentation.Presenters.Supplier
          {
             try
             {
-               var model = ((ModelEventArgs<SupplierModel>)e).Value;
+               var listDataGrid = _view.ListDataGrid;
+               var newModel = ((ModelEventArgs<SupplierModel>)e).Value;
                var view = ((SupplierEntryView)sender);
 
-               if (model.id == default(uint))
+               if (newModel.id == default(uint))
                {
-                  _services.Insert(model);
+                  _services.Insert(newModel);
                   view.Controls.ClearControls();
                   Messages.InfoSave(_typeName);
+
+                  _listObjs.Add(newModel);
+                  _bindingView.DataSource = _listObjs;
+
+                  if (listDataGrid.SelectedItem != null)
+                  {
+                     listDataGrid.SelectedItem = null;
+                  }
+
+                  listDataGrid.SelectedItem = newModel;
                }
                else
                {
-                  _services.Update(model);
+                  _services.Update(newModel);
                   Messages.InfoUpdate(_typeName);
                   view.Close();
-               }
 
-               _view_OnRefreshData(null, null);
+                  var model = _bindingView.Where(b => b.id == newModel.id).FirstOrDefault();
+
+                  if (model != null)
+                  {
+                     model.nama = newModel.nama;
+                     model.alamat = newModel.alamat;
+                     model.telpon = newModel.telpon;
+                     model.fax = newModel.fax;
+                     model.email = newModel.email;
+                     model.website = newModel.website;
+                     model.contact_person = newModel.contact_person;
+
+                     _bindingView.Refresh();
+                  }
+               }
             }
             catch (ArgumentException ex)
             {
@@ -136,7 +160,11 @@ namespace RumahScarlett.Presentation.Presenters.Supplier
 
                   _services.Delete(model);
                   Messages.InfoDelete(_typeName);
-                  _view_OnRefreshData(null, null);
+
+                  if (_listObjs.Remove((SupplierModel)_view.ListDataGrid.SelectedItem))
+                  {
+                     _bindingView.DataSource = _listObjs;
+                  }
                }
                catch (DataAccessException ex)
                {
@@ -155,8 +183,8 @@ namespace RumahScarlett.Presentation.Presenters.Supplier
 
       private void _view_OnRefreshData(object sender, EventArgs e)
       {
-         _listObj = _services.GetAll().ToList();
-         _bindingView.DataSource = _listObj;
+         _listObjs = _services.GetAll().ToList();
+         _bindingView.DataSource = _listObjs;
       }
 
       private void OnDataGrid_CellDoubleClick(object sender, CellClickEventArgs e)
