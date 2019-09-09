@@ -40,8 +40,9 @@ namespace RumahScarlett.Presentation.Views.ModelControls
 
          if (_listSatuans != null && _listSatuans.Count > 0)
          {
-            var satuanKVP = _listSatuans.Select(s => new KeyValuePair<object, string>(s.id, s.nama)).ToList();
-            comboBox.SetDataSource(satuanKVP, false);
+            comboBox.Items.AddRange(_listSatuans.ToArray());
+            comboBox.DisplayMember = "nama";
+            comboBox.SelectedIndex = 0;
          }
       }
    }
