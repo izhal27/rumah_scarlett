@@ -1,4 +1,5 @@
 ﻿using RumahScarlett.Domain.Models.PenyesuaianStok;
+using RumahScarlett.Domain.Models.Satuan;
 using System.Collections.Generic;
 
 namespace RumahScarlett.Domain.Models.Barang
@@ -9,7 +10,6 @@ namespace RumahScarlett.Domain.Models.Barang
       uint tipe_id { get; set; }
       uint sub_tipe_id { get; set; }
       uint supplier_id { get; set; }
-      uint satuan_id { get; set; }
       string kode { get; set; }
       string nama { get; set; }
       int penyesuaian_stok_qty { get; }
@@ -18,7 +18,9 @@ namespace RumahScarlett.Domain.Models.Barang
       decimal hpp { get; set; }
       int stok { get; set; }
       int minimal_stok { get; set; }
-      string satuan_nama { get; set; }
+      ISatuanModel Satuan { get; set; }
+      uint satuan_id { get; set; }
+      string satuan_nama { get; }
       IEnumerable<IPenyesuaianStokModel> PenyesuaianStoks { get; set; }
    }
 }

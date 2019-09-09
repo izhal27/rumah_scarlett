@@ -1,4 +1,5 @@
 ﻿using RumahScarlett.Domain.Models.PenyesuaianStok;
+using RumahScarlett.Domain.Models.Satuan;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -34,11 +35,6 @@ namespace RumahScarlett.Domain.Models.Barang
       [Display(Name = "Supplier ID")]
       public uint supplier_id { get; set; }
 
-      [Browsable(false)]
-      [Range(1, uint.MaxValue, ErrorMessage = "Satuan barang harus diisi !!!")]
-      [Display(Name = "Satuan ID")]
-      public uint satuan_id { get; set; }
-
       [Required(AllowEmptyStrings = false, ErrorMessage = "Kode barang harus diisi !!!")]
       [StringLength(100, MinimumLength = 5, ErrorMessage = "Kode barang harus diantara 5 sampai 100 karakter !!!")]
       [RegularExpression(@"^[\w\d-]+$", ErrorMessage = "Format kode barang yang anda masukkan salah !!!")]
@@ -55,9 +51,27 @@ namespace RumahScarlett.Domain.Models.Barang
       [Display(Name = "Stok")]
       public int stok { get; set; }
 
+      [Browsable(false)]
+      [Dp.Write(false)]
+      public ISatuanModel Satuan { get; set; }
+
+      private uint _satuan_id;
+
+      [Browsable(false)]
+      [Range(1, uint.MaxValue, ErrorMessage = "Satuan barang harus diisi !!!")]
+      [Display(Name = "Satuan ID")]
+      public uint satuan_id
+      {
+         get { return Satuan.id != default(uint) ? Satuan.id : _satuan_id; }
+         set { _satuan_id = value; }
+      }
+
       [Dp.Write(false)]
       [Display(Name = "Satuan")]
-      public string satuan_nama { get; set; }
+      public string satuan_nama
+      {
+         get { return Satuan.id != default(uint) ? Satuan.nama : string.Empty; }
+      }
 
       [DisplayFormat(DataFormatString = "{0:N0}")]
       [DefaultValue(0)]
@@ -68,13 +82,13 @@ namespace RumahScarlett.Domain.Models.Barang
       [DefaultValue(0)]
       [Display(Name = "Harga Jual")]
       public decimal harga_jual { get; set; }
-      
+
       [Browsable(false)]
       [DisplayFormat(DataFormatString = "{0:N0}")]
       [DefaultValue(0)]
       [Display(Name = "Harga Lama")]
       public decimal harga_lama { get; set; }
-      
+
       [DisplayFormat(DataFormatString = "{0:N0}")]
       [DefaultValue(0)]
       [Display(Name = "Minimal Stok")]
@@ -102,6 +116,7 @@ namespace RumahScarlett.Domain.Models.Barang
 
       public BarangModel()
       {
+         Satuan = new SatuanModel();
          PenyesuaianStoks = new List<PenyesuaianStokModel>();
       }
    }

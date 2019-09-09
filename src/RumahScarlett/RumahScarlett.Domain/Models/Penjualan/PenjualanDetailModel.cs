@@ -45,7 +45,7 @@ namespace RumahScarlett.Domain.Models.Penjualan
       [Display(Name = "Kode Barang")]
       public string barang_kode
       {
-         get { return Barang != null && Barang.id != default(uint) ? Barang.kode : _barang_kode; }
+         get { return Barang.id != default(uint) ? Barang.kode : _barang_kode; }
          set { _barang_kode = value; }
       }
 
@@ -55,7 +55,7 @@ namespace RumahScarlett.Domain.Models.Penjualan
       [Display(Name = "Nama Barang")]
       public string barang_nama
       {
-         get { return Barang != null ? Barang.nama : _barang_nama; }
+         get { return Barang.id != default(uint) ? Barang.nama : _barang_nama; }
          set { _barang_nama = value; }
       }
 
@@ -68,7 +68,7 @@ namespace RumahScarlett.Domain.Models.Penjualan
       [Display(Name = "Satuan")]
       public string barang_satuan
       {
-         get { return Barang != null ? Barang.satuan_nama : string.Empty; }
+         get { return Barang.id != default(uint) ? Barang.satuan_nama : string.Empty; }
       }
 
       [DisplayFormat(DataFormatString = "{0:N0}")]

@@ -3,6 +3,7 @@ using Dapper.Contrib.Extensions;
 using RumahScarlett.CommonComponents;
 using RumahScarlett.Domain.Models.Barang;
 using RumahScarlett.Domain.Models.PenyesuaianStok;
+using RumahScarlett.Domain.Models.Satuan;
 using RumahScarlett.Services.Services.Barang;
 using System;
 using System.Collections.Generic;
@@ -65,15 +66,23 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Barang
          {
             return GetAll(() =>
             {
-               var queryStr = "SELECT b.*, s.id as satuan_id, s.nama as satuan_nama FROM barang b " +
-                              "INNER JOIN satuan s ON b.satuan_id=s.id";
-               var listObj = context.Conn.Query<BarangModel>(queryStr);
+               var listObj = context.Conn.GetAll<BarangModel>();
 
                if (listObj != null && listObj.ToList().Count > 0)
                {
                   listObj = listObj.Map(b =>
                   {
-                     queryStr = "SELECT * FROM penyesuaian_stok where barang_id=@id";
+                     var satuanModel = context.Conn.Get<SatuanModel>(b.satuan_id);
+
+                     if (satuanModel != null)
+                     {
+                        b.Satuan = satuanModel;
+                     }
+                  });
+
+                  listObj = listObj.Map(b =>
+                  {
+                     var queryStr = "SELECT * FROM penyesuaian_stok where barang_id=@id";
 
                      var listObject = context.Conn.Query<PenyesuaianStokModel>(queryStr, new { b.id });
 
@@ -95,7 +104,22 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Barang
 
          using (var context = new DbContext())
          {
-            return GetBy(() => context.Conn.Get<BarangModel>(id), dataAccessStatus, 
+            return GetBy(() =>
+            {
+               var model = context.Conn.Get<BarangModel>(id);
+
+               if (model != null)
+               {
+                  var satuanModel = context.Conn.Get<SatuanModel>(model.satuan_id);
+
+                  if (satuanModel != null)
+                  {
+                     model.Satuan = satuanModel;
+                  }
+               }
+
+               return model;
+            }, dataAccessStatus,
                         () => CheckModelExist(context, id));
          }
       }

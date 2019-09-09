@@ -91,6 +91,31 @@ namespace RumahScarlett.Presentation.Presenters.Penjualan
 
       private void _view_OnDetailClick(object sender, EventArgs e)
       {
+         var model = (PenjualanModel)_view.ListDataGrid.SelectedItem;
+
+         if (model != null)
+         {
+            var detailView = new BaseDetailTransaksiView("Detail Penjualan");
+            detailView.OnLoadView += DetailView_OnLoadView;
+            detailView.OnCetakClick += DetailView_OnCetakClick;
+            detailView.ShowDialog();
+         }
+      }
+
+      private void DetailView_OnLoadView(object sender, EventArgs e)
+      {
+         var modelDetails = ((PenjualanModel)_view.ListDataGrid.SelectedItem).PenjualanDetails.ToList();
+         var detailView = (BaseDetailTransaksiView)sender;
+
+         if (modelDetails != null && modelDetails.Count > 0)
+         {
+            var bindingDetialView = new BindingListView<PenjualanDetailModel>(modelDetails);
+            detailView.ListDataGrid.DataSource = bindingDetialView;
+         }
+      }
+
+      private void DetailView_OnCetakClick(object sender, EventArgs e)
+      {
          throw new NotImplementedException();
       }
 
