@@ -185,7 +185,7 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Penjualan
          }
       }
       
-      private static IEnumerable<PenjualanModel> MappingObjects(DbContext context, IEnumerable<PenjualanModel> listObj)
+      private IEnumerable<PenjualanModel> MappingObjects(DbContext context, IEnumerable<PenjualanModel> listObj)
       {
          if (listObj != null && listObj.ToList().Count > 0)
          {
