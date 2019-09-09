@@ -1,6 +1,8 @@
 ﻿using RumahScarlett.CommonComponents;
 using RumahScarlett.Domain.Models.Barang;
 using RumahScarlett.Domain.Models.Satuan;
+using RumahScarlett.Domain.Models.Supplier;
+using RumahScarlett.Domain.Models.Tipe;
 using RumahScarlett.Presentation.Helper;
 using RumahScarlett.Presentation.Views.CommonControls;
 using System;
@@ -42,8 +44,10 @@ namespace RumahScarlett.Presentation.Views.Barang
       {
          if (!_isNewData && _model != null)
          {
-            comboBoxTipe.CombBox.SelectedValue = _model.tipe_id;
-            comboBoxSubTipe.ComboBox.SelectedValue = _model.sub_tipe_id;
+            var tipeModel = comboBoxTipe.ComboBox.Items.Cast<ITipeModel>().Where(t => t.id == _model.tipe_id).FirstOrDefault();
+            comboBoxTipe.ComboBox.SelectedItem = tipeModel;
+            var subTipeModel = comboBoxSubTipe.ComboBox.Items.Cast<ISubTipeModel>().Where(st => st.id == _model.sub_tipe_id).FirstOrDefault();
+            comboBoxSubTipe.ComboBox.SelectedItem = subTipeModel;
             comboBoxSupplier.ComboBox.SelectedValue = _model.supplier_id;
             textBoxKode.Text = _model.kode;
             textBoxNama.Text = _model.nama;
@@ -61,12 +65,12 @@ namespace RumahScarlett.Presentation.Views.Barang
       {
          var model = new BarangModel
          {
-            tipe_id = comboBoxTipe.CombBox.SelectedValue != null ?
-                      (uint)comboBoxTipe.CombBox.SelectedValue : default(uint),
-            sub_tipe_id = comboBoxSubTipe.ComboBox.SelectedValue != null ?
-                          (uint)comboBoxSubTipe.ComboBox.SelectedValue : default(uint),
-            supplier_id = comboBoxSupplier.ComboBox.SelectedValue != null ?
-                          (uint)comboBoxSupplier.ComboBox.SelectedValue : default(uint),
+            tipe_id = comboBoxTipe.ComboBox.SelectedIndex != -1 ?
+                      ((ITipeModel)comboBoxTipe.ComboBox.SelectedItem).id : default(uint),
+            sub_tipe_id = comboBoxSubTipe.ComboBox.SelectedIndex != -1 ?
+                          ((ISubTipeModel)comboBoxSubTipe.ComboBox.SelectedItem).id : default(uint),
+            supplier_id = comboBoxSupplier.ComboBox.SelectedIndex != -1 ?
+                          ((ISupplierModel)comboBoxSupplier.ComboBox.SelectedItem).id : default(uint),
             kode = textBoxKode.Text,
             nama = textBoxNama.Text,
             hpp = decimal.Parse(textBoxHpp.Text, NumberStyles.Number),

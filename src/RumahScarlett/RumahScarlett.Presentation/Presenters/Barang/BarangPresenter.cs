@@ -1,6 +1,8 @@
 ﻿using Equin.ApplicationFramework;
 using RumahScarlett.CommonComponents;
 using RumahScarlett.Domain.Models.Barang;
+using RumahScarlett.Domain.Models.Supplier;
+using RumahScarlett.Domain.Models.Tipe;
 using RumahScarlett.Infrastructure.DataAccess.Repositories.Barang;
 using RumahScarlett.Presentation.Helper;
 using RumahScarlett.Presentation.Views.Barang;
@@ -90,18 +92,18 @@ namespace RumahScarlett.Presentation.Presenters.Barang
             }
             else if (_view.RadioButtonTipe.Checked) // Filter by tipe
             {
-               var tipeId = _view.ComboBoxTipe.CombBox.SelectedValue != null ?
-                           (uint)_view.ComboBoxTipe.CombBox.SelectedValue : default(uint);
-               var subTipeId = _view.ComboBoxSubTipe.ComboBox.SelectedValue != null ?
-                              (uint)_view.ComboBoxSubTipe.ComboBox.SelectedValue : default(uint);
+               var tipeId = _view.ComboBoxTipe.ComboBox.SelectedIndex != -1 ?
+                           ((ITipeModel)_view.ComboBoxTipe.ComboBox.SelectedItem).id : default(uint);
+               var subTipeId = _view.ComboBoxSubTipe.ComboBox.SelectedIndex != -1 ?
+                              ((ISubTipeModel)_view.ComboBoxSubTipe.ComboBox.SelectedItem).id : default(uint);
 
                var filterBarang = _listObjs.Where(b => b.tipe_id == tipeId && b.sub_tipe_id == subTipeId).ToList();
                _bindingView.DataSource = filterBarang;
             }
             else // Filter by supplier
             {
-               var supplierId = _view.ComboBoxSupplier.ComboBox.SelectedValue != null ?
-                                (uint)_view.ComboBoxSupplier.ComboBox.SelectedValue : default(uint);
+               var supplierId = _view.ComboBoxSupplier.ComboBox.SelectedIndex != -1 ?
+                              ((ISupplierModel)_view.ComboBoxSupplier.ComboBox.SelectedItem).id : default(uint);
 
                var filterBarang = _listObjs.Where(b => b.supplier_id == supplierId).ToList();
                _bindingView.DataSource = filterBarang;
@@ -194,6 +196,8 @@ namespace RumahScarlett.Presentation.Presenters.Barang
                      model.Satuan = newModel.Satuan;
 
                      _bindingView.Refresh();
+
+                     _view_ButtonTampilkan_Click(null, null);
                   }
                }
             }
