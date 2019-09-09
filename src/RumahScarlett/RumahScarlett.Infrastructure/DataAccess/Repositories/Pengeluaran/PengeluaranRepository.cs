@@ -1,4 +1,5 @@
-﻿using Dapper.Contrib.Extensions;
+﻿using Dapper;
+using Dapper.Contrib.Extensions;
 using RumahScarlett.CommonComponents;
 using RumahScarlett.Domain.Models.Pengeluaran;
 using RumahScarlett.Services.Services.Pengeluaran;
@@ -55,12 +56,7 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Pengeluaran
 
       public IEnumerable<IPengeluaranModel> GetAll()
       {
-         var dataAccessStatus = new DataAccessStatus();
-
-         using (var context = new DbContext())
-         {
-            return GetAll(() => context.Conn.GetAll<PengeluaranModel>(), dataAccessStatus);
-         }
+         throw new NotImplementedException();
       }
 
       public IPengeluaranModel GetById(object id)
@@ -80,15 +76,20 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Pengeluaran
 
          using (var context = new DbContext())
          {
-            return GetAll(() => context.Conn.GetAll<PengeluaranModel>(), dataAccessStatus);
+            return context.Conn.Query<PengeluaranModel>(StringHelper.QueryStringByDate("pengeluaran"), new { date });
          }
       }
 
       public IEnumerable<IPengeluaranModel> GetByDate(object startDate, object endDate)
       {
-         return GetAll().Where(p => p.tanggal.Date >= ((DateTime)startDate).Date && p.tanggal.Date <= ((DateTime)endDate).Date);
+         var dataAccessStatus = new DataAccessStatus();
+
+         using (var context = new DbContext())
+         {
+            return context.Conn.Query<PengeluaranModel>(StringHelper.QueryStringByBetweenDate("pengeluaran"), new { startDate, endDate });
+         }
       }
-      
+
       private bool CheckModelExist(DbContext context, object id)
       {
          return CheckModelExist(context, "SELECT COUNT(1) FROM pengeluaran WHERE id=@id",

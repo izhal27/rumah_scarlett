@@ -24,6 +24,17 @@ namespace RumahScarlett.CommonComponents
          }
 
          return strBuild.ToString();
-      }      
+      }
+
+      public static string QueryStringByDate(string table, string column = "tanggal", string paramName = "date")
+      {
+         return $"SELECT * FROM {table} WHERE DATE({column}) = @{paramName}";
+      }
+
+      public static string QueryStringByBetweenDate(string table, string column = "tanggal",
+                                                    string startParamName = "startDate", string endParamName = "endDate")
+      {
+         return $"SELECT * FROM {table} WHERE DATE({column}) >= @{startParamName} AND DATE({column}) <= @{endParamName}";
+      }
    }
 }
