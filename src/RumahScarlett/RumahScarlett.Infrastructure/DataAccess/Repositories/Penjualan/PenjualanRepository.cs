@@ -154,45 +154,58 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Penjualan
 
       public IEnumerable<IPenjualanModel> GetAll()
       {
-         var dataAccessStatus = new DataAccessStatus();
-
-         using (var context = new DbContext())
-         {
-            return GetAll(() =>
-            {
-               var listObj = context.Conn.GetAll<PenjualanModel>();
-
-               if (listObj != null && listObj.ToList().Count > 0)
-               {
-                  listObj = listObj.Map(p =>
-                  {
-                     if (p.pelanggan_id != default(uint))
-                     {
-                        p.Pelanggan = context.Conn.Get<PelangganModel>(p.pelanggan_id);
-                     }
-                  });
-
-                  var pdRepo = new PenjualanDetailRepository(context);
-
-                  foreach (var p in listObj)
-                  {
-                     p.PenjualanDetails = pdRepo.GetAll(p);
-                  }
-               }
-
-               return listObj;
-            }, dataAccessStatus);
-         }
+         throw new NotImplementedException();
       }
 
       public IEnumerable<IPenjualanModel> GetByDate(object date)
       {
-         return GetAll().Where(p => p.tanggal.Date == ((DateTime)date).Date);
+         var dataAccessStatus = new DataAccessStatus();
+
+         using (var context = new DbContext())
+         {
+            var listObjs = context.Conn.Query<PenjualanModel>(StringHelper.QueryStringByDate(_modelName), new { date });
+            
+            listObjs = MappingObjects(context, listObjs);
+
+            return listObjs;
+         }
       }
 
       public IEnumerable<IPenjualanModel> GetByDate(object startDate, object endDate)
       {
-         return GetAll().Where(p => p.tanggal.Date >= ((DateTime)startDate).Date && p.tanggal.Date <= ((DateTime)endDate).Date);
+         var dataAccessStatus = new DataAccessStatus();
+
+         using (var context = new DbContext())
+         {
+            var listObjs = context.Conn.Query<PenjualanModel>(StringHelper.QueryStringByBetweenDate(_modelName), new { startDate, endDate });
+
+            listObjs = MappingObjects(context, listObjs);
+
+            return listObjs;
+         }
+      }
+      
+      private static IEnumerable<PenjualanModel> MappingObjects(DbContext context, IEnumerable<PenjualanModel> listObj)
+      {
+         if (listObj != null && listObj.ToList().Count > 0)
+         {
+            listObj = listObj.Map(p =>
+            {
+               if (p.pelanggan_id != default(uint))
+               {
+                  p.Pelanggan = context.Conn.Get<PelangganModel>(p.pelanggan_id);
+               }
+            });
+
+            var pdRepo = new PenjualanDetailRepository(context);
+
+            foreach (var p in listObj)
+            {
+               p.PenjualanDetails = pdRepo.GetAll(p);
+            }
+         }
+
+         return listObj;
       }
 
       public IPenjualanModel GetById(object id)
