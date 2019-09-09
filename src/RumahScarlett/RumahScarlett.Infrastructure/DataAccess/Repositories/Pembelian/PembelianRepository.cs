@@ -130,39 +130,52 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Pembelian
 
       public IEnumerable<IPembelianModel> GetAll()
       {
-         var dataAccessStatus = new DataAccessStatus();
-
-         using (var context = new DbContext())
-         {
-            return GetAll(() =>
-            {
-               var listObj = context.Conn.GetAll<PembelianModel>().ToList();
-
-               if (listObj != null && listObj.Count > 0)
-               {
-                  listObj = listObj.Map(p => p.Supplier = context.Conn.Get<SupplierModel>(p.supplier_id)).ToList();
-
-                  var pdRepo = new PembelianDetailRepository(context);
-
-                  foreach (var p in listObj)
-                  {
-                     p.PembelianDetails = pdRepo.GetAll(p);
-                  }
-               }
-
-               return listObj;
-            }, dataAccessStatus);
-         }
+         throw new NotImplementedException();
       }
 
       public IEnumerable<IPembelianModel> GetByDate(object date)
       {
-         return GetAll().Where(p => p.tanggal.Date == ((DateTime)date).Date);
+         var dataAccessStatus = new DataAccessStatus();
+
+         using (var context = new DbContext())
+         {
+            var listObjs = context.Conn.Query<PembelianModel>(StringHelper.QueryStringByDate(_modelName), new { date });
+
+            listObjs = MappingObjects(context, listObjs);
+
+            return listObjs;
+         }
       }
 
       public IEnumerable<IPembelianModel> GetByDate(object startDate, object endDate)
       {
-         return GetAll().Where(p => p.tanggal.Date >= ((DateTime)startDate).Date && p.tanggal.Date <= ((DateTime)endDate).Date);
+         var dataAccessStatus = new DataAccessStatus();
+
+         using (var context = new DbContext())
+         {
+            var listObjs = context.Conn.Query<PembelianModel>(StringHelper.QueryStringByBetweenDate(_modelName), new { startDate, endDate });
+
+            listObjs = MappingObjects(context, listObjs);
+
+            return listObjs;
+         }
+      }
+
+      private IEnumerable<PembelianModel> MappingObjects(DbContext context, IEnumerable<PembelianModel> listObjs)
+      {
+         if (listObjs != null && listObjs.ToList().Count > 0)
+         {
+            listObjs = listObjs.Map(p => p.Supplier = context.Conn.Get<SupplierModel>(p.supplier_id));
+
+            var pdRepo = new PembelianDetailRepository(context);
+
+            foreach (var p in listObjs)
+            {
+               p.PembelianDetails = pdRepo.GetAll(p);
+            }
+         }
+
+         return listObjs;
       }
 
       public IPembelianModel GetById(object id)
