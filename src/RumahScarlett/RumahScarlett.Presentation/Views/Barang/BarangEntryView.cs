@@ -44,11 +44,9 @@ namespace RumahScarlett.Presentation.Views.Barang
       {
          if (!_isNewData && _model != null)
          {
-            var tipeModel = comboBoxTipe.ComboBox.Items.Cast<ITipeModel>().Where(t => t.id == _model.tipe_id).FirstOrDefault();
-            comboBoxTipe.ComboBox.SelectedItem = tipeModel;
-            var subTipeModel = comboBoxSubTipe.ComboBox.Items.Cast<ISubTipeModel>().Where(st => st.id == _model.sub_tipe_id).FirstOrDefault();
-            comboBoxSubTipe.ComboBox.SelectedItem = subTipeModel;
-            comboBoxSupplier.ComboBox.SelectedValue = _model.supplier_id;
+            comboBoxTipe.ComboBox.SelectedItem = comboBoxTipe.GetModel(_model.tipe_id);
+            comboBoxSubTipe.ComboBox.SelectedItem = comboBoxSubTipe.GetModel(_model.sub_tipe_id);
+            comboBoxSupplier.ComboBox.SelectedItem = comboBoxSupplier.GetModel(_model.supplier_id);
             textBoxKode.Text = _model.kode;
             textBoxNama.Text = _model.nama;
             textBoxHpp.Text = _model.hpp.ToString("N0");
@@ -56,8 +54,7 @@ namespace RumahScarlett.Presentation.Views.Barang
             textBoxHargaLama.Text = _model.harga_lama.ToString("N0");
             textBoxStok.Text = _model.stok.ToString("N0");
             textBoxMinStok.Text = _model.minimal_stok.ToString("N0");
-            var satuan = comboBoxSatuan.ComboBox.Items.Cast<ISatuanModel>().Where(s => s.id == _model.satuan_id).FirstOrDefault();
-            comboBoxSatuan.ComboBox.SelectedItem = satuan;
+            comboBoxSatuan.ComboBox.SelectedItem = comboBoxSatuan.GetModel(_model.satuan_id);
          }
       }
 
@@ -65,12 +62,9 @@ namespace RumahScarlett.Presentation.Views.Barang
       {
          var model = new BarangModel
          {
-            tipe_id = comboBoxTipe.ComboBox.SelectedIndex != -1 ?
-                      ((ITipeModel)comboBoxTipe.ComboBox.SelectedItem).id : default(uint),
-            sub_tipe_id = comboBoxSubTipe.ComboBox.SelectedIndex != -1 ?
-                          ((ISubTipeModel)comboBoxSubTipe.ComboBox.SelectedItem).id : default(uint),
-            supplier_id = comboBoxSupplier.ComboBox.SelectedIndex != -1 ?
-                          ((ISupplierModel)comboBoxSupplier.ComboBox.SelectedItem).id : default(uint),
+            tipe_id = comboBoxTipe.GetSelectedID,
+            sub_tipe_id = comboBoxSubTipe.GetSelectedID,
+            supplier_id = comboBoxSupplier.GetSelectedID,
             kode = textBoxKode.Text,
             nama = textBoxNama.Text,
             hpp = decimal.Parse(textBoxHpp.Text, NumberStyles.Number),
@@ -78,8 +72,7 @@ namespace RumahScarlett.Presentation.Views.Barang
             harga_lama = decimal.Parse(textBoxHargaLama.Text, NumberStyles.Number),
             stok = int.Parse(textBoxStok.Text, NumberStyles.Number),
             minimal_stok = int.Parse(textBoxMinStok.Text, NumberStyles.Number),
-            Satuan = comboBoxSatuan.ComboBox.SelectedIndex != -1 ?
-                     ((ISatuanModel)comboBoxSatuan.ComboBox.SelectedItem) : new SatuanModel()
+            Satuan = comboBoxSatuan.GetModel(comboBoxSatuan.GetSelectedID) ?? new SatuanModel()
          };
 
          var modelArgs = new ModelEventArgs<BarangModel>(model);
