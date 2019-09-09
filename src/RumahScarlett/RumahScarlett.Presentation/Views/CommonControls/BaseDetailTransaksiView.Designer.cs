@@ -100,11 +100,13 @@
          this.ClientSize = new System.Drawing.Size(784, 462);
          this.Controls.Add(this.listDataGrid);
          this.Controls.Add(this.tlpButtons);
+         this.KeyPreview = true;
          this.MaximizeBox = false;
          this.MinimizeBox = false;
          this.Name = "BaseDetailTransaksiView";
          this.Text = "BaseDetailTransaksiView";
          this.Load += new System.EventHandler(this.BaseDetailTransaksiView_Load);
+         this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.BaseDetailTransaksiView_KeyDown);
          this.Controls.SetChildIndex(this.panelUp, 0);
          this.Controls.SetChildIndex(this.tlpButtons, 0);
          this.Controls.SetChildIndex(this.listDataGrid, 0);

@@ -33,6 +33,18 @@ namespace RumahScarlett.Presentation.Views.CommonControls
       {
          OnLoadView?.Invoke(sender, e);
       }
+      
+      private void BaseDetailTransaksiView_KeyDown(object sender, KeyEventArgs e)
+      {
+         switch (e.KeyCode)
+         {
+            case Keys.Escape:
+
+               Close();
+
+               break;
+         }
+      }
 
       private void buttonCetak_Click(object sender, EventArgs e)
       {
