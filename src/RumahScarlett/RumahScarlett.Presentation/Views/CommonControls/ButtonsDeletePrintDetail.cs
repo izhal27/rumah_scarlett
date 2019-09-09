@@ -17,6 +17,21 @@ namespace RumahScarlett.Presentation.Views.CommonControls
       public event EventHandler OnDetailClick;
       public event EventHandler OnTutupClick;
 
+      public bool ButtonHapusVisible
+      {
+         set { buttonHapus.Visible = value; }
+      }
+
+      public bool ButtonCetakVisible
+      {
+         set { buttonCetak.Visible = value; }
+      }
+
+      public bool ButtonDetailVisible
+      {
+         set { buttonDetail.Visible = value; }
+      }
+
       public ButtonsDeletePrintDetail()
       {
          InitializeComponent();
