@@ -36,8 +36,9 @@ namespace RumahScarlett.Presentation.Views.ModelControls
 
          if (_listSubTipes != null && _listSubTipes.Count > 0)
          {
-            var subTipeKVP = _listSubTipes.Select(sub => new KeyValuePair<object, string>(sub.id, sub.nama)).ToList();
-            comboBox.SetDataSource(subTipeKVP, false);
+            comboBox.Items.AddRange(_listSubTipes.ToArray());
+            comboBox.DisplayMember = "nama";
+            comboBox.SelectedIndex = 0;
          }
       }
    }
