@@ -30,7 +30,6 @@
       {
          this.tlpButtons = new System.Windows.Forms.TableLayoutPanel();
          this.buttonTutup = new System.Windows.Forms.Button();
-         this.buttonCetak = new System.Windows.Forms.Button();
          this.listDataGrid = new RumahScarlett.Presentation.Views.CommonControls.ListDataGrid();
          this.tlpButtons.SuspendLayout();
          ((System.ComponentModel.ISupportInitialize)(this.listDataGrid)).BeginInit();
@@ -41,12 +40,10 @@
          this.tlpButtons.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
          this.tlpButtons.BackColor = System.Drawing.SystemColors.Control;
-         this.tlpButtons.ColumnCount = 2;
-         this.tlpButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+         this.tlpButtons.ColumnCount = 1;
          this.tlpButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
          this.tlpButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-         this.tlpButtons.Controls.Add(this.buttonTutup, 1, 0);
-         this.tlpButtons.Controls.Add(this.buttonCetak, 0, 0);
+         this.tlpButtons.Controls.Add(this.buttonTutup, 0, 0);
          this.tlpButtons.Location = new System.Drawing.Point(8, 415);
          this.tlpButtons.Name = "tlpButtons";
          this.tlpButtons.RowCount = 1;
@@ -65,18 +62,6 @@
          this.buttonTutup.Text = "Tutu&p";
          this.buttonTutup.UseVisualStyleBackColor = true;
          this.buttonTutup.Click += new System.EventHandler(this.buttonTutup_Click);
-         // 
-         // buttonCetak
-         // 
-         this.buttonCetak.Anchor = System.Windows.Forms.AnchorStyles.Left;
-         this.buttonCetak.Location = new System.Drawing.Point(3, 6);
-         this.buttonCetak.Name = "buttonCetak";
-         this.buttonCetak.Size = new System.Drawing.Size(75, 23);
-         this.buttonCetak.TabIndex = 99;
-         this.buttonCetak.Tag = "Cetak";
-         this.buttonCetak.Text = "&Cetak";
-         this.buttonCetak.UseVisualStyleBackColor = true;
-         this.buttonCetak.Click += new System.EventHandler(this.buttonCetak_Click);
          // 
          // listDataGrid
          // 
@@ -120,7 +105,6 @@
 
       protected System.Windows.Forms.TableLayoutPanel tlpButtons;
       protected System.Windows.Forms.Button buttonTutup;
-      protected System.Windows.Forms.Button buttonCetak;
       private ListDataGrid listDataGrid;
    }
 }

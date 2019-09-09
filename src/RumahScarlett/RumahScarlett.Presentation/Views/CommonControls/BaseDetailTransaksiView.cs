@@ -12,7 +12,6 @@ namespace RumahScarlett.Presentation.Views.CommonControls
 {
    public partial class BaseDetailTransaksiView : BaseDataView
    {
-      public event EventHandler OnCetakClick;
       public event EventHandler OnLoadView;
 
       public ListDataGrid ListDataGrid
@@ -20,18 +19,18 @@ namespace RumahScarlett.Presentation.Views.CommonControls
          get { return listDataGrid; }
       }
 
-      public BaseDetailTransaksiView(string textTitle, bool buttonCetakVisible = true)
+      public BaseDetailTransaksiView(string textTitle)
       {
          InitializeComponent();
 
          Text = textTitle;
          panelUp.LabelInfo = $"{Text.ToUpper()}";
-         buttonCetak.Visible = buttonCetakVisible;
       }
 
       private void BaseDetailTransaksiView_Load(object sender, EventArgs e)
       {
          OnLoadView?.Invoke(sender, e);
+         ActiveControl = buttonTutup;
       }
       
       private void BaseDetailTransaksiView_KeyDown(object sender, KeyEventArgs e)
@@ -44,11 +43,6 @@ namespace RumahScarlett.Presentation.Views.CommonControls
 
                break;
          }
-      }
-
-      private void buttonCetak_Click(object sender, EventArgs e)
-      {
-         OnCetakClick?.Invoke(sender, e);
       }
 
       private void buttonTutup_Click(object sender, EventArgs e)

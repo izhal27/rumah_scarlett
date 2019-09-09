@@ -98,7 +98,6 @@ namespace RumahScarlett.Presentation.Presenters.Pembelian
          {
             var detailView = new BaseDetailTransaksiView("Detail Pembelian");
             detailView.OnLoadView += DetailView_OnLoadView;
-            detailView.OnCetakClick += DetailView_OnCetakClick;
             detailView.ShowDialog();
          }
       }
@@ -114,12 +113,7 @@ namespace RumahScarlett.Presentation.Presenters.Pembelian
             detailView.ListDataGrid.DataSource = bindingDetialView;
          }
       }
-
-      private void DetailView_OnCetakClick(object sender, EventArgs e)
-      {
-         throw new NotImplementedException();
-      }
-
+      
       private void _view_OnTampilkanClick(object sender, FilterDateEventArgs e)
       {
          using (new WaitCursorHandler())

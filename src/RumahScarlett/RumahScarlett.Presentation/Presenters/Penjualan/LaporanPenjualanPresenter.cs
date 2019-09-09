@@ -97,7 +97,6 @@ namespace RumahScarlett.Presentation.Presenters.Penjualan
          {
             var detailView = new BaseDetailTransaksiView("Detail Penjualan");
             detailView.OnLoadView += DetailView_OnLoadView;
-            detailView.OnCetakClick += DetailView_OnCetakClick;
             detailView.ShowDialog();
          }
       }
@@ -113,12 +112,7 @@ namespace RumahScarlett.Presentation.Presenters.Penjualan
             detailView.ListDataGrid.DataSource = bindingDetialView;
          }
       }
-
-      private void DetailView_OnCetakClick(object sender, EventArgs e)
-      {
-         throw new NotImplementedException();
-      }
-
+      
       private void _view_OnTampilkanClick(object sender, FilterDateEventArgs e)
       {
          using (new WaitCursorHandler())
