@@ -91,9 +91,12 @@ namespace RumahScarlett.Presentation.Presenters.Penjualan
 
       private void _view_OnCariData(object sender, EventArgs e)
       {
-         var view = new CariBarangView(_listsBarangs, TipePencarian.Penjualan, _kodeOrNamaForSearching);
-         view.OnSendData += CariBarangPenjualanView_OnSendData;
-         view.ShowDialog();
+         if (_view.ListDataGrid.Enabled)
+         {
+            var view = new CariBarangView(_listsBarangs, TipePencarian.Penjualan, _kodeOrNamaForSearching);
+            view.OnSendData += CariBarangPenjualanView_OnSendData;
+            view.ShowDialog();
+         }
       }
 
       private void CariBarangPenjualanView_OnSendData(object sender, EventArgs e)
@@ -119,7 +122,7 @@ namespace RumahScarlett.Presentation.Presenters.Penjualan
 
       private void _view_OnHapusData(object sender, EventArgs e)
       {
-         if (CurrCellValue != null)
+         if (_view.ListDataGrid.Enabled && CurrCellValue != null)
          {
             if (!string.IsNullOrWhiteSpace(CurrCellValue.ToString()))
             {
