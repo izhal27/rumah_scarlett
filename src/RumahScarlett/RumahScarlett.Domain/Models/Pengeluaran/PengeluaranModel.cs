@@ -17,7 +17,6 @@ namespace RumahScarlett.Domain.Models.Pengeluaran
       [Display(Name = "ID")]
       public uint id { get; set; }
       
-      [Browsable(false)]
       [Display(Name = "Tanggal")]
       public DateTime tanggal { get; set; }
 

@@ -289,6 +289,7 @@
          this.toolStripMenuItemLaporanPengeluaran.Name = "toolStripMenuItemLaporanPengeluaran";
          this.toolStripMenuItemLaporanPengeluaran.Size = new System.Drawing.Size(164, 22);
          this.toolStripMenuItemLaporanPengeluaran.Text = "Penge&luaran";
+         this.toolStripMenuItemLaporanPengeluaran.Click += new System.EventHandler(this.toolStripMenuItemLaporanPengeluaran_Click);
          // 
          // toolStripSeparator2
          // 

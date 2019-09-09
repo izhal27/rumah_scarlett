@@ -39,6 +39,7 @@ namespace RumahScarlett.Presentation.Views
       public event EventHandler<MainViewEventArgs> OnPengeluaranViewClick;
       public event EventHandler<MainViewEventArgs> OnLaporanPenjualanViewClick;
       public event EventHandler<MainViewEventArgs> OnLaporanPembelianViewClick;
+      public event EventHandler<MainViewEventArgs> OnLaporanPengeluaranViewClick;
 
       public MainView()
       {
@@ -147,6 +148,11 @@ namespace RumahScarlett.Presentation.Views
       private void toolStripMenuItemLaporanPembelian_Click(object sender, EventArgs e)
       {
          OnLaporanPembelianViewClick?.Invoke(sender, _eventArgs);
+      }
+
+      private void toolStripMenuItemLaporanPengeluaran_Click(object sender, EventArgs e)
+      {
+         OnLaporanPengeluaranViewClick?.Invoke(sender, _eventArgs);
       }
    }
 

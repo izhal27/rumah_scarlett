@@ -76,7 +76,12 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Pengeluaran
 
       public IEnumerable<IPengeluaranModel> GetByDate(object date)
       {
-         return GetAll().Where(p => p.tanggal.Date == ((DateTime)date).Date);
+         var dataAccessStatus = new DataAccessStatus();
+
+         using (var context = new DbContext())
+         {
+            return GetAll(() => context.Conn.GetAll<PengeluaranModel>(), dataAccessStatus);
+         }
       }
 
       public IEnumerable<IPengeluaranModel> GetByDate(object startDate, object endDate)
