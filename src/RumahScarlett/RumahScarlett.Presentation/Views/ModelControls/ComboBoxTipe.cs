@@ -36,8 +36,9 @@ namespace RumahScarlett.Presentation.Views.ModelControls
 
          if (_listTipes != null && _listTipes.Count > 0)
          {
-            var tipeKVP = _listTipes.Select(t => new KeyValuePair<object, string>(t.id, t.nama)).ToList();
-            comboBox.SetDataSource(tipeKVP, false);
+            comboBox.Items.AddRange(_listTipes.ToArray());
+            comboBox.DisplayMember = "nama";
+            comboBox.SelectedIndex = 0;
          }
       }
    }
