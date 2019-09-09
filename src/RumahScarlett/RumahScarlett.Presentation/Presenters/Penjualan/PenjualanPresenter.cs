@@ -162,7 +162,7 @@ namespace RumahScarlett.Presentation.Presenters.Penjualan
 
             var model = new PenjualanModel
             {
-               pelanggan_id = (uint)e.PelangganId,
+               Pelanggan = e.Pelanggan,
                status_pembayaran = e.StatusPenjualan,
                diskon = e.Diskon,
                PenjualanDetails = penjualanDetailsFixed

@@ -1,4 +1,5 @@
-﻿using RumahScarlett.Domain.Models.Penjualan;
+﻿using RumahScarlett.Domain.Models.Pelanggan;
+using RumahScarlett.Domain.Models.Penjualan;
 using RumahScarlett.Presentation.Helper;
 using System;
 using System.Collections.Generic;
@@ -48,12 +49,12 @@ namespace RumahScarlett.Presentation.Views.Penjualan
       {
          if (_uangKembali >= 0 && Messages.Confirm("Lanjutkan pembayaran?"))
          {
-            var pelangganId = comboBoxPelanggan.ComboBox.SelectedIndex != -1 ?
-                              comboBoxPelanggan.ComboBox.SelectedValue : default(uint);
+            var pelangganModel = comboBoxPelanggan.ComboBox.SelectedIndex != -1 ?
+                              ((IPelangganModel)comboBoxPelanggan.ComboBox.SelectedItem) : new PelangganModel();
             var statusPenjualan = comboBoxStatusPenjualan.SelectedIndex == 1;
             var diskon = decimal.Parse(textBoxDiskon.Text, NumberStyles.Number);
 
-            var eventArgs = new PembayaranEventArgs(pelangganId, statusPenjualan, diskon);
+            var eventArgs = new PembayaranEventArgs(pelangganModel, statusPenjualan, diskon);
 
             OnBayarPenjualan?.Invoke(this, eventArgs);
          }
@@ -119,13 +120,13 @@ namespace RumahScarlett.Presentation.Views.Penjualan
 
    public class PembayaranEventArgs : EventArgs
    {
-      public object PelangganId { get; }
+      public IPelangganModel Pelanggan { get; }
       public bool StatusPenjualan { get; }
       public decimal Diskon { get; }
 
-      public PembayaranEventArgs(object pelangganId, bool statusPenjualan, decimal diskon)
+      public PembayaranEventArgs(IPelangganModel pelanggan, bool statusPenjualan, decimal diskon)
       {
-         PelangganId = pelangganId;
+         Pelanggan = pelanggan;
          StatusPenjualan = statusPenjualan;
          Diskon = diskon;
       }
