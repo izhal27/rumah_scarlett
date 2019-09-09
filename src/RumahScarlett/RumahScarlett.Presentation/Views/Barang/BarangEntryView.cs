@@ -1,5 +1,6 @@
 ﻿using RumahScarlett.CommonComponents;
 using RumahScarlett.Domain.Models.Barang;
+using RumahScarlett.Domain.Models.Satuan;
 using RumahScarlett.Presentation.Helper;
 using RumahScarlett.Presentation.Views.CommonControls;
 using System;
@@ -51,7 +52,8 @@ namespace RumahScarlett.Presentation.Views.Barang
             textBoxHargaLama.Text = _model.harga_lama.ToString("N0");
             textBoxStok.Text = _model.stok.ToString("N0");
             textBoxMinStok.Text = _model.minimal_stok.ToString("N0");
-            comboBoxSatuan.ComboBox.SelectedValue = _model.satuan_id;
+            var satuan = comboBoxSatuan.ComboBox.Items.Cast<ISatuanModel>().Where(s => s.id == _model.satuan_id).FirstOrDefault();
+            comboBoxSatuan.ComboBox.SelectedItem = satuan;
          }
       }
 
@@ -59,9 +61,12 @@ namespace RumahScarlett.Presentation.Views.Barang
       {
          var model = new BarangModel
          {
-            tipe_id = comboBoxTipe.CombBox.SelectedValue != null ? (uint)comboBoxTipe.CombBox.SelectedValue : default(uint),
-            sub_tipe_id = comboBoxSubTipe.ComboBox.SelectedValue != null ? (uint)comboBoxSubTipe.ComboBox.SelectedValue : default(uint),
-            supplier_id = comboBoxSupplier.ComboBox.SelectedValue != null ? (uint)comboBoxSupplier.ComboBox.SelectedValue : default(uint),
+            tipe_id = comboBoxTipe.CombBox.SelectedValue != null ?
+                      (uint)comboBoxTipe.CombBox.SelectedValue : default(uint),
+            sub_tipe_id = comboBoxSubTipe.ComboBox.SelectedValue != null ?
+                          (uint)comboBoxSubTipe.ComboBox.SelectedValue : default(uint),
+            supplier_id = comboBoxSupplier.ComboBox.SelectedValue != null ?
+                          (uint)comboBoxSupplier.ComboBox.SelectedValue : default(uint),
             kode = textBoxKode.Text,
             nama = textBoxNama.Text,
             hpp = decimal.Parse(textBoxHpp.Text, NumberStyles.Number),
@@ -69,7 +74,8 @@ namespace RumahScarlett.Presentation.Views.Barang
             harga_lama = decimal.Parse(textBoxHargaLama.Text, NumberStyles.Number),
             stok = int.Parse(textBoxStok.Text, NumberStyles.Number),
             minimal_stok = int.Parse(textBoxMinStok.Text, NumberStyles.Number),
-            satuan_id = comboBoxSatuan.ComboBox.SelectedValue != null ? (uint)comboBoxSatuan.ComboBox.SelectedValue : default(uint)
+            Satuan = comboBoxSatuan.ComboBox.SelectedIndex != -1 ?
+                     ((ISatuanModel)comboBoxSatuan.ComboBox.SelectedItem) : new SatuanModel()
          };
 
          var modelArgs = new ModelEventArgs<BarangModel>(model);

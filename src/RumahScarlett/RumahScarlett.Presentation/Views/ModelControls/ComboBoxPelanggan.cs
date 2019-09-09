@@ -1,6 +1,5 @@
 ﻿using RumahScarlett.Domain.Models.Pelanggan;
 using RumahScarlett.Infrastructure.DataAccess.Repositories.Pelanggan;
-using RumahScarlett.Presentation.Helper;
 using RumahScarlett.Services.Services;
 using RumahScarlett.Services.Services.Pelanggan;
 using System;
@@ -39,8 +38,9 @@ namespace RumahScarlett.Presentation.Views.ModelControls
 
          if (_listPelanggans != null && _listPelanggans.Count > 0)
          {
-            var pelangganKVP = _listPelanggans.Select(s => new KeyValuePair<object, string>(s.id, s.nama)).ToList();
-            comboBox.SetDataSource(pelangganKVP);
+            comboBox.Items.AddRange(_listPelanggans.ToArray());
+            comboBox.DisplayMember = "nama";
+            comboBox.SelectedIndex = 0;
          }
       }
    }

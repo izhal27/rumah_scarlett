@@ -191,7 +191,7 @@ namespace RumahScarlett.Presentation.Presenters.Barang
                      model.harga_lama = newModel.harga_lama;
                      model.stok = newModel.stok;
                      model.minimal_stok = newModel.minimal_stok;
-                     model.satuan_id = newModel.satuan_id;
+                     model.Satuan = newModel.Satuan;
 
                      _bindingView.Refresh();
                   }
