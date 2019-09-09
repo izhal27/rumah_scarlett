@@ -113,6 +113,29 @@ namespace RumahScarlett.Presentation.Views.Penjualan
                Close();
 
                break;
+            case Keys.Enter:
+
+               if (ActiveControl == comboBoxPelanggan)
+               {
+                  comboBoxStatusPenjualan.Focus();
+               }
+               else if (ActiveControl == comboBoxStatusPenjualan)
+               {
+                  textBoxDiskon.Focus();
+               }
+               else if (textBoxDiskon.Focused)
+               {
+                  textBoxBayar.Focus();
+               }
+               else if (textBoxBayar.Focused)
+               {
+                  buttonBayar.Focus();
+               }
+
+               break;
+            default:
+
+               break;
          }
       }
    }

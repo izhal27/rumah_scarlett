@@ -112,7 +112,7 @@ namespace RumahScarlett.Presentation.Presenters.Penjualan
             _listPenjualanDetails[(rowIndex - 1)].Barang = model;
             _listPenjualanDetails[(rowIndex - 1)].barang_id = model.id;
             _listPenjualanDetails[(rowIndex - 1)].qty = 1;
-            _listPenjualanDetails[(rowIndex - 1)].harga_jual = model.hpp;
+            _listPenjualanDetails[(rowIndex - 1)].harga_jual = model.harga_jual;
 
             _view.ListDataGrid.MoveToCurrentCell(new RowColumnIndex(listDataGrid.CurrentCell.RowIndex, 3));
             _view.ListDataGrid.CurrentCell.BeginEdit();
@@ -175,6 +175,11 @@ namespace RumahScarlett.Presentation.Presenters.Penjualan
             Messages.Info("Data Penjualan berhasil disimpan.");
             _view.ListDataGrid.Enabled = false;
             _view.TextBoxNoNota.Text = model.no_nota;
+
+            if (model.diskon > 0)
+            {
+               _view.LabelGrandTotal.Text = (model.PenjualanDetails.Sum(pd => pd.total) - model.diskon).ToString("N0");
+            }
 
             bayarPenjualanEntryView.Close();
             ((Form)_view).ActiveControl = _view.TextBoxNoNota;
@@ -343,7 +348,10 @@ namespace RumahScarlett.Presentation.Presenters.Penjualan
 
       private void HitungGrandTotal()
       {
-         _view.LabelGrandTotal.Text = _bindingView.Cast<IPenjualanDetailModel>().Sum(pd => pd.total).ToString("N0");
+         if (_view.ListDataGrid.Enabled)
+         {
+            _view.LabelGrandTotal.Text = _bindingView.Cast<IPenjualanDetailModel>().Sum(pd => pd.total).ToString("N0");
+         }
       }
 
       private void _view_OnListDataGridPreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
