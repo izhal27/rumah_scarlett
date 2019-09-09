@@ -40,7 +40,6 @@ namespace RumahScarlett.Presentation.Views.ModelControls
          {
             comboBox.Items.AddRange(_listPelanggans.ToArray());
             comboBox.DisplayMember = "nama";
-            comboBox.SelectedIndex = 0;
          }
       }
    }
