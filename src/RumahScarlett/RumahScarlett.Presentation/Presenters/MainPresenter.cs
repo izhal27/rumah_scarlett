@@ -48,6 +48,7 @@ namespace RumahScarlett.Presentation.Presenters
          _view.OnPengeluaranViewClick += _view_OnPengeluaranViewClick;
          _view.OnPenyesuaianStokViewClick += _view_OnPenyesuaianStokViewClick;
          _view.OnLaporanPenjualanViewClick += _view_OnLaporanPenjualanViewClick;
+         _view.OnLaporanPembelianViewClick += _view_OnLaporanPembelianViewClick;
       }
 
       private void _view_OnTipeViewClick(object sender, MainViewEventArgs e)
@@ -124,6 +125,12 @@ namespace RumahScarlett.Presentation.Presenters
       private void _view_OnLaporanPenjualanViewClick(object sender, MainViewEventArgs e)
       {
          var view = (DockContent)new LaporanPenjualanPresenter().GetView;
+         ShowChildForm(view, e);
+      }
+
+      private void _view_OnLaporanPembelianViewClick(object sender, MainViewEventArgs e)
+      {
+         var view = (DockContent)new LaporanPembelianPresenter().GetView;
          ShowChildForm(view, e);
       }
 

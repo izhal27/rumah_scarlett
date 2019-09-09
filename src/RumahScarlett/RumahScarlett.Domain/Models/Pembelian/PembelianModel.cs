@@ -18,6 +18,14 @@ namespace RumahScarlett.Domain.Models.Pembelian
       [Display(Name = "ID")]
       public uint id { get; set; }
 
+      //[Range(typeof(DateTime), "1945/08/17", "9999/01/01", ErrorMessage = "Minimal Tanggal 1945/08/17 !!!")]
+      [Display(Name = "Tanggal")]
+      public DateTime tanggal { get; set; }
+
+      [StringLength(255, ErrorMessage = "Panjang maksimal No Nota 255 karakter !!!")]
+      [Display(Name = "No Nota")]
+      public string no_nota { get; set; }
+
       [Browsable(false)]
       [Dp.Write(false)]
       public ISupplierModel Supplier { get; set; }
@@ -37,13 +45,21 @@ namespace RumahScarlett.Domain.Models.Pembelian
       [Display(Name = "Supplier")]
       public string supplier_nama { get { return Supplier != null ? Supplier.nama : string.Empty; } }
 
-      [StringLength(255, ErrorMessage = "Panjang maksimal No Nota 255 karakter !!!")]
-      [Display(Name = "No Nota")]
-      public string no_nota { get; set; }
-      
-      //[Range(typeof(DateTime), "1945/08/17", "9999/01/01", ErrorMessage = "Minimal Tanggal 1945/08/17 !!!")]
-      [Display(Name = "Tanggal")]
-      public DateTime tanggal { get; set; }
+      [DisplayFormat(DataFormatString = "{0:N0}")]
+      [Dp.Write(false)]
+      [Display(Name = "Grand Total")]
+      public decimal grand_total
+      {
+         get
+         {
+            if (PembelianDetails.ToList().Count > 0)
+            {
+               return PembelianDetails.Cast<PembelianDetailModel>().Sum(pd => pd.total);
+            }
+
+            return 0;
+         }
+      }
 
       [Browsable(false)]
       [Dp.Write(false)]

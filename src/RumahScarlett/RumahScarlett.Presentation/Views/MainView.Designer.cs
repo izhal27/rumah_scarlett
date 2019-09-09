@@ -282,6 +282,7 @@
          this.toolStripMenuItemLaporanPembelian.Name = "toolStripMenuItemLaporanPembelian";
          this.toolStripMenuItemLaporanPembelian.Size = new System.Drawing.Size(164, 22);
          this.toolStripMenuItemLaporanPembelian.Text = "Pem&belian";
+         this.toolStripMenuItemLaporanPembelian.Click += new System.EventHandler(this.toolStripMenuItemLaporanPembelian_Click);
          // 
          // toolStripMenuItemLaporanPengeluaran
          // 

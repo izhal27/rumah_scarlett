@@ -3,7 +3,7 @@ using Dapper.Contrib.Extensions;
 using RumahScarlett.CommonComponents;
 using RumahScarlett.Domain.Models.Barang;
 using RumahScarlett.Domain.Models.Pembelian;
-using RumahScarlett.Infrastructure.DataAccess.Repositories.Barang;
+using RumahScarlett.Domain.Models.Satuan;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -54,11 +54,18 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Pembelian
          {
             listPembelianDetails = listPembelianDetails.Map(pd =>
             {
-               var barang = _context.Conn.Get<BarangModel>(pd.barang_id);
+               var barangModel = _context.Conn.Get<BarangModel>(pd.barang_id);
 
-               if (barang != null)
+               if (barangModel != null)
                {
-                  pd.Barang = barang;
+                  pd.Barang = barangModel;
+
+                  var satuanModel = _context.Conn.Get<SatuanModel>(barangModel.satuan_id);
+
+                  if (satuanModel != null)
+                  {
+                     pd.Barang.Satuan = satuanModel;
+                  }
                }
                else
                {
