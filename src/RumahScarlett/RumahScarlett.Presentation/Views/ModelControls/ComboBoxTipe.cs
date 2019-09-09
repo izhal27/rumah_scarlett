@@ -22,6 +22,19 @@ namespace RumahScarlett.Presentation.Views.ModelControls
          get { return comboBox; }
       }
 
+      public uint GetSelectedID
+      {
+         get
+         {
+            return comboBox.SelectedIndex != -1 ? ((ITipeModel)comboBox.SelectedItem).id : default(uint);
+         }
+      }
+
+      public ITipeModel GetModel(object id)
+      {
+         return comboBox.Items.Cast<ITipeModel>().Where(t => t.id == (uint)id).FirstOrDefault();
+      }
+
       public ComboBoxTipe()
       {
          InitializeComponent();

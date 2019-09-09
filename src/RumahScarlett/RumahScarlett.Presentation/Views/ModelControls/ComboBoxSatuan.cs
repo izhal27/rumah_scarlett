@@ -1,6 +1,5 @@
 ﻿using RumahScarlett.Domain.Models.Satuan;
 using RumahScarlett.Infrastructure.DataAccess.Repositories.Satuan;
-using RumahScarlett.Presentation.Helper;
 using RumahScarlett.Services.Services;
 using RumahScarlett.Services.Services.Satuan;
 using System;
@@ -24,6 +23,19 @@ namespace RumahScarlett.Presentation.Views.ModelControls
       public ComboBox ComboBox
       {
          get { return comboBox; }
+      }
+
+      public uint GetSelectedID
+      {
+         get
+         {
+            return comboBox.SelectedIndex != -1 ? ((ISatuanModel)comboBox.SelectedItem).id : default(uint);
+         }
+      }
+
+      public ISatuanModel GetModel(object id)
+      {
+         return comboBox.Items.Cast<ISatuanModel>().Where(s => s.id == (uint)id).FirstOrDefault();
       }
 
       public ComboBoxSatuan()
