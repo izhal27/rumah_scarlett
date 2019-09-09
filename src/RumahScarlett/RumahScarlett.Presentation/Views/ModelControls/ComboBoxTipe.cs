@@ -17,7 +17,7 @@ namespace RumahScarlett.Presentation.Views.ModelControls
       private ITipeServices _services;
       private List<ITipeModel> _listTipes;
 
-      public ComboBox CombBox
+      public ComboBox ComboBox
       {
          get { return comboBox; }
       }
