@@ -1,6 +1,5 @@
 ﻿using RumahScarlett.Domain.Models.Supplier;
 using RumahScarlett.Infrastructure.DataAccess.Repositories.Supplier;
-using RumahScarlett.Presentation.Helper;
 using RumahScarlett.Services.Services;
 using RumahScarlett.Services.Services.Supplier;
 using System;
@@ -36,8 +35,9 @@ namespace RumahScarlett.Presentation.Views.ModelControls
 
          if (_listSuppliers != null && _listSuppliers.Count > 0)
          {
-            var supplierKVP = _listSuppliers.Select(s => new KeyValuePair<object, string>(s.id, s.nama)).ToList();
-            comboBox.SetDataSource(supplierKVP, false);
+            comboBox.Items.AddRange(_listSuppliers.ToArray());
+            comboBox.DisplayMember = "nama";
+            comboBox.SelectedIndex = 0;
          }
       }
    }
