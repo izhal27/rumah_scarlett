@@ -76,7 +76,7 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Pengeluaran
 
          using (var context = new DbContext())
          {
-            return context.Conn.Query<PengeluaranModel>(StringHelper.QueryStringByDate("pengeluaran"), new { date });
+            return context.Conn.Query<PengeluaranModel>(StringHelper.QueryStringByDate(_modelName), new { date });
          }
       }
 
@@ -86,7 +86,7 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Pengeluaran
 
          using (var context = new DbContext())
          {
-            return context.Conn.Query<PengeluaranModel>(StringHelper.QueryStringByBetweenDate("pengeluaran"), new { startDate, endDate });
+            return context.Conn.Query<PengeluaranModel>(StringHelper.QueryStringByBetweenDate(_modelName), new { startDate, endDate });
          }
       }
 
