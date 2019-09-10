@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
@@ -9,9 +10,10 @@ namespace RumahScarlett.Domain.Models.Laporan
 {
    public class LaporanStatusBarangModel : ILaporanStatusBarangModel
    {
-      [Display(Name = "Tanggal")]
-      public DateTime tanggal { get; set; }
-
+      [Browsable(false)]
+      [Display(Name = "ID Barang")]
+      public uint id { get; set; }
+      
       [Display(Name = "Kode Barang")]
       public string barang_kode { get; set; }
 

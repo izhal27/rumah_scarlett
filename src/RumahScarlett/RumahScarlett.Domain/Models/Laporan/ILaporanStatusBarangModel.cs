@@ -8,7 +8,7 @@ namespace RumahScarlett.Domain.Models.Laporan
 {
    public interface ILaporanStatusBarangModel
    {
-      DateTime tanggal { get; set; }
+      uint id { get; set; }
       string barang_kode { get; set; }
       string barang_nama { get; set; }
       int stok_masuk { get; set; }
