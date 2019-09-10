@@ -1,8 +1,8 @@
-﻿using RumahScarlett.CommonComponents;
-using RumahScarlett.Presentation.Helper;
+﻿using RumahScarlett.Presentation.Helper;
 using RumahScarlett.Presentation.Presenters.Barang;
 using RumahScarlett.Presentation.Presenters.HutangOperasional;
 using RumahScarlett.Presentation.Presenters.KasAwal;
+using RumahScarlett.Presentation.Presenters.Laporan;
 using RumahScarlett.Presentation.Presenters.Pelanggan;
 using RumahScarlett.Presentation.Presenters.Pembelian;
 using RumahScarlett.Presentation.Presenters.Pengeluaran;
@@ -50,6 +50,7 @@ namespace RumahScarlett.Presentation.Presenters
          _view.OnLaporanPenjualanViewClick += _view_OnLaporanPenjualanViewClick;
          _view.OnLaporanPembelianViewClick += _view_OnLaporanPembelianViewClick;
          _view.OnLaporanPengeluaranViewClick += _view_OnLaporanPengeluaranViewClick;
+         _view.OnLaporanTransaksiByDateClick += _view_OnLaporanTransaksiByDateClick;
       }
 
       private void _view_OnTipeViewClick(object sender, MainViewEventArgs e)
@@ -139,6 +140,12 @@ namespace RumahScarlett.Presentation.Presenters
       {
          var view = (DockContent)new LaporanPengeluaranPresenter().GetView;
          ShowChildForm(view, e);
+      }
+
+      private void _view_OnLaporanTransaksiByDateClick(object sender, EventArgs e)
+      {
+         var view = (Form)new LaporanTransaksiByDatePresenter().GetView;
+         view.ShowDialog();
       }
 
       /// <summary>

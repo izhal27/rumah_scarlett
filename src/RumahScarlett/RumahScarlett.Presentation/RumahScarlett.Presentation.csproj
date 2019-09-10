@@ -114,6 +114,8 @@
     <Compile Include="Presenters\IMainPresenter.cs" />
     <Compile Include="Presenters\KasAwal\IKasAwalPresenter.cs" />
     <Compile Include="Presenters\KasAwal\KasAwalPresenter.cs" />
+    <Compile Include="Presenters\Laporan\ILaporanTransaksiByDatePresenter.cs" />
+    <Compile Include="Presenters\Laporan\LaporanTransaksiByDatePresenter.cs" />
     <Compile Include="Presenters\MainPresenter.cs" />
     <Compile Include="Presenters\Pelanggan\IPelangganPresenter.cs" />
     <Compile Include="Presenters\Pelanggan\PelangganPresenter.cs" />
@@ -265,6 +267,13 @@
     </Compile>
     <Compile Include="Views\KasAwal\KasAwalView.Designer.cs">
       <DependentUpon>KasAwalView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Laporan\ILaporanTransaksiByDateView.cs" />
+    <Compile Include="Views\Laporan\LaporanTransaksiByDateView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Laporan\LaporanTransaksiByDateView.Designer.cs">
+      <DependentUpon>LaporanTransaksiByDateView.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\MainView.cs">
       <SubType>Form</SubType>
@@ -521,6 +530,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\KasAwal\KasAwalView.resx">
       <DependentUpon>KasAwalView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Laporan\LaporanTransaksiByDateView.resx">
+      <DependentUpon>LaporanTransaksiByDateView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\MainView.resx">
       <DependentUpon>MainView.cs</DependentUpon>

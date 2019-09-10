@@ -21,6 +21,7 @@ namespace RumahScarlett.Presentation.Views.CommonControls
       public PanelUp()
       {
          InitializeComponent();
+         TabStop = false;
       }
    }
 }

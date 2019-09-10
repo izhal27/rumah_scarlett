@@ -1,13 +1,4 @@
-﻿using RumahScarlett.CommonComponents;
-using RumahScarlett.Presentation.Helper;
-using RumahScarlett.Presentation.Presenters.Barang;
-using RumahScarlett.Presentation.Presenters.HutangOperasional;
-using RumahScarlett.Presentation.Presenters.KasAwal;
-using RumahScarlett.Presentation.Presenters.Pelanggan;
-using RumahScarlett.Presentation.Presenters.Satuan;
-using RumahScarlett.Presentation.Presenters.Supplier;
-using RumahScarlett.Presentation.Presenters.Tipe;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -40,6 +31,7 @@ namespace RumahScarlett.Presentation.Views
       public event EventHandler<MainViewEventArgs> OnLaporanPenjualanViewClick;
       public event EventHandler<MainViewEventArgs> OnLaporanPembelianViewClick;
       public event EventHandler<MainViewEventArgs> OnLaporanPengeluaranViewClick;
+      public event EventHandler OnLaporanTransaksiByDateClick;
 
       public MainView()
       {
@@ -69,7 +61,7 @@ namespace RumahScarlett.Presentation.Views
       {
          OnTipeViewClick?.Invoke(sender, _eventArgs);
       }
-      
+
       private void toolStripMenuItemSubTipe_Click(object sender, EventArgs e)
       {
          OnSubTipeViewClick?.Invoke(sender, _eventArgs);
@@ -79,7 +71,7 @@ namespace RumahScarlett.Presentation.Views
       {
          OnSupplierViewClick?.Invoke(sender, _eventArgs);
       }
-      
+
       private void toolStripMenuItemBarang_Click(object sender, EventArgs e)
       {
          OnBarangViewClick?.Invoke(sender, _eventArgs);
@@ -109,7 +101,7 @@ namespace RumahScarlett.Presentation.Views
       {
          OnHutangOperasionalViewClick?.Invoke(sender, _eventArgs);
       }
-      
+
       private void toolStripMenuItemKasAwal_Click(object sender, EventArgs e)
       {
          OnKasAwalViewClick?.Invoke(sender, e);
@@ -129,7 +121,7 @@ namespace RumahScarlett.Presentation.Views
       {
          OnPembelianViewClick?.Invoke(sender, _eventArgs);
       }
-      
+
       private void toolStripButtonPembelian_Click(object sender, EventArgs e)
       {
          toolStripMenuItemPembelian_Click(sender, e);
@@ -154,11 +146,16 @@ namespace RumahScarlett.Presentation.Views
       {
          OnLaporanPengeluaranViewClick?.Invoke(sender, _eventArgs);
       }
+
+      private void toolStripMenuItemTransaksiByDate_Click(object sender, EventArgs e)
+      {
+         OnLaporanTransaksiByDateClick?.Invoke(sender, e);
+      }
    }
 
    public class MainViewEventArgs : EventArgs
    {
-      public DockPanel DockPanel { get; private set; }
+      public DockPanel DockPanel { get; }
 
       public MainViewEventArgs(DockPanel dockPanel)
       {

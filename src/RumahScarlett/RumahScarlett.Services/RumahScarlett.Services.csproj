@@ -62,6 +62,9 @@
     <Compile Include="Services\KasAwal\IKasAwalRepository.cs" />
     <Compile Include="Services\KasAwal\IKasAwalServices.cs" />
     <Compile Include="Services\KasAwal\KasAwalServices.cs" />
+    <Compile Include="Services\Laporan\ILaporanTransaksiByDateRepository.cs" />
+    <Compile Include="Services\Laporan\ILaporanTransaksiByDateServices.cs" />
+    <Compile Include="Services\Laporan\LaporanTransaksiByDateServices.cs" />
     <Compile Include="Services\Pelanggan\IPelangganRepository.cs" />
     <Compile Include="Services\Pelanggan\IPelangganServices.cs" />
     <Compile Include="Services\Pelanggan\PelangganServices.cs" />
