@@ -22,9 +22,11 @@ namespace RumahScarlett.Presentation.Views.Pembelian
 
          panelUp.LabelInfo = Text.ToUpper();
 
-         textBoxTotalItem.Text = listPembelianDetails.Count.ToString("N0");
-         textBoxTotalQty.Text = listPembelianDetails.Sum(pd => pd.qty).ToString("N0");
-         textBoxGrandTotal.Text = listPembelianDetails.Sum(pd => pd.total).ToString("N0");
+         var listPembelianFixed = listPembelianDetails.Where(pd => pd.Barang.id != default(uint)).ToList();
+
+         textBoxTotalItem.Text = listPembelianFixed.Count.ToString("N0");
+         textBoxTotalQty.Text = listPembelianFixed.Sum(pd => pd.qty).ToString("N0");
+         textBoxGrandTotal.Text = listPembelianFixed.Sum(pd => pd.total).ToString("N0");
       }
 
       private void SimpanPembelianEntryView_Load(object sender, EventArgs e)
