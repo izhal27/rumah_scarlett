@@ -25,9 +25,12 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Laporan
          {
             var queryStr = "SELECT b.id, b.kode AS barang_kode, b.nama AS barang_nama, " +
                            "IFNULL((SELECT SUM(pbd.qty) FROM pembelian pb INNER JOIN pembelian_detail pbd ON " +
-                           "pb.id = pbd.pembelian_id WHERE pbd.barang_id = b.id AND DATE(pb.tanggal)=@date), 0) AS stok_masuk, " +
+                           "pb.id = pbd.pembelian_id WHERE pbd.barang_id = b.id AND DATE(pb.tanggal) = @date), 0) AS stok_masuk, " +
                            "IFNULL((SELECT SUM(pjd.qty) FROM penjualan pj INNER JOIN penjualan_detail pjd ON pj.id = pjd.penjualan_id " +
-                           "WHERE pjd.barang_id = b.id AND DATE(pj.tanggal)=@date), 0) AS stok_keluar FROM barang b ORDER BY id";
+                           "WHERE pjd.barang_id=b.id AND DATE(pj.tanggal) = @date), 0) AS stok_keluar, " +
+                           "IFNULL((SELECT SUM(ps.qty) FROM penyesuaian_stok ps WHERE ps.barang_id = b.id AND " +
+                           "DATE(tanggal) = @date) ,0) AS penyesuaian_stok " +
+                           "FROM barang b ORDER BY id";
             
             return context.Conn.Query<LaporanStatusBarangModel>(queryStr, new { date });
          }
@@ -39,9 +42,14 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Laporan
          {
             var queryStr = "SELECT b.id, b.kode AS barang_kode, b.nama AS barang_nama, " +
                            "IFNULL((SELECT SUM(pbd.qty) FROM pembelian pb INNER JOIN pembelian_detail pbd ON " +
-                           "pb.id = pbd.pembelian_id WHERE pbd.barang_id = b.id AND (DATE(pb.tanggal) >= @startDate AND DATE(pb.tanggal) <= @endDate)), 0) AS stok_masuk, " +
+                           "pb.id = pbd.pembelian_id WHERE pbd.barang_id = b.id AND (DATE(pb.tanggal) >= @startDate AND " +
+                           "DATE(pb.tanggal) <= @endDate)), 0) AS stok_masuk, " +
                            "IFNULL((SELECT SUM(pjd.qty) FROM penjualan pj INNER JOIN penjualan_detail pjd ON pj.id = pjd.penjualan_id " +
-                           "WHERE pjd.barang_id = b.id AND (DATE(pj.tanggal) >= @startDate AND DATE(pj.tanggal) <= @endDate)), 0) AS stok_keluar FROM barang b ORDER BY id";
+                           "WHERE pjd.barang_id = b.id AND (DATE(pj.tanggal) >= @startDate AND " +
+                           "DATE(pj.tanggal) <= @endDate)), 0) AS stok_keluar, " +
+                           "IFNULL((SELECT SUM(ps.qty) FROM penyesuaian_stok ps WHERE ps.barang_id = b.id AND " +
+                           "(DATE(ps.tanggal) >= @startDate AND DATE(ps.tanggal) <= @endDate)) ,0) AS penyesuaian_stok " +
+                           "FROM barang b ORDER BY id";
 
             return context.Conn.Query<LaporanStatusBarangModel>(queryStr, new { startDate, endDate });
          }

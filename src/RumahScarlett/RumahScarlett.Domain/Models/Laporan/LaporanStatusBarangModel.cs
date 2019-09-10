@@ -13,7 +13,7 @@ namespace RumahScarlett.Domain.Models.Laporan
       [Browsable(false)]
       [Display(Name = "ID Barang")]
       public uint id { get; set; }
-      
+
       [Display(Name = "Kode Barang")]
       public string barang_kode { get; set; }
 
@@ -21,11 +21,15 @@ namespace RumahScarlett.Domain.Models.Laporan
       public string barang_nama { get; set; }
 
       [DisplayFormat(DataFormatString = "{0:N0}")]
-      [Display(Name = "Stok Masuk")]
+      [Display(Name = "Total Stok Masuk")]
       public int stok_masuk { get; set; }
 
       [DisplayFormat(DataFormatString = "{0:N0}")]
-      [Display(Name = "Stok Keluar")]
+      [Display(Name = "Total Stok Keluar")]
       public int stok_keluar { get; set; }
+
+      [DisplayFormat(DataFormatString = "{0:N0}")]
+      [Display(Name = "Total Penyesuaian Stok")]
+      public int penyesuaian_stok { get; set; }
    }
 }

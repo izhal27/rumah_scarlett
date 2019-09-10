@@ -13,5 +13,6 @@ namespace RumahScarlett.Domain.Models.Laporan
       string barang_nama { get; set; }
       int stok_masuk { get; set; }
       int stok_keluar { get; set; }
+      int penyesuaian_stok { get; set; }
    }
 }
