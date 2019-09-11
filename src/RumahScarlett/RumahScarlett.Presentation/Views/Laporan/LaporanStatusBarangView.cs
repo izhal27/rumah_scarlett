@@ -26,16 +26,21 @@ namespace RumahScarlett.Presentation.Views.Laporan
          get { return labelStokAwal; }
       }
 
-      public Label LabelStokAkhir
-      {
-         get { return labelStokAkhir; }
-      }
-      
       public Label LabelStokMasuk
       {
          get { return labelStokMasuk; }
       }
 
+      public Label LabelStokKeluar
+      {
+         get { return labelStokKeluar; }
+      }
+      
+      public Label LabelStokAkhir
+      {
+         get { return labelStokAkhir; }
+      }
+      
       public LaporanStatusBarangView()
       {
          InitializeComponent();
@@ -56,6 +61,11 @@ namespace RumahScarlett.Presentation.Views.Laporan
       private void dateTimePickerTanggal_ValueChanged(object sender, EventArgs e)
       {
          OnDateTimePickerTanggalValueChanged?.Invoke(sender, e);
+      }
+
+      public void ShowView()
+      {
+         ShowDialog();
       }
    }
 }

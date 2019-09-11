@@ -51,6 +51,7 @@ namespace RumahScarlett.Presentation.Presenters
          _view.OnLaporanPembelianViewClick += _view_OnLaporanPembelianViewClick;
          _view.OnLaporanPengeluaranViewClick += _view_OnLaporanPengeluaranViewClick;
          _view.OnLaporanTransaksiByDateClick += _view_OnLaporanTransaksiByDateClick;
+         _view.OnLaporanStatusBarangClick += _view_OnLaporanStatusBarangClick;
       }
 
       private void _view_OnTipeViewClick(object sender, MainViewEventArgs e)
@@ -89,9 +90,12 @@ namespace RumahScarlett.Presentation.Presenters
          ShowChildForm(view, e);
       }
 
-      private void _view_OnKasAwalViewClick(object sender,EventArgs e)
+      private void _view_OnKasAwalViewClick(object sender, EventArgs e)
       {
-         new KasAwalPresenter().GetView.ShowView();
+         using (new WaitCursorHandler())
+         {
+            new KasAwalPresenter().GetView.ShowView();
+         }
       }
 
       private void _view_OnHutangOperasionalViewClick(object sender, MainViewEventArgs e)
@@ -99,7 +103,7 @@ namespace RumahScarlett.Presentation.Presenters
          var view = (DockContent)new HutangOperasionalPresenter().GetView;
          ShowChildForm(view, e);
       }
-      
+
       private void _view_OnPenjualanViewClick(object sender, MainViewEventArgs e)
       {
          var view = (DockContent)new PenjualanPresenter().GetView;
@@ -111,7 +115,7 @@ namespace RumahScarlett.Presentation.Presenters
          var view = (DockContent)new PembelianPresenter().GetView;
          ShowChildForm(view, e);
       }
-      
+
       private void _view_OnPengeluaranViewClick(object sender, MainViewEventArgs e)
       {
          var view = (DockContent)new PengeluaranPresenter().GetView;
@@ -144,10 +148,21 @@ namespace RumahScarlett.Presentation.Presenters
 
       private void _view_OnLaporanTransaksiByDateClick(object sender, EventArgs e)
       {
-         var view = (Form)new LaporanTransaksiByDatePresenter().GetView;
-         view.ShowDialog();
+         using (new WaitCursorHandler())
+         {
+            var view = (Form)new LaporanTransaksiByDatePresenter().GetView;
+            view.ShowDialog();
+         }
       }
-      
+
+      private void _view_OnLaporanStatusBarangClick(object sender, EventArgs e)
+      {
+         using (new WaitCursorHandler())
+         {
+            new LaporanStatusBarangPresenter().GetView.ShowView();
+         }
+      }
+
       /// <summary>
       /// Method untuk menampilkan Form child
       /// </summary>

@@ -114,7 +114,9 @@
     <Compile Include="Presenters\IMainPresenter.cs" />
     <Compile Include="Presenters\KasAwal\IKasAwalPresenter.cs" />
     <Compile Include="Presenters\KasAwal\KasAwalPresenter.cs" />
+    <Compile Include="Presenters\Laporan\ILaporanStatusBarangPresenter.cs" />
     <Compile Include="Presenters\Laporan\ILaporanTransaksiByDatePresenter.cs" />
+    <Compile Include="Presenters\Laporan\LaporanStatusBarangPresenter.cs" />
     <Compile Include="Presenters\Laporan\LaporanTransaksiByDatePresenter.cs" />
     <Compile Include="Presenters\MainPresenter.cs" />
     <Compile Include="Presenters\Pelanggan\IPelangganPresenter.cs" />

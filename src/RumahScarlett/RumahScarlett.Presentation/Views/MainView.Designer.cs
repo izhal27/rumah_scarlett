@@ -70,6 +70,7 @@
          this.toolStripButtonBarang = new System.Windows.Forms.ToolStripButton();
          this.toolStripButtonPembelian = new System.Windows.Forms.ToolStripButton();
          this.toolStripButtonPenjualan = new System.Windows.Forms.ToolStripButton();
+         this.toolStripMenuItemStatusBarang = new System.Windows.Forms.ToolStripMenuItem();
          this.statusStrip.SuspendLayout();
          this.menuStripMain.SuspendLayout();
          this.toolStripMain.SuspendLayout();
@@ -267,7 +268,8 @@
             this.toolStripMenuItemLaporanPengeluaran,
             this.toolStripSeparator2,
             this.toolStripMenuItemTransaksiByDate,
-            this.toolStripSeparator4});
+            this.toolStripSeparator4,
+            this.toolStripMenuItemStatusBarang});
          this.toolStripMenuItemLaporan.Name = "toolStripMenuItemLaporan";
          this.toolStripMenuItemLaporan.Size = new System.Drawing.Size(62, 20);
          this.toolStripMenuItemLaporan.Text = "&Laporan";
@@ -398,6 +400,13 @@
          this.toolStripButtonPenjualan.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
          this.toolStripButtonPenjualan.Click += new System.EventHandler(this.toolStripButtonPenjualan_Click);
          // 
+         // toolStripMenuItemStatusBarang
+         // 
+         this.toolStripMenuItemStatusBarang.Name = "toolStripMenuItemStatusBarang";
+         this.toolStripMenuItemStatusBarang.Size = new System.Drawing.Size(152, 22);
+         this.toolStripMenuItemStatusBarang.Text = "&Status Barang";
+         this.toolStripMenuItemStatusBarang.Click += new System.EventHandler(this.toolStripMenuItemStatusBarang_Click);
+         // 
          // MainView
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -464,6 +473,7 @@
       private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
       private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
       private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+      private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemStatusBarang;
    }
 }
 
