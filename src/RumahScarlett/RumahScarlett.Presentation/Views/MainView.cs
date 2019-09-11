@@ -32,7 +32,6 @@ namespace RumahScarlett.Presentation.Views
       public event EventHandler<MainViewEventArgs> OnLaporanPembelianViewClick;
       public event EventHandler<MainViewEventArgs> OnLaporanPengeluaranViewClick;
       public event EventHandler OnLaporanTransaksiByDateClick;
-      public event EventHandler<MainViewEventArgs> OnLaporanStatusBarangViewClick;
 
       public MainView()
       {
@@ -151,12 +150,7 @@ namespace RumahScarlett.Presentation.Views
       private void toolStripMenuItemTransaksiByDate_Click(object sender, EventArgs e)
       {
          OnLaporanTransaksiByDateClick?.Invoke(sender, e);
-      }
-
-      private void toolStripMenuItemStatusBarang_Click(object sender, EventArgs e)
-      {
-         OnLaporanStatusBarangViewClick?.Invoke(sender, _eventArgs);
-      }
+      }      
    }
 
    public class MainViewEventArgs : EventArgs

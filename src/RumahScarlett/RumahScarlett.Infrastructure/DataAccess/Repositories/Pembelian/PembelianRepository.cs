@@ -2,6 +2,7 @@
 using Dapper.Contrib.Extensions;
 using RumahScarlett.CommonComponents;
 using RumahScarlett.Domain.Models.Barang;
+using RumahScarlett.Domain.Models.Laporan;
 using RumahScarlett.Domain.Models.Pembelian;
 using RumahScarlett.Domain.Models.Supplier;
 using RumahScarlett.Infrastructure.DataAccess.CommonRepositories;
@@ -69,9 +70,21 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Pembelian
 
                   var pdRepo = new PembelianDetailRepository(context);
 
+                  var laporanStatusBarangModel = new StatusBarangModel();
+
+                  queryStr = "SELECT SUM(stok) FROM barang";
+                  var stokAwal = context.Conn.ExecuteScalar<int>(queryStr);
+
+                  laporanStatusBarangModel.stok_awal = stokAwal;
+                  laporanStatusBarangModel.tanggal = model.tanggal;
+                  laporanStatusBarangModel.Pembelian = model;                  
+
+                  context.Conn.Insert(laporanStatusBarangModel, context.Transaction);
+
                   foreach (var pd in model.PembelianDetails)
                   {
                      pdRepo.Insert(pd, context.Transaction);
+                     
                      pd.Barang.stok += pd.qty;
 
                      if (pd.hpp > 0)
@@ -180,7 +193,13 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Pembelian
 
       public IPembelianModel GetById(object id)
       {
-         throw new NotImplementedException();
+         var dataAccessStatus = new DataAccessStatus();
+
+         using (var context = new DbContext())
+         {
+            return GetBy(() => context.Conn.Get<PembelianModel>(id), dataAccessStatus,
+                        () => CheckModelExist(context, id));
+         }
       }
 
       private bool CheckModelExist(DbContext context, object id)

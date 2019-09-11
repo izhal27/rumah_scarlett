@@ -102,7 +102,7 @@
     <Compile Include="KasAwal\KasAwalServicesDataAccessTests.cs" />
     <Compile Include="KasAwal\KasAwalServicesFixture.cs" />
     <Compile Include="KasAwal\KasAwalServicesValidationTests.cs" />
-    <Compile Include="Laporan\LaporanStatusBarangServicesDataAccessTests.cs" />
+    <Compile Include="Laporan\StatusBarangServicesDataAccessTests.cs" />
     <Compile Include="Laporan\LaporanTransaksiByDateServicesDataAccessTests.cs" />
     <Compile Include="Pelanggan\PelangganServicesDataAccessTests.cs" />
     <Compile Include="Pelanggan\PelangganServicesFixture.cs" />

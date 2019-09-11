@@ -7,9 +7,8 @@ using System.Threading.Tasks;
 
 namespace RumahScarlett.Services.Services.Laporan
 {
-   public interface ILaporanStatusBarangServices
+   public interface IStatusBarangRepository
    {
-      IEnumerable<ILaporanStatusBarangModel> GetByDate(object date);
-      IEnumerable<ILaporanStatusBarangModel> GetByDate(object startDate, object endDate);
+      IStatusBarangModel GetByDate(object date);
    }
 }

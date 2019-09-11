@@ -51,7 +51,7 @@ namespace RumahScarlett.Services.Services.Pembelian
 
       public IPembelianModel GetById(object id)
       {
-         throw new NotImplementedException();
+         return _repo.GetById(id);
       }
 
       public void ValidateModel(IPembelianModel model)

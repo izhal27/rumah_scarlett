@@ -60,6 +60,7 @@
          this.toolStripMenuItemLaporanPengeluaran = new System.Windows.Forms.ToolStripMenuItem();
          this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
          this.toolStripMenuItemTransaksiByDate = new System.Windows.Forms.ToolStripMenuItem();
+         this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
          this.toolStripMenuItemDatabase = new System.Windows.Forms.ToolStripMenuItem();
          this.toolStripMenuItemBackupDatabase = new System.Windows.Forms.ToolStripMenuItem();
          this.toolStripMenuItemRestoreDatabase = new System.Windows.Forms.ToolStripMenuItem();
@@ -69,8 +70,6 @@
          this.toolStripButtonBarang = new System.Windows.Forms.ToolStripButton();
          this.toolStripButtonPembelian = new System.Windows.Forms.ToolStripButton();
          this.toolStripButtonPenjualan = new System.Windows.Forms.ToolStripButton();
-         this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-         this.toolStripMenuItemStatusBarang = new System.Windows.Forms.ToolStripMenuItem();
          this.statusStrip.SuspendLayout();
          this.menuStripMain.SuspendLayout();
          this.toolStripMain.SuspendLayout();
@@ -230,33 +229,33 @@
          // toolStripMenuItemKasAwal
          // 
          this.toolStripMenuItemKasAwal.Name = "toolStripMenuItemKasAwal";
-         this.toolStripMenuItemKasAwal.Size = new System.Drawing.Size(152, 22);
+         this.toolStripMenuItemKasAwal.Size = new System.Drawing.Size(140, 22);
          this.toolStripMenuItemKasAwal.Text = "&Kas Awal";
          this.toolStripMenuItemKasAwal.Click += new System.EventHandler(this.toolStripMenuItemKasAwal_Click);
          // 
          // toolStripSeparator1
          // 
          this.toolStripSeparator1.Name = "toolStripSeparator1";
-         this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
+         this.toolStripSeparator1.Size = new System.Drawing.Size(137, 6);
          // 
          // toolStripMenuItemPenjualan
          // 
          this.toolStripMenuItemPenjualan.Name = "toolStripMenuItemPenjualan";
-         this.toolStripMenuItemPenjualan.Size = new System.Drawing.Size(152, 22);
+         this.toolStripMenuItemPenjualan.Size = new System.Drawing.Size(140, 22);
          this.toolStripMenuItemPenjualan.Text = "&Penjualan";
          this.toolStripMenuItemPenjualan.Click += new System.EventHandler(this.toolStripMenuItemPenjualan_Click);
          // 
          // toolStripMenuItemPembelian
          // 
          this.toolStripMenuItemPembelian.Name = "toolStripMenuItemPembelian";
-         this.toolStripMenuItemPembelian.Size = new System.Drawing.Size(152, 22);
+         this.toolStripMenuItemPembelian.Size = new System.Drawing.Size(140, 22);
          this.toolStripMenuItemPembelian.Text = "Pem&belian";
          this.toolStripMenuItemPembelian.Click += new System.EventHandler(this.toolStripMenuItemPembelian_Click);
          // 
          // toolStripMenuItemPengeluaran
          // 
          this.toolStripMenuItemPengeluaran.Name = "toolStripMenuItemPengeluaran";
-         this.toolStripMenuItemPengeluaran.Size = new System.Drawing.Size(152, 22);
+         this.toolStripMenuItemPengeluaran.Size = new System.Drawing.Size(140, 22);
          this.toolStripMenuItemPengeluaran.Text = "Penge&luaran";
          this.toolStripMenuItemPengeluaran.Click += new System.EventHandler(this.toolStripMenuItemPengeluaran_Click);
          // 
@@ -268,8 +267,7 @@
             this.toolStripMenuItemLaporanPengeluaran,
             this.toolStripSeparator2,
             this.toolStripMenuItemTransaksiByDate,
-            this.toolStripSeparator4,
-            this.toolStripMenuItemStatusBarang});
+            this.toolStripSeparator4});
          this.toolStripMenuItemLaporan.Name = "toolStripMenuItemLaporan";
          this.toolStripMenuItemLaporan.Size = new System.Drawing.Size(62, 20);
          this.toolStripMenuItemLaporan.Text = "&Laporan";
@@ -306,6 +304,11 @@
          this.toolStripMenuItemTransaksiByDate.Size = new System.Drawing.Size(152, 22);
          this.toolStripMenuItemTransaksiByDate.Text = "&Transaksi";
          this.toolStripMenuItemTransaksiByDate.Click += new System.EventHandler(this.toolStripMenuItemTransaksiByDate_Click);
+         // 
+         // toolStripSeparator4
+         // 
+         this.toolStripSeparator4.Name = "toolStripSeparator4";
+         this.toolStripSeparator4.Size = new System.Drawing.Size(149, 6);
          // 
          // toolStripMenuItemDatabase
          // 
@@ -395,18 +398,6 @@
          this.toolStripButtonPenjualan.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
          this.toolStripButtonPenjualan.Click += new System.EventHandler(this.toolStripButtonPenjualan_Click);
          // 
-         // toolStripSeparator4
-         // 
-         this.toolStripSeparator4.Name = "toolStripSeparator4";
-         this.toolStripSeparator4.Size = new System.Drawing.Size(149, 6);
-         // 
-         // toolStripMenuItemStatusBarang
-         // 
-         this.toolStripMenuItemStatusBarang.Name = "toolStripMenuItemStatusBarang";
-         this.toolStripMenuItemStatusBarang.Size = new System.Drawing.Size(152, 22);
-         this.toolStripMenuItemStatusBarang.Text = "&Status Barang";
-         this.toolStripMenuItemStatusBarang.Click += new System.EventHandler(this.toolStripMenuItemStatusBarang_Click);
-         // 
          // MainView
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -473,7 +464,6 @@
       private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
       private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
       private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
-      private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemStatusBarang;
    }
 }
 

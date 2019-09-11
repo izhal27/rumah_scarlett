@@ -2,6 +2,7 @@
 using Dapper.Contrib.Extensions;
 using RumahScarlett.CommonComponents;
 using RumahScarlett.Domain.Models.Barang;
+using RumahScarlett.Domain.Models.Laporan;
 using RumahScarlett.Domain.Models.Pelanggan;
 using RumahScarlett.Domain.Models.Penjualan;
 using RumahScarlett.Infrastructure.DataAccess.CommonRepositories;
@@ -86,6 +87,17 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Penjualan
                   else
                   {
                      var pdRepo = new PenjualanDetailRepository(context);
+
+                     var laporanStatusBarangModel = new StatusBarangModel();
+
+                     queryStr = "SELECT SUM(stok) FROM barang";
+                     var stokAwal = context.Conn.ExecuteScalar<int>(queryStr);
+
+                     laporanStatusBarangModel.stok_awal = stokAwal;
+                     laporanStatusBarangModel.tanggal = model.tanggal;
+                     laporanStatusBarangModel.Penjualan = model;
+
+                     context.Conn.Insert(laporanStatusBarangModel, context.Transaction);
 
                      foreach (var pd in model.PenjualanDetails)
                      {

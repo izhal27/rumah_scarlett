@@ -62,11 +62,11 @@
     <Compile Include="Services\KasAwal\IKasAwalRepository.cs" />
     <Compile Include="Services\KasAwal\IKasAwalServices.cs" />
     <Compile Include="Services\KasAwal\KasAwalServices.cs" />
-    <Compile Include="Services\Laporan\ILaporanStatusBarangRepository.cs" />
-    <Compile Include="Services\Laporan\ILaporanStatusBarangServices.cs" />
+    <Compile Include="Services\Laporan\IStatusBarangRepository.cs" />
+    <Compile Include="Services\Laporan\IStatusBarangServices.cs" />
     <Compile Include="Services\Laporan\ILaporanTransaksiByDateRepository.cs" />
     <Compile Include="Services\Laporan\ILaporanTransaksiByDateServices.cs" />
-    <Compile Include="Services\Laporan\LaporanStatusBarangServices.cs" />
+    <Compile Include="Services\Laporan\StatusBarangServices.cs" />
     <Compile Include="Services\Laporan\LaporanTransaksiByDateServices.cs" />
     <Compile Include="Services\Pelanggan\IPelangganRepository.cs" />
     <Compile Include="Services\Pelanggan\IPelangganServices.cs" />
