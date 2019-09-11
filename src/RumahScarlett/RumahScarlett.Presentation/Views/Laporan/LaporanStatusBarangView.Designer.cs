@@ -29,7 +29,6 @@
       private void InitializeComponent()
       {
          System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LaporanStatusBarangView));
-         this.panelUp = new RumahScarlett.Presentation.Views.CommonControls.PanelUp();
          this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
          this.buttonCetak = new System.Windows.Forms.Button();
          this.buttonTutup = new System.Windows.Forms.Button();
@@ -40,7 +39,7 @@
          this.label7 = new System.Windows.Forms.Label();
          this.label8 = new System.Windows.Forms.Label();
          this.labelStokAwal = new System.Windows.Forms.Label();
-         this.labelStokKeluar = new System.Windows.Forms.Label();
+         this.labelStokTerjual = new System.Windows.Forms.Label();
          this.labelStokAkhir = new System.Windows.Forms.Label();
          this.label13 = new System.Windows.Forms.Label();
          this.label17 = new System.Windows.Forms.Label();
@@ -54,21 +53,15 @@
          this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
          this.label16 = new System.Windows.Forms.Label();
          this.groupBox1 = new System.Windows.Forms.GroupBox();
+         this.label4 = new System.Windows.Forms.Label();
+         this.label9 = new System.Windows.Forms.Label();
+         this.labelPenyesuaianStok = new System.Windows.Forms.Label();
+         this.panelUp = new RumahScarlett.Presentation.Views.CommonControls.PanelUp();
+         this.label12 = new System.Windows.Forms.Label();
          this.tableLayoutPanel2.SuspendLayout();
          this.tableLayoutPanel1.SuspendLayout();
          this.groupBox1.SuspendLayout();
          this.SuspendLayout();
-         // 
-         // panelUp
-         // 
-         this.panelUp.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-         this.panelUp.LabelInfo = "Info";
-         this.panelUp.Location = new System.Drawing.Point(12, 12);
-         this.panelUp.Name = "panelUp";
-         this.panelUp.Size = new System.Drawing.Size(280, 40);
-         this.panelUp.TabIndex = 108;
-         this.panelUp.TabStop = false;
          // 
          // tableLayoutPanel2
          // 
@@ -78,7 +71,7 @@
          this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
          this.tableLayoutPanel2.Controls.Add(this.buttonCetak, 0, 0);
          this.tableLayoutPanel2.Controls.Add(this.buttonTutup, 1, 0);
-         this.tableLayoutPanel2.Location = new System.Drawing.Point(121, 269);
+         this.tableLayoutPanel2.Location = new System.Drawing.Point(148, 299);
          this.tableLayoutPanel2.Name = "tableLayoutPanel2";
          this.tableLayoutPanel2.RowCount = 1;
          this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -123,7 +116,7 @@
          // 
          this.label2.Anchor = System.Windows.Forms.AnchorStyles.Left;
          this.label2.AutoSize = true;
-         this.label2.Location = new System.Drawing.Point(73, 8);
+         this.label2.Location = new System.Drawing.Point(102, 8);
          this.label2.Name = "label2";
          this.label2.Size = new System.Drawing.Size(10, 13);
          this.label2.TabIndex = 0;
@@ -145,27 +138,27 @@
          this.label6.AutoSize = true;
          this.label6.Location = new System.Drawing.Point(3, 95);
          this.label6.Name = "label6";
-         this.label6.Size = new System.Drawing.Size(62, 13);
+         this.label6.Size = new System.Drawing.Size(64, 13);
          this.label6.TabIndex = 0;
-         this.label6.Text = "Stok Keluar";
+         this.label6.Text = "Stok Terjual";
          // 
          // label7
          // 
          this.label7.Anchor = System.Windows.Forms.AnchorStyles.None;
          this.label7.AutoSize = true;
          this.tableLayoutPanel1.SetColumnSpan(this.label7, 4);
-         this.label7.Location = new System.Drawing.Point(3, 124);
+         this.label7.Location = new System.Drawing.Point(3, 153);
          this.label7.Name = "label7";
-         this.label7.Size = new System.Drawing.Size(262, 13);
+         this.label7.Size = new System.Drawing.Size(289, 13);
          this.label7.TabIndex = 0;
          this.label7.Text = "---------------------------------------------------------------------------------" +
-    "----";
+    "-------------";
          // 
          // label8
          // 
          this.label8.Anchor = System.Windows.Forms.AnchorStyles.Left;
          this.label8.AutoSize = true;
-         this.label8.Location = new System.Drawing.Point(3, 156);
+         this.label8.Location = new System.Drawing.Point(3, 185);
          this.label8.Name = "label8";
          this.label8.Size = new System.Drawing.Size(56, 13);
          this.label8.TabIndex = 0;
@@ -175,30 +168,30 @@
          // 
          this.labelStokAwal.Anchor = System.Windows.Forms.AnchorStyles.Right;
          this.labelStokAwal.AutoSize = true;
-         this.labelStokAwal.Location = new System.Drawing.Point(226, 37);
+         this.labelStokAwal.Location = new System.Drawing.Point(255, 37);
          this.labelStokAwal.Name = "labelStokAwal";
          this.labelStokAwal.Size = new System.Drawing.Size(13, 13);
          this.labelStokAwal.TabIndex = 0;
          this.labelStokAwal.Text = "0";
          this.labelStokAwal.TextAlign = System.Drawing.ContentAlignment.TopRight;
          // 
-         // labelStokKeluar
+         // labelStokTerjual
          // 
-         this.labelStokKeluar.Anchor = System.Windows.Forms.AnchorStyles.Right;
-         this.labelStokKeluar.AutoSize = true;
-         this.labelStokKeluar.Location = new System.Drawing.Point(226, 95);
-         this.labelStokKeluar.Name = "labelStokKeluar";
-         this.labelStokKeluar.Size = new System.Drawing.Size(13, 13);
-         this.labelStokKeluar.TabIndex = 0;
-         this.labelStokKeluar.Text = "0";
-         this.labelStokKeluar.TextAlign = System.Drawing.ContentAlignment.TopRight;
+         this.labelStokTerjual.Anchor = System.Windows.Forms.AnchorStyles.Right;
+         this.labelStokTerjual.AutoSize = true;
+         this.labelStokTerjual.Location = new System.Drawing.Point(255, 95);
+         this.labelStokTerjual.Name = "labelStokTerjual";
+         this.labelStokTerjual.Size = new System.Drawing.Size(13, 13);
+         this.labelStokTerjual.TabIndex = 0;
+         this.labelStokTerjual.Text = "0";
+         this.labelStokTerjual.TextAlign = System.Drawing.ContentAlignment.TopRight;
          // 
          // labelStokAkhir
          // 
          this.labelStokAkhir.Anchor = System.Windows.Forms.AnchorStyles.Right;
          this.labelStokAkhir.AutoSize = true;
          this.labelStokAkhir.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         this.labelStokAkhir.Location = new System.Drawing.Point(226, 156);
+         this.labelStokAkhir.Location = new System.Drawing.Point(255, 185);
          this.labelStokAkhir.Name = "labelStokAkhir";
          this.labelStokAkhir.Size = new System.Drawing.Size(13, 13);
          this.labelStokAkhir.TabIndex = 0;
@@ -209,7 +202,7 @@
          // 
          this.label13.Anchor = System.Windows.Forms.AnchorStyles.Left;
          this.label13.AutoSize = true;
-         this.label13.Location = new System.Drawing.Point(73, 37);
+         this.label13.Location = new System.Drawing.Point(102, 37);
          this.label13.Name = "label13";
          this.label13.Size = new System.Drawing.Size(10, 13);
          this.label13.TabIndex = 0;
@@ -220,7 +213,7 @@
          this.label17.Anchor = System.Windows.Forms.AnchorStyles.Left;
          this.label17.AutoSize = true;
          this.label17.ForeColor = System.Drawing.Color.Green;
-         this.label17.Location = new System.Drawing.Point(245, 37);
+         this.label17.Location = new System.Drawing.Point(274, 37);
          this.label17.Name = "label17";
          this.label17.Size = new System.Drawing.Size(13, 13);
          this.label17.TabIndex = 0;
@@ -231,7 +224,7 @@
          this.label18.Anchor = System.Windows.Forms.AnchorStyles.Left;
          this.label18.AutoSize = true;
          this.label18.ForeColor = System.Drawing.Color.Red;
-         this.label18.Location = new System.Drawing.Point(245, 95);
+         this.label18.Location = new System.Drawing.Point(274, 95);
          this.label18.Name = "label18";
          this.label18.Size = new System.Drawing.Size(10, 13);
          this.label18.TabIndex = 0;
@@ -252,7 +245,7 @@
          this.label10.Anchor = System.Windows.Forms.AnchorStyles.Left;
          this.label10.AutoSize = true;
          this.label10.ForeColor = System.Drawing.Color.Green;
-         this.label10.Location = new System.Drawing.Point(245, 66);
+         this.label10.Location = new System.Drawing.Point(274, 66);
          this.label10.Name = "label10";
          this.label10.Size = new System.Drawing.Size(13, 13);
          this.label10.TabIndex = 0;
@@ -262,7 +255,7 @@
          // 
          this.labelStokMasuk.Anchor = System.Windows.Forms.AnchorStyles.Right;
          this.labelStokMasuk.AutoSize = true;
-         this.labelStokMasuk.Location = new System.Drawing.Point(226, 66);
+         this.labelStokMasuk.Location = new System.Drawing.Point(255, 66);
          this.labelStokMasuk.Name = "labelStokMasuk";
          this.labelStokMasuk.Size = new System.Drawing.Size(13, 13);
          this.labelStokMasuk.TabIndex = 0;
@@ -273,7 +266,7 @@
          // 
          this.label15.Anchor = System.Windows.Forms.AnchorStyles.Left;
          this.label15.AutoSize = true;
-         this.label15.Location = new System.Drawing.Point(73, 66);
+         this.label15.Location = new System.Drawing.Point(102, 66);
          this.label15.Name = "label15";
          this.label15.Size = new System.Drawing.Size(10, 13);
          this.label15.TabIndex = 0;
@@ -282,7 +275,7 @@
          // dateTimePickerTanggal
          // 
          this.dateTimePickerTanggal.Anchor = System.Windows.Forms.AnchorStyles.Left;
-         this.dateTimePickerTanggal.Location = new System.Drawing.Point(89, 4);
+         this.dateTimePickerTanggal.Location = new System.Drawing.Point(118, 4);
          this.dateTimePickerTanggal.MinDate = new System.DateTime(1945, 8, 17, 0, 0, 0, 0);
          this.dateTimePickerTanggal.Name = "dateTimePickerTanggal";
          this.dateTimePickerTanggal.Size = new System.Drawing.Size(150, 20);
@@ -293,7 +286,7 @@
          // 
          this.label11.Anchor = System.Windows.Forms.AnchorStyles.Left;
          this.label11.AutoSize = true;
-         this.label11.Location = new System.Drawing.Point(73, 95);
+         this.label11.Location = new System.Drawing.Point(102, 95);
          this.label11.Name = "label11";
          this.label11.Size = new System.Drawing.Size(10, 13);
          this.label11.TabIndex = 0;
@@ -313,13 +306,13 @@
          this.tableLayoutPanel1.Controls.Add(this.label2, 1, 0);
          this.tableLayoutPanel1.Controls.Add(this.label5, 0, 1);
          this.tableLayoutPanel1.Controls.Add(this.label6, 0, 3);
-         this.tableLayoutPanel1.Controls.Add(this.label7, 0, 4);
-         this.tableLayoutPanel1.Controls.Add(this.label8, 0, 5);
+         this.tableLayoutPanel1.Controls.Add(this.label7, 0, 5);
+         this.tableLayoutPanel1.Controls.Add(this.label8, 0, 6);
          this.tableLayoutPanel1.Controls.Add(this.labelStokAwal, 2, 1);
-         this.tableLayoutPanel1.Controls.Add(this.labelStokKeluar, 2, 3);
-         this.tableLayoutPanel1.Controls.Add(this.labelStokAkhir, 2, 5);
+         this.tableLayoutPanel1.Controls.Add(this.labelStokTerjual, 2, 3);
+         this.tableLayoutPanel1.Controls.Add(this.labelStokAkhir, 2, 6);
          this.tableLayoutPanel1.Controls.Add(this.label13, 1, 1);
-         this.tableLayoutPanel1.Controls.Add(this.label16, 1, 5);
+         this.tableLayoutPanel1.Controls.Add(this.label16, 1, 6);
          this.tableLayoutPanel1.Controls.Add(this.label17, 3, 1);
          this.tableLayoutPanel1.Controls.Add(this.label18, 3, 3);
          this.tableLayoutPanel1.Controls.Add(this.label3, 0, 2);
@@ -328,24 +321,28 @@
          this.tableLayoutPanel1.Controls.Add(this.label15, 1, 2);
          this.tableLayoutPanel1.Controls.Add(this.dateTimePickerTanggal, 2, 0);
          this.tableLayoutPanel1.Controls.Add(this.label11, 1, 3);
+         this.tableLayoutPanel1.Controls.Add(this.label4, 0, 4);
+         this.tableLayoutPanel1.Controls.Add(this.label9, 1, 4);
+         this.tableLayoutPanel1.Controls.Add(this.labelPenyesuaianStok, 2, 4);
+         this.tableLayoutPanel1.Controls.Add(this.label12, 3, 4);
          this.tableLayoutPanel1.Location = new System.Drawing.Point(6, 19);
          this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-         this.tableLayoutPanel1.RowCount = 6;
-         this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-         this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-         this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-         this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-         this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-         this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-         this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-         this.tableLayoutPanel1.Size = new System.Drawing.Size(268, 180);
+         this.tableLayoutPanel1.RowCount = 7;
+         this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+         this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+         this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+         this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+         this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+         this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+         this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+         this.tableLayoutPanel1.Size = new System.Drawing.Size(295, 210);
          this.tableLayoutPanel1.TabIndex = 0;
          // 
          // label16
          // 
          this.label16.Anchor = System.Windows.Forms.AnchorStyles.Left;
          this.label16.AutoSize = true;
-         this.label16.Location = new System.Drawing.Point(73, 156);
+         this.label16.Location = new System.Drawing.Point(102, 185);
          this.label16.Name = "label16";
          this.label16.Size = new System.Drawing.Size(10, 13);
          this.label16.TabIndex = 0;
@@ -359,16 +356,69 @@
          this.groupBox1.Controls.Add(this.tableLayoutPanel1);
          this.groupBox1.Location = new System.Drawing.Point(12, 58);
          this.groupBox1.Name = "groupBox1";
-         this.groupBox1.Size = new System.Drawing.Size(280, 205);
+         this.groupBox1.Size = new System.Drawing.Size(307, 235);
          this.groupBox1.TabIndex = 106;
          this.groupBox1.TabStop = false;
          this.groupBox1.Text = "[ DATA ]";
+         // 
+         // label4
+         // 
+         this.label4.Anchor = System.Windows.Forms.AnchorStyles.Left;
+         this.label4.AutoSize = true;
+         this.label4.Location = new System.Drawing.Point(3, 124);
+         this.label4.Name = "label4";
+         this.label4.Size = new System.Drawing.Size(93, 13);
+         this.label4.TabIndex = 0;
+         this.label4.Text = "Penyesuaian Stok";
+         // 
+         // label9
+         // 
+         this.label9.Anchor = System.Windows.Forms.AnchorStyles.Left;
+         this.label9.AutoSize = true;
+         this.label9.Location = new System.Drawing.Point(102, 124);
+         this.label9.Name = "label9";
+         this.label9.Size = new System.Drawing.Size(10, 13);
+         this.label9.TabIndex = 0;
+         this.label9.Text = ":";
+         // 
+         // labelPenyesuaianStok
+         // 
+         this.labelPenyesuaianStok.Anchor = System.Windows.Forms.AnchorStyles.Right;
+         this.labelPenyesuaianStok.AutoSize = true;
+         this.labelPenyesuaianStok.Location = new System.Drawing.Point(255, 124);
+         this.labelPenyesuaianStok.Name = "labelPenyesuaianStok";
+         this.labelPenyesuaianStok.Size = new System.Drawing.Size(13, 13);
+         this.labelPenyesuaianStok.TabIndex = 0;
+         this.labelPenyesuaianStok.Text = "0";
+         this.labelPenyesuaianStok.TextAlign = System.Drawing.ContentAlignment.TopRight;
+         // 
+         // panelUp
+         // 
+         this.panelUp.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+         this.panelUp.LabelInfo = "Info";
+         this.panelUp.Location = new System.Drawing.Point(12, 12);
+         this.panelUp.Name = "panelUp";
+         this.panelUp.Size = new System.Drawing.Size(307, 40);
+         this.panelUp.TabIndex = 108;
+         this.panelUp.TabStop = false;
+         // 
+         // label12
+         // 
+         this.label12.Anchor = System.Windows.Forms.AnchorStyles.Left;
+         this.label12.AutoSize = true;
+         this.label12.ForeColor = System.Drawing.Color.Red;
+         this.label12.Location = new System.Drawing.Point(274, 124);
+         this.label12.Name = "label12";
+         this.label12.Size = new System.Drawing.Size(10, 13);
+         this.label12.TabIndex = 0;
+         this.label12.Text = "-";
          // 
          // LaporanStatusBarangView
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-         this.ClientSize = new System.Drawing.Size(304, 311);
+         this.ClientSize = new System.Drawing.Size(331, 341);
          this.Controls.Add(this.panelUp);
          this.Controls.Add(this.tableLayoutPanel2);
          this.Controls.Add(this.groupBox1);
@@ -403,7 +453,7 @@
       private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
       private System.Windows.Forms.Label label8;
       private System.Windows.Forms.Label labelStokAwal;
-      private System.Windows.Forms.Label labelStokKeluar;
+      private System.Windows.Forms.Label labelStokTerjual;
       private System.Windows.Forms.Label labelStokAkhir;
       private System.Windows.Forms.Label label13;
       private System.Windows.Forms.Label label16;
@@ -416,5 +466,9 @@
       private System.Windows.Forms.DateTimePicker dateTimePickerTanggal;
       private System.Windows.Forms.Label label11;
       private System.Windows.Forms.GroupBox groupBox1;
+      private System.Windows.Forms.Label label4;
+      private System.Windows.Forms.Label label9;
+      private System.Windows.Forms.Label labelPenyesuaianStok;
+      private System.Windows.Forms.Label label12;
    }
 }

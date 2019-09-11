@@ -31,16 +31,21 @@ namespace RumahScarlett.Presentation.Views.Laporan
          get { return labelStokMasuk; }
       }
 
-      public Label LabelStokKeluar
+      public Label LabelStokTerjual
       {
-         get { return labelStokKeluar; }
+         get { return labelStokTerjual; }
       }
       
       public Label LabelStokAkhir
       {
          get { return labelStokAkhir; }
       }
-      
+
+      public Label LabelPenyesuaianStok
+      {
+         get { return labelPenyesuaianStok; }
+      }
+
       public LaporanStatusBarangView()
       {
          InitializeComponent();

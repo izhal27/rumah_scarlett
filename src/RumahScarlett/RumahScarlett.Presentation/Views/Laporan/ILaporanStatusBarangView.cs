@@ -16,7 +16,8 @@ namespace RumahScarlett.Presentation.Views.Laporan
       DateTimePicker DateTimePickerTanggal { get; }
       Label LabelStokAwal { get; }
       Label LabelStokMasuk { get; }
-      Label LabelStokKeluar { get; }
+      Label LabelStokTerjual { get; }
+      Label LabelPenyesuaianStok { get; }
       Label LabelStokAkhir { get; }
 
       void ShowView();

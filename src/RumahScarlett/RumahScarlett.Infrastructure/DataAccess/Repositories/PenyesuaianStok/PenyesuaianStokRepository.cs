@@ -2,6 +2,7 @@
 using Dapper.Contrib.Extensions;
 using RumahScarlett.CommonComponents;
 using RumahScarlett.Domain.Models.Barang;
+using RumahScarlett.Domain.Models.Laporan;
 using RumahScarlett.Domain.Models.PenyesuaianStok;
 using RumahScarlett.Domain.Models.Satuan;
 using RumahScarlett.Services.Services.PenyesuaianStok;
@@ -54,6 +55,17 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.PenyesuaianStok
                {
                   context.Conn.Insert((PenyesuaianStokModel)model, context.Transaction);
 
+                  var statusBarangModel = new StatusBarangModel();
+
+                  var queryStr = "SELECT SUM(stok) FROM barang";
+                  var stokAwal = context.Conn.ExecuteScalar<int>(queryStr);
+
+                  statusBarangModel.stok_awal = stokAwal;
+                  statusBarangModel.tanggal = model.tanggal;
+                  statusBarangModel.PenyesuaianStok = model;
+
+                  context.Conn.Insert(statusBarangModel, context.Transaction);
+
                   CheckBarangStok(model, dataAccessStatus);
 
                   context.Conn.Update((BarangModel)model.Barang, context.Transaction);
@@ -61,8 +73,9 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.PenyesuaianStok
                   context.Commit();
                }
             }, dataAccessStatus,
-            () => CheckAfterInsert(context, "SELECT COUNT(1) FROM penyesuaian_stok WHERE tanggal=@tanggal "
-                                   + "AND id=(SELECT LAST_INSERT_ID())", new { model.tanggal }));
+            () => CheckAfterInsert(context, "SELECT COUNT(1) FROM penyesuaian_stok WHERE barang_id = @barang_id "
+                                   + "AND id=(SELECT id FROM penyesuaian_stok ORDER BY ID DESC LIMIT 1)",
+                                   new { model.barang_id }));
          }
       }
 
@@ -153,7 +166,7 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.PenyesuaianStok
             }, dataAccessStatus);
          }
       }
-      
+
       public IPenyesuaianStokModel GetById(object id)
       {
          var dataAccessStatus = new DataAccessStatus();

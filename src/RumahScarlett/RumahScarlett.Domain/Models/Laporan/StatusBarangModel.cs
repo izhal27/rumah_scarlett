@@ -1,5 +1,6 @@
 ﻿using RumahScarlett.Domain.Models.Pembelian;
 using RumahScarlett.Domain.Models.Penjualan;
+using RumahScarlett.Domain.Models.PenyesuaianStok;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -33,39 +34,50 @@ namespace RumahScarlett.Domain.Models.Laporan
          get { return Penjualan.id != default(uint) ? Penjualan.id : (uint?)null; }
       }
 
+      [Dp.Write(false)]
+      public IPenyesuaianStokModel PenyesuaianStok { get; set; }
+
+      public uint? penyesuaian_stok_id
+      {
+         get { return PenyesuaianStok.id != default(uint) ? PenyesuaianStok.id : (uint?)null; }
+      }
+
       public int stok_awal { get; set; }
 
       private int _stok_masuk;
 
       public int stok_masuk
       {
-         get
-         {
-            return Pembelian.id != default(uint) ? Pembelian.PembelianDetails.Sum(pd => pd.qty) : _stok_masuk;
-         }
+         get { return Pembelian.id != default(uint) ? Pembelian.PembelianDetails.Sum(pd => pd.qty) : _stok_masuk; }
          set { _stok_masuk = value; }
       }
 
-      private int _stok_keluar;
+      private int _stok_terjual;
 
-      public int stok_keluar
+      public int stok_terjual
       {
-         get
-         {
-            return Penjualan.id != default(uint) ? Penjualan.PenjualanDetails.Sum(pd => pd.qty) : _stok_keluar;
-         }
-         set { _stok_keluar = value; }
+         get { return Penjualan.id != default(uint) ? Penjualan.PenjualanDetails.Sum(pd => pd.qty) : _stok_terjual; }
+         set { _stok_terjual = value; }
+      }
+
+      public int _penyesuaian_stok;
+
+      public int penyesuaian_stok
+      {
+         get { return PenyesuaianStok.id != default(uint) ? PenyesuaianStok.qty : _penyesuaian_stok; }
+         set { _penyesuaian_stok = value; }
       }
 
       public int stok_akhir
       {
-         get { return (stok_awal + stok_masuk) - stok_keluar; }
+         get { return (stok_awal + stok_masuk) - (stok_terjual + penyesuaian_stok); }
       }
 
       public StatusBarangModel()
       {
          Pembelian = new PembelianModel();
          Penjualan = new PenjualanModel();
+         PenyesuaianStok = new PenyesuaianStokModel();
       }
    }
 }

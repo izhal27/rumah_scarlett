@@ -63,7 +63,7 @@ namespace RumahScarlett.Presentation.Views.PenyesuaianStok
 
          var model = new PenyesuaianStokModel
          {
-            tanggal = dateTimePickerTanggal.Value.Date,
+            tanggal = dateTimePickerTanggal.Value,
             Barang = barangModel,
             hpp = decimal.Parse(textBoxHpp.Text, NumberStyles.Number),
             qty = int.Parse(textBoxQty.Text, NumberStyles.Number),

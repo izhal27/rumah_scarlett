@@ -14,7 +14,6 @@ namespace RumahScarlett.Presentation.Presenters.Laporan
    {
       private ILaporanStatusBarangView _view;
       private IStatusBarangServices _services;
-      private IStatusBarangModel _model;
 
       public ILaporanStatusBarangView GetView
       {
@@ -48,24 +47,27 @@ namespace RumahScarlett.Presentation.Presenters.Laporan
 
       private void SetLabelValues()
       {
-         _model = _services.GetByDate(_view.DateTimePickerTanggal.Value.Date);
+         var model = _services.GetByDate(_view.DateTimePickerTanggal.Value.Date);
 
          var stokAwal = 0;
          var stokMasuk = 0;
          var stokKeluar = 0;
          var stokAkhir = 0;
+         var penyesuaianStok = 0;
 
-         if (_model != null)
+         if (model != null)
          {
-            stokAwal = _model.stok_awal;
-            stokMasuk = _model.stok_masuk;
-            stokKeluar = _model.stok_keluar;
-            stokAkhir = _model.stok_akhir;
+            stokAwal = model.stok_awal;
+            stokMasuk = model.stok_masuk;
+            stokKeluar = model.stok_terjual;
+            stokAkhir = model.stok_akhir;
+            penyesuaianStok = model.penyesuaian_stok;
          }
 
          _view.LabelStokAwal.Text = stokAwal.ToString("N0");
          _view.LabelStokMasuk.Text = stokMasuk.ToString("N0");
-         _view.LabelStokKeluar.Text = stokKeluar.ToString("N0");
+         _view.LabelStokTerjual.Text = stokKeluar.ToString("N0");
+         _view.LabelPenyesuaianStok.Text = penyesuaianStok.ToString("N0");
          _view.LabelStokAkhir.Text = stokAkhir.ToString("N0");
       }
    }

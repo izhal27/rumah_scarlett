@@ -46,9 +46,10 @@ namespace RumahScarlett.Services.UnitTests.PenyesuaianStok
             {
                barang_id = 1,
                satuan_id = 1,
-               tanggal = DateTime.Now.Date,
-               qty = 5,
-               keterangan = "Penyesuaian Stok"
+               tanggal = DateTime.Now,
+               qty = 1,
+               hpp = 1000,
+               keterangan = "Tester"
             };
 
             _services.Insert(penyesuaianStokModel);
