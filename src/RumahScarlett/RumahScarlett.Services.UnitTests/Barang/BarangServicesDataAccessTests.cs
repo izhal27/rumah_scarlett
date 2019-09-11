@@ -47,10 +47,10 @@ namespace RumahScarlett.Services.UnitTests.Barang
                   satuan_id = (uint)(i % 2 == 0 ? 2 : 1),
                   kode = $"kode_barang_{i}",
                   nama = $"Nama Barang #{i}",
-                  stok = 5,
+                  stok = 0,
                   hpp = 1000,
                   harga_jual = 2000,
-                  minimal_stok = 1,
+                  minimal_stok = 0,
                };
 
                _services.Insert(model);
