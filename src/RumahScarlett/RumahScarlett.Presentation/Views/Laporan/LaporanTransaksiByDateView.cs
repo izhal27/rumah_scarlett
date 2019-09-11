@@ -13,7 +13,7 @@ namespace RumahScarlett.Presentation.Views.Laporan
    public partial class LaporanTransaksiByDateView : Form, ILaporanTransaksiByDateView
    {
       public event EventHandler OnLoadData;
-      public event EventHandler OnCetakClick;
+      public event EventHandler OnButtonCetakClick;
       public event EventHandler OnLabelSelisihTextChanged;
       public event EventHandler OnDateTimePickerTanggalValueChanged;
 
@@ -67,7 +67,7 @@ namespace RumahScarlett.Presentation.Views.Laporan
 
       private void buttonCetak_Click(object sender, EventArgs e)
       {
-         OnCetakClick?.Invoke(sender, e);
+         OnButtonCetakClick?.Invoke(sender, e);
       }
 
       private void dateTimePickerTanggal_ValueChanged(object sender, EventArgs e)

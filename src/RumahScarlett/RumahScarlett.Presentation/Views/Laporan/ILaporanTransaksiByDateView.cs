@@ -10,7 +10,7 @@ namespace RumahScarlett.Presentation.Views.Laporan
    public interface ILaporanTransaksiByDateView : IView
    {
       event EventHandler OnLoadData;
-      event EventHandler OnCetakClick;
+      event EventHandler OnButtonCetakClick;
       event EventHandler OnLabelSelisihTextChanged;
       event EventHandler OnDateTimePickerTanggalValueChanged;
 
