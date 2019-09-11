@@ -133,7 +133,7 @@
          // 
          this.label5.Anchor = System.Windows.Forms.AnchorStyles.Left;
          this.label5.AutoSize = true;
-         this.label5.Location = new System.Drawing.Point(3, 38);
+         this.label5.Location = new System.Drawing.Point(3, 37);
          this.label5.Name = "label5";
          this.label5.Size = new System.Drawing.Size(55, 13);
          this.label5.TabIndex = 0;
@@ -143,7 +143,7 @@
          // 
          this.label6.Anchor = System.Windows.Forms.AnchorStyles.Left;
          this.label6.AutoSize = true;
-         this.label6.Location = new System.Drawing.Point(3, 98);
+         this.label6.Location = new System.Drawing.Point(3, 95);
          this.label6.Name = "label6";
          this.label6.Size = new System.Drawing.Size(62, 13);
          this.label6.TabIndex = 0;
@@ -154,7 +154,7 @@
          this.label7.Anchor = System.Windows.Forms.AnchorStyles.None;
          this.label7.AutoSize = true;
          this.tableLayoutPanel1.SetColumnSpan(this.label7, 4);
-         this.label7.Location = new System.Drawing.Point(3, 128);
+         this.label7.Location = new System.Drawing.Point(3, 124);
          this.label7.Name = "label7";
          this.label7.Size = new System.Drawing.Size(262, 13);
          this.label7.TabIndex = 0;
@@ -165,7 +165,7 @@
          // 
          this.label8.Anchor = System.Windows.Forms.AnchorStyles.Left;
          this.label8.AutoSize = true;
-         this.label8.Location = new System.Drawing.Point(3, 158);
+         this.label8.Location = new System.Drawing.Point(3, 156);
          this.label8.Name = "label8";
          this.label8.Size = new System.Drawing.Size(56, 13);
          this.label8.TabIndex = 0;
@@ -175,7 +175,7 @@
          // 
          this.labelStokAwal.Anchor = System.Windows.Forms.AnchorStyles.Right;
          this.labelStokAwal.AutoSize = true;
-         this.labelStokAwal.Location = new System.Drawing.Point(226, 38);
+         this.labelStokAwal.Location = new System.Drawing.Point(226, 37);
          this.labelStokAwal.Name = "labelStokAwal";
          this.labelStokAwal.Size = new System.Drawing.Size(13, 13);
          this.labelStokAwal.TabIndex = 0;
@@ -186,7 +186,7 @@
          // 
          this.labelStokKeluar.Anchor = System.Windows.Forms.AnchorStyles.Right;
          this.labelStokKeluar.AutoSize = true;
-         this.labelStokKeluar.Location = new System.Drawing.Point(226, 98);
+         this.labelStokKeluar.Location = new System.Drawing.Point(226, 95);
          this.labelStokKeluar.Name = "labelStokKeluar";
          this.labelStokKeluar.Size = new System.Drawing.Size(13, 13);
          this.labelStokKeluar.TabIndex = 0;
@@ -198,7 +198,7 @@
          this.labelStokAkhir.Anchor = System.Windows.Forms.AnchorStyles.Right;
          this.labelStokAkhir.AutoSize = true;
          this.labelStokAkhir.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         this.labelStokAkhir.Location = new System.Drawing.Point(226, 158);
+         this.labelStokAkhir.Location = new System.Drawing.Point(226, 156);
          this.labelStokAkhir.Name = "labelStokAkhir";
          this.labelStokAkhir.Size = new System.Drawing.Size(13, 13);
          this.labelStokAkhir.TabIndex = 0;
@@ -209,7 +209,7 @@
          // 
          this.label13.Anchor = System.Windows.Forms.AnchorStyles.Left;
          this.label13.AutoSize = true;
-         this.label13.Location = new System.Drawing.Point(73, 38);
+         this.label13.Location = new System.Drawing.Point(73, 37);
          this.label13.Name = "label13";
          this.label13.Size = new System.Drawing.Size(10, 13);
          this.label13.TabIndex = 0;
@@ -220,7 +220,7 @@
          this.label17.Anchor = System.Windows.Forms.AnchorStyles.Left;
          this.label17.AutoSize = true;
          this.label17.ForeColor = System.Drawing.Color.Green;
-         this.label17.Location = new System.Drawing.Point(245, 38);
+         this.label17.Location = new System.Drawing.Point(245, 37);
          this.label17.Name = "label17";
          this.label17.Size = new System.Drawing.Size(13, 13);
          this.label17.TabIndex = 0;
@@ -231,7 +231,7 @@
          this.label18.Anchor = System.Windows.Forms.AnchorStyles.Left;
          this.label18.AutoSize = true;
          this.label18.ForeColor = System.Drawing.Color.Red;
-         this.label18.Location = new System.Drawing.Point(245, 98);
+         this.label18.Location = new System.Drawing.Point(245, 95);
          this.label18.Name = "label18";
          this.label18.Size = new System.Drawing.Size(10, 13);
          this.label18.TabIndex = 0;
@@ -241,7 +241,7 @@
          // 
          this.label3.Anchor = System.Windows.Forms.AnchorStyles.Left;
          this.label3.AutoSize = true;
-         this.label3.Location = new System.Drawing.Point(3, 68);
+         this.label3.Location = new System.Drawing.Point(3, 66);
          this.label3.Name = "label3";
          this.label3.Size = new System.Drawing.Size(64, 13);
          this.label3.TabIndex = 0;
@@ -252,7 +252,7 @@
          this.label10.Anchor = System.Windows.Forms.AnchorStyles.Left;
          this.label10.AutoSize = true;
          this.label10.ForeColor = System.Drawing.Color.Green;
-         this.label10.Location = new System.Drawing.Point(245, 68);
+         this.label10.Location = new System.Drawing.Point(245, 66);
          this.label10.Name = "label10";
          this.label10.Size = new System.Drawing.Size(13, 13);
          this.label10.TabIndex = 0;
@@ -262,7 +262,7 @@
          // 
          this.labelStokMasuk.Anchor = System.Windows.Forms.AnchorStyles.Right;
          this.labelStokMasuk.AutoSize = true;
-         this.labelStokMasuk.Location = new System.Drawing.Point(226, 68);
+         this.labelStokMasuk.Location = new System.Drawing.Point(226, 66);
          this.labelStokMasuk.Name = "labelStokMasuk";
          this.labelStokMasuk.Size = new System.Drawing.Size(13, 13);
          this.labelStokMasuk.TabIndex = 0;
@@ -273,7 +273,7 @@
          // 
          this.label15.Anchor = System.Windows.Forms.AnchorStyles.Left;
          this.label15.AutoSize = true;
-         this.label15.Location = new System.Drawing.Point(73, 68);
+         this.label15.Location = new System.Drawing.Point(73, 66);
          this.label15.Name = "label15";
          this.label15.Size = new System.Drawing.Size(10, 13);
          this.label15.TabIndex = 0;
@@ -282,7 +282,7 @@
          // dateTimePickerTanggal
          // 
          this.dateTimePickerTanggal.Anchor = System.Windows.Forms.AnchorStyles.Left;
-         this.dateTimePickerTanggal.Location = new System.Drawing.Point(89, 5);
+         this.dateTimePickerTanggal.Location = new System.Drawing.Point(89, 4);
          this.dateTimePickerTanggal.MinDate = new System.DateTime(1945, 8, 17, 0, 0, 0, 0);
          this.dateTimePickerTanggal.Name = "dateTimePickerTanggal";
          this.dateTimePickerTanggal.Size = new System.Drawing.Size(150, 20);
@@ -293,7 +293,7 @@
          // 
          this.label11.Anchor = System.Windows.Forms.AnchorStyles.Left;
          this.label11.AutoSize = true;
-         this.label11.Location = new System.Drawing.Point(73, 98);
+         this.label11.Location = new System.Drawing.Point(73, 95);
          this.label11.Name = "label11";
          this.label11.Size = new System.Drawing.Size(10, 13);
          this.label11.TabIndex = 0;
@@ -345,7 +345,7 @@
          // 
          this.label16.Anchor = System.Windows.Forms.AnchorStyles.Left;
          this.label16.AutoSize = true;
-         this.label16.Location = new System.Drawing.Point(73, 158);
+         this.label16.Location = new System.Drawing.Point(73, 156);
          this.label16.Name = "label16";
          this.label16.Size = new System.Drawing.Size(10, 13);
          this.label16.TabIndex = 0;
@@ -372,10 +372,12 @@
          this.Controls.Add(this.panelUp);
          this.Controls.Add(this.tableLayoutPanel2);
          this.Controls.Add(this.groupBox1);
+         this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
          this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
          this.MaximizeBox = false;
          this.MinimizeBox = false;
          this.Name = "LaporanStatusBarangView";
+         this.ShowInTaskbar = false;
          this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
          this.Text = "Laporan Status Barang";
          this.Load += new System.EventHandler(this.LaporanStatusBarangView_Load);
