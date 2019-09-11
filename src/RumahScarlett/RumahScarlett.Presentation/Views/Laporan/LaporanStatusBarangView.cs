@@ -51,6 +51,7 @@ namespace RumahScarlett.Presentation.Views.Laporan
       private void LaporanStatusBarangView_Load(object sender, EventArgs e)
       {
          OnLoadData?.Invoke(sender, e);
+         ActiveControl = buttonTutup;
       }
 
       private void buttonCetak_Click(object sender, EventArgs e)
