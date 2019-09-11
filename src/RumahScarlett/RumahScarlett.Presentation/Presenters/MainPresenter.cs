@@ -150,8 +150,7 @@ namespace RumahScarlett.Presentation.Presenters
       {
          using (new WaitCursorHandler())
          {
-            var view = (Form)new LaporanTransaksiByDatePresenter().GetView;
-            view.ShowDialog();
+            new LaporanTransaksiByDatePresenter().GetView.ShowView();
          }
       }
 

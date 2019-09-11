@@ -74,5 +74,10 @@ namespace RumahScarlett.Presentation.Views.Laporan
       {
          OnDateTimePickerTanggalValueChanged?.Invoke(sender, e);
       }
+
+      public void ShowView()
+      {
+         ShowDialog();
+      }
    }
 }
