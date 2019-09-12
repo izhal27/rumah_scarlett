@@ -79,6 +79,7 @@
     <Compile Include="DataAccess\Repositories\DbContext.cs" />
     <Compile Include="DataAccess\Repositories\HutangOperasional\HutangOperasionalRepository.cs" />
     <Compile Include="DataAccess\Repositories\KasAwal\KasAwalRepository.cs" />
+    <Compile Include="DataAccess\Repositories\Laporan\LaporanLabaRugiRepository.cs" />
     <Compile Include="DataAccess\Repositories\Laporan\StatusBarangRepository.cs" />
     <Compile Include="DataAccess\Repositories\Laporan\LaporanTransaksiByDateRepository.cs" />
     <Compile Include="DataAccess\Repositories\Pelanggan\PelangganRepository.cs" />
