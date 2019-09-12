@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Dapper.Contrib;
+using System.Configuration;
 
 namespace RumahScarlett.Infrastructure.DataAccess.Repositories
 {
@@ -30,8 +31,13 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories
 
       public DbContext()
       {
+         var server = ConfigurationManager.AppSettings["Server"] ?? "";
+         var db = ConfigurationManager.AppSettings["DB"] ?? "";
+         var user = ConfigurationManager.AppSettings["User"] ?? "";
+         var password = ConfigurationManager.AppSettings["Password"] ?? "";
+
          _providerName = @"MySql.Data.MySqlClient";
-         _connString = @"Server=localhost;Database=rumah_scarlett_dev;Uid=root;Pwd=;";
+         _connString = $@"server={server};database={db};username={user};password={password};";
 
          if (_conn == null)
          {
