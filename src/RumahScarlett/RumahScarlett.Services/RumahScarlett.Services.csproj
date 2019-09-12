@@ -69,11 +69,11 @@
     <Compile Include="Services\Laporan\ILabaRugiServices.cs" />
     <Compile Include="Services\Laporan\IStatusBarangRepository.cs" />
     <Compile Include="Services\Laporan\IStatusBarangServices.cs" />
-    <Compile Include="Services\Laporan\ILaporanTransaksiByDateRepository.cs" />
-    <Compile Include="Services\Laporan\ILaporanTransaksiByDateServices.cs" />
+    <Compile Include="Services\Laporan\ITransaksiByDateRepository.cs" />
+    <Compile Include="Services\Laporan\ITransaksiByDateServices.cs" />
     <Compile Include="Services\Laporan\LabaRugiServices.cs" />
     <Compile Include="Services\Laporan\StatusBarangServices.cs" />
-    <Compile Include="Services\Laporan\LaporanTransaksiByDateServices.cs" />
+    <Compile Include="Services\Laporan\TransaksiByDateServices.cs" />
     <Compile Include="Services\Pelanggan\IPelangganRepository.cs" />
     <Compile Include="Services\Pelanggan\IPelangganServices.cs" />
     <Compile Include="Services\Pelanggan\PelangganServices.cs" />

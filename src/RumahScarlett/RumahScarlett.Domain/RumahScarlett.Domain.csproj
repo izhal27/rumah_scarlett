@@ -63,8 +63,8 @@
     <Compile Include="Models\Laporan\IStatusBarangModel.cs" />
     <Compile Include="Models\Laporan\LabaRugiModel.cs" />
     <Compile Include="Models\Laporan\StatusBarangModel.cs" />
-    <Compile Include="Models\Laporan\ILaporanTransaksiByDateModel.cs" />
-    <Compile Include="Models\Laporan\LaporanTransaksiByDateModel.cs" />
+    <Compile Include="Models\Laporan\ITransaksiByDateModel.cs" />
+    <Compile Include="Models\Laporan\TransaksiByDateModel.cs" />
     <Compile Include="Models\Pelanggan\IPelangganModel.cs" />
     <Compile Include="Models\Pelanggan\PelangganModel.cs" />
     <Compile Include="Models\Pembelian\IPembelianDetailModel.cs" />

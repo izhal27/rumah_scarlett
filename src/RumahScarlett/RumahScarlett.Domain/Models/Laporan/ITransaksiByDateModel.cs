@@ -1,6 +1,6 @@
 ﻿namespace RumahScarlett.Domain.Models.Laporan
 {
-   public interface ILaporanTransaksiByDateModel
+   public interface ITransaksiByDateModel
    {
       decimal kas_awal { get; set; }
       decimal total_penjualan { get; set; }

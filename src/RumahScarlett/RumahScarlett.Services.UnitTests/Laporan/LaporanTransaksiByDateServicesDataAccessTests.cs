@@ -16,23 +16,23 @@ namespace RumahScarlett.Services.UnitTests.Laporan
    [Trait("Category", "Data Access Validations")]
    public class LaporanTransaksiByDateServicesDataAccessTests
    {
-      private ILaporanTransaksiByDateServices _services;
+      private ITransaksiByDateServices _services;
       private ITestOutputHelper _testOutputHelper;
 
       public LaporanTransaksiByDateServicesDataAccessTests(ITestOutputHelper testOutupuHelper)
       {
-         _services = new LaporanTransaksiByDateServices(new LaporanTransaksiByDateRepository());
+         _services = new TransaksiByDateServices(new LaporanTransaksiByDateRepository());
          _testOutputHelper = testOutupuHelper;
       }
 
       [Fact]
       private void ShouldReturnSuccessForGet()
       {
-         LaporanTransaksiByDateModel model = null;
+         TransaksiByDateModel model = null;
 
          try
          {
-            model = (LaporanTransaksiByDateModel)_services.Get(DateTime.Now.Date);
+            model = (TransaksiByDateModel)_services.Get(DateTime.Now.Date);
          }
          catch (DataAccessException ex)
          {

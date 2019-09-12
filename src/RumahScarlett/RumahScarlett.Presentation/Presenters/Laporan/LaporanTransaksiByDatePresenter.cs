@@ -16,8 +16,8 @@ namespace RumahScarlett.Presentation.Presenters.Laporan
    public class LaporanTransaksiByDatePresenter : ILaporanTransaksiByDatePresenter
    {
       private ILaporanTransaksiByDateView _view;
-      private ILaporanTransaksiByDateServices _services;
-      private ILaporanTransaksiByDateModel _model;
+      private ITransaksiByDateServices _services;
+      private ITransaksiByDateModel _model;
 
       public ILaporanTransaksiByDateView GetView
       {
@@ -27,7 +27,7 @@ namespace RumahScarlett.Presentation.Presenters.Laporan
       public LaporanTransaksiByDatePresenter()
       {
          _view = new LaporanTransaksiByDateView();
-         _services = new LaporanTransaksiByDateServices(new LaporanTransaksiByDateRepository());
+         _services = new TransaksiByDateServices(new LaporanTransaksiByDateRepository());
 
          _view.OnLoadData += _view_OnLoadData;
          _view.OnLabelSelisihTextChanged += _view_OnLabelSelisihTextChanged;

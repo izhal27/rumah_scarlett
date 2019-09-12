@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace RumahScarlett.Services.Services.Laporan
 {
-   public interface ILaporanTransaksiByDateServices
+   public interface ITransaksiByDateServices
    {
-      ILaporanTransaksiByDateModel Get(object date);
+      ITransaksiByDateModel Get(object date);
    }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RumahScarlett.Domain.Models.Laporan
 {
-   public class LaporanTransaksiByDateModel : ILaporanTransaksiByDateModel
+   public class TransaksiByDateModel : ITransaksiByDateModel
    {
       public decimal kas_awal { get; set; }
       public decimal total_penjualan { get; set; }

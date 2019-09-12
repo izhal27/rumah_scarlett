@@ -7,16 +7,16 @@ using System.Threading.Tasks;
 
 namespace RumahScarlett.Services.Services.Laporan
 {
-   public class LaporanTransaksiByDateServices : ILaporanTransaksiByDateServices
+   public class TransaksiByDateServices : ITransaksiByDateServices
    {
-      private ILaporanTransaksiByDateRepository _repo;
+      private ITransaksiByDateRepository _repo;
 
-      public LaporanTransaksiByDateServices(ILaporanTransaksiByDateRepository repo)
+      public TransaksiByDateServices(ITransaksiByDateRepository repo)
       {
          _repo = repo;
       }
 
-      public ILaporanTransaksiByDateModel Get(object date)
+      public ITransaksiByDateModel Get(object date)
       {
          return _repo.Get(date);
       }

@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Laporan
 {
-   public class LaporanTransaksiByDateRepository : ILaporanTransaksiByDateRepository
+   public class LaporanTransaksiByDateRepository : ITransaksiByDateRepository
    {
-      public ILaporanTransaksiByDateModel Get(object date)
+      public ITransaksiByDateModel Get(object date)
       {
          using (var context = new DbContext())
          {
@@ -21,7 +21,7 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Laporan
                        "IFNULL((SELECT SUM(jumlah) FROM pengeluaran WHERE DATE(tanggal)=@DATE), 0) AS total_pengeluaran " +
                        "FROM penjualan p INNER JOIN penjualan_detail pd ON p.id=pd.penjualan_id WHERE DATE(p.tanggal) = @date;";
             
-            return context.Conn.Query<LaporanTransaksiByDateModel>(queryStr, new { date }).FirstOrDefault();
+            return context.Conn.Query<TransaksiByDateModel>(queryStr, new { date }).FirstOrDefault();
          }
       }
    }
