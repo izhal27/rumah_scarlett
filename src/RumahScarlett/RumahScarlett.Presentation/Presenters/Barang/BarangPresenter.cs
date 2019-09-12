@@ -285,12 +285,12 @@ namespace RumahScarlett.Presentation.Presenters.Barang
       {
          using (new WaitCursorHandler())
          {
-            if (_listObjs != null && _listObjs.Count > 0)
+            if (_bindingView.DataSource != null && _bindingView.DataSource.Count > 0)
             {
                var reportDataSource = new ReportDataSource()
                {
                   Name = "DataSetBarang",
-                  Value = _listObjs
+                  Value = _bindingView.DataSource
                };
 
                new ReportView("Report Barang", "ReportViewerBarang",
