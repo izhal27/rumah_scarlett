@@ -52,6 +52,7 @@ namespace RumahScarlett.Presentation.Presenters
          _view.OnLaporanPengeluaranViewClick += _view_OnLaporanPengeluaranViewClick;
          _view.OnLaporanTransaksiByDateClick += _view_OnLaporanTransaksiByDateClick;
          _view.OnLaporanStatusBarangClick += _view_OnLaporanStatusBarangClick;
+         _view.OnLaporanLabaRugiClick += _view_OnLaporanLabaRugiClick;
       }
 
       private void _view_OnTipeViewClick(object sender, MainViewEventArgs e)
@@ -159,6 +160,14 @@ namespace RumahScarlett.Presentation.Presenters
          using (new WaitCursorHandler())
          {
             new LaporanStatusBarangPresenter().GetView.ShowView();
+         }
+      }
+
+      private void _view_OnLaporanLabaRugiClick(object sender, EventArgs e)
+      {
+         using (new WaitCursorHandler())
+         {
+            new LaporanLabaRugiPresenter().GetView.ShowView();
          }
       }
 

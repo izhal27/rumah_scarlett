@@ -25,5 +25,6 @@ namespace RumahScarlett.Presentation.Views
       event EventHandler<MainViewEventArgs> OnLaporanPengeluaranViewClick;
       event EventHandler OnLaporanTransaksiByDateClick;
       event EventHandler OnLaporanStatusBarangClick;
+      event EventHandler OnLaporanLabaRugiClick;
    }
 }

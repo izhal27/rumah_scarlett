@@ -114,8 +114,10 @@
     <Compile Include="Presenters\IMainPresenter.cs" />
     <Compile Include="Presenters\KasAwal\IKasAwalPresenter.cs" />
     <Compile Include="Presenters\KasAwal\KasAwalPresenter.cs" />
+    <Compile Include="Presenters\Laporan\ILaporanLabaRugiPresenter.cs" />
     <Compile Include="Presenters\Laporan\ILaporanStatusBarangPresenter.cs" />
     <Compile Include="Presenters\Laporan\ILaporanTransaksiByDatePresenter.cs" />
+    <Compile Include="Presenters\Laporan\LaporanLabaRugiPresenter.cs" />
     <Compile Include="Presenters\Laporan\LaporanStatusBarangPresenter.cs" />
     <Compile Include="Presenters\Laporan\LaporanTransaksiByDatePresenter.cs" />
     <Compile Include="Presenters\MainPresenter.cs" />
@@ -192,6 +194,12 @@
     </Compile>
     <Compile Include="Views\CommonControls\ButtonsDeletePrintDetail.Designer.cs">
       <DependentUpon>ButtonsDeletePrintDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CommonControls\ComboBoxBulan.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\CommonControls\ComboBoxBulan.Designer.cs">
+      <DependentUpon>ComboBoxBulan.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\CommonControls\CRUDCButtons.cs">
       <SubType>UserControl</SubType>
@@ -270,8 +278,15 @@
     <Compile Include="Views\KasAwal\KasAwalView.Designer.cs">
       <DependentUpon>KasAwalView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Laporan\ILaporanLabaRugiView.cs" />
     <Compile Include="Views\Laporan\ILaporanStatusBarangView.cs" />
     <Compile Include="Views\Laporan\ILaporanTransaksiByDateView.cs" />
+    <Compile Include="Views\Laporan\LaporanLabaRugiView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Laporan\LaporanLabaRugiView.Designer.cs">
+      <DependentUpon>LaporanLabaRugiView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Laporan\LaporanStatusBarangView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -510,6 +525,9 @@
     <EmbeddedResource Include="Views\CommonControls\ButtonsDeletePrintDetail.resx">
       <DependentUpon>ButtonsDeletePrintDetail.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\CommonControls\ComboBoxBulan.resx">
+      <DependentUpon>ComboBoxBulan.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\CommonControls\CRUDCButtons.resx">
       <DependentUpon>CRUDCButtons.cs</DependentUpon>
     </EmbeddedResource>
@@ -539,6 +557,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\KasAwal\KasAwalView.resx">
       <DependentUpon>KasAwalView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Laporan\LaporanLabaRugiView.resx">
+      <DependentUpon>LaporanLabaRugiView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Laporan\LaporanStatusBarangView.resx">
       <DependentUpon>LaporanStatusBarangView.cs</DependentUpon>

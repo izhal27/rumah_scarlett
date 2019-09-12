@@ -61,6 +61,7 @@
          this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
          this.toolStripMenuItemTransaksiByDate = new System.Windows.Forms.ToolStripMenuItem();
          this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+         this.toolStripMenuItemStatusBarang = new System.Windows.Forms.ToolStripMenuItem();
          this.toolStripMenuItemDatabase = new System.Windows.Forms.ToolStripMenuItem();
          this.toolStripMenuItemBackupDatabase = new System.Windows.Forms.ToolStripMenuItem();
          this.toolStripMenuItemRestoreDatabase = new System.Windows.Forms.ToolStripMenuItem();
@@ -70,7 +71,8 @@
          this.toolStripButtonBarang = new System.Windows.Forms.ToolStripButton();
          this.toolStripButtonPembelian = new System.Windows.Forms.ToolStripButton();
          this.toolStripButtonPenjualan = new System.Windows.Forms.ToolStripButton();
-         this.toolStripMenuItemStatusBarang = new System.Windows.Forms.ToolStripMenuItem();
+         this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+         this.toolStripMenuItemLabaRugi = new System.Windows.Forms.ToolStripMenuItem();
          this.statusStrip.SuspendLayout();
          this.menuStripMain.SuspendLayout();
          this.toolStripMain.SuspendLayout();
@@ -269,7 +271,9 @@
             this.toolStripSeparator2,
             this.toolStripMenuItemTransaksiByDate,
             this.toolStripSeparator4,
-            this.toolStripMenuItemStatusBarang});
+            this.toolStripMenuItemStatusBarang,
+            this.toolStripSeparator5,
+            this.toolStripMenuItemLabaRugi});
          this.toolStripMenuItemLaporan.Name = "toolStripMenuItemLaporan";
          this.toolStripMenuItemLaporan.Size = new System.Drawing.Size(62, 20);
          this.toolStripMenuItemLaporan.Text = "&Laporan";
@@ -311,6 +315,13 @@
          // 
          this.toolStripSeparator4.Name = "toolStripSeparator4";
          this.toolStripSeparator4.Size = new System.Drawing.Size(149, 6);
+         // 
+         // toolStripMenuItemStatusBarang
+         // 
+         this.toolStripMenuItemStatusBarang.Name = "toolStripMenuItemStatusBarang";
+         this.toolStripMenuItemStatusBarang.Size = new System.Drawing.Size(152, 22);
+         this.toolStripMenuItemStatusBarang.Text = "&Status Barang";
+         this.toolStripMenuItemStatusBarang.Click += new System.EventHandler(this.toolStripMenuItemStatusBarang_Click);
          // 
          // toolStripMenuItemDatabase
          // 
@@ -400,12 +411,17 @@
          this.toolStripButtonPenjualan.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
          this.toolStripButtonPenjualan.Click += new System.EventHandler(this.toolStripButtonPenjualan_Click);
          // 
-         // toolStripMenuItemStatusBarang
+         // toolStripSeparator5
          // 
-         this.toolStripMenuItemStatusBarang.Name = "toolStripMenuItemStatusBarang";
-         this.toolStripMenuItemStatusBarang.Size = new System.Drawing.Size(152, 22);
-         this.toolStripMenuItemStatusBarang.Text = "&Status Barang";
-         this.toolStripMenuItemStatusBarang.Click += new System.EventHandler(this.toolStripMenuItemStatusBarang_Click);
+         this.toolStripSeparator5.Name = "toolStripSeparator5";
+         this.toolStripSeparator5.Size = new System.Drawing.Size(149, 6);
+         // 
+         // toolStripMenuItemLabaRugi
+         // 
+         this.toolStripMenuItemLabaRugi.Name = "toolStripMenuItemLabaRugi";
+         this.toolStripMenuItemLabaRugi.Size = new System.Drawing.Size(152, 22);
+         this.toolStripMenuItemLabaRugi.Text = "Laba &Rugi";
+         this.toolStripMenuItemLabaRugi.Click += new System.EventHandler(this.toolStripMenuItemLabaRugi_Click);
          // 
          // MainView
          // 
@@ -474,6 +490,8 @@
       private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
       private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
       private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemStatusBarang;
+      private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
+      private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemLabaRugi;
    }
 }
 

@@ -33,6 +33,7 @@ namespace RumahScarlett.Presentation.Views
       public event EventHandler<MainViewEventArgs> OnLaporanPengeluaranViewClick;
       public event EventHandler OnLaporanTransaksiByDateClick;
       public event EventHandler OnLaporanStatusBarangClick;
+      public event EventHandler OnLaporanLabaRugiClick;
 
       public MainView()
       {
@@ -156,6 +157,11 @@ namespace RumahScarlett.Presentation.Views
       private void toolStripMenuItemStatusBarang_Click(object sender, EventArgs e)
       {
          OnLaporanStatusBarangClick?.Invoke(sender, e);
+      }
+
+      private void toolStripMenuItemLabaRugi_Click(object sender, EventArgs e)
+      {
+         OnLaporanLabaRugiClick?.Invoke(sender, e);
       }
    }
 
