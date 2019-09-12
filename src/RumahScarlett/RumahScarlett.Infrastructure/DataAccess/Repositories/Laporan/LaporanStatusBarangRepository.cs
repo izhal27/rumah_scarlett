@@ -29,7 +29,7 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Laporan
                            "IFNULL((SELECT SUM(pjd.qty) FROM penjualan pj INNER JOIN penjualan_detail pjd ON pj.id = pjd.penjualan_id " +
                            "WHERE pjd.barang_id=b.id AND DATE(pj.tanggal) = @date), 0) AS stok_keluar, " +
                            "IFNULL((SELECT SUM(ps.qty) FROM penyesuaian_stok ps WHERE ps.barang_id = b.id AND " +
-                           "DATE(tanggal) = @date) ,0) AS penyesuaian_stok " +
+                           "DATE(tanggal) = @date) ,0) AS penyesuaian_stok, b.stok AS stok_akhir " +
                            "FROM barang b ORDER BY id";
             
             return context.Conn.Query<LaporanStatusBarangModel>(queryStr, new { date });
@@ -48,8 +48,8 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Laporan
                            "WHERE pjd.barang_id = b.id AND (DATE(pj.tanggal) >= @startDate AND " +
                            "DATE(pj.tanggal) <= @endDate)), 0) AS stok_keluar, " +
                            "IFNULL((SELECT SUM(ps.qty) FROM penyesuaian_stok ps WHERE ps.barang_id = b.id AND " +
-                           "(DATE(ps.tanggal) >= @startDate AND DATE(ps.tanggal) <= @endDate)) ,0) AS penyesuaian_stok " +
-                           "FROM barang b ORDER BY id";
+                           "(DATE(ps.tanggal) >= @startDate AND DATE(ps.tanggal) <= @endDate)) ,0) AS penyesuaian_stok, " +
+                           "b.stok AS stok_akhir FROM barang b ORDER BY id";
 
             return context.Conn.Query<LaporanStatusBarangModel>(queryStr, new { startDate, endDate });
          }

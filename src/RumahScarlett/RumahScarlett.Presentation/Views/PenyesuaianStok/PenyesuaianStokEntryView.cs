@@ -67,10 +67,8 @@ namespace RumahScarlett.Presentation.Views.PenyesuaianStok
             Barang = barangModel,
             hpp = decimal.Parse(textBoxHpp.Text, NumberStyles.Number),
             qty = int.Parse(textBoxQty.Text, NumberStyles.Number),
-            satuan_id = comboBoxSatuan.ComboBox.SelectedValue != null ?
-                        (uint)comboBoxSatuan.ComboBox.SelectedValue : default(uint),
-            satuan_nama = comboBoxSatuan.ComboBox.SelectedValue != null ?
-                          comboBoxSatuan.ComboBox.Text : string.Empty,
+            satuan_id = comboBoxSatuan.GetSelectedID,
+            satuan_nama = comboBoxSatuan.ComboBox.Text,
             keterangan = textBoxKeterangan.Text
          };
 

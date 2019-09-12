@@ -11,8 +11,11 @@ namespace RumahScarlett.Domain.Models.Laporan
       uint id { get; set; }
       string barang_kode { get; set; }
       string barang_nama { get; set; }
+      int stok_awal { get; }
       int stok_masuk { get; set; }
       int stok_keluar { get; set; }
       int penyesuaian_stok { get; set; }
+      int total_stok_keluar { get; }
+      int stok_akhir { get; set; }
    }
 }
