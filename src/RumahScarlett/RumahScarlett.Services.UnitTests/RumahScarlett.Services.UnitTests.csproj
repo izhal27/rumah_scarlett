@@ -91,6 +91,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\VersionInfo.cs">
+      <Link>VersionInfo.cs</Link>
+    </Compile>
     <Compile Include="Barang\BarangServicesDataAccessTests.cs" />
     <Compile Include="Barang\BarangServicesFixture.cs" />
     <Compile Include="Barang\BarangServicesValidationTests.cs" />

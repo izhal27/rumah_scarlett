@@ -73,6 +73,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\VersionInfo.cs">
+      <Link>VersionInfo.cs</Link>
+    </Compile>
     <Compile Include="DataAccess\CommonRepositories\DbHelper.cs" />
     <Compile Include="DataAccess\Repositories\Barang\BarangRepository.cs" />
     <Compile Include="DataAccess\Repositories\BaseRepository.cs" />

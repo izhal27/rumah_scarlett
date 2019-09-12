@@ -104,6 +104,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\VersionInfo.cs">
+      <Link>VersionInfo.cs</Link>
+    </Compile>
     <Compile Include="Helper\Extensions.cs" />
     <Compile Include="Helper\Messages.cs" />
     <Compile Include="Helper\WaitCursorHandler.cs" />
