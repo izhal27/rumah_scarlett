@@ -49,13 +49,13 @@ namespace RumahScarlett.Presentation.Views.HutangOperasional
          InitializeComponent();
 
          panelUp.LabelInfo = $"DATA {Text.ToUpper()}";
-         crudcButtons.ButtonCetakVisible = false;
 
          listDataGrid.CellDoubleClick += ListDataGrid_CellDoubleClick;
          crudcButtons.OnTambahClick += crudcButtons_OnTambahClick;
          crudcButtons.OnUbahClick += crudcButtons_OnUbahClick;
          crudcButtons.OnHapusClick += crudcButtons_OnHapusClick;
          crudcButtons.OnRefreshClick += crudcButtons_OnRefreshClickEvent;
+         crudcButtons.OnCetakClick += CrudcButtons_OnCetakClick;
          crudcButtons.OnTutupClick += crudcButtons_OnTutupClickEvent;
 
          dateTimePickerFilter.OnTampilkanClick += DateTimePickerFilter_OnTampilkanClick;
@@ -90,6 +90,11 @@ namespace RumahScarlett.Presentation.Views.HutangOperasional
       private void crudcButtons_OnRefreshClickEvent(object sender, EventArgs e)
       {
          OnButtonRefreshClick?.Invoke(sender, e);
+      }
+
+      private void CrudcButtons_OnCetakClick(object sender, EventArgs e)
+      {
+         OnButtonCetakClick?.Invoke(sender, e);
       }
 
       private void crudcButtons_OnTutupClickEvent(object sender, EventArgs e)

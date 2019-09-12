@@ -1,4 +1,5 @@
 ﻿using Equin.ApplicationFramework;
+using Microsoft.Reporting.WinForms;
 using RumahScarlett.CommonComponents;
 using RumahScarlett.Domain.Models.HutangOperasional;
 using RumahScarlett.Infrastructure.DataAccess.Repositories.HutangOperasional;
@@ -41,6 +42,7 @@ namespace RumahScarlett.Presentation.Presenters.HutangOperasional
          _view.OnButtonUbahClick += _view_OnUpdateData;
          _view.OnButtonHapusClick += _view_OnDeleteData;
          _view.OnButtonRefreshClick += _view_OnRefreshData;
+         _view.OnButtonCetakClick += _view_OnButtonCetakClick;
 
          _view.OnDataGridCellDoubleClick += OnDataGrid_CellDoubleClick;
          _view.OnTampilkanClick += _view_OnTampilkanClick;
@@ -207,6 +209,24 @@ namespace RumahScarlett.Presentation.Presenters.HutangOperasional
       {
          _listObjs = _services.GetAll().ToList();
          _bindingView.DataSource = _listObjs;
+      }
+
+      private void _view_OnButtonCetakClick(object sender, EventArgs e)
+      {
+         using (new WaitCursorHandler())
+         {
+            if (_listObjs != null && _listObjs.Count > 0)
+            {
+               var reportDataSource = new ReportDataSource()
+               {
+                  Name = "DataSetHutangOperasional",
+                  Value = _listObjs
+               };
+
+               new ReportView("Report Hutang Operasional", "ReportViewerHutangOperasional",
+                              reportDataSource, null).ShowDialog();
+            }
+         }
       }
 
       private void OnDataGrid_CellDoubleClick(object sender, CellClickEventArgs e)

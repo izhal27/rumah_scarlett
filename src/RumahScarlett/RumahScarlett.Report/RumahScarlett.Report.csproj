@@ -53,9 +53,11 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="ReportViewerBarang.rdlc" />
+    <EmbeddedResource Include="ReportViewerHutangOperasional.rdlc" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\DataSources\RumahScarlett.Domain.Models.Barang.BarangModel.datasource" />
+    <None Include="Properties\DataSources\RumahScarlett.Domain.Models.HutangOperasional.HutangOperasionalModel.datasource" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
