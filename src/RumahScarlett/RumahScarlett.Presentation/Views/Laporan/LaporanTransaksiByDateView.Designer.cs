@@ -176,12 +176,12 @@
          this.label7.Anchor = System.Windows.Forms.AnchorStyles.None;
          this.label7.AutoSize = true;
          this.tableLayoutPanel1.SetColumnSpan(this.label7, 4);
-         this.label7.Location = new System.Drawing.Point(4, 127);
+         this.label7.Location = new System.Drawing.Point(5, 127);
          this.label7.Name = "label7";
-         this.label7.Size = new System.Drawing.Size(340, 13);
+         this.label7.Size = new System.Drawing.Size(337, 13);
          this.label7.TabIndex = 0;
          this.label7.Text = "---------------------------------------------------------------------------------" +
-    "------------------------------";
+    "-----------------------------";
          // 
          // label8
          // 
@@ -424,7 +424,7 @@
          this.tableLayoutPanel3.ColumnCount = 3;
          this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 73F));
          this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-         this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 176F));
+         this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 259F));
          this.tableLayoutPanel3.Controls.Add(this.label2, 1, 0);
          this.tableLayoutPanel3.Controls.Add(this.label1, 0, 0);
          this.tableLayoutPanel3.Controls.Add(this.dateTimePickerTanggal, 2, 0);
