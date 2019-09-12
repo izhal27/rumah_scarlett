@@ -112,6 +112,7 @@ namespace RumahScarlett.Presentation.Presenters.Penjualan
             _listPenjualanDetails[(rowIndex - 1)].Barang = model;
             _listPenjualanDetails[(rowIndex - 1)].barang_id = model.id;
             _listPenjualanDetails[(rowIndex - 1)].qty = 1;
+            _listPenjualanDetails[(rowIndex - 1)].hpp = model.hpp;
             _listPenjualanDetails[(rowIndex - 1)].harga_jual = model.harga_jual;
 
             _view.ListDataGrid.MoveToCurrentCell(new RowColumnIndex(listDataGrid.CurrentCell.RowIndex, 3));

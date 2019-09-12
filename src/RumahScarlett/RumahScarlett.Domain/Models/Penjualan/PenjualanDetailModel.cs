@@ -71,6 +71,17 @@ namespace RumahScarlett.Domain.Models.Penjualan
          get { return Barang.id != default(uint) ? Barang.satuan_nama : string.Empty; }
       }
 
+      private decimal _hpp;
+
+      [Browsable(false)]
+      [DisplayFormat(DataFormatString = "{0:N0}")]
+      [Display(Name = "HPP")]
+      public decimal hpp
+      {
+         get { return Barang.id != default(uint) ? Barang.hpp : _hpp; }
+         set { _hpp = value; }
+      }
+
       [DisplayFormat(DataFormatString = "{0:N0}")]
       [Display(Name = "Harga Jual")]
       public decimal harga_jual { get; set; }

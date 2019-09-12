@@ -30,14 +30,15 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Penjualan
 
       public void Insert(IPenjualanDetailModel model, IDbTransaction transaction)
       {
-         var queryStr = "INSERT INTO penjualan_detail (penjualan_id, barang_id, qty, harga_jual) " +
-                        "VALUES (@penjualan_id, @barang_id, @qty, @harga_jual)";
+         var queryStr = "INSERT INTO penjualan_detail (penjualan_id, barang_id, qty, hpp, harga_jual) " +
+                        "VALUES (@penjualan_id, @barang_id, @qty, @hpp, @harga_jual)";
 
          _context.Conn.Query<int>(queryStr, new
          {
             penjualan_id = model.penjualan_id,
             barang_id = model.barang_id,
             qty = model.qty,
+            hpp = model.hpp,
             harga_jual = model.harga_jual
          }, transaction);
       }
