@@ -34,8 +34,7 @@
          this.label1 = new System.Windows.Forms.Label();
          this.label2 = new System.Windows.Forms.Label();
          this.comboBoxBulan = new RumahScarlett.Presentation.Views.CommonControls.ComboBoxBulan();
-         this.textBoxTahun = new RumahScarlett.Presentation.Views.CommonControls.BaseTextBoxDigit();
-         this.panelUp = new RumahScarlett.Presentation.Views.CommonControls.PanelUp();
+         this.numericUpDownTahun = new System.Windows.Forms.NumericUpDown();
          this.groupBox2 = new System.Windows.Forms.GroupBox();
          this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
          this.label3 = new System.Windows.Forms.Label();
@@ -67,9 +66,10 @@
          this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
          this.buttonCetak = new System.Windows.Forms.Button();
          this.buttonTutup = new System.Windows.Forms.Button();
+         this.panelUp = new RumahScarlett.Presentation.Views.CommonControls.PanelUp();
          this.groupBox1.SuspendLayout();
          this.tableLayoutPanel1.SuspendLayout();
-         ((System.ComponentModel.ISupportInitialize)(this.textBoxTahun)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTahun)).BeginInit();
          this.groupBox2.SuspendLayout();
          this.tableLayoutPanel2.SuspendLayout();
          this.groupBox3.SuspendLayout();
@@ -102,7 +102,7 @@
          this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
          this.tableLayoutPanel1.Controls.Add(this.label2, 1, 0);
          this.tableLayoutPanel1.Controls.Add(this.comboBoxBulan, 2, 0);
-         this.tableLayoutPanel1.Controls.Add(this.textBoxTahun, 3, 0);
+         this.tableLayoutPanel1.Controls.Add(this.numericUpDownTahun, 3, 0);
          this.tableLayoutPanel1.Location = new System.Drawing.Point(6, 19);
          this.tableLayoutPanel1.Name = "tableLayoutPanel1";
          this.tableLayoutPanel1.RowCount = 1;
@@ -139,35 +139,30 @@
          this.comboBoxBulan.TabIndex = 0;
          this.comboBoxBulan.SelectedIndexChanged += new System.EventHandler(this.comboBoxBulan_SelectedIndexChanged);
          // 
-         // textBoxTahun
+         // numericUpDownTahun
          // 
-         this.textBoxTahun.Anchor = System.Windows.Forms.AnchorStyles.Left;
-         this.textBoxTahun.BackGroundColor = System.Drawing.SystemColors.Window;
-         this.textBoxTahun.BeforeTouchSize = new System.Drawing.Size(69, 20);
-         this.textBoxTahun.IntegerValue = ((long)(1945));
-         this.textBoxTahun.Location = new System.Drawing.Point(215, 5);
-         this.textBoxTahun.MaxValue = ((long)(9999));
-         this.textBoxTahun.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
-         this.textBoxTahun.MinValue = ((long)(1945));
-         this.textBoxTahun.Name = "textBoxTahun";
-         this.textBoxTahun.NullString = "";
-         this.textBoxTahun.NumberGroupSeparator = "";
-         this.textBoxTahun.Size = new System.Drawing.Size(69, 20);
-         this.textBoxTahun.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
-         this.textBoxTahun.TabIndex = 1;
-         this.textBoxTahun.Text = "1945";
-         this.textBoxTahun.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-         // 
-         // panelUp
-         // 
-         this.panelUp.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-         this.panelUp.LabelInfo = "Info";
-         this.panelUp.Location = new System.Drawing.Point(12, 12);
-         this.panelUp.Name = "panelUp";
-         this.panelUp.Size = new System.Drawing.Size(606, 40);
-         this.panelUp.TabIndex = 0;
-         this.panelUp.TabStop = false;
+         this.numericUpDownTahun.Anchor = System.Windows.Forms.AnchorStyles.Left;
+         this.numericUpDownTahun.Location = new System.Drawing.Point(215, 5);
+         this.numericUpDownTahun.Maximum = new decimal(new int[] {
+            9999,
+            0,
+            0,
+            0});
+         this.numericUpDownTahun.Minimum = new decimal(new int[] {
+            1945,
+            0,
+            0,
+            0});
+         this.numericUpDownTahun.Name = "numericUpDownTahun";
+         this.numericUpDownTahun.Size = new System.Drawing.Size(70, 20);
+         this.numericUpDownTahun.TabIndex = 1;
+         this.numericUpDownTahun.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+         this.numericUpDownTahun.Value = new decimal(new int[] {
+            1945,
+            0,
+            0,
+            0});
+         this.numericUpDownTahun.ValueChanged += new System.EventHandler(this.numericUpDownTahun_ValueChanged);
          // 
          // groupBox2
          // 
@@ -283,7 +278,7 @@
          // 
          this.label8.Anchor = System.Windows.Forms.AnchorStyles.Left;
          this.label8.AutoSize = true;
-         this.label8.Location = new System.Drawing.Point(129, 8);
+         this.label8.Location = new System.Drawing.Point(135, 8);
          this.label8.Name = "label8";
          this.label8.Size = new System.Drawing.Size(10, 13);
          this.label8.TabIndex = 0;
@@ -295,9 +290,9 @@
          this.label5.AutoSize = true;
          this.label5.Location = new System.Drawing.Point(3, 38);
          this.label5.Name = "label5";
-         this.label5.Size = new System.Drawing.Size(67, 13);
+         this.label5.Size = new System.Drawing.Size(126, 13);
          this.label5.TabIndex = 0;
-         this.label5.Text = "Pengeluaran";
+         this.label5.Text = "Pengeluaran Operasional";
          // 
          // label6
          // 
@@ -323,7 +318,7 @@
          // 
          this.label11.Anchor = System.Windows.Forms.AnchorStyles.Left;
          this.label11.AutoSize = true;
-         this.label11.Location = new System.Drawing.Point(129, 38);
+         this.label11.Location = new System.Drawing.Point(135, 38);
          this.label11.Name = "label11";
          this.label11.Size = new System.Drawing.Size(10, 13);
          this.label11.TabIndex = 0;
@@ -333,7 +328,7 @@
          // 
          this.label12.Anchor = System.Windows.Forms.AnchorStyles.Left;
          this.label12.AutoSize = true;
-         this.label12.Location = new System.Drawing.Point(129, 68);
+         this.label12.Location = new System.Drawing.Point(135, 68);
          this.label12.Name = "label12";
          this.label12.Size = new System.Drawing.Size(10, 13);
          this.label12.TabIndex = 0;
@@ -362,7 +357,7 @@
          // groupBox4
          // 
          this.groupBox4.Controls.Add(this.tableLayoutPanel4);
-         this.groupBox4.Location = new System.Drawing.Point(12, 240);
+         this.groupBox4.Location = new System.Drawing.Point(318, 240);
          this.groupBox4.Name = "groupBox4";
          this.groupBox4.Size = new System.Drawing.Size(300, 145);
          this.groupBox4.TabIndex = 2;
@@ -489,6 +484,7 @@
          this.labelTotalSelisih.Size = new System.Drawing.Size(13, 13);
          this.labelTotalSelisih.TabIndex = 0;
          this.labelTotalSelisih.Text = "0";
+         this.labelTotalSelisih.TextChanged += new System.EventHandler(this.labelTotalSelisih_TextChanged);
          // 
          // label24
          // 
@@ -508,7 +504,7 @@
          this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
          this.tableLayoutPanel5.Controls.Add(this.buttonCetak, 0, 0);
          this.tableLayoutPanel5.Controls.Add(this.buttonTutup, 1, 0);
-         this.tableLayoutPanel5.Location = new System.Drawing.Point(447, 392);
+         this.tableLayoutPanel5.Location = new System.Drawing.Point(447, 393);
          this.tableLayoutPanel5.Name = "tableLayoutPanel5";
          this.tableLayoutPanel5.RowCount = 1;
          this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -539,11 +535,22 @@
          this.buttonTutup.Text = "&Tutup";
          this.buttonTutup.UseVisualStyleBackColor = true;
          // 
+         // panelUp
+         // 
+         this.panelUp.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+         this.panelUp.LabelInfo = "Info";
+         this.panelUp.Location = new System.Drawing.Point(12, 12);
+         this.panelUp.Name = "panelUp";
+         this.panelUp.Size = new System.Drawing.Size(606, 40);
+         this.panelUp.TabIndex = 0;
+         this.panelUp.TabStop = false;
+         // 
          // LaporanLabaRugiView
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-         this.ClientSize = new System.Drawing.Size(630, 434);
+         this.ClientSize = new System.Drawing.Size(630, 435);
          this.Controls.Add(this.tableLayoutPanel5);
          this.Controls.Add(this.groupBox3);
          this.Controls.Add(this.groupBox4);
@@ -562,7 +569,7 @@
          this.groupBox1.ResumeLayout(false);
          this.tableLayoutPanel1.ResumeLayout(false);
          this.tableLayoutPanel1.PerformLayout();
-         ((System.ComponentModel.ISupportInitialize)(this.textBoxTahun)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTahun)).EndInit();
          this.groupBox2.ResumeLayout(false);
          this.tableLayoutPanel2.ResumeLayout(false);
          this.tableLayoutPanel2.PerformLayout();
@@ -585,7 +592,6 @@
       private System.Windows.Forms.Label label1;
       private System.Windows.Forms.Label label2;
       private CommonControls.ComboBoxBulan comboBoxBulan;
-      private CommonControls.BaseTextBoxDigit textBoxTahun;
       private System.Windows.Forms.GroupBox groupBox2;
       private System.Windows.Forms.GroupBox groupBox3;
       private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
@@ -617,5 +623,6 @@
       private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
       protected System.Windows.Forms.Button buttonCetak;
       protected System.Windows.Forms.Button buttonTutup;
+      private System.Windows.Forms.NumericUpDown numericUpDownTahun;
    }
 }

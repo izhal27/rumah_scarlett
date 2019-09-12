@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RumahScarlett.Presentation.Views.CommonControls;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,8 +13,21 @@ namespace RumahScarlett.Presentation.Views.Laporan
 {
    public partial class LaporanLabaRugiView : Form, ILaporanLabaRugiView
    {
-      public event EventHandler OnButtonCetakClick;
+      public event EventHandler OnLoadData;
       public event EventHandler OnComboBoxBulanSelectedIndexChanged;
+      public event EventHandler OnNumericUpDownTahunValueChanged;
+      public event EventHandler OnLabelSelisihTextChanged;
+      public event EventHandler OnButtonCetakClick;
+
+      public ComboBoxBulan ComboBoxBulan
+      {
+         get { return comboBoxBulan; }
+      }
+
+      public NumericUpDown NumericUpDownTahun
+      {
+         get { return numericUpDownTahun; }
+      }
 
       public Label LabelPenjualan
       {
@@ -59,7 +73,8 @@ namespace RumahScarlett.Presentation.Views.Laporan
 
       private void LaporanLabaRugiView_Load(object sender, EventArgs e)
       {
-         textBoxTahun.Text = DateTime.Now.Year.ToString();
+         numericUpDownTahun.Value = DateTime.Now.Year;
+         OnLoadData?.Invoke(sender, e);
          ActiveControl = buttonTutup;
       }
 
@@ -71,6 +86,16 @@ namespace RumahScarlett.Presentation.Views.Laporan
       private void comboBoxBulan_SelectedIndexChanged(object sender, EventArgs e)
       {
          OnComboBoxBulanSelectedIndexChanged?.Invoke(sender, e);
+      }
+
+      private void numericUpDownTahun_ValueChanged(object sender, EventArgs e)
+      {
+         OnNumericUpDownTahunValueChanged?.Invoke(sender, e);
+      }
+      
+      private void labelTotalSelisih_TextChanged(object sender, EventArgs e)
+      {
+         OnLabelSelisihTextChanged?.Invoke(sender, e);
       }
 
       private void buttonCetak_Click(object sender, EventArgs e)

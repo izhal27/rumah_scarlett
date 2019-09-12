@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace RumahScarlett.Services.Services.Laporan
 {
-   public class LaporanLabaRugiServices : ILaporanLabaRugiServices
+   public class LabaRugiServices : ILabaRugiServices
    {
-      private ILaporanLabaRugiRepository _repo;
+      private ILabaRugiRepository _repo;
 
-      public LaporanLabaRugiServices(ILaporanLabaRugiRepository repo)
+      public LabaRugiServices(ILabaRugiRepository repo)
       {
          _repo = repo;
       }

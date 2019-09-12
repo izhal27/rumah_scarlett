@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RumahScarlett.Services.Services.Laporan
 {
-   public interface ILaporanLabaRugiRepository
+   public interface ILabaRugiRepository
    {
       ILabaRugiModel GetByMonthYear(object month, object year);
    }

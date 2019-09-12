@@ -16,6 +16,11 @@ namespace RumahScarlett.Presentation.Views.CommonControls
       [Description("Occurs when the value of the SelectedIndex property changes.")]
       public event EventHandler SelectedIndexChanged;
 
+      public ComboBox ComboBox
+      {
+         get { return comboBox; }
+      }
+
       public ComboBoxBulan()
       {
          InitializeComponent();
