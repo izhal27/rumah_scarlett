@@ -1,4 +1,5 @@
 ﻿using Equin.ApplicationFramework;
+using Microsoft.Reporting.WinForms;
 using RumahScarlett.CommonComponents;
 using RumahScarlett.Domain.Models.Barang;
 using RumahScarlett.Domain.Models.PenyesuaianStok;
@@ -49,6 +50,7 @@ namespace RumahScarlett.Presentation.Presenters.Barang
          _view.OnRadioButtonTipeChecked += _view_RadioButtonTipe_CheckedChanged;
          _view.OnRadioButtonSupplierChecked += _view_RadioButtonSupplier_CheckedChanged;
          _view.OnButtonTampilkanClick += _view_ButtonTampilkan_Click;
+         _view.OnButtonCetakClick += _view_OnButtonCetakClick;
       }
 
       private void _view_LoadData(object sender, EventArgs e)
@@ -277,6 +279,24 @@ namespace RumahScarlett.Presentation.Presenters.Barang
       private void _view_DataGrid_CellDoubleClick(object sender, CellClickEventArgs e)
       {
          _view_OnUpdateData(sender, e);
+      }
+
+      private void _view_OnButtonCetakClick(object sender, EventArgs e)
+      {
+         using (new WaitCursorHandler())
+         {
+            if (_listObjs != null && _listObjs.Count > 0)
+            {
+               var reportDataSource = new ReportDataSource()
+               {
+                  Name = "DataSetBarang",
+                  Value = _listObjs
+               };
+
+               new ReportView("Report Barang", "ReportViewerBarang",
+                              reportDataSource, null).ShowDialog();
+            }
+         }
       }
    }
 }
