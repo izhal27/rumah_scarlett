@@ -72,7 +72,7 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Barang
                {
                   listObj = listObj.Map(b =>
                   {
-                     var satuanModel = context.Conn.Get<SatuanModel>(b.satuan_id);
+                     var satuanModel = GetSatuanModel(context, b.satuan_id);
 
                      if (satuanModel != null)
                      {
@@ -89,6 +89,15 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Barang
                      if (listObject != null && listObject.ToList().Count > 0)
                      {
                         b.PenyesuaianStoks = listObject;
+                        b.PenyesuaianStoks =  b.PenyesuaianStoks.Map(ps =>
+                        {
+                           var satuanModel = GetSatuanModel(context, ps.satuan_id);
+                           
+                           if (satuanModel != null)
+                           {
+                              ps.Satuan = satuanModel;
+                           }
+                        });
                      }
                   });
                }
@@ -96,6 +105,11 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Barang
                return listObj;
             }, dataAccessStatus);
          }
+      }
+
+      private SatuanModel GetSatuanModel(DbContext context, object satuan_id)
+      {
+         return context.Conn.Get<SatuanModel>(satuan_id);
       }
 
       public IBarangModel GetById(object id)

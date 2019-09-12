@@ -22,29 +22,34 @@ namespace RumahScarlett.Presentation.Views.CommonControls
 
       public bool ButtonTambahVisible
       {
-         set { btnTambah.Visible = value; }
+         set { buttonTambah.Visible = value; }
       }
 
       public bool ButtonUbahVisible
       {
-         set { btnUbah.Visible = value; }
+         set { buttonUbah.Visible = value; }
       }
 
       public bool ButtonHapusVisible
       {
-         set { btnHapus.Visible = value; }
+         set { buttonHapus.Visible = value; }
       }
 
       public bool ButtonRefreshVisible
       {
-         set { btnRefresh.Visible = value; }
+         set { buttonRefresh.Visible = value; }
       }
 
       public bool ButtonCetakVisible
       {
-         set { btnCetak.Visible = value; }
+         set { buttonCetak.Visible = value; }
       }
-      
+
+      public Button ButtonTutup
+      {
+         get { return buttonTutup; }
+      }
+
       public CRUDCButtons()
       {
          InitializeComponent();

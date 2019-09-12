@@ -1,6 +1,6 @@
 ﻿namespace RumahScarlett.Presentation.Views.CommonControls
 {
-   partial class BaseDetailTransaksiView
+   partial class BaseDetailView
    {
       /// <summary>
       /// Required designer variable.

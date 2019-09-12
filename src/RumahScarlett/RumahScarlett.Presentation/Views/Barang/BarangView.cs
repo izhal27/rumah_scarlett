@@ -1,5 +1,4 @@
-﻿using RumahScarlett.CommonComponents;
-using RumahScarlett.Presentation.Views.CommonControls;
+﻿using RumahScarlett.Presentation.Views.CommonControls;
 using RumahScarlett.Presentation.Views.ModelControls;
 using Syncfusion.WinForms.DataGrid.Events;
 using System;
@@ -17,16 +16,17 @@ namespace RumahScarlett.Presentation.Views.Barang
    public partial class BarangView : BaseDataView, IBarangView
    {
       public event EventHandler OnLoadData;
-      public event EventHandler OnCreateData;
-      public event EventHandler OnUpdateData;
-      public event EventHandler OnDeleteData;
-      public event EventHandler OnRefreshData;
-      public event EventHandler OnPrintData;
+      public event EventHandler OnButtonTambahClick;
+      public event EventHandler OnButtonUbahClick;
+      public event EventHandler OnButtonHapusClick;
+      public event EventHandler OnButtonRefreshClick;
+      public event EventHandler OnButtonCetakClick;
 
       public event EventHandler<CellClickEventArgs> OnDataGridCellDoubleClick;
       public event EventHandler OnButtonTampilkanClick;
       public event EventHandler OnRadioButtonTipeChecked;
       public event EventHandler OnRadioButtonSupplierChecked;
+      public event EventHandler OnButtonDetailPenyesuaianStokClick;
 
       public ListDataGrid ListDataGrid
       {
@@ -77,17 +77,12 @@ namespace RumahScarlett.Presentation.Views.Barang
          radioButtonTipe.CheckedChanged += radioButtonTipe_CheckedChanged;
          radioButtonSupplier.CheckedChanged += radioButtonSupplier_CheckedChanged;
          buttonTampilkan.Click += buttonTampilkan_Click;
-         crudcButtons.OnTambahClick += crudcButtons_OnTambahClick;
-         crudcButtons.OnUbahClick += crudcButtons_OnUbahClick;
-         crudcButtons.OnHapusClick += crudcButtons_OnHapusClick;
-         crudcButtons.OnRefreshClick += crudcButtons_OnRefreshClickEvent;
-         crudcButtons.OnTutupClick += crudcButtons_OnTutupClickEvent;
-         crudcButtons.OnCetakClick += CrudcButtons_OnCetakClick;
       }
 
       private void BarangView_Load(object sender, EventArgs e)
       {
          OnLoadData?.Invoke(sender, e);
+         ActiveControl = buttonTutup;
       }
 
       private void listDataGrid_CellDoubleClick(object sender, CellClickEventArgs e)
@@ -110,29 +105,34 @@ namespace RumahScarlett.Presentation.Views.Barang
          OnButtonTampilkanClick?.Invoke(sender, e);
       }
 
-      private void crudcButtons_OnTambahClick(object sender, EventArgs e)
+      private void buttonTambah_Click(object sender, EventArgs e)
       {
-         OnCreateData?.Invoke(sender, e);
+         OnButtonTambahClick?.Invoke(sender, e);
       }
 
-      private void crudcButtons_OnUbahClick(object sender, EventArgs e)
+      private void buttonUbah_Click(object sender, EventArgs e)
       {
-         OnUpdateData?.Invoke(sender, e);
+         OnButtonUbahClick?.Invoke(sender, e);
       }
 
-      private void crudcButtons_OnHapusClick(object sender, EventArgs e)
+      private void buttonHapus_Click(object sender, EventArgs e)
       {
-         OnDeleteData?.Invoke(sender, e);
+         OnButtonHapusClick?.Invoke(sender, e);
       }
 
-      private void crudcButtons_OnRefreshClickEvent(object sender, EventArgs e)
+      private void buttonRefresh_Click(object sender, EventArgs e)
       {
-         OnRefreshData?.Invoke(sender, e);
+         OnButtonRefreshClick?.Invoke(sender, e);
       }
 
-      private void CrudcButtons_OnCetakClick(object sender, EventArgs e)
+      private void buttonCetak_Click(object sender, EventArgs e)
       {
-         OnPrintData?.Invoke(sender, e);
+         OnButtonCetakClick?.Invoke(sender, e);
+      }
+
+      private void buttonDetailPenyesuainStok_Click(object sender, EventArgs e)
+      {
+         OnButtonDetailPenyesuaianStokClick?.Invoke(sender, e);
       }
 
       private void crudcButtons_OnTutupClickEvent(object sender, EventArgs e)

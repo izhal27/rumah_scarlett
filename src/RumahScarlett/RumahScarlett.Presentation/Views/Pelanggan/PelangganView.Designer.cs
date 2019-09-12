@@ -43,6 +43,7 @@
          this.listDataGrid.AutoSizeColumnsMode = Syncfusion.WinForms.DataGrid.Enums.AutoSizeColumnsMode.Fill;
          this.listDataGrid.Location = new System.Drawing.Point(12, 58);
          this.listDataGrid.Name = "listDataGrid";
+         this.listDataGrid.ShowRowHeader = true;
          this.listDataGrid.Size = new System.Drawing.Size(760, 351);
          this.listDataGrid.TabIndex = 1;
          this.listDataGrid.Text = "listDataGrid1";

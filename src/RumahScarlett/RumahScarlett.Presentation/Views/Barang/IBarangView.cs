@@ -13,6 +13,7 @@ namespace RumahScarlett.Presentation.Views.Barang
       event EventHandler OnButtonTampilkanClick;
       event EventHandler OnRadioButtonTipeChecked;
       event EventHandler OnRadioButtonSupplierChecked;
+      event EventHandler OnButtonDetailPenyesuaianStokClick;
 
       RadioButton RadioButtonSemua { get; }
       RadioButton RadioButtonTipe { get; }

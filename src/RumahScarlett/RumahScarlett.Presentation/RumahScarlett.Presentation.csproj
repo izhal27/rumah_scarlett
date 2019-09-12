@@ -163,11 +163,11 @@
     <Compile Include="Views\CommonControls\BaseDataView.Designer.cs">
       <DependentUpon>BaseDataView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\CommonControls\BaseDetailTransaksiView.cs">
+    <Compile Include="Views\CommonControls\BaseDetailView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\CommonControls\BaseDetailTransaksiView.Designer.cs">
-      <DependentUpon>BaseDetailTransaksiView.cs</DependentUpon>
+    <Compile Include="Views\CommonControls\BaseDetailView.Designer.cs">
+      <DependentUpon>BaseDetailView.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\CommonControls\BaseEntryView.cs">
       <SubType>Form</SubType>
@@ -498,8 +498,8 @@
     <EmbeddedResource Include="Views\CommonControls\BaseDataView.resx">
       <DependentUpon>BaseDataView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\CommonControls\BaseDetailTransaksiView.resx">
-      <DependentUpon>BaseDetailTransaksiView.cs</DependentUpon>
+    <EmbeddedResource Include="Views\CommonControls\BaseDetailView.resx">
+      <DependentUpon>BaseDetailView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\CommonControls\BaseEntryView.resx">
       <DependentUpon>BaseEntryView.cs</DependentUpon>

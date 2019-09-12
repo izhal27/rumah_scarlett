@@ -16,11 +16,11 @@ namespace RumahScarlett.Presentation.Views.HutangOperasional
    public partial class HutangOperasionalView : BaseDataView, IHutangOperasionalView
    {
       public event EventHandler OnLoadData;
-      public event EventHandler OnCreateData;
-      public event EventHandler OnUpdateData;
-      public event EventHandler OnDeleteData;
-      public event EventHandler OnRefreshData;
-      public event EventHandler OnPrintData;
+      public event EventHandler OnButtonTambahClick;
+      public event EventHandler OnButtonUbahClick;
+      public event EventHandler OnButtonHapusClick;
+      public event EventHandler OnButtonRefreshClick;
+      public event EventHandler OnButtonCetakClick;
       public event EventHandler<CellClickEventArgs> OnDataGridCellDoubleClick;
       public event EventHandler<FilterDateEventArgs> OnTampilkanClick;
 
@@ -64,6 +64,7 @@ namespace RumahScarlett.Presentation.Views.HutangOperasional
       private void HutangOperasionalView_Load(object sender, EventArgs e)
       {
          OnLoadData?.Invoke(sender, e);
+         ActiveControl = crudcButtons.ButtonTutup;
       }
 
       private void ListDataGrid_CellDoubleClick(object sender, CellClickEventArgs e)
@@ -73,22 +74,22 @@ namespace RumahScarlett.Presentation.Views.HutangOperasional
 
       private void crudcButtons_OnTambahClick(object sender, EventArgs e)
       {
-         OnCreateData?.Invoke(sender, e);
+         OnButtonTambahClick?.Invoke(sender, e);
       }
 
       private void crudcButtons_OnUbahClick(object sender, EventArgs e)
       {
-         OnUpdateData?.Invoke(sender, e);
+         OnButtonUbahClick?.Invoke(sender, e);
       }
 
       private void crudcButtons_OnHapusClick(object sender, EventArgs e)
       {
-         OnDeleteData?.Invoke(sender, e);
+         OnButtonHapusClick?.Invoke(sender, e);
       }
 
       private void crudcButtons_OnRefreshClickEvent(object sender, EventArgs e)
       {
-         OnRefreshData?.Invoke(sender, e);
+         OnButtonRefreshClick?.Invoke(sender, e);
       }
 
       private void crudcButtons_OnTutupClickEvent(object sender, EventArgs e)

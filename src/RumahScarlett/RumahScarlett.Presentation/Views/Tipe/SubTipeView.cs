@@ -16,11 +16,11 @@ namespace RumahScarlett.Presentation.Views.Tipe
    public partial class SubTipeView : BaseDataView, ISubTipeView
    {
       public event EventHandler OnLoadData;
-      public event EventHandler OnCreateData;
-      public event EventHandler OnUpdateData;
-      public event EventHandler OnDeleteData;
-      public event EventHandler OnRefreshData;
-      public event EventHandler OnPrintData;
+      public event EventHandler OnButtonTambahClick;
+      public event EventHandler OnButtonUbahClick;
+      public event EventHandler OnButtonHapusClick;
+      public event EventHandler OnButtonRefreshClick;
+      public event EventHandler OnButtonCetakClick;
       public event EventHandler<CellClickEventArgs> OnDataGridCellDoubleClick;
 
       public ListDataGrid ListDataGrid
@@ -46,6 +46,7 @@ namespace RumahScarlett.Presentation.Views.Tipe
       private void SubTipeView_Load(object sender, EventArgs e)
       {
          OnLoadData?.Invoke(sender, e);
+         ActiveControl = crudcButtons.ButtonTutup;
       }
 
       private void ListDataGrid_CellDoubleClick(object sender, CellClickEventArgs e)
@@ -55,22 +56,22 @@ namespace RumahScarlett.Presentation.Views.Tipe
 
       private void ButtonsCRUD_OnTambahClickEvent(object sender, EventArgs e)
       {
-         OnCreateData?.Invoke(sender, e);
+         OnButtonTambahClick?.Invoke(sender, e);
       }
 
       private void ButtonsCRUD_OnUbahClickEvent(object sender, EventArgs e)
       {
-         OnUpdateData?.Invoke(sender, e);
+         OnButtonUbahClick?.Invoke(sender, e);
       }
 
       private void ButtonsCRUD_OnHapusClickEvent(object sender, EventArgs e)
       {
-         OnDeleteData?.Invoke(sender, e);
+         OnButtonHapusClick?.Invoke(sender, e);
       }
 
       private void ButtonsCRUD_OnRefreshClickEvent(object sender, EventArgs e)
       {
-         OnRefreshData?.Invoke(sender, e);
+         OnButtonRefreshClick?.Invoke(sender, e);
       }
 
       private void ButtonsCRUD_OnTutupClickEvent(object sender, EventArgs e)

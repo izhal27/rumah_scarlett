@@ -95,7 +95,7 @@ namespace RumahScarlett.Presentation.Presenters.Penjualan
 
          if (model != null)
          {
-            var detailView = new BaseDetailTransaksiView("Detail Penjualan");
+            var detailView = new BaseDetailView("Detail Penjualan");
             detailView.OnLoadView += DetailView_OnLoadView;
             detailView.ShowDialog();
          }
@@ -104,7 +104,7 @@ namespace RumahScarlett.Presentation.Presenters.Penjualan
       private void DetailView_OnLoadView(object sender, EventArgs e)
       {
          var modelDetails = ((PenjualanModel)_view.ListDataGrid.SelectedItem).PenjualanDetails.ToList();
-         var detailView = (BaseDetailTransaksiView)sender;
+         var detailView = (BaseDetailView)sender;
 
          if (modelDetails != null && modelDetails.Count > 0)
          {

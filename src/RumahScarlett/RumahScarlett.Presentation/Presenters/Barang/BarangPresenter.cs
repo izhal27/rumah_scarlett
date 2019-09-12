@@ -1,6 +1,7 @@
 ﻿using Equin.ApplicationFramework;
 using RumahScarlett.CommonComponents;
 using RumahScarlett.Domain.Models.Barang;
+using RumahScarlett.Domain.Models.PenyesuaianStok;
 using RumahScarlett.Domain.Models.Supplier;
 using RumahScarlett.Domain.Models.Tipe;
 using RumahScarlett.Infrastructure.DataAccess.Repositories.Barang;
@@ -38,10 +39,11 @@ namespace RumahScarlett.Presentation.Presenters.Barang
          _barangServices = new BarangServices(new BarangRepository(), new ModelDataAnnotationCheck());
 
          _view.OnLoadData += _view_LoadData;
-         _view.OnCreateData += _view_OnCreateData;
-         _view.OnUpdateData += _view_OnUpdateData;
-         _view.OnDeleteData += _view_OnDeleteData;
-         _view.OnRefreshData += _view_OnRefreshData;
+         _view.OnButtonTambahClick += _view_OnCreateData;
+         _view.OnButtonUbahClick += _view_OnUpdateData;
+         _view.OnButtonHapusClick += _view_OnDeleteData;
+         _view.OnButtonRefreshClick += _view_OnRefreshData;
+         _view.OnButtonDetailPenyesuaianStokClick += _view_OnButtonDetailPenyesuaianStokClick;
 
          _view.OnDataGridCellDoubleClick += _view_DataGrid_CellDoubleClick;
          _view.OnRadioButtonTipeChecked += _view_RadioButtonTipe_CheckedChanged;
@@ -248,6 +250,28 @@ namespace RumahScarlett.Presentation.Presenters.Barang
          _bindingView.DataSource = _listObjs;
 
          _view_ButtonTampilkan_Click(null, null);
+      }
+
+      private void _view_OnButtonDetailPenyesuaianStokClick(object sender, EventArgs e)
+      {
+         if (_view.ListDataGrid != null && _view.ListDataGrid.SelectedItem != null)
+         {
+            var model = (BarangModel)_view.ListDataGrid.SelectedItem;
+            var detailView = new BaseDetailView($"Penyesuaian Stok Barang {model.nama}");
+            detailView.OnLoadView += BaseDetailTransaksiView_OnLoadView;
+            detailView.ShowDialog();
+         }
+      }
+
+      private void BaseDetailTransaksiView_OnLoadView(object sender, EventArgs e)
+      {
+         var listPenyesuaianStokModels = ((BarangModel)_view.ListDataGrid.SelectedItem).PenyesuaianStoks.ToList();
+         var detailView = (BaseDetailView)sender;
+
+         var bindingDetialView = new BindingListView<PenyesuaianStokModel>(listPenyesuaianStokModels);
+         detailView.ListDataGrid.DataSource = bindingDetialView;
+         detailView.ListDataGrid.Columns[1].Visible = false; // Kode Barang
+         detailView.ListDataGrid.Columns[2].Visible = false; // Nama Barang
       }
 
       private void _view_DataGrid_CellDoubleClick(object sender, CellClickEventArgs e)

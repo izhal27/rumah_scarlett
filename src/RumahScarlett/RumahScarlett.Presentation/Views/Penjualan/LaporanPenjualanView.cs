@@ -47,6 +47,7 @@ namespace RumahScarlett.Presentation.Views.Penjualan
       private void LaporanPenjualanView_Load(object sender, EventArgs e)
       {
          OnLoadData?.Invoke(sender, e);
+         ActiveControl = buttonsDeletePrintDetail.ButtonTutup;
       }
 
       private void listDataGrid_CellDoubleClick(object sender, CellClickEventArgs e)

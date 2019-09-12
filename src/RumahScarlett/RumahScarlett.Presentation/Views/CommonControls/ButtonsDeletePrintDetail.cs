@@ -32,6 +32,11 @@ namespace RumahScarlett.Presentation.Views.CommonControls
          set { buttonDetail.Visible = value; }
       }
 
+      public Button ButtonTutup
+      {
+         get { return buttonTutup; }
+      }
+
       public ButtonsDeletePrintDetail()
       {
          InitializeComponent();

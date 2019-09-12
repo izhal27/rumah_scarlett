@@ -37,10 +37,10 @@ namespace RumahScarlett.Presentation.Presenters.Tipe
          _services = new TipeServices(new TipeRepository(), new ModelDataAnnotationCheck());
 
          _view.OnLoadData += _view_LoadData;
-         _view.OnCreateData += _view_OnCreateData;
-         _view.OnUpdateData += _view_OnUpdateData;
-         _view.OnDeleteData += _view_OnDeleteData;
-         _view.OnRefreshData += _view_OnRefreshData;
+         _view.OnButtonTambahClick += _view_OnCreateData;
+         _view.OnButtonUbahClick += _view_OnUpdateData;
+         _view.OnButtonHapusClick += _view_OnDeleteData;
+         _view.OnButtonRefreshClick += _view_OnRefreshData;
 
          _view.OnDataGridCellDoubleClick += OnDataGrid_CellDoubleClick;
       }
