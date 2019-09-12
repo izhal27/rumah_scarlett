@@ -80,8 +80,6 @@ namespace RumahScarlett.Presentation.Presenters.Laporan
          _view.LabelHpp.Text = totalHpp.ToString("C");
          _view.LabelPengeluaran.Text = totalPengeluaranOperasional.ToString("C");
          _view.LabelDiskonPenjualan.Text = totalDiskonPenjualan.ToString("C");
-         _view.LabelTotalPemasukan.Text = totalPemasukan.ToString("C");
-         _view.LabelTotalPengeluaran.Text = totalPengeluaran.ToString("C");
          _view.LabelTotalSelisih.Text = totalSelisih.ToString("C");
       }
 

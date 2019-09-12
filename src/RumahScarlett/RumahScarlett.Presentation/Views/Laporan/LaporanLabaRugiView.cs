@@ -48,17 +48,7 @@ namespace RumahScarlett.Presentation.Views.Laporan
       {
          get { return labelDiskonPenjualan; }
       }
-
-      public Label LabelTotalPemasukan
-      {
-         get { return labelTotalPemasukan; }
-      }
-
-      public Label LabelTotalPengeluaran
-      {
-         get { return labelTotalPengeluaran; }
-      }
-
+      
       public Label LabelTotalSelisih
       {
          get { return labelTotalSelisih; }
