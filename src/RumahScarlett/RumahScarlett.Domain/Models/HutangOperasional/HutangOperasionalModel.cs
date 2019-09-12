@@ -21,11 +21,6 @@ namespace RumahScarlett.Domain.Models.HutangOperasional
       [Display(Name = "Tanggal")]
       public DateTime tanggal { get; set; }
 
-      [DisplayFormat(DataFormatString = "{0:N0}")]
-      [Range(1, uint.MaxValue, ErrorMessage = "Jumlah harus diisi !!!")]
-      [Display(Name = "Jumlah")]
-      public decimal jumlah { get; set; }
-
       [Display(Name = "Keterangan")]
       public string keterangan { get; set; }
 
@@ -40,5 +35,10 @@ namespace RumahScarlett.Domain.Models.HutangOperasional
       [Browsable(false)]
       [Display(Name = "Status Hutang")]
       public bool status_hutang { get; set; }
+
+      [DisplayFormat(DataFormatString = "{0:N0}")]
+      [Range(1, uint.MaxValue, ErrorMessage = "Jumlah harus diisi !!!")]
+      [Display(Name = "Jumlah")]
+      public decimal jumlah { get; set; }
    }
 }

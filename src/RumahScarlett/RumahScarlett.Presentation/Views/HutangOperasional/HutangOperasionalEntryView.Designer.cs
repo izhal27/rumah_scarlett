@@ -30,19 +30,20 @@
       {
          this.groupBox1 = new System.Windows.Forms.GroupBox();
          this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-         this.textBoxKeterangan = new RumahScarlett.Presentation.Views.CommonControls.BaseTextBox();
          this.label1 = new System.Windows.Forms.Label();
-         this.label2 = new System.Windows.Forms.Label();
-         this.label3 = new System.Windows.Forms.Label();
-         this.label4 = new System.Windows.Forms.Label();
          this.dateTimePickerTanggal = new System.Windows.Forms.DateTimePicker();
-         this.textBoxDigitJumlah = new RumahScarlett.Presentation.Views.CommonControls.BaseTextBoxDigit();
-         this.comboBoxStatusHutang = new RumahScarlett.Presentation.Views.ModelControls.ComboBoxStatusHutang();
          this.label8 = new System.Windows.Forms.Label();
          this.label5 = new System.Windows.Forms.Label();
          this.label6 = new System.Windows.Forms.Label();
          this.label7 = new System.Windows.Forms.Label();
          this.label9 = new System.Windows.Forms.Label();
+         this.textBoxKeterangan = new RumahScarlett.Presentation.Views.CommonControls.BaseTextBox();
+         this.textBoxDigitJumlah = new RumahScarlett.Presentation.Views.CommonControls.BaseTextBoxDigit();
+         this.comboBoxStatusHutang = new RumahScarlett.Presentation.Views.ModelControls.ComboBoxStatusHutang();
+         this.label4 = new System.Windows.Forms.Label();
+         this.label2 = new System.Windows.Forms.Label();
+         this.label3 = new System.Windows.Forms.Label();
+         this.label10 = new System.Windows.Forms.Label();
          this.groupBox1.SuspendLayout();
          this.tableLayoutPanel1.SuspendLayout();
          ((System.ComponentModel.ISupportInitialize)(this.textBoxKeterangan)).BeginInit();
@@ -80,19 +81,20 @@
          this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
          this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
          this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-         this.tableLayoutPanel1.Controls.Add(this.textBoxKeterangan, 2, 2);
          this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
-         this.tableLayoutPanel1.Controls.Add(this.label2, 0, 1);
-         this.tableLayoutPanel1.Controls.Add(this.label3, 0, 2);
-         this.tableLayoutPanel1.Controls.Add(this.label4, 0, 3);
          this.tableLayoutPanel1.Controls.Add(this.dateTimePickerTanggal, 2, 0);
-         this.tableLayoutPanel1.Controls.Add(this.textBoxDigitJumlah, 2, 1);
-         this.tableLayoutPanel1.Controls.Add(this.comboBoxStatusHutang, 2, 3);
-         this.tableLayoutPanel1.Controls.Add(this.label8, 3, 1);
          this.tableLayoutPanel1.Controls.Add(this.label5, 1, 0);
          this.tableLayoutPanel1.Controls.Add(this.label6, 1, 1);
          this.tableLayoutPanel1.Controls.Add(this.label7, 1, 2);
          this.tableLayoutPanel1.Controls.Add(this.label9, 1, 3);
+         this.tableLayoutPanel1.Controls.Add(this.textBoxKeterangan, 2, 1);
+         this.tableLayoutPanel1.Controls.Add(this.textBoxDigitJumlah, 2, 3);
+         this.tableLayoutPanel1.Controls.Add(this.comboBoxStatusHutang, 2, 2);
+         this.tableLayoutPanel1.Controls.Add(this.label4, 0, 2);
+         this.tableLayoutPanel1.Controls.Add(this.label2, 0, 3);
+         this.tableLayoutPanel1.Controls.Add(this.label3, 0, 1);
+         this.tableLayoutPanel1.Controls.Add(this.label8, 3, 3);
+         this.tableLayoutPanel1.Controls.Add(this.label10, 3, 0);
          this.tableLayoutPanel1.Location = new System.Drawing.Point(6, 19);
          this.tableLayoutPanel1.Name = "tableLayoutPanel1";
          this.tableLayoutPanel1.RowCount = 4;
@@ -102,18 +104,6 @@
          this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
          this.tableLayoutPanel1.Size = new System.Drawing.Size(375, 192);
          this.tableLayoutPanel1.TabIndex = 0;
-         // 
-         // textBoxKeterangan
-         // 
-         this.textBoxKeterangan.Anchor = System.Windows.Forms.AnchorStyles.Left;
-         this.textBoxKeterangan.BeforeTouchSize = new System.Drawing.Size(150, 20);
-         this.textBoxKeterangan.Location = new System.Drawing.Point(100, 55);
-         this.textBoxKeterangan.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
-         this.textBoxKeterangan.Multiline = true;
-         this.textBoxKeterangan.Name = "textBoxKeterangan";
-         this.textBoxKeterangan.Size = new System.Drawing.Size(250, 100);
-         this.textBoxKeterangan.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
-         this.textBoxKeterangan.TabIndex = 2;
          // 
          // label1
          // 
@@ -125,36 +115,6 @@
          this.label1.TabIndex = 0;
          this.label1.Text = "Tanggal";
          // 
-         // label2
-         // 
-         this.label2.Anchor = System.Windows.Forms.AnchorStyles.Left;
-         this.label2.AutoSize = true;
-         this.label2.Location = new System.Drawing.Point(3, 32);
-         this.label2.Name = "label2";
-         this.label2.Size = new System.Drawing.Size(40, 13);
-         this.label2.TabIndex = 0;
-         this.label2.Text = "Jumlah";
-         // 
-         // label3
-         // 
-         this.label3.Anchor = System.Windows.Forms.AnchorStyles.Left;
-         this.label3.AutoSize = true;
-         this.label3.Location = new System.Drawing.Point(3, 98);
-         this.label3.Name = "label3";
-         this.label3.Size = new System.Drawing.Size(62, 13);
-         this.label3.TabIndex = 0;
-         this.label3.Text = "Keterangan";
-         // 
-         // label4
-         // 
-         this.label4.Anchor = System.Windows.Forms.AnchorStyles.Left;
-         this.label4.AutoSize = true;
-         this.label4.Location = new System.Drawing.Point(3, 168);
-         this.label4.Name = "label4";
-         this.label4.Size = new System.Drawing.Size(75, 13);
-         this.label4.TabIndex = 0;
-         this.label4.Text = "Status Hutang";
-         // 
          // dateTimePickerTanggal
          // 
          this.dateTimePickerTanggal.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -164,42 +124,12 @@
          this.dateTimePickerTanggal.Size = new System.Drawing.Size(150, 20);
          this.dateTimePickerTanggal.TabIndex = 0;
          // 
-         // textBoxDigitJumlah
-         // 
-         this.textBoxDigitJumlah.Anchor = System.Windows.Forms.AnchorStyles.Left;
-         this.textBoxDigitJumlah.BackGroundColor = System.Drawing.SystemColors.Window;
-         this.textBoxDigitJumlah.BeforeTouchSize = new System.Drawing.Size(150, 20);
-         this.textBoxDigitJumlah.IntegerValue = ((long)(0));
-         this.textBoxDigitJumlah.Location = new System.Drawing.Point(100, 29);
-         this.textBoxDigitJumlah.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
-         this.textBoxDigitJumlah.MinValue = ((long)(0));
-         this.textBoxDigitJumlah.Name = "textBoxDigitJumlah";
-         this.textBoxDigitJumlah.NullString = "";
-         this.textBoxDigitJumlah.Size = new System.Drawing.Size(150, 20);
-         this.textBoxDigitJumlah.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
-         this.textBoxDigitJumlah.TabIndex = 1;
-         this.textBoxDigitJumlah.Text = "0";
-         this.textBoxDigitJumlah.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-         // 
-         // comboBoxStatusHutang
-         // 
-         this.comboBoxStatusHutang.Anchor = System.Windows.Forms.AnchorStyles.Left;
-         this.comboBoxStatusHutang.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-         this.comboBoxStatusHutang.FormattingEnabled = true;
-         this.comboBoxStatusHutang.Items.AddRange(new object[] {
-            "Belum Lunas",
-            "Lunas"});
-         this.comboBoxStatusHutang.Location = new System.Drawing.Point(100, 164);
-         this.comboBoxStatusHutang.Name = "comboBoxStatusHutang";
-         this.comboBoxStatusHutang.Size = new System.Drawing.Size(150, 21);
-         this.comboBoxStatusHutang.TabIndex = 3;
-         // 
          // label8
          // 
          this.label8.Anchor = System.Windows.Forms.AnchorStyles.Left;
          this.label8.AutoSize = true;
          this.label8.ForeColor = System.Drawing.Color.Red;
-         this.label8.Location = new System.Drawing.Point(356, 32);
+         this.label8.Location = new System.Drawing.Point(356, 169);
          this.label8.Name = "label8";
          this.label8.Size = new System.Drawing.Size(11, 13);
          this.label8.TabIndex = 5;
@@ -219,7 +149,7 @@
          // 
          this.label6.Anchor = System.Windows.Forms.AnchorStyles.Left;
          this.label6.AutoSize = true;
-         this.label6.Location = new System.Drawing.Point(84, 32);
+         this.label6.Location = new System.Drawing.Point(84, 72);
          this.label6.Name = "label6";
          this.label6.Size = new System.Drawing.Size(10, 13);
          this.label6.TabIndex = 0;
@@ -229,7 +159,7 @@
          // 
          this.label7.Anchor = System.Windows.Forms.AnchorStyles.Left;
          this.label7.AutoSize = true;
-         this.label7.Location = new System.Drawing.Point(84, 98);
+         this.label7.Location = new System.Drawing.Point(84, 139);
          this.label7.Name = "label7";
          this.label7.Size = new System.Drawing.Size(10, 13);
          this.label7.TabIndex = 0;
@@ -239,11 +169,94 @@
          // 
          this.label9.Anchor = System.Windows.Forms.AnchorStyles.Left;
          this.label9.AutoSize = true;
-         this.label9.Location = new System.Drawing.Point(84, 168);
+         this.label9.Location = new System.Drawing.Point(84, 169);
          this.label9.Name = "label9";
          this.label9.Size = new System.Drawing.Size(10, 13);
          this.label9.TabIndex = 0;
          this.label9.Text = ":";
+         // 
+         // textBoxKeterangan
+         // 
+         this.textBoxKeterangan.Anchor = System.Windows.Forms.AnchorStyles.Left;
+         this.textBoxKeterangan.BeforeTouchSize = new System.Drawing.Size(150, 20);
+         this.textBoxKeterangan.Location = new System.Drawing.Point(100, 29);
+         this.textBoxKeterangan.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
+         this.textBoxKeterangan.Multiline = true;
+         this.textBoxKeterangan.Name = "textBoxKeterangan";
+         this.textBoxKeterangan.Size = new System.Drawing.Size(250, 100);
+         this.textBoxKeterangan.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
+         this.textBoxKeterangan.TabIndex = 2;
+         // 
+         // textBoxDigitJumlah
+         // 
+         this.textBoxDigitJumlah.Anchor = System.Windows.Forms.AnchorStyles.Left;
+         this.textBoxDigitJumlah.BackGroundColor = System.Drawing.SystemColors.Window;
+         this.textBoxDigitJumlah.BeforeTouchSize = new System.Drawing.Size(150, 20);
+         this.textBoxDigitJumlah.IntegerValue = ((long)(0));
+         this.textBoxDigitJumlah.Location = new System.Drawing.Point(100, 165);
+         this.textBoxDigitJumlah.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
+         this.textBoxDigitJumlah.MinValue = ((long)(0));
+         this.textBoxDigitJumlah.Name = "textBoxDigitJumlah";
+         this.textBoxDigitJumlah.NullString = "";
+         this.textBoxDigitJumlah.Size = new System.Drawing.Size(150, 20);
+         this.textBoxDigitJumlah.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
+         this.textBoxDigitJumlah.TabIndex = 1;
+         this.textBoxDigitJumlah.Text = "0";
+         this.textBoxDigitJumlah.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+         // 
+         // comboBoxStatusHutang
+         // 
+         this.comboBoxStatusHutang.Anchor = System.Windows.Forms.AnchorStyles.Left;
+         this.comboBoxStatusHutang.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+         this.comboBoxStatusHutang.FormattingEnabled = true;
+         this.comboBoxStatusHutang.Items.AddRange(new object[] {
+            "Belum Lunas",
+            "Lunas"});
+         this.comboBoxStatusHutang.Location = new System.Drawing.Point(100, 135);
+         this.comboBoxStatusHutang.Name = "comboBoxStatusHutang";
+         this.comboBoxStatusHutang.Size = new System.Drawing.Size(150, 21);
+         this.comboBoxStatusHutang.TabIndex = 3;
+         // 
+         // label4
+         // 
+         this.label4.Anchor = System.Windows.Forms.AnchorStyles.Left;
+         this.label4.AutoSize = true;
+         this.label4.Location = new System.Drawing.Point(3, 139);
+         this.label4.Name = "label4";
+         this.label4.Size = new System.Drawing.Size(75, 13);
+         this.label4.TabIndex = 0;
+         this.label4.Text = "Status Hutang";
+         // 
+         // label2
+         // 
+         this.label2.Anchor = System.Windows.Forms.AnchorStyles.Left;
+         this.label2.AutoSize = true;
+         this.label2.Location = new System.Drawing.Point(3, 169);
+         this.label2.Name = "label2";
+         this.label2.Size = new System.Drawing.Size(40, 13);
+         this.label2.TabIndex = 0;
+         this.label2.Text = "Jumlah";
+         // 
+         // label3
+         // 
+         this.label3.Anchor = System.Windows.Forms.AnchorStyles.Left;
+         this.label3.AutoSize = true;
+         this.label3.Location = new System.Drawing.Point(3, 72);
+         this.label3.Name = "label3";
+         this.label3.Size = new System.Drawing.Size(62, 13);
+         this.label3.TabIndex = 0;
+         this.label3.Text = "Keterangan";
+         // 
+         // label10
+         // 
+         this.label10.Anchor = System.Windows.Forms.AnchorStyles.Left;
+         this.label10.AutoSize = true;
+         this.label10.ForeColor = System.Drawing.Color.Red;
+         this.label10.Location = new System.Drawing.Point(356, 6);
+         this.label10.Name = "label10";
+         this.label10.Size = new System.Drawing.Size(11, 13);
+         this.label10.TabIndex = 5;
+         this.label10.Text = "*";
          // 
          // HutangOperasionalEntryView
          // 
@@ -283,5 +296,6 @@
       private System.Windows.Forms.Label label6;
       private System.Windows.Forms.Label label7;
       private System.Windows.Forms.Label label9;
+      private System.Windows.Forms.Label label10;
    }
 }

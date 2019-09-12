@@ -215,12 +215,12 @@ namespace RumahScarlett.Presentation.Presenters.HutangOperasional
       {
          using (new WaitCursorHandler())
          {
-            if (_listObjs != null && _listObjs.Count > 0)
+            if (_bindingView.DataSource != null && _bindingView.DataSource.Count > 0)
             {
                var reportDataSource = new ReportDataSource()
                {
                   Name = "DataSetHutangOperasional",
-                  Value = _listObjs
+                  Value = _bindingView.DataSource
                };
 
                new ReportView("Report Hutang Operasional", "ReportViewerHutangOperasional",
