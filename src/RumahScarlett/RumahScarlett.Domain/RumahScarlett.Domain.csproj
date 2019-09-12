@@ -56,7 +56,9 @@
     <Compile Include="Models\HutangOperasional\IHutangOperasionalModel.cs" />
     <Compile Include="Models\KasAwal\IKasAwalModel.cs" />
     <Compile Include="Models\KasAwal\KasAwalModel.cs" />
+    <Compile Include="Models\Laporan\ILabaRugiModel.cs" />
     <Compile Include="Models\Laporan\IStatusBarangModel.cs" />
+    <Compile Include="Models\Laporan\LabaRugiModel.cs" />
     <Compile Include="Models\Laporan\StatusBarangModel.cs" />
     <Compile Include="Models\Laporan\ILaporanTransaksiByDateModel.cs" />
     <Compile Include="Models\Laporan\LaporanTransaksiByDateModel.cs" />
