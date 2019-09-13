@@ -32,7 +32,6 @@
          this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
          this.label1 = new System.Windows.Forms.Label();
          this.dateTimePickerTanggal = new System.Windows.Forms.DateTimePicker();
-         this.label8 = new System.Windows.Forms.Label();
          this.label5 = new System.Windows.Forms.Label();
          this.label6 = new System.Windows.Forms.Label();
          this.label7 = new System.Windows.Forms.Label();
@@ -43,6 +42,7 @@
          this.label4 = new System.Windows.Forms.Label();
          this.label2 = new System.Windows.Forms.Label();
          this.label3 = new System.Windows.Forms.Label();
+         this.label8 = new System.Windows.Forms.Label();
          this.label10 = new System.Windows.Forms.Label();
          this.groupBox1.SuspendLayout();
          this.tableLayoutPanel1.SuspendLayout();
@@ -124,17 +124,6 @@
          this.dateTimePickerTanggal.Size = new System.Drawing.Size(150, 20);
          this.dateTimePickerTanggal.TabIndex = 0;
          // 
-         // label8
-         // 
-         this.label8.Anchor = System.Windows.Forms.AnchorStyles.Left;
-         this.label8.AutoSize = true;
-         this.label8.ForeColor = System.Drawing.Color.Red;
-         this.label8.Location = new System.Drawing.Point(356, 169);
-         this.label8.Name = "label8";
-         this.label8.Size = new System.Drawing.Size(11, 13);
-         this.label8.TabIndex = 5;
-         this.label8.Text = "*";
-         // 
          // label5
          // 
          this.label5.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -185,7 +174,7 @@
          this.textBoxKeterangan.Name = "textBoxKeterangan";
          this.textBoxKeterangan.Size = new System.Drawing.Size(250, 100);
          this.textBoxKeterangan.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
-         this.textBoxKeterangan.TabIndex = 2;
+         this.textBoxKeterangan.TabIndex = 1;
          // 
          // textBoxDigitJumlah
          // 
@@ -200,7 +189,7 @@
          this.textBoxDigitJumlah.NullString = "";
          this.textBoxDigitJumlah.Size = new System.Drawing.Size(150, 20);
          this.textBoxDigitJumlah.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
-         this.textBoxDigitJumlah.TabIndex = 1;
+         this.textBoxDigitJumlah.TabIndex = 3;
          this.textBoxDigitJumlah.Text = "0";
          this.textBoxDigitJumlah.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
          // 
@@ -215,7 +204,7 @@
          this.comboBoxStatusHutang.Location = new System.Drawing.Point(100, 135);
          this.comboBoxStatusHutang.Name = "comboBoxStatusHutang";
          this.comboBoxStatusHutang.Size = new System.Drawing.Size(150, 21);
-         this.comboBoxStatusHutang.TabIndex = 3;
+         this.comboBoxStatusHutang.TabIndex = 2;
          // 
          // label4
          // 
@@ -246,6 +235,17 @@
          this.label3.Size = new System.Drawing.Size(62, 13);
          this.label3.TabIndex = 0;
          this.label3.Text = "Keterangan";
+         // 
+         // label8
+         // 
+         this.label8.Anchor = System.Windows.Forms.AnchorStyles.Left;
+         this.label8.AutoSize = true;
+         this.label8.ForeColor = System.Drawing.Color.Red;
+         this.label8.Location = new System.Drawing.Point(356, 169);
+         this.label8.Name = "label8";
+         this.label8.Size = new System.Drawing.Size(11, 13);
+         this.label8.TabIndex = 5;
+         this.label8.Text = "*";
          // 
          // label10
          // 
