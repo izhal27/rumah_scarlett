@@ -293,12 +293,12 @@ namespace RumahScarlett.Presentation.Presenters.Barang
             {
                var parameters = new List<ReportParameter>();
 
-               if (_view.RadioButtonTipe.Checked && _filter == FilterType.Tipe)
+               if (_filter == FilterType.Tipe)
                {
                   parameters.Add(new ReportParameter("Tipe", ((TipeModel)_view.ComboBoxTipe.ComboBox.SelectedItem).nama));
                   parameters.Add(new ReportParameter("SubTipe", ((SubTipeModel)_view.ComboBoxSubTipe.ComboBox.SelectedItem).nama));
                }
-               else if (_view.RadioButtonSupplier.Checked && _filter == FilterType.Supplier)
+               else if (_filter == FilterType.Supplier)
                {
                   parameters.Add(new ReportParameter("Supplier", ((SupplierModel)_view.ComboBoxSupplier.ComboBox.SelectedItem).nama));
                }
