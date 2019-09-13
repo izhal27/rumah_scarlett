@@ -12,25 +12,25 @@
               <Width>5.13142cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>6.46577cm</Width>
-            </TablixColumn>
-            <TablixColumn>
-              <Width>2.15311cm</Width>
-            </TablixColumn>
-            <TablixColumn>
-              <Width>3.37019cm</Width>
-            </TablixColumn>
-            <TablixColumn>
-              <Width>3.05269cm</Width>
-            </TablixColumn>
-            <TablixColumn>
-              <Width>2.97332cm</Width>
+              <Width>6.84767cm</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>2.54998cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>3.05269cm</Width>
+              <Width>3.44956cm</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>3.18498cm</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>2.99978cm</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>2.54998cm</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>2.94686cm</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -1043,7 +1043,6 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
-                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell>
@@ -1116,7 +1115,7 @@
         <DataSetName>DataSetBarang</DataSetName>
         <Top>3.0201cm</Top>
         <Height>1.8cm</Height>
-        <Width>30.00269cm</Width>
+        <Width>30.91376cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -1360,7 +1359,7 @@ Len(Parameters!Supplier.Value) &gt; 0, Parameters!Supplier.Value
   <Width>12.17077in</Width>
   <Page>
     <PageFooter>
-      <Height>2.54cm</Height>
+      <Height>1.48167cm</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -1385,10 +1384,10 @@ Len(Parameters!Supplier.Value) &gt; 0, Parameters!Supplier.Value
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox1</rd:DefaultName>
-          <Top>1.6225cm</Top>
-          <Left>26.33852cm</Left>
+          <Top>0.56417cm</Top>
+          <Left>26.985cm</Left>
           <Height>0.6cm</Height>
-          <Width>3.66417cm</Width>
+          <Width>3.69063cm</Width>
           <Style>
             <Border>
               <Style>None</Style>
