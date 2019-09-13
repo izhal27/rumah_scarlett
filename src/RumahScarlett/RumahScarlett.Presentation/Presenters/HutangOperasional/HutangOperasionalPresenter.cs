@@ -26,6 +26,10 @@ namespace RumahScarlett.Presentation.Presenters.HutangOperasional
       private List<IHutangOperasionalModel> _listObjs;
       private BindingListView<HutangOperasionalModel> _bindingView;
       private static string _typeName = "Hutang Operasional";
+      private TampilkanStatus _tampilkanStatus;
+      private DateTime _tanggal;
+      private DateTime _tanggal_awal;
+      private DateTime _tanggal_akhir;
 
       public IHutangOperasionalView GetView
       {
@@ -217,6 +221,18 @@ namespace RumahScarlett.Presentation.Presenters.HutangOperasional
          {
             if (_bindingView.DataSource != null && _bindingView.DataSource.Count > 0)
             {
+               var parameters = new List<ReportParameter>();
+
+               if (_tampilkanStatus == TampilkanStatus.Tanggal)
+               {
+                  parameters.Add(new ReportParameter("Tanggal", _tanggal.ToShortDateString()));
+               }
+               else if (_tampilkanStatus == TampilkanStatus.Periode)
+               {
+                  parameters.Add(new ReportParameter("Tanggal", _tanggal_awal.ToShortDateString()));
+                  parameters.Add(new ReportParameter("TanggalAkhir", _tanggal_akhir.ToShortDateString()));
+               }
+
                var reportDataSource = new ReportDataSource()
                {
                   Name = "DataSetHutangOperasional",
@@ -224,7 +240,7 @@ namespace RumahScarlett.Presentation.Presenters.HutangOperasional
                };
 
                new ReportView("Report Hutang Operasional", "ReportViewerHutangOperasional",
-                              reportDataSource, null).ShowDialog();
+                              reportDataSource, parameters).ShowDialog();
             }
          }
       }
@@ -241,17 +257,23 @@ namespace RumahScarlett.Presentation.Presenters.HutangOperasional
             case TampilkanStatus.Tanggal:
 
                _bindingView.DataSource = _listObjs.Where(ps => ps.tanggal == e.Tanggal.Date).ToList();
+               _tampilkanStatus = TampilkanStatus.Tanggal;
+               _tanggal = e.Tanggal;
 
                break;
             case TampilkanStatus.Periode:
 
                _bindingView.DataSource = _listObjs.Where(ps => ps.tanggal >= e.TanggalAwal.Date &&
                                                          ps.tanggal <= e.TanggalAkhir.Date).ToList();
+               _tampilkanStatus = TampilkanStatus.Periode;
+               _tanggal_awal = e.TanggalAwal;
+               _tanggal_akhir = e.TanggalAkhir;
 
                break;
             default:
 
                _bindingView.DataSource = _listObjs;
+               _tampilkanStatus = TampilkanStatus.Semua;
 
                break;
          }
