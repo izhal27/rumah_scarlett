@@ -28,6 +28,7 @@ namespace RumahScarlett.Presentation.Presenters.Barang
       private List<IBarangModel> _listObjs;
       private BindingListView<BarangModel> _bindingView;
       private static string _typeName = "Barang";
+      private FilterType _filter = FilterType.Semua;
 
       public IBarangView GetView
       {
@@ -93,6 +94,7 @@ namespace RumahScarlett.Presentation.Presenters.Barang
             if (_view.RadioButtonSemua.Checked) // Filter by semua barang
             {
                _bindingView.DataSource = _listObjs;
+               _filter = FilterType.Semua;
             }
             else if (_view.RadioButtonTipe.Checked) // Filter by tipe
             {
@@ -101,6 +103,7 @@ namespace RumahScarlett.Presentation.Presenters.Barang
 
                var filterBarang = _listObjs.Where(b => b.tipe_id == tipeId && b.sub_tipe_id == subTipeId).ToList();
                _bindingView.DataSource = filterBarang;
+               _filter = FilterType.Tipe;
             }
             else // Filter by supplier
             {
@@ -108,6 +111,7 @@ namespace RumahScarlett.Presentation.Presenters.Barang
 
                var filterBarang = _listObjs.Where(b => b.supplier_id == supplierId).ToList();
                _bindingView.DataSource = filterBarang;
+               _filter = FilterType.Supplier;
             }
          }
       }
@@ -287,6 +291,18 @@ namespace RumahScarlett.Presentation.Presenters.Barang
          {
             if (_bindingView.DataSource != null && _bindingView.DataSource.Count > 0)
             {
+               var parameters = new List<ReportParameter>();
+
+               if (_view.RadioButtonTipe.Checked && _filter == FilterType.Tipe)
+               {
+                  parameters.Add(new ReportParameter("Tipe", ((TipeModel)_view.ComboBoxTipe.ComboBox.SelectedItem).nama));
+                  parameters.Add(new ReportParameter("SubTipe", ((SubTipeModel)_view.ComboBoxSubTipe.ComboBox.SelectedItem).nama));
+               }
+               else if (_view.RadioButtonSupplier.Checked && _filter == FilterType.Supplier)
+               {
+                  parameters.Add(new ReportParameter("Supplier", ((SupplierModel)_view.ComboBoxSupplier.ComboBox.SelectedItem).nama));
+               }
+
                var reportDataSource = new ReportDataSource()
                {
                   Name = "DataSetBarang",
@@ -294,9 +310,16 @@ namespace RumahScarlett.Presentation.Presenters.Barang
                };
 
                new ReportView("Report Barang", "ReportViewerBarang",
-                              reportDataSource, null).ShowDialog();
+                              reportDataSource, parameters).ShowDialog();
             }
          }
       }
+   }
+
+   enum FilterType
+   {
+      Semua,
+      Tipe,
+      Supplier
    }
 }
