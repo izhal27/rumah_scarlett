@@ -12,7 +12,7 @@
               <Width>3.17469cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>7.19635cm</Width>
+              <Width>6.77301cm</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>3.12177cm</Width>
@@ -1032,7 +1032,7 @@
         <DataSetName>DataSetHutangOperasional</DataSetName>
         <Top>2.96333cm</Top>
         <Height>3cm</Height>
-        <Width>19.45854cm</Width>
+        <Width>19.0352cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -1246,10 +1246,10 @@
     <Height>2.58399in</Height>
     <Style />
   </Body>
-  <Width>7.87959in</Width>
+  <Width>7.49417in</Width>
   <Page>
     <PageFooter>
-      <Height>2.54cm</Height>
+      <Height>1.48167cm</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -1274,8 +1274,8 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox13</rd:DefaultName>
-          <Top>1.6225cm</Top>
-          <Left>14.82865cm</Left>
+          <Top>0.56417cm</Top>
+          <Left>14.4053cm</Left>
           <Height>0.6cm</Height>
           <Width>4.6299cm</Width>
           <Style>
