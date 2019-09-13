@@ -1,4 +1,5 @@
 ﻿using Equin.ApplicationFramework;
+using Microsoft.Reporting.WinForms;
 using RumahScarlett.CommonComponents;
 using RumahScarlett.Domain.Models.PenyesuaianStok;
 using RumahScarlett.Infrastructure.DataAccess.Repositories.PenyesuaianStok;
@@ -24,6 +25,10 @@ namespace RumahScarlett.Presentation.Presenters.PenyesuaianStok
       private List<IPenyesuaianStokModel> _listObjs;
       private BindingListView<PenyesuaianStokModel> _bindingView;
       private static string _typeName = "Penyesuaian Stok";
+      private TampilkanStatus _tampilkanStatus;
+      private DateTime _tanggal;
+      private DateTime _tanggal_awal;
+      private DateTime _tanggal_akhir;
 
       public IPenyesuaianStokView GetView
       {
@@ -43,6 +48,7 @@ namespace RumahScarlett.Presentation.Presenters.PenyesuaianStok
 
          _view.OnDataGridCellDoubleClick += OnDataGrid_CellDoubleClick;
          _view.OnTampilkanClick += _view_OnTampilkanClick;
+         _view.OnButtonCetakClick += _view_OnButtonCetakClick;
       }
 
       private void _view_LoadData(object sender, EventArgs e)
@@ -218,20 +224,56 @@ namespace RumahScarlett.Presentation.Presenters.PenyesuaianStok
          {
             case TampilkanStatus.Tanggal:
 
-               _bindingView.DataSource = _listObjs.Where(ps => ps.tanggal == e.Tanggal.Date).ToList();
+               _bindingView.DataSource = _listObjs.Where(ps => ps.tanggal.Date == e.Tanggal.Date).ToList();
+               _tampilkanStatus = TampilkanStatus.Tanggal;
+               _tanggal = e.Tanggal;
 
                break;
             case TampilkanStatus.Periode:
 
-               _bindingView.DataSource = _listObjs.Where(ps => ps.tanggal >= e.TanggalAwal.Date &&
-                                                         ps.tanggal <= e.TanggalAkhir.Date).ToList();
+               _bindingView.DataSource = _listObjs.Where(ps => ps.tanggal.Date >= e.TanggalAwal.Date &&
+                                                         ps.tanggal.Date <= e.TanggalAkhir.Date).ToList();
+               _tampilkanStatus = TampilkanStatus.Periode;
+               _tanggal_awal = e.TanggalAwal;
+               _tanggal_akhir = e.TanggalAkhir;
 
                break;
             default:
 
                _bindingView.DataSource = _listObjs;
+               _tampilkanStatus = TampilkanStatus.Semua;
 
                break;
+         }
+      }
+      
+      private void _view_OnButtonCetakClick(object sender, EventArgs e)
+      {
+         using (new WaitCursorHandler())
+         {
+            if (_bindingView.DataSource != null && _bindingView.DataSource.Count > 0)
+            {
+               var parameters = new List<ReportParameter>();
+
+               if (_tampilkanStatus == TampilkanStatus.Tanggal)
+               {
+                  parameters.Add(new ReportParameter("Tanggal", _tanggal.ToShortDateString()));
+               }
+               else if (_tampilkanStatus == TampilkanStatus.Periode)
+               {
+                  parameters.Add(new ReportParameter("Tanggal", _tanggal_awal.ToShortDateString()));
+                  parameters.Add(new ReportParameter("TanggalAkhir", _tanggal_akhir.ToShortDateString()));
+               }
+
+               var reportDataSource = new ReportDataSource()
+               {
+                  Name = "DataSetPenyesuaianStok",
+                  Value = _bindingView.DataSource
+               };
+
+               new ReportView("Report Penyesuaian Stok Barang", "ReportViewerPenyesuaianStok",
+                              reportDataSource, parameters).ShowDialog();
+            }
          }
       }
    }

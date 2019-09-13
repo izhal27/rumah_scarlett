@@ -49,11 +49,12 @@ namespace RumahScarlett.Presentation.Views.PenyesuaianStok
          crudcButtons.OnUbahClick += crudcButtons_OnUbahClick;
          crudcButtons.OnHapusClick += crudcButtons_OnHapusClick;
          crudcButtons.OnRefreshClick += crudcButtons_OnRefreshClickEvent;
+         crudcButtons.OnCetakClick += CrudcButtons_OnCetakClick;
          crudcButtons.OnTutupClick += crudcButtons_OnTutupClickEvent;
 
          dateTimePickerFilter.OnTampilkanClick += DateTimePickerFilter_OnTampilkanClick;
       }
-      
+
       private void PenyesuaianStokView_Load(object sender, EventArgs e)
       {
          OnLoadData?.Invoke(sender, e);
@@ -84,6 +85,11 @@ namespace RumahScarlett.Presentation.Views.PenyesuaianStok
       {
          dateTimePickerFilter.RefreshFilter();
          OnButtonRefreshClick?.Invoke(sender, e);
+      }
+
+      private void CrudcButtons_OnCetakClick(object sender, EventArgs e)
+      {
+         OnButtonCetakClick?.Invoke(sender, e);
       }
 
       private void crudcButtons_OnTutupClickEvent(object sender, EventArgs e)
