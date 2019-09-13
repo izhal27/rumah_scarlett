@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,6 +29,16 @@ namespace RumahScarlett.CommonComponents
             action(item);
             yield return item;
          }
+      }
+
+      /// <summary>
+      /// Mengubah color menjadi string
+      /// </summary>
+      /// <param name="color">Color target</param>
+      /// <returns>Mengembalikan string color RGB</returns>
+      public static string ToStringRgb(this Color color)
+      {
+         return $"{color.R},{color.G},{color.B}";
       }
    }
 }

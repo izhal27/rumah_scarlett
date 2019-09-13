@@ -80,6 +80,9 @@
     <Compile Include="Services\Pembelian\IPembelianRepository.cs" />
     <Compile Include="Services\Pembelian\IPembelianServices.cs" />
     <Compile Include="Services\Pembelian\PembelianServices.cs" />
+    <Compile Include="Services\Pengaturan\IPengaturanRepository.cs" />
+    <Compile Include="Services\Pengaturan\IPengaturanServices.cs" />
+    <Compile Include="Services\Pengaturan\PengaturanServices.cs" />
     <Compile Include="Services\Pengeluaran\IPengeluaranRepository.cs" />
     <Compile Include="Services\Pengeluaran\IPengeluaranServices.cs" />
     <Compile Include="Services\Pengeluaran\PengeluaranServices.cs" />

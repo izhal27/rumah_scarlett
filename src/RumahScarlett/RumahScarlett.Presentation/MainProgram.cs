@@ -1,8 +1,12 @@
 ﻿using ExceptionReporting;
+using RumahScarlett.Domain.Models.Pengaturan;
+using RumahScarlett.Infrastructure.DataAccess.Repositories.Pengaturan;
 using RumahScarlett.Presentation.Presenters;
-using RumahScarlett.Presentation.Views;
+using RumahScarlett.Services.Services;
+using RumahScarlett.Services.Services.Pengaturan;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -12,6 +16,11 @@ namespace RumahScarlett.Presentation
 {
    static class MainProgram
    {
+      public static event EventHandler<PropertyChangedEventArgs> OnColorChange;
+
+      public static IPengaturanModel Pengaturan { get; set; }
+      public static IPengaturanServices PengaturanServices { get; private set; }
+
       /// <summary>
       /// The main entry point for the application.
       /// </summary>
@@ -27,10 +36,13 @@ namespace RumahScarlett.Presentation
          Application.EnableVisualStyles();
          Application.SetCompatibleTextRenderingDefault(false);
 
+         PengaturanServices = new PengaturanServices(new PengaturanRepository(), new ModelDataAnnotationCheck());
+         Pengaturan = PengaturanServices.GetModel;
+
          var view = new MainPresenter().GetView;
          Application.Run((Form)view);
       }
-
+      
       /// <summary>
       /// Method yang mengubah exception default menjadi ExceptionReporter
       /// </summary>

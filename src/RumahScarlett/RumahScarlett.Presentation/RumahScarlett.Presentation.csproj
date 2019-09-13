@@ -136,6 +136,8 @@
     <Compile Include="Presenters\Pembelian\IPembelianPresenter.cs" />
     <Compile Include="Presenters\Pembelian\LaporanPembelianPresenter.cs" />
     <Compile Include="Presenters\Pembelian\PembelianPresenter.cs" />
+    <Compile Include="Presenters\Pengaturan\IPengaturanPresenter.cs" />
+    <Compile Include="Presenters\Pengaturan\PengaturanPresenter.cs" />
     <Compile Include="Presenters\Pengeluaran\ILaporanPengeluaranPresenter.cs" />
     <Compile Include="Presenters\Pengeluaran\IPengeluaranPresenter.cs" />
     <Compile Include="Presenters\Pengeluaran\LaporanPengeluaranPresenter.cs" />
@@ -398,6 +400,13 @@
     <Compile Include="Views\Pembelian\PembelianView.Designer.cs">
       <DependentUpon>PembelianView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Pengaturan\IPengaturanView.cs" />
+    <Compile Include="Views\Pengaturan\PengaturanView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Pengaturan\PengaturanView.designer.cs">
+      <DependentUpon>PengaturanView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Pengeluaran\ILaporanPengeluaranView.cs" />
     <Compile Include="Views\Pengeluaran\IPengeluaranEntryView.cs" />
     <Compile Include="Views\Pengeluaran\IPengeluaranView.cs" />
@@ -620,6 +629,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Pembelian\PembelianView.resx">
       <DependentUpon>PembelianView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Pengaturan\PengaturanView.resx">
+      <DependentUpon>PengaturanView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Pengeluaran\LaporanPengeluaranView.resx">
       <DependentUpon>LaporanPengeluaranView.cs</DependentUpon>

@@ -14,14 +14,16 @@ namespace RumahScarlett.Presentation.Views.CommonControls
    {
       public string LabelInfo
       {
-         get { return lblInfo.Text; }
-         set { lblInfo.Text = value.Trim(); }
+         get { return labelInfo.Text; }
+         set { labelInfo.Text = value.Trim(); }
       }
 
       public PanelUp()
       {
          InitializeComponent();
          TabStop = false;
+         panelInfo.BackColor = MainProgram.Pengaturan.warna_backgroud_strip;
+         labelInfo.ForeColor = MainProgram.Pengaturan.warna_teks_strip;
       }
    }
 }

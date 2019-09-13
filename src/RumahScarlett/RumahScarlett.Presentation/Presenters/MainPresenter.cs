@@ -5,6 +5,7 @@ using RumahScarlett.Presentation.Presenters.KasAwal;
 using RumahScarlett.Presentation.Presenters.Laporan;
 using RumahScarlett.Presentation.Presenters.Pelanggan;
 using RumahScarlett.Presentation.Presenters.Pembelian;
+using RumahScarlett.Presentation.Presenters.Pengaturan;
 using RumahScarlett.Presentation.Presenters.Pengeluaran;
 using RumahScarlett.Presentation.Presenters.Penjualan;
 using RumahScarlett.Presentation.Presenters.PenyesuaianStok;
@@ -53,6 +54,7 @@ namespace RumahScarlett.Presentation.Presenters
          _view.OnLaporanTransaksiByDateClick += _view_OnLaporanTransaksiByDateClick;
          _view.OnLaporanStatusBarangClick += _view_OnLaporanStatusBarangClick;
          _view.OnLaporanLabaRugiClick += _view_OnLaporanLabaRugiClick;
+         _view.OnPengaturanClick += _view_OnPengaturanClick;
       }
 
       private void _view_OnTipeViewClick(object sender, MainViewEventArgs e)
@@ -168,6 +170,14 @@ namespace RumahScarlett.Presentation.Presenters
          using (new WaitCursorHandler())
          {
             new LaporanLabaRugiPresenter().GetView.ShowView();
+         }
+      }
+
+      private void _view_OnPengaturanClick(object sender, EventArgs e)
+      {
+         using (new WaitCursorHandler())
+         {
+            new PengaturanPresenter().GetView.ShowView();
          }
       }
 

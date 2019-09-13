@@ -43,9 +43,9 @@ namespace RumahScarlett.Presentation.Views.CommonControls
       private void ListDataGrid_QueryRowStyle(object sender, QueryRowStyleEventArgs e)
       {
          if (e.RowType == RowType.DefaultRow && e.RowIndex % 2 == 0)
-            e.Style.BackColor = Color.FromArgb(240, 248, 255);
+            e.Style.BackColor = MainProgram.Pengaturan.warna_baris_genap;
          else
-            e.Style.BackColor = Color.FromArgb(255, 255, 255);
+            e.Style.BackColor = MainProgram.Pengaturan.warna_baris_ganjil;
       }
    }
 }

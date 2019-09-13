@@ -28,48 +28,48 @@
       /// </summary>
       private void InitializeComponent()
       {
-         this.pnlUp = new System.Windows.Forms.Panel();
-         this.lblInfo = new System.Windows.Forms.Label();
-         this.pnlUp.SuspendLayout();
+         this.panelInfo = new System.Windows.Forms.Panel();
+         this.labelInfo = new System.Windows.Forms.Label();
+         this.panelInfo.SuspendLayout();
          this.SuspendLayout();
          // 
-         // pnlUp
+         // panelInfo
          // 
-         this.pnlUp.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
-         this.pnlUp.Controls.Add(this.lblInfo);
-         this.pnlUp.Dock = System.Windows.Forms.DockStyle.Fill;
-         this.pnlUp.Location = new System.Drawing.Point(0, 0);
-         this.pnlUp.Name = "pnlUp";
-         this.pnlUp.Size = new System.Drawing.Size(803, 40);
-         this.pnlUp.TabIndex = 1;
+         this.panelInfo.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
+         this.panelInfo.Controls.Add(this.labelInfo);
+         this.panelInfo.Dock = System.Windows.Forms.DockStyle.Fill;
+         this.panelInfo.Location = new System.Drawing.Point(0, 0);
+         this.panelInfo.Name = "panelInfo";
+         this.panelInfo.Size = new System.Drawing.Size(803, 40);
+         this.panelInfo.TabIndex = 1;
          // 
-         // lblInfo
+         // labelInfo
          // 
-         this.lblInfo.AutoSize = true;
-         this.lblInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         this.lblInfo.ForeColor = System.Drawing.SystemColors.Control;
-         this.lblInfo.Location = new System.Drawing.Point(12, 10);
-         this.lblInfo.Name = "lblInfo";
-         this.lblInfo.Size = new System.Drawing.Size(37, 20);
-         this.lblInfo.TabIndex = 1;
-         this.lblInfo.Text = "Info";
+         this.labelInfo.AutoSize = true;
+         this.labelInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.labelInfo.ForeColor = System.Drawing.SystemColors.Control;
+         this.labelInfo.Location = new System.Drawing.Point(12, 10);
+         this.labelInfo.Name = "labelInfo";
+         this.labelInfo.Size = new System.Drawing.Size(37, 20);
+         this.labelInfo.TabIndex = 1;
+         this.labelInfo.Text = "Info";
          // 
          // PanelUp
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-         this.Controls.Add(this.pnlUp);
+         this.Controls.Add(this.panelInfo);
          this.Name = "PanelUp";
          this.Size = new System.Drawing.Size(803, 40);
-         this.pnlUp.ResumeLayout(false);
-         this.pnlUp.PerformLayout();
+         this.panelInfo.ResumeLayout(false);
+         this.panelInfo.PerformLayout();
          this.ResumeLayout(false);
 
       }
 
       #endregion
 
-      protected System.Windows.Forms.Panel pnlUp;
-      protected System.Windows.Forms.Label lblInfo;
+      protected System.Windows.Forms.Panel panelInfo;
+      protected System.Windows.Forms.Label labelInfo;
    }
 }
