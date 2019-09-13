@@ -1115,7 +1115,7 @@
         <DataSetName>DataSetBarang</DataSetName>
         <Top>3.0201cm</Top>
         <Height>1.8cm</Height>
-        <Width>30.91376cm</Width>
+        <Width>30.91375cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -1145,7 +1145,7 @@
         <Top>0.3175cm</Top>
         <Left>0.3175cm</Left>
         <Height>0.67938cm</Height>
-        <Width>12.24217cm</Width>
+        <Width>12.63905cm</Width>
         <ZIndex>1</ZIndex>
         <Style>
           <Border>
@@ -1240,7 +1240,7 @@
         <Top>1.46733cm</Top>
         <Left>2.26066cm</Left>
         <Height>0.6cm</Height>
-        <Width>2.5cm</Width>
+        <Width>10.69589cm</Width>
         <ZIndex>4</ZIndex>
         <Style>
           <Border>
@@ -1340,7 +1340,7 @@ Len(Parameters!Supplier.Value) &gt; 0, Parameters!Supplier.Value
         <Top>2.24372cm</Top>
         <Left>2.26066cm</Left>
         <Height>0.6cm</Height>
-        <Width>2.5cm</Width>
+        <Width>10.69589cm</Width>
         <ZIndex>7</ZIndex>
         <Style>
           <Border>
