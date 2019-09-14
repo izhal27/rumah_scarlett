@@ -30,13 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
@@ -46,15 +42,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\RumahScarlett.Domain\RumahScarlett.Domain.csproj">
-      <Project>{3567e92f-7919-4ece-a99d-aa577d7c1495}</Project>
-      <Name>RumahScarlett.Domain</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="ReportViewerBarang.rdlc" />
     <EmbeddedResource Include="ReportViewerHutangOperasional.rdlc" />
-    <EmbeddedResource Include="ReportViewerPembelian.rdlc" />
+    <EmbeddedResource Include="ReportViewerNotaPembelian.rdlc" />
     <EmbeddedResource Include="ReportViewerPenyesuaianStok.rdlc" />
   </ItemGroup>
   <ItemGroup>

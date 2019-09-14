@@ -1,5 +1,6 @@
 ﻿using Microsoft.Reporting.WinForms;
 using RumahScarlett.Domain.Models.Pengaturan;
+using RumahScarlett.Presentation.Helper;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -33,35 +34,42 @@ namespace RumahScarlett.Presentation.Views.CommonControls
       {
          InitializeComponent();
 
-         reportViewer.SetDisplayMode(DisplayMode.PrintLayout);
-         reportViewer.ZoomMode = ZoomMode.Percent;
-         reportViewer.ZoomPercent = 100;
-
-         _assemblyReport = Assembly.LoadFrom("RumahScarlett.Report.dll");
-
-         Text = textForm; // Title Form preview
-
-         reportName = string.Format(_reportNameSpace, reportName);
-         var reportDefinition = _assemblyReport.GetManifestResourceStream(reportName);
-
-         reportViewer.LocalReport.DataSources.Clear();
-
-         var reportDatasourcePengaturan = new ReportDataSource
+         try
          {
-            Name = "DataSetPengaturan",
-            Value = new BindingSource(MainProgram.Pengaturan ?? new PengaturanModel(), null)
-         };
+            reportViewer.SetDisplayMode(DisplayMode.PrintLayout);
+            reportViewer.ZoomMode = ZoomMode.Percent;
+            reportViewer.ZoomPercent = 100;
 
-         if (reportDataSource != null)
-            reportDataSource.ToList().ForEach(rd => reportViewer.LocalReport.DataSources.Add(rd));
+            _assemblyReport = Assembly.LoadFrom("RumahScarlett.Report.dll");
 
-         reportViewer.LocalReport.DataSources.Add(reportDatasourcePengaturan);
-         reportViewer.LocalReport.LoadReportDefinition(reportDefinition);
+            Text = textForm; // Title Form preview
 
-         if (parameters != null)
-            reportViewer.LocalReport.SetParameters(parameters);
+            reportName = string.Format(_reportNameSpace, reportName);
+            var reportDefinition = _assemblyReport.GetManifestResourceStream(reportName);
 
-         reportViewer.RefreshReport();
+            reportViewer.LocalReport.DataSources.Clear();
+
+            var reportDatasourcePengaturan = new ReportDataSource
+            {
+               Name = "DataSetPengaturan",
+               Value = new BindingSource(MainProgram.Pengaturan ?? new PengaturanModel(), null)
+            };
+
+            if (reportDataSource != null)
+               reportDataSource.ToList().ForEach(rd => reportViewer.LocalReport.DataSources.Add(rd));
+
+            reportViewer.LocalReport.DataSources.Add(reportDatasourcePengaturan);
+            reportViewer.LocalReport.LoadReportDefinition(reportDefinition);
+
+            if (parameters != null)
+               reportViewer.LocalReport.SetParameters(parameters);
+
+            reportViewer.RefreshReport();
+         }
+         catch (Exception ex)
+         {
+            Messages.Error(ex);
+         }
       }
 
       #endregion

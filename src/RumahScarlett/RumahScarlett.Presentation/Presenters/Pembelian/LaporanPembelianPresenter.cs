@@ -109,7 +109,7 @@ namespace RumahScarlett.Presentation.Presenters.Pembelian
                   }
                };
 
-               new ReportView("Nota Pembelian", "ReportViewerPembelian",
+               new ReportView("Nota Pembelian", "ReportViewerNotaPembelian",
                               reportDataSources, parameters).ShowDialog();
             }
          }
