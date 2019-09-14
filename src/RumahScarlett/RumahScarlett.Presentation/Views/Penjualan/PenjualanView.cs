@@ -20,6 +20,7 @@ namespace RumahScarlett.Presentation.Views.Penjualan
       public event EventHandler OnHapusData;
       public event EventHandler OnBayarPenjualan;
       public event EventHandler OnBersihkanData;
+      public event EventHandler OnCetakNota;
       public event EventHandler<CurrentCellKeyEventArgs> OnListDataGridCurrentCellKeyDown;
       public event EventHandler<CurrentCellActivatedEventArgs> OnListDataGridCurrentCellActivated;
       public event EventHandler<CurrentCellEndEditEventArgs> OnListDataGridCurrentCellEndEdit;

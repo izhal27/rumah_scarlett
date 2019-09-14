@@ -22,8 +22,13 @@ namespace RumahScarlett.Presentation.Views.CommonControls
       {
          InitializeComponent();
          TabStop = false;
-         panelInfo.BackColor = MainProgram.Pengaturan.warna_backgroud_strip;
-         labelInfo.ForeColor = MainProgram.Pengaturan.warna_teks_strip;
+      }
+
+      protected override void OnCreateControl()
+      {
+         base.OnCreateControl();
+         //panelInfo.BackColor = MainProgram.Pengaturan.warna_backgroud_strip;
+         //labelInfo.ForeColor = MainProgram.Pengaturan.warna_teks_strip;
       }
    }
 }

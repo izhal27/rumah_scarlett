@@ -1,10 +1,12 @@
 ﻿using Equin.ApplicationFramework;
+using Microsoft.Reporting.WinForms;
 using RumahScarlett.CommonComponents;
 using RumahScarlett.Domain.Models.Barang;
 using RumahScarlett.Domain.Models.Pembelian;
 using RumahScarlett.Infrastructure.DataAccess.Repositories.Barang;
 using RumahScarlett.Infrastructure.DataAccess.Repositories.Pembelian;
 using RumahScarlett.Presentation.Helper;
+using RumahScarlett.Presentation.Views.CommonControls;
 using RumahScarlett.Presentation.Views.ModelControls;
 using RumahScarlett.Presentation.Views.Pembelian;
 using RumahScarlett.Services.Services;
@@ -31,6 +33,7 @@ namespace RumahScarlett.Presentation.Presenters.Pembelian
       private List<IBarangModel> _listsBarangs;
       private BindingListView<PembelianDetailModel> _bindingView;
       private string _kodeOrNamaForSearching;
+      private PembelianModel _pembelianModel;
 
       public IPembelianView GetView
       {
@@ -62,6 +65,7 @@ namespace RumahScarlett.Presentation.Presenters.Pembelian
          _view.OnHapusData += _view_OnHapusData;
          _view.OnBayarPenjualan += _view_OnSimpanData;
          _view.OnBersihkanData += _view_OnBersihkanData;
+         _view.OnCetakNota += _view_OnCetakNota;
          _view.OnListDataGridCurrentCellKeyDown += _view_OnListDataGridCurrentCellKeyDown;
          _view.OnListDataGridCurrentCellActivated += _view_OnListDataGridCurrentCellActivated;
          _view.OnListDataGridCurrentCellEndEdit += _view_OnListDataGridCurrentCellEndEdit;
@@ -151,16 +155,16 @@ namespace RumahScarlett.Presentation.Presenters.Pembelian
             var simpanPembelianEntryView = ((Form)sender);
             var pembelianDetailsFixed = _listsPembelianDetails.Where(pd => pd.Barang.id != default(int)).ToList();
 
-            var model = new PembelianModel
+            _pembelianModel = new PembelianModel
             {
-               supplier_id = (uint)e.SupplierId,
+               Supplier = e.Supplier,
                PembelianDetails = pembelianDetailsFixed
             };
 
-            _pembelianServices.Insert(model);
+            _pembelianServices.Insert(_pembelianModel);
             Messages.Info("Data Pembelian berhasil disimpan.");
 
-            _view.TextBoxNoNota.Text = model.no_nota;
+            _view.TextBoxNoNota.Text = _pembelianModel.no_nota;
             _view.ListDataGrid.Enabled = false;
 
             simpanPembelianEntryView.Close();
@@ -190,6 +194,29 @@ namespace RumahScarlett.Presentation.Presenters.Pembelian
          AddDummyPembelianModel(30);
          _bindingView.DataSource = _listsPembelianDetails;
          _view.ListDataGrid.MoveToCurrentCell(new RowColumnIndex(1, 1));
+      }
+
+      private void _view_OnCetakNota(object sender, EventArgs e)
+      {
+         using (new WaitCursorHandler())
+         {
+            var parameters = new List<ReportParameter>();
+
+            var reportDataSources = new List<ReportDataSource>()
+               {
+                  new ReportDataSource {
+                     Name = "DataSetPembelian",
+                     Value = new BindingSource(_pembelianModel, null)
+                  },
+                  new ReportDataSource {
+                     Name = "DataSetPembelianDetail",
+                     Value = _pembelianModel.PembelianDetails
+                  }
+               };
+
+            new ReportView("Nota Pembelian", "ReportViewerPembelian",
+                           reportDataSources, parameters).ShowDialog();
+         }
       }
 
       private void _view_OnListDataGridCurrentCellKeyDown(object sender, CurrentCellKeyEventArgs e)

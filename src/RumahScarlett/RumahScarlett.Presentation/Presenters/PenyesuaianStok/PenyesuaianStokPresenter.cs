@@ -264,15 +264,17 @@ namespace RumahScarlett.Presentation.Presenters.PenyesuaianStok
                   parameters.Add(new ReportParameter("Tanggal", _tanggal_awal.ToShortDateString()));
                   parameters.Add(new ReportParameter("TanggalAkhir", _tanggal_akhir.ToShortDateString()));
                }
-
-               var reportDataSource = new ReportDataSource()
-               {
-                  Name = "DataSetPenyesuaianStok",
-                  Value = _bindingView.DataSource
-               };
                
+               var reportDataSources = new List<ReportDataSource>()
+               {
+                  new ReportDataSource {
+                     Name = "DataSetPenyesuaianStok",
+                     Value = _bindingView.DataSource
+                  }
+               };
+
                new ReportView("Report Penyesuaian Stok Barang", "ReportViewerPenyesuaianStok",
-                              reportDataSource, parameters).ShowDialog();
+                              reportDataSources, parameters).ShowDialog();
             }
          }
       }

@@ -1,4 +1,5 @@
 ﻿using Equin.ApplicationFramework;
+using Microsoft.Reporting.WinForms;
 using RumahScarlett.CommonComponents;
 using RumahScarlett.Domain.Models.Pembelian;
 using RumahScarlett.Infrastructure.DataAccess.Repositories.Pembelian;
@@ -13,6 +14,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace RumahScarlett.Presentation.Presenters.Pembelian
 {
@@ -33,7 +35,7 @@ namespace RumahScarlett.Presentation.Presenters.Pembelian
       {
          _view = new LaporanPembelianView();
          _services = new PembelianServices(new PembelianRepository(), new ModelDataAnnotationCheck());
-         
+
          _view.OnLoadData += _view_OnLoadData;
          _view.OnTampilkanClick += _view_OnTampilkanClick;
          _view.OnDeleteClick += _view_OnDeleteClick;
@@ -87,7 +89,30 @@ namespace RumahScarlett.Presentation.Presenters.Pembelian
 
       private void _view_OnPrintData(object sender, EventArgs e)
       {
-         throw new NotImplementedException();
+         using (new WaitCursorHandler())
+         {
+            var _pembelianModel = (PembelianModel)_view.ListDataGrid.SelectedItem;
+
+            if (_pembelianModel != null)
+            {
+               var parameters = new List<ReportParameter>();
+
+               var reportDataSources = new List<ReportDataSource>()
+               {
+                  new ReportDataSource {
+                     Name = "DataSetPembelian",
+                     Value = new BindingSource(_pembelianModel, null)
+                  },
+                  new ReportDataSource {
+                     Name = "DataSetPembelianDetail",
+                     Value = _pembelianModel.PembelianDetails
+                  }
+               };
+
+               new ReportView("Nota Pembelian", "ReportViewerPembelian",
+                              reportDataSources, parameters).ShowDialog();
+            }
+         }
       }
 
       private void _view_OnDetailClick(object sender, EventArgs e)
@@ -113,7 +138,7 @@ namespace RumahScarlett.Presentation.Presenters.Pembelian
             detailView.ListDataGrid.DataSource = bindingDetialView;
          }
       }
-      
+
       private void _view_OnTampilkanClick(object sender, FilterDateEventArgs e)
       {
          using (new WaitCursorHandler())

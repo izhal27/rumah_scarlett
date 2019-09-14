@@ -1,4 +1,5 @@
 ﻿using RumahScarlett.Domain.Models.Pembelian;
+using RumahScarlett.Domain.Models.Supplier;
 using RumahScarlett.Presentation.Helper;
 using System;
 using System.Collections.Generic;
@@ -38,8 +39,8 @@ namespace RumahScarlett.Presentation.Views.Pembelian
       {
          if (Messages.Confirm("Simpan data Pembelian?"))
          {
-            var supplierId = comboBoxSupplier.GetSelectedID;
-            var eventArgs = new PembelianEventArgs(supplierId);
+            var supplierModel = (SupplierModel)comboBoxSupplier.ComboBox.SelectedItem;
+            var eventArgs = new PembelianEventArgs(supplierModel);
 
             OnSimpanPembelian?.Invoke(this, eventArgs);
          }
@@ -70,11 +71,11 @@ namespace RumahScarlett.Presentation.Views.Pembelian
 
    public class PembelianEventArgs : EventArgs
    {
-      public object SupplierId { get; }
+      public ISupplierModel Supplier { get; }
 
-      public PembelianEventArgs(object supplierId)
+      public PembelianEventArgs(ISupplierModel supplier)
       {
-         SupplierId = supplierId;
+         Supplier = supplier;
       }
    }
 }

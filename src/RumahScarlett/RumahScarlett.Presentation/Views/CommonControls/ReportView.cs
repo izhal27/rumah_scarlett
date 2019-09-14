@@ -27,8 +27,8 @@ namespace RumahScarlett.Presentation.Views.CommonControls
       // ----------------------------------------------------------------------//
 
       #region >> Constructor <<
-         
-      public ReportView(string textForm, string reportName, ReportDataSource reportDataSource
+
+      public ReportView(string textForm, string reportName, IEnumerable<ReportDataSource> reportDataSource
          , IEnumerable<ReportParameter> parameters = null)
       {
          InitializeComponent();
@@ -53,7 +53,7 @@ namespace RumahScarlett.Presentation.Views.CommonControls
          };
 
          if (reportDataSource != null)
-            reportViewer.LocalReport.DataSources.Add(reportDataSource);
+            reportDataSource.ToList().ForEach(rd => reportViewer.LocalReport.DataSources.Add(rd));
 
          reportViewer.LocalReport.DataSources.Add(reportDatasourcePengaturan);
          reportViewer.LocalReport.LoadReportDefinition(reportDefinition);

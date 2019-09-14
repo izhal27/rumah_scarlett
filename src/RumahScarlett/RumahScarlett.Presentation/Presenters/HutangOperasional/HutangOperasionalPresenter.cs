@@ -233,14 +233,16 @@ namespace RumahScarlett.Presentation.Presenters.HutangOperasional
                   parameters.Add(new ReportParameter("TanggalAkhir", _tanggal_akhir.ToShortDateString()));
                }
 
-               var reportDataSource = new ReportDataSource()
+               var reportDataSources = new List<ReportDataSource>()
                {
-                  Name = "DataSetHutangOperasional",
-                  Value = _bindingView.DataSource
+                  new ReportDataSource {
+                     Name = "DataSetHutangOperasional",
+                     Value = _bindingView.DataSource
+                  }
                };
-
+               
                new ReportView("Report Hutang Operasional", "ReportViewerHutangOperasional",
-                              reportDataSource, parameters).ShowDialog();
+                              reportDataSources, parameters).ShowDialog();
             }
          }
       }

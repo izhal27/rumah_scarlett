@@ -4,6 +4,7 @@ using RumahScarlett.CommonComponents;
 using RumahScarlett.Domain.Models.Barang;
 using RumahScarlett.Domain.Models.Laporan;
 using RumahScarlett.Domain.Models.Pembelian;
+using RumahScarlett.Domain.Models.Satuan;
 using RumahScarlett.Domain.Models.Supplier;
 using RumahScarlett.Infrastructure.DataAccess.CommonRepositories;
 using RumahScarlett.Services.Services.Pembelian;
@@ -57,8 +58,9 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Pembelian
 
                      if (barang != null)
                      {
+                        barang.Satuan = context.Conn.Get<SatuanModel>(barang.satuan_id);
                         pd.Barang = barang;
-                        pd.Barang.supplier_id = model.supplier_id;
+                        pd.Barang.supplier_id = model.supplier_id;                        
                      }
                      else
                      {

@@ -303,14 +303,16 @@ namespace RumahScarlett.Presentation.Presenters.Barang
                   parameters.Add(new ReportParameter("Supplier", ((SupplierModel)_view.ComboBoxSupplier.ComboBox.SelectedItem).nama));
                }
 
-               var reportDataSource = new ReportDataSource()
+               var reportDataSources = new List<ReportDataSource>()
                {
-                  Name = "DataSetBarang",
-                  Value = _bindingView.DataSource
+                  new ReportDataSource {
+                     Name = "DataSetBarang",
+                     Value = _bindingView.DataSource
+                  }
                };
 
                new ReportView("Report Barang", "ReportViewerBarang",
-                              reportDataSource, parameters).ShowDialog();
+                              reportDataSources, parameters).ShowDialog();
             }
          }
       }
