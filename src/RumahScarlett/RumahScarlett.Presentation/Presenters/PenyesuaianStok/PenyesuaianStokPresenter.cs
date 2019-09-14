@@ -270,7 +270,7 @@ namespace RumahScarlett.Presentation.Presenters.PenyesuaianStok
                   Name = "DataSetPenyesuaianStok",
                   Value = _bindingView.DataSource
                };
-
+               
                new ReportView("Report Penyesuaian Stok Barang", "ReportViewerPenyesuaianStok",
                               reportDataSource, parameters).ShowDialog();
             }

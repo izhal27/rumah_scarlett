@@ -29,23 +29,23 @@
       private void InitializeComponent()
       {
          System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ReportView));
-         this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
+         this.reportViewer = new Microsoft.Reporting.WinForms.ReportViewer();
          this.SuspendLayout();
          // 
          // reportViewer1
          // 
-         this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
-         this.reportViewer1.Location = new System.Drawing.Point(0, 0);
-         this.reportViewer1.Name = "reportViewer1";
-         this.reportViewer1.Size = new System.Drawing.Size(684, 462);
-         this.reportViewer1.TabIndex = 0;
+         this.reportViewer.Dock = System.Windows.Forms.DockStyle.Fill;
+         this.reportViewer.Location = new System.Drawing.Point(0, 0);
+         this.reportViewer.Name = "reportViewer1";
+         this.reportViewer.Size = new System.Drawing.Size(684, 462);
+         this.reportViewer.TabIndex = 0;
          // 
          // ReportView
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
          this.ClientSize = new System.Drawing.Size(684, 462);
-         this.Controls.Add(this.reportViewer1);
+         this.Controls.Add(this.reportViewer);
          this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
          this.Name = "ReportView";
          this.ShowInTaskbar = false;
@@ -59,6 +59,6 @@
 
       #endregion
 
-      private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
+      private Microsoft.Reporting.WinForms.ReportViewer reportViewer;
    }
 }

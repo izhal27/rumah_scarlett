@@ -1,4 +1,5 @@
 ﻿using Microsoft.Reporting.WinForms;
+using RumahScarlett.Domain.Models.Pengaturan;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -32,9 +33,9 @@ namespace RumahScarlett.Presentation.Views.CommonControls
       {
          InitializeComponent();
 
-         reportViewer1.SetDisplayMode(DisplayMode.PrintLayout);
-         reportViewer1.ZoomMode = ZoomMode.Percent;
-         reportViewer1.ZoomPercent = 100;
+         reportViewer.SetDisplayMode(DisplayMode.PrintLayout);
+         reportViewer.ZoomMode = ZoomMode.Percent;
+         reportViewer.ZoomPercent = 100;
 
          _assemblyReport = Assembly.LoadFrom("RumahScarlett.Report.dll");
 
@@ -43,17 +44,24 @@ namespace RumahScarlett.Presentation.Views.CommonControls
          reportName = string.Format(_reportNameSpace, reportName);
          var reportDefinition = _assemblyReport.GetManifestResourceStream(reportName);
 
-         reportViewer1.LocalReport.DataSources.Clear();
+         reportViewer.LocalReport.DataSources.Clear();
+
+         var reportDatasourcePengaturan = new ReportDataSource
+         {
+            Name = "DataSetPengaturan",
+            Value = new BindingSource(MainProgram.Pengaturan ?? new PengaturanModel(), null)
+         };
 
          if (reportDataSource != null)
-            reportViewer1.LocalReport.DataSources.Add(reportDataSource);
+            reportViewer.LocalReport.DataSources.Add(reportDataSource);
 
-         reportViewer1.LocalReport.LoadReportDefinition(reportDefinition);
+         reportViewer.LocalReport.DataSources.Add(reportDatasourcePengaturan);
+         reportViewer.LocalReport.LoadReportDefinition(reportDefinition);
 
          if (parameters != null)
-            reportViewer1.LocalReport.SetParameters(parameters);
+            reportViewer.LocalReport.SetParameters(parameters);
 
-         reportViewer1.RefreshReport();
+         reportViewer.RefreshReport();
       }
 
       #endregion

@@ -2,6 +2,38 @@
 <Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2008/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
   <Body>
     <ReportItems>
+      <Textbox Name="nama">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=First(Fields!nama.Value, "DataSetPengaturan")</Value>
+                <Style>
+                  <FontSize>12pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>nama</rd:DefaultName>
+        <Top>0.39688cm</Top>
+        <Left>23.0698cm</Left>
+        <Height>0.6cm</Height>
+        <Width>7.12959cm</Width>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
       <Tablix Name="Tablix1">
         <TablixBody>
           <TablixColumns>
@@ -27,7 +59,7 @@
               <Width>3.42227cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>5.1389cm</Width>
+              <Width>5.28411cm</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -947,9 +979,10 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>DataSetPenyesuaianStok</DataSetName>
-        <Top>2.96333cm</Top>
+        <Top>3.57327cm</Top>
         <Height>1.8cm</Height>
-        <Width>30.05418cm</Width>
+        <Width>30.19939cm</Width>
+        <ZIndex>1</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -977,10 +1010,10 @@
         </Paragraphs>
         <rd:DefaultName>Textbox12</rd:DefaultName>
         <Top>0.3175cm</Top>
-        <Left>0.3175cm</Left>
+        <Left>0.46271cm</Left>
         <Height>0.67938cm</Height>
         <Width>12.6655cm</Width>
-        <ZIndex>1</ZIndex>
+        <ZIndex>2</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -1006,10 +1039,11 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
-        <Top>2.18694cm</Top>
+        <Top>2.79688cm</Top>
+        <Left>0.14521cm</Left>
         <Height>0.6cm</Height>
         <Width>1.5475cm</Width>
-        <ZIndex>2</ZIndex>
+        <ZIndex>3</ZIndex>
         <Visibility>
           <Hidden>=Microsoft.VisualBasic.Interaction.IIF(Parameters!Tanggal.Value Is Nothing, True, False)</Hidden>
         </Visibility>
@@ -1038,11 +1072,11 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox4</rd:DefaultName>
-        <Top>2.18694cm</Top>
-        <Left>1.72389cm</Left>
+        <Top>2.79688cm</Top>
+        <Left>1.8691cm</Left>
         <Height>0.6cm</Height>
         <Width>0.38333cm</Width>
-        <ZIndex>3</ZIndex>
+        <ZIndex>4</ZIndex>
         <Visibility>
           <Hidden>=Microsoft.VisualBasic.Interaction.IIF(Parameters!Tanggal.Value Is Nothing, True, False)</Hidden>
         </Visibility>
@@ -1073,11 +1107,11 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox6</rd:DefaultName>
-        <Top>2.18694cm</Top>
-        <Left>2.28361cm</Left>
+        <Top>2.79688cm</Top>
+        <Left>2.42882cm</Left>
         <Height>0.6cm</Height>
         <Width>1.97083cm</Width>
-        <ZIndex>4</ZIndex>
+        <ZIndex>5</ZIndex>
         <Visibility>
           <Hidden>=Microsoft.VisualBasic.Interaction.IIF(Parameters!Tanggal.Value Is Nothing, True, False)</Hidden>
         </Visibility>
@@ -1106,11 +1140,11 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox4</rd:DefaultName>
-        <Top>2.18694cm</Top>
-        <Left>4.43083cm</Left>
+        <Top>2.79688cm</Top>
+        <Left>4.57604cm</Left>
         <Height>0.6cm</Height>
         <Width>0.70083cm</Width>
-        <ZIndex>5</ZIndex>
+        <ZIndex>6</ZIndex>
         <Visibility>
           <Hidden>=Microsoft.VisualBasic.Interaction.IIF(Parameters!TanggalAkhir.Value Is Nothing, True, False)</Hidden>
         </Visibility>
@@ -1141,11 +1175,11 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox6</rd:DefaultName>
-        <Top>2.18694cm</Top>
-        <Left>5.30805cm</Left>
+        <Top>2.79688cm</Top>
+        <Left>5.45326cm</Left>
         <Height>0.6cm</Height>
         <Width>1.97083cm</Width>
-        <ZIndex>6</ZIndex>
+        <ZIndex>7</ZIndex>
         <Visibility>
           <Hidden>=Microsoft.VisualBasic.Interaction.IIF(Parameters!TanggalAkhir.Value Is Nothing, True, False)</Hidden>
         </Visibility>
@@ -1159,11 +1193,131 @@
           <PaddingBottom>2pt</PaddingBottom>
         </Style>
       </Textbox>
+      <Textbox Name="alamat_1">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=First(Fields!alamat_1.Value, "DataSetPengaturan")</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>alamat_1</rd:DefaultName>
+        <Top>0.99688cm</Top>
+        <Left>23.0698cm</Left>
+        <Height>0.6cm</Height>
+        <Width>7.12959cm</Width>
+        <ZIndex>8</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="alamat_2">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=First(Fields!alamat_2.Value, "DataSetPengaturan")</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>alamat_2</rd:DefaultName>
+        <Top>1.59688cm</Top>
+        <Left>23.0698cm</Left>
+        <Height>0.6cm</Height>
+        <Width>7.12959cm</Width>
+        <ZIndex>9</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="telpon">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=First(Fields!telpon.Value, "DataSetPengaturan")</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>telpon</rd:DefaultName>
+        <Top>2.19688cm</Top>
+        <Left>23.0698cm</Left>
+        <Height>0.6cm</Height>
+        <Width>7.12959cm</Width>
+        <ZIndex>10</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="kota">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=First(Fields!kota.Value, "DataSetPengaturan")</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>kota</rd:DefaultName>
+        <Top>2.79688cm</Top>
+        <Left>23.0698cm</Left>
+        <Height>0.6cm</Height>
+        <Width>7.12959cm</Width>
+        <ZIndex>11</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
     </ReportItems>
-    <Height>2in</Height>
+    <Height>2.36122in</Height>
     <Style />
   </Body>
-  <Width>11.83235in</Width>
+  <Width>11.88952in</Width>
   <Page>
     <PageFooter>
       <Height>1.4435cm</Height>
@@ -1192,7 +1346,7 @@
           </Paragraphs>
           <rd:DefaultName>Textbox17</rd:DefaultName>
           <Top>0.526cm</Top>
-          <Left>25.8873cm</Left>
+          <Left>26.03251cm</Left>
           <Height>0.6cm</Height>
           <Width>4.16688cm</Width>
           <Style>
@@ -1229,6 +1383,13 @@
         <ConnectString>/* Local Connection */</ConnectString>
       </ConnectionProperties>
       <rd:DataSourceID>970814f5-0cb9-425b-88d4-6b910eb05749</rd:DataSourceID>
+    </DataSource>
+    <DataSource Name="RumahScarlettDomainModelsPengaturan">
+      <ConnectionProperties>
+        <DataProvider>System.Data.DataSet</DataProvider>
+        <ConnectString>/* Local Connection */</ConnectString>
+      </ConnectionProperties>
+      <rd:DataSourceID>c4241f0f-37a1-46df-a6bc-bf7c8b4b76b8</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>
@@ -1271,6 +1432,59 @@
         <rd:DataSetName>RumahScarlett.Domain.Models.PenyesuaianStok</rd:DataSetName>
         <rd:TableName>PenyesuaianStokModel</rd:TableName>
         <rd:ObjectDataSourceType>RumahScarlett.Domain.Models.PenyesuaianStok.PenyesuaianStokModel, RumahScarlett.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
+      </rd:DataSetInfo>
+    </DataSet>
+    <DataSet Name="DataSetPengaturan">
+      <Query>
+        <DataSourceName>RumahScarlettDomainModelsPengaturan</DataSourceName>
+        <CommandText>/* Local Query */</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="alamat_1">
+          <DataField>alamat_1</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="alamat_2">
+          <DataField>alamat_2</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="kota">
+          <DataField>kota</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="nama">
+          <DataField>nama</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="path_background">
+          <DataField>path_background</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="telpon">
+          <DataField>telpon</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="warna_backgroud_strip">
+          <DataField>warna_backgroud_strip</DataField>
+          <rd:TypeName>System.Drawing.Color</rd:TypeName>
+        </Field>
+        <Field Name="warna_baris_ganjil">
+          <DataField>warna_baris_ganjil</DataField>
+          <rd:TypeName>System.Drawing.Color</rd:TypeName>
+        </Field>
+        <Field Name="warna_baris_genap">
+          <DataField>warna_baris_genap</DataField>
+          <rd:TypeName>System.Drawing.Color</rd:TypeName>
+        </Field>
+        <Field Name="warna_teks_strip">
+          <DataField>warna_teks_strip</DataField>
+          <rd:TypeName>System.Drawing.Color</rd:TypeName>
+        </Field>
+      </Fields>
+      <rd:DataSetInfo>
+        <rd:DataSetName>RumahScarlett.Domain.Models.Pengaturan</rd:DataSetName>
+        <rd:TableName>PengaturanModel</rd:TableName>
+        <rd:ObjectDataSourceType>RumahScarlett.Domain.Models.Pengaturan.PengaturanModel, RumahScarlett.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>
