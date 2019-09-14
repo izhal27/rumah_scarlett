@@ -41,7 +41,10 @@ namespace RumahScarlett.Presentation.Views.ModelControls
       {
          InitializeComponent();
 
-         LoadDataSource();
+         if ((LicenseManager.UsageMode != LicenseUsageMode.Designtime))
+         {
+            LoadDataSource();
+         }
       }
 
       private void LoadDataSource()

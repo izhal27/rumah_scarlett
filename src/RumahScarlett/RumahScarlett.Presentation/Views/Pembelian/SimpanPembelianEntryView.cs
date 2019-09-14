@@ -39,7 +39,7 @@ namespace RumahScarlett.Presentation.Views.Pembelian
       {
          if (Messages.Confirm("Simpan data Pembelian?"))
          {
-            var supplierModel = (SupplierModel)comboBoxSupplier.ComboBox.SelectedItem;
+            var supplierModel = comboBoxSupplier.SelectedItem;
             var eventArgs = new PembelianEventArgs(supplierModel);
 
             OnSimpanPembelian?.Invoke(this, eventArgs);

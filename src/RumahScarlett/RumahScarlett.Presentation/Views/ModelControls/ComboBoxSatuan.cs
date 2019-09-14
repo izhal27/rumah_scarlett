@@ -17,42 +17,33 @@ namespace RumahScarlett.Presentation.Views.ModelControls
 {
    public partial class ComboBoxSatuan : UserControl
    {
-      private ISatuanServices _services;
-      private List<ISatuanModel> _listSatuans;
-
-      public ComboBox ComboBox
-      {
-         get { return comboBox; }
-      }
-
-      public uint GetSelectedID
+      public ISatuanModel SelectedItem
       {
          get
          {
-            return comboBox.SelectedIndex != -1 ? ((ISatuanModel)comboBox.SelectedItem).id : default(uint);
+            return comboBox.SelectedIndex != -1 ? (ISatuanModel)comboBox.SelectedItem : null;
          }
+         set { comboBox.SelectedItem = comboBox.Items.Cast<ISatuanModel>().Where(t => t.id == value.id).FirstOrDefault(); }
       }
-
-      public ISatuanModel GetModel(object id)
-      {
-         return comboBox.Items.Cast<ISatuanModel>().Where(s => s.id == (uint)id).FirstOrDefault();
-      }
-
+      
       public ComboBoxSatuan()
       {
          InitializeComponent();
 
-         LoadDataSource();
+         if ((LicenseManager.UsageMode != LicenseUsageMode.Designtime))
+         {
+            LoadDataSource();
+         }
       }
 
       private void LoadDataSource()
       {
-         _services = new SatuanServices(new SatuanRepository(), new ModelDataAnnotationCheck());
-         _listSatuans = _services.GetAll().ToList();
+         var services = new SatuanServices(new SatuanRepository(), new ModelDataAnnotationCheck());
+         var listSatuans = services.GetAll().ToList();
 
-         if (_listSatuans != null && _listSatuans.Count > 0)
+         if (listSatuans != null && listSatuans.Count > 0)
          {
-            comboBox.Items.AddRange(_listSatuans.ToArray());
+            comboBox.Items.AddRange(listSatuans.ToArray());
             comboBox.DisplayMember = "nama";
             comboBox.SelectedIndex = 0;
          }

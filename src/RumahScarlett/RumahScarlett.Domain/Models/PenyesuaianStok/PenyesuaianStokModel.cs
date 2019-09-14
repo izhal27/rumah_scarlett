@@ -19,6 +19,7 @@ namespace RumahScarlett.Domain.Models.PenyesuaianStok
       [Display(Name = "ID")]
       public uint id { get; set; }
 
+      [DisplayFormat(DataFormatString = "dd/MM/yyyy HH:mm")]
       [Range(typeof(DateTime), "1945/08/17", "9999/01/01", ErrorMessage = "Minimal Tanggal 1945/08/17 !!!")]
       [Display(Name = "Tanggal")]
       public DateTime tanggal { get; set; }
@@ -91,6 +92,17 @@ namespace RumahScarlett.Domain.Models.PenyesuaianStok
       [StringLength(255, ErrorMessage = "Panjang maksimal keterangan 255 karakter !!!")]
       [Display(Name = "Keterangan")]
       public string keterangan { get; set; }
+      
+      [Dp.Write(false)]
+      [DisplayFormat(DataFormatString = "{0:N0}")]
+      [Display(Name = "Total")]
+      public decimal total_hpp
+      {
+         get
+         {
+            return qty > 0 ? (qty * hpp) : 0;
+         }
+      }
 
       public PenyesuaianStokModel()
       {

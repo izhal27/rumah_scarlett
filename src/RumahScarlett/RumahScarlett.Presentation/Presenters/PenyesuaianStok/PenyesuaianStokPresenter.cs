@@ -74,7 +74,7 @@ namespace RumahScarlett.Presentation.Presenters.PenyesuaianStok
       private void HitungTotal()
       {
          var totalQty = _bindingView.Sum(h => h.qty);
-         var totalHpp = _bindingView.Sum(h => h.hpp);
+         var totalHpp = _bindingView.Sum(h => h.total_hpp);
 
          _view.LabelTotalQty.Text = totalQty.ToString("N0");
          _view.LabelTotalHpp.Text = totalHpp.ToString("N0");

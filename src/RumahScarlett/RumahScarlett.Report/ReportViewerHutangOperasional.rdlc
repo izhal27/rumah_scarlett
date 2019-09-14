@@ -9,16 +9,16 @@
               <Width>1.5475cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>3.17469cm</Width>
+              <Width>2.43386cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>6.77301cm</Width>
+              <Width>8.01655cm</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>3.12177cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>4.41823cm</Width>
+              <Width>3.91552cm</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -426,6 +426,12 @@
                           <Color>#e5e5e5</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <BottomBorder>
+                          <Style>None</Style>
+                        </BottomBorder>
+                        <LeftBorder>
+                          <Style>None</Style>
+                        </LeftBorder>
                         <RightBorder>
                           <Style>None</Style>
                         </RightBorder>
@@ -464,6 +470,9 @@
                           <Color>#e5e5e5</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <BottomBorder>
+                          <Style>None</Style>
+                        </BottomBorder>
                         <LeftBorder>
                           <Style>None</Style>
                         </LeftBorder>
@@ -506,6 +515,9 @@
                           <Color>#e5e5e5</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <BottomBorder>
+                          <Style>None</Style>
+                        </BottomBorder>
                         <LeftBorder>
                           <Style>None</Style>
                         </LeftBorder>
@@ -547,9 +559,15 @@
                           <Color>#e5e5e5</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <BottomBorder>
+                          <Style>None</Style>
+                        </BottomBorder>
                         <LeftBorder>
                           <Style>None</Style>
                         </LeftBorder>
+                        <RightBorder>
+                          <Style>None</Style>
+                        </RightBorder>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -587,6 +605,12 @@
                           <Color>#e5e5e5</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <LeftBorder>
+                          <Style>None</Style>
+                        </LeftBorder>
+                        <RightBorder>
+                          <Style>None</Style>
+                        </RightBorder>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -626,11 +650,8 @@
                       <Style>
                         <Border>
                           <Color>#e5e5e5</Color>
-                          <Style>Solid</Style>
-                        </Border>
-                        <RightBorder>
                           <Style>None</Style>
-                        </RightBorder>
+                        </Border>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -664,14 +685,8 @@
                       <Style>
                         <Border>
                           <Color>#e5e5e5</Color>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
-                        <LeftBorder>
-                          <Style>None</Style>
-                        </LeftBorder>
-                        <RightBorder>
-                          <Style>None</Style>
-                        </RightBorder>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -706,14 +721,8 @@
                       <Style>
                         <Border>
                           <Color>#e5e5e5</Color>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
-                        <LeftBorder>
-                          <Style>None</Style>
-                        </LeftBorder>
-                        <RightBorder>
-                          <Style>None</Style>
-                        </RightBorder>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -746,12 +755,8 @@
                       <rd:DefaultName>Textbox48</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>#e5e5e5</Color>
-                          <Style>Solid</Style>
-                        </Border>
-                        <LeftBorder>
                           <Style>None</Style>
-                        </LeftBorder>
+                        </Border>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -787,6 +792,12 @@
                           <Color>#e5e5e5</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <LeftBorder>
+                          <Style>None</Style>
+                        </LeftBorder>
+                        <RightBorder>
+                          <Style>None</Style>
+                        </RightBorder>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -826,11 +837,8 @@
                       <Style>
                         <Border>
                           <Color>#e5e5e5</Color>
-                          <Style>Solid</Style>
-                        </Border>
-                        <RightBorder>
                           <Style>None</Style>
-                        </RightBorder>
+                        </Border>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -864,14 +872,8 @@
                       <Style>
                         <Border>
                           <Color>#e5e5e5</Color>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
-                        <LeftBorder>
-                          <Style>None</Style>
-                        </LeftBorder>
-                        <RightBorder>
-                          <Style>None</Style>
-                        </RightBorder>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -906,14 +908,8 @@
                       <Style>
                         <Border>
                           <Color>#e5e5e5</Color>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
-                        <LeftBorder>
-                          <Style>None</Style>
-                        </LeftBorder>
-                        <RightBorder>
-                          <Style>None</Style>
-                        </RightBorder>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -946,12 +942,8 @@
                       <rd:DefaultName>Textbox19</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>#e5e5e5</Color>
-                          <Style>Solid</Style>
-                        </Border>
-                        <LeftBorder>
                           <Style>None</Style>
-                        </LeftBorder>
+                        </Border>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -988,6 +980,12 @@
                           <Color>#e5e5e5</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <LeftBorder>
+                          <Style>None</Style>
+                        </LeftBorder>
+                        <RightBorder>
+                          <Style>None</Style>
+                        </RightBorder>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -1448,6 +1446,7 @@
                   <Value>=Globals!ExecutionTime</Value>
                   <Style>
                     <Format>g</Format>
+                    <Language>id-ID</Language>
                   </Style>
                 </TextRun>
               </TextRuns>

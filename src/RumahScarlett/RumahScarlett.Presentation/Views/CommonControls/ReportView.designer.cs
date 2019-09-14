@@ -32,11 +32,11 @@
          this.reportViewer = new Microsoft.Reporting.WinForms.ReportViewer();
          this.SuspendLayout();
          // 
-         // reportViewer1
+         // reportViewer
          // 
          this.reportViewer.Dock = System.Windows.Forms.DockStyle.Fill;
          this.reportViewer.Location = new System.Drawing.Point(0, 0);
-         this.reportViewer.Name = "reportViewer1";
+         this.reportViewer.Name = "reportViewer";
          this.reportViewer.Size = new System.Drawing.Size(684, 462);
          this.reportViewer.TabIndex = 0;
          // 
@@ -48,7 +48,6 @@
          this.Controls.Add(this.reportViewer);
          this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
          this.Name = "ReportView";
-         this.ShowInTaskbar = false;
          this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
          this.Tag = "ignore";
          this.Text = "ReportPreview";

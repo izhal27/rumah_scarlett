@@ -42,6 +42,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\RumahScarlett.Domain\RumahScarlett.Domain.csproj">
+      <Project>{3567e92f-7919-4ece-a99d-aa577d7c1495}</Project>
+      <Name>RumahScarlett.Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="ReportViewerBarang.rdlc" />

@@ -4,6 +4,7 @@ using RumahScarlett.Services.Services;
 using RumahScarlett.Services.Services.Supplier;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,42 +14,33 @@ namespace RumahScarlett.Presentation.Views.ModelControls
 {
    public partial class ComboBoxSupplier : UserControl
    {
-      private ISupplierServices _services;
-      private List<ISupplierModel> _listSuppliers;
-
-      public ComboBox ComboBox
-      {
-        get { return comboBox; }
-      }
-
-      public uint GetSelectedID
+      public ISupplierModel SelectedItem
       {
          get
          {
-            return comboBox.SelectedIndex != -1 ? ((ISupplierModel)comboBox.SelectedItem).id : default(uint);
+            return comboBox.SelectedIndex != -1 ? (ISupplierModel)comboBox.SelectedItem : null;
          }
+         set { comboBox.SelectedItem = comboBox.Items.Cast<ISupplierModel>().Where(t => t.id == value.id).FirstOrDefault(); }
       }
-
-      public ISupplierModel GetModel(object id)
-      {
-         return comboBox.Items.Cast<ISupplierModel>().Where(s => s.id == (uint)id).FirstOrDefault();
-      }
-
+      
       public ComboBoxSupplier()
       {
          InitializeComponent();
 
-         LoadDataSource();
+         if ((LicenseManager.UsageMode != LicenseUsageMode.Designtime))
+         {
+            LoadDataSource();
+         }
       }
 
       private void LoadDataSource()
       {
-         _services = new SupplierServices(new SupplierRepository(), new ModelDataAnnotationCheck());
-         _listSuppliers = _services.GetAll().ToList();
+         var services = new SupplierServices(new SupplierRepository(), new ModelDataAnnotationCheck());
+         var listSuppliers = services.GetAll().ToList();
 
-         if (_listSuppliers != null && _listSuppliers.Count > 0)
+         if (listSuppliers != null && listSuppliers.Count > 0)
          {
-            comboBox.Items.AddRange(_listSuppliers.ToArray());
+            comboBox.Items.AddRange(listSuppliers.ToArray());
             comboBox.DisplayMember = "nama";
             comboBox.SelectedIndex = 0;
          }

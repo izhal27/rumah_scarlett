@@ -5,6 +5,7 @@ using RumahScarlett.Services.Services;
 using RumahScarlett.Services.Services.Tipe;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,42 +15,33 @@ namespace RumahScarlett.Presentation.Views.ModelControls
 {
    public partial class ComboBoxTipe : UserControl
    {
-      private ITipeServices _services;
-      private List<ITipeModel> _listTipes;
-
-      public ComboBox ComboBox
-      {
-         get { return comboBox; }
-      }
-
-      public uint GetSelectedID
+      public ITipeModel SelectedItem
       {
          get
          {
-            return comboBox.SelectedIndex != -1 ? ((ITipeModel)comboBox.SelectedItem).id : default(uint);
+            return comboBox.SelectedIndex != -1 ? (ITipeModel)comboBox.SelectedItem : null;
          }
+         set { comboBox.SelectedItem = comboBox.Items.Cast<ITipeModel>().Where(t => t.id == value.id).FirstOrDefault() ; }
       }
-
-      public ITipeModel GetModel(object id)
-      {
-         return comboBox.Items.Cast<ITipeModel>().Where(t => t.id == (uint)id).FirstOrDefault();
-      }
-
+      
       public ComboBoxTipe()
       {
          InitializeComponent();
 
-         LoadDataSource();
+         if ((LicenseManager.UsageMode != LicenseUsageMode.Designtime))
+         {
+            LoadDataSource();
+         }
       }
 
       private void LoadDataSource()
       {
-         _services = new TipeServices(new TipeRepository(), new ModelDataAnnotationCheck());
-         _listTipes = _services.GetAll().ToList();
+         var services = new TipeServices(new TipeRepository(), new ModelDataAnnotationCheck());
+         var listTipes = services.GetAll().ToList();
 
-         if (_listTipes != null && _listTipes.Count > 0)
+         if (listTipes != null && listTipes.Count > 0)
          {
-            comboBox.Items.AddRange(_listTipes.ToArray());
+            comboBox.Items.AddRange(listTipes.ToArray());
             comboBox.DisplayMember = "nama";
             comboBox.SelectedIndex = 0;
          }

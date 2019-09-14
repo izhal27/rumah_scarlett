@@ -535,7 +535,7 @@
                             </TextRun>
                           </TextRuns>
                           <Style>
-                            <TextAlign>Right</TextAlign>
+                            <TextAlign>Center</TextAlign>
                           </Style>
                         </Paragraph>
                       </Paragraphs>
@@ -678,7 +678,7 @@
                             </TextRun>
                           </TextRuns>
                           <Style>
-                            <TextAlign>Right</TextAlign>
+                            <TextAlign>Center</TextAlign>
                           </Style>
                         </Paragraph>
                       </Paragraphs>
@@ -714,7 +714,7 @@
                             </TextRun>
                           </TextRuns>
                           <Style>
-                            <TextAlign>Right</TextAlign>
+                            <TextAlign>Center</TextAlign>
                           </Style>
                         </Paragraph>
                       </Paragraphs>
@@ -764,6 +764,12 @@
                           <Color>#e5e5e5</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <BottomBorder>
+                          <Style>None</Style>
+                        </BottomBorder>
+                        <LeftBorder>
+                          <Style>None</Style>
+                        </LeftBorder>
                         <RightBorder>
                           <Style>None</Style>
                         </RightBorder>
@@ -800,6 +806,9 @@
                           <Color>#e5e5e5</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <BottomBorder>
+                          <Style>None</Style>
+                        </BottomBorder>
                         <LeftBorder>
                           <Style>None</Style>
                         </LeftBorder>
@@ -841,9 +850,15 @@
                           <Color>#e5e5e5</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <BottomBorder>
+                          <Style>None</Style>
+                        </BottomBorder>
                         <LeftBorder>
                           <Style>None</Style>
                         </LeftBorder>
+                        <RightBorder>
+                          <Style>None</Style>
+                        </RightBorder>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -871,7 +886,7 @@
                             </TextRun>
                           </TextRuns>
                           <Style>
-                            <TextAlign>Right</TextAlign>
+                            <TextAlign>Center</TextAlign>
                           </Style>
                         </Paragraph>
                       </Paragraphs>
@@ -881,6 +896,12 @@
                           <Color>#e5e5e5</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <LeftBorder>
+                          <Style>None</Style>
+                        </LeftBorder>
+                        <RightBorder>
+                          <Style>None</Style>
+                        </RightBorder>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -914,6 +935,12 @@
                           <Color>#e5e5e5</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <BottomBorder>
+                          <Style>None</Style>
+                        </BottomBorder>
+                        <LeftBorder>
+                          <Style>None</Style>
+                        </LeftBorder>
                         <RightBorder>
                           <Style>None</Style>
                         </RightBorder>
@@ -952,6 +979,9 @@
                           <Color>#e5e5e5</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <BottomBorder>
+                          <Style>None</Style>
+                        </BottomBorder>
                         <LeftBorder>
                           <Style>None</Style>
                         </LeftBorder>
@@ -993,6 +1023,9 @@
                           <Color>#e5e5e5</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <BottomBorder>
+                          <Style>None</Style>
+                        </BottomBorder>
                         <LeftBorder>
                           <Style>None</Style>
                         </LeftBorder>
@@ -1016,7 +1049,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value />
+                              <Value>Total</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <Color>#4d4d4d</Color>
@@ -1034,9 +1067,15 @@
                           <Color>#e5e5e5</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <BottomBorder>
+                          <Style>None</Style>
+                        </BottomBorder>
                         <LeftBorder>
                           <Style>None</Style>
                         </LeftBorder>
+                        <RightBorder>
+                          <Style>None</Style>
+                        </RightBorder>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -1064,7 +1103,7 @@
                             </TextRun>
                           </TextRuns>
                           <Style>
-                            <TextAlign>Right</TextAlign>
+                            <TextAlign>Center</TextAlign>
                           </Style>
                         </Paragraph>
                       </Paragraphs>
@@ -1074,12 +1113,19 @@
                           <Color>#e5e5e5</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <LeftBorder>
+                          <Style>None</Style>
+                        </LeftBorder>
+                        <RightBorder>
+                          <Style>None</Style>
+                        </RightBorder>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
+                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
               </TablixCells>
@@ -1559,6 +1605,7 @@ Len(Parameters!Supplier.Value) &gt; 0, Parameters!Supplier.Value
                   <Value>=Globals!ExecutionTime</Value>
                   <Style>
                     <Format>g</Format>
+                    <Language>id-ID</Language>
                   </Style>
                 </TextRun>
               </TextRuns>

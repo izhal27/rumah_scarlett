@@ -41,22 +41,25 @@
               <Width>1.49458cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>3.08146cm</Width>
+              <Width>3.8705cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>4.29539cm</Width>
+              <Width>3.63393cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>6.51789cm</Width>
+              <Width>4.85574cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.49622cm</Width>
+              <Width>1.96705cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>3.60747cm</Width>
+              <Width>3.13122cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>3.42227cm</Width>
+              <Width>2.99893cm</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>2.97625cm</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>5.28411cm</Width>
@@ -334,6 +337,44 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
+                    <Textbox Name="Textbox26">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Total</Value>
+                              <Style>
+                                <FontFamily>Tahoma</FontFamily>
+                                <FontSize>11pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                                <Color>White</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox26</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>#7292cc</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <BackgroundColor>#4c68a2</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
                     <Textbox Name="Textbox13">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
@@ -422,8 +463,9 @@
                               <Value>=Fields!tanggal.Value</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
-                                <Format>dd/MM/yyyy</Format>
+                                <Format>g</Format>
                                 <Color>#4d4d4d</Color>
+                                <Language>id-ID</Language>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -528,7 +570,7 @@
                             </TextRun>
                           </TextRuns>
                           <Style>
-                            <TextAlign>Right</TextAlign>
+                            <TextAlign>Center</TextAlign>
                           </Style>
                         </Paragraph>
                       </Paragraphs>
@@ -591,7 +633,7 @@
                               <Value>=Fields!hpp.Value</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
-                                <Format>'RP. '#,0;('RP. '#,0)</Format>
+                                <Format>'Rp'#,0;('Rp'#,0)</Format>
                                 <Color>#4d4d4d</Color>
                               </Style>
                             </TextRun>
@@ -602,6 +644,43 @@
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>hpp</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>#e5e5e5</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <rd:FormatSymbolCulture>id-ID</rd:FormatSymbolCulture>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="total_hpp">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!total_hpp.Value</Value>
+                              <Style>
+                                <FontFamily>Tahoma</FontFamily>
+                                <Format>'Rp'#,0;('Rp'#,0)</Format>
+                                <Color>#4d4d4d</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Right</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>total_hpp</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>#e5e5e5</Color>
@@ -681,6 +760,12 @@
                           <Color>#e5e5e5</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <BottomBorder>
+                          <Style>None</Style>
+                        </BottomBorder>
+                        <LeftBorder>
+                          <Style>None</Style>
+                        </LeftBorder>
                         <RightBorder>
                           <Style>None</Style>
                         </RightBorder>
@@ -717,6 +802,9 @@
                           <Color>#e5e5e5</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <BottomBorder>
+                          <Style>None</Style>
+                        </BottomBorder>
                         <LeftBorder>
                           <Style>None</Style>
                         </LeftBorder>
@@ -756,6 +844,9 @@
                           <Color>#e5e5e5</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <BottomBorder>
+                          <Style>None</Style>
+                        </BottomBorder>
                         <LeftBorder>
                           <Style>None</Style>
                         </LeftBorder>
@@ -797,9 +888,15 @@
                           <Color>#e5e5e5</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <BottomBorder>
+                          <Style>None</Style>
+                        </BottomBorder>
                         <LeftBorder>
                           <Style>None</Style>
                         </LeftBorder>
+                        <RightBorder>
+                          <Style>None</Style>
+                        </RightBorder>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -827,7 +924,7 @@
                             </TextRun>
                           </TextRuns>
                           <Style>
-                            <TextAlign>Right</TextAlign>
+                            <TextAlign>Center</TextAlign>
                           </Style>
                         </Paragraph>
                       </Paragraphs>
@@ -837,6 +934,12 @@
                           <Color>#e5e5e5</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <LeftBorder>
+                          <Style>None</Style>
+                        </LeftBorder>
+                        <RightBorder>
+                          <Style>None</Style>
+                        </RightBorder>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -870,6 +973,15 @@
                           <Color>#e5e5e5</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <BottomBorder>
+                          <Style>None</Style>
+                        </BottomBorder>
+                        <LeftBorder>
+                          <Style>None</Style>
+                        </LeftBorder>
+                        <RightBorder>
+                          <Style>None</Style>
+                        </RightBorder>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -880,18 +992,16 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox23">
+                    <Textbox Name="Textbox29">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Sum(Fields!hpp.Value)</Value>
+                              <Value>Total</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
-                                <FontWeight>Bold</FontWeight>
-                                <Format>'RP. '#,0;('RP. '#,0)</Format>
                                 <Color>#4d4d4d</Color>
                               </Style>
                             </TextRun>
@@ -901,12 +1011,64 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox23</rd:DefaultName>
+                      <rd:DefaultName>Textbox29</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>#e5e5e5</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <BottomBorder>
+                          <Style>None</Style>
+                        </BottomBorder>
+                        <LeftBorder>
+                          <Style>None</Style>
+                        </LeftBorder>
+                        <RightBorder>
+                          <Style>None</Style>
+                        </RightBorder>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox28">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Sum(Fields!total_hpp.Value)</Value>
+                              <Style>
+                                <FontFamily>Tahoma</FontFamily>
+                                <FontWeight>Bold</FontWeight>
+                                <Format>'Rp'#,0;('Rp'#,0)</Format>
+                                <Color>#4d4d4d</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Right</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox28</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>#e5e5e5</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <LeftBorder>
+                          <Style>None</Style>
+                        </LeftBorder>
+                        <RightBorder>
+                          <Style>None</Style>
+                        </RightBorder>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -941,6 +1103,15 @@
                           <Color>#e5e5e5</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <BottomBorder>
+                          <Style>None</Style>
+                        </BottomBorder>
+                        <LeftBorder>
+                          <Style>None</Style>
+                        </LeftBorder>
+                        <RightBorder>
+                          <Style>None</Style>
+                        </RightBorder>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -955,6 +1126,7 @@
         </TablixBody>
         <TablixColumnHierarchy>
           <TablixMembers>
+            <TablixMember />
             <TablixMember />
             <TablixMember />
             <TablixMember />
@@ -981,7 +1153,7 @@
         <DataSetName>DataSetPenyesuaianStok</DataSetName>
         <Top>3.57327cm</Top>
         <Height>1.8cm</Height>
-        <Width>30.19939cm</Width>
+        <Width>30.21231cm</Width>
         <ZIndex>1</ZIndex>
         <Style>
           <Border>
@@ -1317,7 +1489,7 @@
     <Height>2.36122in</Height>
     <Style />
   </Body>
-  <Width>11.88952in</Width>
+  <Width>11.89461in</Width>
   <Page>
     <PageFooter>
       <Height>1.4435cm</Height>
@@ -1365,6 +1537,7 @@
                   <Value>=Globals!ExecutionTime</Value>
                   <Style>
                     <Format>g</Format>
+                    <Language>id-ID</Language>
                   </Style>
                 </TextRun>
               </TextRuns>
@@ -1455,6 +1628,10 @@
         <Field Name="tanggal">
           <DataField>tanggal</DataField>
           <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="total_hpp">
+          <DataField>total_hpp</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
       </Fields>
       <rd:DataSetInfo>

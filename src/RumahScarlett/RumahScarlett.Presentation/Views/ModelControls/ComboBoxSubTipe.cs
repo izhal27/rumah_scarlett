@@ -5,6 +5,7 @@ using RumahScarlett.Services.Services;
 using RumahScarlett.Services.Services.Tipe;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,42 +15,33 @@ namespace RumahScarlett.Presentation.Views.ModelControls
 {
    public partial class ComboBoxSubTipe : UserControl
    {
-      private ISubTipeServices _services;
-      private List<ISubTipeModel> _listSubTipes;
-
-      public ComboBox ComboBox
-      {
-         get { return comboBox; }
-      }
-
-      public uint GetSelectedID
+      public ISubTipeModel SelectedItem
       {
          get
          {
-            return comboBox.SelectedIndex != -1 ? ((ISubTipeModel)comboBox.SelectedItem).id : default(uint);
+            return comboBox.SelectedIndex != -1 ? (ISubTipeModel)comboBox.SelectedItem : null;
          }
+         set { comboBox.SelectedItem = comboBox.Items.Cast<ISubTipeModel>().Where(st => st.id == value.id).FirstOrDefault(); }
       }
-
-      public ISubTipeModel GetModel(object id)
-      {
-         return comboBox.Items.Cast<ISubTipeModel>().Where(st => st.id == (uint)id).FirstOrDefault();
-      }
-
+      
       public ComboBoxSubTipe()
       {
          InitializeComponent();
 
-         LoadDataSource();
+         if ((LicenseManager.UsageMode != LicenseUsageMode.Designtime))
+         {
+            LoadDataSource();
+         }
       }
 
       private void LoadDataSource()
       {
-         _services = new SubTipeServices(new SubTipeRepository(), new ModelDataAnnotationCheck());
-         _listSubTipes = _services.GetAll().ToList();
+         var services = new SubTipeServices(new SubTipeRepository(), new ModelDataAnnotationCheck());
+         var listSubTipes = services.GetAll().ToList();
 
-         if (_listSubTipes != null && _listSubTipes.Count > 0)
+         if (listSubTipes != null && listSubTipes.Count > 0)
          {
-            comboBox.Items.AddRange(_listSubTipes.ToArray());
+            comboBox.Items.AddRange(listSubTipes.ToArray());
             comboBox.DisplayMember = "nama";
             comboBox.SelectedIndex = 0;
          }

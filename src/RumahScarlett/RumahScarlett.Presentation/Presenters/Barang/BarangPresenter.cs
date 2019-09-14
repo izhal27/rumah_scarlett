@@ -98,8 +98,8 @@ namespace RumahScarlett.Presentation.Presenters.Barang
             }
             else if (_view.RadioButtonTipe.Checked) // Filter by tipe
             {
-               var tipeId = _view.ComboBoxTipe.GetSelectedID;
-               var subTipeId = _view.ComboBoxSubTipe.GetSelectedID;
+               var tipeId = _view.ComboBoxTipe.SelectedItem.id;
+               var subTipeId = _view.ComboBoxSubTipe.SelectedItem.id;
 
                var filterBarang = _listObjs.Where(b => b.tipe_id == tipeId && b.sub_tipe_id == subTipeId).ToList();
                _bindingView.DataSource = filterBarang;
@@ -107,7 +107,7 @@ namespace RumahScarlett.Presentation.Presenters.Barang
             }
             else // Filter by supplier
             {
-               var supplierId = _view.ComboBoxSupplier.GetSelectedID;
+               var supplierId = _view.ComboBoxSupplier.SelectedItem.id;
 
                var filterBarang = _listObjs.Where(b => b.supplier_id == supplierId).ToList();
                _bindingView.DataSource = filterBarang;
@@ -295,12 +295,12 @@ namespace RumahScarlett.Presentation.Presenters.Barang
 
                if (_filter == FilterType.Tipe)
                {
-                  parameters.Add(new ReportParameter("Tipe", ((TipeModel)_view.ComboBoxTipe.ComboBox.SelectedItem).nama));
-                  parameters.Add(new ReportParameter("SubTipe", ((SubTipeModel)_view.ComboBoxSubTipe.ComboBox.SelectedItem).nama));
+                  parameters.Add(new ReportParameter("Tipe", _view.ComboBoxTipe.SelectedItem.nama));
+                  parameters.Add(new ReportParameter("SubTipe", _view.ComboBoxSubTipe.SelectedItem.nama));
                }
                else if (_filter == FilterType.Supplier)
                {
-                  parameters.Add(new ReportParameter("Supplier", ((SupplierModel)_view.ComboBoxSupplier.ComboBox.SelectedItem).nama));
+                  parameters.Add(new ReportParameter("Supplier", _view.ComboBoxSupplier.SelectedItem.nama));
                }
 
                var reportDataSources = new List<ReportDataSource>()

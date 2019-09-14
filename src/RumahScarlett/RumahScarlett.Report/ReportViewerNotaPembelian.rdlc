@@ -262,7 +262,6 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
-                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell>
@@ -507,7 +506,7 @@
                             <TextRun>
                               <Value>=Fields!hpp.Value</Value>
                               <Style>
-                                <Format>'Rp'#,0;('Rp'#,0)</Format>
+                                <Format>#,0;(#,0)</Format>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -530,7 +529,6 @@
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
-                        <rd:FormatSymbolCulture>id-ID</rd:FormatSymbolCulture>
                       </Style>
                     </Textbox>
                   </CellContents>
@@ -606,16 +604,6 @@
                           <Color>Black</Color>
                           <Style>Solid</Style>
                         </TopBorder>
-                        <BottomBorder>
-                          <Color>Black</Color>
-                          <Style>Solid</Style>
-                          <Width>1pt</Width>
-                        </BottomBorder>
-                        <LeftBorder>
-                          <Color>Black</Color>
-                          <Style>Solid</Style>
-                          <Width>1pt</Width>
-                        </LeftBorder>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -648,11 +636,6 @@
                         <TopBorder>
                           <Style>Solid</Style>
                         </TopBorder>
-                        <BottomBorder>
-                          <Color>Black</Color>
-                          <Style>Solid</Style>
-                          <Width>1pt</Width>
-                        </BottomBorder>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -670,11 +653,13 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value />
+                              <Value>Total</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Right</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox69</rd:DefaultName>
@@ -685,11 +670,6 @@
                         <TopBorder>
                           <Style>Solid</Style>
                         </TopBorder>
-                        <BottomBorder>
-                          <Color>Black</Color>
-                          <Style>Solid</Style>
-                          <Width>1pt</Width>
-                        </BottomBorder>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -763,9 +743,6 @@
                         <TopBorder>
                           <Style>Solid</Style>
                         </TopBorder>
-                        <BottomBorder>
-                          <Style>Solid</Style>
-                        </BottomBorder>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -800,9 +777,6 @@
                         <TopBorder>
                           <Style>Solid</Style>
                         </TopBorder>
-                        <BottomBorder>
-                          <Style>Solid</Style>
-                        </BottomBorder>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -823,7 +797,7 @@
                               <Value>=Sum(Fields!total.Value)</Value>
                               <Style>
                                 <FontWeight>Bold</FontWeight>
-                                <Format>'RP. '#,0;('RP. '#,0)</Format>
+                                <Format>'Rp'#,0;('Rp'#,0)</Format>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -841,11 +815,6 @@
                         <BottomBorder>
                           <Style>Solid</Style>
                         </BottomBorder>
-                        <RightBorder>
-                          <Color>Black</Color>
-                          <Style>Solid</Style>
-                          <Width>1pt</Width>
-                        </RightBorder>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>

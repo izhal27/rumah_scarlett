@@ -44,9 +44,9 @@ namespace RumahScarlett.Presentation.Views.Barang
       {
          if (!_isNewData && _model != null)
          {
-            comboBoxTipe.ComboBox.SelectedItem = comboBoxTipe.GetModel(_model.tipe_id);
-            comboBoxSubTipe.ComboBox.SelectedItem = comboBoxSubTipe.GetModel(_model.sub_tipe_id);
-            comboBoxSupplier.ComboBox.SelectedItem = comboBoxSupplier.GetModel(_model.supplier_id);
+            comboBoxTipe.SelectedItem = new TipeModel { id = _model.tipe_id };
+            comboBoxSubTipe.SelectedItem = new SubTipeModel { id = _model.sub_tipe_id };
+            comboBoxSupplier.SelectedItem = new SupplierModel { id = _model.supplier_id };
             textBoxKode.Text = _model.kode;
             textBoxNama.Text = _model.nama;
             textBoxHpp.Text = _model.hpp.ToString("N0");
@@ -54,7 +54,7 @@ namespace RumahScarlett.Presentation.Views.Barang
             textBoxHargaLama.Text = _model.harga_lama.ToString("N0");
             textBoxStok.Text = _model.stok.ToString("N0");
             textBoxMinStok.Text = _model.minimal_stok.ToString("N0");
-            comboBoxSatuan.ComboBox.SelectedItem = comboBoxSatuan.GetModel(_model.satuan_id);
+            comboBoxSatuan.SelectedItem = _model.Satuan;
          }
       }
 
@@ -62,9 +62,9 @@ namespace RumahScarlett.Presentation.Views.Barang
       {
          var model = new BarangModel
          {
-            tipe_id = comboBoxTipe.GetSelectedID,
-            sub_tipe_id = comboBoxSubTipe.GetSelectedID,
-            supplier_id = comboBoxSupplier.GetSelectedID,
+            tipe_id = comboBoxTipe.SelectedItem.id,
+            sub_tipe_id = comboBoxSubTipe.SelectedItem.id,
+            supplier_id = comboBoxSupplier.SelectedItem.id,
             kode = textBoxKode.Text,
             nama = textBoxNama.Text,
             hpp = decimal.Parse(textBoxHpp.Text, NumberStyles.Number),
@@ -72,7 +72,7 @@ namespace RumahScarlett.Presentation.Views.Barang
             harga_lama = decimal.Parse(textBoxHargaLama.Text, NumberStyles.Number),
             stok = int.Parse(textBoxStok.Text, NumberStyles.Number),
             minimal_stok = int.Parse(textBoxMinStok.Text, NumberStyles.Number),
-            Satuan = comboBoxSatuan.GetModel(comboBoxSatuan.GetSelectedID) ?? new SatuanModel()
+            Satuan = comboBoxSatuan.SelectedItem
          };
 
          var modelArgs = new ModelEventArgs<BarangModel>(model);

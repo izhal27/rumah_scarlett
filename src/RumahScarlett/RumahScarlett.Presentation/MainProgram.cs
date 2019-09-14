@@ -16,10 +16,23 @@ namespace RumahScarlett.Presentation
 {
    static class MainProgram
    {
-      public static event EventHandler<PropertyChangedEventArgs> OnColorChange;
+      private static IPengaturanModel _pengaturan;
 
-      public static IPengaturanModel Pengaturan { get; set; }
-      public static IPengaturanServices PengaturanServices { get; private set; }
+      public static IPengaturanModel Pengaturan
+      {
+         get { return _pengaturan ?? (_pengaturan = PengaturanServices.GetModel); }
+         set { _pengaturan = value; }
+      }
+
+      private static IPengaturanServices _pengaturanServices;
+
+      public static IPengaturanServices PengaturanServices
+      {
+         get
+         {
+            return _pengaturanServices ?? (_pengaturanServices = new PengaturanServices(new PengaturanRepository(), new ModelDataAnnotationCheck()));
+         }
+      }
 
       /// <summary>
       /// The main entry point for the application.
@@ -35,14 +48,11 @@ namespace RumahScarlett.Presentation
 
          Application.EnableVisualStyles();
          Application.SetCompatibleTextRenderingDefault(false);
-
-         PengaturanServices = new PengaturanServices(new PengaturanRepository(), new ModelDataAnnotationCheck());
-         Pengaturan = PengaturanServices.GetModel;
-
+         
          var view = new MainPresenter().GetView;
          Application.Run((Form)view);
       }
-      
+
       /// <summary>
       /// Method yang mengubah exception default menjadi ExceptionReporter
       /// </summary>

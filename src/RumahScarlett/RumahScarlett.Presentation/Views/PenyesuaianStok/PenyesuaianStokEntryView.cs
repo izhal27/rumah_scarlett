@@ -49,7 +49,7 @@ namespace RumahScarlett.Presentation.Views.PenyesuaianStok
             textBoxBarang.Text = model.Barang.nama;
             textBoxBarang.Tag = model.Barang;
             textBoxQty.Text = model.qty.ToString("N0");
-            comboBoxSatuan.ComboBox.SelectedValue = model.satuan_id;
+            comboBoxSatuan.SelectedItem = model.Satuan;
             textBoxHpp.Text = model.hpp.ToString("N0");
             textBoxKeterangan.Text = model.keterangan;
          }
@@ -67,8 +67,8 @@ namespace RumahScarlett.Presentation.Views.PenyesuaianStok
             Barang = barangModel,
             hpp = decimal.Parse(textBoxHpp.Text, NumberStyles.Number),
             qty = int.Parse(textBoxQty.Text, NumberStyles.Number),
-            satuan_id = comboBoxSatuan.GetSelectedID,
-            satuan_nama = comboBoxSatuan.ComboBox.Text,
+            satuan_id = comboBoxSatuan.SelectedItem.id,
+            satuan_nama = comboBoxSatuan.SelectedItem.nama,
             keterangan = textBoxKeterangan.Text
          };
 
