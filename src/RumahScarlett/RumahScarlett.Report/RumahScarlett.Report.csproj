@@ -54,11 +54,14 @@
   <ItemGroup>
     <EmbeddedResource Include="ReportViewerBarang.rdlc" />
     <EmbeddedResource Include="ReportViewerHutangOperasional.rdlc" />
+    <EmbeddedResource Include="ReportViewerPembelian.rdlc" />
     <EmbeddedResource Include="ReportViewerPenyesuaianStok.rdlc" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\DataSources\RumahScarlett.Domain.Models.Barang.BarangModel.datasource" />
     <None Include="Properties\DataSources\RumahScarlett.Domain.Models.HutangOperasional.HutangOperasionalModel.datasource" />
+    <None Include="Properties\DataSources\RumahScarlett.Domain.Models.Pembelian.PembelianDetailModel.datasource" />
+    <None Include="Properties\DataSources\RumahScarlett.Domain.Models.Pembelian.PembelianModel.datasource" />
     <None Include="Properties\DataSources\RumahScarlett.Domain.Models.Pengaturan.PengaturanModel.datasource" />
     <None Include="Properties\DataSources\RumahScarlett.Domain.Models.PenyesuaianStok.PenyesuaianStokModel.datasource" />
   </ItemGroup>

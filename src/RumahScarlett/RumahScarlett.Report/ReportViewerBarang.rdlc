@@ -1134,11 +1134,12 @@
                 <Style>
                   <FontSize>12pt</FontSize>
                   <FontWeight>Bold</FontWeight>
+                  <TextDecoration>None</TextDecoration>
                 </Style>
               </TextRun>
             </TextRuns>
             <Style>
-              <TextAlign>Left</TextAlign>
+              <TextAlign>Center</TextAlign>
             </Style>
           </Paragraph>
         </Paragraphs>
@@ -1146,11 +1147,11 @@
         <Top>0.3175cm</Top>
         <Left>0.3175cm</Left>
         <Height>0.67938cm</Height>
-        <Width>12.63905cm</Width>
+        <Width>9.67572cm</Width>
         <ZIndex>1</ZIndex>
         <Style>
           <Border>
-            <Style>None</Style>
+            <Style>Solid</Style>
           </Border>
           <PaddingLeft>2pt</PaddingLeft>
           <PaddingRight>2pt</PaddingRight>
@@ -1517,18 +1518,14 @@ Len(Parameters!Supplier.Value) &gt; 0, Parameters!Supplier.Value
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
-        <Textbox Name="Textbox1">
+        <Textbox Name="Textbox23">
           <CanGrow>true</CanGrow>
           <KeepTogether>true</KeepTogether>
           <Paragraphs>
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>Page </Value>
-                  <Style />
-                </TextRun>
-                <TextRun>
-                  <Value>=Globals!PageNumber</Value>
+                  <Value>=("Page " +  CStr(Globals!PageNumber) + " of " + CStr(Globals!TotalPages))</Value>
                   <Style />
                 </TextRun>
               </TextRuns>
@@ -1537,11 +1534,44 @@ Len(Parameters!Supplier.Value) &gt; 0, Parameters!Supplier.Value
               </Style>
             </Paragraph>
           </Paragraphs>
-          <rd:DefaultName>Textbox1</rd:DefaultName>
+          <rd:DefaultName>Textbox17</rd:DefaultName>
           <Top>0.56417cm</Top>
-          <Left>26.985cm</Left>
+          <Left>25.62965cm</Left>
           <Height>0.6cm</Height>
-          <Width>3.69063cm</Width>
+          <Width>5.28411cm</Width>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="Textbox25">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>=Globals!ExecutionTime</Value>
+                  <Style>
+                    <Format>g</Format>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Left</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox25</rd:DefaultName>
+          <Top>0.56417cm</Top>
+          <Height>0.6cm</Height>
+          <Width>5.13166cm</Width>
+          <ZIndex>1</ZIndex>
           <Style>
             <Border>
               <Style>None</Style>
