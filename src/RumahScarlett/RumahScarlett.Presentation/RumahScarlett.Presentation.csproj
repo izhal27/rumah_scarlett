@@ -176,11 +176,11 @@
     <Compile Include="Views\CommonControls\BaseDataView.Designer.cs">
       <DependentUpon>BaseDataView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\CommonControls\BaseDetailView.cs">
+    <Compile Include="Views\CommonControls\DetailView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\CommonControls\BaseDetailView.Designer.cs">
-      <DependentUpon>BaseDetailView.cs</DependentUpon>
+    <Compile Include="Views\CommonControls\DetailView.Designer.cs">
+      <DependentUpon>DetailView.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\CommonControls\BaseEntryView.cs">
       <SubType>Form</SubType>
@@ -537,8 +537,8 @@
     <EmbeddedResource Include="Views\CommonControls\BaseDataView.resx">
       <DependentUpon>BaseDataView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\CommonControls\BaseDetailView.resx">
-      <DependentUpon>BaseDetailView.cs</DependentUpon>
+    <EmbeddedResource Include="Views\CommonControls\DetailView.resx">
+      <DependentUpon>DetailView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\CommonControls\BaseEntryView.resx">
       <DependentUpon>BaseEntryView.cs</DependentUpon>

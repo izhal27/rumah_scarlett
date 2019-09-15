@@ -135,7 +135,7 @@ namespace RumahScarlett.Presentation.Presenters.Pembelian
 
          if (model != null)
          {
-            var detailView = new BaseDetailView("Detail Pembelian");
+            var detailView = new DetailView("Detail Pembelian");
             detailView.OnLoadView += DetailView_OnLoadView;
             detailView.ShowDialog();
          }
@@ -144,7 +144,7 @@ namespace RumahScarlett.Presentation.Presenters.Pembelian
       private void DetailView_OnLoadView(object sender, EventArgs e)
       {
          var modelDetails = ((PembelianModel)_view.ListDataGrid.SelectedItem).PembelianDetails.ToList();
-         var detailView = (BaseDetailView)sender;
+         var detailView = (DetailView)sender;
 
          if (modelDetails != null && modelDetails.Count > 0)
          {

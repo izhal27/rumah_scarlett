@@ -263,7 +263,7 @@ namespace RumahScarlett.Presentation.Presenters.Barang
          if (_view.ListDataGrid != null && _view.ListDataGrid.SelectedItem != null)
          {
             var model = (BarangModel)_view.ListDataGrid.SelectedItem;
-            var detailView = new BaseDetailView($"Penyesuaian Stok Barang {model.nama}");
+            var detailView = new DetailView($"Penyesuaian Stok Barang {model.nama}");
             detailView.OnLoadView += BaseDetailTransaksiView_OnLoadView;
             detailView.ShowDialog();
          }
@@ -272,7 +272,7 @@ namespace RumahScarlett.Presentation.Presenters.Barang
       private void BaseDetailTransaksiView_OnLoadView(object sender, EventArgs e)
       {
          var listPenyesuaianStokModels = ((BarangModel)_view.ListDataGrid.SelectedItem).PenyesuaianStoks.ToList();
-         var detailView = (BaseDetailView)sender;
+         var detailView = (DetailView)sender;
 
          var bindingDetialView = new BindingListView<PenyesuaianStokModel>(listPenyesuaianStokModels);
          detailView.ListDataGrid.DataSource = bindingDetialView;

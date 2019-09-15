@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace RumahScarlett.Presentation.Views.CommonControls
 {
-   public partial class BaseDetailView : BaseDataView
+   public partial class DetailView : BaseDataView
    {
       public event EventHandler OnLoadView;
       public event EventHandler OnButtonCetakClick;
@@ -20,7 +20,7 @@ namespace RumahScarlett.Presentation.Views.CommonControls
          get { return listDataGrid; }
       }
 
-      public BaseDetailView(string textTitle)
+      public DetailView(string textTitle)
       {
          InitializeComponent();
 
