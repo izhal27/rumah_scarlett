@@ -20,12 +20,13 @@ namespace RumahScarlett.Presentation.Views.CommonControls
          get { return listDataGrid; }
       }
 
-      public DetailView(string textTitle)
+      public DetailView(string textTitle, bool buttonCetakVisible = true)
       {
          InitializeComponent();
 
          Text = textTitle;
          panelUp.LabelInfo = $"{Text.ToUpper()}";
+         buttonCetak.Visible = buttonCetakVisible;
       }
 
       private void BaseDetailTransaksiView_Load(object sender, EventArgs e)
@@ -48,7 +49,7 @@ namespace RumahScarlett.Presentation.Views.CommonControls
       
       private void buttonCetak_Click(object sender, EventArgs e)
       {
-         OnButtonCetakClick?.Invoke(sender, e);
+         OnButtonCetakClick?.Invoke(this, e);
       }
 
       private void buttonTutup_Click(object sender, EventArgs e)

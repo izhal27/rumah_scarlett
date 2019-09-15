@@ -19,7 +19,7 @@ namespace RumahScarlett.Presentation.Views.Pembelian
       public event EventHandler OnLoadData;
       public event EventHandler OnCariData;
       public event EventHandler OnHapusData;
-      public event EventHandler OnBayarPenjualan;
+      public event EventHandler OnSimpanData;
       public event EventHandler OnBersihkanData;
       public event EventHandler OnCetakNota;
       public event EventHandler<CurrentCellKeyEventArgs> OnListDataGridCurrentCellKeyDown;
@@ -79,7 +79,7 @@ namespace RumahScarlett.Presentation.Views.Pembelian
                break;
             case Keys.F4: // Simpan
 
-               OnBayarPenjualan?.Invoke(sender, e);
+               OnSimpanData?.Invoke(sender, e);
 
                break;
             case Keys.F5: // Bersihkan

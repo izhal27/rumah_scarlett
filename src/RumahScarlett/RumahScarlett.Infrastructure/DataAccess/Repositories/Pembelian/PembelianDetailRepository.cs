@@ -30,8 +30,17 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Pembelian
 
       public void Insert(IPembelianDetailModel model, IDbTransaction transaction)
       {
+         var dataAccessStatus = new DataAccessStatus();
+
          var queryStr = "INSERT INTO pembelian_detail (pembelian_id, barang_id, qty, hpp) " +
                         "VALUES (@pembelian_id, @barang_id, @qty, @hpp)";
+
+         if (model.Barang.hpp <= 0 && model.hpp <= 0)
+         {
+            var ex = new DataAccessException(dataAccessStatus);
+            SetDataAccessValues(ex, "Hpp Barang harus diisi !!!");
+            throw ex;
+         }
 
          _context.Conn.Query<int>(queryStr, new
          {

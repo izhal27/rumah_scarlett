@@ -14,7 +14,7 @@ namespace RumahScarlett.Presentation.Views
       event EventHandler OnLoadData;
       event EventHandler OnCariData;
       event EventHandler OnHapusData;
-      event EventHandler OnBayarPenjualan;
+      event EventHandler OnSimpanData;
       event EventHandler OnBersihkanData;
       event EventHandler OnCetakNota;
       event EventHandler<CurrentCellKeyEventArgs> OnListDataGridCurrentCellKeyDown;

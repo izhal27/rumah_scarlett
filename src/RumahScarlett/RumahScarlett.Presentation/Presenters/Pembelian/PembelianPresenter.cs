@@ -58,12 +58,12 @@ namespace RumahScarlett.Presentation.Presenters.Pembelian
          _view = new PembelianView();
          _pembelianServices = new PembelianServices(new PembelianRepository(), new ModelDataAnnotationCheck());
          _barangServices = new BarangServices(new BarangRepository(), new ModelDataAnnotationCheck());
-         _listsBarangs = _barangServices.GetAll().Where(b => b.hpp > 0).ToList();
+         _listsBarangs = _barangServices.GetAll().ToList();
 
          _view.OnLoadData += _view_OnLoadData;
          _view.OnCariData += _view_OnCariData;
          _view.OnHapusData += _view_OnHapusData;
-         _view.OnBayarPenjualan += _view_OnSimpanData;
+         _view.OnSimpanData += _view_OnSimpanData;
          _view.OnBersihkanData += _view_OnBersihkanData;
          _view.OnCetakNota += _view_OnCetakNota;
          _view.OnListDataGridCurrentCellKeyDown += _view_OnListDataGridCurrentCellKeyDown;
@@ -169,6 +169,11 @@ namespace RumahScarlett.Presentation.Presenters.Pembelian
 
             simpanPembelianEntryView.Close();
             ((Form)_view).ActiveControl = _view.TextBoxNoNota;
+
+            if (Messages.Confirm("Cetak Nota Pembelian?"))
+            {
+               _view_OnCetakNota(null, null);
+            }
          }
          catch (ArgumentException ex)
          {
@@ -348,12 +353,8 @@ namespace RumahScarlett.Presentation.Presenters.Pembelian
          {
             if (CurrCellRowIndex != (listDataGrid.RowCount - 1))
             {
-               if (decimal.Parse(CurrCellValue.ToString(), NumberStyles.Number) > 0)
-               {
-
-                  listDataGrid.MoveToCurrentCell(new RowColumnIndex((CurrCellRowIndex + 1), 1));
-                  listDataGrid.CurrentCell.BeginEdit();
-               }
+               listDataGrid.MoveToCurrentCell(new RowColumnIndex((CurrCellRowIndex + 1), 1));
+               listDataGrid.CurrentCell.BeginEdit();
 
                e.KeyEventArgs.Handled = true;
             }

@@ -56,12 +56,12 @@ namespace RumahScarlett.Presentation.Presenters.Penjualan
          _view = new PenjualanView();
          _penjualannServices = new PenjualanServices(new PenjualanRepository(), new ModelDataAnnotationCheck());
          _barangServices = new BarangServices(new BarangRepository(), new ModelDataAnnotationCheck());
-         _listsBarangs = _barangServices.GetAll().Where(b => b.hpp > 0).ToList();
+         _listsBarangs = _barangServices.GetAll().Where(b => b.harga_jual > 0).ToList();
 
          _view.OnLoadData += _view_OnLoadData;
          _view.OnCariData += _view_OnCariData;
          _view.OnHapusData += _view_OnHapusData;
-         _view.OnBayarPenjualan += _view_OnBayarPenjualan;
+         _view.OnSimpanData += _view_OnBayarPenjualan;
          _view.OnBersihkanData += _view_OnBersihkanData;
          _view.OnListDataGridCurrentCellKeyDown += _view_OnListDataGridCurrentCellKeyDown;
          _view.OnListDataGridCurrentCellActivated += _view_OnListDataGridCurrentCellActivated;
@@ -201,7 +201,7 @@ namespace RumahScarlett.Presentation.Presenters.Penjualan
          {
             _view.ListDataGrid.Enabled = true;
             _view.TextBoxNoNota.Text = string.Empty;
-            _listsBarangs = _barangServices.GetAll().ToList();
+            _listsBarangs = _barangServices.GetAll().Where(b => b.harga_jual > 0).ToList();
          }
 
          _kodeOrNamaForSearching = string.Empty;

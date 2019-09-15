@@ -137,6 +137,7 @@ namespace RumahScarlett.Presentation.Presenters.Pembelian
          {
             var detailView = new DetailView("Detail Pembelian");
             detailView.OnLoadView += DetailView_OnLoadView;
+            detailView.OnButtonCetakClick += DetailView_OnButtonCetakClick;
             detailView.ShowDialog();
          }
       }
@@ -151,6 +152,28 @@ namespace RumahScarlett.Presentation.Presenters.Pembelian
             var bindingDetialView = new BindingListView<PembelianDetailModel>(modelDetails);
             detailView.ListDataGrid.DataSource = bindingDetialView;
          }
+      }
+
+      private void DetailView_OnButtonCetakClick(object sender, EventArgs e)
+      {
+         var pembelianModel = (PembelianModel)_view.ListDataGrid.SelectedItem;
+
+         var reportDataSources = new List<ReportDataSource>()
+         {
+            new ReportDataSource {
+               Name = "DataSetPembelian",
+               Value = new BindingSource(pembelianModel, null)
+            },
+            new ReportDataSource {
+               Name = "DataSetPembelianDetail",
+               Value = pembelianModel.PembelianDetails
+            }
+         };
+
+         new ReportView("Nota Pembelian", "ReportViewerNotaPembelian",
+                        reportDataSources, null).ShowDialog();
+
+         ((Form)sender).Close();
       }
 
       private void _view_OnTampilkanClick(object sender, FilterDateEventArgs e)

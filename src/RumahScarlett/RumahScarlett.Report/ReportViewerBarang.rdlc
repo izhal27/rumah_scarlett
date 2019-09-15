@@ -73,7 +73,6 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
-                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell>
@@ -766,10 +765,10 @@
                           <Style>Solid</Style>
                         </Border>
                         <BottomBorder>
-                          <Style>None</Style>
+                          <Width>1pt</Width>
                         </BottomBorder>
                         <LeftBorder>
-                          <Style>None</Style>
+                          <Width>1pt</Width>
                         </LeftBorder>
                         <RightBorder>
                           <Style>None</Style>
@@ -808,7 +807,7 @@
                           <Style>Solid</Style>
                         </Border>
                         <BottomBorder>
-                          <Style>None</Style>
+                          <Width>1pt</Width>
                         </BottomBorder>
                         <LeftBorder>
                           <Style>None</Style>
@@ -833,7 +832,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Total</Value>
+                              <Value />
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <Color>#4d4d4d</Color>
@@ -852,7 +851,7 @@
                           <Style>Solid</Style>
                         </Border>
                         <BottomBorder>
-                          <Style>None</Style>
+                          <Width>1pt</Width>
                         </BottomBorder>
                         <LeftBorder>
                           <Style>None</Style>
@@ -898,10 +897,10 @@
                           <Style>Solid</Style>
                         </Border>
                         <LeftBorder>
-                          <Style>None</Style>
+                          <Width>1pt</Width>
                         </LeftBorder>
                         <RightBorder>
-                          <Style>None</Style>
+                          <Width>1pt</Width>
                         </RightBorder>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -937,7 +936,7 @@
                           <Style>Solid</Style>
                         </Border>
                         <BottomBorder>
-                          <Style>None</Style>
+                          <Width>1pt</Width>
                         </BottomBorder>
                         <LeftBorder>
                           <Style>None</Style>
@@ -981,7 +980,7 @@
                           <Style>Solid</Style>
                         </Border>
                         <BottomBorder>
-                          <Style>None</Style>
+                          <Width>1pt</Width>
                         </BottomBorder>
                         <LeftBorder>
                           <Style>None</Style>
@@ -1025,7 +1024,7 @@
                           <Style>Solid</Style>
                         </Border>
                         <BottomBorder>
-                          <Style>None</Style>
+                          <Width>1pt</Width>
                         </BottomBorder>
                         <LeftBorder>
                           <Style>None</Style>
@@ -1050,7 +1049,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Total</Value>
+                              <Value />
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <Color>#4d4d4d</Color>
@@ -1069,7 +1068,7 @@
                           <Style>Solid</Style>
                         </Border>
                         <BottomBorder>
-                          <Style>None</Style>
+                          <Width>1pt</Width>
                         </BottomBorder>
                         <LeftBorder>
                           <Style>None</Style>
@@ -1115,10 +1114,10 @@
                           <Style>Solid</Style>
                         </Border>
                         <LeftBorder>
-                          <Style>None</Style>
+                          <Width>1pt</Width>
                         </LeftBorder>
                         <RightBorder>
-                          <Style>None</Style>
+                          <Width>1pt</Width>
                         </RightBorder>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>

@@ -18,7 +18,7 @@ namespace RumahScarlett.Presentation.Views.Penjualan
       public event EventHandler OnLoadData;
       public event EventHandler OnCariData;
       public event EventHandler OnHapusData;
-      public event EventHandler OnBayarPenjualan;
+      public event EventHandler OnSimpanData;
       public event EventHandler OnBersihkanData;
       public event EventHandler OnCetakNota;
       public event EventHandler<CurrentCellKeyEventArgs> OnListDataGridCurrentCellKeyDown;
@@ -78,7 +78,7 @@ namespace RumahScarlett.Presentation.Views.Penjualan
                break;
             case Keys.F4: // Bayar
 
-               OnBayarPenjualan?.Invoke(sender, e);
+               OnSimpanData?.Invoke(sender, e);
 
                break;
             case Keys.F5: // Bersihkan
