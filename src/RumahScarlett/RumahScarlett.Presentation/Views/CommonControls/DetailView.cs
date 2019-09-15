@@ -13,6 +13,7 @@ namespace RumahScarlett.Presentation.Views.CommonControls
    public partial class BaseDetailView : BaseDataView
    {
       public event EventHandler OnLoadView;
+      public event EventHandler OnButtonCetakClick;
 
       public ListDataGrid ListDataGrid
       {
@@ -43,6 +44,11 @@ namespace RumahScarlett.Presentation.Views.CommonControls
 
                break;
          }
+      }
+      
+      private void buttonCetak_Click(object sender, EventArgs e)
+      {
+         OnButtonCetakClick?.Invoke(sender, e);
       }
 
       private void buttonTutup_Click(object sender, EventArgs e)
