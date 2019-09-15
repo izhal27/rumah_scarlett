@@ -165,5 +165,25 @@ namespace RumahScarlett.Services.UnitTests.Pembelian
 
          TestsHelper.WriteListModels(_testOutputHelper, listModels);
       }
+      
+      [Fact]
+      public void ShouldReturnListOfReportModelsDateNow()
+      {
+         var listModels = _services.GetReportByDate(DateTime.Now.Date).ToList();
+
+         Assert.NotEmpty(listModels);
+
+         TestsHelper.WriteListModels(_testOutputHelper, listModels);
+      }
+      
+      [Fact]
+      public void ShouldReturnListOfReportModelsBetweenDate()
+      {
+         var listModels = _services.GetReportByDate(DateTime.Now.AddDays(-3).Date, DateTime.Now.Date).ToList();
+
+         Assert.NotEmpty(listModels);
+
+         TestsHelper.WriteListModels(_testOutputHelper, listModels);
+      }
    }
 }

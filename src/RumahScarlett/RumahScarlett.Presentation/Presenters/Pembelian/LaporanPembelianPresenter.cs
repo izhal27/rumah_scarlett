@@ -25,6 +25,10 @@ namespace RumahScarlett.Presentation.Presenters.Pembelian
       private List<IPembelianModel> _listPembelians;
       private BindingListView<PembelianModel> _bindingView;
       private string _typeName = "Pembelian";
+      private TampilkanStatus _tampilkanStatus = TampilkanStatus.Tanggal;
+      private DateTime _tanggal = DateTime.Now.Date;
+      private DateTime _tanggalAwal;
+      private DateTime _tanggalAkhir;
 
       public ILaporanPembelianView GetView
       {
@@ -91,25 +95,35 @@ namespace RumahScarlett.Presentation.Presenters.Pembelian
       {
          using (new WaitCursorHandler())
          {
-            var _pembelianModel = (PembelianModel)_view.ListDataGrid.SelectedItem;
-
-            if (_pembelianModel != null)
+            if (_bindingView.DataSource.Count > 0)
             {
                var parameters = new List<ReportParameter>();
+
+               var listObjs = new List<IPembelianReportModel>();
+
+               if (_tampilkanStatus == TampilkanStatus.Tanggal)
+               {
+                  listObjs = _services.GetReportByDate(_tanggal).ToList();
+
+                  parameters.Add(new ReportParameter("Tanggal", _tanggal.ToShortDateString()));
+               }
+               else if (_tampilkanStatus == TampilkanStatus.Periode)
+               {
+                  listObjs = _services.GetReportByDate(_tanggalAwal, _tanggalAkhir).ToList();
+
+                  parameters.Add(new ReportParameter("Tanggal", _tanggalAwal.ToShortDateString()));
+                  parameters.Add(new ReportParameter("TanggalAkhir", _tanggalAkhir.ToShortDateString()));
+               }
 
                var reportDataSources = new List<ReportDataSource>()
                {
                   new ReportDataSource {
                      Name = "DataSetPembelian",
-                     Value = new BindingSource(_pembelianModel, null)
-                  },
-                  new ReportDataSource {
-                     Name = "DataSetPembelianDetail",
-                     Value = _pembelianModel.PembelianDetails
+                     Value = listObjs
                   }
                };
 
-               new ReportView("Nota Pembelian", "ReportViewerNotaPembelian",
+               new ReportView("Nota Pembelian", "ReportViewerLaporanPembelian",
                               reportDataSources, parameters).ShowDialog();
             }
          }
@@ -149,12 +163,17 @@ namespace RumahScarlett.Presentation.Presenters.Pembelian
 
                   _listPembelians = _services.GetByDate(e.Tanggal.Date).ToList();
                   _bindingView.DataSource = _listPembelians;
+                  _tampilkanStatus = TampilkanStatus.Tanggal;
+                  _tanggal = e.Tanggal.Date;
 
                   break;
                case TampilkanStatus.Periode:
 
                   _listPembelians = _services.GetByDate(e.TanggalAwal.Date, e.TanggalAkhir.Date).ToList();
                   _bindingView.DataSource = _listPembelians;
+                  _tampilkanStatus = TampilkanStatus.Periode;
+                  _tanggalAwal = e.TanggalAwal;
+                  _tanggalAkhir = e.TanggalAkhir.Date;
 
                   break;
             }

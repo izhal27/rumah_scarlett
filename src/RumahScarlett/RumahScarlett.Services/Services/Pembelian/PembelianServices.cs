@@ -53,6 +53,16 @@ namespace RumahScarlett.Services.Services.Pembelian
       {
          return _repo.GetById(id);
       }
+      
+      public IEnumerable<IPembelianReportModel> GetReportByDate(object date)
+      {
+         return _repo.GetReportByDate(date);
+      }
+
+      public IEnumerable<IPembelianReportModel> GetReportByDate(object startDate, object endDate)
+      {
+         return _repo.GetReportByDate(startDate, endDate);
+      }
 
       public void ValidateModel(IPembelianModel model)
       {

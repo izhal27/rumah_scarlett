@@ -60,7 +60,7 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Pembelian
                      {
                         barang.Satuan = context.Conn.Get<SatuanModel>(barang.satuan_id);
                         pd.Barang = barang;
-                        pd.Barang.supplier_id = model.supplier_id;                        
+                        pd.Barang.supplier_id = model.supplier_id;
                      }
                      else
                      {
@@ -79,14 +79,14 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Pembelian
 
                   laporanStatusBarangModel.stok_awal = stokAwal;
                   laporanStatusBarangModel.tanggal = model.tanggal;
-                  laporanStatusBarangModel.Pembelian = model;                  
+                  laporanStatusBarangModel.Pembelian = model;
 
                   context.Conn.Insert(laporanStatusBarangModel, context.Transaction);
 
                   foreach (var pd in model.PembelianDetails)
                   {
                      pdRepo.Insert(pd, context.Transaction);
-                     
+
                      pd.Barang.stok += pd.qty;
 
                      if (pd.hpp > 0)
@@ -202,6 +202,44 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Pembelian
             return GetBy(() => context.Conn.Get<PembelianModel>(id), dataAccessStatus,
                         () => CheckModelExist(context, id));
          }
+      }
+
+      public IEnumerable<IPembelianReportModel> GetReportByDate(object date)
+      {
+         var dataAccessStatus = new DataAccessStatus();
+
+         using (var context = new DbContext())
+         {
+            var queryStr = QueryStrReport("WHERE DATE(pb.tanggal) = @date");
+
+            var listObjs = context.Conn.Query<PembelianReportModel>(queryStr, new { date });
+
+            return listObjs;
+         }
+      }
+
+      public IEnumerable<IPembelianReportModel> GetReportByDate(object startDate, object endDate)
+      {
+         var dataAccessStatus = new DataAccessStatus();
+
+         using (var context = new DbContext())
+         {
+            var queryStr = QueryStrReport("WHERE DATE(pb.tanggal) >= @startDate AND DATE(pb.tanggal) <= @endDate");
+
+            var listObjs = context.Conn.Query<PembelianReportModel>(queryStr, new { startDate, endDate });
+
+            return listObjs;
+         }
+      }
+
+      private string QueryStrReport(string where)
+      {
+         return "SELECT pb.tanggal, pb.no_nota, sp.nama AS supplier_nama, b.kode AS barang_kode, " +
+                "b.nama AS barang_nama, pbd.qty, st.nama AS barang_satuan, pbd.hpp FROM pembelian pb " +
+                "INNER JOIN supplier sp ON pb.supplier_id = sp.id " +
+                "INNER JOIN pembelian_detail pbd ON pb.id = pbd.pembelian_id " +
+                "INNER JOIN barang b ON pbd.barang_id = b.id " +
+                $"INNER JOIN satuan st ON b.satuan_id = st.id {where}";
       }
 
       private bool CheckModelExist(DbContext context, object id)
