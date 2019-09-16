@@ -1,4 +1,5 @@
 ﻿using Equin.ApplicationFramework;
+using Microsoft.Reporting.WinForms;
 using RumahScarlett.CommonComponents;
 using RumahScarlett.Domain.Models.Pengeluaran;
 using RumahScarlett.Infrastructure.DataAccess.Repositories.Pengeluaran;
@@ -22,6 +23,10 @@ namespace RumahScarlett.Presentation.Presenters.Pengeluaran
       private List<IPengeluaranModel> _listPengeluarans;
       private BindingListView<PengeluaranModel> _bindingView;
       private string _typeName = "Pengeluaran";
+      private TampilkanStatus _tampilkanStatus = TampilkanStatus.Tanggal;
+      private DateTime _tanggal = DateTime.Now.Date;
+      private DateTime _tanggalAwal;
+      private DateTime _tanggalAkhir;
 
       public ILaporanPengeluaranView GetView
       {
@@ -84,9 +89,37 @@ namespace RumahScarlett.Presentation.Presenters.Pengeluaran
 
       private void _view_OnPrintData(object sender, EventArgs e)
       {
-         throw new NotImplementedException();
+
+         using (new WaitCursorHandler())
+         {
+            if (_bindingView.DataSource.Count > 0)
+            {
+               var parameters = new List<ReportParameter>();
+
+               if (_tampilkanStatus == TampilkanStatus.Tanggal)
+               {
+                  parameters.Add(new ReportParameter("Tanggal", _tanggal.ToShortDateString()));
+               }
+               else if (_tampilkanStatus == TampilkanStatus.Periode)
+               {
+                  parameters.Add(new ReportParameter("Tanggal", _tanggalAwal.ToShortDateString()));
+                  parameters.Add(new ReportParameter("TanggalAkhir", _tanggalAkhir.ToShortDateString()));
+               }
+
+               var reportDataSources = new List<ReportDataSource>()
+               {
+                  new ReportDataSource {
+                     Name = "DataSetPengeluaran",
+                     Value = _bindingView.DataSource
+                  }
+               };
+
+               new ReportView("Report Pengeluaran", "ReportViewerLaporanPengeluaran",
+                              reportDataSources, parameters).ShowDialog();
+            }
+         }
       }
-      
+
       private void _view_OnTampilkanClick(object sender, FilterDateEventArgs e)
       {
          using (new WaitCursorHandler())
@@ -97,16 +130,21 @@ namespace RumahScarlett.Presentation.Presenters.Pengeluaran
 
                   _listPengeluarans = _services.GetByDate(e.Tanggal.Date).ToList();
                   _bindingView.DataSource = _listPengeluarans;
+                  _tanggal = e.Tanggal;
 
                   break;
                case TampilkanStatus.Periode:
 
                   _listPengeluarans = _services.GetByDate(e.TanggalAwal.Date, e.TanggalAkhir.Date).ToList();
                   _bindingView.DataSource = _listPengeluarans;
+                  _tanggalAwal = e.TanggalAwal;
+                  _tanggalAkhir = e.TanggalAkhir;
 
                   break;
             }
+
+            _tampilkanStatus = e.TampilkanStatus;
          }
-      }      
+      }
    }
 }

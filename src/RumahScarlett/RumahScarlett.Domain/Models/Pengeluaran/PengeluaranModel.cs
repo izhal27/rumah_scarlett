@@ -16,7 +16,8 @@ namespace RumahScarlett.Domain.Models.Pengeluaran
       [Browsable(false)]
       [Display(Name = "ID")]
       public uint id { get; set; }
-      
+
+      [DisplayFormat(DataFormatString = "dd/MM/yyyy HH:mm")]
       [Display(Name = "Tanggal")]
       public DateTime tanggal { get; set; }
 
