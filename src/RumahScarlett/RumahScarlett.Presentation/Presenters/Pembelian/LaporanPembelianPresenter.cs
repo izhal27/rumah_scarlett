@@ -123,7 +123,7 @@ namespace RumahScarlett.Presentation.Presenters.Pembelian
                   }
                };
 
-               new ReportView("Nota Pembelian", "ReportViewerLaporanPembelian",
+               new ReportView("Laporan Pembelian", "ReportViewerLaporanPembelian",
                               reportDataSources, parameters).ShowDialog();
             }
          }
@@ -180,13 +180,14 @@ namespace RumahScarlett.Presentation.Presenters.Pembelian
       {
          using (new WaitCursorHandler())
          {
+            _tampilkanStatus = e.TampilkanStatus;
+
             switch (e.TampilkanStatus)
             {
                case TampilkanStatus.Tanggal:
 
                   _listPembelians = _services.GetByDate(e.Tanggal.Date).ToList();
                   _bindingView.DataSource = _listPembelians;
-                  _tampilkanStatus = TampilkanStatus.Tanggal;
                   _tanggal = e.Tanggal.Date;
 
                   break;
@@ -194,8 +195,7 @@ namespace RumahScarlett.Presentation.Presenters.Pembelian
 
                   _listPembelians = _services.GetByDate(e.TanggalAwal.Date, e.TanggalAkhir.Date).ToList();
                   _bindingView.DataSource = _listPembelians;
-                  _tampilkanStatus = TampilkanStatus.Periode;
-                  _tanggalAwal = e.TanggalAwal;
+                  _tanggalAwal = e.TanggalAwal.Date;
                   _tanggalAkhir = e.TanggalAkhir.Date;
 
                   break;

@@ -41,10 +41,7 @@ namespace RumahScarlett.Presentation
       static void Main()
       {
          // Mengubah Exception dihandle oleh ExceptionReporter
-         Application.ThreadException += delegate (object sender, ThreadExceptionEventArgs e)
-         {
-            ReportCrash(e.Exception);
-         };
+         Application.ThreadException += new ThreadExceptionEventHandler(ReportCrash);
 
          Application.EnableVisualStyles();
          Application.SetCompatibleTextRenderingDefault(false);
@@ -56,20 +53,19 @@ namespace RumahScarlett.Presentation
       /// <summary>
       /// Method yang mengubah exception default menjadi ExceptionReporter
       /// </summary>
-      /// <param name="exception">Exception object</param>
-      public static void ReportCrash(Exception exception)
+      /// <param name="e">Exception EventArgs</param>
+      public static void ReportCrash(object sender, ThreadExceptionEventArgs e)
       {
          var reporter = new ExceptionReporter();
 
          reporter.Config.ShowLessDetailButton = true;
 
          var productName = Application.ProductName;
-         productName = productName.Substring(0, productName.LastIndexOf('.')) + " ";
          var productVersion = Application.ProductVersion;
          // Title form ExceptionReporter
-         reporter.Config.TitleText = productName + productVersion + " Exception Report";
+         reporter.Config.TitleText = $"{productName} {productVersion} Exception Report";
 
-         reporter.Show(exception);
+         reporter.Show(e.Exception);
       }
    }
 }

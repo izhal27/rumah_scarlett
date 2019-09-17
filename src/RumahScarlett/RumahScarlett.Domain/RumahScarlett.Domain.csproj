@@ -82,8 +82,10 @@
     <Compile Include="Models\Pengeluaran\PengeluaranModel.cs" />
     <Compile Include="Models\Penjualan\IPenjualanModel.cs" />
     <Compile Include="Models\Penjualan\IPenjualanDetailModel.cs" />
+    <Compile Include="Models\Penjualan\IPenjualanReportModel.cs" />
     <Compile Include="Models\Penjualan\PenjualanModel.cs" />
     <Compile Include="Models\Penjualan\PenjualanDetailModel.cs" />
+    <Compile Include="Models\Penjualan\PenjualanReportModel.cs" />
     <Compile Include="Models\PenyesuaianStok\IPenyesuaianStokModel.cs" />
     <Compile Include="Models\PenyesuaianStok\PenyesuaianStokModel.cs" />
     <Compile Include="Models\Satuan\ISatuanModel.cs" />

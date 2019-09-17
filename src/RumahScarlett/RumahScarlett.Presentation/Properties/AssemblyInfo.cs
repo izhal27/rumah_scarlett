@@ -8,7 +8,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("RumahScarlett")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyProduct("RumahScarlett")]
+[assembly: AssemblyProduct("Rumah Scarlett")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

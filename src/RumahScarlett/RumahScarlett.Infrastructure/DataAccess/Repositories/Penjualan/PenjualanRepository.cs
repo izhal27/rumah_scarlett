@@ -176,7 +176,7 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Penjualan
          using (var context = new DbContext())
          {
             var listObjs = context.Conn.Query<PenjualanModel>(StringHelper.QueryStringByDate(_modelName), new { date });
-            
+
             listObjs = MappingObjects(context, listObjs);
 
             return listObjs;
@@ -196,7 +196,7 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Penjualan
             return listObjs;
          }
       }
-      
+
       private IEnumerable<PenjualanModel> MappingObjects(DbContext context, IEnumerable<PenjualanModel> listObj)
       {
          if (listObj != null && listObj.ToList().Count > 0)
@@ -229,6 +229,45 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Penjualan
             return GetBy(() => context.Conn.Get<PenjualanModel>(id), dataAccessStatus,
                         () => CheckModelExist(context, id));
          }
+      }
+
+      public IEnumerable<IPenjualanReportModel> GetReportByDate(object date)
+      {
+         var dataAccessStatus = new DataAccessStatus();
+
+         using (var context = new DbContext())
+         {
+            var queryStr = QueryStrReport("DATE(pj.tanggal) = @date");
+
+            var listObjs = context.Conn.Query<PenjualanReportModel>(queryStr, new { date });
+
+            return listObjs;
+         }
+      }
+
+      public IEnumerable<IPenjualanReportModel> GetReportByDate(object startDate, object endDate)
+      {
+         var dataAccessStatus = new DataAccessStatus();
+
+         using (var context = new DbContext())
+         {
+            var queryStr = QueryStrReport("DATE(pj.tanggal) >= @startDate AND DATE(pj.tanggal) <= @endDate");
+
+            var listObjs = context.Conn.Query<PenjualanReportModel>(queryStr, new { startDate, endDate });
+
+            return listObjs;
+         }
+      }
+
+      private string QueryStrReport(string where)
+      {
+         return "SELECT pj.tanggal, pj.no_nota, IFNULL(pl.nama, '') AS pelanggan_nama, pj.status_pembayaran, " +
+                "b.kode AS barang_kode, b.nama AS barang_nama, pjd.qty, s.nama AS barang_satuan, " +
+                "pjd.harga_jual, pj.diskon FROM penjualan pj " +
+                "LEFT JOIN pelanggan pl ON pj.pelanggan_id = pl.id " +
+                "INNER JOIN penjualan_detail pjd ON pj.id = pjd.penjualan_id " +
+                "INNER JOIN barang b ON pjd.barang_id = b.id " +
+                $"INNER JOIN satuan s ON b.satuan_id = s.id WHERE {where}";
       }
 
       private bool CheckModelExist(DbContext context, object id)

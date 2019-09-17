@@ -54,6 +54,16 @@ namespace RumahScarlett.Services.Services.Penjualan
          return _repo.GetById(id);
       }
 
+      public IEnumerable<IPenjualanReportModel> GetReportByDate(object date)
+      {
+         return _repo.GetReportByDate(date);
+      }
+
+      public IEnumerable<IPenjualanReportModel> GetReportByDate(object startDate, object endDate)
+      {
+         return _repo.GetReportByDate(startDate, endDate);
+      }
+
       public void ValidateModel(IPenjualanModel model)
       {
          _modelDAC.ValidateModel(model);

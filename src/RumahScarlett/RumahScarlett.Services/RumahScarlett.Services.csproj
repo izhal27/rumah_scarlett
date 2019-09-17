@@ -54,6 +54,8 @@
     <Compile Include="Services\HutangOperasional\HutangOperasionalServices.cs" />
     <Compile Include="Services\HutangOperasional\IHutangOperasionalRepository.cs" />
     <Compile Include="Services\HutangOperasional\IHutangOperasionalServices.cs" />
+    <Compile Include="Services\IBaseReportRepositoryByDate.cs" />
+    <Compile Include="Services\IBaseReportServicesByDate.cs" />
     <Compile Include="Services\IBaseRepositoryGetByDate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Barang\BarangServices.cs" />

@@ -52,6 +52,7 @@
     <EmbeddedResource Include="ReportViewerHutangOperasional.rdlc" />
     <EmbeddedResource Include="ReportViewerLaporanPembelian.rdlc" />
     <EmbeddedResource Include="ReportViewerLaporanPengeluaran.rdlc" />
+    <EmbeddedResource Include="ReportViewerLaporanPenjualan.rdlc" />
     <EmbeddedResource Include="ReportViewerNotaPembelian.rdlc" />
     <EmbeddedResource Include="ReportViewerPenyesuaianStok.rdlc" />
   </ItemGroup>
@@ -63,6 +64,7 @@
     <None Include="Properties\DataSources\RumahScarlett.Domain.Models.Pembelian.PembelianReportModel.datasource" />
     <None Include="Properties\DataSources\RumahScarlett.Domain.Models.Pengaturan.PengaturanModel.datasource" />
     <None Include="Properties\DataSources\RumahScarlett.Domain.Models.Pengeluaran.PengeluaranModel.datasource" />
+    <None Include="Properties\DataSources\RumahScarlett.Domain.Models.Penjualan.PenjualanReportModel.datasource" />
     <None Include="Properties\DataSources\RumahScarlett.Domain.Models.PenyesuaianStok.PenyesuaianStokModel.datasource" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
