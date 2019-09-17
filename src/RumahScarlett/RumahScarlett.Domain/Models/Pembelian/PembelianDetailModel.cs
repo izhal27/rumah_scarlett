@@ -38,24 +38,24 @@ namespace RumahScarlett.Domain.Models.Pembelian
          set { _barang_id = value; }
       }
 
-      private string _baran_kodeg;
+      private string _barang_kode;
 
       [Dp.Write(false)]
       [Display(Name = "Kode Barang")]
       public string barang_kode
       {
-         get { return Barang != null ? Barang.kode : _baran_kodeg; }
-         set { _baran_kodeg = value; }
+         get { return Barang != null ? Barang.kode : _barang_kode; }
+         set { _barang_kode = value; }
       }
 
-      private string _nama_barang;
+      private string _barang_nama;
 
       [Dp.Write(false)]
       [Display(Name = "Nama Barang")]
       public string barang_nama
       {
-         get { return Barang != null ? Barang.nama : _nama_barang; }
-         set { _nama_barang = value; }
+         get { return Barang.id != default(uint) ? Barang.nama : _barang_nama; }
+         set { _barang_nama = value; }
       }
 
       [DisplayFormat(DataFormatString = "{0:N0}")]
@@ -67,7 +67,7 @@ namespace RumahScarlett.Domain.Models.Pembelian
       [Display(Name = "Satuan")]
       public string barang_satuan
       {
-         get { return Barang != null ? Barang.satuan_nama : string.Empty; }
+         get { return Barang.id != default(uint) ? Barang.satuan_nama : string.Empty; }
       }
 
       [DisplayFormat(DataFormatString = "{0:N0}")]

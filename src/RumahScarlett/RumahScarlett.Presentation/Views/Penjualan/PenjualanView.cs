@@ -86,6 +86,11 @@ namespace RumahScarlett.Presentation.Views.Penjualan
                OnBersihkanData?.Invoke(sender, e);
 
                break;
+            case Keys.F6: // Cetak Nota
+
+               OnCetakNota?.Invoke(sender, e);
+
+               break;
             case Keys.F12: // Tutup
 
                if (!listDataGrid.CurrentCell.IsEditing)

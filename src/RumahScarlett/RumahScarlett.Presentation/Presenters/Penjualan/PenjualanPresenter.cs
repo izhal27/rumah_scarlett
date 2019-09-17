@@ -1,10 +1,12 @@
 ﻿using Equin.ApplicationFramework;
+using Microsoft.Reporting.WinForms;
 using RumahScarlett.CommonComponents;
 using RumahScarlett.Domain.Models.Barang;
 using RumahScarlett.Domain.Models.Penjualan;
 using RumahScarlett.Infrastructure.DataAccess.Repositories.Barang;
 using RumahScarlett.Infrastructure.DataAccess.Repositories.Penjualan;
 using RumahScarlett.Presentation.Helper;
+using RumahScarlett.Presentation.Views.CommonControls;
 using RumahScarlett.Presentation.Views.ModelControls;
 using RumahScarlett.Presentation.Views.Penjualan;
 using RumahScarlett.Services.Services;
@@ -24,7 +26,6 @@ namespace RumahScarlett.Presentation.Presenters.Penjualan
 {
    public class PenjualanPresenter : IPenjualanPresenter
    {
-
       private IPenjualanView _view;
       private IPenjualanServices _penjualannServices;
       private IBarangServices _barangServices;
@@ -32,6 +33,7 @@ namespace RumahScarlett.Presentation.Presenters.Penjualan
       private List<IBarangModel> _listsBarangs;
       private BindingListView<PenjualanDetailModel> _bindingView;
       private string _kodeOrNamaForSearching = "";
+      private IPenjualanModel _penjualanModel;
 
       public IPenjualanView GetView
       {
@@ -63,10 +65,37 @@ namespace RumahScarlett.Presentation.Presenters.Penjualan
          _view.OnHapusData += _view_OnHapusData;
          _view.OnSimpanData += _view_OnBayarPenjualan;
          _view.OnBersihkanData += _view_OnBersihkanData;
+         _view.OnCetakNota += _view_OnCetakNota;
          _view.OnListDataGridCurrentCellKeyDown += _view_OnListDataGridCurrentCellKeyDown;
          _view.OnListDataGridCurrentCellActivated += _view_OnListDataGridCurrentCellActivated;
          _view.OnListDataGridCurrentCellEndEdit += _view_OnListDataGridCurrentCellEndEdit;
          _view.OnListDataGridPreviewKeyDown += _view_OnListDataGridPreviewKeyDown;
+      }
+
+      private void _view_OnCetakNota(object sender, EventArgs e)
+      {
+         using (new WaitCursorHandler())
+         {
+            if (!_view.ListDataGrid.Enabled)
+            {
+               var parameters = new List<ReportParameter>();
+
+               var reportDataSources = new List<ReportDataSource>()
+               {
+                  new ReportDataSource {
+                     Name = "DataSetPenjualan",
+                     Value = new BindingSource(_penjualanModel, null)
+                  },
+                  new ReportDataSource {
+                     Name = "DataSetPenjualanDetail",
+                     Value = _penjualanModel.PenjualanDetails
+                  }
+               };
+
+               new ReportView("Nota Penjualan", "ReportViewerNotaPenjualan",
+                              reportDataSources, parameters).ShowDialog();
+            }
+         }
       }
 
       private void _view_OnLoadData(object sender, EventArgs e)
@@ -146,6 +175,11 @@ namespace RumahScarlett.Presentation.Presenters.Penjualan
                view.OnBayarPenjualan += View_OnBayarPenjualan;
                view.ShowDialog();
             }
+
+            if (Messages.Confirm("Cetak Nota Penjualan?"))
+            {
+               _view_OnCetakNota(null, null);
+            }
          }
          catch (ArgumentException ex)
          {
@@ -164,7 +198,7 @@ namespace RumahScarlett.Presentation.Presenters.Penjualan
             var bayarPenjualanEntryView = ((Form)sender);
             var penjualanDetailsFixed = _listPenjualanDetails.Where(pd => pd.Barang.id != default(int)).ToList();
 
-            var model = new PenjualanModel
+            _penjualanModel = new PenjualanModel
             {
                Pelanggan = e.Pelanggan,
                status_pembayaran = e.StatusPenjualan,
@@ -172,14 +206,14 @@ namespace RumahScarlett.Presentation.Presenters.Penjualan
                PenjualanDetails = penjualanDetailsFixed
             };
 
-            _penjualannServices.Insert(model);
+            _penjualannServices.Insert(_penjualanModel);
             Messages.Info("Data Penjualan berhasil disimpan.");
             _view.ListDataGrid.Enabled = false;
-            _view.TextBoxNoNota.Text = model.no_nota;
+            _view.TextBoxNoNota.Text = _penjualanModel.no_nota;
 
-            if (model.diskon > 0)
+            if (_penjualanModel.diskon > 0)
             {
-               _view.LabelGrandTotal.Text = (model.PenjualanDetails.Sum(pd => pd.total) - model.diskon).ToString("N0");
+               _view.LabelGrandTotal.Text = (_penjualanModel.PenjualanDetails.Sum(pd => pd.total) - _penjualanModel.diskon).ToString("N0");
             }
 
             bayarPenjualanEntryView.Close();

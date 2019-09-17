@@ -200,6 +200,11 @@ namespace RumahScarlett.Presentation.Presenters.Pembelian
 
                   break;
             }
+
+            if (_view.ListDataGrid.SelectedItem != null)
+            {
+               _view.ListDataGrid.SelectedItem = null;
+            }
          }
       }
 

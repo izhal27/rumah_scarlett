@@ -33,7 +33,7 @@ namespace RumahScarlett.Presentation.Presenters.Pembelian
       private List<IBarangModel> _listsBarangs;
       private BindingListView<PembelianDetailModel> _bindingView;
       private string _kodeOrNamaForSearching;
-      private PembelianModel _pembelianModel;
+      private IPembelianModel _pembelianModel;
 
       public IPembelianView GetView
       {
@@ -205,9 +205,11 @@ namespace RumahScarlett.Presentation.Presenters.Pembelian
       {
          using (new WaitCursorHandler())
          {
-            var parameters = new List<ReportParameter>();
+            if (!_view.ListDataGrid.Enabled)
+            {
+               var parameters = new List<ReportParameter>();
 
-            var reportDataSources = new List<ReportDataSource>()
+               var reportDataSources = new List<ReportDataSource>()
                {
                   new ReportDataSource {
                      Name = "DataSetPembelian",
@@ -219,8 +221,9 @@ namespace RumahScarlett.Presentation.Presenters.Pembelian
                   }
                };
 
-            new ReportView("Nota Pembelian", "ReportViewerNotaPembelian",
-                           reportDataSources, parameters).ShowDialog();
+               new ReportView("Nota Pembelian", "ReportViewerNotaPembelian",
+                              reportDataSources, parameters).ShowDialog();
+            }
          }
       }
 

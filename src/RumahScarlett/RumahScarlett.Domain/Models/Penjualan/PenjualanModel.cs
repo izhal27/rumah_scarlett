@@ -1,4 +1,4 @@
-﻿using Dp = Dapper.Contrib.Extensions;
+﻿using RumahScarlett.Domain.Models.Pelanggan;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using RumahScarlett.Domain.Models.Pelanggan;
+using Dp = Dapper.Contrib.Extensions;
 
 namespace RumahScarlett.Domain.Models.Penjualan
 {
@@ -19,6 +19,7 @@ namespace RumahScarlett.Domain.Models.Penjualan
       public uint id { get; set; }
 
       //[Range(typeof(DateTime), "1945/08/17", "9999/01/01", ErrorMessage = "Minimal Tanggal 1945/08/17 !!!")]
+      [DisplayFormat(DataFormatString = "dd/MM/yyyy HH:mm")]
       [Display(Name = "Tanggal")]
       public DateTime tanggal { get; set; }
 
@@ -48,7 +49,7 @@ namespace RumahScarlett.Domain.Models.Penjualan
       }
 
       [Dp.Write(false)]
-      [Display(Name = "Status Pembayaran")]
+      [Display(Name = "Pembayaran")]
       public string status_pembayaran_nama
       {
          get { return status_pembayaran ? "Cash" : "Transfer"; }

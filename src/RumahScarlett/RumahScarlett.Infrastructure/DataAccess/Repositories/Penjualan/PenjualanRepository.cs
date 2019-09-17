@@ -5,6 +5,7 @@ using RumahScarlett.Domain.Models.Barang;
 using RumahScarlett.Domain.Models.Laporan;
 using RumahScarlett.Domain.Models.Pelanggan;
 using RumahScarlett.Domain.Models.Penjualan;
+using RumahScarlett.Domain.Models.Satuan;
 using RumahScarlett.Infrastructure.DataAccess.CommonRepositories;
 using RumahScarlett.Services.Services.Penjualan;
 using System;
@@ -65,6 +66,7 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Penjualan
 
                      if (barang != null)
                      {
+                        barang.Satuan = context.Conn.Get<SatuanModel>(barang.satuan_id);
                         pd.Barang = barang;
                      }
                      else

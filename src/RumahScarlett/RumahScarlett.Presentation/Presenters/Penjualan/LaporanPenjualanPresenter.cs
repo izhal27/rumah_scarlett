@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace RumahScarlett.Presentation.Presenters.Penjualan
 {
@@ -135,6 +136,7 @@ namespace RumahScarlett.Presentation.Presenters.Penjualan
          {
             var detailView = new DetailView("Detail Penjualan");
             detailView.OnLoadView += DetailView_OnLoadView;
+            detailView.OnButtonCetakClick += DetailView_OnButtonCetakClick;
             detailView.ShowDialog();
          }
       }
@@ -150,7 +152,29 @@ namespace RumahScarlett.Presentation.Presenters.Penjualan
             detailView.ListDataGrid.DataSource = bindingDetialView;
          }
       }
-      
+
+      private void DetailView_OnButtonCetakClick(object sender, EventArgs e)
+      {
+         var pembelianModel = (PenjualanModel)_view.ListDataGrid.SelectedItem;
+
+         var reportDataSources = new List<ReportDataSource>()
+         {
+            new ReportDataSource {
+               Name = "DataSetPenjualan",
+               Value = new BindingSource(pembelianModel, null)
+            },
+            new ReportDataSource {
+               Name = "DataSetPenjualanDetail",
+               Value = pembelianModel.PenjualanDetails
+            }
+         };
+
+         new ReportView("Nota Penjualan", "ReportViewerNotaPenjualan",
+                        reportDataSources, null).ShowDialog();
+
+         ((Form)sender).Close();
+      }
+
       private void _view_OnTampilkanClick(object sender, FilterDateEventArgs e)
       {
          using (new WaitCursorHandler())
@@ -174,6 +198,11 @@ namespace RumahScarlett.Presentation.Presenters.Penjualan
                   _tanggalAkhir = e.TanggalAkhir.Date;
 
                   break;
+            }
+
+            if (_view.ListDataGrid.SelectedItem != null)
+            {
+               _view.ListDataGrid.SelectedItem = null;
             }
          }
       }
