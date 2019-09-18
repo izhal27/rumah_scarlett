@@ -69,7 +69,12 @@ namespace RumahScarlett.Domain.Models.Pengaturan
       [Category("Background")]
       [Description("Pilih gambar untuk ditampilkan pada main form.")]
       [DisplayName("Gambar Main Form")]
-      public string path_background { get; set; }      
+      public string path_background { get; set; }
+      
+      [Category("Printer")]
+      [Description("Pilih Tipe Printer yang digunakan.")]
+      [DisplayName("Printer")]
+      public TipePrinter tipe_printer { get; set; }
    }
 
    public class FileNameImagesEditor : FileNameEditor

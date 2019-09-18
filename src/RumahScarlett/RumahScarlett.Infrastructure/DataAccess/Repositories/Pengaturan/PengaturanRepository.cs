@@ -28,6 +28,8 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Pengaturan
             model.warna_baris_genap = ConfigHelper.GetColorFromConfig("Warna_Baris_Genap", Color.FromArgb(240, 248, 255));
             model.warna_baris_ganjil = ConfigHelper.GetColorFromConfig("Warna_Baris_Ganjil", Color.FromArgb(255, 255, 255));
             model.path_background = ConfigHelper.GetConfig("Path_Backround") ?? "";
+            model.tipe_printer = ConfigHelper.GetConfig("Tipe_Printer") != null ? 
+                                 (TipePrinter)int.Parse(ConfigHelper.GetConfig("Tipe_Printer")) : TipePrinter.InkjetDotMatrix;
 
             return model;
          }
@@ -45,6 +47,7 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Pengaturan
          ConfigHelper.SaveConfig("Warna_Baris_Genap", model.warna_baris_genap.ToStringRgb());
          ConfigHelper.SaveConfig("Warna_Baris_Ganjil", model.warna_baris_ganjil.ToStringRgb());
          ConfigHelper.SaveConfig("Path_Backround", model.path_background);
+         ConfigHelper.SaveConfig("Tipe_Printer", model.tipe_printer.ToString("d"));
       }
    }
 }

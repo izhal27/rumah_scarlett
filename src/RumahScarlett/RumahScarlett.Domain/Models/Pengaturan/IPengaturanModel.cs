@@ -1,5 +1,4 @@
-﻿using System.ComponentModel;
-using System.Drawing;
+﻿using System.Drawing;
 
 namespace RumahScarlett.Domain.Models.Pengaturan
 {
@@ -15,5 +14,12 @@ namespace RumahScarlett.Domain.Models.Pengaturan
       Color warna_baris_genap { get; set; }
       Color warna_baris_ganjil { get; set; }
       string path_background { get; set; }
+      TipePrinter tipe_printer { get; set; }
+   }
+
+   public enum TipePrinter
+   {
+      InkjetDotMatrix,
+      Thermal
    }
 }

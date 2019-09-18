@@ -64,7 +64,8 @@ namespace RumahScarlett.Presentation.Presenters.Pengaturan
                warna_teks_strip = selectedModel.warna_teks_strip,
                warna_baris_genap = selectedModel.warna_baris_genap,
                warna_baris_ganjil = selectedModel.warna_baris_ganjil,
-               path_background = selectedModel.path_background
+               path_background = selectedModel.path_background,
+               tipe_printer = selectedModel.tipe_printer
             };
 
             MainProgram.PengaturanServices.Save(newModel);
