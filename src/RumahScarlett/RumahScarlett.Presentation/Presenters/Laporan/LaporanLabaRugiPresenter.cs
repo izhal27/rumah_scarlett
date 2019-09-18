@@ -1,4 +1,6 @@
-﻿using RumahScarlett.Infrastructure.DataAccess.Repositories.Laporan;
+﻿using Microsoft.Reporting.WinForms;
+using RumahScarlett.Infrastructure.DataAccess.Repositories.Laporan;
+using RumahScarlett.Presentation.Helper;
 using RumahScarlett.Presentation.Views.Laporan;
 using RumahScarlett.Services.Services.Laporan;
 using System;
@@ -9,6 +11,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using RumahScarlett.Domain.Models.Laporan;
+using RumahScarlett.Presentation.Views.CommonControls;
 
 namespace RumahScarlett.Presentation.Presenters.Laporan
 {
@@ -16,6 +20,7 @@ namespace RumahScarlett.Presentation.Presenters.Laporan
    {
       private ILaporanLabaRugiView _view;
       private ILabaRugiServices _services;
+      private ILabaRugiModel _model;
 
       public ILaporanLabaRugiView GetView
       {
@@ -54,7 +59,7 @@ namespace RumahScarlett.Presentation.Presenters.Laporan
       {
          var bulan = (_view.ComboBoxBulan.ComboBox.SelectedIndex + 1);
          var tahun = _view.NumericUpDownTahun.Value;
-         var model = _services.GetByMonthYear(bulan, tahun);
+         _model = _services.GetByMonthYear(bulan, tahun);
 
          var totalPenjualan = 0M;
          var totalHpp = 0M;
@@ -64,12 +69,12 @@ namespace RumahScarlett.Presentation.Presenters.Laporan
          var totalPengeluaran = 0M;
          var totalSelisih = 0M;
 
-         if (model != null)
+         if (_model != null)
          {
-            totalPenjualan = model.total_penjualan;
-            totalHpp = model.total_hpp;
-            totalPengeluaranOperasional = model.total_pengeluaran;
-            totalDiskonPenjualan = model.total_diskon_penjualan;
+            totalPenjualan = _model.total_penjualan;
+            totalHpp = _model.total_hpp;
+            totalPengeluaranOperasional = _model.total_pengeluaran;
+            totalDiskonPenjualan = _model.total_diskon_penjualan;
 
             totalPemasukan = totalPenjualan;
             totalPengeluaran = (totalHpp + totalPengeluaranOperasional + totalDiskonPenjualan);
@@ -93,7 +98,25 @@ namespace RumahScarlett.Presentation.Presenters.Laporan
 
       private void _view_OnButtonCetakClick(object sender, EventArgs e)
       {
-         throw new NotImplementedException();
+         using (new WaitCursorHandler())
+         {
+            var reportDataSources = new List<ReportDataSource>()
+            {
+               new ReportDataSource {
+                  Name = "DataSetLabaRugi",
+                  Value = new BindingSource(_model, null)
+               }
+            };
+
+            var parameters = new List<ReportParameter>()
+            {
+               new ReportParameter("Bulan", _view.ComboBoxBulan.ComboBox.Text),
+               new ReportParameter("Tahun", _view.NumericUpDownTahun.Value.ToString())
+            };
+
+            new ReportView("Report Laba Rugi", "ReportViewerLaporanLabaRugi",
+                           reportDataSources, parameters).ShowDialog();
+         }
       }
    }
 }

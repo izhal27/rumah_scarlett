@@ -53,6 +53,7 @@
     <EmbeddedResource Include="ReportViewerLaporanPembelian.rdlc" />
     <EmbeddedResource Include="ReportViewerLaporanPengeluaran.rdlc" />
     <EmbeddedResource Include="ReportViewerLaporanPenjualan.rdlc" />
+    <EmbeddedResource Include="ReportViewerLaporanLabaRugi.rdlc" />
     <EmbeddedResource Include="ReportViewerLaporanStatusBarang.rdlc" />
     <EmbeddedResource Include="ReportViewerLaporanTransaksi.rdlc" />
     <EmbeddedResource Include="ReportViewerNotaPembelian.rdlc" />
@@ -62,6 +63,7 @@
   <ItemGroup>
     <None Include="Properties\DataSources\RumahScarlett.Domain.Models.Barang.BarangModel.datasource" />
     <None Include="Properties\DataSources\RumahScarlett.Domain.Models.HutangOperasional.HutangOperasionalModel.datasource" />
+    <None Include="Properties\DataSources\RumahScarlett.Domain.Models.Laporan.LabaRugiModel.datasource" />
     <None Include="Properties\DataSources\RumahScarlett.Domain.Models.Laporan.StatusBarangModel.datasource" />
     <None Include="Properties\DataSources\RumahScarlett.Domain.Models.Laporan.TransaksiByDateModel.datasource" />
     <None Include="Properties\DataSources\RumahScarlett.Domain.Models.Pembelian.PembelianDetailModel.datasource" />
