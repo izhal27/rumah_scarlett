@@ -311,6 +311,13 @@ namespace RumahScarlett.Presentation.Helper
 
          offset += 2;
 
+         // Dibayar
+         graphics.DrawString("DIBAYAR", font8, Brushes.Black, startX, offset);
+         graphics.DrawString(_penjualanModel.jumlah_bayar.ToString("C")
+            , font8, Brushes.Black, endOfLine, offset, formatRight);
+
+         offset += font8.Height;
+
          // Total
          graphics.DrawString("TOTAL", font12.Bold(), Brushes.Black, startX, offset);
          graphics.DrawString(_penjualanModel.grand_total.ToString("C")
@@ -318,19 +325,12 @@ namespace RumahScarlett.Presentation.Helper
 
          offset += font12.Height;
 
-         //// Dibayar
-         //graphics.DrawString("DIBAYAR", font8, Brushes.Black, startX, offset);
-         //graphics.DrawString(_penjualanModel.jumlah_bayar.ToString("C")
-         //   , font8, Brushes.Black, endOfLine, offset, formatRight);
+         // Kembali
+         graphics.DrawString("KEMBALI", font8, Brushes.Black, startX, offset);
+         graphics.DrawString(_penjualanModel.kembali.ToString("C")
+            , font8, Brushes.Black, endOfLine, offset, formatRight);
 
-         //offset += font8.Height;
-
-         //// Kembali
-         //graphics.DrawString("KEMBALI", font8, Brushes.Black, startX, offset);
-         //graphics.DrawString(_penjualanModel.kembali.ToString("C")
-         //   , font8, Brushes.Black, endOfLine, offset, formatRight);
-
-         //offset += font8.Height;
+         offset += font8.Height;
 
          // Garis
          DrawLine(graphics, startX, offset, endOfLine, blackPen);

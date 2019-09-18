@@ -9,5 +9,6 @@ namespace RumahScarlett.Domain.Models.Penjualan
    public interface IPenjualanReportModel : IPenjualanModel, IPenjualanDetailModel
    {
       new string barang_satuan { get; set; }
+      new decimal kembali { get; set; }
    }
 }

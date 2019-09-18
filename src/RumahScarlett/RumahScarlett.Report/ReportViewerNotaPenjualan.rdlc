@@ -678,7 +678,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Total</Value>
+                              <Value>Sub Total</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -780,7 +780,7 @@
         <DataSetName>DataSetPenjualanDetail</DataSetName>
         <Top>3.74854cm</Top>
         <Height>1.8cm</Height>
-        <Width>21.01896cm</Width>
+        <Width>21.01895cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -1367,18 +1367,6 @@
           <PaddingBottom>2pt</PaddingBottom>
         </Style>
       </Textbox>
-      <Line Name="Line1">
-        <Top>6.8191cm</Top>
-        <Left>17.61559cm</Left>
-        <Height>0cm</Height>
-        <Width>3.40336cm</Width>
-        <ZIndex>19</ZIndex>
-        <Style>
-          <Border>
-            <Style>Solid</Style>
-          </Border>
-        </Style>
-      </Line>
       <Textbox Name="Textbox53">
         <CanGrow>true</CanGrow>
         <KeepTogether>true</KeepTogether>
@@ -1402,7 +1390,7 @@
         <Left>17.61559cm</Left>
         <Height>0.6cm</Height>
         <Width>3.40336cm</Width>
-        <ZIndex>20</ZIndex>
+        <ZIndex>19</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -1437,11 +1425,11 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox54</rd:DefaultName>
-        <Top>6.14854cm</Top>
+        <Top>6.74854cm</Top>
         <Left>17.61559cm</Left>
         <Height>0.6cm</Height>
         <Width>3.40336cm</Width>
-        <ZIndex>21</ZIndex>
+        <ZIndex>20</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -1477,7 +1465,7 @@
         <Left>15.03244cm</Left>
         <Height>0.6cm</Height>
         <Width>2.58315cm</Width>
-        <ZIndex>22</ZIndex>
+        <ZIndex>21</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -1495,7 +1483,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Grand Total</Value>
+                <Value>Total</Value>
                 <Style />
               </TextRun>
             </TextRuns>
@@ -1505,11 +1493,11 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox55</rd:DefaultName>
-        <Top>6.14854cm</Top>
+        <Top>6.74854cm</Top>
         <Left>15.03244cm</Left>
         <Height>0.6cm</Height>
         <Width>2.58315cm</Width>
-        <ZIndex>23</ZIndex>
+        <ZIndex>22</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -1524,7 +1512,7 @@
         <Top>3.67799cm</Top>
         <Height>0cm</Height>
         <Width>21.01896cm</Width>
-        <ZIndex>24</ZIndex>
+        <ZIndex>23</ZIndex>
         <Style>
           <Border>
             <Style>Solid</Style>
@@ -1552,7 +1540,7 @@
         <Left>3.10099cm</Left>
         <Height>0.6cm</Height>
         <Width>7.76536cm</Width>
-        <ZIndex>25</ZIndex>
+        <ZIndex>24</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -1581,7 +1569,7 @@
         <Top>2.97215cm</Top>
         <Height>0.6cm</Height>
         <Width>2.42063cm</Width>
-        <ZIndex>26</ZIndex>
+        <ZIndex>25</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -1611,7 +1599,7 @@
         <Left>2.59702cm</Left>
         <Height>0.6cm</Height>
         <Width>0.33392cm</Width>
-        <ZIndex>27</ZIndex>
+        <ZIndex>26</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -1622,8 +1610,160 @@
           <PaddingBottom>2pt</PaddingBottom>
         </Style>
       </Textbox>
+      <Textbox Name="Textbox57">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=First(Fields!jumlah_bayar.Value, "DataSetPenjualan")</Value>
+                <Style>
+                  <Format>'Rp'#,0;('Rp'#,0)</Format>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Right</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox54</rd:DefaultName>
+        <Top>6.14854cm</Top>
+        <Left>17.61559cm</Left>
+        <Height>0.6cm</Height>
+        <Width>3.40336cm</Width>
+        <ZIndex>27</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <BottomBorder>
+            <Style>Solid</Style>
+          </BottomBorder>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+          <rd:FormatSymbolCulture>id-ID</rd:FormatSymbolCulture>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox58">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Dibayar</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Right</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox55</rd:DefaultName>
+        <Top>6.14854cm</Top>
+        <Left>15.03244cm</Left>
+        <Height>0.6cm</Height>
+        <Width>2.58315cm</Width>
+        <ZIndex>28</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox59">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=First(Fields!kembali.Value, "DataSetPenjualan")</Value>
+                <Style>
+                  <Format>'Rp'#,0;('Rp'#,0)</Format>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Right</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox54</rd:DefaultName>
+        <Top>7.34854cm</Top>
+        <Left>17.61559cm</Left>
+        <Height>0.6cm</Height>
+        <Width>3.40336cm</Width>
+        <ZIndex>29</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <BottomBorder>
+            <Style>Solid</Style>
+          </BottomBorder>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+          <rd:FormatSymbolCulture>id-ID</rd:FormatSymbolCulture>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox60">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Kembali</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Right</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox55</rd:DefaultName>
+        <Top>7.34854cm</Top>
+        <Left>15.03244cm</Left>
+        <Height>0.6cm</Height>
+        <Width>2.58315cm</Width>
+        <ZIndex>30</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Line Name="Line1">
+        <Top>8.0191cm</Top>
+        <Left>17.61559cm</Left>
+        <Height>0cm</Height>
+        <Width>3.40336cm</Width>
+        <ZIndex>31</ZIndex>
+        <Style>
+          <Border>
+            <Style>Solid</Style>
+          </Border>
+        </Style>
+      </Line>
     </ReportItems>
-    <Height>2.94568in</Height>
+    <Height>3.22172in</Height>
     <Style />
   </Body>
   <Width>8.27518in</Width>
@@ -1713,6 +1853,14 @@
           <DataField>grand_total</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
+        <Field Name="jumlah_bayar">
+          <DataField>jumlah_bayar</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="kembali">
+          <DataField>kembali</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
         <Field Name="no_nota">
           <DataField>no_nota</DataField>
           <rd:TypeName>System.String</rd:TypeName>
@@ -1769,6 +1917,10 @@
         <Field Name="telpon">
           <DataField>telpon</DataField>
           <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="tipe_printer">
+          <DataField>tipe_printer</DataField>
+          <rd:TypeName>RumahScarlett.Domain.Models.Pengaturan.TipePrinter</rd:TypeName>
         </Field>
         <Field Name="warna_backgroud_strip">
           <DataField>warna_backgroud_strip</DataField>

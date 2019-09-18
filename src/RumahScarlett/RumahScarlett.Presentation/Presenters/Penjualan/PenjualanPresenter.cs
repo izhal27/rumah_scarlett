@@ -188,6 +188,7 @@ namespace RumahScarlett.Presentation.Presenters.Penjualan
                Pelanggan = e.Pelanggan,
                status_pembayaran = e.StatusPenjualan,
                diskon = e.Diskon,
+               jumlah_bayar = e.JumlahBayar,
                PenjualanDetails = penjualanDetailsFixed
             };
 

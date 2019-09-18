@@ -36,8 +36,8 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Penjualan
 
             Insert(model, () =>
             {
-               var queryStr = "INSERT INTO penjualan (no_nota, status_pembayaran, pelanggan_id, tanggal, diskon) " +
-                              "VALUES (@no_nota, @status_pembayaran, @pelanggan_id, @tanggal, @diskon);" +
+               var queryStr = "INSERT INTO penjualan (no_nota, status_pembayaran, pelanggan_id, tanggal, diskon, jumlah_bayar) " +
+                              "VALUES (@no_nota, @status_pembayaran, @pelanggan_id, @tanggal, @diskon, @jumlah_bayar);" +
                               "SELECT LAST_INSERT_ID();";
 
                object pelanggan_id = DBNull.Value;
@@ -53,7 +53,8 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Penjualan
                   model.status_pembayaran,
                   pelanggan_id,
                   model.tanggal,
-                  model.diskon
+                  model.diskon,
+                  model.jumlah_bayar
                }, context.Transaction).Single();
 
                if (insertedId > 0 && model.PenjualanDetails.ToList().Count > 0)
@@ -265,7 +266,7 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Penjualan
       {
          return "SELECT pj.tanggal, pj.no_nota, IFNULL(pl.nama, '') AS pelanggan_nama, pj.status_pembayaran, " +
                 "b.kode AS barang_kode, b.nama AS barang_nama, pjd.qty, s.nama AS barang_satuan, " +
-                "pjd.harga_jual, pj.diskon FROM penjualan pj " +
+                "pjd.harga_jual, pj.diskon, pj.jumlah_bayar FROM penjualan pj " +
                 "LEFT JOIN pelanggan pl ON pj.pelanggan_id = pl.id " +
                 "INNER JOIN penjualan_detail pjd ON pj.id = pjd.penjualan_id " +
                 "INNER JOIN barang b ON pjd.barang_id = b.id " +

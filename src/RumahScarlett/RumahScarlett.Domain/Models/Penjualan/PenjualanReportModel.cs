@@ -62,8 +62,12 @@ namespace RumahScarlett.Domain.Models.Penjualan
 
       public decimal grand_total { get; }
 
+      public decimal jumlah_bayar { get; set; }
+
+      public decimal kembali { get; set; }
+
       public decimal hpp { get; set; }
 
-      public IEnumerable<IPenjualanDetailModel> PenjualanDetails { get; set; }      
+      public IEnumerable<IPenjualanDetailModel> PenjualanDetails { get; set; }
    }
 }

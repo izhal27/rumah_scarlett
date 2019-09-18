@@ -88,6 +88,22 @@ namespace RumahScarlett.Domain.Models.Penjualan
          get { return (sub_total - diskon) >= 0 ? (sub_total - diskon) : 0; }
       }
 
+      [DisplayFormat(DataFormatString = "{0:N0}")]
+      [DefaultValue(0)]
+      [Display(Name = "Jumlah Bayar")]
+      public decimal jumlah_bayar { get; set; }
+
+      [DisplayFormat(DataFormatString = "{0:N0}")]
+      [Display(Name = "Kembali")]
+      public decimal kembali
+      {
+         get
+         {
+            var uangKembali = jumlah_bayar - grand_total;
+            return uangKembali > 0 ? uangKembali : 0M;
+         }
+      }
+
       [Browsable(false)]
       [Dp.Write(false)]
       public IEnumerable<IPenjualanDetailModel> PenjualanDetails { get; set; }
