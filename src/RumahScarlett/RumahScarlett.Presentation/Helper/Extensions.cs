@@ -1,6 +1,7 @@
 ﻿using RumahScarlett.Presentation.Views.CommonControls;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -67,6 +68,16 @@ namespace RumahScarlett.Presentation.Helper
          comboBox.ValueMember = "Key"; // Value member / id item
          comboBox.DisplayMember = "Value"; // Display member / text item yang ditampilkan di ComboBox
          if (clearSelected) comboBox.SelectedIndex = -1; // Jangan tampilkan item
+      }
+
+      /// <summary>
+      /// Method untuk membuat font menjadi style Bold
+      /// </summary>
+      /// <param name="fontTarget">Font target</param>
+      /// <returns>Mengembalikan font dengan style Bold</returns>
+      public static Font Bold(this Font fontTarget)
+      {
+         return new Font(fontTarget.Name, fontTarget.Size, FontStyle.Bold);
       }
    }
 }
