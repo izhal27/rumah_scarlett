@@ -207,22 +207,7 @@ namespace RumahScarlett.Presentation.Presenters.Pembelian
          {
             if (!_view.ListDataGrid.Enabled)
             {
-               var parameters = new List<ReportParameter>();
-
-               var reportDataSources = new List<ReportDataSource>()
-               {
-                  new ReportDataSource {
-                     Name = "DataSetPembelian",
-                     Value = new BindingSource(_pembelianModel, null)
-                  },
-                  new ReportDataSource {
-                     Name = "DataSetPembelianDetail",
-                     Value = _pembelianModel.PembelianDetails
-                  }
-               };
-
-               new ReportView("Nota Pembelian", "ReportViewerNotaPembelian",
-                              reportDataSources, parameters).ShowDialog();
+               ReportHelper.ShowNotaPembelian(_pembelianModel);
             }
          }
       }

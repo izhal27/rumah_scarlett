@@ -158,20 +158,7 @@ namespace RumahScarlett.Presentation.Presenters.Pembelian
       {
          var pembelianModel = (PembelianModel)_view.ListDataGrid.SelectedItem;
 
-         var reportDataSources = new List<ReportDataSource>()
-         {
-            new ReportDataSource {
-               Name = "DataSetPembelian",
-               Value = new BindingSource(pembelianModel, null)
-            },
-            new ReportDataSource {
-               Name = "DataSetPembelianDetail",
-               Value = pembelianModel.PembelianDetails
-            }
-         };
-
-         new ReportView("Nota Pembelian", "ReportViewerNotaPembelian",
-                        reportDataSources, null).ShowDialog();
+         ReportHelper.ShowNotaPembelian(pembelianModel);
 
          ((Form)sender).Close();
       }

@@ -155,22 +155,9 @@ namespace RumahScarlett.Presentation.Presenters.Penjualan
 
       private void DetailView_OnButtonCetakClick(object sender, EventArgs e)
       {
-         var pembelianModel = (PenjualanModel)_view.ListDataGrid.SelectedItem;
+         var penjualanModel = (PenjualanModel)_view.ListDataGrid.SelectedItem;
 
-         var reportDataSources = new List<ReportDataSource>()
-         {
-            new ReportDataSource {
-               Name = "DataSetPenjualan",
-               Value = new BindingSource(pembelianModel, null)
-            },
-            new ReportDataSource {
-               Name = "DataSetPenjualanDetail",
-               Value = pembelianModel.PenjualanDetails
-            }
-         };
-
-         new ReportView("Nota Penjualan", "ReportViewerNotaPenjualan",
-                        reportDataSources, null).ShowDialog();
+         ReportHelper.ShowNotaPenjualan(penjualanModel);
 
          ((Form)sender).Close();
       }

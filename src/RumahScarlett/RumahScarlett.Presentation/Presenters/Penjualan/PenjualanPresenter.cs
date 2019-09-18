@@ -78,22 +78,7 @@ namespace RumahScarlett.Presentation.Presenters.Penjualan
          {
             if (!_view.ListDataGrid.Enabled)
             {
-               var parameters = new List<ReportParameter>();
-
-               var reportDataSources = new List<ReportDataSource>()
-               {
-                  new ReportDataSource {
-                     Name = "DataSetPenjualan",
-                     Value = new BindingSource(_penjualanModel, null)
-                  },
-                  new ReportDataSource {
-                     Name = "DataSetPenjualanDetail",
-                     Value = _penjualanModel.PenjualanDetails
-                  }
-               };
-
-               new ReportView("Nota Penjualan", "ReportViewerNotaPenjualan",
-                              reportDataSources, parameters).ShowDialog();
+               ReportHelper.ShowNotaPenjualan(_penjualanModel);
             }
          }
       }
