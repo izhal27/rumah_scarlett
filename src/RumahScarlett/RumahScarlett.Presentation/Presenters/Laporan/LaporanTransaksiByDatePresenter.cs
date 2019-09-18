@@ -89,7 +89,7 @@ namespace RumahScarlett.Presentation.Presenters.Laporan
                new ReportParameter("Tanggal", _view.DateTimePickerTanggal.Value.Date.ToShortDateString())
             };
 
-            new ReportView("Rerport Transaksi", "ReportViewerLaporanTransaksi",
+            new ReportView("Report Transaksi", "ReportViewerLaporanTransaksi",
                            reportDataSources, parameters).ShowDialog();
          }
       }
