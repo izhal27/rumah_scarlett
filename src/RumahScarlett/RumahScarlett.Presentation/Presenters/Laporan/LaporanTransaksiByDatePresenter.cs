@@ -1,6 +1,8 @@
-﻿using RumahScarlett.Domain.Models.Laporan;
+﻿using Microsoft.Reporting.WinForms;
+using RumahScarlett.Domain.Models.Laporan;
 using RumahScarlett.Infrastructure.DataAccess.Repositories.Laporan;
 using RumahScarlett.Presentation.Helper;
+using RumahScarlett.Presentation.Views.CommonControls;
 using RumahScarlett.Presentation.Views.Laporan;
 using RumahScarlett.Services.Services.Laporan;
 using System;
@@ -32,6 +34,7 @@ namespace RumahScarlett.Presentation.Presenters.Laporan
          _view.OnLoadData += _view_OnLoadData;
          _view.OnLabelSelisihTextChanged += _view_OnLabelSelisihTextChanged;
          _view.OnDateTimePickerTanggalValueChanged += _view_OnDateTimePickerTanggalValueChanged;
+         _view.OnButtonCetakClick += _view_OnButtonCetakClick;
       }
 
       private void _view_OnLoadData(object sender, EventArgs e)
@@ -67,6 +70,28 @@ namespace RumahScarlett.Presentation.Presenters.Laporan
          var selisih = decimal.Parse(labelSelisih.Text, System.Globalization.NumberStyles.Currency);
 
          labelSelisih.ForeColor = selisih >= 0 ? SystemColors.ControlText : Color.Red;
+      }
+
+      private void _view_OnButtonCetakClick(object sender, EventArgs e)
+      {
+         using (new WaitCursorHandler())
+         {
+            var reportDataSources = new List<ReportDataSource>()
+            {
+               new ReportDataSource {
+                  Name = "DataSetTransaksi",
+                  Value = new BindingSource(_model, null)
+               }
+            };
+
+            var parameters = new List<ReportParameter>()
+            {
+               new ReportParameter("Tanggal", _view.DateTimePickerTanggal.Value.Date.ToShortDateString())
+            };
+
+            new ReportView("Rerport Transaksi", "ReportViewerLaporanTransaksi",
+                           reportDataSources, parameters).ShowDialog();
+         }
       }
    }
 }

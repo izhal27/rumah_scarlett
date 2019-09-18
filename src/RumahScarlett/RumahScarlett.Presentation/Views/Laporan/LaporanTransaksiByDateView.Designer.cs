@@ -31,8 +31,6 @@
          System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LaporanTransaksiByDateView));
          this.groupBox1 = new System.Windows.Forms.GroupBox();
          this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-         this.label1 = new System.Windows.Forms.Label();
-         this.label2 = new System.Windows.Forms.Label();
          this.label4 = new System.Windows.Forms.Label();
          this.label5 = new System.Windows.Forms.Label();
          this.label6 = new System.Windows.Forms.Label();
@@ -52,8 +50,10 @@
          this.label10 = new System.Windows.Forms.Label();
          this.labelTotalDiskon = new System.Windows.Forms.Label();
          this.label15 = new System.Windows.Forms.Label();
-         this.dateTimePickerTanggal = new System.Windows.Forms.DateTimePicker();
          this.label11 = new System.Windows.Forms.Label();
+         this.label1 = new System.Windows.Forms.Label();
+         this.label2 = new System.Windows.Forms.Label();
+         this.dateTimePickerTanggal = new System.Windows.Forms.DateTimePicker();
          this.buttonCetak = new System.Windows.Forms.Button();
          this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
          this.buttonTutup = new System.Windows.Forms.Button();
@@ -120,26 +120,6 @@
          this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
          this.tableLayoutPanel1.Size = new System.Drawing.Size(348, 180);
          this.tableLayoutPanel1.TabIndex = 0;
-         // 
-         // label1
-         // 
-         this.label1.Anchor = System.Windows.Forms.AnchorStyles.Left;
-         this.label1.AutoSize = true;
-         this.label1.Location = new System.Drawing.Point(3, 8);
-         this.label1.Name = "label1";
-         this.label1.Size = new System.Drawing.Size(46, 13);
-         this.label1.TabIndex = 0;
-         this.label1.Text = "Tanggal";
-         // 
-         // label2
-         // 
-         this.label2.Anchor = System.Windows.Forms.AnchorStyles.Left;
-         this.label2.AutoSize = true;
-         this.label2.Location = new System.Drawing.Point(76, 8);
-         this.label2.Name = "label2";
-         this.label2.Size = new System.Drawing.Size(10, 13);
-         this.label2.TabIndex = 0;
-         this.label2.Text = ":";
          // 
          // label4
          // 
@@ -344,16 +324,6 @@
          this.label15.TabIndex = 0;
          this.label15.Text = ":";
          // 
-         // dateTimePickerTanggal
-         // 
-         this.dateTimePickerTanggal.Anchor = System.Windows.Forms.AnchorStyles.Left;
-         this.dateTimePickerTanggal.Location = new System.Drawing.Point(92, 5);
-         this.dateTimePickerTanggal.MinDate = new System.DateTime(1945, 8, 17, 0, 0, 0, 0);
-         this.dateTimePickerTanggal.Name = "dateTimePickerTanggal";
-         this.dateTimePickerTanggal.Size = new System.Drawing.Size(150, 20);
-         this.dateTimePickerTanggal.TabIndex = 0;
-         this.dateTimePickerTanggal.ValueChanged += new System.EventHandler(this.dateTimePickerTanggal_ValueChanged);
-         // 
          // label11
          // 
          this.label11.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -363,6 +333,36 @@
          this.label11.Size = new System.Drawing.Size(10, 13);
          this.label11.TabIndex = 0;
          this.label11.Text = ":";
+         // 
+         // label1
+         // 
+         this.label1.Anchor = System.Windows.Forms.AnchorStyles.Left;
+         this.label1.AutoSize = true;
+         this.label1.Location = new System.Drawing.Point(3, 8);
+         this.label1.Name = "label1";
+         this.label1.Size = new System.Drawing.Size(46, 13);
+         this.label1.TabIndex = 0;
+         this.label1.Text = "Tanggal";
+         // 
+         // label2
+         // 
+         this.label2.Anchor = System.Windows.Forms.AnchorStyles.Left;
+         this.label2.AutoSize = true;
+         this.label2.Location = new System.Drawing.Point(76, 8);
+         this.label2.Name = "label2";
+         this.label2.Size = new System.Drawing.Size(10, 13);
+         this.label2.TabIndex = 0;
+         this.label2.Text = ":";
+         // 
+         // dateTimePickerTanggal
+         // 
+         this.dateTimePickerTanggal.Anchor = System.Windows.Forms.AnchorStyles.Left;
+         this.dateTimePickerTanggal.Location = new System.Drawing.Point(92, 5);
+         this.dateTimePickerTanggal.MinDate = new System.DateTime(1945, 8, 17, 0, 0, 0, 0);
+         this.dateTimePickerTanggal.Name = "dateTimePickerTanggal";
+         this.dateTimePickerTanggal.Size = new System.Drawing.Size(150, 20);
+         this.dateTimePickerTanggal.TabIndex = 0;
+         this.dateTimePickerTanggal.ValueChanged += new System.EventHandler(this.dateTimePickerTanggal_ValueChanged);
          // 
          // buttonCetak
          // 
@@ -402,7 +402,6 @@
          this.buttonTutup.Tag = "ignore";
          this.buttonTutup.Text = "&Tutup";
          this.buttonTutup.UseVisualStyleBackColor = true;
-         this.buttonTutup.Click += new System.EventHandler(this.buttonCetak_Click);
          // 
          // groupBox2
          // 
