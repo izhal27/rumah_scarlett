@@ -970,7 +970,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=First(Fields!telpon.Value, "DataSetPengaturan")</Value>
+                <Value>=First(Fields!kota.Value, "DataSetPengaturan")</Value>
                 <Style />
               </TextRun>
             </TextRuns>
@@ -1000,7 +1000,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=First(Fields!kota.Value, "DataSetPengaturan")</Value>
+                <Value>=First(Fields!telpon.Value, "DataSetPengaturan")</Value>
                 <Style />
               </TextRun>
             </TextRuns>

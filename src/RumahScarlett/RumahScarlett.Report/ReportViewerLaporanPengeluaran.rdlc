@@ -715,7 +715,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=First(Fields!telpon.Value, "DataSetPengaturan")</Value>
+                <Value>=First(Fields!kota.Value, "DataSetPengaturan")</Value>
                 <Style />
               </TextRun>
             </TextRuns>
@@ -745,7 +745,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=First(Fields!kota.Value, "DataSetPengaturan")</Value>
+                <Value>=First(Fields!telpon.Value, "DataSetPengaturan")</Value>
                 <Style />
               </TextRun>
             </TextRuns>
@@ -790,7 +790,6 @@
         </Paragraphs>
         <rd:DefaultName>Textbox12</rd:DefaultName>
         <Top>0.3175cm</Top>
-        <Left>0.3175cm</Left>
         <Height>0.67938cm</Height>
         <Width>9.70217cm</Width>
         <ZIndex>6</ZIndex>

@@ -1594,7 +1594,6 @@
                         <rd:FormatSymbolCulture>id-ID</rd:FormatSymbolCulture>
                       </Style>
                     </Textbox>
-                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
               </TablixCells>
@@ -2985,7 +2984,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=First(Fields!telpon.Value, "DataSetPengaturan")</Value>
+                <Value>=First(Fields!kota.Value, "DataSetPengaturan")</Value>
                 <Style />
               </TextRun>
             </TextRuns>
@@ -3015,7 +3014,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=First(Fields!kota.Value, "DataSetPengaturan")</Value>
+                <Value>=First(Fields!telpon.Value, "DataSetPengaturan")</Value>
                 <Style />
               </TextRun>
             </TextRuns>
@@ -3059,7 +3058,6 @@
         </Paragraphs>
         <rd:DefaultName>Textbox12</rd:DefaultName>
         <Top>0.3175cm</Top>
-        <Left>0.3175cm</Left>
         <Height>0.67938cm</Height>
         <Width>9.54342cm</Width>
         <ZIndex>6</ZIndex>
@@ -3272,7 +3270,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox25</rd:DefaultName>
-          <Top>0.59063cm</Top>
+          <Top>0.59062cm</Top>
           <Height>0.6cm</Height>
           <Width>5.0126cm</Width>
           <Style>
@@ -3302,7 +3300,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox17</rd:DefaultName>
-          <Top>0.59063cm</Top>
+          <Top>0.59062cm</Top>
           <Left>24.71589cm</Left>
           <Height>0.6cm</Height>
           <Width>5.28411cm</Width>

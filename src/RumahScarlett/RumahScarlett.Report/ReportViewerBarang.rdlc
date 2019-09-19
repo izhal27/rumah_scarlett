@@ -1191,7 +1191,7 @@
         </Paragraphs>
         <rd:DefaultName>Textbox12</rd:DefaultName>
         <Top>0.3175cm</Top>
-        <Left>0.3175cm</Left>
+        <Left>0.00001cm</Left>
         <Height>0.67938cm</Height>
         <Width>9.67572cm</Width>
         <ZIndex>1</ZIndex>
@@ -1500,7 +1500,7 @@ Len(Parameters!Supplier.Value) &gt; 0, Parameters!Supplier.Value
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=First(Fields!telpon.Value, "DataSetPengaturan")</Value>
+                <Value>=First(Fields!kota.Value, "DataSetPengaturan")</Value>
                 <Style />
               </TextRun>
             </TextRuns>
@@ -1530,7 +1530,7 @@ Len(Parameters!Supplier.Value) &gt; 0, Parameters!Supplier.Value
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=First(Fields!kota.Value, "DataSetPengaturan")</Value>
+                <Value>=First(Fields!telpon.Value, "DataSetPengaturan")</Value>
                 <Style />
               </TextRun>
             </TextRuns>
