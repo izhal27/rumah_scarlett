@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.Design;
+using WeifenLuo.WinFormsUI.Docking;
 
 namespace RumahScarlett.Domain.Models.Pengaturan
 {
@@ -64,6 +65,11 @@ namespace RumahScarlett.Domain.Models.Pengaturan
       [Description("Pilih Warna baris ganjil pada data grid view.")]
       [DisplayName("Warna Baris Ganjil")]
       public Color warna_baris_ganjil { get; set; }
+
+      [Category("Style")]
+      [Description("Pilih Theme untuk Dockpanel.")]
+      [DisplayName("Dockpanel Theme")]
+      public DockPanelTheme dockpanel_theme { get; set; }
 
       [Editor(typeof(FileNameImagesEditor), typeof(UITypeEditor))]
       [Category("Background")]

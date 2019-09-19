@@ -44,6 +44,7 @@ namespace RumahScarlett.Presentation.Presenters.Pengaturan
          model.warna_teks_strip = Color.FromArgb(240, 240, 240);
          model.warna_baris_genap = Color.FromArgb(240, 248, 255);
          model.warna_baris_ganjil = Color.FromArgb(255, 255, 255);
+         model.dockpanel_theme = DockPanelTheme.Default;
          _view.PropertyGridPengaturan.Refresh();
       }
 
@@ -64,6 +65,7 @@ namespace RumahScarlett.Presentation.Presenters.Pengaturan
                warna_teks_strip = selectedModel.warna_teks_strip,
                warna_baris_genap = selectedModel.warna_baris_genap,
                warna_baris_ganjil = selectedModel.warna_baris_ganjil,
+               dockpanel_theme = selectedModel.dockpanel_theme,
                path_background = selectedModel.path_background,
                tipe_printer = selectedModel.tipe_printer
             };

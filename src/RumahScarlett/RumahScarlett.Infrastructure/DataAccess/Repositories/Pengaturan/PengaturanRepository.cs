@@ -27,8 +27,10 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Pengaturan
             model.warna_teks_strip = ConfigHelper.GetColorFromConfig("Warna_Teks_Strip", Color.FromArgb(255, 255, 255));
             model.warna_baris_genap = ConfigHelper.GetColorFromConfig("Warna_Baris_Genap", Color.FromArgb(240, 248, 255));
             model.warna_baris_ganjil = ConfigHelper.GetColorFromConfig("Warna_Baris_Ganjil", Color.FromArgb(255, 255, 255));
-            model.path_background = ConfigHelper.GetConfig("Path_Backround") ?? "";
-            model.tipe_printer = ConfigHelper.GetConfig("Tipe_Printer") != null ? 
+            model.path_background = !string.IsNullOrWhiteSpace(ConfigHelper.GetConfig("Path_Backround")) ? ConfigHelper.GetConfig("Path_Backround")  : "";
+            model.dockpanel_theme = !string.IsNullOrWhiteSpace(ConfigHelper.GetConfig("Dockpanel_Theme")) ? 
+                                 (DockPanelTheme)int.Parse(ConfigHelper.GetConfig("Dockpanel_Theme")) : DockPanelTheme.Default;
+            model.tipe_printer = !string.IsNullOrWhiteSpace(ConfigHelper.GetConfig("Tipe_Printer")) ? 
                                  (TipePrinter)int.Parse(ConfigHelper.GetConfig("Tipe_Printer")) : TipePrinter.InkjetDotMatrix;
 
             return model;
@@ -46,8 +48,9 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Pengaturan
          ConfigHelper.SaveConfig("Warna_Teks_Strip", model.warna_teks_strip.ToStringRgb());
          ConfigHelper.SaveConfig("Warna_Baris_Genap", model.warna_baris_genap.ToStringRgb());
          ConfigHelper.SaveConfig("Warna_Baris_Ganjil", model.warna_baris_ganjil.ToStringRgb());
-         ConfigHelper.SaveConfig("Path_Backround", model.path_background);
          ConfigHelper.SaveConfig("Tipe_Printer", model.tipe_printer.ToString("d"));
+         ConfigHelper.SaveConfig("Dockpanel_Theme", model.dockpanel_theme.ToString("d"));
+         ConfigHelper.SaveConfig("Path_Backround", model.path_background);
       }
    }
 }

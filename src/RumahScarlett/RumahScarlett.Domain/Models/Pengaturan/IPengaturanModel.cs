@@ -1,4 +1,5 @@
 ﻿using System.Drawing;
+using WeifenLuo.WinFormsUI.Docking;
 
 namespace RumahScarlett.Domain.Models.Pengaturan
 {
@@ -13,6 +14,7 @@ namespace RumahScarlett.Domain.Models.Pengaturan
       Color warna_teks_strip { get; set; }
       Color warna_baris_genap { get; set; }
       Color warna_baris_ganjil { get; set; }
+      DockPanelTheme dockpanel_theme { get; set; }
       string path_background { get; set; }
       TipePrinter tipe_printer { get; set; }
    }
@@ -21,5 +23,19 @@ namespace RumahScarlett.Domain.Models.Pengaturan
    {
       InkjetDotMatrix,
       Thermal
+   }
+
+   public enum DockPanelTheme
+   {
+      Default,
+      VS2012BlueTheme,
+      VS2012DarkTheme,
+      VS2012LightTheme,
+      VS2013BlueTheme,
+      VS2013DarkTheme,
+      VS2013LightTheme,
+      VS2015BlueTheme,
+      VS2015DarkTheme,
+      VS2015LightTheme
    }
 }

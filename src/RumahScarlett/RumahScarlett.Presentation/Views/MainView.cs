@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RumahScarlett.Presentation.Helper;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -50,7 +51,8 @@ namespace RumahScarlett.Presentation.Views
          _dockPanel.AllowEndUserDocking = false;
          _dockPanel.AllowEndUserNestedDocking = false;
          _dockPanel.ShowDocumentIcon = false;
-         //_dockPanel.Theme = new VS2015LightTheme();
+         _dockPanel.Theme = DockpanelThemeHelper.GetTheme((int)MainProgram.Pengaturan.dockpanel_theme);
+         
          _dockPanel.DockBackColor = Color.Transparent;
 
          // Jika gambar di config file tidak kosong dan file gambar tersedia,
