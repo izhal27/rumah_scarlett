@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -51,6 +52,12 @@ namespace RumahScarlett.Presentation.Views
          _dockPanel.ShowDocumentIcon = false;
          //_dockPanel.Theme = new VS2015LightTheme();
          _dockPanel.DockBackColor = Color.Transparent;
+
+         // Jika gambar di config file tidak kosong dan file gambar tersedia,
+         // atur gambar ke DockPanel BackgroudImage
+         var gambar = MainProgram.Pengaturan.path_background;
+         if (!string.IsNullOrWhiteSpace(gambar) && File.Exists(gambar))
+            _dockPanel.BackgroundImage = Image.FromFile(gambar);
 
          _eventArgs = new MainViewEventArgs(_dockPanel);
       }
