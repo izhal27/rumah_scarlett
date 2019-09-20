@@ -37,6 +37,8 @@ namespace RumahScarlett.Presentation.Views
       public event EventHandler OnLaporanStatusBarangClick;
       public event EventHandler OnLaporanLabaRugiClick;
       public event EventHandler OnPengaturanClick;
+      public event EventHandler OnBackupDatabaseClick;
+      public event EventHandler OnRestoreDatabaseClick;
 
       public MainView()
       {
@@ -52,7 +54,7 @@ namespace RumahScarlett.Presentation.Views
          _dockPanel.AllowEndUserNestedDocking = false;
          _dockPanel.ShowDocumentIcon = false;
          _dockPanel.Theme = DockpanelThemeHelper.GetTheme((int)MainProgram.Pengaturan.dockpanel_theme);
-         
+
          _dockPanel.DockBackColor = Color.Transparent;
 
          // Jika gambar di config file tidak kosong dan file gambar tersedia,
@@ -177,6 +179,16 @@ namespace RumahScarlett.Presentation.Views
       private void toolStripMenuItemPengaturan_Click(object sender, EventArgs e)
       {
          OnPengaturanClick?.Invoke(sender, e);
+      }
+
+      private void toolStripMenuItemBackupDatabase_Click(object sender, EventArgs e)
+      {
+         OnBackupDatabaseClick?.Invoke(sender, e);
+      }
+
+      private void toolStripMenuItemRestoreDatabase_Click(object sender, EventArgs e)
+      {
+         OnRestoreDatabaseClick?.Invoke(sender, e);
       }
    }
 

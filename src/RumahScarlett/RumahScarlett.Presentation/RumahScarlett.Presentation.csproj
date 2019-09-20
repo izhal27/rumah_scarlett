@@ -132,6 +132,8 @@
     <Compile Include="Helper\WaitCursorHandler.cs" />
     <Compile Include="Presenters\Barang\BarangPresenter.cs" />
     <Compile Include="Presenters\Barang\IBarangPresenter.cs" />
+    <Compile Include="Presenters\Database\BackupRestoreDatabasePresenter.cs" />
+    <Compile Include="Presenters\Database\IBackupRestoreDatabasePresenter.cs" />
     <Compile Include="Presenters\HutangOperasional\HutangOperasionalPresenter.cs" />
     <Compile Include="Presenters\HutangOperasional\IHutangOperasionalPresenter.cs" />
     <Compile Include="Presenters\IMainPresenter.cs" />
@@ -280,6 +282,13 @@
     <Compile Include="Views\CommonControls\TextBoxTanggal.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Views\Database\BackupRestoreDatabaseView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Database\BackupRestoreDatabaseView.Designer.cs">
+      <DependentUpon>BackupRestoreDatabaseView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Database\IBackupRestoreDatabaseView.cs" />
     <Compile Include="Views\HutangOperasional\HutangOperasionalEntryView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -589,6 +598,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\CommonControls\PanelUp.resx">
       <DependentUpon>PanelUp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Database\BackupRestoreDatabaseView.resx">
+      <DependentUpon>BackupRestoreDatabaseView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\HutangOperasional\HutangOperasionalEntryView.resx">
       <DependentUpon>HutangOperasionalEntryView.cs</DependentUpon>

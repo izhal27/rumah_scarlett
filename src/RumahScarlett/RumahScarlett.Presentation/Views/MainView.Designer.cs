@@ -352,12 +352,14 @@
          this.toolStripMenuItemBackupDatabase.Name = "toolStripMenuItemBackupDatabase";
          this.toolStripMenuItemBackupDatabase.Size = new System.Drawing.Size(164, 22);
          this.toolStripMenuItemBackupDatabase.Text = "&Backup Database";
+         this.toolStripMenuItemBackupDatabase.Click += new System.EventHandler(this.toolStripMenuItemBackupDatabase_Click);
          // 
          // toolStripMenuItemRestoreDatabase
          // 
          this.toolStripMenuItemRestoreDatabase.Name = "toolStripMenuItemRestoreDatabase";
          this.toolStripMenuItemRestoreDatabase.Size = new System.Drawing.Size(164, 22);
          this.toolStripMenuItemRestoreDatabase.Text = "&Restore Database";
+         this.toolStripMenuItemRestoreDatabase.Click += new System.EventHandler(this.toolStripMenuItemRestoreDatabase_Click);
          // 
          // toolStripMenuItemAlat
          // 
@@ -370,7 +372,7 @@
          // toolStripMenuItemPengaturan
          // 
          this.toolStripMenuItemPengaturan.Name = "toolStripMenuItemPengaturan";
-         this.toolStripMenuItemPengaturan.Size = new System.Drawing.Size(152, 22);
+         this.toolStripMenuItemPengaturan.Size = new System.Drawing.Size(135, 22);
          this.toolStripMenuItemPengaturan.Text = "&Pengaturan";
          this.toolStripMenuItemPengaturan.Click += new System.EventHandler(this.toolStripMenuItemPengaturan_Click);
          // 

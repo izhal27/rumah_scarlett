@@ -1,5 +1,6 @@
 ﻿using RumahScarlett.Presentation.Helper;
 using RumahScarlett.Presentation.Presenters.Barang;
+using RumahScarlett.Presentation.Presenters.Database;
 using RumahScarlett.Presentation.Presenters.HutangOperasional;
 using RumahScarlett.Presentation.Presenters.KasAwal;
 using RumahScarlett.Presentation.Presenters.Laporan;
@@ -13,6 +14,7 @@ using RumahScarlett.Presentation.Presenters.Satuan;
 using RumahScarlett.Presentation.Presenters.Supplier;
 using RumahScarlett.Presentation.Presenters.Tipe;
 using RumahScarlett.Presentation.Views;
+using RumahScarlett.Presentation.Views.Database;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -55,6 +57,8 @@ namespace RumahScarlett.Presentation.Presenters
          _view.OnLaporanStatusBarangClick += _view_OnLaporanStatusBarangClick;
          _view.OnLaporanLabaRugiClick += _view_OnLaporanLabaRugiClick;
          _view.OnPengaturanClick += _view_OnPengaturanClick;
+         _view.OnBackupDatabaseClick += _view_OnBackupDatabaseClick;
+         _view.OnRestoreDatabaseClick += _view_OnRestoreDatabaseClick;
       }
 
       private void _view_OnTipeViewClick(object sender, MainViewEventArgs e)
@@ -178,6 +182,22 @@ namespace RumahScarlett.Presentation.Presenters
          using (new WaitCursorHandler())
          {
             new PengaturanPresenter().GetView.ShowView();
+         }
+      }
+
+      private void _view_OnBackupDatabaseClick(object sender, EventArgs e)
+      {
+         using (new WaitCursorHandler())
+         {
+            new BackupRestoreDatabasePresenter(DatabaseMethod.Backup).GetView.ShowView();
+         }
+      }
+
+      private void _view_OnRestoreDatabaseClick(object sender, EventArgs e)
+      {
+         using (new WaitCursorHandler())
+         {
+            new BackupRestoreDatabasePresenter(DatabaseMethod.Restore).GetView.ShowView();
          }
       }
 

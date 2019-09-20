@@ -51,6 +51,9 @@
     </Compile>
     <Compile Include="CommonServices\IModelDataAnnotationCheck.cs" />
     <Compile Include="CommonServices\ModelDataAnnotationCheck.cs" />
+    <Compile Include="Services\Database\BackupRestoreDatabaseServices.cs" />
+    <Compile Include="Services\Database\IBackupRestoreDatabaseRepository.cs" />
+    <Compile Include="Services\Database\IBackupRestoreDatabaseServices.cs" />
     <Compile Include="Services\HutangOperasional\HutangOperasionalServices.cs" />
     <Compile Include="Services\HutangOperasional\IHutangOperasionalRepository.cs" />
     <Compile Include="Services\HutangOperasional\IHutangOperasionalServices.cs" />
