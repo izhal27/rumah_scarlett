@@ -474,6 +474,12 @@
     <Compile Include="Views\Penjualan\PenjualanView.Designer.cs">
       <DependentUpon>PenjualanView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Penjualan\UangKembaliView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Penjualan\UangKembaliView.Designer.cs">
+      <DependentUpon>UangKembaliView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\PenyesuaianStok\IPenyesuaianStokEntryView.cs" />
     <Compile Include="Views\PenyesuaianStok\IPenyesuaianStokView.cs" />
     <Compile Include="Views\PenyesuaianStok\PenyesuaianStokEntryView.cs">
@@ -685,6 +691,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Penjualan\PenjualanView.resx">
       <DependentUpon>PenjualanView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Penjualan\UangKembaliView.resx">
+      <DependentUpon>UangKembaliView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\PenyesuaianStok\PenyesuaianStokEntryView.resx">
       <DependentUpon>PenyesuaianStokEntryView.cs</DependentUpon>

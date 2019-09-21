@@ -53,8 +53,10 @@ namespace RumahScarlett.Presentation.Views.Penjualan
             var statusPenjualan = comboBoxStatusPenjualan.SelectedIndex == 1;
             var diskon = decimal.Parse(textBoxDiskon.Text, NumberStyles.Number);
             var jumlahBayar = decimal.Parse(textBoxBayar.Text, NumberStyles.Number);
+            var kembali = decimal.Parse(textBoxKembali.Text, NumberStyles.Number);
 
-            var eventArgs = new PembayaranEventArgs(pelangganModel, statusPenjualan, diskon, jumlahBayar);
+            var eventArgs = new PembayaranEventArgs(pelangganModel, statusPenjualan,
+                                                    diskon, jumlahBayar, kembali);
 
             OnBayarPenjualan?.Invoke(this, eventArgs);
          }
@@ -147,14 +149,16 @@ namespace RumahScarlett.Presentation.Views.Penjualan
       public bool StatusPenjualan { get; }
       public decimal Diskon { get; }
       public decimal JumlahBayar { get; }
+      public decimal Kembali { get; set; }
 
       public PembayaranEventArgs(IPelangganModel pelanggan, bool statusPenjualan,
-                                 decimal diskon, decimal jumlahBayar)
+                                 decimal diskon, decimal jumlahBayar, decimal kembali)
       {
          Pelanggan = pelanggan;
          StatusPenjualan = statusPenjualan;
          Diskon = diskon;
          JumlahBayar = jumlahBayar;
+         Kembali = kembali;
       }
    }
 }

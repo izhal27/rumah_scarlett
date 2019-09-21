@@ -34,6 +34,7 @@ namespace RumahScarlett.Presentation.Presenters.Penjualan
       private BindingListView<PenjualanDetailModel> _bindingView;
       private string _kodeOrNamaForSearching = "";
       private IPenjualanModel _penjualanModel;
+      private decimal _uangKembali;
 
       public IPenjualanView GetView
       {
@@ -159,11 +160,8 @@ namespace RumahScarlett.Presentation.Presenters.Penjualan
                var view = new BayarPenjualanEntryView(_listPenjualanDetails);
                view.OnBayarPenjualan += View_OnBayarPenjualan;
                view.ShowDialog();
-            }
 
-            if (Messages.Confirm("Cetak Nota Penjualan?"))
-            {
-               _view_OnCetakNota(null, null);
+               new UangKembaliView(_uangKembali).ShowDialog();
             }
          }
          catch (ArgumentException ex)
@@ -182,6 +180,7 @@ namespace RumahScarlett.Presentation.Presenters.Penjualan
          {
             var bayarPenjualanEntryView = ((Form)sender);
             var penjualanDetailsFixed = _listPenjualanDetails.Where(pd => pd.Barang.id != default(int)).ToList();
+            _uangKembali = e.Kembali;
 
             _penjualanModel = new PenjualanModel
             {
@@ -204,6 +203,11 @@ namespace RumahScarlett.Presentation.Presenters.Penjualan
 
             bayarPenjualanEntryView.Close();
             ((Form)_view).ActiveControl = _view.TextBoxNoNota;
+            
+            if (Messages.Confirm("Cetak Nota Penjualan?"))
+            {
+               _view_OnCetakNota(null, null);
+            }
          }
          catch (ArgumentException ex)
          {
