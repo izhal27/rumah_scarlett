@@ -149,7 +149,7 @@ namespace RumahScarlett.Services.UnitTests.Penjualan
       [Fact]
       public void ShouldReturnListOfModelsBetweenDate()
       {
-         var listModels = _services.GetByDate(DateTime.Now.AddDays(-3), DateTime.Now.AddDays(3)).ToList();
+         var listModels = _services.GetByDate(new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1), DateTime.Now.AddDays(3)).ToList();
 
          Assert.NotEmpty(listModels);
 
