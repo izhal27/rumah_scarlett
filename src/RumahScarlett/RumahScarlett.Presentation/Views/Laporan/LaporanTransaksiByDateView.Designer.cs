@@ -459,6 +459,7 @@
          this.MaximizeBox = false;
          this.MinimizeBox = false;
          this.Name = "LaporanTransaksiByDateView";
+         this.ShowInTaskbar = false;
          this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
          this.Text = "Laporan Transaksi";
          this.Load += new System.EventHandler(this.LaporanTransaksiHariIniView_Load);
