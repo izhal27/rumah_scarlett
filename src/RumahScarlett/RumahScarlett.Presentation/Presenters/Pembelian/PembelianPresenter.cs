@@ -144,7 +144,14 @@ namespace RumahScarlett.Presentation.Presenters.Pembelian
          {
             var simpanPembelianEntryView = new SimpanPembelianEntryView(_listsPembelianDetails);
             simpanPembelianEntryView.OnSimpanPembelian += SimpanPembelianEntryView_OnSimpanPembelian;
-            simpanPembelianEntryView.ShowDialog();
+
+            if (simpanPembelianEntryView.ShowDialog() == DialogResult.OK)
+            {
+               if (Messages.Confirm("Cetak Nota Pembelian?"))
+               {
+                  _view_OnCetakNota(null, null);
+               }
+            }
          }
       }
 
@@ -167,13 +174,8 @@ namespace RumahScarlett.Presentation.Presenters.Pembelian
             _view.TextBoxNoNota.Text = _pembelianModel.no_nota;
             _view.ListDataGrid.Enabled = false;
 
-            simpanPembelianEntryView.Close();
+            simpanPembelianEntryView.DialogResult = DialogResult.OK;
             ((Form)_view).ActiveControl = _view.TextBoxNoNota;
-
-            if (Messages.Confirm("Cetak Nota Pembelian?"))
-            {
-               _view_OnCetakNota(null, null);
-            }
          }
          catch (ArgumentException ex)
          {
