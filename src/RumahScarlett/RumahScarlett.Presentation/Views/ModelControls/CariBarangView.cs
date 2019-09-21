@@ -84,7 +84,8 @@ namespace RumahScarlett.Presentation.Views.ModelControls
          {
             var value = textBox.Text;
 
-            _bindingView.DataSource = _listsBarang.Where(b => b.kode.Contains(value) || b.nama.Contains(value)).ToList();
+            _bindingView.DataSource = _listsBarang.Where(b => b.kode.ToLower().Contains(value.ToLower()) ||
+                                                         b.nama.ToLower().Contains(value.ToLower())).ToList();
          }
          else
          {
