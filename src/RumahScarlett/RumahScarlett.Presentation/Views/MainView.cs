@@ -65,6 +65,9 @@ namespace RumahScarlett.Presentation.Views
             _dockPanel.BackgroundImage = Image.FromFile(gambar);
 
          _eventArgs = new MainViewEventArgs(_dockPanel);
+
+         toolStripStatusLabelMachineName.Text = Environment.MachineName;
+         toolStripStatusLabelTanggal.Text = DateTime.Now.ToShortDateString();
       }
 
       private void toolStripMenuItemExit_Click(object sender, EventArgs e)

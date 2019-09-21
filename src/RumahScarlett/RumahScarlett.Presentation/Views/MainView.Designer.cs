@@ -31,7 +31,7 @@
          this.components = new System.ComponentModel.Container();
          System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainView));
          this.statusStrip = new System.Windows.Forms.StatusStrip();
-         this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+         this.toolStripStatusLabelTanggal = new System.Windows.Forms.ToolStripStatusLabel();
          this.toolTip = new System.Windows.Forms.ToolTip(this.components);
          this.menuStripMain = new System.Windows.Forms.MenuStrip();
          this.toolStripMenuItemOperasi = new System.Windows.Forms.ToolStripMenuItem();
@@ -75,6 +75,8 @@
          this.toolStripButtonBarang = new System.Windows.Forms.ToolStripButton();
          this.toolStripButtonPembelian = new System.Windows.Forms.ToolStripButton();
          this.toolStripButtonPenjualan = new System.Windows.Forms.ToolStripButton();
+         this.toolStripStatusLabelMachineName = new System.Windows.Forms.ToolStripStatusLabel();
+         this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
          this.statusStrip.SuspendLayout();
          this.menuStripMain.SuspendLayout();
          this.toolStripMain.SuspendLayout();
@@ -83,18 +85,20 @@
          // statusStrip
          // 
          this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel});
+            this.toolStripStatusLabelMachineName,
+            this.toolStripStatusLabel1,
+            this.toolStripStatusLabelTanggal});
          this.statusStrip.Location = new System.Drawing.Point(0, 431);
          this.statusStrip.Name = "statusStrip";
          this.statusStrip.Size = new System.Drawing.Size(632, 22);
          this.statusStrip.TabIndex = 2;
          this.statusStrip.Text = "StatusStrip";
          // 
-         // toolStripStatusLabel
+         // toolStripStatusLabelTanggal
          // 
-         this.toolStripStatusLabel.Name = "toolStripStatusLabel";
-         this.toolStripStatusLabel.Size = new System.Drawing.Size(39, 17);
-         this.toolStripStatusLabel.Text = "Status";
+         this.toolStripStatusLabelTanggal.Name = "toolStripStatusLabelTanggal";
+         this.toolStripStatusLabelTanggal.Size = new System.Drawing.Size(39, 17);
+         this.toolStripStatusLabelTanggal.Text = "Status";
          // 
          // menuStripMain
          // 
@@ -387,7 +391,7 @@
          // toolStripMenuItemTentang
          // 
          this.toolStripMenuItemTentang.Name = "toolStripMenuItemTentang";
-         this.toolStripMenuItemTentang.Size = new System.Drawing.Size(152, 22);
+         this.toolStripMenuItemTentang.Size = new System.Drawing.Size(118, 22);
          this.toolStripMenuItemTentang.Text = "&Tentang";
          this.toolStripMenuItemTentang.Click += new System.EventHandler(this.toolStripMenuItemTentang_Click);
          // 
@@ -444,6 +448,18 @@
          this.toolStripButtonPenjualan.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
          this.toolStripButtonPenjualan.Click += new System.EventHandler(this.toolStripButtonPenjualan_Click);
          // 
+         // toolStripStatusLabelMachineName
+         // 
+         this.toolStripStatusLabelMachineName.Name = "toolStripStatusLabelMachineName";
+         this.toolStripStatusLabelMachineName.Size = new System.Drawing.Size(88, 17);
+         this.toolStripStatusLabelMachineName.Text = "Machine Name";
+         // 
+         // toolStripStatusLabel1
+         // 
+         this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+         this.toolStripStatusLabel1.Size = new System.Drawing.Size(10, 17);
+         this.toolStripStatusLabel1.Text = "|";
+         // 
          // MainView
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -471,7 +487,7 @@
       #endregion
 
       private System.Windows.Forms.StatusStrip statusStrip;
-      private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel;
+      private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelTanggal;
       private System.Windows.Forms.ToolTip toolTip;
       private System.Windows.Forms.MenuStrip menuStripMain;
       private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemOperasi;
@@ -515,6 +531,8 @@
       private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemLabaRugi;
       private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemAlat;
       private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemPengaturan;
+      private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelMachineName;
+      private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
    }
 }
 
