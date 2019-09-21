@@ -29,12 +29,6 @@
       {
          System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TentangView));
          this.tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-         this.labelProductName = new System.Windows.Forms.Label();
-         this.labelVersion = new System.Windows.Forms.Label();
-         this.labelCopyright = new System.Windows.Forms.Label();
-         this.labelCompanyName = new System.Windows.Forms.Label();
-         this.okButton = new System.Windows.Forms.Button();
-         this.logoPictureBox = new System.Windows.Forms.PictureBox();
          this.groupBox1 = new System.Windows.Forms.GroupBox();
          this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
          this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -49,8 +43,13 @@
          this.pictureBox5 = new System.Windows.Forms.PictureBox();
          this.pictureBox6 = new System.Windows.Forms.PictureBox();
          this.linkLabel4 = new System.Windows.Forms.LinkLabel();
+         this.logoPictureBox = new System.Windows.Forms.PictureBox();
+         this.labelProductName = new System.Windows.Forms.Label();
+         this.labelVersion = new System.Windows.Forms.Label();
+         this.labelCopyright = new System.Windows.Forms.Label();
+         this.labelCompanyName = new System.Windows.Forms.Label();
+         this.okButton = new System.Windows.Forms.Button();
          this.tableLayoutPanel.SuspendLayout();
-         ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).BeginInit();
          this.groupBox1.SuspendLayout();
          this.tableLayoutPanel2.SuspendLayout();
          ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -59,6 +58,7 @@
          ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).BeginInit();
          this.SuspendLayout();
          // 
          // tableLayoutPanel
@@ -86,76 +86,6 @@
          this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
          this.tableLayoutPanel.Size = new System.Drawing.Size(534, 320);
          this.tableLayoutPanel.TabIndex = 0;
-         // 
-         // labelProductName
-         // 
-         this.labelProductName.Dock = System.Windows.Forms.DockStyle.Fill;
-         this.labelProductName.Location = new System.Drawing.Point(182, 0);
-         this.labelProductName.Margin = new System.Windows.Forms.Padding(6, 0, 3, 0);
-         this.labelProductName.MaximumSize = new System.Drawing.Size(0, 17);
-         this.labelProductName.Name = "labelProductName";
-         this.labelProductName.Size = new System.Drawing.Size(349, 17);
-         this.labelProductName.TabIndex = 19;
-         this.labelProductName.Text = "Product Name";
-         this.labelProductName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-         // 
-         // labelVersion
-         // 
-         this.labelVersion.Dock = System.Windows.Forms.DockStyle.Fill;
-         this.labelVersion.Location = new System.Drawing.Point(182, 32);
-         this.labelVersion.Margin = new System.Windows.Forms.Padding(6, 0, 3, 0);
-         this.labelVersion.MaximumSize = new System.Drawing.Size(0, 17);
-         this.labelVersion.Name = "labelVersion";
-         this.labelVersion.Size = new System.Drawing.Size(349, 17);
-         this.labelVersion.TabIndex = 0;
-         this.labelVersion.Text = "Version";
-         this.labelVersion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-         // 
-         // labelCopyright
-         // 
-         this.labelCopyright.Dock = System.Windows.Forms.DockStyle.Fill;
-         this.labelCopyright.Location = new System.Drawing.Point(182, 64);
-         this.labelCopyright.Margin = new System.Windows.Forms.Padding(6, 0, 3, 0);
-         this.labelCopyright.MaximumSize = new System.Drawing.Size(0, 17);
-         this.labelCopyright.Name = "labelCopyright";
-         this.labelCopyright.Size = new System.Drawing.Size(349, 17);
-         this.labelCopyright.TabIndex = 21;
-         this.labelCopyright.Text = "Copyright";
-         this.labelCopyright.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-         // 
-         // labelCompanyName
-         // 
-         this.labelCompanyName.Dock = System.Windows.Forms.DockStyle.Fill;
-         this.labelCompanyName.Location = new System.Drawing.Point(182, 96);
-         this.labelCompanyName.Margin = new System.Windows.Forms.Padding(6, 0, 3, 0);
-         this.labelCompanyName.MaximumSize = new System.Drawing.Size(0, 17);
-         this.labelCompanyName.Name = "labelCompanyName";
-         this.labelCompanyName.Size = new System.Drawing.Size(349, 17);
-         this.labelCompanyName.TabIndex = 22;
-         this.labelCompanyName.Text = "Company Name";
-         this.labelCompanyName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-         // 
-         // okButton
-         // 
-         this.okButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-         this.okButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-         this.okButton.Location = new System.Drawing.Point(456, 294);
-         this.okButton.Name = "okButton";
-         this.okButton.Size = new System.Drawing.Size(75, 23);
-         this.okButton.TabIndex = 24;
-         this.okButton.Text = "&OK";
-         // 
-         // logoPictureBox
-         // 
-         this.logoPictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
-         this.logoPictureBox.Image = global::RumahScarlett.Presentation.Properties.Resources.About_logo;
-         this.logoPictureBox.Location = new System.Drawing.Point(3, 3);
-         this.logoPictureBox.Name = "logoPictureBox";
-         this.tableLayoutPanel.SetRowSpan(this.logoPictureBox, 6);
-         this.logoPictureBox.Size = new System.Drawing.Size(170, 314);
-         this.logoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-         this.logoPictureBox.TabIndex = 12;
-         this.logoPictureBox.TabStop = false;
          // 
          // groupBox1
          // 
@@ -326,6 +256,76 @@
          this.linkLabel4.Tag = "github";
          this.linkLabel4.Text = "@izhal27";
          // 
+         // logoPictureBox
+         // 
+         this.logoPictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
+         this.logoPictureBox.Image = global::RumahScarlett.Presentation.Properties.Resources.About_logo;
+         this.logoPictureBox.Location = new System.Drawing.Point(3, 3);
+         this.logoPictureBox.Name = "logoPictureBox";
+         this.tableLayoutPanel.SetRowSpan(this.logoPictureBox, 6);
+         this.logoPictureBox.Size = new System.Drawing.Size(170, 314);
+         this.logoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+         this.logoPictureBox.TabIndex = 12;
+         this.logoPictureBox.TabStop = false;
+         // 
+         // labelProductName
+         // 
+         this.labelProductName.Dock = System.Windows.Forms.DockStyle.Fill;
+         this.labelProductName.Location = new System.Drawing.Point(182, 0);
+         this.labelProductName.Margin = new System.Windows.Forms.Padding(6, 0, 3, 0);
+         this.labelProductName.MaximumSize = new System.Drawing.Size(0, 17);
+         this.labelProductName.Name = "labelProductName";
+         this.labelProductName.Size = new System.Drawing.Size(349, 17);
+         this.labelProductName.TabIndex = 19;
+         this.labelProductName.Text = "Product Name";
+         this.labelProductName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+         // 
+         // labelVersion
+         // 
+         this.labelVersion.Dock = System.Windows.Forms.DockStyle.Fill;
+         this.labelVersion.Location = new System.Drawing.Point(182, 32);
+         this.labelVersion.Margin = new System.Windows.Forms.Padding(6, 0, 3, 0);
+         this.labelVersion.MaximumSize = new System.Drawing.Size(0, 17);
+         this.labelVersion.Name = "labelVersion";
+         this.labelVersion.Size = new System.Drawing.Size(349, 17);
+         this.labelVersion.TabIndex = 0;
+         this.labelVersion.Text = "Version";
+         this.labelVersion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+         // 
+         // labelCopyright
+         // 
+         this.labelCopyright.Dock = System.Windows.Forms.DockStyle.Fill;
+         this.labelCopyright.Location = new System.Drawing.Point(182, 64);
+         this.labelCopyright.Margin = new System.Windows.Forms.Padding(6, 0, 3, 0);
+         this.labelCopyright.MaximumSize = new System.Drawing.Size(0, 17);
+         this.labelCopyright.Name = "labelCopyright";
+         this.labelCopyright.Size = new System.Drawing.Size(349, 17);
+         this.labelCopyright.TabIndex = 21;
+         this.labelCopyright.Text = "Copyright";
+         this.labelCopyright.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+         // 
+         // labelCompanyName
+         // 
+         this.labelCompanyName.Dock = System.Windows.Forms.DockStyle.Fill;
+         this.labelCompanyName.Location = new System.Drawing.Point(182, 96);
+         this.labelCompanyName.Margin = new System.Windows.Forms.Padding(6, 0, 3, 0);
+         this.labelCompanyName.MaximumSize = new System.Drawing.Size(0, 17);
+         this.labelCompanyName.Name = "labelCompanyName";
+         this.labelCompanyName.Size = new System.Drawing.Size(349, 17);
+         this.labelCompanyName.TabIndex = 22;
+         this.labelCompanyName.Text = "Company Name";
+         this.labelCompanyName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+         // 
+         // okButton
+         // 
+         this.okButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+         this.okButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+         this.okButton.Location = new System.Drawing.Point(456, 294);
+         this.okButton.Name = "okButton";
+         this.okButton.Size = new System.Drawing.Size(75, 23);
+         this.okButton.TabIndex = 24;
+         this.okButton.Text = "&OK";
+         // 
          // TentangView
          // 
          this.AcceptButton = this.okButton;
@@ -343,7 +343,6 @@
          this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
          this.Text = "Tentang";
          this.tableLayoutPanel.ResumeLayout(false);
-         ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).EndInit();
          this.groupBox1.ResumeLayout(false);
          this.tableLayoutPanel2.ResumeLayout(false);
          this.tableLayoutPanel2.PerformLayout();
@@ -353,6 +352,7 @@
          ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).EndInit();
          this.ResumeLayout(false);
 
       }

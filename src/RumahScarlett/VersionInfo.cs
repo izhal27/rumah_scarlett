@@ -3,7 +3,7 @@
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyCompany("Rumah Scarlett")]
+[assembly: AssemblyCompany("Risal Walangadi")]
 [assembly: AssemblyCopyright("Copyright © 2019 Risal Walangadi")]
 
 // Version information for an assembly consists of the following four values:
