@@ -159,9 +159,16 @@ namespace RumahScarlett.Presentation.Presenters.Penjualan
             {
                var view = new BayarPenjualanEntryView(_listPenjualanDetails);
                view.OnBayarPenjualan += View_OnBayarPenjualan;
-               view.ShowDialog();
 
-               new UangKembaliView(_uangKembali).ShowDialog();
+               if(view.ShowDialog() == DialogResult.OK)
+               {
+                  if (Messages.Confirm("Cetak Nota Penjualan?"))
+                  {
+                     _view_OnCetakNota(null, null);
+                  }
+
+                  new UangKembaliView(_uangKembali).ShowDialog();
+               }
             }
          }
          catch (ArgumentException ex)
@@ -201,13 +208,8 @@ namespace RumahScarlett.Presentation.Presenters.Penjualan
                _view.LabelGrandTotal.Text = (_penjualanModel.PenjualanDetails.Sum(pd => pd.total) - _penjualanModel.diskon).ToString("N0");
             }
 
-            bayarPenjualanEntryView.Close();
+            bayarPenjualanEntryView.DialogResult = DialogResult.OK;
             ((Form)_view).ActiveControl = _view.TextBoxNoNota;
-            
-            if (Messages.Confirm("Cetak Nota Penjualan?"))
-            {
-               _view_OnCetakNota(null, null);
-            }
          }
          catch (ArgumentException ex)
          {
