@@ -63,6 +63,16 @@ namespace RumahScarlett.Presentation.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap About_logo {
+            get {
+                object obj = ResourceManager.GetObject("About_logo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap buy_32 {
             get {
                 object obj = ResourceManager.GetObject("buy_32", resourceCulture);
@@ -76,6 +86,46 @@ namespace RumahScarlett.Presentation.Properties {
         internal static System.Drawing.Bitmap cream_32 {
             get {
                 object obj = ResourceManager.GetObject("cream_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap facebook_24 {
+            get {
+                object obj = ResourceManager.GetObject("facebook_24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap github_logo_24 {
+            get {
+                object obj = ResourceManager.GetObject("github-logo_24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap gmail_24 {
+            get {
+                object obj = ResourceManager.GetObject("gmail_24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap instagram_24 {
+            get {
+                object obj = ResourceManager.GetObject("instagram_24", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -106,6 +156,26 @@ namespace RumahScarlett.Presentation.Properties {
         internal static System.Drawing.Bitmap supplier_32 {
             get {
                 object obj = ResourceManager.GetObject("supplier_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap twitter_24 {
+            get {
+                object obj = ResourceManager.GetObject("twitter_24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap whatsapp_24 {
+            get {
+                object obj = ResourceManager.GetObject("whatsapp_24", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

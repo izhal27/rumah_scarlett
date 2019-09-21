@@ -33,12 +33,13 @@ namespace RumahScarlett.Presentation.Views
       public event EventHandler<MainViewEventArgs> OnLaporanPenjualanViewClick;
       public event EventHandler<MainViewEventArgs> OnLaporanPembelianViewClick;
       public event EventHandler<MainViewEventArgs> OnLaporanPengeluaranViewClick;
-      public event EventHandler OnLaporanTransaksiByDateClick;
-      public event EventHandler OnLaporanStatusBarangClick;
-      public event EventHandler OnLaporanLabaRugiClick;
-      public event EventHandler OnPengaturanClick;
-      public event EventHandler OnBackupDatabaseClick;
-      public event EventHandler OnRestoreDatabaseClick;
+      public event EventHandler OnLaporanTransaksiByDateViewClick;
+      public event EventHandler OnLaporanStatusBarangViewClick;
+      public event EventHandler OnLaporanLabaRugiViewClick;
+      public event EventHandler OnPengaturanViewClick;
+      public event EventHandler OnBackupDatabaseViewClick;
+      public event EventHandler OnRestoreDatabaseViewClick;
+      public event EventHandler OnTentangViewClick;
 
       public MainView()
       {
@@ -163,32 +164,37 @@ namespace RumahScarlett.Presentation.Views
 
       private void toolStripMenuItemTransaksiByDate_Click(object sender, EventArgs e)
       {
-         OnLaporanTransaksiByDateClick?.Invoke(sender, e);
+         OnLaporanTransaksiByDateViewClick?.Invoke(sender, e);
       }
 
       private void toolStripMenuItemStatusBarang_Click(object sender, EventArgs e)
       {
-         OnLaporanStatusBarangClick?.Invoke(sender, e);
+         OnLaporanStatusBarangViewClick?.Invoke(sender, e);
       }
 
       private void toolStripMenuItemLabaRugi_Click(object sender, EventArgs e)
       {
-         OnLaporanLabaRugiClick?.Invoke(sender, e);
+         OnLaporanLabaRugiViewClick?.Invoke(sender, e);
       }
 
       private void toolStripMenuItemPengaturan_Click(object sender, EventArgs e)
       {
-         OnPengaturanClick?.Invoke(sender, e);
+         OnPengaturanViewClick?.Invoke(sender, e);
       }
 
       private void toolStripMenuItemBackupDatabase_Click(object sender, EventArgs e)
       {
-         OnBackupDatabaseClick?.Invoke(sender, e);
+         OnBackupDatabaseViewClick?.Invoke(sender, e);
       }
 
       private void toolStripMenuItemRestoreDatabase_Click(object sender, EventArgs e)
       {
-         OnRestoreDatabaseClick?.Invoke(sender, e);
+         OnRestoreDatabaseViewClick?.Invoke(sender, e);
+      }
+
+      private void toolStripMenuItemTentang_Click(object sender, EventArgs e)
+      {
+         OnTentangViewClick?.Invoke(sender, e);
       }
    }
 

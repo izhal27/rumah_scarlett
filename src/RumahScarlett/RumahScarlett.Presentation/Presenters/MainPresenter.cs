@@ -12,6 +12,7 @@ using RumahScarlett.Presentation.Presenters.Penjualan;
 using RumahScarlett.Presentation.Presenters.PenyesuaianStok;
 using RumahScarlett.Presentation.Presenters.Satuan;
 using RumahScarlett.Presentation.Presenters.Supplier;
+using RumahScarlett.Presentation.Presenters.Tentang;
 using RumahScarlett.Presentation.Presenters.Tipe;
 using RumahScarlett.Presentation.Views;
 using RumahScarlett.Presentation.Views.Database;
@@ -53,12 +54,13 @@ namespace RumahScarlett.Presentation.Presenters
          _view.OnLaporanPenjualanViewClick += _view_OnLaporanPenjualanViewClick;
          _view.OnLaporanPembelianViewClick += _view_OnLaporanPembelianViewClick;
          _view.OnLaporanPengeluaranViewClick += _view_OnLaporanPengeluaranViewClick;
-         _view.OnLaporanTransaksiByDateClick += _view_OnLaporanTransaksiByDateClick;
-         _view.OnLaporanStatusBarangClick += _view_OnLaporanStatusBarangClick;
-         _view.OnLaporanLabaRugiClick += _view_OnLaporanLabaRugiClick;
-         _view.OnPengaturanClick += _view_OnPengaturanClick;
-         _view.OnBackupDatabaseClick += _view_OnBackupDatabaseClick;
-         _view.OnRestoreDatabaseClick += _view_OnRestoreDatabaseClick;
+         _view.OnLaporanTransaksiByDateViewClick += _view_OnLaporanTransaksiByDateViewClick;
+         _view.OnLaporanStatusBarangViewClick += _view_OnLaporanStatusBarangViewClick;
+         _view.OnLaporanLabaRugiViewClick += _view_OnLaporanLabaRugiViewClick;
+         _view.OnPengaturanViewClick += _view_OnPengaturanViewClick;
+         _view.OnBackupDatabaseViewClick += _view_OnBackupDatabaseViewClick;
+         _view.OnRestoreDatabaseViewClick += _view_OnRestoreDatabaseViewClick;
+         _view.OnTentangViewClick += _view_OnTentangViewClick;
       }
 
       private void _view_OnTipeViewClick(object sender, MainViewEventArgs e)
@@ -153,7 +155,7 @@ namespace RumahScarlett.Presentation.Presenters
          ShowChildForm(view, e);
       }
 
-      private void _view_OnLaporanTransaksiByDateClick(object sender, EventArgs e)
+      private void _view_OnLaporanTransaksiByDateViewClick(object sender, EventArgs e)
       {
          using (new WaitCursorHandler())
          {
@@ -161,7 +163,7 @@ namespace RumahScarlett.Presentation.Presenters
          }
       }
 
-      private void _view_OnLaporanStatusBarangClick(object sender, EventArgs e)
+      private void _view_OnLaporanStatusBarangViewClick(object sender, EventArgs e)
       {
          using (new WaitCursorHandler())
          {
@@ -169,7 +171,7 @@ namespace RumahScarlett.Presentation.Presenters
          }
       }
 
-      private void _view_OnLaporanLabaRugiClick(object sender, EventArgs e)
+      private void _view_OnLaporanLabaRugiViewClick(object sender, EventArgs e)
       {
          using (new WaitCursorHandler())
          {
@@ -177,7 +179,7 @@ namespace RumahScarlett.Presentation.Presenters
          }
       }
 
-      private void _view_OnPengaturanClick(object sender, EventArgs e)
+      private void _view_OnPengaturanViewClick(object sender, EventArgs e)
       {
          using (new WaitCursorHandler())
          {
@@ -185,7 +187,7 @@ namespace RumahScarlett.Presentation.Presenters
          }
       }
 
-      private void _view_OnBackupDatabaseClick(object sender, EventArgs e)
+      private void _view_OnBackupDatabaseViewClick(object sender, EventArgs e)
       {
          using (new WaitCursorHandler())
          {
@@ -193,11 +195,19 @@ namespace RumahScarlett.Presentation.Presenters
          }
       }
 
-      private void _view_OnRestoreDatabaseClick(object sender, EventArgs e)
+      private void _view_OnRestoreDatabaseViewClick(object sender, EventArgs e)
       {
          using (new WaitCursorHandler())
          {
             new BackupRestoreDatabasePresenter(DatabaseMethod.Restore).GetView.ShowView();
+         }
+      }
+
+      private void _view_OnTentangViewClick(object sender, EventArgs e)
+      {
+         using (new WaitCursorHandler())
+         {
+            new TentangPresenter().GetView.ShowView();
          }
       }
 

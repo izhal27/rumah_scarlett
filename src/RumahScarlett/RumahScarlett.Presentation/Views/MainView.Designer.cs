@@ -387,8 +387,9 @@
          // toolStripMenuItemTentang
          // 
          this.toolStripMenuItemTentang.Name = "toolStripMenuItemTentang";
-         this.toolStripMenuItemTentang.Size = new System.Drawing.Size(118, 22);
+         this.toolStripMenuItemTentang.Size = new System.Drawing.Size(152, 22);
          this.toolStripMenuItemTentang.Text = "&Tentang";
+         this.toolStripMenuItemTentang.Click += new System.EventHandler(this.toolStripMenuItemTentang_Click);
          // 
          // toolStripMain
          // 

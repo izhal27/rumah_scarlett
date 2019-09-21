@@ -23,11 +23,12 @@ namespace RumahScarlett.Presentation.Views
       event EventHandler<MainViewEventArgs> OnLaporanPenjualanViewClick;
       event EventHandler<MainViewEventArgs> OnLaporanPembelianViewClick;
       event EventHandler<MainViewEventArgs> OnLaporanPengeluaranViewClick;
-      event EventHandler OnLaporanTransaksiByDateClick;
-      event EventHandler OnLaporanStatusBarangClick;
-      event EventHandler OnLaporanLabaRugiClick;
-      event EventHandler OnPengaturanClick;
-      event EventHandler OnBackupDatabaseClick;
-      event EventHandler OnRestoreDatabaseClick;
+      event EventHandler OnLaporanTransaksiByDateViewClick;
+      event EventHandler OnLaporanStatusBarangViewClick;
+      event EventHandler OnLaporanLabaRugiViewClick;
+      event EventHandler OnPengaturanViewClick;
+      event EventHandler OnBackupDatabaseViewClick;
+      event EventHandler OnRestoreDatabaseViewClick;
+      event EventHandler OnTentangViewClick;
    }
 }
