@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WeifenLuo.WinFormsUI.Docking;
 
 namespace RumahScarlett.Presentation.Views
 {
@@ -30,5 +31,17 @@ namespace RumahScarlett.Presentation.Views
       event EventHandler OnBackupDatabaseViewClick;
       event EventHandler OnRestoreDatabaseViewClick;
       event EventHandler OnTentangViewClick;
+      event EventHandler<MainViewEventArgs> OnReturnPenjualanViewClick;
+      event EventHandler<MainViewEventArgs> OnReturnPembelianViewClick;
+   }
+
+   public class MainViewEventArgs : EventArgs
+   {
+      public DockPanel DockPanel { get; }
+
+      public MainViewEventArgs(DockPanel dockPanel)
+      {
+         DockPanel = dockPanel;
+      }
    }
 }

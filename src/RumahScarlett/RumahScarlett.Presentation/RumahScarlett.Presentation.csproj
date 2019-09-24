@@ -160,8 +160,10 @@
     <Compile Include="Presenters\Pengeluaran\PengeluaranPresenter.cs" />
     <Compile Include="Presenters\Penjualan\ILaporanPenjualanPresenter.cs" />
     <Compile Include="Presenters\Penjualan\IPenjualanPresenter.cs" />
+    <Compile Include="Presenters\Penjualan\IPenjualanReturnPresenter.cs" />
     <Compile Include="Presenters\Penjualan\LaporanPenjualanPresenter.cs" />
     <Compile Include="Presenters\Penjualan\PenjualanPresenter.cs" />
+    <Compile Include="Presenters\Penjualan\PenjualanReturnPresenter.cs" />
     <Compile Include="Presenters\PenyesuaianStok\IPenyesuaianStokPresenter.cs" />
     <Compile Include="Presenters\PenyesuaianStok\PenyesuaianStokPresenter.cs" />
     <Compile Include="Presenters\Satuan\ISatuanPresenter.cs" />
@@ -462,11 +464,18 @@
     <Compile Include="Views\Penjualan\IBayarPenjualanEntryView.cs" />
     <Compile Include="Views\Penjualan\ILaporanPenjualanView.cs" />
     <Compile Include="Views\Penjualan\IPenjualanView.cs" />
+    <Compile Include="Views\Penjualan\IReturnPenjualanView.cs" />
     <Compile Include="Views\Penjualan\LaporanPenjualanView.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\Penjualan\LaporanPenjualanView.Designer.cs">
       <DependentUpon>LaporanPenjualanView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Penjualan\ReturnPenjualanView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Penjualan\ReturnPenjualanView.Designer.cs">
+      <DependentUpon>ReturnPenjualanView.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Penjualan\PenjualanView.cs">
       <SubType>Form</SubType>
@@ -691,6 +700,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Penjualan\PenjualanView.resx">
       <DependentUpon>PenjualanView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Penjualan\ReturnPenjualanView.resx">
+      <DependentUpon>ReturnPenjualanView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Penjualan\UangKembaliView.resx">
       <DependentUpon>UangKembaliView.cs</DependentUpon>

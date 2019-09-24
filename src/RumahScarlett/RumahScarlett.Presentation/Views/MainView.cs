@@ -40,6 +40,8 @@ namespace RumahScarlett.Presentation.Views
       public event EventHandler OnBackupDatabaseViewClick;
       public event EventHandler OnRestoreDatabaseViewClick;
       public event EventHandler OnTentangViewClick;
+      public event EventHandler<MainViewEventArgs> OnReturnPenjualanViewClick;
+      public event EventHandler<MainViewEventArgs> OnReturnPembelianViewClick;
 
       public MainView()
       {
@@ -199,15 +201,15 @@ namespace RumahScarlett.Presentation.Views
       {
          OnTentangViewClick?.Invoke(sender, e);
       }
-   }
 
-   public class MainViewEventArgs : EventArgs
-   {
-      public DockPanel DockPanel { get; }
-
-      public MainViewEventArgs(DockPanel dockPanel)
+      private void toolStripMenuItemReturnPenjualan_Click(object sender, EventArgs e)
       {
-         DockPanel = dockPanel;
+         OnReturnPenjualanViewClick?.Invoke(sender, _eventArgs);
+      }
+
+      private void toolStripMenuItemReturnPembelian_Click(object sender, EventArgs e)
+      {
+         OnReturnPembelianViewClick?.Invoke(sender, _eventArgs);
       }
    }
 }

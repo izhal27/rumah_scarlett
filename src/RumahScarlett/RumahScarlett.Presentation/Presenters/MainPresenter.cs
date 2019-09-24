@@ -61,6 +61,8 @@ namespace RumahScarlett.Presentation.Presenters
          _view.OnBackupDatabaseViewClick += _view_OnBackupDatabaseViewClick;
          _view.OnRestoreDatabaseViewClick += _view_OnRestoreDatabaseViewClick;
          _view.OnTentangViewClick += _view_OnTentangViewClick;
+         _view.OnReturnPenjualanViewClick += _view_OnReturnPenjualanViewClick;
+         _view.OnReturnPembelianViewClick += _view_OnReturnPembelianViewClick;
       }
 
       private void _view_OnTipeViewClick(object sender, MainViewEventArgs e)
@@ -209,6 +211,17 @@ namespace RumahScarlett.Presentation.Presenters
          {
             new TentangPresenter().GetView.ShowView();
          }
+      }
+
+      private void _view_OnReturnPenjualanViewClick(object sender, MainViewEventArgs e)
+      {
+         var view = (DockContent)new PenjualanReturnPresenter().GetView;
+         ShowChildForm(view, e);
+      }
+
+      private void _view_OnReturnPembelianViewClick(object sender, MainViewEventArgs e)
+      {
+         throw new NotImplementedException();
       }
 
       /// <summary>
