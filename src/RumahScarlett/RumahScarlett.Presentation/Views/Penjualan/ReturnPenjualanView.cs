@@ -19,11 +19,26 @@ namespace RumahScarlett.Presentation.Views.Penjualan
       public event EventHandler OnButtonHapusClick;
       public event EventHandler OnButtonSimpanClick;
       public event EventHandler OnButtonBersihkanClick;
-      public event EventHandler OnButtonCetakClick;
+      public event EventHandler OnButtonCetakNotaClick;
+
+      public ListDataGrid ListDataGrid
+      {
+         get { return listDataGrid; }
+      }
 
       public TextBox TextBoxNoNotaReturn
       {
          get { return textBoxNoNotaRetrun; }
+      }
+
+      public Label LabelQtyReturn
+      {
+         get { return labelQtyReturn; }
+      }
+
+      public Label LabelTotalReturn
+      {
+         get { return labelTotalReturn; }
       }
 
       public TextBox TextBoxCariNoNota
@@ -65,10 +80,11 @@ namespace RumahScarlett.Presentation.Views.Penjualan
 
       private void ReturnPenjualanView_Load(object sender, EventArgs e)
       {
+         labelTanggalReturn.Text = DateTime.Now.ToShortDateString();
          OnLoadView?.Invoke(sender, e);
          ActiveControl = buttonTutup;
       }
-      
+
       private void buttonCari_Click(object sender, EventArgs e)
       {
          OnButtonCariClick?.Invoke(sender, e);
@@ -96,7 +112,7 @@ namespace RumahScarlett.Presentation.Views.Penjualan
 
       private void buttonCetak_Click(object sender, EventArgs e)
       {
-         OnButtonCetakClick?.Invoke(sender, e);
+         OnButtonCetakNotaClick?.Invoke(sender, e);
       }
 
       private void buttonTutup_Click(object sender, EventArgs e)

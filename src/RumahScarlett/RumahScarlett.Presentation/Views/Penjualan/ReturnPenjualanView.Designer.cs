@@ -58,15 +58,24 @@
          this.label18 = new System.Windows.Forms.Label();
          this.groupBox2 = new System.Windows.Forms.GroupBox();
          this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-         this.textBoxNoNotaRetrun = new RumahScarlett.Presentation.Views.CommonControls.BaseTextBox();
          this.label27 = new System.Windows.Forms.Label();
          this.label28 = new System.Windows.Forms.Label();
+         this.label20 = new System.Windows.Forms.Label();
+         this.label22 = new System.Windows.Forms.Label();
+         this.label21 = new System.Windows.Forms.Label();
+         this.label23 = new System.Windows.Forms.Label();
+         this.labelTotalReturn = new System.Windows.Forms.Label();
+         this.labelQtyReturn = new System.Windows.Forms.Label();
+         this.label19 = new System.Windows.Forms.Label();
+         this.textBoxNoNotaRetrun = new RumahScarlett.Presentation.Views.CommonControls.BaseTextBox();
+         this.label24 = new System.Windows.Forms.Label();
+         this.labelTanggalReturn = new System.Windows.Forms.Label();
          this.tlpButtons = new System.Windows.Forms.TableLayoutPanel();
          this.buttonTambah = new System.Windows.Forms.Button();
          this.buttonBersihkan = new System.Windows.Forms.Button();
          this.buttonHapus = new System.Windows.Forms.Button();
          this.buttonTutup = new System.Windows.Forms.Button();
-         this.buttonCetak = new System.Windows.Forms.Button();
+         this.buttonCetakNota = new System.Windows.Forms.Button();
          this.buttonSimpan = new System.Windows.Forms.Button();
          ((System.ComponentModel.ISupportInitialize)(this.listDataGrid)).BeginInit();
          this.groupBox1.SuspendLayout();
@@ -90,17 +99,17 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
          this.listDataGrid.AutoSizeColumnsMode = Syncfusion.WinForms.DataGrid.Enums.AutoSizeColumnsMode.Fill;
-         this.listDataGrid.Location = new System.Drawing.Point(303, 58);
+         this.listDataGrid.Location = new System.Drawing.Point(306, 58);
          this.listDataGrid.Name = "listDataGrid";
          this.listDataGrid.ShowRowHeader = true;
-         this.listDataGrid.Size = new System.Drawing.Size(511, 324);
+         this.listDataGrid.Size = new System.Drawing.Size(508, 375);
          this.listDataGrid.TabIndex = 1;
          this.listDataGrid.Text = "listDataGrid1";
          // 
          // groupBox1
          // 
          this.groupBox1.Controls.Add(this.tableLayoutPanel1);
-         this.groupBox1.Location = new System.Drawing.Point(12, 119);
+         this.groupBox1.Location = new System.Drawing.Point(12, 58);
          this.groupBox1.Name = "groupBox1";
          this.groupBox1.Size = new System.Drawing.Size(285, 265);
          this.groupBox1.TabIndex = 2;
@@ -412,9 +421,9 @@
          // groupBox2
          // 
          this.groupBox2.Controls.Add(this.tableLayoutPanel2);
-         this.groupBox2.Location = new System.Drawing.Point(12, 58);
+         this.groupBox2.Location = new System.Drawing.Point(12, 329);
          this.groupBox2.Name = "groupBox2";
-         this.groupBox2.Size = new System.Drawing.Size(285, 55);
+         this.groupBox2.Size = new System.Drawing.Size(285, 145);
          this.groupBox2.TabIndex = 3;
          this.groupBox2.TabStop = false;
          this.groupBox2.Text = "[ DATA RETURN PENJUALAN ]";
@@ -428,28 +437,27 @@
          this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 64F));
          this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
          this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-         this.tableLayoutPanel2.Controls.Add(this.textBoxNoNotaRetrun, 2, 0);
          this.tableLayoutPanel2.Controls.Add(this.label27, 0, 0);
          this.tableLayoutPanel2.Controls.Add(this.label28, 1, 0);
+         this.tableLayoutPanel2.Controls.Add(this.label20, 1, 1);
+         this.tableLayoutPanel2.Controls.Add(this.label22, 1, 2);
+         this.tableLayoutPanel2.Controls.Add(this.label21, 0, 3);
+         this.tableLayoutPanel2.Controls.Add(this.label23, 1, 3);
+         this.tableLayoutPanel2.Controls.Add(this.labelTotalReturn, 2, 3);
+         this.tableLayoutPanel2.Controls.Add(this.labelQtyReturn, 2, 2);
+         this.tableLayoutPanel2.Controls.Add(this.label19, 0, 2);
+         this.tableLayoutPanel2.Controls.Add(this.textBoxNoNotaRetrun, 2, 1);
+         this.tableLayoutPanel2.Controls.Add(this.label24, 0, 1);
+         this.tableLayoutPanel2.Controls.Add(this.labelTanggalReturn, 2, 0);
          this.tableLayoutPanel2.Location = new System.Drawing.Point(6, 19);
          this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-         this.tableLayoutPanel2.RowCount = 1;
-         this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-         this.tableLayoutPanel2.Size = new System.Drawing.Size(273, 30);
+         this.tableLayoutPanel2.RowCount = 4;
+         this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+         this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+         this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+         this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+         this.tableLayoutPanel2.Size = new System.Drawing.Size(273, 120);
          this.tableLayoutPanel2.TabIndex = 1;
-         // 
-         // textBoxNoNotaRetrun
-         // 
-         this.textBoxNoNotaRetrun.Anchor = System.Windows.Forms.AnchorStyles.Left;
-         this.textBoxNoNotaRetrun.BeforeTouchSize = new System.Drawing.Size(150, 20);
-         this.textBoxNoNotaRetrun.Location = new System.Drawing.Point(83, 5);
-         this.textBoxNoNotaRetrun.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
-         this.textBoxNoNotaRetrun.Name = "textBoxNoNotaRetrun";
-         this.textBoxNoNotaRetrun.ReadOnly = true;
-         this.textBoxNoNotaRetrun.Size = new System.Drawing.Size(150, 20);
-         this.textBoxNoNotaRetrun.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
-         this.textBoxNoNotaRetrun.TabIndex = 10;
-         this.textBoxNoNotaRetrun.TabStop = false;
          // 
          // label27
          // 
@@ -457,9 +465,9 @@
          this.label27.AutoSize = true;
          this.label27.Location = new System.Drawing.Point(3, 8);
          this.label27.Name = "label27";
-         this.label27.Size = new System.Drawing.Size(47, 13);
+         this.label27.Size = new System.Drawing.Size(46, 13);
          this.label27.TabIndex = 0;
-         this.label27.Text = "No Nota";
+         this.label27.Text = "Tanggal";
          // 
          // label28
          // 
@@ -470,6 +478,109 @@
          this.label28.Size = new System.Drawing.Size(10, 13);
          this.label28.TabIndex = 0;
          this.label28.Text = ":";
+         // 
+         // label20
+         // 
+         this.label20.Anchor = System.Windows.Forms.AnchorStyles.None;
+         this.label20.AutoSize = true;
+         this.label20.Location = new System.Drawing.Point(67, 38);
+         this.label20.Name = "label20";
+         this.label20.Size = new System.Drawing.Size(10, 13);
+         this.label20.TabIndex = 0;
+         this.label20.Text = ":";
+         // 
+         // label22
+         // 
+         this.label22.Anchor = System.Windows.Forms.AnchorStyles.None;
+         this.label22.AutoSize = true;
+         this.label22.Location = new System.Drawing.Point(67, 68);
+         this.label22.Name = "label22";
+         this.label22.Size = new System.Drawing.Size(10, 13);
+         this.label22.TabIndex = 0;
+         this.label22.Text = ":";
+         // 
+         // label21
+         // 
+         this.label21.Anchor = System.Windows.Forms.AnchorStyles.Left;
+         this.label21.AutoSize = true;
+         this.label21.Location = new System.Drawing.Point(3, 98);
+         this.label21.Name = "label21";
+         this.label21.Size = new System.Drawing.Size(31, 13);
+         this.label21.TabIndex = 0;
+         this.label21.Text = "Total";
+         // 
+         // label23
+         // 
+         this.label23.Anchor = System.Windows.Forms.AnchorStyles.None;
+         this.label23.AutoSize = true;
+         this.label23.Location = new System.Drawing.Point(67, 98);
+         this.label23.Name = "label23";
+         this.label23.Size = new System.Drawing.Size(10, 13);
+         this.label23.TabIndex = 0;
+         this.label23.Text = ":";
+         // 
+         // labelTotalReturn
+         // 
+         this.labelTotalReturn.Anchor = System.Windows.Forms.AnchorStyles.Left;
+         this.labelTotalReturn.AutoSize = true;
+         this.labelTotalReturn.Location = new System.Drawing.Point(83, 98);
+         this.labelTotalReturn.Name = "labelTotalReturn";
+         this.labelTotalReturn.Size = new System.Drawing.Size(13, 13);
+         this.labelTotalReturn.TabIndex = 0;
+         this.labelTotalReturn.Text = "0";
+         // 
+         // labelQtyReturn
+         // 
+         this.labelQtyReturn.Anchor = System.Windows.Forms.AnchorStyles.Left;
+         this.labelQtyReturn.AutoSize = true;
+         this.labelQtyReturn.Location = new System.Drawing.Point(83, 68);
+         this.labelQtyReturn.Name = "labelQtyReturn";
+         this.labelQtyReturn.Size = new System.Drawing.Size(13, 13);
+         this.labelQtyReturn.TabIndex = 0;
+         this.labelQtyReturn.Text = "0";
+         // 
+         // label19
+         // 
+         this.label19.Anchor = System.Windows.Forms.AnchorStyles.Left;
+         this.label19.AutoSize = true;
+         this.label19.Location = new System.Drawing.Point(3, 68);
+         this.label19.Name = "label19";
+         this.label19.Size = new System.Drawing.Size(23, 13);
+         this.label19.TabIndex = 0;
+         this.label19.Text = "Qty";
+         // 
+         // textBoxNoNotaRetrun
+         // 
+         this.textBoxNoNotaRetrun.Anchor = System.Windows.Forms.AnchorStyles.Left;
+         this.textBoxNoNotaRetrun.BeforeTouchSize = new System.Drawing.Size(150, 20);
+         this.textBoxNoNotaRetrun.Location = new System.Drawing.Point(83, 35);
+         this.textBoxNoNotaRetrun.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
+         this.textBoxNoNotaRetrun.Name = "textBoxNoNotaRetrun";
+         this.textBoxNoNotaRetrun.ReadOnly = true;
+         this.textBoxNoNotaRetrun.Size = new System.Drawing.Size(150, 20);
+         this.textBoxNoNotaRetrun.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
+         this.textBoxNoNotaRetrun.TabIndex = 10;
+         this.textBoxNoNotaRetrun.TabStop = false;
+         // 
+         // label24
+         // 
+         this.label24.Anchor = System.Windows.Forms.AnchorStyles.Left;
+         this.label24.AutoSize = true;
+         this.label24.Location = new System.Drawing.Point(3, 38);
+         this.label24.Name = "label24";
+         this.label24.Size = new System.Drawing.Size(47, 13);
+         this.label24.TabIndex = 0;
+         this.label24.Text = "No Nota";
+         // 
+         // labelTanggalReturn
+         // 
+         this.labelTanggalReturn.Anchor = System.Windows.Forms.AnchorStyles.Left;
+         this.labelTanggalReturn.AutoSize = true;
+         this.labelTanggalReturn.Location = new System.Drawing.Point(83, 8);
+         this.labelTanggalReturn.Name = "labelTanggalReturn";
+         this.labelTanggalReturn.Size = new System.Drawing.Size(10, 13);
+         this.labelTanggalReturn.TabIndex = 0;
+         this.labelTanggalReturn.Text = ":";
          // 
          // tlpButtons
          // 
@@ -487,9 +598,9 @@
          this.tlpButtons.Controls.Add(this.buttonBersihkan, 3, 0);
          this.tlpButtons.Controls.Add(this.buttonHapus, 1, 0);
          this.tlpButtons.Controls.Add(this.buttonTutup, 5, 0);
-         this.tlpButtons.Controls.Add(this.buttonCetak, 4, 0);
+         this.tlpButtons.Controls.Add(this.buttonCetakNota, 4, 0);
          this.tlpButtons.Controls.Add(this.buttonSimpan, 2, 0);
-         this.tlpButtons.Location = new System.Drawing.Point(303, 388);
+         this.tlpButtons.Location = new System.Drawing.Point(303, 439);
          this.tlpButtons.Name = "tlpButtons";
          this.tlpButtons.RowCount = 1;
          this.tlpButtons.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -544,17 +655,17 @@
          this.buttonTutup.UseVisualStyleBackColor = true;
          this.buttonTutup.Click += new System.EventHandler(this.buttonTutup_Click);
          // 
-         // buttonCetak
+         // buttonCetakNota
          // 
-         this.buttonCetak.Anchor = System.Windows.Forms.AnchorStyles.Left;
-         this.buttonCetak.Location = new System.Drawing.Point(327, 6);
-         this.buttonCetak.Name = "buttonCetak";
-         this.buttonCetak.Size = new System.Drawing.Size(75, 23);
-         this.buttonCetak.TabIndex = 99;
-         this.buttonCetak.Tag = "Cetak";
-         this.buttonCetak.Text = "&Cetak";
-         this.buttonCetak.UseVisualStyleBackColor = true;
-         this.buttonCetak.Click += new System.EventHandler(this.buttonCetak_Click);
+         this.buttonCetakNota.Anchor = System.Windows.Forms.AnchorStyles.Left;
+         this.buttonCetakNota.Location = new System.Drawing.Point(327, 6);
+         this.buttonCetakNota.Name = "buttonCetakNota";
+         this.buttonCetakNota.Size = new System.Drawing.Size(75, 23);
+         this.buttonCetakNota.TabIndex = 99;
+         this.buttonCetakNota.Tag = "Cetak";
+         this.buttonCetakNota.Text = "&Cetak Nota";
+         this.buttonCetakNota.UseVisualStyleBackColor = true;
+         this.buttonCetakNota.Click += new System.EventHandler(this.buttonCetak_Click);
          // 
          // buttonSimpan
          // 
@@ -572,7 +683,7 @@
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-         this.ClientSize = new System.Drawing.Size(826, 435);
+         this.ClientSize = new System.Drawing.Size(826, 486);
          this.Controls.Add(this.tlpButtons);
          this.Controls.Add(this.groupBox2);
          this.Controls.Add(this.groupBox1);
@@ -627,7 +738,7 @@
       protected System.Windows.Forms.Button buttonBersihkan;
       protected System.Windows.Forms.Button buttonHapus;
       protected System.Windows.Forms.Button buttonTutup;
-      protected System.Windows.Forms.Button buttonCetak;
+      protected System.Windows.Forms.Button buttonCetakNota;
       protected System.Windows.Forms.Button buttonSimpan;
       private System.Windows.Forms.Label label12;
       private System.Windows.Forms.Label label13;
@@ -641,5 +752,14 @@
       private System.Windows.Forms.Label label10;
       private System.Windows.Forms.Label label11;
       private System.Windows.Forms.Label label18;
+      private System.Windows.Forms.Label label19;
+      private System.Windows.Forms.Label label20;
+      private System.Windows.Forms.Label label21;
+      private System.Windows.Forms.Label label22;
+      private System.Windows.Forms.Label labelQtyReturn;
+      private System.Windows.Forms.Label labelTotalReturn;
+      private System.Windows.Forms.Label label23;
+      private System.Windows.Forms.Label label24;
+      private System.Windows.Forms.Label labelTanggalReturn;
    }
 }

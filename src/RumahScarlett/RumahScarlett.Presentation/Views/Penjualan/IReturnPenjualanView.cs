@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RumahScarlett.Presentation.Views.CommonControls;
+using System;
 using System.Windows.Forms;
 
 namespace RumahScarlett.Presentation.Views.Penjualan
@@ -11,9 +12,13 @@ namespace RumahScarlett.Presentation.Views.Penjualan
       event EventHandler OnButtonHapusClick;
       event EventHandler OnButtonSimpanClick;
       event EventHandler OnButtonBersihkanClick;
-      event EventHandler OnButtonCetakClick;
+      event EventHandler OnButtonCetakNotaClick;
+
+      ListDataGrid ListDataGrid { get; }
 
       TextBox TextBoxNoNotaReturn { get; }
+      Label LabelQtyReturn { get; }
+      Label LabelTotalReturn { get; }
 
       TextBox TextBoxCariNoNota { get; }
       Label LabelTanggalPenjualan { get; }
