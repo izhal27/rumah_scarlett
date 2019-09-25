@@ -64,6 +64,7 @@ namespace RumahScarlett.Services.UnitTests.Penjualan
             {
                pelanggan_id = default(uint),
                tanggal = DateTime.Now,
+               status_pembayaran = true,
                diskon = 0,
                PenjualanDetails = listPenjualanDetails
             };
@@ -133,6 +134,30 @@ namespace RumahScarlett.Services.UnitTests.Penjualan
          finally
          {
             _testOutputHelper.WriteLine(formattedJsonStr);
+         }
+      }
+
+      [Fact]
+      public void ShouldReturnModelMatchingNoNota()
+      {
+         PenjualanModel model = null;
+         var noNotaToGet = "20190925000001";
+
+         try
+         {
+            model = (PenjualanModel)_services.GetByNoNota(noNotaToGet);
+         }
+         catch (DataAccessException ex)
+         {
+            _testOutputHelper.WriteLine(ex.DataAccessStatusInfo.GetFormatedValues());
+         }
+
+         Assert.True(model != null);
+         Assert.True(model.no_nota == noNotaToGet);
+
+         if (model != null)
+         {
+            TestsHelper.WriteModel(_testOutputHelper, model);
          }
       }
 

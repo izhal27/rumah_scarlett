@@ -53,6 +53,11 @@ namespace RumahScarlett.Services.Services.Penjualan
       {
          return _repo.GetById(id);
       }
+      
+      public IPenjualanModel GetByNoNota(object noNota)
+      {
+         return _repo.GetByNoNota(noNota);
+      }
 
       public IEnumerable<IPenjualanReportModel> GetReportByDate(object date)
       {

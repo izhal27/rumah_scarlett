@@ -9,5 +9,6 @@ namespace RumahScarlett.Services.Services.Penjualan
 {
    public interface IPenjualanServices : IBaseServicesGetByDate<IPenjualanModel>, IBaseReportServicesByDate<IPenjualanReportModel>
    {
+      IPenjualanModel GetByNoNota(object noNota);
    }
 }

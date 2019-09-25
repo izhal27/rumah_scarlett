@@ -234,6 +234,26 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Penjualan
          }
       }
 
+      public IPenjualanModel GetByNoNota(object noNota)
+      {
+         var dataAccessStatus = new DataAccessStatus();
+
+         using (var context = new DbContext())
+         {
+            var queryStr = "SELECT * FROM penjualan WHERE no_nota = @noNota";
+
+            var model = context.Conn.Query<PenjualanModel>(queryStr, new { noNota }).FirstOrDefault();
+
+            if (model != null)
+            {
+               var pdRepo = new PenjualanDetailRepository(context);
+
+               model.PenjualanDetails = pdRepo.GetAll(model);
+            }
+            return model;
+         }
+      }
+
       public IEnumerable<IPenjualanReportModel> GetReportByDate(object date)
       {
          var dataAccessStatus = new DataAccessStatus();
