@@ -33,6 +33,14 @@ namespace RumahScarlett.Domain.Models.Penjualan
       [Dp.Write(false)]
       [Display(Name = "Barang")]
       public IBarangModel Barang { get; set; }
+      
+      [Browsable(false)]
+      [Display(Name = "Barang ID")]
+      [Range(1, uint.MaxValue, ErrorMessage = "Barang harus diisi !!!")]
+      public uint barang_id
+      {
+         get { return Barang.id != default(uint) ? Barang.id : default(uint); }
+      }
 
       [Dp.Write(false)]
       [Display(Name = "Kode Barang")]
@@ -48,9 +56,9 @@ namespace RumahScarlett.Domain.Models.Penjualan
          get { return Barang.id != default(uint) ? Barang.nama : string.Empty; }
       }
 
-      [Display(Name = "Qty Return")]
+      [Display(Name = "Qty")]
       [DisplayFormat(DataFormatString = "{0:N0}")]
-      public int qty_return { get; set; }
+      public int qty { get; set; }
 
       [Dp.Write(false)]
       [Display(Name = "Harga jual")]
@@ -62,18 +70,18 @@ namespace RumahScarlett.Domain.Models.Penjualan
       [DisplayFormat(DataFormatString = "{0:N0}")]
       public decimal sub_total
       {
-         get { return qty_return > 0 ? (qty_return * harga_jual) : 0; }
+         get { return qty > 0 ? (qty * harga_jual) : 0; }
       }
 
       [Browsable(false)]
-      [Range(1, uint.MaxValue, ErrorMessage = "Status return harus diisi !!!")]
-      public int status_return { get; set; }
+      [Range(1, uint.MaxValue, ErrorMessage = "Status harus diisi !!!")]
+      public int status { get; set; }
 
       [Dp.Write(false)]
-      [Display(Name = "Status Return")]
-      public string status_return_nama
+      [Display(Name = "Status")]
+      public string status_nama
       {
-         get { return DataSourceHelper.StatusReturn.Where(sr => sr.Key == status_return).FirstOrDefault().Value; }
+         get { return DataSourceHelper.StatusReturn.Where(sr => sr.Key == status).FirstOrDefault().Value; }
       }
 
       [Display(Name = "Keterangan")]

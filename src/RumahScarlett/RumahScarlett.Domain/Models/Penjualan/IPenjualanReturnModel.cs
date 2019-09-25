@@ -15,11 +15,12 @@ namespace RumahScarlett.Domain.Models.Penjualan
       IPenjualanModel Penjualan { get; set; }
       uint penjualan_id { get; }
       IBarangModel Barang { get; set; }
+      uint barang_id { get; }
       string barang_kode { get; }
       string barang_nama { get; }
-      int qty_return { get; set; }
+      int qty { get; set; }
       decimal harga_jual { get; set; }
-      int status_return { get; set; }
+      int status { get; set; }
       decimal sub_total { get; }
       string keterangan { get; }
    }
