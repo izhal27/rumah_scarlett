@@ -329,19 +329,19 @@ namespace RumahScarlett.Presentation.Helper
 
          offset += 2;
 
-         // Dibayar
-         graphics.DrawString("DIBAYAR", font8, Brushes.Black, startX, offset);
-         graphics.DrawString(_penjualanModel.jumlah_bayar.ToString("C")
-            , font8, Brushes.Black, endOfLine, offset, formatRight);
-
-         offset += font8.Height;
-
          // Total
          graphics.DrawString("TOTAL", font12.Bold(), Brushes.Black, startX, offset);
          graphics.DrawString(_penjualanModel.grand_total.ToString("C")
             , font12.Bold(), Brushes.Black, endOfLine, offset, formatRight);
 
          offset += font12.Height;
+
+         // Dibayar
+         graphics.DrawString("DIBAYAR", font8, Brushes.Black, startX, offset);
+         graphics.DrawString(_penjualanModel.jumlah_bayar.ToString("C")
+            , font8, Brushes.Black, endOfLine, offset, formatRight);
+
+         offset += font8.Height;
 
          // Kembali
          graphics.DrawString("KEMBALI", font8, Brushes.Black, startX, offset);

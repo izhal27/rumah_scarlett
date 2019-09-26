@@ -1412,9 +1412,8 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=First(Fields!grand_total.Value, "DataSetPenjualan")</Value>
+                <Value>=First(Fields!jumlah_bayar.Value, "DataSetPenjualan")</Value>
                 <Style>
-                  <FontWeight>Bold</FontWeight>
                   <Format>'Rp'#,0;('Rp'#,0)</Format>
                 </Style>
               </TextRun>
@@ -1483,7 +1482,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Total</Value>
+                <Value>Dibayar</Value>
                 <Style />
               </TextRun>
             </TextRuns>
@@ -1617,8 +1616,9 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=First(Fields!jumlah_bayar.Value, "DataSetPenjualan")</Value>
+                <Value>=First(Fields!grand_total.Value, "DataSetPenjualan")</Value>
                 <Style>
+                  <FontWeight>Bold</FontWeight>
                   <Format>'Rp'#,0;('Rp'#,0)</Format>
                 </Style>
               </TextRun>
@@ -1655,7 +1655,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Dibayar</Value>
+                <Value>Total</Value>
                 <Style />
               </TextRun>
             </TextRuns>
