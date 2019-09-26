@@ -16,6 +16,7 @@ namespace RumahScarlett.Domain.Models.Penjualan
       string barang_kode { get; }
       string barang_nama { get; }
       int qty { get; set; }
+      string satuan_nama { get; }
       decimal hpp { get; set; }
       decimal harga_jual { get; set; }
       int status { get; set; }

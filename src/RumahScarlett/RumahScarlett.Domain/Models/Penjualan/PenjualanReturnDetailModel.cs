@@ -56,6 +56,13 @@ namespace RumahScarlett.Domain.Models.Penjualan
       [DisplayFormat(DataFormatString = "{0:N0}")]
       public int qty { get; set; }
 
+      [Dp.Write(false)]
+      [Display(Name = "Satuan")]
+      public string satuan_nama
+      {
+         get { return Barang.id != default(uint) ? Barang.satuan_nama : string.Empty; }
+      }
+
       private decimal _hpp;
 
       [Browsable(false)]

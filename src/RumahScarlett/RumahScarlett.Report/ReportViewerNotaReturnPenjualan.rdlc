@@ -445,21 +445,21 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="barang_satuan">
+                    <Textbox Name="satuan_nama">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value />
+                              <Value>=Fields!satuan_nama.Value</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>barang_satuan</rd:DefaultName>
+                      <rd:DefaultName>satuan_nama</rd:DefaultName>
                       <Style>
                         <Border>
                           <Style>Solid</Style>
@@ -1636,6 +1636,10 @@
         <Field Name="qty">
           <DataField>qty</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="satuan_nama">
+          <DataField>satuan_nama</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="status_nama">
           <DataField>status_nama</DataField>
