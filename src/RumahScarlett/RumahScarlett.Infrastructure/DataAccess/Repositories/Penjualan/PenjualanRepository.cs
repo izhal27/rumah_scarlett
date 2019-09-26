@@ -246,6 +246,16 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Penjualan
 
             if (model != null)
             {
+               if (model.pelanggan_id != default(uint))
+               {
+                  var pelangganModel = context.Conn.Get<PelangganModel>(model.pelanggan_id);
+
+                  if (pelangganModel != null)
+                  {
+                     model.Pelanggan = pelangganModel;
+                  }
+               }
+
                var pdRepo = new PenjualanDetailRepository(context);
 
                model.PenjualanDetails = pdRepo.GetAll(model);
