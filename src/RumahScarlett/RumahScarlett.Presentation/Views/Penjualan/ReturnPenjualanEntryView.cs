@@ -18,6 +18,7 @@ namespace RumahScarlett.Presentation.Views.Penjualan
    public partial class ReturnPenjualanEntryView : Form
    {
       public event EventHandler<ReturnPenjualanEventArgs> OnButtonOkClick;
+      private IEnumerable<IPenjualanDetailModel> _penjualanDetails;
 
       public ReturnPenjualanEntryView(IEnumerable<IPenjualanDetailModel> penjualanDetails)
       {
@@ -25,12 +26,41 @@ namespace RumahScarlett.Presentation.Views.Penjualan
 
          panelUp.LabelInfo = Text.ToUpper();
 
-         comboBoxBarang.SetDataSource(penjualanDetails.Select(pd =>
+         _penjualanDetails = penjualanDetails;
+         comboBoxBarang.SetDataSource(_penjualanDetails.Select(pd =>
                                       new KeyValuePair<object, string>(pd.Barang, pd.barang_nama)).ToList(),
                                       false);
          comboBoxStatus.SetDataSource(DataSourceHelper.StatusReturn, false);
       }
-      
+
+      private void ReturnPenjualanEntryView_Load(object sender, EventArgs e)
+      {
+         SetTextBoxQtyMaxValue();
+         comboBoxBarang.SelectedIndexChanged += ComboBoxBarang_SelectedIndexChanged;
+      }
+
+      private void ComboBoxBarang_SelectedIndexChanged(object sender, EventArgs e)
+      {
+         SetTextBoxQtyMaxValue();
+      }
+
+      private void SetTextBoxQtyMaxValue()
+      {
+         if (comboBoxBarang.SelectedIndex != -1)
+         {
+            var barangSelected = (IBarangModel)comboBoxBarang.SelectedValue;
+            var penjualanDetailModel = _penjualanDetails.Where(pd => pd.barang_id == barangSelected.id).FirstOrDefault();
+
+            if (penjualanDetailModel != null)
+            {
+               var maxQty = (penjualanDetailModel.qty - penjualanDetailModel.qty_return);
+               textBoxQty.Text = "1";
+               textBoxQty.MaxValue = maxQty;
+               labelMax.Text = $"Max = {maxQty.ToString("N0")}";
+            }
+         }
+      }
+
       private void btnOk_Click(object sender, EventArgs e)
       {
          var qty = int.Parse(textBoxQty.Text, NumberStyles.Number);
