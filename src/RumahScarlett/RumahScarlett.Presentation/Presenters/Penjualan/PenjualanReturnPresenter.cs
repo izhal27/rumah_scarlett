@@ -52,6 +52,9 @@ namespace RumahScarlett.Presentation.Presenters.Penjualan
          _bindingView = new BindingListView<PenjualanReturnDetailModel>(_listPenjualanReturnDetails);
          _view.ListDataGrid.DataSource = _bindingView;
          _bindingView.ListChanged += _bindingView_ListChanged;
+
+         _view.LabelQtyReturn.Text = 0.ToString("N0");
+         _view.LabelTotalReturn.Text = 0.ToString("C");
       }
 
       private void _bindingView_ListChanged(object sender, System.ComponentModel.ListChangedEventArgs e)
@@ -76,7 +79,8 @@ namespace RumahScarlett.Presentation.Presenters.Penjualan
                   ((Button)sender).Enabled = false; // buttonCari
 
                   _view.LabelTanggalPenjualan.Text = _penjualanModel.tanggal.ToShortDateString();
-                  _view.LabelPelangganPenjualan.Text = _penjualanModel.pelanggan_nama;
+                  _view.LabelPelangganPenjualan.Text = !string.IsNullOrWhiteSpace(_penjualanModel.pelanggan_nama) ?
+                                                       _penjualanModel.pelanggan_nama : "-" ;
                   _view.LabelSubTotalPenjualan.Text = _penjualanModel.sub_total.ToString("C");
                   _view.LabelDiskonPenjualan.Text = _penjualanModel.diskon.ToString("C");
                   _view.LabelTotalPenjualan.Text = _penjualanModel.grand_total.ToString("C");
