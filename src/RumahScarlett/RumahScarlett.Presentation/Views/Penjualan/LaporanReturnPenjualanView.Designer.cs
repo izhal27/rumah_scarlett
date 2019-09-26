@@ -48,6 +48,7 @@
          this.listDataGrid.Size = new System.Drawing.Size(760, 230);
          this.listDataGrid.TabIndex = 1;
          this.listDataGrid.Text = "listDataGrid1";
+         this.listDataGrid.CellDoubleClick += new Syncfusion.WinForms.DataGrid.Events.CellClickEventHandler(this.listDataGrid_CellDoubleClick);
          // 
          // buttonsDeletePrintDetail
          // 

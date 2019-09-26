@@ -155,9 +155,9 @@ namespace RumahScarlett.Presentation.Presenters.Penjualan
 
       private void DetailView_OnButtonCetakClick(object sender, EventArgs e)
       {
-         var penjualanModel = (PenjualanModel)_view.ListDataGrid.SelectedItem;
+         var penjualaReturnnModel = (PenjualanReturnModel)_view.ListDataGrid.SelectedItem;
 
-         ReportHelper.ShowNotaPenjualan(penjualanModel);
+         ReportHelper.ShowNotaReturnPenjualan(penjualaReturnnModel);
 
          ((Form)sender).Close();
       }

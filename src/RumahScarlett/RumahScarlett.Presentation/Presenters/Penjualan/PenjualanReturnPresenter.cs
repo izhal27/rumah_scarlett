@@ -80,7 +80,7 @@ namespace RumahScarlett.Presentation.Presenters.Penjualan
 
                   _view.LabelTanggalPenjualan.Text = _penjualanModel.tanggal.ToShortDateString();
                   _view.LabelPelangganPenjualan.Text = !string.IsNullOrWhiteSpace(_penjualanModel.pelanggan_nama) ?
-                                                       _penjualanModel.pelanggan_nama : "-" ;
+                                                       _penjualanModel.pelanggan_nama : "-";
                   _view.LabelSubTotalPenjualan.Text = _penjualanModel.sub_total.ToString("C");
                   _view.LabelDiskonPenjualan.Text = _penjualanModel.diskon.ToString("C");
                   _view.LabelTotalPenjualan.Text = _penjualanModel.grand_total.ToString("C");
@@ -148,6 +148,11 @@ namespace RumahScarlett.Presentation.Presenters.Penjualan
                   _view.TextBoxNoNotaReturn.Text = _penjualanReturnModel.no_nota;
                   _successSave = true;
                   Messages.Info("Data return penjualan berhasil disimpan.");
+
+                  if (Messages.Confirm("Cetak Nota Return Penjualan?"))
+                  {
+                     _view_OnButtonCetakNotaClick(null, null);
+                  }
                }
             }
          }
@@ -177,14 +182,19 @@ namespace RumahScarlett.Presentation.Presenters.Penjualan
          _view.LabelTotalPenjualan.Text = "-";
          _view.LabelDibayarPenjualan.Text = "-";
          _view.LabelKembaliPenjualan.Text = "-";
-
-
+         
          _view.TextBoxNoNotaReturn.Clear();
       }
 
       private void _view_OnButtonCetakNotaClick(object sender, EventArgs e)
       {
-         throw new NotImplementedException();
+         using (new WaitCursorHandler())
+         {
+            if (_successSave)
+            {
+               ReportHelper.ShowNotaReturnPenjualan(_penjualanReturnModel);
+            }
+         }
       }
    }
 }
