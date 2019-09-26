@@ -50,19 +50,21 @@ namespace RumahScarlett.Presentation.Presenters
          _view.OnPenjualanViewClick += _view_OnPenjualanViewClick;
          _view.OnPembelianViewClick += _view_OnPembelianViewClick;
          _view.OnPengeluaranViewClick += _view_OnPengeluaranViewClick;
+         _view.OnReturnPenjualanViewClick += _view_OnReturnPenjualanViewClick;
+         _view.OnReturnPembelianViewClick += _view_OnReturnPembelianViewClick;
          _view.OnPenyesuaianStokViewClick += _view_OnPenyesuaianStokViewClick;
          _view.OnLaporanPenjualanViewClick += _view_OnLaporanPenjualanViewClick;
          _view.OnLaporanPembelianViewClick += _view_OnLaporanPembelianViewClick;
          _view.OnLaporanPengeluaranViewClick += _view_OnLaporanPengeluaranViewClick;
          _view.OnLaporanTransaksiByDateViewClick += _view_OnLaporanTransaksiByDateViewClick;
+         _view.OnLaporanReturnPenjualanViewClick += _view_OnLaporanReturnPenjualanViewClick;
+         _view.OnLaporanReturnPembelianViewClick += _view_OnLaporanReturnPembelianViewClick;
          _view.OnLaporanStatusBarangViewClick += _view_OnLaporanStatusBarangViewClick;
          _view.OnLaporanLabaRugiViewClick += _view_OnLaporanLabaRugiViewClick;
          _view.OnPengaturanViewClick += _view_OnPengaturanViewClick;
          _view.OnBackupDatabaseViewClick += _view_OnBackupDatabaseViewClick;
          _view.OnRestoreDatabaseViewClick += _view_OnRestoreDatabaseViewClick;
          _view.OnTentangViewClick += _view_OnTentangViewClick;
-         _view.OnReturnPenjualanViewClick += _view_OnReturnPenjualanViewClick;
-         _view.OnReturnPembelianViewClick += _view_OnReturnPembelianViewClick;
       }
 
       private void _view_OnTipeViewClick(object sender, MainViewEventArgs e)
@@ -163,6 +165,17 @@ namespace RumahScarlett.Presentation.Presenters
          {
             new LaporanTransaksiByDatePresenter().GetView.ShowView();
          }
+      }
+
+      private void _view_OnLaporanReturnPenjualanViewClick(object sender, MainViewEventArgs e)
+      {
+         var view = (DockContent)new LaporanReturnPenjualanPresenter().GetView;
+         ShowChildForm(view, e);         
+      }
+
+      private void _view_OnLaporanReturnPembelianViewClick(object sender, MainViewEventArgs e)
+      {
+         throw new NotImplementedException();
       }
 
       private void _view_OnLaporanStatusBarangViewClick(object sender, EventArgs e)

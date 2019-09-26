@@ -56,6 +56,10 @@
          this.toolStripMenuItemPenjualan = new System.Windows.Forms.ToolStripMenuItem();
          this.toolStripMenuItemPembelian = new System.Windows.Forms.ToolStripMenuItem();
          this.toolStripMenuItemPengeluaran = new System.Windows.Forms.ToolStripMenuItem();
+         this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
+         this.toolStripMenuItemReturn = new System.Windows.Forms.ToolStripMenuItem();
+         this.toolStripMenuItemReturnPenjualan = new System.Windows.Forms.ToolStripMenuItem();
+         this.toolStripMenuItemReturnPembelian = new System.Windows.Forms.ToolStripMenuItem();
          this.toolStripMenuItemLaporan = new System.Windows.Forms.ToolStripMenuItem();
          this.toolStripMenuItemLaporanPenjualan = new System.Windows.Forms.ToolStripMenuItem();
          this.toolStripMenuItemLaporanPembelian = new System.Windows.Forms.ToolStripMenuItem();
@@ -77,10 +81,10 @@
          this.toolStripButtonBarang = new System.Windows.Forms.ToolStripButton();
          this.toolStripButtonPembelian = new System.Windows.Forms.ToolStripButton();
          this.toolStripButtonPenjualan = new System.Windows.Forms.ToolStripButton();
-         this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
-         this.toolStripMenuItemReturn = new System.Windows.Forms.ToolStripMenuItem();
-         this.toolStripMenuItemReturnPenjualan = new System.Windows.Forms.ToolStripMenuItem();
-         this.toolStripMenuItemReturnPembelian = new System.Windows.Forms.ToolStripMenuItem();
+         this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
+         this.toolStripMenuItemLaporanReturn = new System.Windows.Forms.ToolStripMenuItem();
+         this.toolStripMenuItemLaporanReturnPenjualan = new System.Windows.Forms.ToolStripMenuItem();
+         this.toolStripMenuItemLaporanReturnPembelian = new System.Windows.Forms.ToolStripMenuItem();
          this.statusStrip.SuspendLayout();
          this.menuStripMain.SuspendLayout();
          this.toolStripMain.SuspendLayout();
@@ -287,6 +291,34 @@
          this.toolStripMenuItemPengeluaran.Text = "Penge&luaran";
          this.toolStripMenuItemPengeluaran.Click += new System.EventHandler(this.toolStripMenuItemPengeluaran_Click);
          // 
+         // toolStripSeparator6
+         // 
+         this.toolStripSeparator6.Name = "toolStripSeparator6";
+         this.toolStripSeparator6.Size = new System.Drawing.Size(149, 6);
+         // 
+         // toolStripMenuItemReturn
+         // 
+         this.toolStripMenuItemReturn.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItemReturnPenjualan,
+            this.toolStripMenuItemReturnPembelian});
+         this.toolStripMenuItemReturn.Name = "toolStripMenuItemReturn";
+         this.toolStripMenuItemReturn.Size = new System.Drawing.Size(152, 22);
+         this.toolStripMenuItemReturn.Text = "&Return";
+         // 
+         // toolStripMenuItemReturnPenjualan
+         // 
+         this.toolStripMenuItemReturnPenjualan.Name = "toolStripMenuItemReturnPenjualan";
+         this.toolStripMenuItemReturnPenjualan.Size = new System.Drawing.Size(152, 22);
+         this.toolStripMenuItemReturnPenjualan.Text = "Pen&jualan";
+         this.toolStripMenuItemReturnPenjualan.Click += new System.EventHandler(this.toolStripMenuItemReturnPenjualan_Click);
+         // 
+         // toolStripMenuItemReturnPembelian
+         // 
+         this.toolStripMenuItemReturnPembelian.Name = "toolStripMenuItemReturnPembelian";
+         this.toolStripMenuItemReturnPembelian.Size = new System.Drawing.Size(152, 22);
+         this.toolStripMenuItemReturnPembelian.Text = "Pembel&ian";
+         this.toolStripMenuItemReturnPembelian.Click += new System.EventHandler(this.toolStripMenuItemReturnPembelian_Click);
+         // 
          // toolStripMenuItemLaporan
          // 
          this.toolStripMenuItemLaporan.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -296,6 +328,8 @@
             this.toolStripSeparator2,
             this.toolStripMenuItemTransaksiByDate,
             this.toolStripSeparator4,
+            this.toolStripMenuItemLaporanReturn,
+            this.toolStripSeparator7,
             this.toolStripMenuItemStatusBarang,
             this.toolStripSeparator5,
             this.toolStripMenuItemLabaRugi});
@@ -306,57 +340,57 @@
          // toolStripMenuItemLaporanPenjualan
          // 
          this.toolStripMenuItemLaporanPenjualan.Name = "toolStripMenuItemLaporanPenjualan";
-         this.toolStripMenuItemLaporanPenjualan.Size = new System.Drawing.Size(146, 22);
+         this.toolStripMenuItemLaporanPenjualan.Size = new System.Drawing.Size(152, 22);
          this.toolStripMenuItemLaporanPenjualan.Text = "Pen&jualan";
          this.toolStripMenuItemLaporanPenjualan.Click += new System.EventHandler(this.toolStripMenuItemLaporanPenjualan_Click);
          // 
          // toolStripMenuItemLaporanPembelian
          // 
          this.toolStripMenuItemLaporanPembelian.Name = "toolStripMenuItemLaporanPembelian";
-         this.toolStripMenuItemLaporanPembelian.Size = new System.Drawing.Size(146, 22);
+         this.toolStripMenuItemLaporanPembelian.Size = new System.Drawing.Size(152, 22);
          this.toolStripMenuItemLaporanPembelian.Text = "Pem&belian";
          this.toolStripMenuItemLaporanPembelian.Click += new System.EventHandler(this.toolStripMenuItemLaporanPembelian_Click);
          // 
          // toolStripMenuItemLaporanPengeluaran
          // 
          this.toolStripMenuItemLaporanPengeluaran.Name = "toolStripMenuItemLaporanPengeluaran";
-         this.toolStripMenuItemLaporanPengeluaran.Size = new System.Drawing.Size(146, 22);
+         this.toolStripMenuItemLaporanPengeluaran.Size = new System.Drawing.Size(152, 22);
          this.toolStripMenuItemLaporanPengeluaran.Text = "Penge&luaran";
          this.toolStripMenuItemLaporanPengeluaran.Click += new System.EventHandler(this.toolStripMenuItemLaporanPengeluaran_Click);
          // 
          // toolStripSeparator2
          // 
          this.toolStripSeparator2.Name = "toolStripSeparator2";
-         this.toolStripSeparator2.Size = new System.Drawing.Size(143, 6);
+         this.toolStripSeparator2.Size = new System.Drawing.Size(149, 6);
          // 
          // toolStripMenuItemTransaksiByDate
          // 
          this.toolStripMenuItemTransaksiByDate.Name = "toolStripMenuItemTransaksiByDate";
-         this.toolStripMenuItemTransaksiByDate.Size = new System.Drawing.Size(146, 22);
+         this.toolStripMenuItemTransaksiByDate.Size = new System.Drawing.Size(152, 22);
          this.toolStripMenuItemTransaksiByDate.Text = "&Transaksi";
          this.toolStripMenuItemTransaksiByDate.Click += new System.EventHandler(this.toolStripMenuItemTransaksiByDate_Click);
          // 
          // toolStripSeparator4
          // 
          this.toolStripSeparator4.Name = "toolStripSeparator4";
-         this.toolStripSeparator4.Size = new System.Drawing.Size(143, 6);
+         this.toolStripSeparator4.Size = new System.Drawing.Size(149, 6);
          // 
          // toolStripMenuItemStatusBarang
          // 
          this.toolStripMenuItemStatusBarang.Name = "toolStripMenuItemStatusBarang";
-         this.toolStripMenuItemStatusBarang.Size = new System.Drawing.Size(146, 22);
+         this.toolStripMenuItemStatusBarang.Size = new System.Drawing.Size(152, 22);
          this.toolStripMenuItemStatusBarang.Text = "&Status Barang";
          this.toolStripMenuItemStatusBarang.Click += new System.EventHandler(this.toolStripMenuItemStatusBarang_Click);
          // 
          // toolStripSeparator5
          // 
          this.toolStripSeparator5.Name = "toolStripSeparator5";
-         this.toolStripSeparator5.Size = new System.Drawing.Size(143, 6);
+         this.toolStripSeparator5.Size = new System.Drawing.Size(149, 6);
          // 
          // toolStripMenuItemLabaRugi
          // 
          this.toolStripMenuItemLabaRugi.Name = "toolStripMenuItemLabaRugi";
-         this.toolStripMenuItemLabaRugi.Size = new System.Drawing.Size(146, 22);
+         this.toolStripMenuItemLabaRugi.Size = new System.Drawing.Size(152, 22);
          this.toolStripMenuItemLabaRugi.Text = "Laba &Rugi";
          this.toolStripMenuItemLabaRugi.Click += new System.EventHandler(this.toolStripMenuItemLabaRugi_Click);
          // 
@@ -466,33 +500,33 @@
          this.toolStripButtonPenjualan.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
          this.toolStripButtonPenjualan.Click += new System.EventHandler(this.toolStripButtonPenjualan_Click);
          // 
-         // toolStripSeparator6
+         // toolStripSeparator7
          // 
-         this.toolStripSeparator6.Name = "toolStripSeparator6";
-         this.toolStripSeparator6.Size = new System.Drawing.Size(149, 6);
+         this.toolStripSeparator7.Name = "toolStripSeparator7";
+         this.toolStripSeparator7.Size = new System.Drawing.Size(149, 6);
          // 
-         // toolStripMenuItemReturn
+         // toolStripMenuItemLaporanReturn
          // 
-         this.toolStripMenuItemReturn.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItemReturnPenjualan,
-            this.toolStripMenuItemReturnPembelian});
-         this.toolStripMenuItemReturn.Name = "toolStripMenuItemReturn";
-         this.toolStripMenuItemReturn.Size = new System.Drawing.Size(152, 22);
-         this.toolStripMenuItemReturn.Text = "&Return";
+         this.toolStripMenuItemLaporanReturn.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItemLaporanReturnPenjualan,
+            this.toolStripMenuItemLaporanReturnPembelian});
+         this.toolStripMenuItemLaporanReturn.Name = "toolStripMenuItemLaporanReturn";
+         this.toolStripMenuItemLaporanReturn.Size = new System.Drawing.Size(152, 22);
+         this.toolStripMenuItemLaporanReturn.Text = "R&eturn";
          // 
-         // toolStripMenuItemReturnPenjualan
+         // toolStripMenuItemLaporanReturnPenjualan
          // 
-         this.toolStripMenuItemReturnPenjualan.Name = "toolStripMenuItemReturnPenjualan";
-         this.toolStripMenuItemReturnPenjualan.Size = new System.Drawing.Size(152, 22);
-         this.toolStripMenuItemReturnPenjualan.Text = "Pen&jualan";
-         this.toolStripMenuItemReturnPenjualan.Click += new System.EventHandler(this.toolStripMenuItemReturnPenjualan_Click);
+         this.toolStripMenuItemLaporanReturnPenjualan.Name = "toolStripMenuItemLaporanReturnPenjualan";
+         this.toolStripMenuItemLaporanReturnPenjualan.Size = new System.Drawing.Size(152, 22);
+         this.toolStripMenuItemLaporanReturnPenjualan.Text = "Pen&jualan";
+         this.toolStripMenuItemLaporanReturnPenjualan.Click += new System.EventHandler(this.toolStripMenuItemLaporanReturnPenjualan_Click);
          // 
-         // toolStripMenuItemReturnPembelian
+         // toolStripMenuItemLaporanReturnPembelian
          // 
-         this.toolStripMenuItemReturnPembelian.Name = "toolStripMenuItemReturnPembelian";
-         this.toolStripMenuItemReturnPembelian.Size = new System.Drawing.Size(152, 22);
-         this.toolStripMenuItemReturnPembelian.Text = "Pembel&ian";
-         this.toolStripMenuItemReturnPembelian.Click += new System.EventHandler(this.toolStripMenuItemReturnPembelian_Click);
+         this.toolStripMenuItemLaporanReturnPembelian.Name = "toolStripMenuItemLaporanReturnPembelian";
+         this.toolStripMenuItemLaporanReturnPembelian.Size = new System.Drawing.Size(152, 22);
+         this.toolStripMenuItemLaporanReturnPembelian.Text = "Pem&belian";
+         this.toolStripMenuItemLaporanReturnPembelian.Click += new System.EventHandler(this.toolStripMenuItemLaporanReturnPembelian_Click);
          // 
          // MainView
          // 
@@ -571,6 +605,10 @@
       private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemReturn;
       private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemReturnPenjualan;
       private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemReturnPembelian;
+      private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemLaporanReturn;
+      private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemLaporanReturnPenjualan;
+      private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemLaporanReturnPembelian;
+      private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
    }
 }
 

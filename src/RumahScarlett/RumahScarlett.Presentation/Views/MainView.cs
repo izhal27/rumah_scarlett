@@ -30,18 +30,20 @@ namespace RumahScarlett.Presentation.Views
       public event EventHandler<MainViewEventArgs> OnPenjualanViewClick;
       public event EventHandler<MainViewEventArgs> OnPembelianViewClick;
       public event EventHandler<MainViewEventArgs> OnPengeluaranViewClick;
+      public event EventHandler<MainViewEventArgs> OnReturnPenjualanViewClick;
+      public event EventHandler<MainViewEventArgs> OnReturnPembelianViewClick;
       public event EventHandler<MainViewEventArgs> OnLaporanPenjualanViewClick;
       public event EventHandler<MainViewEventArgs> OnLaporanPembelianViewClick;
       public event EventHandler<MainViewEventArgs> OnLaporanPengeluaranViewClick;
       public event EventHandler OnLaporanTransaksiByDateViewClick;
+      public event EventHandler<MainViewEventArgs> OnLaporanReturnPenjualanViewClick;
+      public event EventHandler<MainViewEventArgs> OnLaporanReturnPembelianViewClick;
       public event EventHandler OnLaporanStatusBarangViewClick;
       public event EventHandler OnLaporanLabaRugiViewClick;
       public event EventHandler OnPengaturanViewClick;
       public event EventHandler OnBackupDatabaseViewClick;
       public event EventHandler OnRestoreDatabaseViewClick;
       public event EventHandler OnTentangViewClick;
-      public event EventHandler<MainViewEventArgs> OnReturnPenjualanViewClick;
-      public event EventHandler<MainViewEventArgs> OnReturnPembelianViewClick;
 
       public MainView()
       {
@@ -152,6 +154,16 @@ namespace RumahScarlett.Presentation.Views
          OnPengeluaranViewClick?.Invoke(sender, _eventArgs);
       }
 
+      private void toolStripMenuItemReturnPenjualan_Click(object sender, EventArgs e)
+      {
+         OnReturnPenjualanViewClick?.Invoke(sender, _eventArgs);
+      }
+
+      private void toolStripMenuItemReturnPembelian_Click(object sender, EventArgs e)
+      {
+         OnReturnPembelianViewClick?.Invoke(sender, _eventArgs);
+      }
+
       private void toolStripMenuItemLaporanPenjualan_Click(object sender, EventArgs e)
       {
          OnLaporanPenjualanViewClick?.Invoke(sender, _eventArgs);
@@ -170,6 +182,16 @@ namespace RumahScarlett.Presentation.Views
       private void toolStripMenuItemTransaksiByDate_Click(object sender, EventArgs e)
       {
          OnLaporanTransaksiByDateViewClick?.Invoke(sender, e);
+      }
+
+      private void toolStripMenuItemLaporanReturnPenjualan_Click(object sender, EventArgs e)
+      {
+         OnLaporanReturnPenjualanViewClick?.Invoke(sender, _eventArgs);
+      }
+
+      private void toolStripMenuItemLaporanReturnPembelian_Click(object sender, EventArgs e)
+      {
+         OnLaporanReturnPembelianViewClick?.Invoke(sender, _eventArgs);
       }
 
       private void toolStripMenuItemStatusBarang_Click(object sender, EventArgs e)
@@ -202,14 +224,5 @@ namespace RumahScarlett.Presentation.Views
          OnTentangViewClick?.Invoke(sender, e);
       }
 
-      private void toolStripMenuItemReturnPenjualan_Click(object sender, EventArgs e)
-      {
-         OnReturnPenjualanViewClick?.Invoke(sender, _eventArgs);
-      }
-
-      private void toolStripMenuItemReturnPembelian_Click(object sender, EventArgs e)
-      {
-         OnReturnPembelianViewClick?.Invoke(sender, _eventArgs);
-      }
    }
 }

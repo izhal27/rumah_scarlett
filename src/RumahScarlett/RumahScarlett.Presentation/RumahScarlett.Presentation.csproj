@@ -159,9 +159,11 @@
     <Compile Include="Presenters\Pengeluaran\LaporanPengeluaranPresenter.cs" />
     <Compile Include="Presenters\Pengeluaran\PengeluaranPresenter.cs" />
     <Compile Include="Presenters\Penjualan\ILaporanPenjualanPresenter.cs" />
+    <Compile Include="Presenters\Penjualan\ILaporanReturnPenjualanPresenter.cs" />
     <Compile Include="Presenters\Penjualan\IPenjualanPresenter.cs" />
     <Compile Include="Presenters\Penjualan\IPenjualanReturnPresenter.cs" />
     <Compile Include="Presenters\Penjualan\LaporanPenjualanPresenter.cs" />
+    <Compile Include="Presenters\Penjualan\LaporanReturnPenjualanPresenter.cs" />
     <Compile Include="Presenters\Penjualan\PenjualanPresenter.cs" />
     <Compile Include="Presenters\Penjualan\PenjualanReturnPresenter.cs" />
     <Compile Include="Presenters\PenyesuaianStok\IPenyesuaianStokPresenter.cs" />
@@ -463,6 +465,7 @@
     </Compile>
     <Compile Include="Views\Penjualan\IBayarPenjualanEntryView.cs" />
     <Compile Include="Views\Penjualan\ILaporanPenjualanView.cs" />
+    <Compile Include="Views\Penjualan\ILaporanReturnPenjualanView.cs" />
     <Compile Include="Views\Penjualan\IPenjualanView.cs" />
     <Compile Include="Views\Penjualan\IReturnPenjualanView.cs" />
     <Compile Include="Views\Penjualan\LaporanPenjualanView.cs">
@@ -470,6 +473,12 @@
     </Compile>
     <Compile Include="Views\Penjualan\LaporanPenjualanView.Designer.cs">
       <DependentUpon>LaporanPenjualanView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Penjualan\LaporanReturnPenjualanView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Penjualan\LaporanReturnPenjualanView.Designer.cs">
+      <DependentUpon>LaporanReturnPenjualanView.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Penjualan\ReturnPenjualanEntryView.cs">
       <SubType>Form</SubType>
@@ -703,6 +712,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Penjualan\LaporanPenjualanView.resx">
       <DependentUpon>LaporanPenjualanView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Penjualan\LaporanReturnPenjualanView.resx">
+      <DependentUpon>LaporanReturnPenjualanView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Penjualan\PenjualanView.resx">
       <DependentUpon>PenjualanView.cs</DependentUpon>
