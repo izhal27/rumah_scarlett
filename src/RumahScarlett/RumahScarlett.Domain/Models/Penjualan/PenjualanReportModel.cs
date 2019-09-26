@@ -47,6 +47,8 @@ namespace RumahScarlett.Domain.Models.Penjualan
 
       public int qty { get; set; }
 
+      public int qty_return { get; set; }
+
       public string barang_satuan { get; set; }
 
       public decimal harga_jual { get; set; }

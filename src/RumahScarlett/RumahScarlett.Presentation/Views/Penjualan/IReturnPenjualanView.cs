@@ -17,6 +17,7 @@ namespace RumahScarlett.Presentation.Views.Penjualan
       ListDataGrid ListDataGrid { get; }
 
       TextBox TextBoxNoNotaReturn { get; }
+      Button ButtonCari { get; }
       Label LabelQtyReturn { get; }
       Label LabelTotalReturn { get; }
 
@@ -26,5 +27,7 @@ namespace RumahScarlett.Presentation.Views.Penjualan
       Label LabelSubTotalPenjualan { get; }
       Label LabelDiskonPenjualan { get; }
       Label LabelTotalPenjualan { get; }
+      Label LabelDibayarPenjualan { get; }
+      Label LabelKembaliPenjualan { get; }
    }
 }

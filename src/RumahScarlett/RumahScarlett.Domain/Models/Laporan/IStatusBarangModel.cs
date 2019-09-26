@@ -7,7 +7,7 @@ namespace RumahScarlett.Domain.Models.Laporan
 {
    public interface IStatusBarangModel
    {
-      uint id { get; set; }
+      long id { get; set; }
       DateTime tanggal { get; set; }
       IPembelianModel Pembelian { get; set; }
       uint? pembelian_id { get; }
@@ -15,10 +15,13 @@ namespace RumahScarlett.Domain.Models.Laporan
       uint? penjualan_id { get; }
       IPenyesuaianStokModel PenyesuaianStok { get; set; }
       uint? penyesuaian_stok_id { get; }
+      IPenjualanReturnModel PenjualanReturn { get; set; }
+      uint? penjualan_return_id { get; }
       int stok_awal { get; set; }
       int stok_masuk { get; set; }
       int stok_terjual { get; set; }
       int penyesuaian_stok { get; set; }
+      int penjualan_return_qty { get; set; }
       int stok_akhir { get; }
    }
 }

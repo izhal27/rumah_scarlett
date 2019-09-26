@@ -54,8 +54,8 @@
          this.label8 = new System.Windows.Forms.Label();
          this.label9 = new System.Windows.Forms.Label();
          this.label10 = new System.Windows.Forms.Label();
-         this.label11 = new System.Windows.Forms.Label();
-         this.label18 = new System.Windows.Forms.Label();
+         this.labelDibayarPenjualan = new System.Windows.Forms.Label();
+         this.labelKembaliPenjualan = new System.Windows.Forms.Label();
          this.groupBox2 = new System.Windows.Forms.GroupBox();
          this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
          this.label27 = new System.Windows.Forms.Label();
@@ -149,8 +149,8 @@
          this.tableLayoutPanel1.Controls.Add(this.label8, 0, 7);
          this.tableLayoutPanel1.Controls.Add(this.label9, 1, 6);
          this.tableLayoutPanel1.Controls.Add(this.label10, 1, 7);
-         this.tableLayoutPanel1.Controls.Add(this.label11, 2, 6);
-         this.tableLayoutPanel1.Controls.Add(this.label18, 2, 7);
+         this.tableLayoutPanel1.Controls.Add(this.labelDibayarPenjualan, 2, 6);
+         this.tableLayoutPanel1.Controls.Add(this.labelKembaliPenjualan, 2, 7);
          this.tableLayoutPanel1.Location = new System.Drawing.Point(6, 19);
          this.tableLayoutPanel1.Name = "tableLayoutPanel1";
          this.tableLayoutPanel1.RowCount = 8;
@@ -398,25 +398,25 @@
          this.label10.TabIndex = 0;
          this.label10.Text = ":";
          // 
-         // label11
+         // labelDibayar
          // 
-         this.label11.Anchor = System.Windows.Forms.AnchorStyles.Left;
-         this.label11.AutoSize = true;
-         this.label11.Location = new System.Drawing.Point(83, 188);
-         this.label11.Name = "label11";
-         this.label11.Size = new System.Drawing.Size(10, 13);
-         this.label11.TabIndex = 0;
-         this.label11.Text = "-";
+         this.labelDibayarPenjualan.Anchor = System.Windows.Forms.AnchorStyles.Left;
+         this.labelDibayarPenjualan.AutoSize = true;
+         this.labelDibayarPenjualan.Location = new System.Drawing.Point(83, 188);
+         this.labelDibayarPenjualan.Name = "labelDibayar";
+         this.labelDibayarPenjualan.Size = new System.Drawing.Size(10, 13);
+         this.labelDibayarPenjualan.TabIndex = 0;
+         this.labelDibayarPenjualan.Text = "-";
          // 
-         // label18
+         // labelKembali
          // 
-         this.label18.Anchor = System.Windows.Forms.AnchorStyles.Left;
-         this.label18.AutoSize = true;
-         this.label18.Location = new System.Drawing.Point(83, 218);
-         this.label18.Name = "label18";
-         this.label18.Size = new System.Drawing.Size(10, 13);
-         this.label18.TabIndex = 0;
-         this.label18.Text = "-";
+         this.labelKembaliPenjualan.Anchor = System.Windows.Forms.AnchorStyles.Left;
+         this.labelKembaliPenjualan.AutoSize = true;
+         this.labelKembaliPenjualan.Location = new System.Drawing.Point(83, 218);
+         this.labelKembaliPenjualan.Name = "labelKembali";
+         this.labelKembaliPenjualan.Size = new System.Drawing.Size(10, 13);
+         this.labelKembaliPenjualan.TabIndex = 0;
+         this.labelKembaliPenjualan.Text = "-";
          // 
          // groupBox2
          // 
@@ -750,8 +750,8 @@
       private System.Windows.Forms.Label label8;
       private System.Windows.Forms.Label label9;
       private System.Windows.Forms.Label label10;
-      private System.Windows.Forms.Label label11;
-      private System.Windows.Forms.Label label18;
+      private System.Windows.Forms.Label labelDibayarPenjualan;
+      private System.Windows.Forms.Label labelKembaliPenjualan;
       private System.Windows.Forms.Label label19;
       private System.Windows.Forms.Label label20;
       private System.Windows.Forms.Label label21;

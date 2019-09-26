@@ -1,5 +1,4 @@
-﻿using RumahScarlett.Domain.Models.Barang;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -12,16 +11,10 @@ namespace RumahScarlett.Domain.Models.Penjualan
    public interface IPenjualanReturnModel
    {
       uint id { get; set; }
+      DateTime tanggal { get; set; }
+      string no_nota { get; set; }
       IPenjualanModel Penjualan { get; set; }
-      uint penjualan_id { get; }
-      IBarangModel Barang { get; set; }
-      uint barang_id { get; }
-      string barang_kode { get; }
-      string barang_nama { get; }
-      int qty { get; set; }
-      decimal harga_jual { get; set; }
-      int status { get; set; }
-      decimal sub_total { get; }
-      string keterangan { get; }
+      uint penjualan_id { get; set; }
+      IEnumerable<IPenjualanReturnDetailModel> PenjualanReturnDetails { get; set; }
    }
 }

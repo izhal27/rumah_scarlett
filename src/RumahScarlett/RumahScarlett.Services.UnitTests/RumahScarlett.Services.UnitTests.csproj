@@ -117,6 +117,9 @@
     <Compile Include="Pengeluaran\PengeluaranServicesValidationTests.cs" />
     <Compile Include="Pengeluaran\PengeluaranServicesDataAccessTests.cs" />
     <Compile Include="Pengeluaran\PengeluaranServicesFixture.cs" />
+    <Compile Include="Penjualan\PenjualanReturnServicesDataAccessTests.cs" />
+    <Compile Include="Penjualan\PenjualanReturnServicesFixture.cs" />
+    <Compile Include="Penjualan\PenjualanReturnServicesValidationTests.cs" />
     <Compile Include="Penjualan\PenjualanServicesDataAccessTests.cs" />
     <Compile Include="Penjualan\PenjualanServicesFixture.cs" />
     <Compile Include="Penjualan\PenjualanServicesValidationTests.cs" />

@@ -31,12 +31,12 @@
          this.groupBoxData = new System.Windows.Forms.GroupBox();
          this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
          this.label1 = new System.Windows.Forms.Label();
-         this.label2 = new System.Windows.Forms.Label();
          this.label3 = new System.Windows.Forms.Label();
          this.textBoxNama = new RumahScarlett.Presentation.Views.CommonControls.BaseTextBox();
          this.textBoxKeterangan = new RumahScarlett.Presentation.Views.CommonControls.BaseTextBox();
          this.label4 = new System.Windows.Forms.Label();
          this.label5 = new System.Windows.Forms.Label();
+         this.label2 = new System.Windows.Forms.Label();
          this.groupBoxData.SuspendLayout();
          this.tableLayoutPanel1.SuspendLayout();
          ((System.ComponentModel.ISupportInitialize)(this.textBoxNama)).BeginInit();
@@ -99,17 +99,6 @@
          this.label1.TabIndex = 0;
          this.label1.Text = "Nama";
          // 
-         // label2
-         // 
-         this.label2.Anchor = System.Windows.Forms.AnchorStyles.Left;
-         this.label2.AutoSize = true;
-         this.label2.ForeColor = System.Drawing.Color.Red;
-         this.label2.Location = new System.Drawing.Point(343, 6);
-         this.label2.Name = "label2";
-         this.label2.Size = new System.Drawing.Size(11, 13);
-         this.label2.TabIndex = 0;
-         this.label2.Text = "*";
-         // 
          // label3
          // 
          this.label3.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -163,6 +152,17 @@
          this.label5.TabIndex = 0;
          this.label5.Text = ":";
          // 
+         // label2
+         // 
+         this.label2.Anchor = System.Windows.Forms.AnchorStyles.Left;
+         this.label2.AutoSize = true;
+         this.label2.ForeColor = System.Drawing.Color.Red;
+         this.label2.Location = new System.Drawing.Point(343, 6);
+         this.label2.Name = "label2";
+         this.label2.Size = new System.Drawing.Size(11, 13);
+         this.label2.TabIndex = 0;
+         this.label2.Text = "*";
+         // 
          // TipeEntryView
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -187,11 +187,11 @@
       private System.Windows.Forms.GroupBox groupBoxData;
       private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
       private System.Windows.Forms.Label label1;
-      private System.Windows.Forms.Label label2;
       private System.Windows.Forms.Label label3;
       private CommonControls.BaseTextBox textBoxNama;
       private CommonControls.BaseTextBox textBoxKeterangan;
       private System.Windows.Forms.Label label4;
       private System.Windows.Forms.Label label5;
+      private System.Windows.Forms.Label label2;
    }
 }

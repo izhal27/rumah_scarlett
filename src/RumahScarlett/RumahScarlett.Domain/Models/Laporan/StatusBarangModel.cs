@@ -14,7 +14,7 @@ namespace RumahScarlett.Domain.Models.Laporan
    [Table("status_barang")]
    public class StatusBarangModel : IStatusBarangModel
    {
-      public uint id { get; set; }
+      public long id { get; set; }
 
       public DateTime tanggal { get; set; }
 
@@ -42,6 +42,14 @@ namespace RumahScarlett.Domain.Models.Laporan
          get { return PenyesuaianStok.id != default(uint) ? PenyesuaianStok.id : (uint?)null; }
       }
 
+      [Dp.Write(false)]
+      public IPenjualanReturnModel PenjualanReturn { get; set; }
+
+      public uint? penjualan_return_id
+      {
+         get { return PenjualanReturn.id != default(uint) ? PenjualanReturn.id : (uint?)null; }
+      }
+
       public int stok_awal { get; set; }
 
       private int _stok_masuk;
@@ -60,7 +68,7 @@ namespace RumahScarlett.Domain.Models.Laporan
          set { _stok_terjual = value; }
       }
 
-      public int _penyesuaian_stok;
+      private int _penyesuaian_stok;
 
       public int penyesuaian_stok
       {
@@ -68,9 +76,17 @@ namespace RumahScarlett.Domain.Models.Laporan
          set { _penyesuaian_stok = value; }
       }
 
+      private int _penjualan_return_qty;
+
+      public int penjualan_return_qty
+      {
+         get { return PenjualanReturn.id != default(uint) ? PenjualanReturn.PenjualanReturnDetails.Sum(prd => prd.qty) : _penjualan_return_qty; }
+         set { _penjualan_return_qty = value; }
+      }
+
       public int stok_akhir
       {
-         get { return (stok_awal + stok_masuk) - (stok_terjual + penyesuaian_stok); }
+         get { return (stok_awal + stok_masuk + penjualan_return_qty) - (stok_terjual + penyesuaian_stok); }
       }
 
       public StatusBarangModel()
@@ -78,6 +94,7 @@ namespace RumahScarlett.Domain.Models.Laporan
          Pembelian = new PembelianModel();
          Penjualan = new PenjualanModel();
          PenyesuaianStok = new PenyesuaianStokModel();
+         PenjualanReturn = new PenjualanReturnModel();
       }
    }
 }

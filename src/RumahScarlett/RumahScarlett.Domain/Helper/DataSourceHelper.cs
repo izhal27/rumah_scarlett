@@ -8,11 +8,11 @@ namespace RumahScarlett.Domain.Helper
 {
    public static class DataSourceHelper
    {
-      public static List<KeyValuePair<int, string>> StatusReturn = new List<KeyValuePair<int, string>>
+      public static List<KeyValuePair<object, string>> StatusReturn = new List<KeyValuePair<object, string>>
       {
-         new KeyValuePair<int, string>(0, "Barang Rusak atau Cacat"),
-         new KeyValuePair<int, string>(1, "Barang salah"),
-         new KeyValuePair<int, string>(2, "Qty lebih")
+         new KeyValuePair<object, string>(1, "Barang Rusak atau Cacat"),
+         new KeyValuePair<object, string>(2, "Barang salah"),
+         new KeyValuePair<object, string>(3, "Qty lebih")
       };
    }
 }

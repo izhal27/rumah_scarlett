@@ -64,6 +64,10 @@ namespace RumahScarlett.Domain.Models.Penjualan
       [Display(Name = "Qty")]
       public int qty { get; set; }
 
+      [Browsable(false)]
+      [Display(Name = "Qty Return")]
+      public int qty_return { get; set; }
+
       [Dp.Write(false)]
       [Display(Name = "Satuan")]
       public string barang_satuan

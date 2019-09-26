@@ -30,6 +30,10 @@ namespace RumahScarlett.Presentation.Views.Penjualan
       {
          get { return textBoxNoNotaRetrun; }
       }
+      public Button ButtonCari
+      {
+         get { return buttonCari; }
+      }
 
       public Label LabelQtyReturn
       {
@@ -69,6 +73,16 @@ namespace RumahScarlett.Presentation.Views.Penjualan
       public Label LabelTotalPenjualan
       {
          get { return labelTotalPenjualan; }
+      }
+
+      public Label LabelDibayarPenjualan
+      {
+         get { return labelDibayarPenjualan; }
+      }
+
+      public Label LabelKembaliPenjualan
+      {
+         get { return labelKembaliPenjualan; }
       }
 
       public ReturnPenjualanView()

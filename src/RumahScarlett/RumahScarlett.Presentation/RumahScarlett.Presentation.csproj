@@ -471,6 +471,12 @@
     <Compile Include="Views\Penjualan\LaporanPenjualanView.Designer.cs">
       <DependentUpon>LaporanPenjualanView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Penjualan\ReturnPenjualanEntryView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Penjualan\ReturnPenjualanEntryView.Designer.cs">
+      <DependentUpon>ReturnPenjualanEntryView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Penjualan\ReturnPenjualanView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -700,6 +706,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Penjualan\PenjualanView.resx">
       <DependentUpon>PenjualanView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Penjualan\ReturnPenjualanEntryView.resx">
+      <DependentUpon>ReturnPenjualanEntryView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Penjualan\ReturnPenjualanView.resx">
       <DependentUpon>ReturnPenjualanView.cs</DependentUpon>

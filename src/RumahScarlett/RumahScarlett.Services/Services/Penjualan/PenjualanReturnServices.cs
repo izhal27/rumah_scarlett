@@ -57,6 +57,7 @@ namespace RumahScarlett.Services.Services.Penjualan
       public void ValidateModel(IPenjualanReturnModel model)
       {
          _modelDAC.ValidateModel(model);
+         _modelDAC.ValidateModels(model.PenjualanReturnDetails);
       }
    }
 }

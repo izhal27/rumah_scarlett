@@ -22,6 +22,7 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Laporan
                            "(SELECT SUM(stok) FROM barang)) AS stok_awal, " +
                            "IFNULL(SUM(stok_masuk), 0) AS stok_masuk, IFNULL(SUM(stok_terjual), 0) AS stok_terjual, " +
                            "IFNULL(SUM(penyesuaian_stok), 0) AS penyesuaian_stok, " +
+                           "IFNULL(SUM(penjualan_return_qty), 0) AS penjualan_return_qty, " +
                            "IFNULL((SELECT stok_akhir FROM status_barang WHERE DATE(TANGGAL)=@DATE ORDER BY id DESC LIMIT 1), 0) AS stok_akhir " +
                            "FROM status_barang s WHERE DATE(tanggal) = @DATE ORDER BY id DESC LIMIT 1";
 
