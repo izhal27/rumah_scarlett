@@ -12,6 +12,8 @@ using RumahScarlett.Services.Services;
 using RumahScarlett.Infrastructure.DataAccess.Repositories.Penjualan;
 using System.Windows.Forms;
 using RumahScarlett.CommonComponents;
+using Syncfusion.WinForms.DataGrid.Events;
+using RumahScarlett.Domain.Models.Barang;
 
 namespace RumahScarlett.Presentation.Presenters.Penjualan
 {
@@ -57,12 +59,13 @@ namespace RumahScarlett.Presentation.Presenters.Penjualan
          _view.LabelTotalReturn.Text = 0.ToString("C");
       }
 
+
       private void _bindingView_ListChanged(object sender, System.ComponentModel.ListChangedEventArgs e)
       {
          _view.LabelQtyReturn.Text = _bindingView.Cast<IPenjualanReturnDetailModel>().Sum(pr => pr.qty).ToString("N0");
          _view.LabelTotalReturn.Text = _bindingView.Cast<IPenjualanReturnDetailModel>().Sum(pr => pr.sub_total).ToString("C");
       }
-
+      
       private void _view_OnButtonCariClick(object sender, EventArgs e)
       {
          var noNota = _view.TextBoxCariNoNota.Text;
@@ -116,6 +119,13 @@ namespace RumahScarlett.Presentation.Presenters.Penjualan
             keterangan = e.Keterangan
          });
 
+         var barangModel = _penjualanModel.PenjualanDetails.Where(pd => pd.barang_id == e.Barang.id).FirstOrDefault();
+
+         if (barangModel != null)
+         {
+            barangModel.qty_return += e.Qty;
+         }
+
          _bindingView.Refresh();
       }
 
@@ -123,7 +133,16 @@ namespace RumahScarlett.Presentation.Presenters.Penjualan
       {
          if (!_successSave && _view.ListDataGrid.SelectedItem != null)
          {
-            if (_listPenjualanReturnDetails.Remove((PenjualanReturnDetailModel)_view.ListDataGrid.SelectedItem))
+            var itemSelected = (PenjualanReturnDetailModel)_view.ListDataGrid.SelectedItem;
+
+            var barangModel = _penjualanModel.PenjualanDetails.Where(pd => pd.barang_id == itemSelected.Barang.id).FirstOrDefault();
+
+            if (barangModel != null)
+            {
+               barangModel.qty_return -= itemSelected.qty;
+            }
+
+            if (_listPenjualanReturnDetails.Remove(itemSelected))
             {
                _bindingView.Refresh();
                _view.ListDataGrid.SelectedItem = null;
@@ -182,7 +201,7 @@ namespace RumahScarlett.Presentation.Presenters.Penjualan
          _view.LabelTotalPenjualan.Text = "-";
          _view.LabelDibayarPenjualan.Text = "-";
          _view.LabelKembaliPenjualan.Text = "-";
-         
+
          _view.TextBoxNoNotaReturn.Clear();
       }
 
