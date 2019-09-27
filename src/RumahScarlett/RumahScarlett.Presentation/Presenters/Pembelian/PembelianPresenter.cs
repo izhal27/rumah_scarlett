@@ -34,6 +34,7 @@ namespace RumahScarlett.Presentation.Presenters.Pembelian
       private BindingListView<PembelianDetailModel> _bindingView;
       private string _kodeOrNamaForSearching;
       private IPembelianModel _pembelianModel;
+      private decimal _grandTotal;
 
       public IPembelianView GetView
       {
@@ -147,6 +148,8 @@ namespace RumahScarlett.Presentation.Presenters.Pembelian
 
             if (simpanPembelianEntryView.ShowDialog() == DialogResult.OK)
             {
+               _view.LabelGrandTotal.Text = _grandTotal.ToString("N0");
+
                if (Messages.Confirm("Cetak Nota Pembelian?"))
                {
                   _view_OnCetakNota(null, null);
@@ -165,12 +168,14 @@ namespace RumahScarlett.Presentation.Presenters.Pembelian
             _pembelianModel = new PembelianModel
             {
                Supplier = e.Supplier,
-               PembelianDetails = pembelianDetailsFixed
+               PembelianDetails = pembelianDetailsFixed,
+               diskon = e.Diskon
             };
 
             _pembelianServices.Insert(_pembelianModel);
             Messages.Info("Data Pembelian berhasil disimpan.");
 
+            _grandTotal = e.GrandTotal;
             _view.TextBoxNoNota.Text = _pembelianModel.no_nota;
             _view.ListDataGrid.Enabled = false;
 
@@ -194,6 +199,7 @@ namespace RumahScarlett.Presentation.Presenters.Pembelian
             _view.ListDataGrid.Enabled = true;
             _view.TextBoxNoNota.Text = string.Empty;
             _listsBarangs = _barangServices.GetAll().ToList();
+            _grandTotal = 0;
          }
 
          _kodeOrNamaForSearching = string.Empty;

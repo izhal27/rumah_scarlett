@@ -12,6 +12,8 @@ namespace RumahScarlett.Domain.Models.Pembelian
       ISupplierModel Supplier { get; set; }
       uint supplier_id { get; set; }
       string supplier_nama { get; }
+      decimal sub_total { get; }
+      decimal diskon { get; set; }
       decimal grand_total { get; }
       IEnumerable<IPembelianDetailModel> PembelianDetails { get; set; }
    }

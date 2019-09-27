@@ -37,15 +37,16 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Pembelian
 
             Insert(model, () =>
             {
-               var queryStr = "INSERT INTO pembelian (supplier_id, no_nota, tanggal) " +
-                              "VALUES (@supplier_id, @no_nota, @tanggal);" +
+               var queryStr = "INSERT INTO pembelian (supplier_id, tanggal, no_nota, diskon) " +
+                              "VALUES (@supplier_id, @tanggal, @no_nota, @diskon);" +
                               "SELECT LAST_INSERT_ID();";
 
                var insertedId = context.Conn.Query<uint>(queryStr, new
                {
                   model.supplier_id,
+                  model.tanggal,
                   model.no_nota,
-                  model.tanggal
+                  model.diskon
                }, context.Transaction).Single();
 
                if (insertedId > 0 && model.PembelianDetails.ToList().Count > 0)
@@ -234,7 +235,7 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Pembelian
 
       private string QueryStrReport(string where)
       {
-         return "SELECT pb.tanggal, pb.no_nota, sp.nama AS supplier_nama, b.kode AS barang_kode, " +
+         return "SELECT pb.tanggal, pb.no_nota, pb.diskon, sp.nama AS supplier_nama, b.kode AS barang_kode, " +
                 "b.nama AS barang_nama, pbd.qty, st.nama AS barang_satuan, pbd.hpp FROM pembelian pb " +
                 "INNER JOIN supplier sp ON pb.supplier_id = sp.id " +
                 "INNER JOIN pembelian_detail pbd ON pb.id = pbd.pembelian_id " +

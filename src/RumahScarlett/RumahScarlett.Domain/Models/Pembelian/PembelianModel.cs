@@ -48,8 +48,8 @@ namespace RumahScarlett.Domain.Models.Pembelian
 
       [DisplayFormat(DataFormatString = "{0:N0}")]
       [Dp.Write(false)]
-      [Display(Name = "Grand Total")]
-      public decimal grand_total
+      [Display(Name = "Sub Total")]
+      public decimal sub_total
       {
          get
          {
@@ -60,6 +60,18 @@ namespace RumahScarlett.Domain.Models.Pembelian
 
             return 0;
          }
+      }
+
+      [DisplayFormat(DataFormatString = "{0:N0}")]
+      [Display(Name = "Diskon")]
+      public decimal diskon { get; set; }
+
+      [DisplayFormat(DataFormatString = "{0:N0}")]
+      [Dp.Write(false)]
+      [Display(Name = "Grand Total")]
+      public decimal grand_total
+      {
+         get { return (sub_total - diskon) >= 0 ? (sub_total - diskon) : 0; }
       }
 
       [Browsable(false)]

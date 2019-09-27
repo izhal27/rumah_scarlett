@@ -38,21 +38,17 @@ namespace RumahScarlett.Domain.Models.Pembelian
 
       public decimal hpp { get; set; }
 
-      public decimal total
+      public decimal sub_total
       {
          get { return qty > 0M ? decimal.Parse((qty * hpp).ToString()) : 0M; }
       }
 
-      public decimal grand_total
-      {
-         get { return 0; }
-      }
+      public decimal diskon { get; set; }
 
-      public IEnumerable<IPembelianDetailModel> PembelianDetails { get; set; }
+      public decimal total { get; }
 
-      public PembelianReportModel()
-      {
-         PembelianDetails = new List<IPembelianDetailModel>();
-      }
+      public decimal grand_total { get; }
+
+      public IEnumerable<IPembelianDetailModel> PembelianDetails { get; set; }      
    }
 }
