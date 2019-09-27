@@ -33,6 +33,7 @@ namespace RumahScarlett.Domain.Models.Pembelian
       public string barang_nama { get; set; }
 
       public int qty { get; set; }
+      public int qty_return { get; set; }
 
       public string barang_satuan { get; set; }
 

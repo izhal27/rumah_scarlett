@@ -409,11 +409,24 @@
       <DependentUpon>CariBarangView.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Pembelian\ILaporanPembelianView.cs" />
+    <Compile Include="Views\Pembelian\IReturnPembelianView.cs" />
     <Compile Include="Views\Pembelian\LaporanPembelianView.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\Pembelian\LaporanPembelianView.Designer.cs">
       <DependentUpon>LaporanPembelianView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Pembelian\ReturnPembelianEntryView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Pembelian\ReturnPembelianEntryView.designer.cs">
+      <DependentUpon>ReturnPembelianEntryView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Pembelian\ReturnPembelianView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Pembelian\ReturnPembelianView.designer.cs">
+      <DependentUpon>ReturnPembelianView.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Pembelian\SimpanPembelianEntryView.cs">
       <SubType>Form</SubType>
@@ -688,6 +701,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Pembelian\LaporanPembelianView.resx">
       <DependentUpon>LaporanPembelianView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Pembelian\ReturnPembelianEntryView.resx">
+      <DependentUpon>ReturnPembelianEntryView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Pembelian\ReturnPembelianView.resx">
+      <DependentUpon>ReturnPembelianView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Pembelian\SimpanPembelianEntryView.resx">
       <DependentUpon>SimpanPembelianEntryView.cs</DependentUpon>

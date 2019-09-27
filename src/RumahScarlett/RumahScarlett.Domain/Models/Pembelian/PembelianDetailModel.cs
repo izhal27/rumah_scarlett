@@ -63,6 +63,11 @@ namespace RumahScarlett.Domain.Models.Pembelian
       [Display(Name = "Qty")]
       public int qty { get; set; }
 
+      [Browsable(false)]
+      [DisplayFormat(DataFormatString = "{0:N0}")]
+      [Display(Name = "Qty Return")]
+      public int qty_return { get; set; }
+
       [Dp.Write(false)]
       [Display(Name = "Satuan")]
       public string barang_satuan
