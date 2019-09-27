@@ -53,6 +53,16 @@ namespace RumahScarlett.Services.Services.Penjualan
       {
          throw new NotImplementedException();
       }
+      
+      public IEnumerable<IPenjualanReturnReportModel> GetReportByDate(object date)
+      {
+         return _repo.GetReportByDate(date);
+      }
+
+      public IEnumerable<IPenjualanReturnReportModel> GetReportByDate(object startDate, object endDate)
+      {
+         return _repo.GetReportByDate(startDate, endDate);
+      }
 
       public void ValidateModel(IPenjualanReturnModel model)
       {

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RumahScarlett.Services.Services.Penjualan
 {
-   public interface IPenjualanReturnRepository : IBaseRepositoryGetByDate<IPenjualanReturnModel>
+   public interface IPenjualanReturnRepository : IBaseRepositoryGetByDate<IPenjualanReturnModel>, IBaseReportRepositoryByDate<IPenjualanReturnReportModel>
    {
    }
 }

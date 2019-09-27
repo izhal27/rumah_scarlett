@@ -114,5 +114,25 @@ namespace RumahScarlett.Services.UnitTests.Penjualan
 
          TestsHelper.WriteListModels(_testOutputHelper, listModels);
       }
+      
+      [Fact]
+      public void ShouldReturnListOfReportModelsDateNow()
+      {
+         var listModels = _services.GetReportByDate(DateTime.Now.Date).ToList();
+
+         Assert.NotEmpty(listModels);
+
+         TestsHelper.WriteListModels(_testOutputHelper, listModels);
+      }
+
+      [Fact]
+      public void ShouldReturnListOfReportModelsBetweenDate()
+      {
+         var listModels = _services.GetReportByDate(new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1).Date, DateTime.Now.Date).ToList();
+
+         Assert.NotEmpty(listModels);
+
+         TestsHelper.WriteListModels(_testOutputHelper, listModels);
+      }
    }
 }

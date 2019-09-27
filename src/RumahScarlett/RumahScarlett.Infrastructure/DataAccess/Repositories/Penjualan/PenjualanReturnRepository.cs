@@ -234,6 +234,43 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Penjualan
 
          return listObj;
       }
+      
+      public IEnumerable<IPenjualanReturnReportModel> GetReportByDate(object date)
+      {
+         var dataAccessStatus = new DataAccessStatus();
+
+         using (var context = new DbContext())
+         {
+            var queryStr = QueryStrReport("DATE(pjr.tanggal) = @date");
+
+            var listObjs = context.Conn.Query<PenjualanReturnReportModel>(queryStr, new { date });
+
+            return listObjs;
+         }
+      }
+
+      public IEnumerable<IPenjualanReturnReportModel> GetReportByDate(object startDate, object endDate)
+      {
+         var dataAccessStatus = new DataAccessStatus();
+
+         using (var context = new DbContext())
+         {
+            var queryStr = QueryStrReport("DATE(pjr.tanggal) >= @startDate AND DATE(pjr.tanggal) <= @endDate");
+
+            var listObjs = context.Conn.Query<PenjualanReturnReportModel>(queryStr, new { startDate, endDate });
+
+            return listObjs;
+         }
+      }
+
+      private string QueryStrReport(string where)
+      {
+         return "SELECT pjr.tanggal, pjr.no_nota, b.kode AS barang_kode, b.nama AS barang_nama, pjrd.qty, " +
+                "s.nama AS satuan_nama, pjrd.harga_jual, pjrd.status, pjrd.keterangan FROM penjualan_return pjr " +
+                "INNER JOIN penjualan_return_detail pjrd ON pjr.id = pjrd.penjualan_return_id " +
+                "INNER JOIN barang b ON pjrd.barang_id = b.id " +
+                $"INNER JOIN satuan s ON b.satuan_id = s.id WHERE { where}";
+      }
 
       private bool CheckModelExist(DbContext context, object id)
       {

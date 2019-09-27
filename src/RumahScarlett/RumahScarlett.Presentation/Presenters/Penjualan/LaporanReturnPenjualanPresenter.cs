@@ -94,37 +94,37 @@ namespace RumahScarlett.Presentation.Presenters.Penjualan
       {
          using (new WaitCursorHandler())
          {
-            //if (_bindingView.DataSource.Count > 0)
-            //{
-            //   var parameters = new List<ReportParameter>();
+            if (_bindingView.DataSource.Count > 0)
+            {
+               var parameters = new List<ReportParameter>();
 
-            //   var listObjs = new List<IPenjualanReportModel>();
+               var listObjs = new List<IPenjualanReturnReportModel>();
 
-            //   if (_tampilkanStatus == TampilkanStatus.Tanggal)
-            //   {
-            //      listObjs = _services.GetReportByDate(_tanggal).ToList();
+               if (_tampilkanStatus == TampilkanStatus.Tanggal)
+               {
+                  listObjs = _services.GetReportByDate(_tanggal).ToList();
 
-            //      parameters.Add(new ReportParameter("Tanggal", _tanggal.ToShortDateString()));
-            //   }
-            //   else if (_tampilkanStatus == TampilkanStatus.Periode)
-            //   {
-            //      listObjs = _services.GetReportByDate(_tanggalAwal, _tanggalAkhir).ToList();
+                  parameters.Add(new ReportParameter("Tanggal", _tanggal.ToShortDateString()));
+               }
+               else if (_tampilkanStatus == TampilkanStatus.Periode)
+               {
+                  listObjs = _services.GetReportByDate(_tanggalAwal, _tanggalAkhir).ToList();
 
-            //      parameters.Add(new ReportParameter("Tanggal", _tanggalAwal.ToShortDateString()));
-            //      parameters.Add(new ReportParameter("TanggalAkhir", _tanggalAkhir.ToShortDateString()));
-            //   }
+                  parameters.Add(new ReportParameter("Tanggal", _tanggalAwal.ToShortDateString()));
+                  parameters.Add(new ReportParameter("TanggalAkhir", _tanggalAkhir.ToShortDateString()));
+               }
 
-            //   var reportDataSources = new List<ReportDataSource>()
-            //   {
-            //      new ReportDataSource {
-            //         Name = "DataSetPenjualan",
-            //         Value = listObjs
-            //      }
-            //   };
+               var reportDataSources = new List<ReportDataSource>()
+               {
+                  new ReportDataSource {
+                     Name = "DataSetReturnPenjualan",
+                     Value = listObjs
+                  }
+               };
 
-            //   new ReportView("Laporan Penjualan", "ReportViewerLaporanPenjualan",
-            //                  reportDataSources, parameters).ShowDialog();
-            //}
+               new ReportView("Laporan Return Penjualan", "ReportViewerLaporanReturnPenjualan",
+                              reportDataSources, parameters).ShowDialog();
+            }
          }
       }
 
