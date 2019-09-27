@@ -204,10 +204,10 @@ namespace RumahScarlett.Presentation.Presenters.Pembelian
       {
          using (new WaitCursorHandler())
          {
-            //if (_successSave)
-            //{
-            //   ReportHelper.ShowNotaReturnPembelian(_pembelianReturnModel);
-            //}
+            if (_successSave)
+            {
+               ReportHelper.ShowNotaReturnPembelian(_pembelianReturnModel);
+            }
          }
       }
    }

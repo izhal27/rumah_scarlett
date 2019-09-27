@@ -82,6 +82,24 @@ namespace RumahScarlett.Presentation.Helper
                         reportDataSources, null).ShowDialog();
       }
 
+      public static void ShowNotaReturnPembelian(IPembelianReturnModel pembeliannReturnModel)
+      {
+         var reportDataSources = new List<ReportDataSource>()
+         {
+            new ReportDataSource {
+               Name = "DataSetReturnPembelian",
+               Value = new BindingSource(pembeliannReturnModel, null)
+            },
+            new ReportDataSource {
+               Name = "DataSetReturnPembelianDetail",
+               Value = pembeliannReturnModel.PembelianReturnDetails
+            }
+         };
+
+         new ReportView("Nota Return Pembelian", "ReportViewerNotaReturnPembelian",
+                        reportDataSources, null).ShowDialog();
+      }
+
       /// <summary>
       /// Method yang digunakkan untuk mencetak nota penjualan ke printer thermal
       /// </summary>

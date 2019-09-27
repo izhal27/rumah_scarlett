@@ -64,8 +64,7 @@ namespace RumahScarlett.Domain.Models.Pembelian
       }
 
       private decimal _hpp;
-
-      [Browsable(false)]
+      
       [Display(Name = "Hpp")]
       [DisplayFormat(DataFormatString = "{0:N0}")]
       public decimal hpp
