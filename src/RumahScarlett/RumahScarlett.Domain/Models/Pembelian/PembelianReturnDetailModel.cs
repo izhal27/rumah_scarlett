@@ -12,7 +12,7 @@ using Dp = Dapper.Contrib.Extensions;
 
 namespace RumahScarlett.Domain.Models.Pembelian
 {
-   [Table("penjualan_return_detail")]
+   [Table("pembelian_return_detail")]
    public class PembelianReturnDetailModel : IPembelianReturnDetailModel
    {
       [Browsable(false)]
@@ -21,7 +21,7 @@ namespace RumahScarlett.Domain.Models.Pembelian
 
       [Browsable(false)]
       [Display(Name = "Pembelian Return ID")]
-      public uint penjualan_return_id { get; set; }
+      public uint pembelian_return_id { get; set; }
 
       [Dp.Write(false)]
       [Display(Name = "Barang")]

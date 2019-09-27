@@ -83,7 +83,10 @@
     <Compile Include="Services\Pelanggan\IPelangganServices.cs" />
     <Compile Include="Services\Pelanggan\PelangganServices.cs" />
     <Compile Include="Services\Pembelian\IPembelianRepository.cs" />
+    <Compile Include="Services\Pembelian\IPembelianReturnRepository.cs" />
+    <Compile Include="Services\Pembelian\IPembelianReturnServices.cs" />
     <Compile Include="Services\Pembelian\IPembelianServices.cs" />
+    <Compile Include="Services\Pembelian\PembelianReturnServices.cs" />
     <Compile Include="Services\Pembelian\PembelianServices.cs" />
     <Compile Include="Services\Pengaturan\IPengaturanRepository.cs" />
     <Compile Include="Services\Pengaturan\IPengaturanServices.cs" />

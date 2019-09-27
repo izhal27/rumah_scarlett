@@ -80,11 +80,13 @@
     <Compile Include="Models\Pembelian\IPembelianReportModel.cs" />
     <Compile Include="Models\Pembelian\IPembelianReturnDetailModel.cs" />
     <Compile Include="Models\Pembelian\IPembelianReturnModel.cs" />
+    <Compile Include="Models\Pembelian\IPembelianReturnReportModel.cs" />
     <Compile Include="Models\Pembelian\PembelianDetailModel.cs" />
     <Compile Include="Models\Pembelian\PembelianModel.cs" />
     <Compile Include="Models\Pembelian\PembelianReportModel.cs" />
     <Compile Include="Models\Pembelian\PembelianReturnDetailModel.cs" />
     <Compile Include="Models\Pembelian\PembelianReturnModel.cs" />
+    <Compile Include="Models\Pembelian\PembelianReturnReportModel.cs" />
     <Compile Include="Models\Pengaturan\IPengaturanModel.cs" />
     <Compile Include="Models\Pengaturan\PengaturanModel.cs" />
     <Compile Include="Models\Pengeluaran\IPengeluaranModel.cs" />

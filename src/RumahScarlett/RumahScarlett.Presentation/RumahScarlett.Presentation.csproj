@@ -150,8 +150,10 @@
     <Compile Include="Presenters\Pelanggan\PelangganPresenter.cs" />
     <Compile Include="Presenters\Pembelian\ILaporanPembelianPresenter.cs" />
     <Compile Include="Presenters\Pembelian\IPembelianPresenter.cs" />
+    <Compile Include="Presenters\Pembelian\IPembelianReturnPresenter.cs" />
     <Compile Include="Presenters\Pembelian\LaporanPembelianPresenter.cs" />
     <Compile Include="Presenters\Pembelian\PembelianPresenter.cs" />
+    <Compile Include="Presenters\Pembelian\PembelianReturnPresenter.cs" />
     <Compile Include="Presenters\Pengaturan\IPengaturanPresenter.cs" />
     <Compile Include="Presenters\Pengaturan\PengaturanPresenter.cs" />
     <Compile Include="Presenters\Pengeluaran\ILaporanPengeluaranPresenter.cs" />

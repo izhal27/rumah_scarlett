@@ -53,7 +53,12 @@ namespace RumahScarlett.Services.Services.Pembelian
       {
          return _repo.GetById(id);
       }
-      
+
+      public IPembelianModel GetByNoNota(object noNota)
+      {
+         return _repo.GetByNoNota(noNota);
+      }
+
       public IEnumerable<IPembelianReportModel> GetReportByDate(object date)
       {
          return _repo.GetReportByDate(date);

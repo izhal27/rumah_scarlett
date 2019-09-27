@@ -23,11 +23,9 @@ namespace RumahScarlett.Presentation.Views.Pembelian
 
       TextBox TextBoxCariNoNota { get; }
       Label LabelTanggalPembelian { get; }
-      Label LabelPelangganPembelian { get; }
+      Label LabelSupplierPembelian { get; }
       Label LabelSubTotalPembelian { get; }
       Label LabelDiskonPembelian { get; }
       Label LabelTotalPembelian { get; }
-      Label LabelDibayarPembelian { get; }
-      Label LabelKembaliPembelian { get; }
    }
 }

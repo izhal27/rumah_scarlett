@@ -9,5 +9,6 @@ namespace RumahScarlett.Services.Services.Pembelian
 {
    public interface IPembelianRepository : IBaseRepositoryGetByDate<IPembelianModel>, IBaseReportRepositoryByDate<IPembelianReportModel>
    {
+      IPembelianModel GetByNoNota(object noNota);
    }
 }

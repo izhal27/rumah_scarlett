@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 
 namespace RumahScarlett.Services.Services.Pembelian
 {
-   public interface IPembelianServices : IBaseServicesGetByDate<IPembelianModel>, IBaseReportServicesByDate<IPembelianReportModel>
+   public interface IPembelianReturnServices : IBaseServicesGetByDate<IPembelianReturnModel>, IBaseReportServicesByDate<IPembelianReturnReportModel>
    {
-      IPembelianModel GetByNoNota(object noNota);
    }
 }

@@ -205,6 +205,33 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Pembelian
          }
       }
 
+      public IPembelianModel GetByNoNota(object noNota)
+      {
+         var dataAccessStatus = new DataAccessStatus();
+
+         using (var context = new DbContext())
+         {
+            var queryStr = "SELECT * FROM pembelian WHERE no_nota = @noNota";
+
+            var model = context.Conn.Query<PembelianModel>(queryStr, new { noNota }).FirstOrDefault();
+
+            if (model != null)
+            {
+               var supplierModel = context.Conn.Get<SupplierModel>(model.supplier_id);
+
+               if (supplierModel != null)
+               {
+                  model.Supplier = supplierModel;
+               }
+
+               var pdRepo = new PembelianDetailRepository(context);
+
+               model.PembelianDetails = pdRepo.GetAll(model);
+            }
+            return model;
+         }
+      }
+
       public IEnumerable<IPembelianReportModel> GetReportByDate(object date)
       {
          var dataAccessStatus = new DataAccessStatus();

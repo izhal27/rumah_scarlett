@@ -55,9 +55,9 @@ namespace RumahScarlett.Presentation.Views.Pembelian
          get { return labelTanggalPembelian; }
       }
 
-      public Label LabelPelangganPembelian
+      public Label LabelSupplierPembelian
       {
-         get { return labelPelangganPembelian; }
+         get { return labelSupplierPembelian; }
       }
 
       public Label LabelSubTotalPembelian
@@ -74,17 +74,7 @@ namespace RumahScarlett.Presentation.Views.Pembelian
       {
          get { return labelTotalPembelian; }
       }
-
-      public Label LabelDibayarPembelian
-      {
-         get { return labelDibayarPembelian; }
-      }
-
-      public Label LabelKembaliPembelian
-      {
-         get { return labelKembaliPembelian; }
-      }
-
+      
       public ReturnPembelianView()
       {
          InitializeComponent();

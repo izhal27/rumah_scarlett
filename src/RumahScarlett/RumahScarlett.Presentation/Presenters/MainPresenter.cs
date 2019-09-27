@@ -135,6 +135,19 @@ namespace RumahScarlett.Presentation.Presenters
          ShowChildForm(view, e);
       }
 
+      private void _view_OnReturnPenjualanViewClick(object sender, MainViewEventArgs e)
+      {
+         var view = (DockContent)new PenjualanReturnPresenter().GetView;
+         ShowChildForm(view, e);
+      }
+
+      private void _view_OnReturnPembelianViewClick(object sender, MainViewEventArgs e)
+      {
+
+         var view = (DockContent)new PembelianReturnPresenter().GetView;
+         ShowChildForm(view, e);
+      }
+
       private void _view_OnPenyesuaianStokViewClick(object sender, MainViewEventArgs e)
       {
          var view = (DockContent)new PenyesuaianStokPresenter().GetView;
@@ -224,17 +237,6 @@ namespace RumahScarlett.Presentation.Presenters
          {
             new TentangPresenter().GetView.ShowView();
          }
-      }
-
-      private void _view_OnReturnPenjualanViewClick(object sender, MainViewEventArgs e)
-      {
-         var view = (DockContent)new PenjualanReturnPresenter().GetView;
-         ShowChildForm(view, e);
-      }
-
-      private void _view_OnReturnPembelianViewClick(object sender, MainViewEventArgs e)
-      {
-         throw new NotImplementedException();
       }
 
       /// <summary>

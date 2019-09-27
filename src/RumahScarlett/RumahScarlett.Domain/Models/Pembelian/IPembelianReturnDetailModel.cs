@@ -10,7 +10,7 @@ namespace RumahScarlett.Domain.Models.Pembelian
    public interface IPembelianReturnDetailModel
    {
       uint id { get; set; }
-      uint penjualan_return_id { get; set; }
+      uint pembelian_return_id { get; set; }
       IBarangModel Barang { get; set; }
       uint barang_id { get; set; }
       string barang_kode { get; }

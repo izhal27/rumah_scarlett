@@ -50,6 +50,14 @@ namespace RumahScarlett.Domain.Models.Laporan
          get { return PenjualanReturn.id != default(uint) ? PenjualanReturn.id : (uint?)null; }
       }
 
+      [Dp.Write(false)]
+      public IPembelianReturnModel PembelianReturn { get; set; }
+
+      public uint? pembelian_return_id
+      {
+         get { return PembelianReturn.id != default(uint) ? PembelianReturn.id : (uint?)null; }
+      }
+
       public int stok_awal { get; set; }
 
       private int _stok_masuk;
@@ -76,6 +84,14 @@ namespace RumahScarlett.Domain.Models.Laporan
          set { _penyesuaian_stok = value; }
       }
 
+      private int _pembelian_return_qty;
+
+      public int pembelian_return_qty
+      {
+         get { return PembelianReturn.id != default(uint) ? PembelianReturn.PembelianReturnDetails.Sum(prd => prd.qty) : _pembelian_return_qty; }
+         set { _pembelian_return_qty = value; }
+      }
+
       private int _penjualan_return_qty;
 
       public int penjualan_return_qty
@@ -95,6 +111,7 @@ namespace RumahScarlett.Domain.Models.Laporan
          Penjualan = new PenjualanModel();
          PenyesuaianStok = new PenyesuaianStokModel();
          PenjualanReturn = new PenjualanReturnModel();
+         PembelianReturn = new PembelianReturnModel();
       }
    }
 }

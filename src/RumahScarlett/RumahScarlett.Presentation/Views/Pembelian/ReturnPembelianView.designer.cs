@@ -41,7 +41,7 @@
          this.label5 = new System.Windows.Forms.Label();
          this.label6 = new System.Windows.Forms.Label();
          this.labelTanggalPembelian = new System.Windows.Forms.Label();
-         this.labelPelangganPembelian = new System.Windows.Forms.Label();
+         this.labelSupplierPembelian = new System.Windows.Forms.Label();
          this.labelSubTotalPembelian = new System.Windows.Forms.Label();
          this.labelDiskonPembelian = new System.Windows.Forms.Label();
          this.labelTotalPembelian = new System.Windows.Forms.Label();
@@ -50,12 +50,6 @@
          this.label15 = new System.Windows.Forms.Label();
          this.label16 = new System.Windows.Forms.Label();
          this.label17 = new System.Windows.Forms.Label();
-         this.label7 = new System.Windows.Forms.Label();
-         this.label8 = new System.Windows.Forms.Label();
-         this.label9 = new System.Windows.Forms.Label();
-         this.label10 = new System.Windows.Forms.Label();
-         this.labelDibayarPembelian = new System.Windows.Forms.Label();
-         this.labelKembaliPembelian = new System.Windows.Forms.Label();
          this.groupBox2 = new System.Windows.Forms.GroupBox();
          this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
          this.label27 = new System.Windows.Forms.Label();
@@ -99,10 +93,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
          this.listDataGrid.AutoSizeColumnsMode = Syncfusion.WinForms.DataGrid.Enums.AutoSizeColumnsMode.Fill;
-         this.listDataGrid.Location = new System.Drawing.Point(306, 58);
+         this.listDataGrid.Location = new System.Drawing.Point(303, 58);
          this.listDataGrid.Name = "listDataGrid";
          this.listDataGrid.ShowRowHeader = true;
-         this.listDataGrid.Size = new System.Drawing.Size(508, 375);
+         this.listDataGrid.Size = new System.Drawing.Size(511, 315);
          this.listDataGrid.TabIndex = 1;
          this.listDataGrid.Text = "listDataGrid1";
          // 
@@ -111,10 +105,10 @@
          this.groupBox1.Controls.Add(this.tableLayoutPanel1);
          this.groupBox1.Location = new System.Drawing.Point(12, 58);
          this.groupBox1.Name = "groupBox1";
-         this.groupBox1.Size = new System.Drawing.Size(285, 265);
+         this.groupBox1.Size = new System.Drawing.Size(285, 205);
          this.groupBox1.TabIndex = 2;
          this.groupBox1.TabStop = false;
-         this.groupBox1.Text = "[ DATA Pembelian ]";
+         this.groupBox1.Text = "[ DATA PEMBELIAN ]";
          // 
          // tableLayoutPanel1
          // 
@@ -136,7 +130,7 @@
          this.tableLayoutPanel1.Controls.Add(this.label5, 0, 4);
          this.tableLayoutPanel1.Controls.Add(this.label6, 0, 5);
          this.tableLayoutPanel1.Controls.Add(this.labelTanggalPembelian, 2, 1);
-         this.tableLayoutPanel1.Controls.Add(this.labelPelangganPembelian, 2, 2);
+         this.tableLayoutPanel1.Controls.Add(this.labelSupplierPembelian, 2, 2);
          this.tableLayoutPanel1.Controls.Add(this.labelSubTotalPembelian, 2, 3);
          this.tableLayoutPanel1.Controls.Add(this.labelDiskonPembelian, 2, 4);
          this.tableLayoutPanel1.Controls.Add(this.labelTotalPembelian, 2, 5);
@@ -145,31 +139,23 @@
          this.tableLayoutPanel1.Controls.Add(this.label15, 1, 3);
          this.tableLayoutPanel1.Controls.Add(this.label16, 1, 4);
          this.tableLayoutPanel1.Controls.Add(this.label17, 1, 5);
-         this.tableLayoutPanel1.Controls.Add(this.label7, 0, 6);
-         this.tableLayoutPanel1.Controls.Add(this.label8, 0, 7);
-         this.tableLayoutPanel1.Controls.Add(this.label9, 1, 6);
-         this.tableLayoutPanel1.Controls.Add(this.label10, 1, 7);
-         this.tableLayoutPanel1.Controls.Add(this.labelDibayarPembelian, 2, 6);
-         this.tableLayoutPanel1.Controls.Add(this.labelKembaliPembelian, 2, 7);
          this.tableLayoutPanel1.Location = new System.Drawing.Point(6, 19);
          this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-         this.tableLayoutPanel1.RowCount = 8;
+         this.tableLayoutPanel1.RowCount = 6;
          this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
          this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
          this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
          this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
          this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
          this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-         this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-         this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-         this.tableLayoutPanel1.Size = new System.Drawing.Size(273, 240);
+         this.tableLayoutPanel1.Size = new System.Drawing.Size(273, 180);
          this.tableLayoutPanel1.TabIndex = 0;
          // 
          // buttonCari
          // 
          this.buttonCari.Anchor = System.Windows.Forms.AnchorStyles.Left;
          this.buttonCari.Image = global::RumahScarlett.Presentation.Properties.Resources.searching_16;
-         this.buttonCari.Location = new System.Drawing.Point(239, 3);
+         this.buttonCari.Location = new System.Drawing.Point(234, 3);
          this.buttonCari.Name = "buttonCari";
          this.buttonCari.Size = new System.Drawing.Size(30, 23);
          this.buttonCari.TabIndex = 1;
@@ -190,7 +176,7 @@
          // 
          this.label12.Anchor = System.Windows.Forms.AnchorStyles.None;
          this.label12.AutoSize = true;
-         this.label12.Location = new System.Drawing.Point(67, 8);
+         this.label12.Location = new System.Drawing.Point(62, 8);
          this.label12.Name = "label12";
          this.label12.Size = new System.Drawing.Size(10, 13);
          this.label12.TabIndex = 0;
@@ -200,7 +186,7 @@
          // 
          this.textBoxCariNoNota.Anchor = System.Windows.Forms.AnchorStyles.Left;
          this.textBoxCariNoNota.BeforeTouchSize = new System.Drawing.Size(150, 20);
-         this.textBoxCariNoNota.Location = new System.Drawing.Point(83, 5);
+         this.textBoxCariNoNota.Location = new System.Drawing.Point(78, 5);
          this.textBoxCariNoNota.MaxLength = 50;
          this.textBoxCariNoNota.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
          this.textBoxCariNoNota.Name = "textBoxCariNoNota";
@@ -224,9 +210,9 @@
          this.label3.AutoSize = true;
          this.label3.Location = new System.Drawing.Point(3, 68);
          this.label3.Name = "label3";
-         this.label3.Size = new System.Drawing.Size(58, 13);
+         this.label3.Size = new System.Drawing.Size(45, 13);
          this.label3.TabIndex = 0;
-         this.label3.Text = "Pelanggan";
+         this.label3.Text = "Supplier";
          // 
          // label4
          // 
@@ -262,27 +248,27 @@
          // 
          this.labelTanggalPembelian.Anchor = System.Windows.Forms.AnchorStyles.Left;
          this.labelTanggalPembelian.AutoSize = true;
-         this.labelTanggalPembelian.Location = new System.Drawing.Point(83, 38);
+         this.labelTanggalPembelian.Location = new System.Drawing.Point(78, 38);
          this.labelTanggalPembelian.Name = "labelTanggalPembelian";
          this.labelTanggalPembelian.Size = new System.Drawing.Size(10, 13);
          this.labelTanggalPembelian.TabIndex = 0;
          this.labelTanggalPembelian.Text = "-";
          // 
-         // labelPelangganPembelian
+         // labelSupplierPembelian
          // 
-         this.labelPelangganPembelian.Anchor = System.Windows.Forms.AnchorStyles.Left;
-         this.labelPelangganPembelian.AutoSize = true;
-         this.labelPelangganPembelian.Location = new System.Drawing.Point(83, 68);
-         this.labelPelangganPembelian.Name = "labelPelangganPembelian";
-         this.labelPelangganPembelian.Size = new System.Drawing.Size(10, 13);
-         this.labelPelangganPembelian.TabIndex = 0;
-         this.labelPelangganPembelian.Text = "-";
+         this.labelSupplierPembelian.Anchor = System.Windows.Forms.AnchorStyles.Left;
+         this.labelSupplierPembelian.AutoSize = true;
+         this.labelSupplierPembelian.Location = new System.Drawing.Point(78, 68);
+         this.labelSupplierPembelian.Name = "labelSupplierPembelian";
+         this.labelSupplierPembelian.Size = new System.Drawing.Size(10, 13);
+         this.labelSupplierPembelian.TabIndex = 0;
+         this.labelSupplierPembelian.Text = "-";
          // 
          // labelSubTotalPembelian
          // 
          this.labelSubTotalPembelian.Anchor = System.Windows.Forms.AnchorStyles.Left;
          this.labelSubTotalPembelian.AutoSize = true;
-         this.labelSubTotalPembelian.Location = new System.Drawing.Point(83, 98);
+         this.labelSubTotalPembelian.Location = new System.Drawing.Point(78, 98);
          this.labelSubTotalPembelian.Name = "labelSubTotalPembelian";
          this.labelSubTotalPembelian.Size = new System.Drawing.Size(10, 13);
          this.labelSubTotalPembelian.TabIndex = 0;
@@ -292,7 +278,7 @@
          // 
          this.labelDiskonPembelian.Anchor = System.Windows.Forms.AnchorStyles.Left;
          this.labelDiskonPembelian.AutoSize = true;
-         this.labelDiskonPembelian.Location = new System.Drawing.Point(83, 128);
+         this.labelDiskonPembelian.Location = new System.Drawing.Point(78, 128);
          this.labelDiskonPembelian.Name = "labelDiskonPembelian";
          this.labelDiskonPembelian.Size = new System.Drawing.Size(10, 13);
          this.labelDiskonPembelian.TabIndex = 0;
@@ -302,7 +288,7 @@
          // 
          this.labelTotalPembelian.Anchor = System.Windows.Forms.AnchorStyles.Left;
          this.labelTotalPembelian.AutoSize = true;
-         this.labelTotalPembelian.Location = new System.Drawing.Point(83, 158);
+         this.labelTotalPembelian.Location = new System.Drawing.Point(78, 158);
          this.labelTotalPembelian.Name = "labelTotalPembelian";
          this.labelTotalPembelian.Size = new System.Drawing.Size(10, 13);
          this.labelTotalPembelian.TabIndex = 0;
@@ -312,7 +298,7 @@
          // 
          this.label13.Anchor = System.Windows.Forms.AnchorStyles.None;
          this.label13.AutoSize = true;
-         this.label13.Location = new System.Drawing.Point(67, 38);
+         this.label13.Location = new System.Drawing.Point(62, 38);
          this.label13.Name = "label13";
          this.label13.Size = new System.Drawing.Size(10, 13);
          this.label13.TabIndex = 0;
@@ -322,7 +308,7 @@
          // 
          this.label14.Anchor = System.Windows.Forms.AnchorStyles.None;
          this.label14.AutoSize = true;
-         this.label14.Location = new System.Drawing.Point(67, 68);
+         this.label14.Location = new System.Drawing.Point(62, 68);
          this.label14.Name = "label14";
          this.label14.Size = new System.Drawing.Size(10, 13);
          this.label14.TabIndex = 0;
@@ -332,7 +318,7 @@
          // 
          this.label15.Anchor = System.Windows.Forms.AnchorStyles.None;
          this.label15.AutoSize = true;
-         this.label15.Location = new System.Drawing.Point(67, 98);
+         this.label15.Location = new System.Drawing.Point(62, 98);
          this.label15.Name = "label15";
          this.label15.Size = new System.Drawing.Size(10, 13);
          this.label15.TabIndex = 0;
@@ -342,7 +328,7 @@
          // 
          this.label16.Anchor = System.Windows.Forms.AnchorStyles.None;
          this.label16.AutoSize = true;
-         this.label16.Location = new System.Drawing.Point(67, 128);
+         this.label16.Location = new System.Drawing.Point(62, 128);
          this.label16.Name = "label16";
          this.label16.Size = new System.Drawing.Size(10, 13);
          this.label16.TabIndex = 0;
@@ -352,81 +338,21 @@
          // 
          this.label17.Anchor = System.Windows.Forms.AnchorStyles.None;
          this.label17.AutoSize = true;
-         this.label17.Location = new System.Drawing.Point(67, 158);
+         this.label17.Location = new System.Drawing.Point(62, 158);
          this.label17.Name = "label17";
          this.label17.Size = new System.Drawing.Size(10, 13);
          this.label17.TabIndex = 0;
          this.label17.Text = ":";
          // 
-         // label7
-         // 
-         this.label7.Anchor = System.Windows.Forms.AnchorStyles.Left;
-         this.label7.AutoSize = true;
-         this.label7.Location = new System.Drawing.Point(3, 188);
-         this.label7.Name = "label7";
-         this.label7.Size = new System.Drawing.Size(43, 13);
-         this.label7.TabIndex = 0;
-         this.label7.Text = "Dibayar";
-         // 
-         // label8
-         // 
-         this.label8.Anchor = System.Windows.Forms.AnchorStyles.Left;
-         this.label8.AutoSize = true;
-         this.label8.Location = new System.Drawing.Point(3, 218);
-         this.label8.Name = "label8";
-         this.label8.Size = new System.Drawing.Size(44, 13);
-         this.label8.TabIndex = 0;
-         this.label8.Text = "Kembali";
-         // 
-         // label9
-         // 
-         this.label9.Anchor = System.Windows.Forms.AnchorStyles.None;
-         this.label9.AutoSize = true;
-         this.label9.Location = new System.Drawing.Point(67, 188);
-         this.label9.Name = "label9";
-         this.label9.Size = new System.Drawing.Size(10, 13);
-         this.label9.TabIndex = 0;
-         this.label9.Text = ":";
-         // 
-         // label10
-         // 
-         this.label10.Anchor = System.Windows.Forms.AnchorStyles.None;
-         this.label10.AutoSize = true;
-         this.label10.Location = new System.Drawing.Point(67, 218);
-         this.label10.Name = "label10";
-         this.label10.Size = new System.Drawing.Size(10, 13);
-         this.label10.TabIndex = 0;
-         this.label10.Text = ":";
-         // 
-         // labelDibayar
-         // 
-         this.labelDibayarPembelian.Anchor = System.Windows.Forms.AnchorStyles.Left;
-         this.labelDibayarPembelian.AutoSize = true;
-         this.labelDibayarPembelian.Location = new System.Drawing.Point(83, 188);
-         this.labelDibayarPembelian.Name = "labelDibayar";
-         this.labelDibayarPembelian.Size = new System.Drawing.Size(10, 13);
-         this.labelDibayarPembelian.TabIndex = 0;
-         this.labelDibayarPembelian.Text = "-";
-         // 
-         // labelKembali
-         // 
-         this.labelKembaliPembelian.Anchor = System.Windows.Forms.AnchorStyles.Left;
-         this.labelKembaliPembelian.AutoSize = true;
-         this.labelKembaliPembelian.Location = new System.Drawing.Point(83, 218);
-         this.labelKembaliPembelian.Name = "labelKembali";
-         this.labelKembaliPembelian.Size = new System.Drawing.Size(10, 13);
-         this.labelKembaliPembelian.TabIndex = 0;
-         this.labelKembaliPembelian.Text = "-";
-         // 
          // groupBox2
          // 
          this.groupBox2.Controls.Add(this.tableLayoutPanel2);
-         this.groupBox2.Location = new System.Drawing.Point(12, 329);
+         this.groupBox2.Location = new System.Drawing.Point(12, 269);
          this.groupBox2.Name = "groupBox2";
          this.groupBox2.Size = new System.Drawing.Size(285, 145);
          this.groupBox2.TabIndex = 3;
          this.groupBox2.TabStop = false;
-         this.groupBox2.Text = "[ DATA RETURN Pembelian ]";
+         this.groupBox2.Text = "[ DATA RETURN PEMBELIAN ]";
          // 
          // tableLayoutPanel2
          // 
@@ -580,7 +506,7 @@
          this.labelTanggalReturn.Name = "labelTanggalReturn";
          this.labelTanggalReturn.Size = new System.Drawing.Size(10, 13);
          this.labelTanggalReturn.TabIndex = 0;
-         this.labelTanggalReturn.Text = ":";
+         this.labelTanggalReturn.Text = "-";
          // 
          // tlpButtons
          // 
@@ -600,7 +526,7 @@
          this.tlpButtons.Controls.Add(this.buttonTutup, 5, 0);
          this.tlpButtons.Controls.Add(this.buttonCetakNota, 4, 0);
          this.tlpButtons.Controls.Add(this.buttonSimpan, 2, 0);
-         this.tlpButtons.Location = new System.Drawing.Point(303, 439);
+         this.tlpButtons.Location = new System.Drawing.Point(303, 379);
          this.tlpButtons.Name = "tlpButtons";
          this.tlpButtons.RowCount = 1;
          this.tlpButtons.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -683,7 +609,7 @@
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-         this.ClientSize = new System.Drawing.Size(826, 486);
+         this.ClientSize = new System.Drawing.Size(826, 426);
          this.Controls.Add(this.tlpButtons);
          this.Controls.Add(this.groupBox2);
          this.Controls.Add(this.groupBox1);
@@ -724,7 +650,7 @@
       private System.Windows.Forms.Label label5;
       private System.Windows.Forms.Label label6;
       private System.Windows.Forms.Label labelTanggalPembelian;
-      private System.Windows.Forms.Label labelPelangganPembelian;
+      private System.Windows.Forms.Label labelSupplierPembelian;
       private System.Windows.Forms.Label labelSubTotalPembelian;
       private System.Windows.Forms.Label labelDiskonPembelian;
       private System.Windows.Forms.Label labelTotalPembelian;
@@ -746,12 +672,6 @@
       private System.Windows.Forms.Label label15;
       private System.Windows.Forms.Label label16;
       private System.Windows.Forms.Label label17;
-      private System.Windows.Forms.Label label7;
-      private System.Windows.Forms.Label label8;
-      private System.Windows.Forms.Label label9;
-      private System.Windows.Forms.Label label10;
-      private System.Windows.Forms.Label labelDibayarPembelian;
-      private System.Windows.Forms.Label labelKembaliPembelian;
       private System.Windows.Forms.Label label19;
       private System.Windows.Forms.Label label20;
       private System.Windows.Forms.Label label21;
