@@ -1,6 +1,6 @@
 <?xml version="1.1" encoding="UTF-8" standalone="no"?>
 <databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
-    <changeSet author="Acer (generated)" id="1569597124415-1">
+    <changeSet author="User (generated)" id="1569654204436-1">
         <createTable tableName="barang">
             <column autoIncrement="true" name="id" type="INT UNSIGNED">
                 <constraints primaryKey="true"/>
@@ -40,7 +40,7 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="Acer (generated)" id="1569597124415-2">
+    <changeSet author="User (generated)" id="1569654204436-2">
         <createTable tableName="hutang_operasional">
             <column autoIncrement="true" name="id" type="INT UNSIGNED">
                 <constraints primaryKey="true"/>
@@ -57,7 +57,7 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="Acer (generated)" id="1569597124415-3">
+    <changeSet author="User (generated)" id="1569654204436-3">
         <createTable tableName="kas_awal">
             <column autoIncrement="true" name="id" type="INT UNSIGNED">
                 <constraints primaryKey="true"/>
@@ -70,7 +70,7 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="Acer (generated)" id="1569597124415-4">
+    <changeSet author="User (generated)" id="1569654204436-4">
         <createTable tableName="pelanggan">
             <column autoIncrement="true" name="id" type="INT UNSIGNED">
                 <constraints primaryKey="true"/>
@@ -83,7 +83,7 @@
             <column name="keterangan" type="VARCHAR(255)"/>
         </createTable>
     </changeSet>
-    <changeSet author="Acer (generated)" id="1569597124415-5">
+    <changeSet author="User (generated)" id="1569654204436-5">
         <createTable tableName="pembelian">
             <column autoIncrement="true" name="id" type="INT UNSIGNED">
                 <constraints primaryKey="true"/>
@@ -91,7 +91,7 @@
             <column name="supplier_id" type="INT UNSIGNED">
                 <constraints nullable="false"/>
             </column>
-            <column name="tanggal" type="datetime">
+            <column name="tanggal" type="datetime(6)">
                 <constraints nullable="false"/>
             </column>
             <column name="no_nota" type="VARCHAR(255)">
@@ -102,7 +102,7 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="Acer (generated)" id="1569597124415-6">
+    <changeSet author="User (generated)" id="1569654204436-6">
         <createTable tableName="pembelian_detail">
             <column autoIncrement="true" name="id" type="INT UNSIGNED">
                 <constraints primaryKey="true"/>
@@ -124,12 +124,12 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="Acer (generated)" id="1569597124415-7">
+    <changeSet author="User (generated)" id="1569654204436-7">
         <createTable tableName="pembelian_return">
             <column autoIncrement="true" name="id" type="INT UNSIGNED">
                 <constraints primaryKey="true"/>
             </column>
-            <column name="tanggal" type="datetime">
+            <column name="tanggal" type="datetime(6)">
                 <constraints nullable="false"/>
             </column>
             <column name="no_nota" type="VARCHAR(255)">
@@ -140,7 +140,7 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="Acer (generated)" id="1569597124415-8">
+    <changeSet author="User (generated)" id="1569654204436-8">
         <createTable tableName="pembelian_return_detail">
             <column autoIncrement="true" name="id" type="INT UNSIGNED">
                 <constraints primaryKey="true"/>
@@ -160,15 +160,15 @@
             <column defaultValueNumeric="0" name="status" type="TINYINT(3)">
                 <constraints nullable="false"/>
             </column>
-            <column defaultValue="''''''''''''" name="keterangan" type="VARCHAR(255)"/>
+            <column defaultValue="''''''''''''''''''''''''''''''''''''''''''''''''" name="keterangan" type="VARCHAR(255)"/>
         </createTable>
     </changeSet>
-    <changeSet author="Acer (generated)" id="1569597124415-9">
+    <changeSet author="User (generated)" id="1569654204436-9">
         <createTable tableName="pengeluaran">
             <column autoIncrement="true" name="id" type="INT UNSIGNED">
                 <constraints primaryKey="true"/>
             </column>
-            <column name="tanggal" type="datetime">
+            <column name="tanggal" type="datetime(6)">
                 <constraints nullable="false"/>
             </column>
             <column name="nama" type="VARCHAR(255)">
@@ -180,12 +180,12 @@
             <column name="keterangan" type="VARCHAR(255)"/>
         </createTable>
     </changeSet>
-    <changeSet author="Acer (generated)" id="1569597124415-10">
+    <changeSet author="User (generated)" id="1569654204436-10">
         <createTable tableName="penjualan">
             <column autoIncrement="true" name="id" type="INT UNSIGNED">
                 <constraints primaryKey="true"/>
             </column>
-            <column name="tanggal" type="datetime">
+            <column name="tanggal" type="datetime(6)">
                 <constraints nullable="false"/>
             </column>
             <column name="no_nota" type="VARCHAR(255)">
@@ -194,7 +194,7 @@
             <column defaultValueBoolean="false" name="status_pembayaran" type="BIT(3)">
                 <constraints nullable="false"/>
             </column>
-            <column name="pelanggan_id" type="INT UNSIGNED"/>
+            <column defaultValueComputed="NULL" name="pelanggan_id" type="INT UNSIGNED"/>
             <column defaultValueNumeric="0" name="diskon" type="DECIMAL(19)">
                 <constraints nullable="false"/>
             </column>
@@ -203,7 +203,7 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="Acer (generated)" id="1569597124415-11">
+    <changeSet author="User (generated)" id="1569654204436-11">
         <createTable tableName="penjualan_detail">
             <column autoIncrement="true" name="id" type="INT UNSIGNED">
                 <constraints primaryKey="true"/>
@@ -226,12 +226,12 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="Acer (generated)" id="1569597124415-12">
+    <changeSet author="User (generated)" id="1569654204436-12">
         <createTable tableName="penjualan_return">
             <column autoIncrement="true" name="id" type="INT UNSIGNED">
                 <constraints primaryKey="true"/>
             </column>
-            <column name="tanggal" type="datetime">
+            <column name="tanggal" type="datetime(6)">
                 <constraints nullable="false"/>
             </column>
             <column name="no_nota" type="VARCHAR(255)">
@@ -242,7 +242,7 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="Acer (generated)" id="1569597124415-13">
+    <changeSet author="User (generated)" id="1569654204436-13">
         <createTable tableName="penjualan_return_detail">
             <column autoIncrement="true" name="id" type="INT UNSIGNED">
                 <constraints primaryKey="true"/>
@@ -265,10 +265,10 @@
             <column defaultValueNumeric="0" name="status" type="TINYINT(3)">
                 <constraints nullable="false"/>
             </column>
-            <column defaultValue="''''''''''''" name="keterangan" type="VARCHAR(255)"/>
+            <column defaultValue="''''''''''''''''''''''''''''''''''''''''''''''''" name="keterangan" type="VARCHAR(255)"/>
         </createTable>
     </changeSet>
-    <changeSet author="Acer (generated)" id="1569597124415-14">
+    <changeSet author="User (generated)" id="1569654204436-14">
         <createTable tableName="penyesuaian_stok">
             <column autoIncrement="true" name="id" type="INT UNSIGNED">
                 <constraints primaryKey="true"/>
@@ -279,7 +279,7 @@
             <column name="satuan_id" type="INT UNSIGNED">
                 <constraints nullable="false"/>
             </column>
-            <column name="tanggal" type="datetime">
+            <column name="tanggal" type="datetime(6)">
                 <constraints nullable="false"/>
             </column>
             <column name="qty" type="INT">
@@ -293,7 +293,7 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="Acer (generated)" id="1569597124415-15">
+    <changeSet author="User (generated)" id="1569654204436-15">
         <createTable tableName="satuan">
             <column autoIncrement="true" name="id" type="INT UNSIGNED">
                 <constraints primaryKey="true"/>
@@ -304,19 +304,19 @@
             <column name="keterangan" type="VARCHAR(255)"/>
         </createTable>
     </changeSet>
-    <changeSet author="Acer (generated)" id="1569597124415-16">
+    <changeSet author="User (generated)" id="1569654204436-16">
         <createTable tableName="status_barang">
             <column autoIncrement="true" name="id" type="BIGINT UNSIGNED">
                 <constraints primaryKey="true"/>
             </column>
-            <column name="tanggal" type="datetime">
+            <column name="tanggal" type="datetime(6)">
                 <constraints nullable="false"/>
             </column>
-            <column name="pembelian_id" type="INT UNSIGNED"/>
-            <column name="penjualan_id" type="INT UNSIGNED"/>
-            <column name="penyesuaian_stok_id" type="INT UNSIGNED"/>
-            <column name="pembelian_return_id" type="INT UNSIGNED"/>
-            <column name="penjualan_return_id" type="INT UNSIGNED"/>
+            <column defaultValueComputed="NULL" name="pembelian_id" type="INT UNSIGNED"/>
+            <column defaultValueComputed="NULL" name="penjualan_id" type="INT UNSIGNED"/>
+            <column defaultValueComputed="NULL" name="penyesuaian_stok_id" type="INT UNSIGNED"/>
+            <column defaultValueComputed="NULL" name="pembelian_return_id" type="INT UNSIGNED"/>
+            <column defaultValueComputed="NULL" name="penjualan_return_id" type="INT UNSIGNED"/>
             <column defaultValueNumeric="0" name="stok_awal" type="INT">
                 <constraints nullable="false"/>
             </column>
@@ -330,7 +330,7 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="Acer (generated)" id="1569597124415-17">
+    <changeSet author="User (generated)" id="1569654204436-17">
         <createTable tableName="sub_tipe">
             <column autoIncrement="true" name="id" type="INT UNSIGNED">
                 <constraints primaryKey="true"/>
@@ -341,7 +341,7 @@
             <column name="keterangan" type="VARCHAR(255)"/>
         </createTable>
     </changeSet>
-    <changeSet author="Acer (generated)" id="1569597124415-18">
+    <changeSet author="User (generated)" id="1569654204436-18">
         <createTable tableName="supplier">
             <column autoIncrement="true" name="id" type="INT UNSIGNED">
                 <constraints primaryKey="true"/>
@@ -357,7 +357,7 @@
             <column name="contact_person" type="VARCHAR(255)"/>
         </createTable>
     </changeSet>
-    <changeSet author="Acer (generated)" id="1569597124415-19">
+    <changeSet author="User (generated)" id="1569654204436-19">
         <createTable tableName="tipe">
             <column autoIncrement="true" name="id" type="INT UNSIGNED">
                 <constraints primaryKey="true"/>
@@ -368,213 +368,221 @@
             <column name="keterangan" type="VARCHAR(255)"/>
         </createTable>
     </changeSet>
-    <changeSet author="Acer (generated)" id="1569597124415-20">
+    <changeSet author="User (generated)" id="1569654204436-20">
         <addUniqueConstraint columnNames="kode" constraintName="kode" tableName="barang"/>
     </changeSet>
-    <changeSet author="Acer (generated)" id="1569597124415-21">
+    <changeSet author="User (generated)" id="1569654204436-21">
         <addUniqueConstraint columnNames="nama" constraintName="nama" tableName="barang"/>
     </changeSet>
-    <changeSet author="Acer (generated)" id="1569597124415-22">
+    <changeSet author="User (generated)" id="1569654204436-22">
         <addUniqueConstraint columnNames="nama" constraintName="nama" tableName="sub_tipe"/>
     </changeSet>
-    <changeSet author="Acer (generated)" id="1569597124415-23">
+    <changeSet author="User (generated)" id="1569654204436-23">
         <addUniqueConstraint columnNames="nama" constraintName="nama" tableName="supplier"/>
     </changeSet>
-    <changeSet author="Acer (generated)" id="1569597124415-24">
+    <changeSet author="User (generated)" id="1569654204436-24">
         <addUniqueConstraint columnNames="nama" constraintName="nama" tableName="tipe"/>
     </changeSet>
-    <changeSet author="Acer (generated)" id="1569597124415-25">
+    <changeSet author="User (generated)" id="1569654204436-25">
         <addUniqueConstraint columnNames="nama" constraintName="nama_UNIQUE" tableName="satuan"/>
     </changeSet>
-    <changeSet author="Acer (generated)" id="1569597124415-26">
+    <changeSet author="User (generated)" id="1569654204436-26">
         <addUniqueConstraint columnNames="no_nota" constraintName="no_nota" tableName="pembelian"/>
     </changeSet>
-    <changeSet author="Acer (generated)" id="1569597124415-27">
+    <changeSet author="User (generated)" id="1569654204436-27">
         <addUniqueConstraint columnNames="no_nota" constraintName="no_nota" tableName="pembelian_return"/>
     </changeSet>
-    <changeSet author="Acer (generated)" id="1569597124415-28">
+    <changeSet author="User (generated)" id="1569654204436-28">
         <addUniqueConstraint columnNames="no_nota" constraintName="no_nota" tableName="penjualan"/>
     </changeSet>
-    <changeSet author="Acer (generated)" id="1569597124415-29">
+    <changeSet author="User (generated)" id="1569654204436-29">
         <addUniqueConstraint columnNames="no_nota" constraintName="no_nota" tableName="penjualan_return"/>
     </changeSet>
-    <changeSet author="Acer (generated)" id="1569597124415-30">
+    <changeSet author="User (generated)" id="1569654204436-30">
         <addUniqueConstraint columnNames="tanggal" constraintName="tanggal" tableName="kas_awal"/>
     </changeSet>
-    <changeSet author="Acer (generated)" id="1569597124415-31">
+    <changeSet author="User (generated)" id="1569654204436-31">
         <createIndex indexName="fk_barang_sub_tipe_id" tableName="barang">
             <column name="sub_tipe_id"/>
         </createIndex>
     </changeSet>
-    <changeSet author="Acer (generated)" id="1569597124415-32">
+    <changeSet author="User (generated)" id="1569654204436-32">
         <createIndex indexName="fk_barang_supplier_id" tableName="barang">
             <column name="supplier_id"/>
         </createIndex>
     </changeSet>
-    <changeSet author="Acer (generated)" id="1569597124415-33">
+    <changeSet author="User (generated)" id="1569654204436-33">
         <createIndex indexName="fk_barang_tipe_id" tableName="barang">
             <column name="tipe_id"/>
         </createIndex>
     </changeSet>
-    <changeSet author="Acer (generated)" id="1569597124415-34">
+    <changeSet author="User (generated)" id="1569654204436-34">
         <createIndex indexName="fk_pembelian_barang_id" tableName="pembelian_detail">
             <column name="barang_id"/>
         </createIndex>
     </changeSet>
-    <changeSet author="Acer (generated)" id="1569597124415-35">
+    <changeSet author="User (generated)" id="1569654204436-35">
         <createIndex indexName="fk_pembelian_pembelian_id" tableName="pembelian_detail">
             <column name="pembelian_id"/>
         </createIndex>
     </changeSet>
-    <changeSet author="Acer (generated)" id="1569597124415-36">
+    <changeSet author="User (generated)" id="1569654204436-36">
         <createIndex indexName="fk_pembelian_return_detail_barang_id" tableName="pembelian_return_detail">
             <column name="barang_id"/>
         </createIndex>
     </changeSet>
-    <changeSet author="Acer (generated)" id="1569597124415-37">
+    <changeSet author="User (generated)" id="1569654204436-37">
         <createIndex indexName="fk_pembelian_return_detail_pembelian_return_id" tableName="pembelian_return_detail">
             <column name="pembelian_return_id"/>
         </createIndex>
     </changeSet>
-    <changeSet author="Acer (generated)" id="1569597124415-38">
+    <changeSet author="User (generated)" id="1569654204436-38">
         <createIndex indexName="fk_pembelian_return_pembelian_id" tableName="pembelian_return">
             <column name="pembelian_id"/>
         </createIndex>
     </changeSet>
-    <changeSet author="Acer (generated)" id="1569597124415-39">
+    <changeSet author="User (generated)" id="1569654204436-39">
         <createIndex indexName="fk_pembelian_supplier_id" tableName="pembelian">
             <column name="supplier_id"/>
         </createIndex>
     </changeSet>
-    <changeSet author="Acer (generated)" id="1569597124415-40">
+    <changeSet author="User (generated)" id="1569654204436-40">
         <createIndex indexName="fk_penjualan_barang_id" tableName="penjualan_detail">
             <column name="barang_id"/>
         </createIndex>
     </changeSet>
-    <changeSet author="Acer (generated)" id="1569597124415-41">
+    <changeSet author="User (generated)" id="1569654204436-41">
         <createIndex indexName="fk_penjualan_pelangan_id" tableName="penjualan">
             <column name="pelanggan_id"/>
         </createIndex>
     </changeSet>
-    <changeSet author="Acer (generated)" id="1569597124415-42">
+    <changeSet author="User (generated)" id="1569654204436-42">
         <createIndex indexName="fk_penjualan_penjualan_id" tableName="penjualan_detail">
             <column name="penjualan_id"/>
         </createIndex>
     </changeSet>
-    <changeSet author="Acer (generated)" id="1569597124415-43">
+    <changeSet author="User (generated)" id="1569654204436-43">
         <createIndex indexName="fk_penjualan_return_detail_barang_id" tableName="penjualan_return_detail">
             <column name="barang_id"/>
         </createIndex>
     </changeSet>
-    <changeSet author="Acer (generated)" id="1569597124415-44">
+    <changeSet author="User (generated)" id="1569654204436-44">
         <createIndex indexName="fk_penjualan_return_detail_penjualan_return_id" tableName="penjualan_return_detail">
             <column name="penjualan_return_id"/>
         </createIndex>
     </changeSet>
-    <changeSet author="Acer (generated)" id="1569597124415-45">
+    <changeSet author="User (generated)" id="1569654204436-45">
         <createIndex indexName="fk_penjualan_return_penjualan_id" tableName="penjualan_return">
             <column name="penjualan_id"/>
         </createIndex>
     </changeSet>
-    <changeSet author="Acer (generated)" id="1569597124415-46">
+    <changeSet author="User (generated)" id="1569654204436-46">
         <createIndex indexName="fk_penyesuaian_stok_barang_id" tableName="penyesuaian_stok">
             <column name="barang_id"/>
         </createIndex>
     </changeSet>
-    <changeSet author="Acer (generated)" id="1569597124415-47">
+    <changeSet author="User (generated)" id="1569654204436-47">
         <createIndex indexName="fk_penyesuaian_stok_satuan_id" tableName="penyesuaian_stok">
             <column name="satuan_id"/>
         </createIndex>
     </changeSet>
-    <changeSet author="Acer (generated)" id="1569597124415-48">
+    <changeSet author="User (generated)" id="1569654204436-48">
         <createIndex indexName="fk_status_barang_pembelian_id" tableName="status_barang">
             <column name="pembelian_id"/>
         </createIndex>
     </changeSet>
-    <changeSet author="Acer (generated)" id="1569597124415-49">
+    <changeSet author="User (generated)" id="1569654204436-49">
+        <createIndex indexName="fk_status_barang_pembelian_return_id" tableName="status_barang">
+            <column name="pembelian_return_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="User (generated)" id="1569654204436-50">
         <createIndex indexName="fk_status_barang_penjualan_id" tableName="status_barang">
             <column name="penjualan_id"/>
         </createIndex>
     </changeSet>
-    <changeSet author="Acer (generated)" id="1569597124415-50">
+    <changeSet author="User (generated)" id="1569654204436-51">
         <createIndex indexName="fk_status_barang_penjualan_return_id" tableName="status_barang">
             <column name="penjualan_return_id"/>
         </createIndex>
     </changeSet>
-    <changeSet author="Acer (generated)" id="1569597124415-51">
+    <changeSet author="User (generated)" id="1569654204436-52">
         <createIndex indexName="fk_status_barang_penyesuaian_stok_d_idx" tableName="status_barang">
             <column name="penyesuaian_stok_id"/>
         </createIndex>
     </changeSet>
-    <changeSet author="Acer (generated)" id="1569597124415-52">
+    <changeSet author="User (generated)" id="1569654204436-53">
         <createIndex indexName="fk_stauan_satuan_id_idx" tableName="barang">
             <column name="satuan_id"/>
         </createIndex>
     </changeSet>
-    <changeSet author="Acer (generated)" id="1569597124415-53">
+    <changeSet author="User (generated)" id="1569654204436-54">
         <addForeignKeyConstraint baseColumnNames="satuan_id" baseTableName="barang" constraintName="fk_barang_satuan_id" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="satuan"/>
     </changeSet>
-    <changeSet author="Acer (generated)" id="1569597124415-54">
+    <changeSet author="User (generated)" id="1569654204436-55">
         <addForeignKeyConstraint baseColumnNames="sub_tipe_id" baseTableName="barang" constraintName="fk_barang_sub_tipe_id" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="sub_tipe"/>
     </changeSet>
-    <changeSet author="Acer (generated)" id="1569597124415-55">
+    <changeSet author="User (generated)" id="1569654204436-56">
         <addForeignKeyConstraint baseColumnNames="supplier_id" baseTableName="barang" constraintName="fk_barang_supplier_id" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="supplier"/>
     </changeSet>
-    <changeSet author="Acer (generated)" id="1569597124415-56">
+    <changeSet author="User (generated)" id="1569654204436-57">
         <addForeignKeyConstraint baseColumnNames="tipe_id" baseTableName="barang" constraintName="fk_barang_tipe_id" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="tipe"/>
     </changeSet>
-    <changeSet author="Acer (generated)" id="1569597124415-57">
+    <changeSet author="User (generated)" id="1569654204436-58">
         <addForeignKeyConstraint baseColumnNames="barang_id" baseTableName="pembelian_detail" constraintName="fk_pembelian_barang_id" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="barang"/>
     </changeSet>
-    <changeSet author="Acer (generated)" id="1569597124415-58">
+    <changeSet author="User (generated)" id="1569654204436-59">
         <addForeignKeyConstraint baseColumnNames="pembelian_id" baseTableName="pembelian_detail" constraintName="fk_pembelian_pembelian_id" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="pembelian"/>
     </changeSet>
-    <changeSet author="Acer (generated)" id="1569597124415-59">
+    <changeSet author="User (generated)" id="1569654204436-60">
         <addForeignKeyConstraint baseColumnNames="barang_id" baseTableName="pembelian_return_detail" constraintName="fk_pembelian_return_detail_barang_id" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="barang"/>
     </changeSet>
-    <changeSet author="Acer (generated)" id="1569597124415-60">
+    <changeSet author="User (generated)" id="1569654204436-61">
         <addForeignKeyConstraint baseColumnNames="pembelian_return_id" baseTableName="pembelian_return_detail" constraintName="fk_pembelian_return_detail_pembelian_return_id" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="pembelian_return"/>
     </changeSet>
-    <changeSet author="Acer (generated)" id="1569597124415-61">
+    <changeSet author="User (generated)" id="1569654204436-62">
         <addForeignKeyConstraint baseColumnNames="pembelian_id" baseTableName="pembelian_return" constraintName="fk_pembelian_return_pembelian_id" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="pembelian"/>
     </changeSet>
-    <changeSet author="Acer (generated)" id="1569597124415-62">
+    <changeSet author="User (generated)" id="1569654204436-63">
         <addForeignKeyConstraint baseColumnNames="supplier_id" baseTableName="pembelian" constraintName="fk_pembelian_supplier_id" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="supplier"/>
     </changeSet>
-    <changeSet author="Acer (generated)" id="1569597124415-63">
+    <changeSet author="User (generated)" id="1569654204436-64">
         <addForeignKeyConstraint baseColumnNames="barang_id" baseTableName="penjualan_detail" constraintName="fk_penjualan_barang_id" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="barang"/>
     </changeSet>
-    <changeSet author="Acer (generated)" id="1569597124415-64">
+    <changeSet author="User (generated)" id="1569654204436-65">
         <addForeignKeyConstraint baseColumnNames="pelanggan_id" baseTableName="penjualan" constraintName="fk_penjualan_pelangan_id" deferrable="false" initiallyDeferred="false" onDelete="SET NULL" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="pelanggan"/>
     </changeSet>
-    <changeSet author="Acer (generated)" id="1569597124415-65">
+    <changeSet author="User (generated)" id="1569654204436-66">
         <addForeignKeyConstraint baseColumnNames="penjualan_id" baseTableName="penjualan_detail" constraintName="fk_penjualan_penjualan_id" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="penjualan"/>
     </changeSet>
-    <changeSet author="Acer (generated)" id="1569597124415-66">
+    <changeSet author="User (generated)" id="1569654204436-67">
         <addForeignKeyConstraint baseColumnNames="barang_id" baseTableName="penjualan_return_detail" constraintName="fk_penjualan_return_detail_barang_id" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="barang"/>
     </changeSet>
-    <changeSet author="Acer (generated)" id="1569597124415-67">
+    <changeSet author="User (generated)" id="1569654204436-68">
         <addForeignKeyConstraint baseColumnNames="penjualan_return_id" baseTableName="penjualan_return_detail" constraintName="fk_penjualan_return_detail_penjualan_return_id" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="penjualan_return"/>
     </changeSet>
-    <changeSet author="Acer (generated)" id="1569597124415-68">
+    <changeSet author="User (generated)" id="1569654204436-69">
         <addForeignKeyConstraint baseColumnNames="penjualan_id" baseTableName="penjualan_return" constraintName="fk_penjualan_return_penjualan_id" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="penjualan"/>
     </changeSet>
-    <changeSet author="Acer (generated)" id="1569597124415-69">
+    <changeSet author="User (generated)" id="1569654204436-70">
         <addForeignKeyConstraint baseColumnNames="barang_id" baseTableName="penyesuaian_stok" constraintName="fk_penyesuaian_stok_barang_id" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="barang"/>
     </changeSet>
-    <changeSet author="Acer (generated)" id="1569597124415-70">
+    <changeSet author="User (generated)" id="1569654204436-71">
         <addForeignKeyConstraint baseColumnNames="satuan_id" baseTableName="penyesuaian_stok" constraintName="fk_penyesuaian_stok_satuan_id" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="satuan"/>
     </changeSet>
-    <changeSet author="Acer (generated)" id="1569597124415-71">
+    <changeSet author="User (generated)" id="1569654204436-72">
         <addForeignKeyConstraint baseColumnNames="pembelian_id" baseTableName="status_barang" constraintName="fk_status_barang_pembelian_id" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="pembelian"/>
     </changeSet>
-    <changeSet author="Acer (generated)" id="1569597124415-72">
+    <changeSet author="User (generated)" id="1569654204436-73">
+        <addForeignKeyConstraint baseColumnNames="pembelian_return_id" baseTableName="status_barang" constraintName="fk_status_barang_pembelian_return_id" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="pembelian_return"/>
+    </changeSet>
+    <changeSet author="User (generated)" id="1569654204436-74">
         <addForeignKeyConstraint baseColumnNames="penjualan_id" baseTableName="status_barang" constraintName="fk_status_barang_penjualan_id" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="penjualan"/>
     </changeSet>
-    <changeSet author="Acer (generated)" id="1569597124415-73">
+    <changeSet author="User (generated)" id="1569654204436-75">
         <addForeignKeyConstraint baseColumnNames="penjualan_return_id" baseTableName="status_barang" constraintName="fk_status_barang_penjualan_return_id" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="penjualan_return"/>
     </changeSet>
-    <changeSet author="Acer (generated)" id="1569597124415-74">
+    <changeSet author="User (generated)" id="1569654204436-76">
         <addForeignKeyConstraint baseColumnNames="penyesuaian_stok_id" baseTableName="status_barang" constraintName="fk_status_barang_penyesuaian_stok_d" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="penyesuaian_stok"/>
     </changeSet>
 </databaseChangeLog>
