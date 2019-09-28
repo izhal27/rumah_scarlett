@@ -187,8 +187,9 @@ namespace RumahScarlett.Presentation.Presenters
       }
 
       private void _view_OnLaporanReturnPembelianViewClick(object sender, MainViewEventArgs e)
-      {
-         throw new NotImplementedException();
+      {         
+         var view = (DockContent)new LaporanReturnPembelianPresenter().GetView;
+         ShowChildForm(view, e);
       }
 
       private void _view_OnLaporanStatusBarangViewClick(object sender, EventArgs e)

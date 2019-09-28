@@ -40,7 +40,7 @@ namespace RumahScarlett.Domain.Models.Pembelian
 
       public decimal sub_total
       {
-         get { return qty > 0 ? (qty * harga_jual) : 0; }
+         get { return qty > 0 ? (qty * hpp) : 0; }
       }
 
       public int status { get; set; }

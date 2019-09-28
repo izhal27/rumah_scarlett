@@ -266,7 +266,7 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Pembelian
       private string QueryStrReport(string where)
       {
          return "SELECT pbr.tanggal, pbr.no_nota, b.kode AS barang_kode, b.nama AS barang_nama, pbrd.qty, " +
-                "s.nama AS satuan_nama, pbrd.harga_jual, pbrd.status, pbrd.keterangan FROM pembelian_return pbr " +
+                "s.nama AS satuan_nama, pbrd.hpp, pbrd.status, pbrd.keterangan FROM pembelian_return pbr " +
                 "INNER JOIN pembelian_return_detail pbrd ON pbr.id = pbrd.pembelian_return_id " +
                 "INNER JOIN barang b ON pbrd.barang_id = b.id " +
                 $"INNER JOIN satuan s ON b.satuan_id = s.id WHERE { where}";
