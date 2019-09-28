@@ -1,12 +1,10 @@
 ﻿using Equin.ApplicationFramework;
-using Microsoft.Reporting.WinForms;
 using RumahScarlett.CommonComponents;
 using RumahScarlett.Domain.Models.Barang;
 using RumahScarlett.Domain.Models.Penjualan;
 using RumahScarlett.Infrastructure.DataAccess.Repositories.Barang;
 using RumahScarlett.Infrastructure.DataAccess.Repositories.Penjualan;
 using RumahScarlett.Presentation.Helper;
-using RumahScarlett.Presentation.Views.CommonControls;
 using RumahScarlett.Presentation.Views.ModelControls;
 using RumahScarlett.Presentation.Views.Penjualan;
 using RumahScarlett.Services.Services;
@@ -32,6 +30,7 @@ namespace RumahScarlett.Presentation.Presenters.Penjualan
       private List<PenjualanDetailModel> _listPenjualanDetails;
       private List<IBarangModel> _listsBarangs;
       private BindingListView<PenjualanDetailModel> _bindingView;
+      private bool _statusBayar = false;
       private string _kodeOrNamaForSearching = "";
       private IPenjualanModel _penjualanModel;
       private decimal _uangKembali;
@@ -73,17 +72,6 @@ namespace RumahScarlett.Presentation.Presenters.Penjualan
          _view.OnListDataGridPreviewKeyDown += _view_OnListDataGridPreviewKeyDown;
       }
 
-      private void _view_OnCetakNota(object sender, EventArgs e)
-      {
-         using (new WaitCursorHandler())
-         {
-            if (!_view.ListDataGrid.Enabled)
-            {
-               ReportHelper.ShowNotaPenjualan(_penjualanModel);
-            }
-         }
-      }
-
       private void _view_OnLoadData(object sender, EventArgs e)
       {
          ((Form)_view).ActiveControl = _view.ListDataGrid;
@@ -93,8 +81,11 @@ namespace RumahScarlett.Presentation.Presenters.Penjualan
 
          _bindingView = new BindingListView<PenjualanDetailModel>(_listPenjualanDetails);
          _bindingView.ListChanged += _bindingView_ListChanged;
-
          _view.ListDataGrid.DataSource = _bindingView;
+
+         _view.ListDataGrid.Columns[0].AllowEditing = true; // Kode
+         _view.ListDataGrid.Columns[2].AllowEditing = true; // Qty
+
          _view.ListDataGrid.MoveToCurrentCell(new RowColumnIndex(1, 1));
          _view.ListDataGrid.CurrentCell.BeginEdit();
       }
@@ -160,7 +151,7 @@ namespace RumahScarlett.Presentation.Presenters.Penjualan
                var view = new BayarPenjualanEntryView(_listPenjualanDetails);
                view.OnBayarPenjualan += View_OnBayarPenjualan;
 
-               if(view.ShowDialog() == DialogResult.OK)
+               if (view.ShowDialog() == DialogResult.OK)
                {
                   if (Messages.Confirm("Cetak Nota Penjualan?"))
                   {
@@ -200,6 +191,8 @@ namespace RumahScarlett.Presentation.Presenters.Penjualan
 
             _penjualannServices.Insert(_penjualanModel);
             Messages.Info("Data Penjualan berhasil disimpan.");
+            _statusBayar = true;
+
             _view.ListDataGrid.Enabled = false;
             _view.TextBoxNoNota.Text = _penjualanModel.no_nota;
 
@@ -223,11 +216,27 @@ namespace RumahScarlett.Presentation.Presenters.Penjualan
 
       private void _view_OnBersihkanData(object sender, EventArgs e)
       {
-         if (!_view.ListDataGrid.Enabled)
+         if (!_statusBayar)
+         {
+            if (Messages.Confirm("Bersihkan data list penjualan?"))
+            {
+               BersihkanDataListPenjualan();
+            }
+         }
+         else
+         {
+            BersihkanDataListPenjualan();
+         }
+      }
+
+      private void BersihkanDataListPenjualan()
+      {
+         if (_statusBayar)
          {
             _view.ListDataGrid.Enabled = true;
             _view.TextBoxNoNota.Text = string.Empty;
             _listsBarangs = _barangServices.GetAll().Where(b => b.harga_jual > 0).ToList();
+            _statusBayar = false;
          }
 
          _kodeOrNamaForSearching = string.Empty;
@@ -235,6 +244,17 @@ namespace RumahScarlett.Presentation.Presenters.Penjualan
          AddDummyPenjualanModel(30);
          _bindingView.DataSource = _listPenjualanDetails;
          _view.ListDataGrid.MoveToCurrentCell(new RowColumnIndex(1, 1));
+      }
+
+      private void _view_OnCetakNota(object sender, EventArgs e)
+      {
+         using (new WaitCursorHandler())
+         {
+            if (_statusBayar)
+            {
+               ReportHelper.ShowNotaPenjualan(_penjualanModel);
+            }
+         }
       }
 
       private void _view_OnListDataGridCurrentCellKeyDown(object sender, CurrentCellKeyEventArgs e)
@@ -249,11 +269,6 @@ namespace RumahScarlett.Presentation.Presenters.Penjualan
 
                   break;
 
-               case 2: // Nama
-
-                  _view_OnListDataGridCellNamaKeyDown(sender, e);
-
-                  break;
                case 3: // Qty
 
                   _view_OnListDataGridCellQtyKeyDown(sender, e);
@@ -270,53 +285,16 @@ namespace RumahScarlett.Presentation.Presenters.Penjualan
          if (CurrCellValue != null)
          {
             var kode = CurrCellValue.ToString();
-            var model = _listsBarangs.Where(b => b.kode.Equals(kode)).FirstOrDefault();
+            var barangModel = _listsBarangs.Where(b => b.kode.Equals(kode)).FirstOrDefault();
 
-            if (model != null)
+            if (barangModel != null)
             {
-               _listPenjualanDetails[(CurrCellRowIndex - 1)].Barang = model;
+               _listPenjualanDetails[(CurrCellRowIndex - 1)].Barang = barangModel;
                _listPenjualanDetails[(CurrCellRowIndex - 1)].qty = 1;
-               _listPenjualanDetails[(CurrCellRowIndex - 1)].harga_jual = model.harga_jual;
+               _listPenjualanDetails[(CurrCellRowIndex - 1)].harga_jual = barangModel.harga_jual;
 
                listDataGrid.MoveToCurrentCell(new RowColumnIndex(CurrCellRowIndex, (e.ColumnIndex + 2)));
                listDataGrid.CurrentCell.BeginEdit();
-               e.KeyEventArgs.Handled = true;
-            }
-            else
-            {
-               if (!string.IsNullOrWhiteSpace(CurrCellValue.ToString()))
-               {
-                  _kodeOrNamaForSearching = CurrCellValue.ToString();
-                  _view_OnCariData(null, null);
-               }
-               else
-               {
-                  _kodeOrNamaForSearching = "";
-                  listDataGrid.MoveToCurrentCell(new RowColumnIndex(CurrCellRowIndex, (e.ColumnIndex + 1)));
-                  listDataGrid.CurrentCell.BeginEdit();
-               }
-
-               e.KeyEventArgs.Handled = true;
-            }
-         }
-      }
-
-      private void _view_OnListDataGridCellNamaKeyDown(object sender, CurrentCellKeyEventArgs e)
-      {
-         var listDataGrid = _view.ListDataGrid;
-
-         if (CurrCellValue != null)
-         {
-            var nama = CurrCellValue.ToString();
-            var model = _listsBarangs.Where(b => b.nama.ToLower().Equals(nama.ToLower())).FirstOrDefault();
-
-            if (model != null)
-            {
-               _listPenjualanDetails[(CurrCellRowIndex - 1)].Barang = model;
-               _listPenjualanDetails[(CurrCellRowIndex - 1)].qty = 1;
-               _listPenjualanDetails[(CurrCellRowIndex - 1)].harga_jual = model.hpp;
-
-               listDataGrid.MoveToCurrentCell(new RowColumnIndex(CurrCellRowIndex, (e.ColumnIndex + 1)));
                e.KeyEventArgs.Handled = true;
             }
             else
@@ -347,7 +325,6 @@ namespace RumahScarlett.Presentation.Presenters.Penjualan
             {
                if (decimal.Parse(CurrCellValue.ToString(), NumberStyles.Number) > 0)
                {
-
                   listDataGrid.MoveToCurrentCell(new RowColumnIndex((CurrCellRowIndex + 1), 1));
                   listDataGrid.CurrentCell.BeginEdit();
                }
@@ -375,10 +352,7 @@ namespace RumahScarlett.Presentation.Presenters.Penjualan
 
       private void HitungGrandTotal()
       {
-         if (_view.ListDataGrid.Enabled)
-         {
-            _view.LabelGrandTotal.Text = _bindingView.Cast<IPenjualanDetailModel>().Sum(pd => pd.total).ToString("N0");
-         }
+         _view.LabelGrandTotal.Text = _bindingView.Cast<IPenjualanDetailModel>().Sum(pd => pd.total).ToString("N0");
       }
 
       private void _view_OnListDataGridPreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
