@@ -46,6 +46,11 @@ namespace RumahScarlett.Presentation.Views.Laporan
          get { return labelReturnPenjualan; }
       }
 
+      public Label LabelReturnPembelian
+      {
+         get { return labelReturnPembelian; }
+      }
+
       public Label LabelStokAkhir
       {
          get { return labelStokAkhir; }

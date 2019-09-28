@@ -102,7 +102,7 @@ namespace RumahScarlett.Domain.Models.Laporan
 
       public int stok_akhir
       {
-         get { return (stok_awal + stok_masuk + penjualan_return_qty) - (stok_terjual + penyesuaian_stok); }
+         get { return (stok_awal + stok_masuk + penjualan_return_qty) - (stok_terjual + penyesuaian_stok + pembelian_return_qty); }
       }
 
       public StatusBarangModel()

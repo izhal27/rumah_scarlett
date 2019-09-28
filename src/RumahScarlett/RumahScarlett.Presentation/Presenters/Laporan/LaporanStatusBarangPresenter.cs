@@ -55,6 +55,7 @@ namespace RumahScarlett.Presentation.Presenters.Laporan
          var stokAkhir = 0;
          var penyesuaianStok = 0;
          var returnPenjualan = 0;
+         var returnPembelian = 0;
 
          if (_model != null)
          {
@@ -64,6 +65,7 @@ namespace RumahScarlett.Presentation.Presenters.Laporan
             stokAkhir = _model.stok_akhir;
             penyesuaianStok = _model.penyesuaian_stok;
             returnPenjualan = _model.penjualan_return_qty;
+            returnPembelian = _model.pembelian_return_qty;
          }
 
          _view.LabelStokAwal.Text = stokAwal.ToString("N0");
@@ -72,6 +74,7 @@ namespace RumahScarlett.Presentation.Presenters.Laporan
          _view.LabelPenyesuaianStok.Text = penyesuaianStok.ToString("N0");
          _view.LabelStokAkhir.Text = stokAkhir.ToString("N0");
          _view.LabelReturnPenjualan.Text = returnPenjualan.ToString("N0");
+         _view.LabelReturnPembelian.Text = returnPembelian.ToString("N0");
       }
 
       private void _view_OnButtonCetakClick(object sender, EventArgs e)

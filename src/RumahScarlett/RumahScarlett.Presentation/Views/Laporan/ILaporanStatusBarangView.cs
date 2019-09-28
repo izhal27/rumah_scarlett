@@ -19,6 +19,7 @@ namespace RumahScarlett.Presentation.Views.Laporan
       Label LabelStokTerjual { get; }
       Label LabelPenyesuaianStok { get; }
       Label LabelReturnPenjualan { get; }
+      Label LabelReturnPembelian { get; }
       Label LabelStokAkhir { get; }
 
       void ShowView();

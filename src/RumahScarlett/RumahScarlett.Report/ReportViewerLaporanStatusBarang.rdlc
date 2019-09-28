@@ -380,8 +380,8 @@
             </Style>
           </Textbox>
           <Line Name="Line1">
-            <Top>4.19945cm</Top>
-            <Left>0.31752cm</Left>
+            <Top>4.97584cm</Top>
+            <Left>0.3175cm</Left>
             <Height>0cm</Height>
             <Width>7.35006cm</Width>
             <ZIndex>12</ZIndex>
@@ -406,7 +406,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox4</rd:DefaultName>
-            <Top>4.37584cm</Top>
+            <Top>5.15223cm</Top>
             <Left>0.3175cm</Left>
             <Height>0.6cm</Height>
             <Width>3.45658cm</Width>
@@ -436,7 +436,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox5</rd:DefaultName>
-            <Top>4.37584cm</Top>
+            <Top>5.15223cm</Top>
             <Left>3.91992cm</Left>
             <Height>0.6cm</Height>
             <Width>0.46271cm</Width>
@@ -471,7 +471,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox6</rd:DefaultName>
-            <Top>4.37584cm</Top>
+            <Top>5.15223cm</Top>
             <Left>4.55902cm</Left>
             <Height>0.6cm</Height>
             <Width>2.46944cm</Width>
@@ -708,11 +708,137 @@
               <PaddingBottom>2pt</PaddingBottom>
             </Style>
           </Textbox>
+          <Textbox Name="Textbox31">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Return Pembelian</Value>
+                    <Style />
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox4</rd:DefaultName>
+            <Top>4.19945cm</Top>
+            <Left>0.31753cm</Left>
+            <Height>0.6cm</Height>
+            <Width>3.4566cm</Width>
+            <ZIndex>23</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox32">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>:</Value>
+                    <Style />
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox5</rd:DefaultName>
+            <Top>4.19945cm</Top>
+            <Left>3.91996cm</Left>
+            <Height>0.6cm</Height>
+            <Width>0.46271cm</Width>
+            <ZIndex>24</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox33">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=First(Fields!pembelian_return_qty.Value, "DataSetStatusBarang")</Value>
+                    <Style>
+                      <Format>#,0;(#,0)</Format>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Right</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox6</rd:DefaultName>
+            <Top>4.19945cm</Top>
+            <Left>4.55906cm</Left>
+            <Height>0.6cm</Height>
+            <Width>2.46944cm</Width>
+            <ZIndex>25</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox34">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>-</Value>
+                    <Style>
+                      <Color>Red</Color>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox5</rd:DefaultName>
+            <Top>4.19945cm</Top>
+            <Left>7.20487cm</Left>
+            <Height>0.6cm</Height>
+            <Width>0.46271cm</Width>
+            <ZIndex>26</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
         </ReportItems>
         <KeepTogether>true</KeepTogether>
         <Top>5.12605cm</Top>
         <Left>0.00536cm</Left>
-        <Height>5.34458cm</Height>
+        <Height>6.11187cm</Height>
         <Width>7.98507cm</Width>
         <Style>
           <Border>
@@ -1024,7 +1150,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox25</rd:DefaultName>
-        <Top>10.64702cm</Top>
+        <Top>11.41431cm</Top>
         <Height>0.6cm</Height>
         <Width>5.13166cm</Width>
         <ZIndex>10</ZIndex>
@@ -1039,12 +1165,12 @@
         </Style>
       </Textbox>
     </ReportItems>
-    <Height>4.52083in</Height>
+    <Height>4.90625in</Height>
     <Style />
   </Body>
   <Width>3.14584in</Width>
   <Page>
-    <PageHeight>14cm</PageHeight>
+    <PageHeight>15cm</PageHeight>
     <PageWidth>10.75cm</PageWidth>
     <LeftMargin>1cm</LeftMargin>
     <RightMargin>1cm</RightMargin>
@@ -1152,6 +1278,18 @@
         <Field Name="pembelian_id">
           <DataField>pembelian_id</DataField>
           <rd:TypeName>System.Nullable`1[[System.UInt32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
+        </Field>
+        <Field Name="pembelian_return_id">
+          <DataField>pembelian_return_id</DataField>
+          <rd:TypeName>System.Nullable`1[[System.UInt32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
+        </Field>
+        <Field Name="pembelian_return_qty">
+          <DataField>pembelian_return_qty</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="PembelianReturn">
+          <DataField>PembelianReturn</DataField>
+          <rd:TypeName>RumahScarlett.Domain.Models.Pembelian.IPembelianReturnModel</rd:TypeName>
         </Field>
         <Field Name="Penjualan">
           <DataField>Penjualan</DataField>
