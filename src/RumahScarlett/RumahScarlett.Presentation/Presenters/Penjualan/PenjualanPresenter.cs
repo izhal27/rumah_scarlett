@@ -216,16 +216,21 @@ namespace RumahScarlett.Presentation.Presenters.Penjualan
 
       private void _view_OnBersihkanData(object sender, EventArgs e)
       {
-         if (!_statusBayar)
+         var status = _listPenjualanDetails.Any(pd => pd.Barang.id != default(uint));
+
+         if (status)
          {
-            if (Messages.Confirm("Bersihkan data list penjualan?"))
+            if (!_statusBayar)
+            {
+               if (Messages.Confirm("Bersihkan data list penjualan?"))
+               {
+                  BersihkanDataListPenjualan();
+               }
+            }
+            else
             {
                BersihkanDataListPenjualan();
             }
-         }
-         else
-         {
-            BersihkanDataListPenjualan();
          }
       }
 

@@ -197,17 +197,21 @@ namespace RumahScarlett.Presentation.Presenters.Pembelian
 
       private void _view_OnBersihkanData(object sender, EventArgs e)
       {
+         var status = _listsPembelianDetails.Any(pd => pd.Barang.id != default(uint));
 
-         if (!_statusSimpan)
+         if (status)
          {
-            if (Messages.Confirm("Bersihkan data list penjualan?"))
+            if (!_statusSimpan)
+            {
+               if (Messages.Confirm("Bersihkan data list penjualan?"))
+               {
+                  BersihkanDataListPemelian();
+               }
+            }
+            else
             {
                BersihkanDataListPemelian();
             }
-         }
-         else
-         {
-            BersihkanDataListPemelian();
          }
 
       }
@@ -252,7 +256,7 @@ namespace RumahScarlett.Presentation.Presenters.Pembelian
                   _view_OnListDataGridCellKodeKeyDown(sender, e);
 
                   break;
-                  
+
                case 3: // Qty
 
                   _view_OnListDataGridCellQtyKeyDown(sender, e);
@@ -303,7 +307,7 @@ namespace RumahScarlett.Presentation.Presenters.Pembelian
             }
          }
       }
-      
+
       private void _view_OnListDataGridCellQtyKeyDown(object sender, CurrentCellKeyEventArgs e)
       {
          var listDataGrid = _view.ListDataGrid;
