@@ -97,7 +97,7 @@ namespace RumahScarlett.Presentation.Presenters.Penjualan
 
       private void _view_OnCariData(object sender, EventArgs e)
       {
-         if (_view.ListDataGrid.Enabled)
+         if (!_statusBayar)
          {
             var view = new CariBarangView(_listsBarangs, TipePencarian.Penjualan, _kodeOrNamaForSearching);
             view.OnSendData += CariBarangPenjualanView_OnSendData;
@@ -111,15 +111,15 @@ namespace RumahScarlett.Presentation.Presenters.Penjualan
          var rowIndex = listDataGrid.CurrentCell.RowIndex;
 
          var view = (CariBarangView)sender;
-         var model = ((ModelEventArgs<BarangModel>)e).Value;
+         var barangModel = ((ModelEventArgs<BarangModel>)e).Value;
 
-         if (model != null)
+         if (barangModel != null)
          {
-            _listPenjualanDetails[(rowIndex - 1)].Barang = model;
-            _listPenjualanDetails[(rowIndex - 1)].barang_id = model.id;
+            _listPenjualanDetails[(rowIndex - 1)].Barang = barangModel;
+            _listPenjualanDetails[(rowIndex - 1)].barang_id = barangModel.id;
             _listPenjualanDetails[(rowIndex - 1)].qty = 1;
-            _listPenjualanDetails[(rowIndex - 1)].hpp = model.hpp;
-            _listPenjualanDetails[(rowIndex - 1)].harga_jual = model.harga_jual;
+            _listPenjualanDetails[(rowIndex - 1)].hpp = barangModel.hpp;
+            _listPenjualanDetails[(rowIndex - 1)].harga_jual = barangModel.harga_jual;
 
             _view.ListDataGrid.MoveToCurrentCell(new RowColumnIndex(listDataGrid.CurrentCell.RowIndex, 3));
             _view.ListDataGrid.CurrentCell.BeginEdit();
@@ -129,7 +129,7 @@ namespace RumahScarlett.Presentation.Presenters.Penjualan
 
       private void _view_OnHapusData(object sender, EventArgs e)
       {
-         if (_view.ListDataGrid.Enabled && CurrCellValue != null)
+         if (!_statusBayar && CurrCellValue != null)
          {
             if (!string.IsNullOrWhiteSpace(CurrCellValue.ToString()))
             {
@@ -146,7 +146,7 @@ namespace RumahScarlett.Presentation.Presenters.Penjualan
 
          try
          {
-            if (_view.ListDataGrid.Enabled && status)
+            if (!_statusBayar && status)
             {
                var view = new BayarPenjualanEntryView(_listPenjualanDetails);
                view.OnBayarPenjualan += View_OnBayarPenjualan;

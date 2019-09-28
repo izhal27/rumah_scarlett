@@ -111,13 +111,13 @@ namespace RumahScarlett.Presentation.Presenters.Pembelian
          var rowIndex = listDataGrid.CurrentCell.RowIndex;
 
          var view = (CariBarangView)sender;
-         var model = ((ModelEventArgs<BarangModel>)e).Value;
+         var barangModel = ((ModelEventArgs<BarangModel>)e).Value;
 
-         if (model != null)
+         if (barangModel != null)
          {
-            _listsPembelianDetails[(rowIndex - 1)].Barang = model;
-            _listsPembelianDetails[(rowIndex - 1)].barang_id = model.id;
-            _listsPembelianDetails[(rowIndex - 1)].hpp = model.hpp;
+            _listsPembelianDetails[(rowIndex - 1)].Barang = barangModel;
+            _listsPembelianDetails[(rowIndex - 1)].barang_id = barangModel.id;
+            _listsPembelianDetails[(rowIndex - 1)].hpp = barangModel.hpp;
             _listsPembelianDetails[(rowIndex - 1)].qty = 1;
 
             _view.ListDataGrid.MoveToCurrentCell(new RowColumnIndex(listDataGrid.CurrentCell.RowIndex, 3));
@@ -274,12 +274,12 @@ namespace RumahScarlett.Presentation.Presenters.Pembelian
          if (CurrCellValue != null)
          {
             var kode = CurrCellValue.ToString();
-            var model = _listsBarangs.Where(b => b.kode.Equals(kode)).FirstOrDefault();
+            var barangModel = _listsBarangs.Where(b => b.kode.Equals(kode)).FirstOrDefault();
 
-            if (model != null)
+            if (barangModel != null)
             {
-               _listsPembelianDetails[(CurrCellRowIndex - 1)].Barang = model;
-               _listsPembelianDetails[(CurrCellRowIndex - 1)].hpp = model.hpp;
+               _listsPembelianDetails[(CurrCellRowIndex - 1)].Barang = barangModel;
+               _listsPembelianDetails[(CurrCellRowIndex - 1)].hpp = barangModel.hpp;
                _listsPembelianDetails[(CurrCellRowIndex - 1)].qty = 1;
 
                listDataGrid.MoveToCurrentCell(new RowColumnIndex(CurrCellRowIndex, (e.ColumnIndex + 2)));
