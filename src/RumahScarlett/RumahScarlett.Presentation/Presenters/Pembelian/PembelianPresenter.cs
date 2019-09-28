@@ -1,12 +1,10 @@
 ﻿using Equin.ApplicationFramework;
-using Microsoft.Reporting.WinForms;
 using RumahScarlett.CommonComponents;
 using RumahScarlett.Domain.Models.Barang;
 using RumahScarlett.Domain.Models.Pembelian;
 using RumahScarlett.Infrastructure.DataAccess.Repositories.Barang;
 using RumahScarlett.Infrastructure.DataAccess.Repositories.Pembelian;
 using RumahScarlett.Presentation.Helper;
-using RumahScarlett.Presentation.Views.CommonControls;
 using RumahScarlett.Presentation.Views.ModelControls;
 using RumahScarlett.Presentation.Views.Pembelian;
 using RumahScarlett.Services.Services;
@@ -32,6 +30,7 @@ namespace RumahScarlett.Presentation.Presenters.Pembelian
       private List<PembelianDetailModel> _listsPembelianDetails;
       private List<IBarangModel> _listsBarangs;
       private BindingListView<PembelianDetailModel> _bindingView;
+      private bool _statusSimpan = false;
       private string _kodeOrNamaForSearching;
       private IPembelianModel _pembelianModel;
       private decimal _grandTotal;
@@ -82,8 +81,11 @@ namespace RumahScarlett.Presentation.Presenters.Pembelian
 
          _bindingView = new BindingListView<PembelianDetailModel>(_listsPembelianDetails);
          _bindingView.ListChanged += _bindingView_ListChanged;
-
          _view.ListDataGrid.DataSource = _bindingView;
+
+         _view.ListDataGrid.Columns[0].AllowEditing = true; // Kode
+         _view.ListDataGrid.Columns[2].AllowEditing = true; // Qty
+
          _view.ListDataGrid.MoveToCurrentCell(new RowColumnIndex(1, 1));
          _view.ListDataGrid.CurrentCell.BeginEdit();
       }
@@ -95,7 +97,7 @@ namespace RumahScarlett.Presentation.Presenters.Pembelian
 
       private void _view_OnCariData(object sender, EventArgs e)
       {
-         if (_view.ListDataGrid.Enabled)
+         if (!_statusSimpan)
          {
             var view = new CariBarangView(_listsBarangs, TipePencarian.Pembelian, _kodeOrNamaForSearching);
             view.OnSendData += CariBarangPembelianView_OnSendData;
@@ -126,7 +128,7 @@ namespace RumahScarlett.Presentation.Presenters.Pembelian
 
       private void _view_OnHapusData(object sender, EventArgs e)
       {
-         if (_view.ListDataGrid.Enabled && CurrCellValue != null)
+         if (!_statusSimpan && CurrCellValue != null)
          {
             if (!string.IsNullOrWhiteSpace(CurrCellValue.ToString()))
             {
@@ -141,7 +143,7 @@ namespace RumahScarlett.Presentation.Presenters.Pembelian
       {
          var status = _listsPembelianDetails.Any(pd => pd.Barang.id != default(uint));
 
-         if (_view.ListDataGrid.Enabled && status)
+         if (!_statusSimpan && status)
          {
             var simpanPembelianEntryView = new SimpanPembelianEntryView(_listsPembelianDetails);
             simpanPembelianEntryView.OnSimpanPembelian += SimpanPembelianEntryView_OnSimpanPembelian;
@@ -174,6 +176,7 @@ namespace RumahScarlett.Presentation.Presenters.Pembelian
 
             _pembelianServices.Insert(_pembelianModel);
             Messages.Info("Data Pembelian berhasil disimpan.");
+            _statusSimpan = true;
 
             _grandTotal = e.GrandTotal;
             _view.TextBoxNoNota.Text = _pembelianModel.no_nota;
@@ -194,12 +197,30 @@ namespace RumahScarlett.Presentation.Presenters.Pembelian
 
       private void _view_OnBersihkanData(object sender, EventArgs e)
       {
-         if (!_view.ListDataGrid.Enabled)
+
+         if (!_statusSimpan)
+         {
+            if (Messages.Confirm("Bersihkan data list penjualan?"))
+            {
+               BersihkanDataListPemelian();
+            }
+         }
+         else
+         {
+            BersihkanDataListPemelian();
+         }
+
+      }
+
+      private void BersihkanDataListPemelian()
+      {
+         if (_statusSimpan)
          {
             _view.ListDataGrid.Enabled = true;
             _view.TextBoxNoNota.Text = string.Empty;
             _listsBarangs = _barangServices.GetAll().ToList();
             _grandTotal = 0;
+            _statusSimpan = false;
          }
 
          _kodeOrNamaForSearching = string.Empty;
@@ -213,7 +234,7 @@ namespace RumahScarlett.Presentation.Presenters.Pembelian
       {
          using (new WaitCursorHandler())
          {
-            if (!_view.ListDataGrid.Enabled)
+            if (_statusSimpan)
             {
                ReportHelper.ShowNotaPembelian(_pembelianModel);
             }
@@ -231,12 +252,7 @@ namespace RumahScarlett.Presentation.Presenters.Pembelian
                   _view_OnListDataGridCellKodeKeyDown(sender, e);
 
                   break;
-
-               case 2: // Nama
-
-                  _view_OnListDataGridCellNamaKeyDown(sender, e);
-
-                  break;
+                  
                case 3: // Qty
 
                   _view_OnListDataGridCellQtyKeyDown(sender, e);
@@ -280,43 +296,6 @@ namespace RumahScarlett.Presentation.Presenters.Pembelian
                else
                {
                   _kodeOrNamaForSearching = "";
-                  listDataGrid.MoveToCurrentCell(new RowColumnIndex(CurrCellRowIndex, (e.ColumnIndex + 1)));
-                  listDataGrid.CurrentCell.BeginEdit();
-               }
-
-               e.KeyEventArgs.Handled = true;
-            }
-         }
-      }
-
-      private void _view_OnListDataGridCellNamaKeyDown(object sender, CurrentCellKeyEventArgs e)
-      {
-         var listDataGrid = _view.ListDataGrid;
-
-         if (CurrCellValue != null)
-         {
-            var nama = CurrCellValue.ToString();
-            var model = _listsBarangs.Where(b => b.nama.ToLower().Equals(nama.ToLower())).FirstOrDefault();
-
-            if (model != null)
-            {
-               _listsPembelianDetails[(CurrCellRowIndex - 1)].Barang = model;
-               _listsPembelianDetails[(CurrCellRowIndex - 1)].hpp = model.hpp;
-               _listsPembelianDetails[(CurrCellRowIndex - 1)].qty = 1;
-
-               listDataGrid.MoveToCurrentCell(new RowColumnIndex(CurrCellRowIndex, (e.ColumnIndex + 1)));
-               e.KeyEventArgs.Handled = true;
-            }
-            else
-            {
-               if (!string.IsNullOrWhiteSpace(CurrCellValue.ToString()))
-               {
-                  _kodeOrNamaForSearching = CurrCellValue.ToString();
-                  _view_OnCariData(null, null);
-               }
-               else
-               {
-                  _kodeOrNamaForSearching = "";
                   _view_OnCariData(null, null);
                }
 
@@ -324,7 +303,7 @@ namespace RumahScarlett.Presentation.Presenters.Pembelian
             }
          }
       }
-
+      
       private void _view_OnListDataGridCellQtyKeyDown(object sender, CurrentCellKeyEventArgs e)
       {
          var listDataGrid = _view.ListDataGrid;

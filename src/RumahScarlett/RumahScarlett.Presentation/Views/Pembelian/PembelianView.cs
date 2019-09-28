@@ -49,7 +49,6 @@ namespace RumahScarlett.Presentation.Views.Pembelian
          panelUp.LabelInfo = $"TRANSAKSI {Text.ToUpper()}";
 
          listDataGrid.EditMode = EditMode.SingleClick;
-         listDataGrid.AllowEditing = true;
          listDataGrid.AllowSorting = false;
 
          listDataGrid.CurrentCellActivated += ListDataGrid_CurrentCellActivated;
