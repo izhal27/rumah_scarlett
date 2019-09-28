@@ -32,28 +32,28 @@
          this.panelUp = new RumahScarlett.Presentation.Views.CommonControls.PanelUp();
          this.groupBox1 = new System.Windows.Forms.GroupBox();
          this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+         this.comboBoxBarang = new System.Windows.Forms.ComboBox();
+         this.comboBoxStatus = new System.Windows.Forms.ComboBox();
+         this.textBoxKeterangan = new RumahScarlett.Presentation.Views.CommonControls.BaseTextBox();
+         this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+         this.textBoxQty = new RumahScarlett.Presentation.Views.CommonControls.BaseTextBoxDigit();
+         this.labelMax = new System.Windows.Forms.Label();
          this.label4 = new System.Windows.Forms.Label();
          this.label1 = new System.Windows.Forms.Label();
          this.label2 = new System.Windows.Forms.Label();
          this.label3 = new System.Windows.Forms.Label();
-         this.comboBoxBarang = new System.Windows.Forms.ComboBox();
-         this.comboBoxStatus = new System.Windows.Forms.ComboBox();
-         this.textBoxKeterangan = new RumahScarlett.Presentation.Views.CommonControls.BaseTextBox();
          this.label5 = new System.Windows.Forms.Label();
          this.label6 = new System.Windows.Forms.Label();
-         this.textBoxQty = new RumahScarlett.Presentation.Views.CommonControls.BaseTextBoxDigit();
          this.label7 = new System.Windows.Forms.Label();
          this.tlpButtons = new System.Windows.Forms.TableLayoutPanel();
-         this.btnOk = new System.Windows.Forms.Button();
-         this.btnCancel = new System.Windows.Forms.Button();
-         this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-         this.labelMax = new System.Windows.Forms.Label();
+         this.buttonOk = new System.Windows.Forms.Button();
+         this.buttonCancel = new System.Windows.Forms.Button();
          this.groupBox1.SuspendLayout();
          this.tableLayoutPanel1.SuspendLayout();
          ((System.ComponentModel.ISupportInitialize)(this.textBoxKeterangan)).BeginInit();
+         this.tableLayoutPanel2.SuspendLayout();
          ((System.ComponentModel.ISupportInitialize)(this.textBoxQty)).BeginInit();
          this.tlpButtons.SuspendLayout();
-         this.tableLayoutPanel2.SuspendLayout();
          this.SuspendLayout();
          // 
          // panelUp
@@ -89,14 +89,14 @@
          this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
          this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
          this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+         this.tableLayoutPanel1.Controls.Add(this.comboBoxBarang, 1, 0);
+         this.tableLayoutPanel1.Controls.Add(this.comboBoxStatus, 1, 2);
+         this.tableLayoutPanel1.Controls.Add(this.textBoxKeterangan, 1, 3);
          this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 1, 1);
          this.tableLayoutPanel1.Controls.Add(this.label4, 2, 0);
          this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
          this.tableLayoutPanel1.Controls.Add(this.label2, 0, 2);
          this.tableLayoutPanel1.Controls.Add(this.label3, 0, 3);
-         this.tableLayoutPanel1.Controls.Add(this.comboBoxBarang, 1, 0);
-         this.tableLayoutPanel1.Controls.Add(this.comboBoxStatus, 1, 2);
-         this.tableLayoutPanel1.Controls.Add(this.textBoxKeterangan, 1, 3);
          this.tableLayoutPanel1.Controls.Add(this.label5, 2, 2);
          this.tableLayoutPanel1.Controls.Add(this.label6, 0, 1);
          this.tableLayoutPanel1.Controls.Add(this.label7, 2, 1);
@@ -109,6 +109,79 @@
          this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
          this.tableLayoutPanel1.Size = new System.Drawing.Size(350, 205);
          this.tableLayoutPanel1.TabIndex = 0;
+         // 
+         // comboBoxBarang
+         // 
+         this.comboBoxBarang.Anchor = System.Windows.Forms.AnchorStyles.Left;
+         this.comboBoxBarang.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+         this.comboBoxBarang.FormattingEnabled = true;
+         this.comboBoxBarang.Location = new System.Drawing.Point(71, 3);
+         this.comboBoxBarang.Name = "comboBoxBarang";
+         this.comboBoxBarang.Size = new System.Drawing.Size(250, 21);
+         this.comboBoxBarang.TabIndex = 0;
+         // 
+         // comboBoxStatus
+         // 
+         this.comboBoxStatus.Anchor = System.Windows.Forms.AnchorStyles.Left;
+         this.comboBoxStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+         this.comboBoxStatus.FormattingEnabled = true;
+         this.comboBoxStatus.Location = new System.Drawing.Point(71, 66);
+         this.comboBoxStatus.Name = "comboBoxStatus";
+         this.comboBoxStatus.Size = new System.Drawing.Size(250, 21);
+         this.comboBoxStatus.TabIndex = 2;
+         // 
+         // textBoxKeterangan
+         // 
+         this.textBoxKeterangan.Anchor = System.Windows.Forms.AnchorStyles.Left;
+         this.textBoxKeterangan.BeforeTouchSize = new System.Drawing.Size(250, 100);
+         this.textBoxKeterangan.Location = new System.Drawing.Point(71, 97);
+         this.textBoxKeterangan.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
+         this.textBoxKeterangan.Multiline = true;
+         this.textBoxKeterangan.Name = "textBoxKeterangan";
+         this.textBoxKeterangan.Size = new System.Drawing.Size(250, 100);
+         this.textBoxKeterangan.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
+         this.textBoxKeterangan.TabIndex = 3;
+         // 
+         // tableLayoutPanel2
+         // 
+         this.tableLayoutPanel2.ColumnCount = 2;
+         this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+         this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+         this.tableLayoutPanel2.Controls.Add(this.textBoxQty, 0, 0);
+         this.tableLayoutPanel2.Controls.Add(this.labelMax, 1, 0);
+         this.tableLayoutPanel2.Location = new System.Drawing.Point(71, 30);
+         this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+         this.tableLayoutPanel2.RowCount = 1;
+         this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+         this.tableLayoutPanel2.Size = new System.Drawing.Size(250, 30);
+         this.tableLayoutPanel2.TabIndex = 103;
+         // 
+         // textBoxQty
+         // 
+         this.textBoxQty.Anchor = System.Windows.Forms.AnchorStyles.Left;
+         this.textBoxQty.BackGroundColor = System.Drawing.SystemColors.Window;
+         this.textBoxQty.BeforeTouchSize = new System.Drawing.Size(250, 100);
+         this.textBoxQty.IntegerValue = ((long)(1));
+         this.textBoxQty.Location = new System.Drawing.Point(3, 5);
+         this.textBoxQty.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
+         this.textBoxQty.MinValue = ((long)(1));
+         this.textBoxQty.Name = "textBoxQty";
+         this.textBoxQty.NullString = "";
+         this.textBoxQty.Size = new System.Drawing.Size(100, 20);
+         this.textBoxQty.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
+         this.textBoxQty.TabIndex = 1;
+         this.textBoxQty.Text = "1";
+         this.textBoxQty.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+         // 
+         // labelMax
+         // 
+         this.labelMax.Anchor = System.Windows.Forms.AnchorStyles.Left;
+         this.labelMax.AutoSize = true;
+         this.labelMax.Location = new System.Drawing.Point(109, 8);
+         this.labelMax.Name = "labelMax";
+         this.labelMax.Size = new System.Drawing.Size(27, 13);
+         this.labelMax.TabIndex = 0;
+         this.labelMax.Text = "Max";
          // 
          // label4
          // 
@@ -151,38 +224,6 @@
          this.label3.TabIndex = 0;
          this.label3.Text = "Keterangan";
          // 
-         // comboBoxBarang
-         // 
-         this.comboBoxBarang.Anchor = System.Windows.Forms.AnchorStyles.Left;
-         this.comboBoxBarang.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-         this.comboBoxBarang.FormattingEnabled = true;
-         this.comboBoxBarang.Location = new System.Drawing.Point(71, 3);
-         this.comboBoxBarang.Name = "comboBoxBarang";
-         this.comboBoxBarang.Size = new System.Drawing.Size(250, 21);
-         this.comboBoxBarang.TabIndex = 0;
-         // 
-         // comboBoxStatus
-         // 
-         this.comboBoxStatus.Anchor = System.Windows.Forms.AnchorStyles.Left;
-         this.comboBoxStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-         this.comboBoxStatus.FormattingEnabled = true;
-         this.comboBoxStatus.Location = new System.Drawing.Point(71, 66);
-         this.comboBoxStatus.Name = "comboBoxStatus";
-         this.comboBoxStatus.Size = new System.Drawing.Size(250, 21);
-         this.comboBoxStatus.TabIndex = 2;
-         // 
-         // textBoxKeterangan
-         // 
-         this.textBoxKeterangan.Anchor = System.Windows.Forms.AnchorStyles.Left;
-         this.textBoxKeterangan.BeforeTouchSize = new System.Drawing.Size(100, 20);
-         this.textBoxKeterangan.Location = new System.Drawing.Point(71, 97);
-         this.textBoxKeterangan.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
-         this.textBoxKeterangan.Multiline = true;
-         this.textBoxKeterangan.Name = "textBoxKeterangan";
-         this.textBoxKeterangan.Size = new System.Drawing.Size(250, 100);
-         this.textBoxKeterangan.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
-         this.textBoxKeterangan.TabIndex = 3;
-         // 
          // label5
          // 
          this.label5.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -204,23 +245,6 @@
          this.label6.TabIndex = 0;
          this.label6.Text = "Qty";
          // 
-         // textBoxQty
-         // 
-         this.textBoxQty.Anchor = System.Windows.Forms.AnchorStyles.Left;
-         this.textBoxQty.BackGroundColor = System.Drawing.SystemColors.Window;
-         this.textBoxQty.BeforeTouchSize = new System.Drawing.Size(100, 20);
-         this.textBoxQty.IntegerValue = ((long)(1));
-         this.textBoxQty.Location = new System.Drawing.Point(3, 5);
-         this.textBoxQty.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
-         this.textBoxQty.MinValue = ((long)(1));
-         this.textBoxQty.Name = "textBoxQty";
-         this.textBoxQty.NullString = "";
-         this.textBoxQty.Size = new System.Drawing.Size(100, 20);
-         this.textBoxQty.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
-         this.textBoxQty.TabIndex = 1;
-         this.textBoxQty.Text = "1";
-         this.textBoxQty.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-         // 
          // label7
          // 
          this.label7.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -239,8 +263,8 @@
          this.tlpButtons.ColumnCount = 2;
          this.tlpButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
          this.tlpButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-         this.tlpButtons.Controls.Add(this.btnOk, 0, 0);
-         this.tlpButtons.Controls.Add(this.btnCancel, 1, 0);
+         this.tlpButtons.Controls.Add(this.buttonOk, 0, 0);
+         this.tlpButtons.Controls.Add(this.buttonCancel, 1, 0);
          this.tlpButtons.Location = new System.Drawing.Point(168, 294);
          this.tlpButtons.Name = "tlpButtons";
          this.tlpButtons.RowCount = 1;
@@ -248,53 +272,29 @@
          this.tlpButtons.Size = new System.Drawing.Size(200, 36);
          this.tlpButtons.TabIndex = 102;
          // 
-         // btnOk
+         // buttonOk
          // 
-         this.btnOk.Anchor = System.Windows.Forms.AnchorStyles.Right;
-         this.btnOk.Location = new System.Drawing.Point(22, 6);
-         this.btnOk.Name = "btnOk";
-         this.btnOk.Size = new System.Drawing.Size(75, 23);
-         this.btnOk.TabIndex = 99;
-         this.btnOk.Tag = "ignore";
-         this.btnOk.Text = "&Ok";
-         this.btnOk.UseVisualStyleBackColor = true;
-         this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
+         this.buttonOk.Anchor = System.Windows.Forms.AnchorStyles.Right;
+         this.buttonOk.Location = new System.Drawing.Point(22, 6);
+         this.buttonOk.Name = "buttonOk";
+         this.buttonOk.Size = new System.Drawing.Size(75, 23);
+         this.buttonOk.TabIndex = 99;
+         this.buttonOk.Tag = "ignore";
+         this.buttonOk.Text = "&Ok";
+         this.buttonOk.UseVisualStyleBackColor = true;
+         this.buttonOk.Click += new System.EventHandler(this.btnOk_Click);
          // 
-         // btnCancel
+         // buttonnCancel
          // 
-         this.btnCancel.Anchor = System.Windows.Forms.AnchorStyles.Left;
-         this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-         this.btnCancel.Location = new System.Drawing.Point(103, 6);
-         this.btnCancel.Name = "btnCancel";
-         this.btnCancel.Size = new System.Drawing.Size(75, 23);
-         this.btnCancel.TabIndex = 100;
-         this.btnCancel.Tag = "ignore";
-         this.btnCancel.Text = "&Batal";
-         this.btnCancel.UseVisualStyleBackColor = true;
-         // 
-         // tableLayoutPanel2
-         // 
-         this.tableLayoutPanel2.ColumnCount = 2;
-         this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-         this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-         this.tableLayoutPanel2.Controls.Add(this.textBoxQty, 0, 0);
-         this.tableLayoutPanel2.Controls.Add(this.labelMax, 1, 0);
-         this.tableLayoutPanel2.Location = new System.Drawing.Point(71, 30);
-         this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-         this.tableLayoutPanel2.RowCount = 1;
-         this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-         this.tableLayoutPanel2.Size = new System.Drawing.Size(250, 30);
-         this.tableLayoutPanel2.TabIndex = 103;
-         // 
-         // labelMax
-         // 
-         this.labelMax.Anchor = System.Windows.Forms.AnchorStyles.Left;
-         this.labelMax.AutoSize = true;
-         this.labelMax.Location = new System.Drawing.Point(109, 8);
-         this.labelMax.Name = "labelMax";
-         this.labelMax.Size = new System.Drawing.Size(27, 13);
-         this.labelMax.TabIndex = 0;
-         this.labelMax.Text = "Max";
+         this.buttonCancel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+         this.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+         this.buttonCancel.Location = new System.Drawing.Point(103, 6);
+         this.buttonCancel.Name = "buttonnCancel";
+         this.buttonCancel.Size = new System.Drawing.Size(75, 23);
+         this.buttonCancel.TabIndex = 100;
+         this.buttonCancel.Tag = "ignore";
+         this.buttonCancel.Text = "&Batal";
+         this.buttonCancel.UseVisualStyleBackColor = true;
          // 
          // ReturnPembelianEntryView
          // 
@@ -316,10 +316,10 @@
          this.tableLayoutPanel1.ResumeLayout(false);
          this.tableLayoutPanel1.PerformLayout();
          ((System.ComponentModel.ISupportInitialize)(this.textBoxKeterangan)).EndInit();
-         ((System.ComponentModel.ISupportInitialize)(this.textBoxQty)).EndInit();
-         this.tlpButtons.ResumeLayout(false);
          this.tableLayoutPanel2.ResumeLayout(false);
          this.tableLayoutPanel2.PerformLayout();
+         ((System.ComponentModel.ISupportInitialize)(this.textBoxQty)).EndInit();
+         this.tlpButtons.ResumeLayout(false);
          this.ResumeLayout(false);
 
       }
@@ -333,15 +333,15 @@
       private System.Windows.Forms.Label label2;
       private System.Windows.Forms.Label label3;
       private System.Windows.Forms.ComboBox comboBoxBarang;
+      private CommonControls.BaseTextBoxDigit textBoxQty;
       private System.Windows.Forms.ComboBox comboBoxStatus;
       private CommonControls.BaseTextBox textBoxKeterangan;
       private System.Windows.Forms.Label label4;
       private System.Windows.Forms.Label label5;
       protected System.Windows.Forms.TableLayoutPanel tlpButtons;
-      protected System.Windows.Forms.Button btnOk;
-      protected System.Windows.Forms.Button btnCancel;
+      protected System.Windows.Forms.Button buttonOk;
+      protected System.Windows.Forms.Button buttonCancel;
       private System.Windows.Forms.Label label6;
-      private CommonControls.BaseTextBoxDigit textBoxQty;
       private System.Windows.Forms.Label label7;
       private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
       private System.Windows.Forms.Label labelMax;

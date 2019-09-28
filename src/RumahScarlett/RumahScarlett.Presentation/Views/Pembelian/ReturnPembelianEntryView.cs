@@ -37,6 +37,8 @@ namespace RumahScarlett.Presentation.Views.Pembelian
       {
          SetTextBoxQtyMaxValue();
          comboBoxBarang.SelectedIndexChanged += ComboBoxBarang_SelectedIndexChanged;
+
+         ActiveControl = buttonCancel;
       }
 
       private void ComboBoxBarang_SelectedIndexChanged(object sender, EventArgs e)
