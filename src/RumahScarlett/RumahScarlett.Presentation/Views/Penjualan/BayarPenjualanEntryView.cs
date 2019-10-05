@@ -52,11 +52,12 @@ namespace RumahScarlett.Presentation.Views.Penjualan
             var pelangganModel = comboBoxPelanggan.GetModel(comboBoxPelanggan.GetSelectedID) ?? new PelangganModel();
             var statusPenjualan = comboBoxStatusPenjualan.SelectedIndex == 1;
             var diskon = decimal.Parse(textBoxDiskon.Text, NumberStyles.Number);
+            var total = decimal.Parse(textBoxGrandTotal.Text, NumberStyles.Number);
             var jumlahBayar = decimal.Parse(textBoxBayar.Text, NumberStyles.Number);
             var kembali = decimal.Parse(textBoxKembali.Text, NumberStyles.Number);
 
             var eventArgs = new PembayaranEventArgs(pelangganModel, statusPenjualan,
-                                                    diskon, jumlahBayar, kembali);
+                                                    diskon, total, jumlahBayar, kembali);
 
             OnBayarPenjualan?.Invoke(this, eventArgs);
          }
@@ -148,15 +149,17 @@ namespace RumahScarlett.Presentation.Views.Penjualan
       public IPelangganModel Pelanggan { get; }
       public bool StatusPenjualan { get; }
       public decimal Diskon { get; }
+      public decimal GrandTotal { get; }
       public decimal JumlahBayar { get; }
       public decimal Kembali { get; set; }
 
       public PembayaranEventArgs(IPelangganModel pelanggan, bool statusPenjualan,
-                                 decimal diskon, decimal jumlahBayar, decimal kembali)
+                                 decimal diskon, decimal grandTotal, decimal jumlahBayar, decimal kembali)
       {
          Pelanggan = pelanggan;
          StatusPenjualan = statusPenjualan;
          Diskon = diskon;
+         GrandTotal = grandTotal;
          JumlahBayar = jumlahBayar;
          Kembali = kembali;
       }

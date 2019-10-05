@@ -34,6 +34,7 @@ namespace RumahScarlett.Presentation.Presenters.Penjualan
       private string _kodeOrNamaForSearching = "";
       private IPenjualanModel _penjualanModel;
       private decimal _uangKembali;
+      private decimal _grandTotal;
 
       public IPenjualanView GetView
       {
@@ -153,6 +154,8 @@ namespace RumahScarlett.Presentation.Presenters.Penjualan
 
                if (view.ShowDialog() == DialogResult.OK)
                {
+                  _view.LabelGrandTotal.Text = _grandTotal.ToString("N0");
+
                   if (Messages.Confirm("Cetak Nota Penjualan?"))
                   {
                      _view_OnCetakNota(null, null);
@@ -179,6 +182,7 @@ namespace RumahScarlett.Presentation.Presenters.Penjualan
             var bayarPenjualanEntryView = ((Form)sender);
             var penjualanDetailsFixed = _listPenjualanDetails.Where(pd => pd.Barang.id != default(int)).ToList();
             _uangKembali = e.Kembali;
+            _grandTotal = e.GrandTotal;
 
             _penjualanModel = new PenjualanModel
             {
