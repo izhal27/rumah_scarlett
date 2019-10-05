@@ -462,7 +462,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=(First(Fields!total_penjualan.Value, "DataSetLabaRugi") - First(Fields!total_hpp.Value, "DataSetLabaRugi") - First(Fields!total_pengeluaran.Value, "DataSetLabaRugi") - First(Fields!total_diskon_penjualan.Value, "DataSetLabaRugi"))</Value>
+                    <Value>=(First(Fields!selisih.Value, "DataSetLabaRugi"))</Value>
                     <Style>
                       <Format>'Rp'#,0</Format>
                       <Color>=IIF((First(Fields!total_penjualan.Value, "DataSetLabaRugi") - First(Fields!total_hpp.Value, "DataSetLabaRugi") - First(Fields!total_pengeluaran.Value, "DataSetLabaRugi") - First(Fields!total_diskon_penjualan.Value, "DataSetLabaRugi")) &lt; 0, "Red", "Black")</Color>
@@ -1057,6 +1057,10 @@
         <CommandText>/* Local Query */</CommandText>
       </Query>
       <Fields>
+        <Field Name="selisih">
+          <DataField>selisih</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
         <Field Name="total_diskon_penjualan">
           <DataField>total_diskon_penjualan</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
@@ -1071,6 +1075,14 @@
         </Field>
         <Field Name="total_penjualan">
           <DataField>total_penjualan</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="total_return_hpp">
+          <DataField>total_return_hpp</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="total_return_penjualan">
+          <DataField>total_return_penjualan</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
       </Fields>

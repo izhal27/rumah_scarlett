@@ -67,25 +67,26 @@ namespace RumahScarlett.Presentation.Presenters.Laporan
          var totalDiskonPenjualan = 0M;
          var totalPemasukan = 0M;
          var totalPengeluaran = 0M;
-         var totalSelisih = 0M;
 
          if (_model != null)
          {
+            _model.total_penjualan = (_model.total_penjualan - _model.total_return_penjualan);
             totalPenjualan = _model.total_penjualan;
+            _model.total_hpp = (_model.total_hpp - _model.total_return_hpp);
             totalHpp = _model.total_hpp;
             totalPengeluaranOperasional = _model.total_pengeluaran;
             totalDiskonPenjualan = _model.total_diskon_penjualan;
 
             totalPemasukan = totalPenjualan;
             totalPengeluaran = (totalHpp + totalPengeluaranOperasional + totalDiskonPenjualan);
-            totalSelisih = (totalPemasukan - totalPengeluaran);
+            _model.selisih = (totalPemasukan - totalPengeluaran);
          }
 
          _view.LabelPenjualan.Text = totalPenjualan.ToString("C");
          _view.LabelHpp.Text = totalHpp.ToString("C");
          _view.LabelPengeluaran.Text = totalPengeluaranOperasional.ToString("C");
          _view.LabelDiskonPenjualan.Text = totalDiskonPenjualan.ToString("C");
-         _view.LabelTotalSelisih.Text = totalSelisih.ToString("C");
+         _view.LabelTotalSelisih.Text = _model.selisih.ToString("C");
       }
 
       private void _view_OnLabelSelisihTextChanged(object sender, EventArgs e)
