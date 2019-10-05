@@ -59,7 +59,9 @@ namespace RumahScarlett.Presentation.Presenters.Laporan
                _view.LabelTotalPenjualan.Text = _model.total_penjualan.ToString("C");
                _view.LabelTotalDiskon.Text = _model.total_diskon.ToString("C");
                _view.LabelTotalPengeluaran.Text = _model.total_pengeluaran.ToString("C");
+               _view.LabelTotalReturnPenjualan.Text = _model.total_return_penjualan.ToString("C");
             }
+
             _view.LabelSelisih.Text = _model.selisih.ToString("C");
          }
       }

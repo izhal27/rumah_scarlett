@@ -384,8 +384,8 @@
             </Style>
           </Textbox>
           <Line Name="Line1">
-            <Top>3.42306cm</Top>
-            <Left>0.31751cm</Left>
+            <Top>4.64924cm</Top>
+            <Left>0.31752cm</Left>
             <Height>0cm</Height>
             <Width>7.35006cm</Width>
             <ZIndex>12</ZIndex>
@@ -410,8 +410,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox4</rd:DefaultName>
-            <Top>3.59944cm</Top>
-            <Left>0.31751cm</Left>
+            <Top>4.82563cm</Top>
+            <Left>0.31753cm</Left>
             <Height>0.6cm</Height>
             <Width>2.15605cm</Width>
             <ZIndex>13</ZIndex>
@@ -440,8 +440,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox5</rd:DefaultName>
-            <Top>3.59944cm</Top>
-            <Left>2.64994cm</Left>
+            <Top>4.82563cm</Top>
+            <Left>2.64996cm</Left>
             <Height>0.6cm</Height>
             <Width>0.46271cm</Width>
             <ZIndex>14</ZIndex>
@@ -475,8 +475,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox6</rd:DefaultName>
-            <Top>3.59944cm</Top>
-            <Left>3.28903cm</Left>
+            <Top>4.82563cm</Top>
+            <Left>3.28905cm</Left>
             <Height>0.6cm</Height>
             <Width>3.73944cm</Width>
             <ZIndex>15</ZIndex>
@@ -489,38 +489,6 @@
               <PaddingTop>2pt</PaddingTop>
               <PaddingBottom>2pt</PaddingBottom>
               <rd:FormatSymbolCulture>id-ID</rd:FormatSymbolCulture>
-            </Style>
-          </Textbox>
-          <Textbox Name="Textbox22">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>+</Value>
-                    <Style>
-                      <Color>Green</Color>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style />
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>Textbox5</rd:DefaultName>
-            <Top>0.3175cm</Top>
-            <Left>7.20486cm</Left>
-            <Height>0.6cm</Height>
-            <Width>0.46271cm</Width>
-            <ZIndex>16</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
             </Style>
           </Textbox>
           <Textbox Name="Textbox23">
@@ -544,7 +512,7 @@
             <Left>7.20486cm</Left>
             <Height>0.6cm</Height>
             <Width>0.46271cm</Width>
-            <ZIndex>17</ZIndex>
+            <ZIndex>16</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -576,7 +544,7 @@
             <Left>7.20486cm</Left>
             <Height>0.6cm</Height>
             <Width>0.46271cm</Width>
-            <ZIndex>18</ZIndex>
+            <ZIndex>17</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -608,7 +576,134 @@
             <Left>7.20486cm</Left>
             <Height>0.6cm</Height>
             <Width>0.46271cm</Width>
+            <ZIndex>18</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox27">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Return Penjualan</Value>
+                    <Style />
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox4</rd:DefaultName>
+            <Top>3.42306cm</Top>
+            <Left>0.31751cm</Left>
+            <Height>1.04979cm</Height>
+            <Width>2.15605cm</Width>
             <ZIndex>19</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox28">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>:</Value>
+                    <Style />
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox5</rd:DefaultName>
+            <Top>3.64795cm</Top>
+            <Left>2.64995cm</Left>
+            <Height>0.6cm</Height>
+            <Width>0.46271cm</Width>
+            <ZIndex>20</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox29">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=First(Fields!total_return_penjualan.Value, "DataSetTransaksi")</Value>
+                    <Style>
+                      <Format>'Rp'#,0;('Rp'#,0)</Format>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Right</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox6</rd:DefaultName>
+            <Top>3.64795cm</Top>
+            <Left>3.28904cm</Left>
+            <Height>0.6cm</Height>
+            <Width>3.73944cm</Width>
+            <ZIndex>21</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+              <rd:FormatSymbolCulture>id-ID</rd:FormatSymbolCulture>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox30">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>-</Value>
+                    <Style>
+                      <Color>Red</Color>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox5</rd:DefaultName>
+            <Top>3.64795cm</Top>
+            <Left>7.20487cm</Left>
+            <Height>0.6cm</Height>
+            <Width>0.46271cm</Width>
+            <ZIndex>22</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -623,7 +718,7 @@
         <KeepTogether>true</KeepTogether>
         <Top>5.12605cm</Top>
         <Left>0.00536cm</Left>
-        <Height>4.55083cm</Height>
+        <Height>5.68854cm</Height>
         <Width>7.98507cm</Width>
         <Style>
           <Border>
@@ -935,7 +1030,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox25</rd:DefaultName>
-        <Top>9.85327cm</Top>
+        <Top>10.99098cm</Top>
+        <Left>0.00536cm</Left>
         <Height>0.6cm</Height>
         <Width>5.13166cm</Width>
         <ZIndex>10</ZIndex>
@@ -950,12 +1046,12 @@
         </Style>
       </Textbox>
     </ReportItems>
-    <Height>4.27083in</Height>
+    <Height>4.73958in</Height>
     <Style />
   </Body>
   <Width>3.14584in</Width>
   <Page>
-    <PageHeight>13cm</PageHeight>
+    <PageHeight>14cm</PageHeight>
     <PageWidth>10.75cm</PageWidth>
     <LeftMargin>1cm</LeftMargin>
     <RightMargin>1cm</RightMargin>
@@ -1006,6 +1102,10 @@
         </Field>
         <Field Name="total_penjualan">
           <DataField>total_penjualan</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="total_return_penjualan">
+          <DataField>total_return_penjualan</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
       </Fields>

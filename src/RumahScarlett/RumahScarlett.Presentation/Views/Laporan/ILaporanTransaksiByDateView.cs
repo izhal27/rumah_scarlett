@@ -19,6 +19,7 @@ namespace RumahScarlett.Presentation.Views.Laporan
       Label LabelTotalPenjualan { get; }
       Label LabelTotalDiskon { get; }
       Label LabelTotalPengeluaran { get; }
+      Label LabelTotalReturnPenjualan { get; }
       Label LabelSelisih { get; }
 
       void ShowView();

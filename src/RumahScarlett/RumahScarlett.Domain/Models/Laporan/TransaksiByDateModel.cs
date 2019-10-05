@@ -12,9 +12,10 @@ namespace RumahScarlett.Domain.Models.Laporan
       public decimal total_penjualan { get; set; }
       public decimal total_diskon { get; set; }
       public decimal total_pengeluaran { get; set; }
+      public decimal total_return_penjualan { get; set; }
       public decimal selisih
       {
-         get { return (kas_awal + total_penjualan) - total_diskon - total_pengeluaran; }
+         get { return (kas_awal + total_penjualan) - (total_diskon + total_pengeluaran + total_return_penjualan); }
       }
    }
 }
