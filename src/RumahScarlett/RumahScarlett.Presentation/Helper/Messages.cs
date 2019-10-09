@@ -66,10 +66,11 @@ namespace RumahScarlett.Presentation.Helper
       /// Menampilkan pesan konfirmasi
       /// </summary>
       /// <param name="message">Message confirmation</param>
+      /// <param name="text">Text MessageBox</param>
       /// <returns>Mengembalikan nilai true jika user memilih yes</returns>
-      public static bool Confirm(string message)
+      public static bool Confirm(string message, string text = "Confirmation")
       {
-         return MessageBox.Show(message, "Confirmation",
+         return MessageBox.Show(message, text,
                                 MessageBoxButtons.YesNo,
                                 MessageBoxIcon.Question) == DialogResult.Yes;
       }
@@ -82,7 +83,7 @@ namespace RumahScarlett.Presentation.Helper
       public static bool ConfirmWarning(string message)
       {
          return MessageBox.Show(message, "Confirmation",
-                                MessageBoxButtons.YesNo, 
+                                MessageBoxButtons.YesNo,
                                 MessageBoxIcon.Warning) == DialogResult.Yes;
       }
 

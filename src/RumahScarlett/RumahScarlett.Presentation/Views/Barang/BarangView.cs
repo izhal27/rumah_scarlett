@@ -27,6 +27,8 @@ namespace RumahScarlett.Presentation.Views.Barang
       public event EventHandler OnRadioButtonTipeChecked;
       public event EventHandler OnRadioButtonSupplierChecked;
       public event EventHandler OnButtonDetailPenyesuaianStokClick;
+      public event EventHandler<ToolStripItemClickedEventArgs> OnButtonExportExcelClick;
+      public event EventHandler<ToolStripItemClickedEventArgs> OnButtonExportPDFClick;
 
       public ListDataGrid ListDataGrid
       {
@@ -77,6 +79,9 @@ namespace RumahScarlett.Presentation.Views.Barang
          radioButtonTipe.CheckedChanged += radioButtonTipe_CheckedChanged;
          radioButtonSupplier.CheckedChanged += radioButtonSupplier_CheckedChanged;
          buttonTampilkan.Click += buttonTampilkan_Click;
+
+         buttonExport.OnButtonExcelClick += ButtonExport_OnButtonExcelClick;
+         buttonExport.OnButtonPDFClick += ButtonExport_OnButtonPDFClick;
       }
 
       private void BarangView_Load(object sender, EventArgs e)
@@ -103,6 +108,16 @@ namespace RumahScarlett.Presentation.Views.Barang
       private void buttonTampilkan_Click(object sender, EventArgs e)
       {
          OnButtonTampilkanClick?.Invoke(sender, e);
+      }
+
+      private void ButtonExport_OnButtonExcelClick(object sender, ToolStripItemClickedEventArgs e)
+      {
+         OnButtonExportExcelClick?.Invoke(sender, e);
+      }
+
+      private void ButtonExport_OnButtonPDFClick(object sender, ToolStripItemClickedEventArgs e)
+      {
+         OnButtonExportPDFClick?.Invoke(sender, e);
       }
 
       private void buttonTambah_Click(object sender, EventArgs e)

@@ -12,8 +12,10 @@ using RumahScarlett.Presentation.Views.CommonControls;
 using RumahScarlett.Services.Services;
 using RumahScarlett.Services.Services.Barang;
 using Syncfusion.WinForms.DataGrid.Events;
+using Syncfusion.WinForms.DataGridConverter;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -51,6 +53,8 @@ namespace RumahScarlett.Presentation.Presenters.Barang
          _view.OnRadioButtonTipeChecked += _view_RadioButtonTipe_CheckedChanged;
          _view.OnRadioButtonSupplierChecked += _view_RadioButtonSupplier_CheckedChanged;
          _view.OnButtonTampilkanClick += _view_ButtonTampilkan_Click;
+         _view.OnButtonExportExcelClick += _view_OnButtonExcelClick;
+         _view.OnButtonExportPDFClick += _view_OnButtonExportPDFClick;
          _view.OnButtonCetakClick += _view_OnButtonCetakClick;
       }
 
@@ -112,6 +116,54 @@ namespace RumahScarlett.Presentation.Presenters.Barang
                var filterBarang = _listObjs.Where(b => b.supplier_id == supplierId).ToList();
                _bindingView.DataSource = filterBarang;
                _filter = FilterType.Supplier;
+            }
+         }
+      }
+
+      private void _view_OnButtonExcelClick(object sender, ToolStripItemClickedEventArgs e)
+      {
+         var options = new ExcelExportingOptions();
+
+         var saveFileDialog = new SaveFileDialog();
+         saveFileDialog.Title = "Export to Excel";
+         saveFileDialog.Filter = "Excel 2007 to 2010 Files|*.xlsx|Excel 2013 File|*.xlsx|Excel 97 to 2003 Files|*.xls";
+         saveFileDialog.FileName = $"export_barang_{DateTime.Now.ToString("ddMMyyyy")}_{DateTime.Now.ToString("HHmmss")}";
+         saveFileDialog.DefaultExt = ".xlsx";
+
+         if (saveFileDialog.ShowDialog() == DialogResult.OK)
+         {
+            var excelEngine = _view.ListDataGrid.ExportToExcel(_view.ListDataGrid.View, options);
+            var workBook = excelEngine.Excel.Workbooks[0];
+            workBook.SaveAs(saveFileDialog.FileName);
+
+            if (Messages.Confirm("Apakah anda ingin membuka filenya sekarang?", "Export to Excel"))
+            {
+               var proc = new Process();
+               proc.StartInfo.FileName = saveFileDialog.FileName;
+               proc.Start();
+            }
+         }
+      }
+
+      private void _view_OnButtonExportPDFClick(object sender, ToolStripItemClickedEventArgs e)
+      {
+         var options = new PdfExportingOptions();
+
+         var saveFileDialog = new SaveFileDialog();
+         saveFileDialog.Title = "Export to PDF";
+         saveFileDialog.Filter = "PDF Files|*.pdf";
+         saveFileDialog.FileName = $"export_barang_{DateTime.Now.ToString("ddMMyyyy")}_{DateTime.Now.ToString("HHmmss")}";
+
+         if (saveFileDialog.ShowDialog() == DialogResult.OK)
+         {
+            var document = _view.ListDataGrid.ExportToPdf(options);
+            document.Save(saveFileDialog.FileName);
+
+            if (Messages.Confirm("Apakah anda ingin membuka filenya sekarang?", "Export to PDF"))
+            {
+               var proc = new Process();
+               proc.StartInfo.FileName = saveFileDialog.FileName;
+               proc.Start();
             }
          }
       }
