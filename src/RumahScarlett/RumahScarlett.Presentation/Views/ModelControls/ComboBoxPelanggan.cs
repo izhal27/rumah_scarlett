@@ -16,27 +16,21 @@ namespace RumahScarlett.Presentation.Views.ModelControls
 {
    public partial class ComboBoxPelanggan : UserControl
    {
-      private IPelangganServices _services;
-      private List<IPelangganModel> _listPelanggans;
-
-      public ComboBox ComboBox
-      {
-         get { return comboBox; }
-      }
-
-      public uint GetSelectedID
+      public IPelangganModel SelectedItem
       {
          get
          {
-            return comboBox.SelectedIndex != -1 ? ((IPelangganModel)comboBox.SelectedItem).id : default(uint);
+            return comboBox.SelectedIndex != -1 ? (IPelangganModel)comboBox.SelectedItem : null;
+         }
+         set
+         {
+            if (value != null)
+            {
+               comboBox.SelectedItem = comboBox.Items.Cast<IPelangganModel>().Where(t => t.id == value.id).FirstOrDefault();
+            }
          }
       }
-
-      public IPelangganModel GetModel(object id)
-      {
-         return comboBox.Items.Cast<IPelangganModel>().Where(p => p.id == (uint)id).FirstOrDefault();
-      }
-
+      
       public ComboBoxPelanggan()
       {
          InitializeComponent();
@@ -49,12 +43,12 @@ namespace RumahScarlett.Presentation.Views.ModelControls
 
       private void LoadDataSource()
       {
-         _services = new PelangganServices(new PelangganRepository(), new ModelDataAnnotationCheck());
-         _listPelanggans = _services.GetAll().ToList();
+         var services = new PelangganServices(new PelangganRepository(), new ModelDataAnnotationCheck());
+         var listPelanggans = services.GetAll().ToList();
 
-         if (_listPelanggans != null && _listPelanggans.Count > 0)
+         if (listPelanggans != null && listPelanggans.Count > 0)
          {
-            comboBox.Items.AddRange(_listPelanggans.ToArray());
+            comboBox.Items.AddRange(listPelanggans.ToArray());
             comboBox.DisplayMember = "nama";
          }
       }

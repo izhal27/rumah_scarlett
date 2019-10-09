@@ -21,9 +21,15 @@ namespace RumahScarlett.Presentation.Views.ModelControls
          {
             return comboBox.SelectedIndex != -1 ? (ITipeModel)comboBox.SelectedItem : null;
          }
-         set { comboBox.SelectedItem = comboBox.Items.Cast<ITipeModel>().Where(t => t.id == value.id).FirstOrDefault() ; }
+         set
+         {
+            if (value != null)
+            {
+               comboBox.SelectedItem = comboBox.Items.Cast<ITipeModel>().Where(t => t.id == value.id).FirstOrDefault();
+            }
+         }
       }
-      
+
       public ComboBoxTipe()
       {
          InitializeComponent();

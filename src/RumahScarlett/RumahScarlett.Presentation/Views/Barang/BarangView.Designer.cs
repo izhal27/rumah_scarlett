@@ -39,6 +39,7 @@
          this.comboBoxTipe = new RumahScarlett.Presentation.Views.ModelControls.ComboBoxTipe();
          this.comboBoxSubTipe = new RumahScarlett.Presentation.Views.ModelControls.ComboBoxSubTipe();
          this.comboBoxSupplier = new RumahScarlett.Presentation.Views.ModelControls.ComboBoxSupplier();
+         this.buttonExport = new RumahScarlett.Presentation.Views.CommonControls.ButtonExport();
          this.tlpButtons = new System.Windows.Forms.TableLayoutPanel();
          this.buttonTambah = new System.Windows.Forms.Button();
          this.buttonRefresh = new System.Windows.Forms.Button();
@@ -171,6 +172,7 @@
          // 
          this.comboBoxTipe.Location = new System.Drawing.Point(72, 26);
          this.comboBoxTipe.Name = "comboBoxTipe";
+         this.comboBoxTipe.SelectedItem = null;
          this.comboBoxTipe.Size = new System.Drawing.Size(150, 21);
          this.comboBoxTipe.TabIndex = 14;
          // 
@@ -178,6 +180,7 @@
          // 
          this.comboBoxSubTipe.Location = new System.Drawing.Point(284, 26);
          this.comboBoxSubTipe.Name = "comboBoxSubTipe";
+         this.comboBoxSubTipe.SelectedItem = null;
          this.comboBoxSubTipe.Size = new System.Drawing.Size(150, 21);
          this.comboBoxSubTipe.TabIndex = 15;
          // 
@@ -185,8 +188,17 @@
          // 
          this.comboBoxSupplier.Location = new System.Drawing.Point(72, 53);
          this.comboBoxSupplier.Name = "comboBoxSupplier";
+         this.comboBoxSupplier.SelectedItem = null;
          this.comboBoxSupplier.Size = new System.Drawing.Size(150, 21);
          this.comboBoxSupplier.TabIndex = 16;
+         // 
+         // buttonExport
+         // 
+         this.buttonExport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+         this.buttonExport.Location = new System.Drawing.Point(891, 173);
+         this.buttonExport.Name = "buttonExport";
+         this.buttonExport.Size = new System.Drawing.Size(75, 23);
+         this.buttonExport.TabIndex = 7;
          // 
          // tlpButtons
          // 
@@ -304,6 +316,7 @@
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
          this.ClientSize = new System.Drawing.Size(978, 462);
+         this.Controls.Add(this.buttonExport);
          this.Controls.Add(this.tlpButtons);
          this.Controls.Add(this.groupBoxFilter);
          this.Controls.Add(this.listDataGrid);
@@ -314,6 +327,7 @@
          this.Controls.SetChildIndex(this.groupBoxFilter, 0);
          this.Controls.SetChildIndex(this.panelUp, 0);
          this.Controls.SetChildIndex(this.tlpButtons, 0);
+         this.Controls.SetChildIndex(this.buttonExport, 0);
          ((System.ComponentModel.ISupportInitialize)(this.listDataGrid)).EndInit();
          this.groupBoxFilter.ResumeLayout(false);
          this.tableLayoutPanel2.ResumeLayout(false);
@@ -344,5 +358,6 @@
       protected System.Windows.Forms.Button buttonTutup;
       protected System.Windows.Forms.Button buttonCetak;
       protected System.Windows.Forms.Button buttonDetailPenyesuainStok;
+      private CommonControls.ButtonExport buttonExport;
    }
 }

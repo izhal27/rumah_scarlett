@@ -49,7 +49,7 @@ namespace RumahScarlett.Presentation.Views.Penjualan
       {
          if (_uangKembali >= 0 && Messages.Confirm("Lanjutkan pembayaran?"))
          {
-            var pelangganModel = comboBoxPelanggan.GetModel(comboBoxPelanggan.GetSelectedID) ?? new PelangganModel();
+            var pelangganModel = comboBoxPelanggan.SelectedItem ?? new PelangganModel();
             var statusPenjualan = comboBoxStatusPenjualan.SelectedIndex == 1;
             var diskon = decimal.Parse(textBoxDiskon.Text, NumberStyles.Number);
             var total = decimal.Parse(textBoxGrandTotal.Text, NumberStyles.Number);

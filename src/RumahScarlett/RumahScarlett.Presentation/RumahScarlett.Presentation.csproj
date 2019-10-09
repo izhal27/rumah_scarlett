@@ -47,6 +47,9 @@
       <HintPath>..\packages\DotNetZip.1.11.0\lib\net20\DotNetZip.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="EnvDTE, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="Equin.ApplicationFramework.BindingListView, Version=1.4.5222.35545, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Equin.ApplicationFramework.BindingListView.1.4.5222.35545\lib\net40-Client\Equin.ApplicationFramework.BindingListView.dll</HintPath>
       <Private>True</Private>
@@ -75,10 +78,16 @@
     </Reference>
     <Reference Include="Syncfusion.Core.WinForms, Version=16.1460.0.24, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
     <Reference Include="Syncfusion.Data.WinForms, Version=16.1460.0.24, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.Grid.Base, Version=16.1460.0.24, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.Grid.Windows, Version=16.1460.0.24, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
     <Reference Include="Syncfusion.GridCommon.WinForms, Version=16.1460.0.24, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
     <Reference Include="Syncfusion.SfDataGrid.WinForms, Version=16.1460.0.24, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
     <Reference Include="Syncfusion.SfInput.WinForms, Version=16.1460.0.24, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
     <Reference Include="Syncfusion.Shared.Base, Version=16.1460.0.24, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.Shared.Windows, Version=16.1460.0.24, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.SpellChecker.Base, Version=16.1460.0.24, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.Tools.Base, Version=16.1460.0.24, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.Tools.Windows, Version=16.1460.0.24, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
@@ -201,6 +210,12 @@
     </Compile>
     <Compile Include="Views\CommonControls\BaseDataView.Designer.cs">
       <DependentUpon>BaseDataView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CommonControls\ButtonExport.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\CommonControls\ButtonExport.Designer.cs">
+      <DependentUpon>ButtonExport.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\CommonControls\DetailView.cs">
       <SubType>Form</SubType>
@@ -622,6 +637,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\CommonControls\BaseDataView.resx">
       <DependentUpon>BaseDataView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CommonControls\ButtonExport.resx">
+      <DependentUpon>ButtonExport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\CommonControls\DetailView.resx">
       <DependentUpon>DetailView.cs</DependentUpon>
