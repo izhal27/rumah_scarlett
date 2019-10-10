@@ -18,6 +18,7 @@ namespace RumahScarlett.Presentation.Views
       private DockPanel _dockPanel;
       private MainViewEventArgs _eventArgs;
 
+      public event EventHandler OnViewLoad;
       public event EventHandler<MainViewEventArgs> OnTipeViewClick;
       public event EventHandler<MainViewEventArgs> OnSubTipeViewClick;
       public event EventHandler<MainViewEventArgs> OnSupplierViewClick;
@@ -44,6 +45,21 @@ namespace RumahScarlett.Presentation.Views
       public event EventHandler OnBackupDatabaseViewClick;
       public event EventHandler OnRestoreDatabaseViewClick;
       public event EventHandler OnTentangViewClick;
+
+      public MenuStrip MenuStrip
+      {
+         get { return menuStripMain; }
+      }
+
+      public ToolStrip ToolStrip
+      {
+         get { return toolStripMain; }
+      }
+
+      public StatusStrip StatusStrip
+      {
+         get { return statusStripMain; }
+      }
 
       public MainView()
       {
@@ -72,6 +88,11 @@ namespace RumahScarlett.Presentation.Views
 
          toolStripStatusLabelMachineName.Text = Environment.MachineName;
          toolStripStatusLabelTanggal.Text = DateTime.Now.ToShortDateString();
+      }
+      
+      private void MainView_Load(object sender, EventArgs e)
+      {
+         OnViewLoad?.Invoke(sender, e);
       }
 
       private void toolStripMenuItemExit_Click(object sender, EventArgs e)
@@ -223,6 +244,5 @@ namespace RumahScarlett.Presentation.Views
       {
          OnTentangViewClick?.Invoke(sender, e);
       }
-
    }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Configuration;
 using System.Drawing;
 using System.Linq;
@@ -18,11 +19,26 @@ namespace RumahScarlett.CommonComponents
       /// <returns>Mengembalikan nilai string</returns>
       public static string GetConfig(object keyName)
       {
-         // Jika key berupa int, maka cast key ke int
-         if (keyName is int)
-            return ConfigurationManager.AppSettings[(int)keyName];
+         var appSetting = string.Empty;
 
-         return ConfigurationManager.AppSettings[(string)keyName];
+         try
+         {
+            // Jika key berupa int, maka cast key ke int
+            if (keyName is int)
+            {
+               appSetting = ConfigurationManager.AppSettings[(int)keyName];
+            }
+            else
+            {
+               appSetting = ConfigurationManager.AppSettings[(string)keyName];
+            }
+         }
+         catch (NullReferenceException ex)
+         {
+            throw ex;
+         }
+
+         return appSetting;
       }
 
       /// <summary>
@@ -77,6 +93,19 @@ namespace RumahScarlett.CommonComponents
             return null;
 
          return Image.FromFile(lokasiGambar);
+      }
+
+      public static T GetConfig<T>(object key)
+      {
+         var appSetting = ConfigurationManager.AppSettings[key.ToString()];
+
+         if (string.IsNullOrWhiteSpace(appSetting))
+         {
+            throw new NullReferenceException(key.ToString());
+         }
+
+         var converter = TypeDescriptor.GetConverter(typeof(T));
+         return (T)(converter.ConvertFromInvariantString(appSetting));
       }
    }
 }

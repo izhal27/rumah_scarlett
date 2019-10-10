@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using WeifenLuo.WinFormsUI.Docking;
 
 namespace RumahScarlett.Presentation.Views
 {
    public interface IMainView : IView
    {
+      event EventHandler OnViewLoad;
       event EventHandler<MainViewEventArgs> OnTipeViewClick;
       event EventHandler<MainViewEventArgs> OnSubTipeViewClick;
       event EventHandler<MainViewEventArgs> OnSupplierViewClick;
@@ -35,6 +37,10 @@ namespace RumahScarlett.Presentation.Views
       event EventHandler OnBackupDatabaseViewClick;
       event EventHandler OnRestoreDatabaseViewClick;
       event EventHandler OnTentangViewClick;
+
+      MenuStrip MenuStrip { get; }
+      ToolStrip ToolStrip { get; }
+      StatusStrip StatusStrip { get; }
    }
 
    public class MainViewEventArgs : EventArgs

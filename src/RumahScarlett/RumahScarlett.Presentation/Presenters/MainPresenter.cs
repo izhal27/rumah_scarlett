@@ -39,6 +39,7 @@ namespace RumahScarlett.Presentation.Presenters
       {
          _view = new MainView();
 
+         _view.OnViewLoad += _view_OnViewLoad;
          _view.OnTipeViewClick += _view_OnTipeViewClick;
          _view.OnSubTipeViewClick += _view_OnSubTipeViewClick;
          _view.OnSupplierViewClick += _view_OnSupplierViewClick;
@@ -65,6 +66,12 @@ namespace RumahScarlett.Presentation.Presenters
          _view.OnBackupDatabaseViewClick += _view_OnBackupDatabaseViewClick;
          _view.OnRestoreDatabaseViewClick += _view_OnRestoreDatabaseViewClick;
          _view.OnTentangViewClick += _view_OnTentangViewClick;
+      }
+
+      private void _view_OnViewLoad(object sender, EventArgs e)
+      {
+         _view.ToolStrip.Visible = MainProgram.Pengaturan.show_tool_strip;
+         _view.StatusStrip.Visible = MainProgram.Pengaturan.show_status_strip;
       }
 
       private void _view_OnTipeViewClick(object sender, MainViewEventArgs e)
@@ -212,7 +219,12 @@ namespace RumahScarlett.Presentation.Presenters
       {
          using (new WaitCursorHandler())
          {
-            new PengaturanPresenter().GetView.ShowView();
+            var view = new PengaturanPresenter().GetView;
+            if (((Form)view).ShowDialog() == DialogResult.OK)
+            {
+               _view.ToolStrip.Visible = MainProgram.Pengaturan.show_tool_strip;
+               _view.StatusStrip.Visible = MainProgram.Pengaturan.show_status_strip;
+            }
          }
       }
 

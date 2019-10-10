@@ -17,6 +17,8 @@ namespace RumahScarlett.Domain.Models.Pengaturan
       DockPanelTheme dockpanel_theme { get; set; }
       string path_background { get; set; }
       TipePrinter tipe_printer { get; set; }
+      bool show_tool_strip { get; set; }
+      bool show_status_strip { get; set; }
    }
 
    public enum TipePrinter

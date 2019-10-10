@@ -32,6 +32,8 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Pengaturan
                                  (DockPanelTheme)int.Parse(ConfigHelper.GetConfig("Dockpanel_Theme")) : DockPanelTheme.Default;
             model.tipe_printer = !string.IsNullOrWhiteSpace(ConfigHelper.GetConfig("Tipe_Printer")) ? 
                                  (TipePrinter)int.Parse(ConfigHelper.GetConfig("Tipe_Printer")) : TipePrinter.InkjetDotMatrix;
+            model.show_tool_strip = ConfigHelper.GetConfig<bool>("ShowToolStrip");
+            model.show_status_strip = ConfigHelper.GetConfig<bool>("ShowStatusStrip");
 
             return model;
          }
@@ -51,6 +53,8 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Pengaturan
          ConfigHelper.SaveConfig("Tipe_Printer", model.tipe_printer.ToString("d"));
          ConfigHelper.SaveConfig("Dockpanel_Theme", model.dockpanel_theme.ToString("d"));
          ConfigHelper.SaveConfig("Path_Backround", model.path_background);
+         ConfigHelper.SaveConfig("ShowToolStrip", model.show_tool_strip.ToString().ToLower());
+         ConfigHelper.SaveConfig("ShowStatusStrip", model.show_status_strip.ToString().ToLower());
       }
    }
 }

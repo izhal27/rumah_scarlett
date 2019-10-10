@@ -81,6 +81,16 @@ namespace RumahScarlett.Domain.Models.Pengaturan
       [Description("Pilih Tipe Printer yang digunakan.")]
       [DisplayName("Printer")]
       public TipePrinter tipe_printer { get; set; }
+
+      [Category("View")]
+      [Description("Tampilkan Tool Strip aplikasi.")]
+      [DisplayName("Show Tool Strip")]
+      public bool show_tool_strip { get; set; }
+
+      [Category("View")]
+      [Description("Tampilkan Status Strip aplikasi.")]
+      [DisplayName("Show Status Strip")]
+      public bool show_status_strip { get; set; }
    }
 
    public class FileNameImagesEditor : FileNameEditor
