@@ -144,6 +144,8 @@
     <Compile Include="Tipe\TipeServicesDataAccessTests.cs" />
     <Compile Include="Tipe\TipeServicesFixture.cs" />
     <Compile Include="Tipe\TipeServicesValidationTests.cs" />
+    <Compile Include="User\UserServicesFixture.cs" />
+    <Compile Include="User\UserServicesValidationTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RumahScarlett.CommonComponents\RumahScarlett.CommonComponents.csproj">

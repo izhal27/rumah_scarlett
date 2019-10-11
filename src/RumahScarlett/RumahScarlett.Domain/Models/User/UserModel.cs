@@ -19,13 +19,14 @@ namespace RumahScarlett.Domain.Models.User
 
       [Required(AllowEmptyStrings = false, ErrorMessage = "Login ID harus diisi !!!")]
       [StringLength(50, MinimumLength = 5, ErrorMessage = "Login ID harus diantara 5 sampai 50 karakter !!!")]
+      [RegularExpression(@"^[\w\d_]+$", ErrorMessage = "Maaf, Hanya karakter Abjad, Huruf dan Underscore yang diijinkan untuk Login ID !!!")]
       [Display(Name = "Login ID")]
       public string login_id { get; set; }
 
       [Required(AllowEmptyStrings = false, ErrorMessage = "Password harus diisi !!!")]
       [StringLength(50, MinimumLength = 5, ErrorMessage = "Password harus diantara 5 sampai 50 karakter !!!")]
-      [RegularExpression("@^[a-zA-Z0-9_]+$", ErrorMessage = "Maaf, Hanya karakter Abjad, Huruf dan Underscore yang diijinkan untuk Login ID !!!")]
-      [Display(Name = "Login ID")]
+      [RegularExpression(@"^[\w\d_]+$", ErrorMessage = "Maaf, Hanya karakter Abjad, Huruf dan Underscore yang diijinkan untuk Password !!!")]
+      [Display(Name = "Password")]
       public string password { get; set; }
 
       [Required(AllowEmptyStrings = false, ErrorMessage = "Role harus diisi !!!")]
