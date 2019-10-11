@@ -121,6 +121,9 @@
     <Compile Include="Services\Tipe\ITipeServices.cs" />
     <Compile Include="Services\Tipe\SubTipeServices.cs" />
     <Compile Include="Services\Tipe\TipeServices.cs" />
+    <Compile Include="Services\User\IUserRepository.cs" />
+    <Compile Include="Services\User\IUserServices.cs" />
+    <Compile Include="Services\User\UserServices.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RumahScarlett.Domain\RumahScarlett.Domain.csproj">

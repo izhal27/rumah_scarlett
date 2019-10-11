@@ -108,6 +108,7 @@
     <Compile Include="DataAccess\Repositories\Supplier\SupplierRepository.cs" />
     <Compile Include="DataAccess\Repositories\Tipe\SubTipeRepository.cs" />
     <Compile Include="DataAccess\Repositories\Tipe\TipeRepository.cs" />
+    <Compile Include="DataAccess\Repositories\User\UserRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
