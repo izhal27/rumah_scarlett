@@ -19,6 +19,7 @@ namespace RumahScarlett.Domain.Models.Role
 
       [Required(AllowEmptyStrings = false, ErrorMessage = "Kode harus diisi !!!")]
       [StringLength(50, MinimumLength = 3, ErrorMessage = "Kode harus diantara 3 sampai 50 karakter !!!")]
+      [RegularExpression(@"^[\w\d_]+$", ErrorMessage = "Maaf, Hanya karakter Abjad, Huruf dan Underscore yang diizinkan untuk Kode !!!")]
       [Display(Name = "Kode")]
       public string kode { get; set; }
 

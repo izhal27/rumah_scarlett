@@ -28,9 +28,9 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Role
             ValidateModel(context, model, dataAccessStatus);
 
             Insert(model, () => context.Conn.Insert((RoleModel)model), dataAccessStatus,
-                  () => CheckAfterInsert(context, "SELECT COUNT(1) FROM role WHERE kode=@kode "
+                  () => CheckAfterInsert(context, "SELECT COUNT(1) FROM role WHERE kode = @kode "
                                          + "AND id=(SELECT LAST_INSERT_ID())",
-                                         new { model.nama }));
+                                         new { model.kode }));
          }
       }
 
@@ -131,7 +131,7 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Role
       private void ValidateModel(DbContext context, IRoleModel model, DataAccessStatus dataAccessStatus)
       {
          var existsKode = context.Conn.ExecuteScalar<bool>("SELECT COUNT(1) FROM role WHERE kode = @kode AND id != @id",
-                                                             new { model.nama, model.id });
+                                                             new { model.kode, model.id });
 
          if (existsKode)
          {
