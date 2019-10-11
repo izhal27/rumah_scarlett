@@ -113,6 +113,8 @@
     <Compile Include="Models\Supplier\SupplierModel.cs" />
     <Compile Include="Models\Tipe\ITipeModel.cs" />
     <Compile Include="Models\Tipe\TipeModel.cs" />
+    <Compile Include="Models\User\IUserModel.cs" />
+    <Compile Include="Models\User\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
