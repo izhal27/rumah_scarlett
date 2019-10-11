@@ -122,7 +122,7 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Role
          }
          catch (MySqlException ex)
          {
-            dataAccessStatus = SetDataAccessValues(ex, ErrorMessageType.Insert);
+            dataAccessStatus = SetDataAccessValues(ex, ErrorMessageType.Update);
             throw new DataAccessException(message: ex.Message, innerException: ex.InnerException,
                                           dataAccessStatus: dataAccessStatus);
          }
@@ -130,13 +130,13 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Role
 
       private void ValidateModel(DbContext context, IRoleModel model, DataAccessStatus dataAccessStatus)
       {
-         var existsNama = context.Conn.ExecuteScalar<bool>("SELECT COUNT(1) FROM role WHERE kode=@kode AND id!=@id",
+         var existsKode = context.Conn.ExecuteScalar<bool>("SELECT COUNT(1) FROM role WHERE kode = @kode AND id != @id",
                                                              new { model.nama, model.id });
 
-         if (existsNama)
+         if (existsKode)
          {
             dataAccessStatus.Status = "Error";
-            dataAccessStatus.CustomMessage = StringHelper.DuplicateEntry("nama", _modelName);
+            dataAccessStatus.CustomMessage = StringHelper.DuplicateEntry("kode", _modelName);
 
             throw new DataAccessException(dataAccessStatus); ;
          }
@@ -144,7 +144,7 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Role
 
       private bool CheckModelExist(DbContext context, object id)
       {
-         return CheckModelExist(context, "SELECT COUNT(1) FROM role WHERE id=@id",
+         return CheckModelExist(context, "SELECT COUNT(1) FROM role WHERE id = @id",
                                                   new { id });
       }
    }

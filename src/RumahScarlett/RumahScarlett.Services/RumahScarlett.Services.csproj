@@ -103,6 +103,9 @@
     <Compile Include="Services\PenyesuaianStok\IPenyesuaianStokRepository.cs" />
     <Compile Include="Services\PenyesuaianStok\IPenyesuaianStokServices.cs" />
     <Compile Include="Services\PenyesuaianStok\PenyesuaianStokServices.cs" />
+    <Compile Include="Services\Role\FormActionServices.cs" />
+    <Compile Include="Services\Role\IFormActionRepository.cs" />
+    <Compile Include="Services\Role\IFormActionServices.cs" />
     <Compile Include="Services\Role\IRoleRepository.cs" />
     <Compile Include="Services\Role\IRoleServices.cs" />
     <Compile Include="Services\Role\RoleServices.cs" />
