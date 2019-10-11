@@ -102,6 +102,7 @@
     <Compile Include="DataAccess\Repositories\Penjualan\PenjualanReturnDetailRepository.cs" />
     <Compile Include="DataAccess\Repositories\Penjualan\PenjualanReturnRepository.cs" />
     <Compile Include="DataAccess\Repositories\PenyesuaianStok\PenyesuaianStokRepository.cs" />
+    <Compile Include="DataAccess\Repositories\Role\RoleRepository.cs" />
     <Compile Include="DataAccess\Repositories\Satuan\SatuanRepository.cs" />
     <Compile Include="DataAccess\Repositories\Supplier\SupplierRepository.cs" />
     <Compile Include="DataAccess\Repositories\Tipe\SubTipeRepository.cs" />
