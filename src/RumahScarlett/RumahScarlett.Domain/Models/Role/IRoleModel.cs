@@ -1,4 +1,6 @@
-﻿namespace RumahScarlett.Domain.Models.Role
+﻿using System.Collections.Generic;
+
+namespace RumahScarlett.Domain.Models.Role
 {
    public interface IRoleModel
    {
@@ -6,5 +8,6 @@
       string kode { get; set; }
       string nama { get; set; }
       string keterangan { get; set; }
+      IEnumerable<IRoleDetailModel> RoleDetails { get; set; }
    }
 }

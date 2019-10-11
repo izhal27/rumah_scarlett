@@ -29,5 +29,14 @@ namespace RumahScarlett.Domain.Models.Role
 
       [Display(Name = "Keterangan")]
       public string keterangan { get; set; }
+
+      [Browsable(false)]
+      [Dp.Write(false)]
+      public IEnumerable<IRoleDetailModel> RoleDetails { get; set; }
+
+      public RoleModel()
+      {
+         RoleDetails = new List<RoleDetailModel>();
+      }
    }
 }
