@@ -41,7 +41,12 @@ namespace RumahScarlett.Services.Services.Role
 
       public IEnumerable<IFormActionModel> GetAll()
       {
-         throw new NotImplementedException();
+         return _repo.GetAll();
+      }
+
+      public IEnumerable<IFormActionModel> GetAllByFormName(string formName)
+      {
+         return _repo.GetAllByFormName(formName);
       }
 
       public IFormActionModel GetById(object id)
@@ -49,9 +54,15 @@ namespace RumahScarlett.Services.Services.Role
          throw new NotImplementedException();
       }
 
+      public IFormActionModel GetByFormName(string formName)
+      {
+         return _repo.GetByFormName(formName);
+      }
+
       public void ValidateModel(IFormActionModel model)
       {
          _modelDAC.ValidateModel(model);
       }
+
    }
 }

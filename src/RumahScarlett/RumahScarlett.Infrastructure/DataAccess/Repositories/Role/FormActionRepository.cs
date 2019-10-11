@@ -70,12 +70,45 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Role
 
       public IEnumerable<IFormActionModel> GetAll()
       {
-         throw new NotImplementedException();
+         var dataAccessStatus = new DataAccessStatus();
+
+         using (var context = new DbContext())
+         {
+            return GetAll(() => context.Conn.GetAll<FormActionModel>(), dataAccessStatus);
+         }
+      }
+
+      public IEnumerable<IFormActionModel> GetAllByFormName(string formName)
+      {
+         var dataAccessStatus = new DataAccessStatus();
+
+         using (var context = new DbContext())
+         {
+            return GetAll(() =>
+            {
+               var queryStr = "SELECT * FROM form_action WHERE form_name = @formName";
+               return context.Conn.Query<FormActionModel>(queryStr, new { formName });
+            }, dataAccessStatus);
+         }
       }
 
       public IFormActionModel GetById(object id)
       {
          throw new NotImplementedException();
+      }
+
+      public IFormActionModel GetByFormName(string formName)
+      {
+         var dataAccessStatus = new DataAccessStatus();
+
+         using (var context = new DbContext())
+         {
+            return GetBy(() =>
+            {
+               var queryStr = "SELECT * FROM form_action WHERE form_name = @formName";
+               return context.Conn.Query<FormActionModel>(queryStr, new { formName }).FirstOrDefault();
+            }, dataAccessStatus, () => CheckModelExist(context, formName));
+         }
       }
 
       private void ValidateModel(DbContext context, IFormActionModel model, DataAccessStatus dataAccessStatus)
@@ -90,6 +123,12 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Role
 
             throw new DataAccessException(dataAccessStatus); ;
          }
+      }
+
+      private bool CheckModelExist(DbContext context, string formName)
+      {
+         return CheckModelExist(context, "SELECT COUNT(1) FROM form_action WHERE form_name = @formName",
+                                                  new { formName });
       }
    }
 }

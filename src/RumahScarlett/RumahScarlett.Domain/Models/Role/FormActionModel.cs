@@ -13,6 +13,7 @@ namespace RumahScarlett.Domain.Models.Role
    [Table("form_action")]
    public class FormActionModel : IFormActionModel
    {
+      [Dp.ExplicitKey]
       [Required(AllowEmptyStrings = false, ErrorMessage = "Form Name harus diisi !!!")]
       public string form_name { get; set; }
 

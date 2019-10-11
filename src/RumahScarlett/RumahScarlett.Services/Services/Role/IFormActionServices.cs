@@ -9,6 +9,8 @@ namespace RumahScarlett.Services.Services.Role
 {
    public interface IFormActionServices : IBaseServices<IFormActionModel>
    {
+      IEnumerable<IFormActionModel> GetAllByFormName(string formName);
+      IFormActionModel GetByFormName(string formName);
       void DeleteAll();
    }
 }

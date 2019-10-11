@@ -126,6 +126,9 @@
     <Compile Include="PenyesuaianStok\PenyesuaianStokServicesDataAccessTests.cs" />
     <Compile Include="PenyesuaianStok\PenyesuaianStokServicesFixture.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Role\FormActionServicesDataAccessTests.cs" />
+    <Compile Include="Role\FormActionServicesFixture.cs" />
+    <Compile Include="Role\FormActionServicesValidationTests.cs" />
     <Compile Include="Role\RoleServicesDataAccessTests.cs" />
     <Compile Include="Role\RoleServicesFixture.cs" />
     <Compile Include="Role\RoleServicesValidationTests.cs" />
