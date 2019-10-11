@@ -9,5 +9,6 @@ namespace RumahScarlett.Services.Services.Role
 {
    public interface IRoleRepository : IBaseRepository<IRoleModel>
    {
+      void Update(IRoleDetailModel model);
    }
 }

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using RumahScarlett.Domain.Models.Role;
 using RumahScarlett.CommonComponents;
+using MySql.Data.MySqlClient;
 
 namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Role
 {
@@ -69,8 +70,6 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Role
 
       public IRoleModel GetById(object id)
       {
-         var dataAccessStatus = new DataAccessStatus();
-
          using (var context = new DbContext())
          {
             var model = context.Conn.Get<RoleModel>(id);
@@ -85,8 +84,47 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Role
                   model.RoleDetails = roleDetails;
                }
             }
-            
+
             return model;
+         }
+      }
+
+      public void Update(IRoleDetailModel model)
+      {
+         var dataAccessStatus = new DataAccessStatus();
+
+         try
+         {
+            using (var context = new DbContext())
+            {
+               context.BeginTransaction();
+
+               var queryStr = "DELETE FROM role_detail WHERE role_kode = @role_kode AND menu_name = @menu_name";
+               context.Conn.Query<int>(queryStr, new
+               {
+                  model.role_kode,
+                  model.menu_name
+               });
+
+               queryStr = "INSERT INTO role_detail (role_kode, menu_name, menu_parent, form_action, tag) "
+                              + "VALUES (@role_kode, @menu_name, @menu_parent, @form_action, @tag)";
+               context.Conn.Query<int>(queryStr, new
+               {
+                  model.role_kode,
+                  model.menu_name,
+                  model.menu_parent,
+                  model.form_action,
+                  model.tag
+               });
+
+               context.Commit();
+            }
+         }
+         catch (MySqlException ex)
+         {
+            dataAccessStatus = SetDataAccessValues(ex, ErrorMessageType.Insert);
+            throw new DataAccessException(message: ex.Message, innerException: ex.InnerException,
+                                          dataAccessStatus: dataAccessStatus);
          }
       }
 

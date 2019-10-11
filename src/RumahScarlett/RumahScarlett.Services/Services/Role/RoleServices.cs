@@ -45,6 +45,11 @@ namespace RumahScarlett.Services.Services.Role
          return _repo.GetById(id);
       }
 
+      public void Update(IRoleDetailModel model)
+      {
+         _repo.Update(model);
+      }
+
       public void ValidateModel(IRoleModel model)
       {
          _modelDAC.ValidateModel(model);
