@@ -86,7 +86,7 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.User
          if (existsNama)
          {
             dataAccessStatus.Status = "Error";
-            dataAccessStatus.CustomMessage = StringHelper.DuplicateEntry("login ID", _modelName);
+            dataAccessStatus.CustomMessage = StringHelper.DuplicateEntry("login id", _modelName);
 
             throw new DataAccessException(dataAccessStatus); ;
          }
