@@ -382,6 +382,12 @@
     <Compile Include="Views\ModelControls\ComboBoxPelanggan.Designer.cs">
       <DependentUpon>ComboBoxPelanggan.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\ModelControls\ComboBoxRole.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\ModelControls\ComboBoxRole.Designer.cs">
+      <DependentUpon>ComboBoxRole.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\ModelControls\ComboBoxSatuan.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -718,6 +724,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\ModelControls\ComboBoxPelanggan.resx">
       <DependentUpon>ComboBoxPelanggan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ModelControls\ComboBoxRole.resx">
+      <DependentUpon>ComboBoxRole.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\ModelControls\ComboBoxSatuan.resx">
       <DependentUpon>ComboBoxSatuan.cs</DependentUpon>
