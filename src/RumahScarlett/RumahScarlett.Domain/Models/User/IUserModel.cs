@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RumahScarlett.Domain.Models.Role;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,5 +13,7 @@ namespace RumahScarlett.Domain.Models.User
       string login_id { get; set; }
       string password { get; set; }
       string role_kode { get; set; }
+      string nama_kode { get; }
+      IRoleModel Role { get; set; }
    }
 }

@@ -630,7 +630,14 @@
     <Compile Include="Views\Tipe\TipeView.Designer.cs">
       <DependentUpon>TipeView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\User\IUserEntryView.cs" />
     <Compile Include="Views\User\IUserView.cs" />
+    <Compile Include="Views\User\UserEntryView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\User\UserEntryView.designer.cs">
+      <DependentUpon>UserEntryView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\User\UserView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -833,6 +840,9 @@
     <EmbeddedResource Include="Views\Tipe\TipeView.resx">
       <DependentUpon>TipeView.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\User\UserEntryView.resx">
+      <DependentUpon>UserEntryView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\User\UserView.resx">
       <DependentUpon>UserView.cs</DependentUpon>
     </EmbeddedResource>
@@ -884,6 +894,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="make_up_icon_64.ico" />
+    <None Include="Resources\eye_16.png" />
     <None Include="Resources\whatsapp_24.png" />
     <None Include="Resources\twitter_24.png" />
     <None Include="Resources\instagram_24.png" />

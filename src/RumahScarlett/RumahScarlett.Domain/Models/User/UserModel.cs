@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RumahScarlett.Domain.Models.Role;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -29,7 +30,23 @@ namespace RumahScarlett.Domain.Models.User
       [Display(Name = "Password")]
       public string password { get; set; }
 
+      [Browsable(false)]
+      [Display(Name = "Kode Role")]
       [Required(AllowEmptyStrings = false, ErrorMessage = "Role harus diisi !!!")]
       public string role_kode { get; set; }
+
+      [Browsable(false)]
+      [Dp.Write(false)]
+      [Display(Name = "Role")]
+      public string nama_kode { get; set; }
+
+      [Browsable(false)]
+      [Dp.Write(false)]
+      public IRoleModel Role { get; set; }
+
+      public UserModel()
+      {
+         Role = new RoleModel();
+      }
    }
 }

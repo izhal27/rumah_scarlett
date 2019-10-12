@@ -58,9 +58,9 @@ namespace RumahScarlett.Presentation.Presenters.User
 
       private void _view_OnCreateData(object sender, EventArgs e)
       {
-         //var view = new UserEntryView();
-         //view.OnSaveData += UserEntryView_OnSaveData;
-         //view.ShowDialog();
+         var view = new UserEntryView();
+         view.OnSaveData += UserEntryView_OnSaveData;
+         view.ShowDialog();
       }
 
       private void _view_OnUpdateData(object sender, EventArgs e)
@@ -84,9 +84,9 @@ namespace RumahScarlett.Presentation.Presenters.User
 
                if (model != null)
                {
-                  //var view = new UserEntryView(false, model);
-                  //view.OnSaveData += UserEntryView_OnSaveData;
-                  //view.ShowDialog();
+                  var view = new UserEntryView(false, model);
+                  view.OnSaveData += UserEntryView_OnSaveData;
+                  view.ShowDialog();
                }
             }
          }
@@ -96,53 +96,53 @@ namespace RumahScarlett.Presentation.Presenters.User
       {
          using (new WaitCursorHandler())
          {
-            //try
-            //{
-            //   var listDataGrid = _view.ListDataGrid;
-            //   var newModel = ((ModelEventArgs<UserModel>)e).Value;
-            //   var view = ((UserEntryView)sender);
+            try
+            {
+               var listDataGrid = _view.ListDataGrid;
+               var newModel = ((ModelEventArgs<UserModel>)e).Value;
+               var view = ((UserEntryView)sender);
 
-            //   if (newModel.id == default(uint))
-            //   {
-            //      _services.Insert(newModel);
-            //      view.Controls.ClearControls();
-            //      Messages.InfoSave(_typeName);
+               if (newModel.id == default(uint))
+               {
+                  _services.Insert(newModel);
+                  view.Controls.ClearControls();
+                  Messages.InfoSave(_typeName);
 
-            //      _listObjs.Add(newModel);
-            //      _bindingView.DataSource = _listObjs;
+                  _listObjs.Add(newModel);
+                  _bindingView.DataSource = _listObjs;
 
-            //      if (listDataGrid.SelectedItem != null)
-            //      {
-            //         listDataGrid.SelectedItem = null;
-            //      }
+                  if (listDataGrid.SelectedItem != null)
+                  {
+                     listDataGrid.SelectedItem = null;
+                  }
 
-            //      listDataGrid.SelectedItem = newModel;
-            //   }
-            //   else
-            //   {
-            //      _services.Update(newModel);
-            //      Messages.InfoUpdate(_typeName);
-            //      view.Close();
+                  listDataGrid.SelectedItem = newModel;
+               }
+               else
+               {
+                  _services.Update(newModel);
+                  Messages.InfoUpdate(_typeName);
+                  view.Close();
 
-            //      var model = _bindingView.Where(b => b.id == newModel.id).FirstOrDefault();
+                  var model = _bindingView.Where(b => b.id == newModel.id).FirstOrDefault();
 
-            //      if (model != null)
-            //      {
-            //         model.nama = newModel.nama;
-            //         model.keterangan = newModel.keterangan;
+                  if (model != null)
+                  {
+                     model.login_id = newModel.login_id;
+                     model.role_kode = newModel.role_kode;
 
-            //         _bindingView.Refresh();
-            //      }
-            //   }
-            //}
-            //catch (ArgumentException ex)
-            //{
-            //   Messages.Error(ex);
-            //}
-            //catch (DataAccessException ex)
-            //{
-            //   Messages.Error(ex);
-            //}
+                     _bindingView.Refresh();
+                  }
+               }
+            }
+            catch (ArgumentException ex)
+            {
+               Messages.Error(ex);
+            }
+            catch (DataAccessException ex)
+            {
+               Messages.Error(ex);
+            }
          }
       }
 
