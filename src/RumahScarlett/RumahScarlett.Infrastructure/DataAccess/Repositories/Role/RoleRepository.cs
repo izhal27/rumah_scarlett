@@ -53,7 +53,21 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Role
 
          using (var context = new DbContext())
          {
-            Delete(model, () => context.Conn.Delete((RoleModel)model), dataAccessStatus,
+            Delete(model, () =>
+            {
+               var queryStr = "SELECT COUNT(1) FROM user WHERE role_kode = @kode";
+               var found = context.Conn.ExecuteScalar<bool>(queryStr, new { model.kode });
+
+               if (found)
+               {
+                  dataAccessStatus.Status = "Error";
+                  dataAccessStatus.CustomMessage = StringHelper.ErrorDeleteForeignKey(_modelName);
+
+                  throw new DataAccessException(dataAccessStatus);
+               }
+
+               context.Conn.Delete((RoleModel)model);
+            }, dataAccessStatus,
                   () => CheckModelExist(context, model.id));
          }
       }
@@ -138,7 +152,7 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Role
             dataAccessStatus.Status = "Error";
             dataAccessStatus.CustomMessage = StringHelper.DuplicateEntry("kode", _modelName);
 
-            throw new DataAccessException(dataAccessStatus); ;
+            throw new DataAccessException(dataAccessStatus);
          }
       }
 

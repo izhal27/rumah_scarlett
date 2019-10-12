@@ -170,7 +170,8 @@ namespace RumahScarlett.Services.UnitTests.Role
          {
             var model = new RoleModel()
             {
-               id = 4,
+               id = 1,
+               kode = "role"
             };
 
             _services.Delete(model);
