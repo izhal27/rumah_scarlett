@@ -51,6 +51,8 @@
          // 
          // crudcButtons
          // 
+         this.crudcButtons.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
          this.crudcButtons.BackColor = System.Drawing.Color.Transparent;
          this.crudcButtons.Location = new System.Drawing.Point(12, 415);
          this.crudcButtons.Name = "crudcButtons";

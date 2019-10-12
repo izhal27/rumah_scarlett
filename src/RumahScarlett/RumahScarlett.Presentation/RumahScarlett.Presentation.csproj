@@ -194,6 +194,8 @@
     <Compile Include="Presenters\Tipe\ITipePresenter.cs" />
     <Compile Include="Presenters\Tipe\SubTipePresenter.cs" />
     <Compile Include="Presenters\Tipe\TipePresenter.cs" />
+    <Compile Include="Presenters\User\IUserPresenter.cs" />
+    <Compile Include="Presenters\User\UserPresenter.cs" />
     <Compile Include="Views\Barang\BarangEntryView.cs">
       <SubType>Form</SubType>
     </Compile>
