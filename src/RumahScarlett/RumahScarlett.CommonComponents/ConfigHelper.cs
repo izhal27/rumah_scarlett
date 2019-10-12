@@ -99,13 +99,21 @@ namespace RumahScarlett.CommonComponents
       {
          var appSetting = ConfigurationManager.AppSettings[key.ToString()];
 
-         if (string.IsNullOrWhiteSpace(appSetting))
+         if ((LicenseManager.UsageMode != LicenseUsageMode.Designtime))
          {
-            throw new NullReferenceException(key.ToString());
+            if (string.IsNullOrWhiteSpace(appSetting))
+            {
+               throw new NullReferenceException(key.ToString());
+            }
+
+            var converter = TypeDescriptor.GetConverter(typeof(T));
+            if (converter != null)
+            {
+               return (T)(converter.ConvertFromInvariantString(appSetting));
+            }
          }
 
-         var converter = TypeDescriptor.GetConverter(typeof(T));
-         return (T)(converter.ConvertFromInvariantString(appSetting));
+         return default(T);
       }
    }
 }

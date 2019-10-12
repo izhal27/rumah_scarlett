@@ -622,6 +622,13 @@
     <Compile Include="Views\Tipe\TipeView.Designer.cs">
       <DependentUpon>TipeView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\User\IUserView.cs" />
+    <Compile Include="Views\User\UserView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\User\UserView.Designer.cs">
+      <DependentUpon>UserView.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -814,6 +821,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Tipe\TipeView.resx">
       <DependentUpon>TipeView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\User\UserView.resx">
+      <DependentUpon>UserView.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
