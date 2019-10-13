@@ -15,7 +15,7 @@ namespace RumahScarlett.Presentation.Views.CommonControls
       {
          if (!ReadOnly)
          {
-            BackColor = Color.FromArgb(240, 248, 255);
+            BackColor = MainProgram.Pengaturan.warna_baris_genap;
          }
       }
 
