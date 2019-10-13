@@ -1,6 +1,7 @@
 ﻿using Dapper;
 using Dapper.Contrib.Extensions;
 using RumahScarlett.CommonComponents;
+using RumahScarlett.Domain.Models.Role;
 using RumahScarlett.Domain.Models.User;
 using RumahScarlett.Services.Services.User;
 using System;
@@ -25,6 +26,7 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.User
          using (var context = new DbContext())
          {
             ValidateModel(context, model, dataAccessStatus);
+            model.password = PasswordHash.CreateHash(model.password);
 
             Insert(model, () => context.Conn.Insert((UserModel)model), dataAccessStatus,
                   () => CheckAfterInsert(context, "SELECT COUNT(1) FROM user WHERE login_id = @login_id "
@@ -41,8 +43,17 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.User
          {
             ValidateModel(context, model, dataAccessStatus);
 
-            Update(model, () => context.Conn.Update((UserModel)model), dataAccessStatus,
-                  () => CheckModelExist(context, model.id));
+            Update(model, () =>
+            {
+               var currentPassword = context.Conn.Get<UserModel>(model.id).password;
+
+               if (!model.password.Equals(currentPassword))
+               {
+                  model.password = PasswordHash.CreateHash(model.password);
+               }
+
+               context.Conn.Update((UserModel)model);
+            }, dataAccessStatus, () => CheckModelExist(context, model.id));
          }
       }
 
@@ -63,7 +74,27 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.User
 
          using (var context = new DbContext())
          {
-            return GetAll(() => context.Conn.GetAll<UserModel>(), dataAccessStatus);
+            return GetAll(() =>
+            {
+               var listObjs = context.Conn.GetAll<UserModel>();
+
+               if (listObjs != null && listObjs.ToList().Count > 0)
+               {
+                  listObjs = listObjs.Map(u =>
+                  {
+                     var queryStr = "SELECT * FROM role WHERE kode = @kode";
+                     var roleModel = context.Conn.Query<RoleModel>(queryStr, new { kode = u.role_kode }).FirstOrDefault();
+
+                     if (roleModel != null)
+                     {
+                        u.Role = roleModel;
+                     }
+                  }
+                  );
+               }
+
+               return listObjs;
+            }, dataAccessStatus);
          }
       }
 

@@ -51,6 +51,7 @@
     <Compile Include="DataAccessStatus.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="ModelEventArgs.cs" />
+    <Compile Include="PasswordHash.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StringHelper.cs" />
   </ItemGroup>

@@ -178,6 +178,8 @@
          this.textBoxPassword.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
          this.textBoxPassword.TabIndex = 1;
          this.textBoxPassword.UseSystemPasswordChar = true;
+         this.textBoxPassword.Enter += new System.EventHandler(this.textBoxPassword_Enter);
+         this.textBoxPassword.Leave += new System.EventHandler(this.textBoxPassword_Leave);
          this.textBoxPassword.ImeModeChanged += new System.EventHandler(this.textBoxPassword_ImeModeChanged);
          // 
          // comboBoxRole
@@ -233,6 +235,7 @@
          // 
          // buttonShowPassword
          // 
+         this.buttonShowPassword.Enabled = false;
          this.buttonShowPassword.Image = global::RumahScarlett.Presentation.Properties.Resources.eye_16;
          this.buttonShowPassword.Location = new System.Drawing.Point(351, 33);
          this.buttonShowPassword.Name = "buttonShowPassword";

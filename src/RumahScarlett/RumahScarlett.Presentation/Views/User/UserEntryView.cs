@@ -40,18 +40,22 @@ namespace RumahScarlett.Presentation.Views.User
       {
          if (!_isNewData)
          {
-            textBoxPassword.Enabled = false;
             buttonShowPassword.Enabled = false;
+
+            SetWatermarkTextBoxPassword();
+
             textBoxLoginID.Text = _model.login_id;
             comboBoxRole.SelectedItem = new RoleModel { id = _model.id, kode = _model.role_kode };
          }
       }
-      
+
       private void OperationButtons_OnSaveButtonClick(object sender, EventArgs e)
       {
          var model = new UserModel
          {
             login_id = textBoxLoginID.Text,
+            Role = comboBoxRole.SelectedItem != null ? comboBoxRole.SelectedItem : new RoleModel(),
+            password = textBoxPassword.ForeColor != Color.Gray ? textBoxPassword.Text : _model.password
          };
 
          var modelArgs = new ModelEventArgs<UserModel>(model);
@@ -83,6 +87,44 @@ namespace RumahScarlett.Presentation.Views.User
       private void textBoxPassword_ImeModeChanged(object sender, EventArgs e)
       {
          ((TextBox)sender).PasswordChar = '\0';
+      }
+
+      private void textBoxPassword_Enter(object sender, EventArgs e)
+      {
+         if (!_isNewData)
+         {
+            if (textBoxPassword.ForeColor == Color.Gray)
+            {
+               textBoxPassword.Clear();
+               textBoxPassword.UseSystemPasswordChar = true;
+               buttonShowPassword.Enabled = true;
+               textBoxPassword.ForeColor = textBoxLoginID.ForeColor;
+            }
+         }
+      }
+
+      private void textBoxPassword_Leave(object sender, EventArgs e)
+      {
+         if (!_isNewData)
+         {
+            if (string.IsNullOrWhiteSpace(textBoxPassword.Text))
+            {
+               SetWatermarkTextBoxPassword();
+            }
+         }
+      }
+
+      private void SetWatermarkTextBoxPassword()
+      {
+         textBoxPassword.UseSystemPasswordChar = false;
+         buttonShowPassword.Enabled = false;
+         textBoxPassword.Text = "Tidak Berubah";
+         textBoxPassword.ForeColor = Color.Gray;
+      }
+
+      private void textBoxLoginID_Enter(object sender, EventArgs e)
+      {
+         MessageBox.Show("Test");
       }
    }
 }

@@ -13,6 +13,7 @@ namespace RumahScarlett.Presentation.Views.CommonControls
    {
       protected override void OnEnter(EventArgs e)
       {
+         base.OnEnter(e);
          if (!ReadOnly)
          {
             BackColor = Color.FromArgb(240, 248, 255);
@@ -21,6 +22,7 @@ namespace RumahScarlett.Presentation.Views.CommonControls
 
       protected override void OnLeave(EventArgs e)
       {
+         base.OnLeave(e);
          if (!ReadOnly)
          {
             BackColor = SystemColors.Window;
