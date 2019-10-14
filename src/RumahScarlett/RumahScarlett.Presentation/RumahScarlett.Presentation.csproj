@@ -184,6 +184,8 @@
     <Compile Include="Presenters\Penjualan\PenjualanReturnPresenter.cs" />
     <Compile Include="Presenters\PenyesuaianStok\IPenyesuaianStokPresenter.cs" />
     <Compile Include="Presenters\PenyesuaianStok\PenyesuaianStokPresenter.cs" />
+    <Compile Include="Presenters\Role\IRolePresenter.cs" />
+    <Compile Include="Presenters\Role\RolePresenter.cs" />
     <Compile Include="Presenters\Satuan\ISatuanPresenter.cs" />
     <Compile Include="Presenters\Satuan\SatuanPresenter.cs" />
     <Compile Include="Presenters\Supplier\ISupplierPresenter.cs" />

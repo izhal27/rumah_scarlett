@@ -29,6 +29,7 @@
       private void InitializeComponent()
       {
          this.groupBox1 = new System.Windows.Forms.GroupBox();
+         this.listDataGrid = new RumahScarlett.Presentation.Views.CommonControls.ListDataGrid();
          this.crudcButtons = new RumahScarlett.Presentation.Views.CommonControls.CRUDCButtons();
          this.grpBoxAction = new System.Windows.Forms.GroupBox();
          this.treeViewAction = new System.Windows.Forms.TreeView();
@@ -38,12 +39,11 @@
          this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
          this.label1 = new System.Windows.Forms.Label();
          this.comboBoxMenu = new System.Windows.Forms.ComboBox();
-         this.listDataGrid = new RumahScarlett.Presentation.Views.CommonControls.ListDataGrid();
          this.groupBox1.SuspendLayout();
+         ((System.ComponentModel.ISupportInitialize)(this.listDataGrid)).BeginInit();
          this.grpBoxAction.SuspendLayout();
          this.tableLayoutPanel2.SuspendLayout();
          this.tableLayoutPanel1.SuspendLayout();
-         ((System.ComponentModel.ISupportInitialize)(this.listDataGrid)).BeginInit();
          this.SuspendLayout();
          // 
          // groupBox1
@@ -54,13 +54,30 @@
          this.groupBox1.Controls.Add(this.listDataGrid);
          this.groupBox1.Location = new System.Drawing.Point(12, 58);
          this.groupBox1.Name = "groupBox1";
-         this.groupBox1.Size = new System.Drawing.Size(323, 351);
+         this.groupBox1.Size = new System.Drawing.Size(254, 351);
          this.groupBox1.TabIndex = 1;
          this.groupBox1.TabStop = false;
          this.groupBox1.Text = "[ ROLE ]";
          // 
+         // listDataGrid
+         // 
+         this.listDataGrid.AccessibleName = "Table";
+         this.listDataGrid.AllowEditing = false;
+         this.listDataGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+         this.listDataGrid.AutoSizeColumnsMode = Syncfusion.WinForms.DataGrid.Enums.AutoSizeColumnsMode.Fill;
+         this.listDataGrid.Location = new System.Drawing.Point(6, 19);
+         this.listDataGrid.Name = "listDataGrid";
+         this.listDataGrid.ShowRowHeader = true;
+         this.listDataGrid.Size = new System.Drawing.Size(242, 326);
+         this.listDataGrid.TabIndex = 0;
+         this.listDataGrid.Text = "listDataGrid1";
+         // 
          // crudcButtons
          // 
+         this.crudcButtons.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
          this.crudcButtons.BackColor = System.Drawing.Color.Transparent;
          this.crudcButtons.Location = new System.Drawing.Point(12, 415);
          this.crudcButtons.Name = "crudcButtons";
@@ -74,9 +91,9 @@
          this.grpBoxAction.Controls.Add(this.treeViewAction);
          this.grpBoxAction.Controls.Add(this.tableLayoutPanel2);
          this.grpBoxAction.Controls.Add(this.tableLayoutPanel1);
-         this.grpBoxAction.Location = new System.Drawing.Point(341, 58);
+         this.grpBoxAction.Location = new System.Drawing.Point(272, 58);
          this.grpBoxAction.Name = "grpBoxAction";
-         this.grpBoxAction.Size = new System.Drawing.Size(431, 351);
+         this.grpBoxAction.Size = new System.Drawing.Size(500, 351);
          this.grpBoxAction.TabIndex = 3;
          this.grpBoxAction.TabStop = false;
          this.grpBoxAction.Text = "[ ACTION ]";
@@ -89,7 +106,7 @@
          this.treeViewAction.CheckBoxes = true;
          this.treeViewAction.Location = new System.Drawing.Point(6, 55);
          this.treeViewAction.Name = "treeViewAction";
-         this.treeViewAction.Size = new System.Drawing.Size(419, 254);
+         this.treeViewAction.Size = new System.Drawing.Size(488, 254);
          this.treeViewAction.TabIndex = 1;
          // 
          // tableLayoutPanel2
@@ -105,7 +122,7 @@
          this.tableLayoutPanel2.Name = "tableLayoutPanel2";
          this.tableLayoutPanel2.RowCount = 1;
          this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-         this.tableLayoutPanel2.Size = new System.Drawing.Size(419, 30);
+         this.tableLayoutPanel2.Size = new System.Drawing.Size(488, 30);
          this.tableLayoutPanel2.TabIndex = 0;
          // 
          // buttonUpdate
@@ -144,7 +161,7 @@
          this.tableLayoutPanel1.Name = "tableLayoutPanel1";
          this.tableLayoutPanel1.RowCount = 1;
          this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-         this.tableLayoutPanel1.Size = new System.Drawing.Size(419, 30);
+         this.tableLayoutPanel1.Size = new System.Drawing.Size(488, 30);
          this.tableLayoutPanel1.TabIndex = 0;
          // 
          // label1
@@ -167,21 +184,6 @@
          this.comboBoxMenu.Size = new System.Drawing.Size(150, 21);
          this.comboBoxMenu.TabIndex = 1;
          // 
-         // listDataGrid
-         // 
-         this.listDataGrid.AccessibleName = "Table";
-         this.listDataGrid.AllowEditing = false;
-         this.listDataGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-         this.listDataGrid.AutoSizeColumnsMode = Syncfusion.WinForms.DataGrid.Enums.AutoSizeColumnsMode.Fill;
-         this.listDataGrid.Location = new System.Drawing.Point(6, 19);
-         this.listDataGrid.Name = "listDataGrid";
-         this.listDataGrid.ShowRowHeader = true;
-         this.listDataGrid.Size = new System.Drawing.Size(311, 326);
-         this.listDataGrid.TabIndex = 0;
-         this.listDataGrid.Text = "listDataGrid1";
-         // 
          // RoleView
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -198,12 +200,12 @@
          this.Controls.SetChildIndex(this.crudcButtons, 0);
          this.Controls.SetChildIndex(this.grpBoxAction, 0);
          this.groupBox1.ResumeLayout(false);
+         ((System.ComponentModel.ISupportInitialize)(this.listDataGrid)).EndInit();
          this.grpBoxAction.ResumeLayout(false);
          this.tableLayoutPanel2.ResumeLayout(false);
          this.tableLayoutPanel2.PerformLayout();
          this.tableLayoutPanel1.ResumeLayout(false);
          this.tableLayoutPanel1.PerformLayout();
-         ((System.ComponentModel.ISupportInitialize)(this.listDataGrid)).EndInit();
          this.ResumeLayout(false);
 
       }

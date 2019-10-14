@@ -26,6 +26,7 @@ namespace RumahScarlett.Presentation.Views
       public event EventHandler<MainViewEventArgs> OnBarangViewClick;
       public event EventHandler<MainViewEventArgs> OnPelangganViewClick;
       public event EventHandler<MainViewEventArgs> OnUserViewClick;
+      public event EventHandler<MainViewEventArgs> OnRoleViewClick;
       public event EventHandler<MainViewEventArgs> OnPenyesuaianStokViewClick;
       public event EventHandler<MainViewEventArgs> OnHutangOperasionalViewClick;
       public event EventHandler OnKasAwalViewClick;
@@ -139,6 +140,11 @@ namespace RumahScarlett.Presentation.Views
       private void toolStripMenuItemUser_Click(object sender, EventArgs e)
       {
          OnUserViewClick?.Invoke(sender, _eventArgs);
+      }
+      
+      private void toolStripMenuItemRole_Click(object sender, EventArgs e)
+      {
+         OnRoleViewClick?.Invoke(sender, _eventArgs);
       }
 
       private void toolStripMenuItemPenyesuaianStok_Click(object sender, EventArgs e)

@@ -10,6 +10,7 @@ using RumahScarlett.Presentation.Presenters.Pengaturan;
 using RumahScarlett.Presentation.Presenters.Pengeluaran;
 using RumahScarlett.Presentation.Presenters.Penjualan;
 using RumahScarlett.Presentation.Presenters.PenyesuaianStok;
+using RumahScarlett.Presentation.Presenters.Role;
 using RumahScarlett.Presentation.Presenters.Satuan;
 using RumahScarlett.Presentation.Presenters.Supplier;
 using RumahScarlett.Presentation.Presenters.Tentang;
@@ -49,6 +50,7 @@ namespace RumahScarlett.Presentation.Presenters
          _view.OnSatuanViewClick += _view_OnSatuanViewClick;
          _view.OnPelangganViewClick += _view_OnPelangganViewClick;
          _view.OnUserViewClick += _view_OnUserViewClick;
+         _view.OnRoleViewClick += _view_OnRoleViewClick;
          // Data
          _view.OnPenyesuaianStokViewClick += _view_OnPenyesuaianStokViewClick;
          _view.OnHutangOperasionalViewClick += _view_OnHutangOperasionalViewClick;
@@ -122,6 +124,12 @@ namespace RumahScarlett.Presentation.Presenters
       private void _view_OnUserViewClick(object sender, MainViewEventArgs e)
       {
          var view = (DockContent)new UserPresenter().GetView;
+         ShowChildForm(view, e);
+      }
+
+      private void _view_OnRoleViewClick(object sender, MainViewEventArgs e)
+      {
+         var view = (DockContent)new RolePresenter().GetView;
          ShowChildForm(view, e);
       }
 
