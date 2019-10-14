@@ -39,6 +39,7 @@ namespace RumahScarlett.Presentation.Presenters.Role
          _view.OnButtonUbahClick += _view_OnUpdateData;
          _view.OnButtonHapusClick += _view_OnDeleteData;
          _view.OnButtonRefreshClick += _view_OnRefreshData;
+         _view.OnButtonUpdateActionClick += _view_OnButtonUpdateActionClick;
 
          _view.OnDataGridCellDoubleClick += OnDataGrid_CellDoubleClick;
       }
@@ -58,9 +59,9 @@ namespace RumahScarlett.Presentation.Presenters.Role
 
       private void _view_OnCreateData(object sender, EventArgs e)
       {
-         //var view = new RoleEntryView();
-         //view.OnSaveData += RoleEntryView_OnSaveData;
-         //view.ShowDialog();
+         var view = new RoleEntryView();
+         view.OnSaveData += RoleEntryView_OnSaveData;
+         view.ShowDialog();
       }
 
       private void _view_OnUpdateData(object sender, EventArgs e)
@@ -84,9 +85,9 @@ namespace RumahScarlett.Presentation.Presenters.Role
 
                if (model != null)
                {
-                  //var view = new RoleEntryView(false, model);
-                  //view.OnSaveData += RoleEntryView_OnSaveData;
-                  //view.ShowDialog();
+                  var view = new RoleEntryView(false, model);
+                  view.OnSaveData += RoleEntryView_OnSaveData;
+                  view.ShowDialog();
                }
             }
          }
@@ -98,42 +99,43 @@ namespace RumahScarlett.Presentation.Presenters.Role
          {
             try
             {
-               //var listDataGrid = _view.ListDataGrid;
-               //var newModel = ((ModelEventArgs<RoleModel>)e).Value;
-               //var view = ((RoleEntryView)sender);
+               var listDataGrid = _view.ListDataGrid;
+               var newModel = ((ModelEventArgs<RoleModel>)e).Value;
+               var view = ((RoleEntryView)sender);
 
-               //if (newModel.id == default(uint))
-               //{
-               //   _services.Insert(newModel);
-               //   view.Controls.ClearControls();
-               //   Messages.InfoSave(_typeName);
+               if (newModel.id == default(uint))
+               {
+                  _services.Insert(newModel);
+                  view.Controls.ClearControls();
+                  Messages.InfoSave(_typeName);
 
-               //   _listObjs.Add(newModel);
-               //   _bindingView.DataSource = _listObjs;
+                  _listObjs.Add(newModel);
+                  _bindingView.DataSource = _listObjs;
 
-               //   if (listDataGrid.SelectedItem != null)
-               //   {
-               //      listDataGrid.SelectedItem = null;
-               //   }
+                  if (listDataGrid.SelectedItem != null)
+                  {
+                     listDataGrid.SelectedItem = null;
+                  }
 
-               //   listDataGrid.SelectedItem = newModel;
-               //}
-               //else
-               //{
-               //   _services.Update(newModel);
-               //   Messages.InfoUpdate(_typeName);
-               //   view.Close();
+                  listDataGrid.SelectedItem = newModel;
+               }
+               else
+               {
+                  _services.Update(newModel);
+                  Messages.InfoUpdate(_typeName);
+                  view.Close();
 
-               //   var model = _bindingView.Where(b => b.id == newModel.id).FirstOrDefault();
+                  var model = _bindingView.Where(b => b.id == newModel.id).FirstOrDefault();
 
-               //   if (model != null)
-               //   {
-               //      model.login_id = newModel.login_id;
-               //      model.role_kode = newModel.role_kode;
+                  if (model != null)
+                  {
+                     model.kode = newModel.kode;
+                     model.nama = newModel.nama;
+                     model.keterangan = newModel.keterangan;
 
-               //      _bindingView.Refresh();
-               //   }
-               //}
+                     _bindingView.Refresh();
+                  }
+               }
             }
             catch (ArgumentException ex)
             {
@@ -184,6 +186,11 @@ namespace RumahScarlett.Presentation.Presenters.Role
       {
          _listObjs = _services.GetAll().ToList();
          _bindingView.DataSource = _listObjs;
+      }
+
+      private void _view_OnButtonUpdateActionClick(object sender, EventArgs e)
+      {
+         throw new NotImplementedException();
       }
 
       private void OnDataGrid_CellDoubleClick(object sender, CellClickEventArgs e)

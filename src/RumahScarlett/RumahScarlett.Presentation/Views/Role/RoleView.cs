@@ -102,5 +102,10 @@ namespace RumahScarlett.Presentation.Views.Role
             CheckedTreeViewNode(status, node.Nodes);
          }
       }
+
+      private void buttonUpdate_Click(object sender, EventArgs e)
+      {
+         OnButtonUpdateActionClick?.Invoke(sender, e);
+      }
    }
 }

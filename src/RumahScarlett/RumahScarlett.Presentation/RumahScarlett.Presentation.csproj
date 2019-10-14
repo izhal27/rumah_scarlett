@@ -570,7 +570,14 @@
     <Compile Include="Views\PenyesuaianStok\PenyesuaianStokView.Designer.cs">
       <DependentUpon>PenyesuaianStokView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Role\IRoleEntryView.cs" />
     <Compile Include="Views\Role\IRoleView.cs" />
+    <Compile Include="Views\Role\RoleEntryView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Role\RoleEntryView.Designer.cs">
+      <DependentUpon>RoleEntryView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Role\RoleView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -821,6 +828,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\PenyesuaianStok\PenyesuaianStokView.resx">
       <DependentUpon>PenyesuaianStokView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Role\RoleEntryView.resx">
+      <DependentUpon>RoleEntryView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Role\RoleView.resx">
       <DependentUpon>RoleView.cs</DependentUpon>
