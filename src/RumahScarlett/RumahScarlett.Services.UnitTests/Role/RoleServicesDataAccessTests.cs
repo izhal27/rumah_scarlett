@@ -247,7 +247,7 @@ namespace RumahScarlett.Services.UnitTests.Role
                tag = "Tambah",
             };
 
-            _services.Update(model);
+            _services.Insert(model);
             operationSecceded = true;
          }
          catch (DataAccessException ex)

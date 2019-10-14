@@ -103,7 +103,7 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Role
          }
       }
 
-      public void Update(IRoleDetailModel model)
+      public void Insert(IRoleDetailModel model)
       {
          var dataAccessStatus = new DataAccessStatus();
 
@@ -111,27 +111,7 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Role
          {
             using (var context = new DbContext())
             {
-               context.BeginTransaction();
-
-               var queryStr = "DELETE FROM role_detail WHERE role_kode = @role_kode AND menu_name = @menu_name";
-               context.Conn.Query<int>(queryStr, new
-               {
-                  model.role_kode,
-                  model.menu_name
-               });
-
-               queryStr = "INSERT INTO role_detail (role_kode, menu_name, menu_parent, form_action, tag) "
-                              + "VALUES (@role_kode, @menu_name, @menu_parent, @form_action, @tag)";
-               context.Conn.Query<int>(queryStr, new
-               {
-                  model.role_kode,
-                  model.menu_name,
-                  model.menu_parent,
-                  model.form_action,
-                  model.tag
-               });
-
-               context.Commit();
+               context.Conn.Insert((RoleDetailModel)model);
             }
          }
          catch (MySqlException ex)
@@ -139,6 +119,101 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Role
             dataAccessStatus = SetDataAccessValues(ex, ErrorMessageType.Update);
             throw new DataAccessException(message: ex.Message, innerException: ex.InnerException,
                                           dataAccessStatus: dataAccessStatus);
+         }
+      }
+
+      public void Insert(IEnumerable<IRoleDetailModel> models)
+      {
+         var dataAccessStatus = new DataAccessStatus();
+
+         try
+         {
+            using (var context = new DbContext())
+            {
+               context.Conn.Insert((RoleDetailModel)models);
+            }
+         }
+         catch (MySqlException ex)
+         {
+            dataAccessStatus = SetDataAccessValues(ex, ErrorMessageType.Update);
+            throw new DataAccessException(message: ex.Message, innerException: ex.InnerException,
+                                          dataAccessStatus: dataAccessStatus);
+         }
+      }
+
+      public void Delete(IRoleDetailModel model)
+      {
+         var dataAccessStatus = new DataAccessStatus();
+
+         try
+         {
+            using (var context = new DbContext())
+            {
+               string queryStr = "DELETE FROM role_detail WHERE (role_kode = @kode AND menu_name = @parent) " +
+                                 "OR (role_kode = @kode AND menu_parent = @parent)";
+
+               context.Conn.Execute(queryStr, new
+               {
+                  kode = model.role_kode,
+                  menu = model.menu_parent,
+                  parent = model.menu_parent
+               });
+            }
+         }
+         catch (MySqlException ex)
+         {
+            dataAccessStatus = SetDataAccessValues(ex, ErrorMessageType.Update);
+            throw new DataAccessException(message: ex.Message, innerException: ex.InnerException,
+                                          dataAccessStatus: dataAccessStatus);
+         }
+      }
+
+      public void DeleteAllRoleDetail()
+      {
+         using (var context = new DbContext())
+         {
+            var dataAccessStatus = new DataAccessStatus();
+
+            try
+            {
+               context.Conn.DeleteAll<RoleDetailModel>();
+            }
+            catch (MySqlException ex)
+            {
+               dataAccessStatus = SetDataAccessValues(ex, ErrorMessageType.Delete);
+               throw new DataAccessException(message: ex.Message, innerException: ex.InnerException,
+                                             dataAccessStatus: dataAccessStatus);
+            }
+         }
+      }
+
+      public IEnumerable<IRoleDetailModel> GetByMenuParent(string roleKode, string menuParent)
+      {
+         using (var context = new DbContext())
+         {
+            var queryStr = "SELECT * FROM role_detail WHERE role_kode = @roleKode AND " +
+                           "(menu_name = @menuParent OR menu_parent = @menuParent)";
+            return context.Conn.Query<RoleDetailModel>(queryStr, new { roleKode, menuParent });
+         }
+      }
+
+      public IEnumerable<IRoleDetailModel> GetAllByRoleKode(string roleKode)
+      {
+         using (var context = new DbContext())
+         {
+            var queryStr = "SELECT * FROM role_detail WHERE role_kode = @roleKode";
+            return context.Conn.Query<RoleDetailModel>(queryStr, new { roleKode });
+         }
+      }
+
+      public IEnumerable<string> GetAllMenuNameByTagAction(string roleKode, string formName)
+      {
+         using (var context = new DbContext())
+         {
+
+            string queryStr = "SELECT menu_name FROM role_detail WHERE role_kode = @kode " +
+                              "AND form_action = @form AND tag = 'action'";
+            return context.Conn.Query<string>(queryStr, new { kode = roleKode, form = formName }).ToList();
          }
       }
 

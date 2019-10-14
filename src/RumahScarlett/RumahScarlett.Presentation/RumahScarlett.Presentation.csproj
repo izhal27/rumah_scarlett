@@ -141,6 +141,7 @@
     <Compile Include="Helper\Extensions.cs" />
     <Compile Include="Helper\Messages.cs" />
     <Compile Include="Helper\ReportHelper.cs" />
+    <Compile Include="Helper\RoleManager.cs" />
     <Compile Include="Helper\WaitCursorHandler.cs" />
     <Compile Include="Presenters\Barang\BarangPresenter.cs" />
     <Compile Include="Presenters\Barang\IBarangPresenter.cs" />

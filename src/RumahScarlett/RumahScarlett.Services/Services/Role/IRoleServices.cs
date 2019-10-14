@@ -9,6 +9,12 @@ namespace RumahScarlett.Services.Services.Role
 {
    public interface IRoleServices : IBaseServices<IRoleModel>
    {
-      void Update(IRoleDetailModel model);
+      void Insert(IRoleDetailModel model);
+      void Insert(IEnumerable<IRoleDetailModel> models);
+      void Delete(IRoleDetailModel model);
+      void DeleteAllRoleDetail();
+      IEnumerable<IRoleDetailModel> GetByMenuParent(string roleKode, string menuParent);
+      IEnumerable<IRoleDetailModel> GetAllByRoleKode(string roleKode);
+      IEnumerable<string> GetAllMenuNameByTagAction(string roleKode, string formName);
    }
 }

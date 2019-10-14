@@ -79,5 +79,15 @@ namespace RumahScarlett.Presentation.Helper
       {
          return new Font(fontTarget.Name, fontTarget.Size, FontStyle.Bold);
       }
+      
+      /// <summary>
+      /// Enable control yang ingin dilewati / tidak termasuk dalam daftar Role detail
+      /// </summary>
+      /// <param name="control">Control target</param>
+      /// <returns>Mengembalikan true jika control mempunyai Tag ignore</returns>
+      public static bool TagIgnore(this object control)
+      {
+         return control.PropertyValueEquals("Tag", "ignore");
+      }
    }
 }

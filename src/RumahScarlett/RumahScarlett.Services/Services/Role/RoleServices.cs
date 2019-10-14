@@ -1,9 +1,9 @@
-﻿using System;
+﻿using RumahScarlett.Domain.Models.Role;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using RumahScarlett.Domain.Models.Role;
 
 namespace RumahScarlett.Services.Services.Role
 {
@@ -45,9 +45,39 @@ namespace RumahScarlett.Services.Services.Role
          return _repo.GetById(id);
       }
 
-      public void Update(IRoleDetailModel model)
+      public void Insert(IRoleDetailModel model)
       {
-         _repo.Update(model);
+         _repo.Insert(model);
+      }
+
+      public void Insert(IEnumerable<IRoleDetailModel> models)
+      {
+         _repo.Insert(models);
+      }
+
+      public void Delete(IRoleDetailModel model)
+      {
+         _repo.Delete(model);
+      }
+
+      public void DeleteAllRoleDetail()
+      {
+         _repo.DeleteAllRoleDetail();
+      }
+      
+      public IEnumerable<IRoleDetailModel> GetByMenuParent(string roleKode, string menuParent)
+      {
+         return _repo.GetByMenuParent(roleKode, menuParent);
+      }
+
+      public IEnumerable<IRoleDetailModel> GetAllByRoleKode(string roleKode)
+      {
+         return _repo.GetAllByRoleKode(roleKode);
+      }
+
+      public IEnumerable<string> GetAllMenuNameByTagAction(string roleKode, string formName)
+      {
+         return _repo.GetAllMenuNameByTagAction(roleKode, formName);
       }
 
       public void ValidateModel(IRoleModel model)
