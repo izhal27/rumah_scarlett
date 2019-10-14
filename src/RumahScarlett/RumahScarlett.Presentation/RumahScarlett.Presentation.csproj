@@ -568,6 +568,13 @@
     <Compile Include="Views\PenyesuaianStok\PenyesuaianStokView.Designer.cs">
       <DependentUpon>PenyesuaianStokView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Role\IRoleView.cs" />
+    <Compile Include="Views\Role\RoleView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Role\RoleView.Designer.cs">
+      <DependentUpon>RoleView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Satuan\ISatuanEntryView.cs" />
     <Compile Include="Views\Satuan\ISatuanView.cs" />
     <Compile Include="Views\Satuan\SatuanEntryView.cs">
@@ -812,6 +819,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\PenyesuaianStok\PenyesuaianStokView.resx">
       <DependentUpon>PenyesuaianStokView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Role\RoleView.resx">
+      <DependentUpon>RoleView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Satuan\SatuanEntryView.resx">
       <DependentUpon>SatuanEntryView.cs</DependentUpon>
