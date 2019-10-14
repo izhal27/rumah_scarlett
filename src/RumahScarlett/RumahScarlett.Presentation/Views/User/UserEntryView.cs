@@ -121,10 +121,5 @@ namespace RumahScarlett.Presentation.Views.User
          textBoxPassword.Text = "Tidak Berubah";
          textBoxPassword.ForeColor = Color.Gray;
       }
-
-      private void textBoxLoginID_Enter(object sender, EventArgs e)
-      {
-         MessageBox.Show("Test");
-      }
    }
 }
