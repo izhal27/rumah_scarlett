@@ -158,6 +158,8 @@
     <Compile Include="Presenters\Laporan\LaporanLabaRugiPresenter.cs" />
     <Compile Include="Presenters\Laporan\LaporanStatusBarangPresenter.cs" />
     <Compile Include="Presenters\Laporan\LaporanTransaksiByDatePresenter.cs" />
+    <Compile Include="Presenters\Login\ILoginPresenter.cs" />
+    <Compile Include="Presenters\Login\LoginPresenter.cs" />
     <Compile Include="Presenters\MainPresenter.cs" />
     <Compile Include="Presenters\Pelanggan\IPelangganPresenter.cs" />
     <Compile Include="Presenters\Pelanggan\PelangganPresenter.cs" />
@@ -371,6 +373,13 @@
     </Compile>
     <Compile Include="Views\Laporan\LaporanTransaksiByDateView.Designer.cs">
       <DependentUpon>LaporanTransaksiByDateView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Login\ILoginView.cs" />
+    <Compile Include="Views\Login\LoginView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Login\LoginView.Designer.cs">
+      <DependentUpon>LoginView.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\MainView.cs">
       <SubType>Form</SubType>
@@ -742,6 +751,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Laporan\LaporanTransaksiByDateView.resx">
       <DependentUpon>LaporanTransaksiByDateView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Login\LoginView.resx">
+      <DependentUpon>LoginView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\MainView.resx">
       <DependentUpon>MainView.cs</DependentUpon>

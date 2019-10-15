@@ -2,6 +2,7 @@
 using RumahScarlett.Domain.Models.Pengaturan;
 using RumahScarlett.Infrastructure.DataAccess.Repositories.Pengaturan;
 using RumahScarlett.Presentation.Presenters;
+using RumahScarlett.Presentation.Presenters.Login;
 using RumahScarlett.Services.Services;
 using RumahScarlett.Services.Services.Pengaturan;
 using System;
@@ -46,7 +47,7 @@ namespace RumahScarlett.Presentation
          Application.EnableVisualStyles();
          Application.SetCompatibleTextRenderingDefault(false);
          
-         var view = new MainPresenter().GetView;
+         var view = new LoginPresenter().GetView;
          Application.Run((Form)view);
       }
 
