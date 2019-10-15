@@ -79,7 +79,36 @@ namespace RumahScarlett.Presentation.Helper
       {
          return new Font(fontTarget.Name, fontTarget.Size, FontStyle.Bold);
       }
-      
+
+      /// <summary>
+      /// Method untuk mengecek jika Property Control terdapat data yang ingin dicari
+      /// </summary>
+      /// <param name="control">Control target</param>
+      /// <param name="propertyName">Property name</param>
+      /// <param name="data">Data yang ingin dicari</param>
+      /// <returns>Mengembalikan true jika ditemukan, sebaliknya false</returns>
+      public static bool PropertyValueEquals(this object control, string propertyName, string data)
+      {
+         // Ambil Property sesuai dengan property name dari object control
+         var propertyInfo = control.GetType().GetProperty(propertyName);
+
+         if (propertyInfo == null) // Property tidak ditemukan
+            return false;
+
+         // Cek jika Property memiliki value
+         if (propertyInfo.GetValue(control, null) != null)
+         {
+            // Ambil value dari Property
+            var value = propertyInfo.GetValue(control, null);
+
+            // True jika data property value sama dengan data yang ingin dicari
+            if (value.ToString().Equals(data))
+               return true;
+         }
+
+         return false;
+      }
+
       /// <summary>
       /// Enable control yang ingin dilewati / tidak termasuk dalam daftar Role detail
       /// </summary>
