@@ -37,7 +37,6 @@
          this.toolTip = new System.Windows.Forms.ToolTip(this.components);
          this.menuStripMain = new System.Windows.Forms.MenuStrip();
          this.toolStripMenuItemOperasi = new System.Windows.Forms.ToolStripMenuItem();
-         this.toolStripMenuItemExit = new System.Windows.Forms.ToolStripMenuItem();
          this.toolStripMenuItemMaster = new System.Windows.Forms.ToolStripMenuItem();
          this.toolStripMenuItemDataTipe = new System.Windows.Forms.ToolStripMenuItem();
          this.toolStripMenuItemTipe = new System.Windows.Forms.ToolStripMenuItem();
@@ -88,6 +87,9 @@
          this.toolStripButtonBarang = new System.Windows.Forms.ToolStripButton();
          this.toolStripButtonPembelian = new System.Windows.Forms.ToolStripButton();
          this.toolStripButtonPenjualan = new System.Windows.Forms.ToolStripButton();
+         this.toolStripMenuItemLogout = new System.Windows.Forms.ToolStripMenuItem();
+         this.toolStripMenuItemGantiPassword = new System.Windows.Forms.ToolStripMenuItem();
+         this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
          this.statusStripMain.SuspendLayout();
          this.menuStripMain.SuspendLayout();
          this.toolStripMain.SuspendLayout();
@@ -143,17 +145,12 @@
          // toolStripMenuItemOperasi
          // 
          this.toolStripMenuItemOperasi.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItemExit});
+            this.toolStripMenuItemGantiPassword,
+            this.toolStripSeparator9,
+            this.toolStripMenuItemLogout});
          this.toolStripMenuItemOperasi.Name = "toolStripMenuItemOperasi";
          this.toolStripMenuItemOperasi.Size = new System.Drawing.Size(59, 20);
          this.toolStripMenuItemOperasi.Text = "&Operasi";
-         // 
-         // toolStripMenuItemExit
-         // 
-         this.toolStripMenuItemExit.Name = "toolStripMenuItemExit";
-         this.toolStripMenuItemExit.Size = new System.Drawing.Size(92, 22);
-         this.toolStripMenuItemExit.Text = "&Exit";
-         this.toolStripMenuItemExit.Click += new System.EventHandler(this.toolStripMenuItemExit_Click);
          // 
          // toolStripMenuItemMaster
          // 
@@ -553,6 +550,25 @@
          this.toolStripButtonPenjualan.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
          this.toolStripButtonPenjualan.Click += new System.EventHandler(this.toolStripButtonPenjualan_Click);
          // 
+         // toolStripMenuItemLogout
+         // 
+         this.toolStripMenuItemLogout.Name = "toolStripMenuItemLogout";
+         this.toolStripMenuItemLogout.Size = new System.Drawing.Size(155, 22);
+         this.toolStripMenuItemLogout.Text = "&Logout";
+         this.toolStripMenuItemLogout.Click += new System.EventHandler(this.toolStripMenuItemLogout_Click);
+         // 
+         // toolStripMenuItemGantiPassword
+         // 
+         this.toolStripMenuItemGantiPassword.Name = "toolStripMenuItemGantiPassword";
+         this.toolStripMenuItemGantiPassword.Size = new System.Drawing.Size(155, 22);
+         this.toolStripMenuItemGantiPassword.Text = "&Ganti Password";
+         this.toolStripMenuItemGantiPassword.Click += new System.EventHandler(this.toolStripMenuItemGantiPassword_Click);
+         // 
+         // toolStripSeparator9
+         // 
+         this.toolStripSeparator9.Name = "toolStripSeparator9";
+         this.toolStripSeparator9.Size = new System.Drawing.Size(152, 6);
+         // 
          // MainView
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -567,6 +583,7 @@
          this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
          this.Text = "Rumah Scarlett";
          this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+         this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainView_FormClosed);
          this.Load += new System.EventHandler(this.MainView_Load);
          this.statusStripMain.ResumeLayout(false);
          this.statusStripMain.PerformLayout();
@@ -585,7 +602,6 @@
       private System.Windows.Forms.ToolTip toolTip;
       private System.Windows.Forms.MenuStrip menuStripMain;
       private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemOperasi;
-      private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemExit;
       private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemMaster;
       private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemDataTipe;
       private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemSupplier;
@@ -638,6 +654,9 @@
       private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemUser;
       private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
       private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemRole;
+      private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemGantiPassword;
+      private System.Windows.Forms.ToolStripSeparator toolStripSeparator9;
+      private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemLogout;
    }
 }
 

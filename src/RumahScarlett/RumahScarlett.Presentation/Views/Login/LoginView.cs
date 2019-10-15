@@ -7,12 +7,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using RumahScarlett.Presentation.Views.CommonControls;
 
 namespace RumahScarlett.Presentation.Views.Login
 {
    public partial class LoginView : Form, ILoginView
    {
       public event EventHandler OnButtonLoginClick;
+
+      public BaseTextBox TextBoxLoginID
+      {
+         get { return textBoxLoginID; }
+      }
+
+      public BaseTextBox TextBoxPassword
+      {
+         get { return textBoxPassword; }
+      }
 
       public LoginView()
       {
@@ -22,6 +33,14 @@ namespace RumahScarlett.Presentation.Views.Login
       private void LoginView_Load(object sender, EventArgs e)
       {
          ActiveControl = textBoxLoginID;
+      }
+      
+      private void LoginView_KeyDown(object sender, KeyEventArgs e)
+      {
+         if (e.KeyCode == Keys.Enter)
+         {
+            OnButtonLoginClick?.Invoke(buttonLogin, new EventArgs());
+         }
       }
 
       private void chkBoxShowCharacters_CheckedChanged(object sender, EventArgs e)

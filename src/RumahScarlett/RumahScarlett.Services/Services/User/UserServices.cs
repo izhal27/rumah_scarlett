@@ -44,6 +44,20 @@ namespace RumahScarlett.Services.Services.User
       {
          return _repo.GetById(id);
       }
+      
+      public IUserModel LogIn(string loginID, string password)
+      {
+         if (string.IsNullOrWhiteSpace(loginID))
+         {
+            throw new ArgumentException("Login ID harus diisi !!!");
+         }
+         else if (string.IsNullOrWhiteSpace(password))
+         {
+            throw new ArgumentException("Password harus diisi !!!");
+         }
+
+         return _repo.LogIn(loginID, password);
+      }
 
       public void ValidateModel(IUserModel model)
       {

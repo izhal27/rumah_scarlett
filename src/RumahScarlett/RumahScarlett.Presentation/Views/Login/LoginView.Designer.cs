@@ -31,21 +31,21 @@
          System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginView));
          this.groupBox1 = new System.Windows.Forms.GroupBox();
          this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-         this.btnLogin = new System.Windows.Forms.Button();
-         this.btnCancel = new System.Windows.Forms.Button();
+         this.buttonLogin = new System.Windows.Forms.Button();
+         this.buttonCancel = new System.Windows.Forms.Button();
          this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
          this.chkBoxShowCharacters = new System.Windows.Forms.CheckBox();
          this.label1 = new System.Windows.Forms.Label();
          this.label2 = new System.Windows.Forms.Label();
-         this.pictureBox1 = new System.Windows.Forms.PictureBox();
          this.textBoxLoginID = new RumahScarlett.Presentation.Views.CommonControls.BaseTextBox();
          this.textBoxPassword = new RumahScarlett.Presentation.Views.CommonControls.BaseTextBox();
+         this.pictureBox1 = new System.Windows.Forms.PictureBox();
          this.groupBox1.SuspendLayout();
          this.tableLayoutPanel2.SuspendLayout();
          this.tableLayoutPanel1.SuspendLayout();
-         ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.textBoxLoginID)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.textBoxPassword)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
          this.SuspendLayout();
          // 
          // groupBox1
@@ -67,8 +67,8 @@
          this.tableLayoutPanel2.ColumnCount = 2;
          this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
          this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 81F));
-         this.tableLayoutPanel2.Controls.Add(this.btnLogin, 0, 0);
-         this.tableLayoutPanel2.Controls.Add(this.btnCancel, 1, 0);
+         this.tableLayoutPanel2.Controls.Add(this.buttonLogin, 0, 0);
+         this.tableLayoutPanel2.Controls.Add(this.buttonCancel, 1, 0);
          this.tableLayoutPanel2.Location = new System.Drawing.Point(6, 117);
          this.tableLayoutPanel2.Name = "tableLayoutPanel2";
          this.tableLayoutPanel2.RowCount = 1;
@@ -78,26 +78,26 @@
          // 
          // btnLogin
          // 
-         this.btnLogin.Anchor = System.Windows.Forms.AnchorStyles.Right;
-         this.btnLogin.Location = new System.Drawing.Point(123, 3);
-         this.btnLogin.Name = "btnLogin";
-         this.btnLogin.Size = new System.Drawing.Size(75, 23);
-         this.btnLogin.TabIndex = 2;
-         this.btnLogin.Text = "&Login";
-         this.btnLogin.UseVisualStyleBackColor = true;
-         this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
+         this.buttonLogin.Anchor = System.Windows.Forms.AnchorStyles.Right;
+         this.buttonLogin.Location = new System.Drawing.Point(123, 3);
+         this.buttonLogin.Name = "btnLogin";
+         this.buttonLogin.Size = new System.Drawing.Size(75, 23);
+         this.buttonLogin.TabIndex = 2;
+         this.buttonLogin.Text = "&Login";
+         this.buttonLogin.UseVisualStyleBackColor = true;
+         this.buttonLogin.Click += new System.EventHandler(this.btnLogin_Click);
          // 
          // btnCancel
          // 
-         this.btnCancel.Anchor = System.Windows.Forms.AnchorStyles.Right;
-         this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-         this.btnCancel.Location = new System.Drawing.Point(204, 3);
-         this.btnCancel.Name = "btnCancel";
-         this.btnCancel.Size = new System.Drawing.Size(75, 23);
-         this.btnCancel.TabIndex = 10;
-         this.btnCancel.Text = "&Cancel";
-         this.btnCancel.UseVisualStyleBackColor = true;
-         this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+         this.buttonCancel.Anchor = System.Windows.Forms.AnchorStyles.Right;
+         this.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+         this.buttonCancel.Location = new System.Drawing.Point(204, 3);
+         this.buttonCancel.Name = "btnCancel";
+         this.buttonCancel.Size = new System.Drawing.Size(75, 23);
+         this.buttonCancel.TabIndex = 10;
+         this.buttonCancel.Text = "&Cancel";
+         this.buttonCancel.UseVisualStyleBackColor = true;
+         this.buttonCancel.Click += new System.EventHandler(this.btnCancel_Click);
          // 
          // tableLayoutPanel1
          // 
@@ -152,15 +152,6 @@
          this.label2.TabIndex = 2;
          this.label2.Text = "Password";
          // 
-         // pictureBox1
-         // 
-         this.pictureBox1.Location = new System.Drawing.Point(12, 12);
-         this.pictureBox1.Name = "pictureBox1";
-         this.pictureBox1.Size = new System.Drawing.Size(155, 155);
-         this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-         this.pictureBox1.TabIndex = 8;
-         this.pictureBox1.TabStop = false;
-         // 
          // textBoxLoginID
          // 
          this.textBoxLoginID.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -188,6 +179,15 @@
          this.textBoxPassword.UseSystemPasswordChar = true;
          this.textBoxPassword.ImeModeChanged += new System.EventHandler(this.textBoxPassword_ImeModeChanged);
          // 
+         // pictureBox1
+         // 
+         this.pictureBox1.Location = new System.Drawing.Point(12, 12);
+         this.pictureBox1.Name = "pictureBox1";
+         this.pictureBox1.Size = new System.Drawing.Size(155, 155);
+         this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+         this.pictureBox1.TabIndex = 8;
+         this.pictureBox1.TabStop = false;
+         // 
          // LoginView
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -204,13 +204,14 @@
          this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
          this.Text = "Login";
          this.Load += new System.EventHandler(this.LoginView_Load);
+         this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.LoginView_KeyDown);
          this.groupBox1.ResumeLayout(false);
          this.tableLayoutPanel2.ResumeLayout(false);
          this.tableLayoutPanel1.ResumeLayout(false);
          this.tableLayoutPanel1.PerformLayout();
-         ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.textBoxLoginID)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.textBoxPassword)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
          this.ResumeLayout(false);
 
       }
@@ -219,8 +220,8 @@
 
       private System.Windows.Forms.GroupBox groupBox1;
       private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-      private System.Windows.Forms.Button btnLogin;
-      private System.Windows.Forms.Button btnCancel;
+      private System.Windows.Forms.Button buttonLogin;
+      private System.Windows.Forms.Button buttonCancel;
       private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
       private System.Windows.Forms.CheckBox chkBoxShowCharacters;
       private System.Windows.Forms.Label label1;

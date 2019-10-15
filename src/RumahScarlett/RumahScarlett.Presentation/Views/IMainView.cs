@@ -11,6 +11,7 @@ namespace RumahScarlett.Presentation.Views
    public interface IMainView : IView
    {
       event EventHandler OnViewLoad;
+      event EventHandler OnLogOutClick;
       event EventHandler<MainViewEventArgs> OnTipeViewClick;
       event EventHandler<MainViewEventArgs> OnSubTipeViewClick;
       event EventHandler<MainViewEventArgs> OnSupplierViewClick;

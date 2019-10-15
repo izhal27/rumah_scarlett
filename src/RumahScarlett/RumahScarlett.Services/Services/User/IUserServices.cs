@@ -9,5 +9,6 @@ namespace RumahScarlett.Services.Services.User
 {
    public interface IUserServices : IBaseServices<IUserModel>
    {
+      IUserModel LogIn(string loginID, string password);
    }
 }

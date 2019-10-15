@@ -108,6 +108,37 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.User
                         () => CheckModelExist(context, id));
          }
       }
+      
+      public IUserModel LogIn(string loginID, string password)
+      {
+         var dataAccessStatus = new DataAccessStatus();
+
+         using (var context = new DbContext())
+         {
+            var errorMessage = "Tidak dapat login ke aplikasi.\nLogin ID atau Password salah !!!";
+            var queryStr = "SELECT * FROM user WHERE login_id = @loginID";
+            var model = context.Conn.Query<UserModel>(queryStr, new { loginID }).FirstOrDefault();
+
+            if (model != null)
+            {
+               if (PasswordHash.ValidatePassword(password, model.password))
+               {
+                  errorMessage = string.Empty;
+                  return model;
+               }
+            }
+
+            if (!string.IsNullOrWhiteSpace(errorMessage))
+            {
+               dataAccessStatus.Status = "Login Error";
+               dataAccessStatus.CustomMessage = errorMessage;
+
+               throw new DataAccessException(dataAccessStatus); ;
+            }
+         }
+
+         return null;
+      }
 
       private void ValidateModel(DbContext context, IUserModel model, DataAccessStatus dataAccessStatus)
       {

@@ -19,6 +19,7 @@ namespace RumahScarlett.Presentation.Views
       private MainViewEventArgs _eventArgs;
 
       public event EventHandler OnViewLoad;
+      public event EventHandler OnLogOutClick;
       public event EventHandler<MainViewEventArgs> OnTipeViewClick;
       public event EventHandler<MainViewEventArgs> OnSubTipeViewClick;
       public event EventHandler<MainViewEventArgs> OnSupplierViewClick;
@@ -97,11 +98,16 @@ namespace RumahScarlett.Presentation.Views
          OnViewLoad?.Invoke(sender, e);
       }
 
-      private void toolStripMenuItemExit_Click(object sender, EventArgs e)
+      private void toolStripMenuItemGantiPassword_Click(object sender, EventArgs e)
       {
-         Close();
+
       }
 
+      private void toolStripMenuItemLogout_Click(object sender, EventArgs e)
+      {
+         OnLogOutClick?.Invoke(sender, e);
+      }
+      
       private void toolStripMenuItemTipe_Click(object sender, EventArgs e)
       {
          OnTipeViewClick?.Invoke(sender, _eventArgs);
@@ -255,6 +261,11 @@ namespace RumahScarlett.Presentation.Views
       private void toolStripMenuItemTentang_Click(object sender, EventArgs e)
       {
          OnTentangViewClick?.Invoke(sender, e);
+      }
+
+      private void MainView_FormClosed(object sender, FormClosedEventArgs e)
+      {
+         OnLogOutClick?.Invoke(sender, e);
       }
    }
 }

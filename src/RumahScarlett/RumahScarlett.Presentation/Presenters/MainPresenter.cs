@@ -4,6 +4,7 @@ using RumahScarlett.Presentation.Presenters.Database;
 using RumahScarlett.Presentation.Presenters.HutangOperasional;
 using RumahScarlett.Presentation.Presenters.KasAwal;
 using RumahScarlett.Presentation.Presenters.Laporan;
+using RumahScarlett.Presentation.Presenters.Login;
 using RumahScarlett.Presentation.Presenters.Pelanggan;
 using RumahScarlett.Presentation.Presenters.Pembelian;
 using RumahScarlett.Presentation.Presenters.Pengaturan;
@@ -42,6 +43,8 @@ namespace RumahScarlett.Presentation.Presenters
          _view = new MainView();
 
          _view.OnViewLoad += _view_OnViewLoad;
+         // Operasi
+         _view.OnLogOutClick += _view_OnLogOutClick;
          // Master
          _view.OnTipeViewClick += _view_OnTipeViewClick;
          _view.OnSubTipeViewClick += _view_OnSubTipeViewClick;
@@ -83,6 +86,13 @@ namespace RumahScarlett.Presentation.Presenters
       {
          _view.ToolStrip.Visible = MainProgram.Pengaturan.show_tool_strip;
          _view.StatusStrip.Visible = MainProgram.Pengaturan.show_status_strip;
+      }
+
+      private void _view_OnLogOutClick(object sender, EventArgs e)
+      {
+         MainProgram.UserActive = null;
+         ((Form)_view).Dispose();
+         ((Form)new LoginPresenter().GetView).ShowDialog();
       }
 
       private void _view_OnTipeViewClick(object sender, MainViewEventArgs e)
@@ -213,11 +223,11 @@ namespace RumahScarlett.Presentation.Presenters
       private void _view_OnLaporanReturnPenjualanViewClick(object sender, MainViewEventArgs e)
       {
          var view = (DockContent)new LaporanReturnPenjualanPresenter().GetView;
-         ShowChildForm(view, e);         
+         ShowChildForm(view, e);
       }
 
       private void _view_OnLaporanReturnPembelianViewClick(object sender, MainViewEventArgs e)
-      {         
+      {
          var view = (DockContent)new LaporanReturnPembelianPresenter().GetView;
          ShowChildForm(view, e);
       }
