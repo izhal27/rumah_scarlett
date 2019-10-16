@@ -265,6 +265,7 @@
          this.ClientSize = new System.Drawing.Size(411, 328);
          this.Controls.Add(this.groupBox1);
          this.Name = "HutangOperasionalEntryView";
+         this.Tag = "ignore";
          this.Text = "Hutang Operasional";
          this.Load += new System.EventHandler(this.HutangOperasionalEntryView_Load);
          this.Controls.SetChildIndex(this.panelUp, 0);

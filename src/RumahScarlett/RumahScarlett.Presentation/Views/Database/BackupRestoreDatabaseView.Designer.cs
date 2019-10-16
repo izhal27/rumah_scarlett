@@ -137,6 +137,7 @@
          this.MinimizeBox = false;
          this.Name = "BackupRestoreDatabaseView";
          this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+         this.Tag = "ignore";
          this.Text = "Database";
          this.Load += new System.EventHandler(this.BackupRestoreDatabaseView_Load);
          this.gbData.ResumeLayout(false);

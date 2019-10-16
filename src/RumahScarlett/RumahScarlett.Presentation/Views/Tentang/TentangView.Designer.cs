@@ -341,6 +341,7 @@
          this.Padding = new System.Windows.Forms.Padding(9);
          this.ShowInTaskbar = false;
          this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+         this.Tag = "ignore";
          this.Text = "Tentang";
          this.tableLayoutPanel.ResumeLayout(false);
          this.groupBox1.ResumeLayout(false);

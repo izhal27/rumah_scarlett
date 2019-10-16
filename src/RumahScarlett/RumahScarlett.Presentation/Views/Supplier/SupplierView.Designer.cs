@@ -53,6 +53,7 @@
          this.listDataGrid.AutoSizeColumnsMode = Syncfusion.WinForms.DataGrid.Enums.AutoSizeColumnsMode.Fill;
          this.listDataGrid.Location = new System.Drawing.Point(12, 58);
          this.listDataGrid.Name = "listDataGrid";
+         this.listDataGrid.ShowRowHeader = true;
          this.listDataGrid.Size = new System.Drawing.Size(760, 351);
          this.listDataGrid.TabIndex = 2;
          this.listDataGrid.TabStop = false;
@@ -60,6 +61,7 @@
          // 
          // SupplierView
          // 
+         this.AccessibleName = "Master";
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
          this.ClientSize = new System.Drawing.Size(784, 462);

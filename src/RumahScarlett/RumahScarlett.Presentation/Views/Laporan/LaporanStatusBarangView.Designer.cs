@@ -57,16 +57,16 @@
          this.labelReturnPenjualan = new System.Windows.Forms.Label();
          this.label12 = new System.Windows.Forms.Label();
          this.label21 = new System.Windows.Forms.Label();
+         this.label17 = new System.Windows.Forms.Label();
+         this.label20 = new System.Windows.Forms.Label();
+         this.labelReturnPembelian = new System.Windows.Forms.Label();
+         this.label23 = new System.Windows.Forms.Label();
          this.groupBox1 = new System.Windows.Forms.GroupBox();
          this.panelUp = new RumahScarlett.Presentation.Views.CommonControls.PanelUp();
          this.groupBox2 = new System.Windows.Forms.GroupBox();
          this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
          this.label14 = new System.Windows.Forms.Label();
          this.label19 = new System.Windows.Forms.Label();
-         this.label17 = new System.Windows.Forms.Label();
-         this.label20 = new System.Windows.Forms.Label();
-         this.labelReturnPembelian = new System.Windows.Forms.Label();
-         this.label23 = new System.Windows.Forms.Label();
          this.tableLayoutPanel2.SuspendLayout();
          this.tableLayoutPanel1.SuspendLayout();
          this.groupBox1.SuspendLayout();
@@ -417,6 +417,48 @@
          this.label21.TabIndex = 0;
          this.label21.Text = "-";
          // 
+         // label17
+         // 
+         this.label17.Anchor = System.Windows.Forms.AnchorStyles.Left;
+         this.label17.AutoSize = true;
+         this.label17.Location = new System.Drawing.Point(3, 158);
+         this.label17.Name = "label17";
+         this.label17.Size = new System.Drawing.Size(91, 13);
+         this.label17.TabIndex = 0;
+         this.label17.Text = "Return Pembelian";
+         // 
+         // label20
+         // 
+         this.label20.Anchor = System.Windows.Forms.AnchorStyles.Left;
+         this.label20.AutoSize = true;
+         this.label20.Location = new System.Drawing.Point(102, 158);
+         this.label20.Name = "label20";
+         this.label20.Size = new System.Drawing.Size(10, 13);
+         this.label20.TabIndex = 0;
+         this.label20.Text = ":";
+         // 
+         // labelReturnPembelian
+         // 
+         this.labelReturnPembelian.Anchor = System.Windows.Forms.AnchorStyles.Right;
+         this.labelReturnPembelian.AutoSize = true;
+         this.labelReturnPembelian.Location = new System.Drawing.Point(308, 158);
+         this.labelReturnPembelian.Name = "labelReturnPembelian";
+         this.labelReturnPembelian.Size = new System.Drawing.Size(13, 13);
+         this.labelReturnPembelian.TabIndex = 0;
+         this.labelReturnPembelian.Text = "0";
+         this.labelReturnPembelian.TextAlign = System.Drawing.ContentAlignment.TopRight;
+         // 
+         // label23
+         // 
+         this.label23.Anchor = System.Windows.Forms.AnchorStyles.Left;
+         this.label23.AutoSize = true;
+         this.label23.ForeColor = System.Drawing.Color.Red;
+         this.label23.Location = new System.Drawing.Point(327, 158);
+         this.label23.Name = "label23";
+         this.label23.Size = new System.Drawing.Size(10, 13);
+         this.label23.TabIndex = 0;
+         this.label23.Text = "-";
+         // 
          // groupBox1
          // 
          this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -492,50 +534,9 @@
          this.label19.TabIndex = 0;
          this.label19.Text = "Tanggal";
          // 
-         // label17
-         // 
-         this.label17.Anchor = System.Windows.Forms.AnchorStyles.Left;
-         this.label17.AutoSize = true;
-         this.label17.Location = new System.Drawing.Point(3, 158);
-         this.label17.Name = "label17";
-         this.label17.Size = new System.Drawing.Size(91, 13);
-         this.label17.TabIndex = 0;
-         this.label17.Text = "Return Pembelian";
-         // 
-         // label20
-         // 
-         this.label20.Anchor = System.Windows.Forms.AnchorStyles.Left;
-         this.label20.AutoSize = true;
-         this.label20.Location = new System.Drawing.Point(102, 158);
-         this.label20.Name = "label20";
-         this.label20.Size = new System.Drawing.Size(10, 13);
-         this.label20.TabIndex = 0;
-         this.label20.Text = ":";
-         // 
-         // labelReturnPembelian
-         // 
-         this.labelReturnPembelian.Anchor = System.Windows.Forms.AnchorStyles.Right;
-         this.labelReturnPembelian.AutoSize = true;
-         this.labelReturnPembelian.Location = new System.Drawing.Point(308, 158);
-         this.labelReturnPembelian.Name = "labelReturnPembelian";
-         this.labelReturnPembelian.Size = new System.Drawing.Size(13, 13);
-         this.labelReturnPembelian.TabIndex = 0;
-         this.labelReturnPembelian.Text = "0";
-         this.labelReturnPembelian.TextAlign = System.Drawing.ContentAlignment.TopRight;
-         // 
-         // label23
-         // 
-         this.label23.Anchor = System.Windows.Forms.AnchorStyles.Left;
-         this.label23.AutoSize = true;
-         this.label23.ForeColor = System.Drawing.Color.Red;
-         this.label23.Location = new System.Drawing.Point(327, 158);
-         this.label23.Name = "label23";
-         this.label23.Size = new System.Drawing.Size(10, 13);
-         this.label23.TabIndex = 0;
-         this.label23.Text = "-";
-         // 
          // LaporanStatusBarangView
          // 
+         this.AccessibleName = "Laporan";
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
          this.ClientSize = new System.Drawing.Size(384, 432);

@@ -216,7 +216,7 @@
          this.textBoxTanggal.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
          this.textBoxTanggal.TabIndex = 1;
          this.textBoxTanggal.TabStop = false;
-         this.textBoxTanggal.Text = "27/09/2019";
+         this.textBoxTanggal.Text = "16/10/2019";
          // 
          // label25
          // 
@@ -338,6 +338,7 @@
          this.comboBoxSupplier.Anchor = System.Windows.Forms.AnchorStyles.Left;
          this.comboBoxSupplier.Location = new System.Drawing.Point(91, 33);
          this.comboBoxSupplier.Name = "comboBoxSupplier";
+         this.comboBoxSupplier.SelectedItem = null;
          this.comboBoxSupplier.Size = new System.Drawing.Size(150, 21);
          this.comboBoxSupplier.TabIndex = 0;
          // 
@@ -429,6 +430,7 @@
          this.Name = "SimpanPembelianEntryView";
          this.ShowInTaskbar = false;
          this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+         this.Tag = "ignore";
          this.Text = "Simpan Pembelian";
          this.Load += new System.EventHandler(this.SimpanPembelianEntryView_Load);
          this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SimpanPembelianEntryView_KeyDown);

@@ -22,9 +22,13 @@ namespace RumahScarlett.Presentation.Views.ModelControls
       private BindingListView<BarangModel> _bindingView;
       private string _kodeOrNamaValue;
 
-      public CariBarangView(List<IBarangModel> listsBarang, TipePencarian tipePencarian, string kodeOrNamaValue = default(string))
+      public CariBarangView()
       {
          InitializeComponent();
+      }
+
+      public CariBarangView(List<IBarangModel> listsBarang, TipePencarian tipePencarian, string kodeOrNamaValue = default(string)) : base()
+      {
 
          _listsBarang = listsBarang;
          _bindingView = new BindingListView<BarangModel>(_listsBarang);

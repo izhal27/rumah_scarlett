@@ -122,6 +122,7 @@
          this.comboBoxSatuan.Anchor = System.Windows.Forms.AnchorStyles.Left;
          this.comboBoxSatuan.Location = new System.Drawing.Point(87, 84);
          this.comboBoxSatuan.Name = "comboBoxSatuan";
+         this.comboBoxSatuan.SelectedItem = null;
          this.comboBoxSatuan.Size = new System.Drawing.Size(150, 21);
          this.comboBoxSatuan.TabIndex = 3;
          // 
@@ -389,6 +390,7 @@
          this.ClientSize = new System.Drawing.Size(420, 359);
          this.Controls.Add(this.tableLayoutPanel1);
          this.Name = "PenyesuaianStokEntryView";
+         this.Tag = "ignore";
          this.Text = "Penyesuaian Stok";
          this.Controls.SetChildIndex(this.panelUp, 0);
          this.Controls.SetChildIndex(this.operationButtons, 0);

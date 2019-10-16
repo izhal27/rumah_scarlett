@@ -252,6 +252,7 @@
          this.ClientSize = new System.Drawing.Size(414, 226);
          this.Controls.Add(this.groupBoxData);
          this.Name = "UserEntryView";
+         this.Tag = "ignore";
          this.Text = "User";
          this.Load += new System.EventHandler(this.UserEntryView_Load);
          this.Controls.SetChildIndex(this.operationButtons, 0);

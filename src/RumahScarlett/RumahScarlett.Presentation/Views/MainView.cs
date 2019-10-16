@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -68,6 +69,16 @@ namespace RumahScarlett.Presentation.Views
       {
          InitializeComponent();
 
+         var roleManager = new RoleManager();
+
+         // AKtifkan method dibawah ini untuk mereset data pada tabel form_action dan role_detail di database,
+         // jangan lupa nonaktifkan kembali, agar tidak melakukan reset setiap kali aplikasi dijalankan.
+         //
+         roleManager.ResetFormAction(Assembly.GetExecutingAssembly(), menuStripMain, MainProgram.UserActive.role_kode);
+
+         // Enable/Disable MenuStrip dan ToolStrip sesuai Role operator
+         roleManager.PopulateRoleDetailToMenuStripAndToolStrip(MainProgram.UserActive.role_kode, menuStripMain, toolStripMain);
+
          _dockPanel = new DockPanel();
          _dockPanel.Parent = this;
          _dockPanel.Dock = DockStyle.Fill;
@@ -92,7 +103,7 @@ namespace RumahScarlett.Presentation.Views
          toolStripStatusLabelMachineName.Text = Environment.MachineName;
          toolStripStatusLabelTanggal.Text = DateTime.Now.ToShortDateString();
       }
-      
+
       private void MainView_Load(object sender, EventArgs e)
       {
          OnViewLoad?.Invoke(sender, e);
@@ -107,7 +118,7 @@ namespace RumahScarlett.Presentation.Views
       {
          OnLogOutClick?.Invoke(sender, e);
       }
-      
+
       private void toolStripMenuItemTipe_Click(object sender, EventArgs e)
       {
          OnTipeViewClick?.Invoke(sender, _eventArgs);
@@ -142,12 +153,12 @@ namespace RumahScarlett.Presentation.Views
       {
          OnPelangganViewClick?.Invoke(sender, _eventArgs);
       }
-      
+
       private void toolStripMenuItemUser_Click(object sender, EventArgs e)
       {
          OnUserViewClick?.Invoke(sender, _eventArgs);
       }
-      
+
       private void toolStripMenuItemRole_Click(object sender, EventArgs e)
       {
          OnRoleViewClick?.Invoke(sender, _eventArgs);

@@ -76,23 +76,23 @@
          this.tableLayoutPanel2.Size = new System.Drawing.Size(282, 30);
          this.tableLayoutPanel2.TabIndex = 8;
          // 
-         // btnLogin
+         // buttonLogin
          // 
          this.buttonLogin.Anchor = System.Windows.Forms.AnchorStyles.Right;
          this.buttonLogin.Location = new System.Drawing.Point(123, 3);
-         this.buttonLogin.Name = "btnLogin";
+         this.buttonLogin.Name = "buttonLogin";
          this.buttonLogin.Size = new System.Drawing.Size(75, 23);
          this.buttonLogin.TabIndex = 2;
          this.buttonLogin.Text = "&Login";
          this.buttonLogin.UseVisualStyleBackColor = true;
          this.buttonLogin.Click += new System.EventHandler(this.btnLogin_Click);
          // 
-         // btnCancel
+         // buttonCancel
          // 
          this.buttonCancel.Anchor = System.Windows.Forms.AnchorStyles.Right;
          this.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
          this.buttonCancel.Location = new System.Drawing.Point(204, 3);
-         this.buttonCancel.Name = "btnCancel";
+         this.buttonCancel.Name = "buttonCancel";
          this.buttonCancel.Size = new System.Drawing.Size(75, 23);
          this.buttonCancel.TabIndex = 10;
          this.buttonCancel.Text = "&Cancel";
@@ -202,6 +202,7 @@
          this.MinimizeBox = false;
          this.Name = "LoginView";
          this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+         this.Tag = "ignore";
          this.Text = "Login";
          this.Load += new System.EventHandler(this.LoginView_Load);
          this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.LoginView_KeyDown);

@@ -214,15 +214,16 @@
          this.label7.TabIndex = 0;
          this.label7.Text = ":";
          // 
-         // dateTimePickerFilter1
+         // dateTimePickerFilter
          // 
          this.dateTimePickerFilter.Location = new System.Drawing.Point(12, 58);
-         this.dateTimePickerFilter.Name = "dateTimePickerFilter1";
+         this.dateTimePickerFilter.Name = "dateTimePickerFilter";
          this.dateTimePickerFilter.Size = new System.Drawing.Size(446, 145);
          this.dateTimePickerFilter.TabIndex = 4;
          // 
          // HutangOperasionalView
          // 
+         this.AccessibleName = "Data";
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
          this.ClientSize = new System.Drawing.Size(784, 462);

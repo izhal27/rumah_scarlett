@@ -284,12 +284,12 @@
          this.buttonOk.UseVisualStyleBackColor = true;
          this.buttonOk.Click += new System.EventHandler(this.btnOk_Click);
          // 
-         // buttonnCancel
+         // buttonCancel
          // 
          this.buttonCancel.Anchor = System.Windows.Forms.AnchorStyles.Left;
          this.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
          this.buttonCancel.Location = new System.Drawing.Point(103, 6);
-         this.buttonCancel.Name = "buttonnCancel";
+         this.buttonCancel.Name = "buttonCancel";
          this.buttonCancel.Size = new System.Drawing.Size(75, 23);
          this.buttonCancel.TabIndex = 100;
          this.buttonCancel.Tag = "ignore";
@@ -310,6 +310,7 @@
          this.Name = "ReturnPembelianEntryView";
          this.ShowInTaskbar = false;
          this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+         this.Tag = "ignore";
          this.Text = "Return Barang";
          this.Load += new System.EventHandler(this.ReturnPembelianEntryView_Load);
          this.groupBox1.ResumeLayout(false);

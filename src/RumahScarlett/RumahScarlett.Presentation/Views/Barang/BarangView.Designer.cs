@@ -165,6 +165,7 @@
          this.buttonTampilkan.Name = "buttonTampilkan";
          this.buttonTampilkan.Size = new System.Drawing.Size(75, 25);
          this.buttonTampilkan.TabIndex = 8;
+         this.buttonTampilkan.Tag = "Tampilkan";
          this.buttonTampilkan.Text = "Tam&pilkan";
          this.buttonTampilkan.UseVisualStyleBackColor = true;
          // 
@@ -313,6 +314,7 @@
          // 
          // BarangView
          // 
+         this.AccessibleName = "Master";
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
          this.ClientSize = new System.Drawing.Size(978, 462);

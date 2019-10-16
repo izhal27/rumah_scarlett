@@ -37,6 +37,7 @@
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
          this.ClientSize = new System.Drawing.Size(784, 462);
          this.Name = "CariBarangView";
+         this.Tag = "ignore";
          this.Text = "Cari Barang";
          this.Load += new System.EventHandler(this.CariBarangView_Load);
          ((System.ComponentModel.ISupportInitialize)(this.listDataGrid)).EndInit();

@@ -43,22 +43,24 @@
          this.listDataGrid.AutoSizeColumnsMode = Syncfusion.WinForms.DataGrid.Enums.AutoSizeColumnsMode.Fill;
          this.listDataGrid.Location = new System.Drawing.Point(12, 58);
          this.listDataGrid.Name = "listDataGrid";
+         this.listDataGrid.ShowRowHeader = true;
          this.listDataGrid.Size = new System.Drawing.Size(760, 351);
          this.listDataGrid.TabIndex = 2;
          this.listDataGrid.Text = "listDataGrid1";
          // 
-         // buttonsCRUD
+         // crudcButtons
          // 
          this.crudcButtons.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
          this.crudcButtons.BackColor = System.Drawing.Color.Transparent;
          this.crudcButtons.Location = new System.Drawing.Point(12, 415);
-         this.crudcButtons.Name = "buttonsCRUD";
+         this.crudcButtons.Name = "crudcButtons";
          this.crudcButtons.Size = new System.Drawing.Size(760, 35);
          this.crudcButtons.TabIndex = 4;
          // 
          // SubTipeView
          // 
+         this.AccessibleName = "Master";
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
          this.ClientSize = new System.Drawing.Size(784, 462);

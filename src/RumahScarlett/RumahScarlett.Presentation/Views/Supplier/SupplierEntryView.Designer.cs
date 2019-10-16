@@ -371,6 +371,7 @@
          this.ClientSize = new System.Drawing.Size(414, 322);
          this.Controls.Add(this.groupBox1);
          this.Name = "SupplierEntryView";
+         this.Tag = "ignore";
          this.Text = "Supplier";
          this.Controls.SetChildIndex(this.panelUp, 0);
          this.Controls.SetChildIndex(this.operationButtons, 0);

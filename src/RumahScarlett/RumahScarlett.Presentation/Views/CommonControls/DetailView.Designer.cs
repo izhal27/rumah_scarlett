@@ -30,8 +30,8 @@
       {
          this.tlpButtons = new System.Windows.Forms.TableLayoutPanel();
          this.buttonTutup = new System.Windows.Forms.Button();
-         this.listDataGrid = new RumahScarlett.Presentation.Views.CommonControls.ListDataGrid();
          this.buttonCetak = new System.Windows.Forms.Button();
+         this.listDataGrid = new RumahScarlett.Presentation.Views.CommonControls.ListDataGrid();
          this.tlpButtons.SuspendLayout();
          ((System.ComponentModel.ISupportInitialize)(this.listDataGrid)).BeginInit();
          this.SuspendLayout();
@@ -43,7 +43,7 @@
          this.tlpButtons.BackColor = System.Drawing.SystemColors.Control;
          this.tlpButtons.ColumnCount = 2;
          this.tlpButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-         this.tlpButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+         this.tlpButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 679F));
          this.tlpButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
          this.tlpButtons.Controls.Add(this.buttonTutup, 1, 0);
          this.tlpButtons.Controls.Add(this.buttonCetak, 0, 0);
@@ -66,6 +66,17 @@
          this.buttonTutup.UseVisualStyleBackColor = true;
          this.buttonTutup.Click += new System.EventHandler(this.buttonTutup_Click);
          // 
+         // buttonCetak
+         // 
+         this.buttonCetak.Anchor = System.Windows.Forms.AnchorStyles.Left;
+         this.buttonCetak.Location = new System.Drawing.Point(3, 6);
+         this.buttonCetak.Name = "buttonCetak";
+         this.buttonCetak.Size = new System.Drawing.Size(75, 23);
+         this.buttonCetak.TabIndex = 99;
+         this.buttonCetak.Text = "&Cetak";
+         this.buttonCetak.UseVisualStyleBackColor = true;
+         this.buttonCetak.Click += new System.EventHandler(this.buttonCetak_Click);
+         // 
          // listDataGrid
          // 
          this.listDataGrid.AccessibleName = "Table";
@@ -81,18 +92,7 @@
          this.listDataGrid.TabIndex = 0;
          this.listDataGrid.Text = "listDataGrid1";
          // 
-         // buttonCetak
-         // 
-         this.buttonCetak.Anchor = System.Windows.Forms.AnchorStyles.Left;
-         this.buttonCetak.Location = new System.Drawing.Point(3, 6);
-         this.buttonCetak.Name = "buttonCetak";
-         this.buttonCetak.Size = new System.Drawing.Size(75, 23);
-         this.buttonCetak.TabIndex = 99;
-         this.buttonCetak.Text = "&Cetak";
-         this.buttonCetak.UseVisualStyleBackColor = true;
-         this.buttonCetak.Click += new System.EventHandler(this.buttonCetak_Click);
-         // 
-         // BaseDetailView
+         // DetailView
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -102,7 +102,8 @@
          this.KeyPreview = true;
          this.MaximizeBox = false;
          this.MinimizeBox = false;
-         this.Name = "BaseDetailView";
+         this.Name = "DetailView";
+         this.Tag = "ignore";
          this.Text = "BaseDetailTransaksiView";
          this.Load += new System.EventHandler(this.BaseDetailTransaksiView_Load);
          this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.BaseDetailTransaksiView_KeyDown);

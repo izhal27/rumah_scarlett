@@ -35,39 +35,38 @@
          this.label2 = new System.Windows.Forms.Label();
          this.label24 = new System.Windows.Forms.Label();
          this.label3 = new System.Windows.Forms.Label();
+         this.textBoxTanggal = new RumahScarlett.Presentation.Views.CommonControls.TextBoxTanggal();
          this.label25 = new System.Windows.Forms.Label();
          this.label26 = new System.Windows.Forms.Label();
+         this.comboBoxPelanggan = new RumahScarlett.Presentation.Views.ModelControls.ComboBoxPelanggan();
+         this.comboBoxStatusPenjualan = new RumahScarlett.Presentation.Views.ModelControls.ComboBoxStatusPenjualan();
          this.label28 = new System.Windows.Forms.Label();
          this.label4 = new System.Windows.Forms.Label();
          this.label5 = new System.Windows.Forms.Label();
          this.label6 = new System.Windows.Forms.Label();
          this.label7 = new System.Windows.Forms.Label();
+         this.textBoxSubTotal = new RumahScarlett.Presentation.Views.CommonControls.BaseTextBox();
          this.label8 = new System.Windows.Forms.Label();
+         this.textBoxDiskon = new RumahScarlett.Presentation.Views.CommonControls.BaseTextBoxDigit();
          this.label9 = new System.Windows.Forms.Label();
+         this.textBoxGrandTotal = new RumahScarlett.Presentation.Views.CommonControls.BaseTextBoxDigit();
          this.label27 = new System.Windows.Forms.Label();
          this.label10 = new System.Windows.Forms.Label();
-         this.tlpButtons = new System.Windows.Forms.TableLayoutPanel();
-         this.buttonBayar = new System.Windows.Forms.Button();
-         this.btnCancel = new System.Windows.Forms.Button();
+         this.textBoxBayar = new RumahScarlett.Presentation.Views.CommonControls.BaseTextBoxDigit();
+         this.textBoxKembali = new RumahScarlett.Presentation.Views.CommonControls.BaseTextBoxDigit();
          this.label11 = new System.Windows.Forms.Label();
          this.label12 = new System.Windows.Forms.Label();
          this.label13 = new System.Windows.Forms.Label();
          this.label14 = new System.Windows.Forms.Label();
          this.label15 = new System.Windows.Forms.Label();
-         this.panelUp = new RumahScarlett.Presentation.Views.CommonControls.PanelUp();
-         this.textBoxTanggal = new RumahScarlett.Presentation.Views.CommonControls.TextBoxTanggal();
-         this.comboBoxPelanggan = new RumahScarlett.Presentation.Views.ModelControls.ComboBoxPelanggan();
-         this.comboBoxStatusPenjualan = new RumahScarlett.Presentation.Views.ModelControls.ComboBoxStatusPenjualan();
-         this.textBoxSubTotal = new RumahScarlett.Presentation.Views.CommonControls.BaseTextBox();
-         this.textBoxDiskon = new RumahScarlett.Presentation.Views.CommonControls.BaseTextBoxDigit();
-         this.textBoxGrandTotal = new RumahScarlett.Presentation.Views.CommonControls.BaseTextBoxDigit();
-         this.textBoxBayar = new RumahScarlett.Presentation.Views.CommonControls.BaseTextBoxDigit();
-         this.textBoxKembali = new RumahScarlett.Presentation.Views.CommonControls.BaseTextBoxDigit();
          this.textBoxTotalItem = new RumahScarlett.Presentation.Views.CommonControls.BaseTextBox();
          this.textBoxTotalQty = new RumahScarlett.Presentation.Views.CommonControls.BaseTextBox();
+         this.tlpButtons = new System.Windows.Forms.TableLayoutPanel();
+         this.buttonBayar = new System.Windows.Forms.Button();
+         this.btnCancel = new System.Windows.Forms.Button();
+         this.panelUp = new RumahScarlett.Presentation.Views.CommonControls.PanelUp();
          this.groupBox1.SuspendLayout();
          this.tableLayoutPanel1.SuspendLayout();
-         this.tlpButtons.SuspendLayout();
          ((System.ComponentModel.ISupportInitialize)(this.textBoxTanggal)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.textBoxSubTotal)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.textBoxDiskon)).BeginInit();
@@ -76,6 +75,7 @@
          ((System.ComponentModel.ISupportInitialize)(this.textBoxKembali)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.textBoxTotalItem)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.textBoxTotalQty)).BeginInit();
+         this.tlpButtons.SuspendLayout();
          this.SuspendLayout();
          // 
          // groupBox1
@@ -186,6 +186,20 @@
          this.label3.TabIndex = 0;
          this.label3.Text = "Pembayaran (F3)";
          // 
+         // textBoxTanggal
+         // 
+         this.textBoxTanggal.Anchor = System.Windows.Forms.AnchorStyles.Left;
+         this.textBoxTanggal.BeforeTouchSize = new System.Drawing.Size(150, 20);
+         this.textBoxTanggal.Location = new System.Drawing.Point(112, 5);
+         this.textBoxTanggal.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
+         this.textBoxTanggal.Name = "textBoxTanggal";
+         this.textBoxTanggal.ReadOnly = true;
+         this.textBoxTanggal.Size = new System.Drawing.Size(150, 20);
+         this.textBoxTanggal.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
+         this.textBoxTanggal.TabIndex = 1;
+         this.textBoxTanggal.TabStop = false;
+         this.textBoxTanggal.Text = "16/10/2019";
+         // 
          // label25
          // 
          this.label25.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -205,6 +219,28 @@
          this.label26.Size = new System.Drawing.Size(10, 13);
          this.label26.TabIndex = 0;
          this.label26.Text = ":";
+         // 
+         // comboBoxPelanggan
+         // 
+         this.comboBoxPelanggan.Anchor = System.Windows.Forms.AnchorStyles.Left;
+         this.comboBoxPelanggan.Location = new System.Drawing.Point(112, 34);
+         this.comboBoxPelanggan.Name = "comboBoxPelanggan";
+         this.comboBoxPelanggan.SelectedItem = null;
+         this.comboBoxPelanggan.Size = new System.Drawing.Size(150, 21);
+         this.comboBoxPelanggan.TabIndex = 0;
+         // 
+         // comboBoxStatusPenjualan
+         // 
+         this.comboBoxStatusPenjualan.Anchor = System.Windows.Forms.AnchorStyles.Left;
+         this.comboBoxStatusPenjualan.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+         this.comboBoxStatusPenjualan.FormattingEnabled = true;
+         this.comboBoxStatusPenjualan.Items.AddRange(new object[] {
+            "Transfer",
+            "Cash"});
+         this.comboBoxStatusPenjualan.Location = new System.Drawing.Point(112, 64);
+         this.comboBoxStatusPenjualan.Name = "comboBoxStatusPenjualan";
+         this.comboBoxStatusPenjualan.Size = new System.Drawing.Size(150, 21);
+         this.comboBoxStatusPenjualan.TabIndex = 1;
          // 
          // label28
          // 
@@ -256,6 +292,21 @@
          this.label7.TabIndex = 0;
          this.label7.Text = "Sub Total";
          // 
+         // textBoxSubTotal
+         // 
+         this.textBoxSubTotal.Anchor = System.Windows.Forms.AnchorStyles.Left;
+         this.textBoxSubTotal.BeforeTouchSize = new System.Drawing.Size(150, 20);
+         this.textBoxSubTotal.Location = new System.Drawing.Point(112, 155);
+         this.textBoxSubTotal.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
+         this.textBoxSubTotal.Name = "textBoxSubTotal";
+         this.textBoxSubTotal.ReadOnly = true;
+         this.textBoxSubTotal.Size = new System.Drawing.Size(150, 20);
+         this.textBoxSubTotal.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
+         this.textBoxSubTotal.TabIndex = 11;
+         this.textBoxSubTotal.TabStop = false;
+         this.textBoxSubTotal.Text = "0";
+         this.textBoxSubTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+         // 
          // label8
          // 
          this.label8.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -266,6 +317,24 @@
          this.label8.TabIndex = 0;
          this.label8.Text = "Diskon (F4)";
          // 
+         // textBoxDiskon
+         // 
+         this.textBoxDiskon.Anchor = System.Windows.Forms.AnchorStyles.Left;
+         this.textBoxDiskon.BackGroundColor = System.Drawing.SystemColors.Window;
+         this.textBoxDiskon.BeforeTouchSize = new System.Drawing.Size(150, 20);
+         this.textBoxDiskon.IntegerValue = ((long)(0));
+         this.textBoxDiskon.Location = new System.Drawing.Point(112, 185);
+         this.textBoxDiskon.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
+         this.textBoxDiskon.MinValue = ((long)(0));
+         this.textBoxDiskon.Name = "textBoxDiskon";
+         this.textBoxDiskon.NullString = "";
+         this.textBoxDiskon.Size = new System.Drawing.Size(150, 20);
+         this.textBoxDiskon.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
+         this.textBoxDiskon.TabIndex = 2;
+         this.textBoxDiskon.Text = "0";
+         this.textBoxDiskon.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+         this.textBoxDiskon.TextChanged += new System.EventHandler(this.textBoxDiskon_TextChanged);
+         // 
          // label9
          // 
          this.label9.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -275,6 +344,24 @@
          this.label9.Size = new System.Drawing.Size(63, 13);
          this.label9.TabIndex = 0;
          this.label9.Text = "Grand Total";
+         // 
+         // textBoxGrandTotal
+         // 
+         this.textBoxGrandTotal.Anchor = System.Windows.Forms.AnchorStyles.Left;
+         this.textBoxGrandTotal.BackGroundColor = System.Drawing.SystemColors.Window;
+         this.textBoxGrandTotal.BeforeTouchSize = new System.Drawing.Size(150, 20);
+         this.textBoxGrandTotal.IntegerValue = ((long)(0));
+         this.textBoxGrandTotal.Location = new System.Drawing.Point(112, 215);
+         this.textBoxGrandTotal.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
+         this.textBoxGrandTotal.Name = "textBoxGrandTotal";
+         this.textBoxGrandTotal.NullString = "";
+         this.textBoxGrandTotal.ReadOnly = true;
+         this.textBoxGrandTotal.Size = new System.Drawing.Size(150, 20);
+         this.textBoxGrandTotal.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
+         this.textBoxGrandTotal.TabIndex = 12;
+         this.textBoxGrandTotal.TabStop = false;
+         this.textBoxGrandTotal.Text = "0";
+         this.textBoxGrandTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
          // 
          // label27
          // 
@@ -296,45 +383,40 @@
          this.label10.TabIndex = 0;
          this.label10.Text = "Bayar (F5)";
          // 
-         // tlpButtons
+         // textBoxBayar
          // 
-         this.tlpButtons.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-         this.tlpButtons.BackColor = System.Drawing.SystemColors.Control;
-         this.tlpButtons.ColumnCount = 2;
-         this.tlpButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-         this.tlpButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-         this.tlpButtons.Controls.Add(this.buttonBayar, 0, 0);
-         this.tlpButtons.Controls.Add(this.btnCancel, 1, 0);
-         this.tlpButtons.Location = new System.Drawing.Point(103, 389);
-         this.tlpButtons.Name = "tlpButtons";
-         this.tlpButtons.RowCount = 1;
-         this.tlpButtons.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-         this.tlpButtons.Size = new System.Drawing.Size(200, 35);
-         this.tlpButtons.TabIndex = 102;
+         this.textBoxBayar.Anchor = System.Windows.Forms.AnchorStyles.Left;
+         this.textBoxBayar.BackGroundColor = System.Drawing.SystemColors.Window;
+         this.textBoxBayar.BeforeTouchSize = new System.Drawing.Size(150, 20);
+         this.textBoxBayar.IntegerValue = ((long)(0));
+         this.textBoxBayar.Location = new System.Drawing.Point(112, 245);
+         this.textBoxBayar.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
+         this.textBoxBayar.Name = "textBoxBayar";
+         this.textBoxBayar.NullString = "";
+         this.textBoxBayar.Size = new System.Drawing.Size(150, 20);
+         this.textBoxBayar.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
+         this.textBoxBayar.TabIndex = 3;
+         this.textBoxBayar.Text = "0";
+         this.textBoxBayar.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+         this.textBoxBayar.TextChanged += new System.EventHandler(this.textBoxBayar_TextChanged);
          // 
-         // buttonBayar
+         // textBoxKembali
          // 
-         this.buttonBayar.Anchor = System.Windows.Forms.AnchorStyles.Right;
-         this.buttonBayar.Location = new System.Drawing.Point(22, 6);
-         this.buttonBayar.Name = "buttonBayar";
-         this.buttonBayar.Size = new System.Drawing.Size(75, 23);
-         this.buttonBayar.TabIndex = 99;
-         this.buttonBayar.Tag = "ignore";
-         this.buttonBayar.Text = "(F6) &Bayar";
-         this.buttonBayar.UseVisualStyleBackColor = true;
-         this.buttonBayar.Click += new System.EventHandler(this.buttonnBayar_Click);
-         // 
-         // btnCancel
-         // 
-         this.btnCancel.Anchor = System.Windows.Forms.AnchorStyles.Left;
-         this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-         this.btnCancel.Location = new System.Drawing.Point(103, 6);
-         this.btnCancel.Name = "btnCancel";
-         this.btnCancel.Size = new System.Drawing.Size(75, 23);
-         this.btnCancel.TabIndex = 100;
-         this.btnCancel.Tag = "ignore";
-         this.btnCancel.Text = "(F12) &Batal";
-         this.btnCancel.UseVisualStyleBackColor = true;
+         this.textBoxKembali.Anchor = System.Windows.Forms.AnchorStyles.Left;
+         this.textBoxKembali.BackGroundColor = System.Drawing.SystemColors.Window;
+         this.textBoxKembali.BeforeTouchSize = new System.Drawing.Size(150, 20);
+         this.textBoxKembali.IntegerValue = ((long)(0));
+         this.textBoxKembali.Location = new System.Drawing.Point(112, 275);
+         this.textBoxKembali.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
+         this.textBoxKembali.Name = "textBoxKembali";
+         this.textBoxKembali.NullString = "";
+         this.textBoxKembali.ReadOnly = true;
+         this.textBoxKembali.Size = new System.Drawing.Size(150, 20);
+         this.textBoxKembali.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
+         this.textBoxKembali.TabIndex = 12;
+         this.textBoxKembali.TabStop = false;
+         this.textBoxKembali.Text = "0";
+         this.textBoxKembali.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
          // 
          // label11
          // 
@@ -386,135 +468,6 @@
          this.label15.TabIndex = 0;
          this.label15.Text = "Total Qty";
          // 
-         // panelUp
-         // 
-         this.panelUp.LabelInfo = "Info";
-         this.panelUp.Location = new System.Drawing.Point(12, 12);
-         this.panelUp.Name = "panelUp";
-         this.panelUp.Size = new System.Drawing.Size(291, 40);
-         this.panelUp.TabIndex = 10;
-         // 
-         // textBoxTanggal
-         // 
-         this.textBoxTanggal.Anchor = System.Windows.Forms.AnchorStyles.Left;
-         this.textBoxTanggal.BeforeTouchSize = new System.Drawing.Size(150, 20);
-         this.textBoxTanggal.Location = new System.Drawing.Point(112, 5);
-         this.textBoxTanggal.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
-         this.textBoxTanggal.Name = "textBoxTanggal";
-         this.textBoxTanggal.ReadOnly = true;
-         this.textBoxTanggal.Size = new System.Drawing.Size(150, 20);
-         this.textBoxTanggal.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
-         this.textBoxTanggal.TabIndex = 1;
-         this.textBoxTanggal.TabStop = false;
-         this.textBoxTanggal.Text = "07/09/2019";
-         // 
-         // comboBoxPelanggan
-         // 
-         this.comboBoxPelanggan.Anchor = System.Windows.Forms.AnchorStyles.Left;
-         this.comboBoxPelanggan.Location = new System.Drawing.Point(112, 34);
-         this.comboBoxPelanggan.Name = "comboBoxPelanggan";
-         this.comboBoxPelanggan.Size = new System.Drawing.Size(150, 21);
-         this.comboBoxPelanggan.TabIndex = 0;
-         // 
-         // comboBoxStatusPenjualan
-         // 
-         this.comboBoxStatusPenjualan.Anchor = System.Windows.Forms.AnchorStyles.Left;
-         this.comboBoxStatusPenjualan.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-         this.comboBoxStatusPenjualan.FormattingEnabled = true;
-         this.comboBoxStatusPenjualan.Items.AddRange(new object[] {
-            "Transfer",
-            "Cash"});
-         this.comboBoxStatusPenjualan.Location = new System.Drawing.Point(112, 64);
-         this.comboBoxStatusPenjualan.Name = "comboBoxStatusPenjualan";
-         this.comboBoxStatusPenjualan.Size = new System.Drawing.Size(150, 21);
-         this.comboBoxStatusPenjualan.TabIndex = 1;
-         // 
-         // textBoxSubTotal
-         // 
-         this.textBoxSubTotal.Anchor = System.Windows.Forms.AnchorStyles.Left;
-         this.textBoxSubTotal.BeforeTouchSize = new System.Drawing.Size(150, 20);
-         this.textBoxSubTotal.Location = new System.Drawing.Point(112, 155);
-         this.textBoxSubTotal.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
-         this.textBoxSubTotal.Name = "textBoxSubTotal";
-         this.textBoxSubTotal.ReadOnly = true;
-         this.textBoxSubTotal.Size = new System.Drawing.Size(150, 20);
-         this.textBoxSubTotal.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
-         this.textBoxSubTotal.TabIndex = 11;
-         this.textBoxSubTotal.TabStop = false;
-         this.textBoxSubTotal.Text = "0";
-         this.textBoxSubTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-         // 
-         // textBoxDiskon
-         // 
-         this.textBoxDiskon.Anchor = System.Windows.Forms.AnchorStyles.Left;
-         this.textBoxDiskon.BackGroundColor = System.Drawing.SystemColors.Window;
-         this.textBoxDiskon.BeforeTouchSize = new System.Drawing.Size(150, 20);
-         this.textBoxDiskon.IntegerValue = ((long)(0));
-         this.textBoxDiskon.Location = new System.Drawing.Point(112, 185);
-         this.textBoxDiskon.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
-         this.textBoxDiskon.MinValue = ((long)(0));
-         this.textBoxDiskon.Name = "textBoxDiskon";
-         this.textBoxDiskon.NullString = "";
-         this.textBoxDiskon.Size = new System.Drawing.Size(150, 20);
-         this.textBoxDiskon.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
-         this.textBoxDiskon.TabIndex = 2;
-         this.textBoxDiskon.Text = "0";
-         this.textBoxDiskon.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-         this.textBoxDiskon.TextChanged += new System.EventHandler(this.textBoxDiskon_TextChanged);
-         // 
-         // textBoxGrandTotal
-         // 
-         this.textBoxGrandTotal.Anchor = System.Windows.Forms.AnchorStyles.Left;
-         this.textBoxGrandTotal.BackGroundColor = System.Drawing.SystemColors.Window;
-         this.textBoxGrandTotal.BeforeTouchSize = new System.Drawing.Size(150, 20);
-         this.textBoxGrandTotal.IntegerValue = ((long)(0));
-         this.textBoxGrandTotal.Location = new System.Drawing.Point(112, 215);
-         this.textBoxGrandTotal.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
-         this.textBoxGrandTotal.Name = "textBoxGrandTotal";
-         this.textBoxGrandTotal.NullString = "";
-         this.textBoxGrandTotal.ReadOnly = true;
-         this.textBoxGrandTotal.Size = new System.Drawing.Size(150, 20);
-         this.textBoxGrandTotal.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
-         this.textBoxGrandTotal.TabIndex = 12;
-         this.textBoxGrandTotal.TabStop = false;
-         this.textBoxGrandTotal.Text = "0";
-         this.textBoxGrandTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-         // 
-         // textBoxBayar
-         // 
-         this.textBoxBayar.Anchor = System.Windows.Forms.AnchorStyles.Left;
-         this.textBoxBayar.BackGroundColor = System.Drawing.SystemColors.Window;
-         this.textBoxBayar.BeforeTouchSize = new System.Drawing.Size(150, 20);
-         this.textBoxBayar.IntegerValue = ((long)(0));
-         this.textBoxBayar.Location = new System.Drawing.Point(112, 245);
-         this.textBoxBayar.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
-         this.textBoxBayar.Name = "textBoxBayar";
-         this.textBoxBayar.NullString = "";
-         this.textBoxBayar.Size = new System.Drawing.Size(150, 20);
-         this.textBoxBayar.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
-         this.textBoxBayar.TabIndex = 3;
-         this.textBoxBayar.Text = "0";
-         this.textBoxBayar.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-         this.textBoxBayar.TextChanged += new System.EventHandler(this.textBoxBayar_TextChanged);
-         // 
-         // textBoxKembali
-         // 
-         this.textBoxKembali.Anchor = System.Windows.Forms.AnchorStyles.Left;
-         this.textBoxKembali.BackGroundColor = System.Drawing.SystemColors.Window;
-         this.textBoxKembali.BeforeTouchSize = new System.Drawing.Size(150, 20);
-         this.textBoxKembali.IntegerValue = ((long)(0));
-         this.textBoxKembali.Location = new System.Drawing.Point(112, 275);
-         this.textBoxKembali.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
-         this.textBoxKembali.Name = "textBoxKembali";
-         this.textBoxKembali.NullString = "";
-         this.textBoxKembali.ReadOnly = true;
-         this.textBoxKembali.Size = new System.Drawing.Size(150, 20);
-         this.textBoxKembali.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
-         this.textBoxKembali.TabIndex = 12;
-         this.textBoxKembali.TabStop = false;
-         this.textBoxKembali.Text = "0";
-         this.textBoxKembali.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-         // 
          // textBoxTotalItem
          // 
          this.textBoxTotalItem.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -545,6 +498,55 @@
          this.textBoxTotalQty.Text = "0";
          this.textBoxTotalQty.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
          // 
+         // tlpButtons
+         // 
+         this.tlpButtons.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+         this.tlpButtons.BackColor = System.Drawing.SystemColors.Control;
+         this.tlpButtons.ColumnCount = 2;
+         this.tlpButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+         this.tlpButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+         this.tlpButtons.Controls.Add(this.buttonBayar, 0, 0);
+         this.tlpButtons.Controls.Add(this.btnCancel, 1, 0);
+         this.tlpButtons.Location = new System.Drawing.Point(103, 389);
+         this.tlpButtons.Name = "tlpButtons";
+         this.tlpButtons.RowCount = 1;
+         this.tlpButtons.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+         this.tlpButtons.Size = new System.Drawing.Size(200, 35);
+         this.tlpButtons.TabIndex = 102;
+         // 
+         // buttonBayar
+         // 
+         this.buttonBayar.Anchor = System.Windows.Forms.AnchorStyles.Right;
+         this.buttonBayar.Location = new System.Drawing.Point(22, 6);
+         this.buttonBayar.Name = "buttonBayar";
+         this.buttonBayar.Size = new System.Drawing.Size(75, 23);
+         this.buttonBayar.TabIndex = 99;
+         this.buttonBayar.Tag = "ignore";
+         this.buttonBayar.Text = "(F6) &Bayar";
+         this.buttonBayar.UseVisualStyleBackColor = true;
+         this.buttonBayar.Click += new System.EventHandler(this.buttonnBayar_Click);
+         // 
+         // btnCancel
+         // 
+         this.btnCancel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+         this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+         this.btnCancel.Location = new System.Drawing.Point(103, 6);
+         this.btnCancel.Name = "btnCancel";
+         this.btnCancel.Size = new System.Drawing.Size(75, 23);
+         this.btnCancel.TabIndex = 100;
+         this.btnCancel.Tag = "ignore";
+         this.btnCancel.Text = "(F12) &Batal";
+         this.btnCancel.UseVisualStyleBackColor = true;
+         // 
+         // panelUp
+         // 
+         this.panelUp.LabelInfo = "Info";
+         this.panelUp.Location = new System.Drawing.Point(12, 12);
+         this.panelUp.Name = "panelUp";
+         this.panelUp.Size = new System.Drawing.Size(291, 40);
+         this.panelUp.TabIndex = 10;
+         this.panelUp.TabStop = false;
+         // 
          // BayarPenjualanEntryView
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -561,13 +563,13 @@
          this.Name = "BayarPenjualanEntryView";
          this.ShowInTaskbar = false;
          this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+         this.Tag = "ignore";
          this.Text = "Bayar Penjualan";
          this.Load += new System.EventHandler(this.BayarPenjualanEntryView_Load);
          this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.BayarPenjualanEntryView_KeyDown);
          this.groupBox1.ResumeLayout(false);
          this.tableLayoutPanel1.ResumeLayout(false);
          this.tableLayoutPanel1.PerformLayout();
-         this.tlpButtons.ResumeLayout(false);
          ((System.ComponentModel.ISupportInitialize)(this.textBoxTanggal)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.textBoxSubTotal)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.textBoxDiskon)).EndInit();
@@ -576,6 +578,7 @@
          ((System.ComponentModel.ISupportInitialize)(this.textBoxKembali)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.textBoxTotalItem)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.textBoxTotalQty)).EndInit();
+         this.tlpButtons.ResumeLayout(false);
          this.ResumeLayout(false);
 
       }

@@ -33,6 +33,7 @@
          this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
          this.label1 = new System.Windows.Forms.Label();
          this.label2 = new System.Windows.Forms.Label();
+         this.comboBoxBulan = new RumahScarlett.Presentation.Views.CommonControls.ComboBoxBulan();
          this.numericUpDownTahun = new System.Windows.Forms.NumericUpDown();
          this.groupBox2 = new System.Windows.Forms.GroupBox();
          this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -59,7 +60,6 @@
          this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
          this.buttonCetak = new System.Windows.Forms.Button();
          this.buttonTutup = new System.Windows.Forms.Button();
-         this.comboBoxBulan = new RumahScarlett.Presentation.Views.CommonControls.ComboBoxBulan();
          this.panelUp = new RumahScarlett.Presentation.Views.CommonControls.PanelUp();
          this.groupBox1.SuspendLayout();
          this.tableLayoutPanel1.SuspendLayout();
@@ -121,6 +121,15 @@
          this.label2.Size = new System.Drawing.Size(10, 13);
          this.label2.TabIndex = 0;
          this.label2.Text = ":";
+         // 
+         // comboBoxBulan
+         // 
+         this.comboBoxBulan.Anchor = System.Windows.Forms.AnchorStyles.Left;
+         this.comboBoxBulan.Location = new System.Drawing.Point(145, 4);
+         this.comboBoxBulan.Name = "comboBoxBulan";
+         this.comboBoxBulan.Size = new System.Drawing.Size(125, 21);
+         this.comboBoxBulan.TabIndex = 0;
+         this.comboBoxBulan.SelectedIndexChanged += new System.EventHandler(this.comboBoxBulan_SelectedIndexChanged);
          // 
          // numericUpDownTahun
          // 
@@ -205,7 +214,7 @@
          // 
          this.label9.Anchor = System.Windows.Forms.AnchorStyles.Left;
          this.label9.AutoSize = true;
-         this.label9.Location = new System.Drawing.Point(3, 38);
+         this.label9.Location = new System.Drawing.Point(3, 37);
          this.label9.Name = "label9";
          this.label9.Size = new System.Drawing.Size(120, 13);
          this.label9.TabIndex = 0;
@@ -225,7 +234,7 @@
          // 
          this.label10.Anchor = System.Windows.Forms.AnchorStyles.Left;
          this.label10.AutoSize = true;
-         this.label10.Location = new System.Drawing.Point(3, 68);
+         this.label10.Location = new System.Drawing.Point(3, 66);
          this.label10.Name = "label10";
          this.label10.Size = new System.Drawing.Size(67, 13);
          this.label10.TabIndex = 0;
@@ -235,7 +244,7 @@
          // 
          this.label13.Anchor = System.Windows.Forms.AnchorStyles.Left;
          this.label13.AutoSize = true;
-         this.label13.Location = new System.Drawing.Point(3, 98);
+         this.label13.Location = new System.Drawing.Point(3, 95);
          this.label13.Name = "label13";
          this.label13.Size = new System.Drawing.Size(90, 13);
          this.label13.TabIndex = 0;
@@ -245,7 +254,7 @@
          // 
          this.labelHpp.Anchor = System.Windows.Forms.AnchorStyles.Right;
          this.labelHpp.AutoSize = true;
-         this.labelHpp.Location = new System.Drawing.Point(311, 38);
+         this.labelHpp.Location = new System.Drawing.Point(311, 37);
          this.labelHpp.Name = "labelHpp";
          this.labelHpp.Size = new System.Drawing.Size(13, 13);
          this.labelHpp.TabIndex = 0;
@@ -265,7 +274,7 @@
          // 
          this.label28.Anchor = System.Windows.Forms.AnchorStyles.Left;
          this.label28.AutoSize = true;
-         this.label28.Location = new System.Drawing.Point(3, 158);
+         this.label28.Location = new System.Drawing.Point(3, 156);
          this.label28.Name = "label28";
          this.label28.Size = new System.Drawing.Size(37, 13);
          this.label28.TabIndex = 0;
@@ -275,7 +284,7 @@
          // 
          this.labelTotalSelisih.Anchor = System.Windows.Forms.AnchorStyles.Right;
          this.labelTotalSelisih.AutoSize = true;
-         this.labelTotalSelisih.Location = new System.Drawing.Point(311, 158);
+         this.labelTotalSelisih.Location = new System.Drawing.Point(311, 156);
          this.labelTotalSelisih.Name = "labelTotalSelisih";
          this.labelTotalSelisih.Size = new System.Drawing.Size(13, 13);
          this.labelTotalSelisih.TabIndex = 0;
@@ -286,7 +295,7 @@
          // 
          this.labelDiskonPenjualan.Anchor = System.Windows.Forms.AnchorStyles.Right;
          this.labelDiskonPenjualan.AutoSize = true;
-         this.labelDiskonPenjualan.Location = new System.Drawing.Point(311, 98);
+         this.labelDiskonPenjualan.Location = new System.Drawing.Point(311, 95);
          this.labelDiskonPenjualan.Name = "labelDiskonPenjualan";
          this.labelDiskonPenjualan.Size = new System.Drawing.Size(13, 13);
          this.labelDiskonPenjualan.TabIndex = 0;
@@ -296,7 +305,7 @@
          // 
          this.labelPengeluaran.Anchor = System.Windows.Forms.AnchorStyles.Right;
          this.labelPengeluaran.AutoSize = true;
-         this.labelPengeluaran.Location = new System.Drawing.Point(311, 68);
+         this.labelPengeluaran.Location = new System.Drawing.Point(311, 66);
          this.labelPengeluaran.Name = "labelPengeluaran";
          this.labelPengeluaran.Size = new System.Drawing.Size(13, 13);
          this.labelPengeluaran.TabIndex = 0;
@@ -317,7 +326,7 @@
          this.label21.Anchor = System.Windows.Forms.AnchorStyles.None;
          this.label21.AutoSize = true;
          this.tableLayoutPanel2.SetColumnSpan(this.label21, 4);
-         this.label21.Location = new System.Drawing.Point(4, 128);
+         this.label21.Location = new System.Drawing.Point(4, 124);
          this.label21.Name = "label21";
          this.label21.Size = new System.Drawing.Size(340, 13);
          this.label21.TabIndex = 0;
@@ -328,7 +337,7 @@
          // 
          this.label14.Anchor = System.Windows.Forms.AnchorStyles.Left;
          this.label14.AutoSize = true;
-         this.label14.Location = new System.Drawing.Point(129, 38);
+         this.label14.Location = new System.Drawing.Point(129, 37);
          this.label14.Name = "label14";
          this.label14.Size = new System.Drawing.Size(10, 13);
          this.label14.TabIndex = 0;
@@ -338,7 +347,7 @@
          // 
          this.label17.Anchor = System.Windows.Forms.AnchorStyles.Left;
          this.label17.AutoSize = true;
-         this.label17.Location = new System.Drawing.Point(129, 68);
+         this.label17.Location = new System.Drawing.Point(129, 66);
          this.label17.Name = "label17";
          this.label17.Size = new System.Drawing.Size(10, 13);
          this.label17.TabIndex = 0;
@@ -348,7 +357,7 @@
          // 
          this.label20.Anchor = System.Windows.Forms.AnchorStyles.Left;
          this.label20.AutoSize = true;
-         this.label20.Location = new System.Drawing.Point(129, 98);
+         this.label20.Location = new System.Drawing.Point(129, 95);
          this.label20.Name = "label20";
          this.label20.Size = new System.Drawing.Size(10, 13);
          this.label20.TabIndex = 0;
@@ -370,7 +379,7 @@
          this.label25.Anchor = System.Windows.Forms.AnchorStyles.Left;
          this.label25.AutoSize = true;
          this.label25.ForeColor = System.Drawing.Color.Red;
-         this.label25.Location = new System.Drawing.Point(330, 38);
+         this.label25.Location = new System.Drawing.Point(330, 37);
          this.label25.Name = "label25";
          this.label25.Size = new System.Drawing.Size(10, 13);
          this.label25.TabIndex = 0;
@@ -381,7 +390,7 @@
          this.label26.Anchor = System.Windows.Forms.AnchorStyles.Left;
          this.label26.AutoSize = true;
          this.label26.ForeColor = System.Drawing.Color.Red;
-         this.label26.Location = new System.Drawing.Point(330, 68);
+         this.label26.Location = new System.Drawing.Point(330, 66);
          this.label26.Name = "label26";
          this.label26.Size = new System.Drawing.Size(10, 13);
          this.label26.TabIndex = 0;
@@ -392,7 +401,7 @@
          this.label27.Anchor = System.Windows.Forms.AnchorStyles.Left;
          this.label27.AutoSize = true;
          this.label27.ForeColor = System.Drawing.Color.Red;
-         this.label27.Location = new System.Drawing.Point(330, 98);
+         this.label27.Location = new System.Drawing.Point(330, 95);
          this.label27.Name = "label27";
          this.label27.Size = new System.Drawing.Size(10, 13);
          this.label27.TabIndex = 0;
@@ -402,7 +411,7 @@
          // 
          this.label31.Anchor = System.Windows.Forms.AnchorStyles.Left;
          this.label31.AutoSize = true;
-         this.label31.Location = new System.Drawing.Point(129, 158);
+         this.label31.Location = new System.Drawing.Point(129, 156);
          this.label31.Name = "label31";
          this.label31.Size = new System.Drawing.Size(10, 13);
          this.label31.TabIndex = 0;
@@ -447,15 +456,6 @@
          this.buttonTutup.Text = "&Tutup";
          this.buttonTutup.UseVisualStyleBackColor = true;
          // 
-         // comboBoxBulan
-         // 
-         this.comboBoxBulan.Anchor = System.Windows.Forms.AnchorStyles.Left;
-         this.comboBoxBulan.Location = new System.Drawing.Point(145, 4);
-         this.comboBoxBulan.Name = "comboBoxBulan";
-         this.comboBoxBulan.Size = new System.Drawing.Size(125, 21);
-         this.comboBoxBulan.TabIndex = 0;
-         this.comboBoxBulan.SelectedIndexChanged += new System.EventHandler(this.comboBoxBulan_SelectedIndexChanged);
-         // 
          // panelUp
          // 
          this.panelUp.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -469,6 +469,7 @@
          // 
          // LaporanLabaRugiView
          // 
+         this.AccessibleName = "Laporan";
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
          this.ClientSize = new System.Drawing.Size(384, 373);

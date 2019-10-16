@@ -222,6 +222,7 @@
          this.ClientSize = new System.Drawing.Size(397, 298);
          this.Controls.Add(this.groupBoxData);
          this.Name = "RoleEntryView";
+         this.Tag = "ignore";
          this.Text = "Role";
          this.Controls.SetChildIndex(this.panelUp, 0);
          this.Controls.SetChildIndex(this.operationButtons, 0);

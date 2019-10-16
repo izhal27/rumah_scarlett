@@ -199,7 +199,7 @@
          // textBoxCariNoNota
          // 
          this.textBoxCariNoNota.Anchor = System.Windows.Forms.AnchorStyles.Left;
-         this.textBoxCariNoNota.BeforeTouchSize = new System.Drawing.Size(150, 20);
+         this.textBoxCariNoNota.BeforeTouchSize = new System.Drawing.Size(250, 100);
          this.textBoxCariNoNota.Location = new System.Drawing.Point(83, 5);
          this.textBoxCariNoNota.MaxLength = 50;
          this.textBoxCariNoNota.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
@@ -398,22 +398,22 @@
          this.label10.TabIndex = 0;
          this.label10.Text = ":";
          // 
-         // labelDibayar
+         // labelDibayarPenjualan
          // 
          this.labelDibayarPenjualan.Anchor = System.Windows.Forms.AnchorStyles.Left;
          this.labelDibayarPenjualan.AutoSize = true;
          this.labelDibayarPenjualan.Location = new System.Drawing.Point(83, 188);
-         this.labelDibayarPenjualan.Name = "labelDibayar";
+         this.labelDibayarPenjualan.Name = "labelDibayarPenjualan";
          this.labelDibayarPenjualan.Size = new System.Drawing.Size(10, 13);
          this.labelDibayarPenjualan.TabIndex = 0;
          this.labelDibayarPenjualan.Text = "-";
          // 
-         // labelKembali
+         // labelKembaliPenjualan
          // 
          this.labelKembaliPenjualan.Anchor = System.Windows.Forms.AnchorStyles.Left;
          this.labelKembaliPenjualan.AutoSize = true;
          this.labelKembaliPenjualan.Location = new System.Drawing.Point(83, 218);
-         this.labelKembaliPenjualan.Name = "labelKembali";
+         this.labelKembaliPenjualan.Name = "labelKembaliPenjualan";
          this.labelKembaliPenjualan.Size = new System.Drawing.Size(10, 13);
          this.labelKembaliPenjualan.TabIndex = 0;
          this.labelKembaliPenjualan.Text = "-";
@@ -552,7 +552,7 @@
          // textBoxNoNotaRetrun
          // 
          this.textBoxNoNotaRetrun.Anchor = System.Windows.Forms.AnchorStyles.Left;
-         this.textBoxNoNotaRetrun.BeforeTouchSize = new System.Drawing.Size(150, 20);
+         this.textBoxNoNotaRetrun.BeforeTouchSize = new System.Drawing.Size(250, 100);
          this.textBoxNoNotaRetrun.Location = new System.Drawing.Point(83, 35);
          this.textBoxNoNotaRetrun.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
          this.textBoxNoNotaRetrun.Name = "textBoxNoNotaRetrun";
@@ -681,6 +681,7 @@
          // 
          // ReturnPenjualanView
          // 
+         this.AccessibleName = "Transaksi";
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
          this.ClientSize = new System.Drawing.Size(826, 486);

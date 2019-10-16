@@ -20,10 +20,13 @@ namespace RumahScarlett.Presentation.Views.CommonControls
          get { return listDataGrid; }
       }
 
-      public DetailView(string textTitle, bool buttonCetakVisible = true)
+      public DetailView()
       {
          InitializeComponent();
+      }
 
+      public DetailView(string textTitle, bool buttonCetakVisible = true) : base()
+      {
          Text = textTitle;
          panelUp.LabelInfo = $"{Text.ToUpper()}";
          buttonCetak.Visible = buttonCetakVisible;

@@ -50,6 +50,10 @@
          this.labelTotalDiskon = new System.Windows.Forms.Label();
          this.label15 = new System.Windows.Forms.Label();
          this.label11 = new System.Windows.Forms.Label();
+         this.label12 = new System.Windows.Forms.Label();
+         this.label19 = new System.Windows.Forms.Label();
+         this.labelTotalReturnPenjualan = new System.Windows.Forms.Label();
+         this.label21 = new System.Windows.Forms.Label();
          this.label1 = new System.Windows.Forms.Label();
          this.label2 = new System.Windows.Forms.Label();
          this.dateTimePickerTanggal = new System.Windows.Forms.DateTimePicker();
@@ -58,10 +62,6 @@
          this.buttonTutup = new System.Windows.Forms.Button();
          this.groupBox2 = new System.Windows.Forms.GroupBox();
          this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-         this.label12 = new System.Windows.Forms.Label();
-         this.label19 = new System.Windows.Forms.Label();
-         this.labelTotalReturnPenjualan = new System.Windows.Forms.Label();
-         this.label21 = new System.Windows.Forms.Label();
          this.panelUp = new RumahScarlett.Presentation.Views.CommonControls.PanelUp();
          this.groupBox1.SuspendLayout();
          this.tableLayoutPanel1.SuspendLayout();
@@ -331,6 +331,48 @@
          this.label11.TabIndex = 0;
          this.label11.Text = ":";
          // 
+         // label12
+         // 
+         this.label12.Anchor = System.Windows.Forms.AnchorStyles.Left;
+         this.label12.AutoSize = true;
+         this.label12.Location = new System.Drawing.Point(3, 124);
+         this.label12.Name = "label12";
+         this.label12.Size = new System.Drawing.Size(89, 13);
+         this.label12.TabIndex = 0;
+         this.label12.Text = "Return Penjualan";
+         // 
+         // label19
+         // 
+         this.label19.Anchor = System.Windows.Forms.AnchorStyles.Left;
+         this.label19.AutoSize = true;
+         this.label19.Location = new System.Drawing.Point(98, 124);
+         this.label19.Name = "label19";
+         this.label19.Size = new System.Drawing.Size(10, 13);
+         this.label19.TabIndex = 0;
+         this.label19.Text = ":";
+         // 
+         // labelTotalReturnPenjualan
+         // 
+         this.labelTotalReturnPenjualan.Anchor = System.Windows.Forms.AnchorStyles.Right;
+         this.labelTotalReturnPenjualan.AutoSize = true;
+         this.labelTotalReturnPenjualan.Location = new System.Drawing.Point(308, 124);
+         this.labelTotalReturnPenjualan.Name = "labelTotalReturnPenjualan";
+         this.labelTotalReturnPenjualan.Size = new System.Drawing.Size(13, 13);
+         this.labelTotalReturnPenjualan.TabIndex = 0;
+         this.labelTotalReturnPenjualan.Text = "0";
+         this.labelTotalReturnPenjualan.TextAlign = System.Drawing.ContentAlignment.TopRight;
+         // 
+         // label21
+         // 
+         this.label21.Anchor = System.Windows.Forms.AnchorStyles.Left;
+         this.label21.AutoSize = true;
+         this.label21.ForeColor = System.Drawing.Color.Red;
+         this.label21.Location = new System.Drawing.Point(327, 124);
+         this.label21.Name = "label21";
+         this.label21.Size = new System.Drawing.Size(10, 13);
+         this.label21.TabIndex = 0;
+         this.label21.Text = "-";
+         // 
          // label1
          // 
          this.label1.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -431,48 +473,6 @@
          this.tableLayoutPanel3.Size = new System.Drawing.Size(348, 30);
          this.tableLayoutPanel3.TabIndex = 0;
          // 
-         // label12
-         // 
-         this.label12.Anchor = System.Windows.Forms.AnchorStyles.Left;
-         this.label12.AutoSize = true;
-         this.label12.Location = new System.Drawing.Point(3, 124);
-         this.label12.Name = "label12";
-         this.label12.Size = new System.Drawing.Size(89, 13);
-         this.label12.TabIndex = 0;
-         this.label12.Text = "Return Penjualan";
-         // 
-         // label19
-         // 
-         this.label19.Anchor = System.Windows.Forms.AnchorStyles.Left;
-         this.label19.AutoSize = true;
-         this.label19.Location = new System.Drawing.Point(98, 124);
-         this.label19.Name = "label19";
-         this.label19.Size = new System.Drawing.Size(10, 13);
-         this.label19.TabIndex = 0;
-         this.label19.Text = ":";
-         // 
-         // labelTotalReturnPenjualan
-         // 
-         this.labelTotalReturnPenjualan.Anchor = System.Windows.Forms.AnchorStyles.Right;
-         this.labelTotalReturnPenjualan.AutoSize = true;
-         this.labelTotalReturnPenjualan.Location = new System.Drawing.Point(308, 124);
-         this.labelTotalReturnPenjualan.Name = "labelTotalReturnPenjualan";
-         this.labelTotalReturnPenjualan.Size = new System.Drawing.Size(13, 13);
-         this.labelTotalReturnPenjualan.TabIndex = 0;
-         this.labelTotalReturnPenjualan.Text = "0";
-         this.labelTotalReturnPenjualan.TextAlign = System.Drawing.ContentAlignment.TopRight;
-         // 
-         // label21
-         // 
-         this.label21.Anchor = System.Windows.Forms.AnchorStyles.Left;
-         this.label21.AutoSize = true;
-         this.label21.ForeColor = System.Drawing.Color.Red;
-         this.label21.Location = new System.Drawing.Point(327, 124);
-         this.label21.Name = "label21";
-         this.label21.Size = new System.Drawing.Size(10, 13);
-         this.label21.TabIndex = 0;
-         this.label21.Text = "-";
-         // 
          // panelUp
          // 
          this.panelUp.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -500,6 +500,7 @@
          this.Name = "LaporanTransaksiByDateView";
          this.ShowInTaskbar = false;
          this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+         this.Tag = "ignore";
          this.Text = "Laporan Transaksi";
          this.Load += new System.EventHandler(this.LaporanTransaksiHariIniView_Load);
          this.groupBox1.ResumeLayout(false);

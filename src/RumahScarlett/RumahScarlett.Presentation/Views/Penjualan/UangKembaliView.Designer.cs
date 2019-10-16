@@ -85,6 +85,7 @@
          this.Name = "UangKembaliView";
          this.ShowInTaskbar = false;
          this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+         this.Tag = "ignore";
          this.Text = "Uang Kembali";
          this.tableLayoutPanel1.ResumeLayout(false);
          this.ResumeLayout(false);

@@ -32,6 +32,7 @@
          this.groupBox1 = new System.Windows.Forms.GroupBox();
          this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
          this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+         this.textBoxQty = new RumahScarlett.Presentation.Views.CommonControls.BaseTextBoxDigit();
          this.labelMax = new System.Windows.Forms.Label();
          this.label4 = new System.Windows.Forms.Label();
          this.label1 = new System.Windows.Forms.Label();
@@ -39,21 +40,20 @@
          this.label3 = new System.Windows.Forms.Label();
          this.comboBoxBarang = new System.Windows.Forms.ComboBox();
          this.comboBoxStatus = new System.Windows.Forms.ComboBox();
+         this.textBoxKeterangan = new RumahScarlett.Presentation.Views.CommonControls.BaseTextBox();
          this.label5 = new System.Windows.Forms.Label();
          this.label6 = new System.Windows.Forms.Label();
          this.label7 = new System.Windows.Forms.Label();
          this.tlpButtons = new System.Windows.Forms.TableLayoutPanel();
          this.buttonOk = new System.Windows.Forms.Button();
          this.buttonCancel = new System.Windows.Forms.Button();
-         this.textBoxQty = new RumahScarlett.Presentation.Views.CommonControls.BaseTextBoxDigit();
-         this.textBoxKeterangan = new RumahScarlett.Presentation.Views.CommonControls.BaseTextBox();
          this.panelUp = new RumahScarlett.Presentation.Views.CommonControls.PanelUp();
          this.groupBox1.SuspendLayout();
          this.tableLayoutPanel1.SuspendLayout();
          this.tableLayoutPanel2.SuspendLayout();
-         this.tlpButtons.SuspendLayout();
          ((System.ComponentModel.ISupportInitialize)(this.textBoxQty)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.textBoxKeterangan)).BeginInit();
+         this.tlpButtons.SuspendLayout();
          this.SuspendLayout();
          // 
          // groupBox1
@@ -112,6 +112,23 @@
          this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
          this.tableLayoutPanel2.Size = new System.Drawing.Size(250, 30);
          this.tableLayoutPanel2.TabIndex = 103;
+         // 
+         // textBoxQty
+         // 
+         this.textBoxQty.Anchor = System.Windows.Forms.AnchorStyles.Left;
+         this.textBoxQty.BackGroundColor = System.Drawing.SystemColors.Window;
+         this.textBoxQty.BeforeTouchSize = new System.Drawing.Size(250, 100);
+         this.textBoxQty.IntegerValue = ((long)(1));
+         this.textBoxQty.Location = new System.Drawing.Point(3, 5);
+         this.textBoxQty.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
+         this.textBoxQty.MinValue = ((long)(1));
+         this.textBoxQty.Name = "textBoxQty";
+         this.textBoxQty.NullString = "";
+         this.textBoxQty.Size = new System.Drawing.Size(100, 20);
+         this.textBoxQty.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
+         this.textBoxQty.TabIndex = 1;
+         this.textBoxQty.Text = "1";
+         this.textBoxQty.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
          // 
          // labelMax
          // 
@@ -183,6 +200,18 @@
          this.comboBoxStatus.Name = "comboBoxStatus";
          this.comboBoxStatus.Size = new System.Drawing.Size(250, 21);
          this.comboBoxStatus.TabIndex = 2;
+         // 
+         // textBoxKeterangan
+         // 
+         this.textBoxKeterangan.Anchor = System.Windows.Forms.AnchorStyles.Left;
+         this.textBoxKeterangan.BeforeTouchSize = new System.Drawing.Size(250, 100);
+         this.textBoxKeterangan.Location = new System.Drawing.Point(71, 97);
+         this.textBoxKeterangan.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
+         this.textBoxKeterangan.Multiline = true;
+         this.textBoxKeterangan.Name = "textBoxKeterangan";
+         this.textBoxKeterangan.Size = new System.Drawing.Size(250, 100);
+         this.textBoxKeterangan.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
+         this.textBoxKeterangan.TabIndex = 3;
          // 
          // label5
          // 
@@ -256,35 +285,6 @@
          this.buttonCancel.Text = "&Batal";
          this.buttonCancel.UseVisualStyleBackColor = true;
          // 
-         // textBoxQty
-         // 
-         this.textBoxQty.Anchor = System.Windows.Forms.AnchorStyles.Left;
-         this.textBoxQty.BackGroundColor = System.Drawing.SystemColors.Window;
-         this.textBoxQty.BeforeTouchSize = new System.Drawing.Size(250, 100);
-         this.textBoxQty.IntegerValue = ((long)(1));
-         this.textBoxQty.Location = new System.Drawing.Point(3, 5);
-         this.textBoxQty.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
-         this.textBoxQty.MinValue = ((long)(1));
-         this.textBoxQty.Name = "textBoxQty";
-         this.textBoxQty.NullString = "";
-         this.textBoxQty.Size = new System.Drawing.Size(100, 20);
-         this.textBoxQty.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
-         this.textBoxQty.TabIndex = 1;
-         this.textBoxQty.Text = "1";
-         this.textBoxQty.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-         // 
-         // textBoxKeterangan
-         // 
-         this.textBoxKeterangan.Anchor = System.Windows.Forms.AnchorStyles.Left;
-         this.textBoxKeterangan.BeforeTouchSize = new System.Drawing.Size(250, 100);
-         this.textBoxKeterangan.Location = new System.Drawing.Point(71, 97);
-         this.textBoxKeterangan.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
-         this.textBoxKeterangan.Multiline = true;
-         this.textBoxKeterangan.Name = "textBoxKeterangan";
-         this.textBoxKeterangan.Size = new System.Drawing.Size(250, 100);
-         this.textBoxKeterangan.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
-         this.textBoxKeterangan.TabIndex = 3;
-         // 
          // panelUp
          // 
          this.panelUp.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -310,6 +310,7 @@
          this.Name = "ReturnPenjualanEntryView";
          this.ShowInTaskbar = false;
          this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+         this.Tag = "ignore";
          this.Text = "Return Barang";
          this.Load += new System.EventHandler(this.ReturnPenjualanEntryView_Load);
          this.groupBox1.ResumeLayout(false);
@@ -317,9 +318,9 @@
          this.tableLayoutPanel1.PerformLayout();
          this.tableLayoutPanel2.ResumeLayout(false);
          this.tableLayoutPanel2.PerformLayout();
-         this.tlpButtons.ResumeLayout(false);
          ((System.ComponentModel.ISupportInitialize)(this.textBoxQty)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.textBoxKeterangan)).EndInit();
+         this.tlpButtons.ResumeLayout(false);
          this.ResumeLayout(false);
 
       }

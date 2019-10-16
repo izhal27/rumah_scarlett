@@ -67,10 +67,10 @@ namespace RumahScarlett.Presentation.Helper
       /// <param name="assembly">Assembly aplikasi</param>
       private void GetTypeFromAssembly(Assembly assembly)
       {
-         // Ambil object yang ada di assembly yang mengandung BaseType name Frm,
-         // lewati BaseType name yang mengandung Main atau Base
-         var formTypes = assembly.GetTypes().Where(t => t.BaseType.Name.Contains("View") &&
-                         !(t.Name.Contains("Main") || t.Name.Contains("Base")));
+         // Ambil object yang ada di assembly yang mengandung BaseType name View,
+         // lewati BaseType name yang mengandung Main, Entry atau Base
+         var formTypes = assembly.GetTypes().Where(t => t.IsClass && (t.BaseType.Name.Contains("View") &&
+                         !(t.Name.Contains("Main") || t.Name.Contains("Entry") || t.Name.Contains("Base"))));
 
          // Looping semua Form di list formTypes
          foreach (var type in formTypes)

@@ -123,7 +123,7 @@
          // textBoxNama
          // 
          this.textBoxNama.Anchor = System.Windows.Forms.AnchorStyles.Left;
-         this.textBoxNama.BeforeTouchSize = new System.Drawing.Size(250, 20);
+         this.textBoxNama.BeforeTouchSize = new System.Drawing.Size(250, 100);
          this.textBoxNama.Location = new System.Drawing.Point(87, 3);
          this.textBoxNama.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
          this.textBoxNama.Name = "textBoxNama";
@@ -134,7 +134,7 @@
          // textBoxKeterangan
          // 
          this.textBoxKeterangan.Anchor = System.Windows.Forms.AnchorStyles.Left;
-         this.textBoxKeterangan.BeforeTouchSize = new System.Drawing.Size(250, 20);
+         this.textBoxKeterangan.BeforeTouchSize = new System.Drawing.Size(250, 100);
          this.textBoxKeterangan.Location = new System.Drawing.Point(87, 30);
          this.textBoxKeterangan.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
          this.textBoxKeterangan.Multiline = true;
@@ -170,6 +170,7 @@
          this.ClientSize = new System.Drawing.Size(398, 271);
          this.Controls.Add(this.groupBox1);
          this.Name = "SubTipeEntryView";
+         this.Tag = "ignore";
          this.Text = "Sub Tipe";
          this.Controls.SetChildIndex(this.panelUp, 0);
          this.Controls.SetChildIndex(this.operationButtons, 0);

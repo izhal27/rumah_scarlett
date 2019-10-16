@@ -225,6 +225,7 @@
          this.ClientSize = new System.Drawing.Size(398, 296);
          this.Controls.Add(this.groupBox1);
          this.Name = "PengeluaranEntryView";
+         this.Tag = "ignore";
          this.Text = "Pengeluaran";
          this.Controls.SetChildIndex(this.groupBox1, 0);
          this.Controls.SetChildIndex(this.panelUp, 0);

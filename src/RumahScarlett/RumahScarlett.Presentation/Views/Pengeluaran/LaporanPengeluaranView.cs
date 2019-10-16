@@ -39,6 +39,7 @@ namespace RumahScarlett.Presentation.Views.Pengeluaran
 
          panelUp.LabelInfo = $"{Text.ToUpper()}";
          buttonsDeletePrintDetail.ButtonDetailVisible = false;
+         buttonsDeletePrintDetail.ButtonDetail.Tag = "ignore";
 
          dateTimePickerFilterTransaksi.OnTampilkanClick += DateTimePickerFilterTransaksi_OnTampilkanClick;
          buttonsDeletePrintDetail.OnHapusClick += ButtonsDeletePrintDetail_OnHapusClick;

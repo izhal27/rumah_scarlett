@@ -311,6 +311,7 @@
          this.comboBoxSubTipe.Anchor = System.Windows.Forms.AnchorStyles.Left;
          this.comboBoxSubTipe.Location = new System.Drawing.Point(92, 30);
          this.comboBoxSubTipe.Name = "comboBoxSubTipe";
+         this.comboBoxSubTipe.SelectedItem = null;
          this.comboBoxSubTipe.Size = new System.Drawing.Size(250, 21);
          this.comboBoxSubTipe.TabIndex = 1;
          // 
@@ -319,6 +320,7 @@
          this.comboBoxTipe.Anchor = System.Windows.Forms.AnchorStyles.Left;
          this.comboBoxTipe.Location = new System.Drawing.Point(92, 3);
          this.comboBoxTipe.Name = "comboBoxTipe";
+         this.comboBoxTipe.SelectedItem = null;
          this.comboBoxTipe.Size = new System.Drawing.Size(250, 21);
          this.comboBoxTipe.TabIndex = 0;
          // 
@@ -327,6 +329,7 @@
          this.comboBoxSupplier.Anchor = System.Windows.Forms.AnchorStyles.Left;
          this.comboBoxSupplier.Location = new System.Drawing.Point(92, 57);
          this.comboBoxSupplier.Name = "comboBoxSupplier";
+         this.comboBoxSupplier.SelectedItem = null;
          this.comboBoxSupplier.Size = new System.Drawing.Size(250, 21);
          this.comboBoxSupplier.TabIndex = 2;
          // 
@@ -419,6 +422,7 @@
          this.comboBoxSatuan.Anchor = System.Windows.Forms.AnchorStyles.Left;
          this.comboBoxSatuan.Location = new System.Drawing.Point(92, 162);
          this.comboBoxSatuan.Name = "comboBoxSatuan";
+         this.comboBoxSatuan.SelectedItem = null;
          this.comboBoxSatuan.Size = new System.Drawing.Size(150, 21);
          this.comboBoxSatuan.TabIndex = 6;
          // 
@@ -601,6 +605,7 @@
          this.ClientSize = new System.Drawing.Size(405, 427);
          this.Controls.Add(this.groupBox1);
          this.Name = "BarangEntryView";
+         this.Tag = "ignore";
          this.Text = "Barang";
          this.Load += new System.EventHandler(this.BarangEntryView_Load);
          this.Controls.SetChildIndex(this.groupBox1, 0);

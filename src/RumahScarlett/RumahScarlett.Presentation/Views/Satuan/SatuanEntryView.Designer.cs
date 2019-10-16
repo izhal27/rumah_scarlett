@@ -155,6 +155,7 @@
          this.ClientSize = new System.Drawing.Size(387, 246);
          this.Controls.Add(this.tableLayoutPanel1);
          this.Name = "SatuanEntryView";
+         this.Tag = "ignore";
          this.Text = "Satuan";
          this.Controls.SetChildIndex(this.panelUp, 0);
          this.Controls.SetChildIndex(this.operationButtons, 0);

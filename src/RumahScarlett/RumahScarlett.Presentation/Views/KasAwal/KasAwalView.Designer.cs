@@ -31,9 +31,9 @@
          System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(KasAwalView));
          this.label1 = new System.Windows.Forms.Label();
          this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+         this.textBoxTotal = new RumahScarlett.Presentation.Views.CommonControls.BaseTextBoxDigit();
          this.buttonSave = new System.Windows.Forms.Button();
          this.label2 = new System.Windows.Forms.Label();
-         this.textBoxTotal = new RumahScarlett.Presentation.Views.CommonControls.BaseTextBoxDigit();
          this.tableLayoutPanel1.SuspendLayout();
          ((System.ComponentModel.ISupportInitialize)(this.textBoxTotal)).BeginInit();
          this.SuspendLayout();
@@ -69,6 +69,23 @@
          this.tableLayoutPanel1.Size = new System.Drawing.Size(211, 57);
          this.tableLayoutPanel1.TabIndex = 1;
          // 
+         // textBoxTotal
+         // 
+         this.textBoxTotal.Anchor = System.Windows.Forms.AnchorStyles.Left;
+         this.textBoxTotal.BackGroundColor = System.Drawing.SystemColors.Window;
+         this.textBoxTotal.BeforeTouchSize = new System.Drawing.Size(150, 20);
+         this.textBoxTotal.IntegerValue = ((long)(0));
+         this.textBoxTotal.Location = new System.Drawing.Point(56, 3);
+         this.textBoxTotal.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
+         this.textBoxTotal.MinValue = ((long)(0));
+         this.textBoxTotal.Name = "textBoxTotal";
+         this.textBoxTotal.NullString = "";
+         this.textBoxTotal.Size = new System.Drawing.Size(150, 20);
+         this.textBoxTotal.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
+         this.textBoxTotal.TabIndex = 0;
+         this.textBoxTotal.Text = "0";
+         this.textBoxTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+         // 
          // buttonSave
          // 
          this.buttonSave.Anchor = System.Windows.Forms.AnchorStyles.Right;
@@ -90,25 +107,9 @@
          this.label2.TabIndex = 0;
          this.label2.Text = ":";
          // 
-         // textBoxTotal
-         // 
-         this.textBoxTotal.Anchor = System.Windows.Forms.AnchorStyles.Left;
-         this.textBoxTotal.BackGroundColor = System.Drawing.SystemColors.Window;
-         this.textBoxTotal.BeforeTouchSize = new System.Drawing.Size(150, 20);
-         this.textBoxTotal.IntegerValue = ((long)(0));
-         this.textBoxTotal.Location = new System.Drawing.Point(56, 3);
-         this.textBoxTotal.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
-         this.textBoxTotal.MinValue = ((long)(0));
-         this.textBoxTotal.Name = "textBoxTotal";
-         this.textBoxTotal.NullString = "";
-         this.textBoxTotal.Size = new System.Drawing.Size(150, 20);
-         this.textBoxTotal.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
-         this.textBoxTotal.TabIndex = 0;
-         this.textBoxTotal.Text = "0";
-         this.textBoxTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-         // 
          // KasAwalView
          // 
+         this.AccessibleName = "Transaksi";
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
          this.ClientSize = new System.Drawing.Size(235, 81);

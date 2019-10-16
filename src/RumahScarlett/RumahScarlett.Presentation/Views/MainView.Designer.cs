@@ -50,6 +50,7 @@
          this.toolStripMenuItemPelanggan = new System.Windows.Forms.ToolStripMenuItem();
          this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
          this.toolStripMenuItemUser = new System.Windows.Forms.ToolStripMenuItem();
+         this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
          this.toolStripMenuItemRole = new System.Windows.Forms.ToolStripMenuItem();
          this.toolStripMenuItemData = new System.Windows.Forms.ToolStripMenuItem();
          this.toolStripMenuItemPenyesuaianStok = new System.Windows.Forms.ToolStripMenuItem();
@@ -66,11 +67,11 @@
          this.toolStripMenuItemReturnPenjualan = new System.Windows.Forms.ToolStripMenuItem();
          this.toolStripMenuItemReturnPembelian = new System.Windows.Forms.ToolStripMenuItem();
          this.toolStripMenuItemLaporan = new System.Windows.Forms.ToolStripMenuItem();
+         this.toolStripMenuItemTransaksiByDate = new System.Windows.Forms.ToolStripMenuItem();
+         this.toolStripSeparator0 = new System.Windows.Forms.ToolStripSeparator();
          this.toolStripMenuItemLaporanPenjualan = new System.Windows.Forms.ToolStripMenuItem();
          this.toolStripMenuItemLaporanPembelian = new System.Windows.Forms.ToolStripMenuItem();
          this.toolStripMenuItemLaporanPengeluaran = new System.Windows.Forms.ToolStripMenuItem();
-         this.toolStripSeparator0 = new System.Windows.Forms.ToolStripSeparator();
-         this.toolStripMenuItemTransaksiByDate = new System.Windows.Forms.ToolStripMenuItem();
          this.toolStripSeparator = new System.Windows.Forms.ToolStripSeparator();
          this.toolStripMenuItemLaporanReturn = new System.Windows.Forms.ToolStripMenuItem();
          this.toolStripMenuItemLaporanReturnPenjualan = new System.Windows.Forms.ToolStripMenuItem();
@@ -90,7 +91,6 @@
          this.toolStripButtonBarang = new System.Windows.Forms.ToolStripButton();
          this.toolStripButtonPembelian = new System.Windows.Forms.ToolStripButton();
          this.toolStripButtonPenjualan = new System.Windows.Forms.ToolStripButton();
-         this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
          this.statusStripMain.SuspendLayout();
          this.menuStripMain.SuspendLayout();
          this.toolStripMain.SuspendLayout();
@@ -193,6 +193,7 @@
             this.toolStripMenuItemRole});
          this.toolStripMenuItemMaster.Name = "toolStripMenuItemMaster";
          this.toolStripMenuItemMaster.Size = new System.Drawing.Size(55, 20);
+         this.toolStripMenuItemMaster.Tag = "Master";
          this.toolStripMenuItemMaster.Text = "&Master";
          // 
          // toolStripMenuItemDataTipe
@@ -281,6 +282,11 @@
          this.toolStripMenuItemUser.Text = "Use&r";
          this.toolStripMenuItemUser.Click += new System.EventHandler(this.toolStripMenuItemUser_Click);
          // 
+         // toolStripSeparator4
+         // 
+         this.toolStripSeparator4.Name = "toolStripSeparator4";
+         this.toolStripSeparator4.Size = new System.Drawing.Size(159, 6);
+         // 
          // toolStripMenuItemRole
          // 
          this.toolStripMenuItemRole.AccessibleDescription = "Master";
@@ -300,6 +306,7 @@
             this.toolStripMenuItemHutangOperasional});
          this.toolStripMenuItemData.Name = "toolStripMenuItemData";
          this.toolStripMenuItemData.Size = new System.Drawing.Size(43, 20);
+         this.toolStripMenuItemData.Tag = "Data";
          this.toolStripMenuItemData.Text = "&Data";
          // 
          // toolStripMenuItemPenyesuaianStok
@@ -340,6 +347,7 @@
             this.toolStripMenuItemReturn});
          this.toolStripMenuItemTransaksi.Name = "toolStripMenuItemTransaksi";
          this.toolStripMenuItemTransaksi.Size = new System.Drawing.Size(68, 20);
+         this.toolStripMenuItemTransaksi.Tag = "Transaksi";
          this.toolStripMenuItemTransaksi.Text = "&Transaksi";
          // 
          // toolStripMenuItemKasAwal
@@ -400,6 +408,7 @@
             this.toolStripMenuItemReturnPembelian});
          this.toolStripMenuItemReturn.Name = "toolStripMenuItemReturn";
          this.toolStripMenuItemReturn.Size = new System.Drawing.Size(152, 22);
+         this.toolStripMenuItemReturn.Tag = "Return";
          this.toolStripMenuItemReturn.Text = "&Return";
          // 
          // toolStripMenuItemReturnPenjualan
@@ -439,7 +448,23 @@
             this.toolStripMenuItemLabaRugi});
          this.toolStripMenuItemLaporan.Name = "toolStripMenuItemLaporan";
          this.toolStripMenuItemLaporan.Size = new System.Drawing.Size(62, 20);
+         this.toolStripMenuItemLaporan.Tag = "Laporan";
          this.toolStripMenuItemLaporan.Text = "&Laporan";
+         // 
+         // toolStripMenuItemTransaksiByDate
+         // 
+         this.toolStripMenuItemTransaksiByDate.AccessibleDescription = "Laporan";
+         this.toolStripMenuItemTransaksiByDate.AccessibleName = "menuForm";
+         this.toolStripMenuItemTransaksiByDate.Name = "toolStripMenuItemTransaksiByDate";
+         this.toolStripMenuItemTransaksiByDate.Size = new System.Drawing.Size(152, 22);
+         this.toolStripMenuItemTransaksiByDate.Tag = "ignore";
+         this.toolStripMenuItemTransaksiByDate.Text = "&Transaksi";
+         this.toolStripMenuItemTransaksiByDate.Click += new System.EventHandler(this.toolStripMenuItemTransaksiByDate_Click);
+         // 
+         // toolStripSeparator0
+         // 
+         this.toolStripSeparator0.Name = "toolStripSeparator0";
+         this.toolStripSeparator0.Size = new System.Drawing.Size(149, 6);
          // 
          // toolStripMenuItemLaporanPenjualan
          // 
@@ -471,21 +496,6 @@
          this.toolStripMenuItemLaporanPengeluaran.Text = "Penge&luaran";
          this.toolStripMenuItemLaporanPengeluaran.Click += new System.EventHandler(this.toolStripMenuItemLaporanPengeluaran_Click);
          // 
-         // toolStripSeparator0
-         // 
-         this.toolStripSeparator0.Name = "toolStripSeparator0";
-         this.toolStripSeparator0.Size = new System.Drawing.Size(149, 6);
-         // 
-         // toolStripMenuItemTransaksiByDate
-         // 
-         this.toolStripMenuItemTransaksiByDate.AccessibleDescription = "Laporan";
-         this.toolStripMenuItemTransaksiByDate.AccessibleName = "menuForm";
-         this.toolStripMenuItemTransaksiByDate.Name = "toolStripMenuItemTransaksiByDate";
-         this.toolStripMenuItemTransaksiByDate.Size = new System.Drawing.Size(152, 22);
-         this.toolStripMenuItemTransaksiByDate.Tag = "ignore";
-         this.toolStripMenuItemTransaksiByDate.Text = "&Transaksi";
-         this.toolStripMenuItemTransaksiByDate.Click += new System.EventHandler(this.toolStripMenuItemTransaksiByDate_Click);
-         // 
          // toolStripSeparator
          // 
          this.toolStripSeparator.Name = "toolStripSeparator";
@@ -499,6 +509,7 @@
             this.toolStripMenuItemLaporanReturnPembelian});
          this.toolStripMenuItemLaporanReturn.Name = "toolStripMenuItemLaporanReturn";
          this.toolStripMenuItemLaporanReturn.Size = new System.Drawing.Size(152, 22);
+         this.toolStripMenuItemLaporanReturn.Tag = "Return";
          this.toolStripMenuItemLaporanReturn.Text = "R&eturn";
          // 
          // toolStripMenuItemLaporanReturnPenjualan
@@ -559,6 +570,7 @@
             this.toolStripMenuItemRestoreDatabase});
          this.toolStripMenuItemDatabase.Name = "toolStripMenuItemDatabase";
          this.toolStripMenuItemDatabase.Size = new System.Drawing.Size(67, 20);
+         this.toolStripMenuItemDatabase.Tag = "Database";
          this.toolStripMenuItemDatabase.Text = "&Database";
          // 
          // toolStripMenuItemBackupDatabase
@@ -588,6 +600,7 @@
             this.toolStripMenuItemPengaturan});
          this.toolStripMenuItemAlat.Name = "toolStripMenuItemAlat";
          this.toolStripMenuItemAlat.Size = new System.Drawing.Size(40, 20);
+         this.toolStripMenuItemAlat.Tag = "Alat";
          this.toolStripMenuItemAlat.Text = "&Alat";
          // 
          // toolStripMenuItemPengaturan
@@ -607,13 +620,14 @@
             this.toolStripMenuItemTentang});
          this.toolStripMenuItemBantuan.Name = "toolStripMenuItemBantuan";
          this.toolStripMenuItemBantuan.Size = new System.Drawing.Size(63, 20);
+         this.toolStripMenuItemBantuan.Tag = "ignore";
          this.toolStripMenuItemBantuan.Text = "&Bantuan";
          // 
          // toolStripMenuItemTentang
          // 
          this.toolStripMenuItemTentang.AccessibleName = "menuForm";
          this.toolStripMenuItemTentang.Name = "toolStripMenuItemTentang";
-         this.toolStripMenuItemTentang.Size = new System.Drawing.Size(152, 22);
+         this.toolStripMenuItemTentang.Size = new System.Drawing.Size(118, 22);
          this.toolStripMenuItemTentang.Tag = "ignore";
          this.toolStripMenuItemTentang.Text = "&Tentang";
          this.toolStripMenuItemTentang.Click += new System.EventHandler(this.toolStripMenuItemTentang_Click);
@@ -633,6 +647,8 @@
          // 
          // toolStripButtonBarang
          // 
+         this.toolStripButtonBarang.AccessibleDescription = "Master";
+         this.toolStripButtonBarang.AccessibleName = "menuForm";
          this.toolStripButtonBarang.Image = global::RumahScarlett.Presentation.Properties.Resources.cream_32;
          this.toolStripButtonBarang.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
          this.toolStripButtonBarang.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -640,6 +656,7 @@
          this.toolStripButtonBarang.Name = "toolStripButtonBarang";
          this.toolStripButtonBarang.Padding = new System.Windows.Forms.Padding(5);
          this.toolStripButtonBarang.Size = new System.Drawing.Size(58, 61);
+         this.toolStripButtonBarang.Tag = "BarangView";
          this.toolStripButtonBarang.Text = "Barang";
          this.toolStripButtonBarang.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
          this.toolStripButtonBarang.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -647,12 +664,15 @@
          // 
          // toolStripButtonPembelian
          // 
+         this.toolStripButtonPembelian.AccessibleDescription = "Transaksi";
+         this.toolStripButtonPembelian.AccessibleName = "menuForm";
          this.toolStripButtonPembelian.Image = global::RumahScarlett.Presentation.Properties.Resources.buy_32;
          this.toolStripButtonPembelian.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
          this.toolStripButtonPembelian.ImageTransparentColor = System.Drawing.Color.Magenta;
          this.toolStripButtonPembelian.Name = "toolStripButtonPembelian";
          this.toolStripButtonPembelian.Padding = new System.Windows.Forms.Padding(5);
          this.toolStripButtonPembelian.Size = new System.Drawing.Size(77, 61);
+         this.toolStripButtonPembelian.Tag = "PembelianView";
          this.toolStripButtonPembelian.Text = "Pembelian";
          this.toolStripButtonPembelian.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
          this.toolStripButtonPembelian.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -660,21 +680,19 @@
          // 
          // toolStripButtonPenjualan
          // 
+         this.toolStripButtonPenjualan.AccessibleDescription = "Transaksi";
+         this.toolStripButtonPenjualan.AccessibleName = "menuForm";
          this.toolStripButtonPenjualan.Image = global::RumahScarlett.Presentation.Properties.Resources.sale_32;
          this.toolStripButtonPenjualan.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
          this.toolStripButtonPenjualan.ImageTransparentColor = System.Drawing.Color.Magenta;
          this.toolStripButtonPenjualan.Name = "toolStripButtonPenjualan";
          this.toolStripButtonPenjualan.Padding = new System.Windows.Forms.Padding(5);
          this.toolStripButtonPenjualan.Size = new System.Drawing.Size(73, 61);
+         this.toolStripButtonPenjualan.Tag = "PenjualanView";
          this.toolStripButtonPenjualan.Text = "Penjualan";
          this.toolStripButtonPenjualan.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
          this.toolStripButtonPenjualan.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
          this.toolStripButtonPenjualan.Click += new System.EventHandler(this.toolStripButtonPenjualan_Click);
-         // 
-         // toolStripSeparator4
-         // 
-         this.toolStripSeparator4.Name = "toolStripSeparator4";
-         this.toolStripSeparator4.Size = new System.Drawing.Size(159, 6);
          // 
          // MainView
          // 
@@ -688,6 +706,7 @@
          this.IsMdiContainer = true;
          this.Name = "MainView";
          this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+         this.Tag = "ignore";
          this.Text = "Rumah Scarlett";
          this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
          this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainView_FormClosed);
