@@ -328,6 +328,9 @@ namespace RumahScarlett.Presentation.Presenters
                activeForm.Activate();
             }
          }
+
+         // Enable buttons child form
+         new RoleManager().EnableButtons(form);
       }
    }
 }
