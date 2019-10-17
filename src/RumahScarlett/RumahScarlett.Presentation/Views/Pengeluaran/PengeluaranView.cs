@@ -38,7 +38,8 @@ namespace RumahScarlett.Presentation.Views.Pengeluaran
          InitializeComponent();
 
          panelUp.LabelInfo = $"TRANSAKSI {Text.ToUpper()}";
-         crudcButtons.ButtonCetakVisible = false;
+         crudcButtons.ButtonCetak.Visible = false;
+         crudcButtons.ButtonCetak.Tag = "ignore";
          
          listDataGrid.CellDoubleClick += ListDataGrid_CellDoubleClick;
          crudcButtons.OnTambahClick += crudcButtons_OnTambahClick;

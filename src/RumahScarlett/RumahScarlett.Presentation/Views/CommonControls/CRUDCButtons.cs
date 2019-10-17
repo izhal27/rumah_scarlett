@@ -20,29 +20,54 @@ namespace RumahScarlett.Presentation.Views.CommonControls
       public event EventHandler OnCetakClick;
       public event EventHandler OnTutupClick;
 
-      public bool ButtonTambahVisible
+      //public bool ButtonTambahVisible
+      //{
+      //   set { buttonTambah.Visible = value; }
+      //}
+
+      //public bool ButtonUbahVisible
+      //{
+      //   set { buttonUbah.Visible = value; }
+      //}
+
+      //public bool ButtonHapusVisible
+      //{
+      //   set { buttonHapus.Visible = value; }
+      //}
+
+      //public bool ButtonRefreshVisible
+      //{
+      //   set { buttonRefresh.Visible = value; }
+      //}
+
+      //public bool ButtonCetakVisible
+      //{
+      //   set { buttonCetak.Visible = value; }
+      //}
+
+      public Button ButtonTambah
       {
-         set { buttonTambah.Visible = value; }
+         get { return buttonTambah; }
       }
 
-      public bool ButtonUbahVisible
+      public Button ButtonUbah
       {
-         set { buttonUbah.Visible = value; }
+         get { return buttonUbah; }
       }
 
-      public bool ButtonHapusVisible
+      public Button ButtonHapus
       {
-         set { buttonHapus.Visible = value; }
+         get { return buttonHapus; }
       }
 
-      public bool ButtonRefreshVisible
+      public Button ButtonRefresh
       {
-         set { buttonRefresh.Visible = value; }
+         get { return buttonRefresh; }
       }
 
-      public bool ButtonCetakVisible
+      public Button ButtonCetak
       {
-         set { buttonCetak.Visible = value; }
+         get { return buttonCetak; }
       }
 
       public Button ButtonTutup
