@@ -129,7 +129,7 @@ namespace RumahScarlett.Presentation.Presenters.User
                   if (model != null)
                   {
                      model.login_id = newModel.login_id;
-                     model.role_kode = newModel.role_kode;
+                     model.Role = newModel.Role;
 
                      _bindingView.Refresh();
                   }
