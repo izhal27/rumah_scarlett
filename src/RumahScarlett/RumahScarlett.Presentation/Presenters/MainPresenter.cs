@@ -22,6 +22,7 @@ using RumahScarlett.Presentation.Views.Database;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -41,6 +42,23 @@ namespace RumahScarlett.Presentation.Presenters
       public MainPresenter()
       {
          _view = new MainView();
+
+         // Inisialisai data class RoleManager
+         RoleManager.MenuStrip = _view.MenuStrip;
+         RoleManager.ToolStrip = _view.ToolStrip;
+         RoleManager.RoleKode = MainProgram.UserActive.role_kode;
+
+         var roleManager = new RoleManager();
+
+         // DEVELOPER MODE
+         //
+         // AKtifkan pemanggilan method dibawah ini untuk mereset data pada tabel form_action dan role_detail ketika anda menambahkan Menu, Form, atau control baru,
+         // jangan lupa nonaktifkan kembali, agar tidak melakukan reset setiap kali aplikasi dijalankan.
+         //
+         // roleManager.ResetFormAction(Assembly.GetExecutingAssembly());
+
+         // Enable/Disable MenuStrip dan ToolStrip sesuai Role operator
+         roleManager.PopulateRoleDetailToMenuStripAndToolStrip();
 
          _view.OnViewLoad += _view_OnViewLoad;
          // Operasi

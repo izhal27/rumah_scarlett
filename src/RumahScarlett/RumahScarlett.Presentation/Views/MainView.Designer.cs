@@ -180,6 +180,7 @@
          // 
          // toolStripMenuItemMaster
          // 
+         this.toolStripMenuItemMaster.AccessibleDescription = "Master";
          this.toolStripMenuItemMaster.AccessibleName = "menu";
          this.toolStripMenuItemMaster.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItemDataTipe,
@@ -300,6 +301,7 @@
          // 
          // toolStripMenuItemData
          // 
+         this.toolStripMenuItemData.AccessibleDescription = "Data";
          this.toolStripMenuItemData.AccessibleName = "menu";
          this.toolStripMenuItemData.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItemPenyesuaianStok,
@@ -337,6 +339,7 @@
          // 
          // toolStripMenuItemTransaksi
          // 
+         this.toolStripMenuItemTransaksi.AccessibleDescription = "Transaksi";
          this.toolStripMenuItemTransaksi.AccessibleName = "menu";
          this.toolStripMenuItemTransaksi.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItemKasAwal,
@@ -435,6 +438,7 @@
          // 
          // toolStripMenuItemLaporan
          // 
+         this.toolStripMenuItemLaporan.AccessibleDescription = "Laporan";
          this.toolStripMenuItemLaporan.AccessibleName = "menu";
          this.toolStripMenuItemLaporan.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItemTransaksiByDate,
@@ -567,6 +571,7 @@
          // 
          // toolStripMenuItemDatabase
          // 
+         this.toolStripMenuItemDatabase.AccessibleDescription = "Database";
          this.toolStripMenuItemDatabase.AccessibleName = "menu";
          this.toolStripMenuItemDatabase.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItemBackupDatabase,
@@ -598,6 +603,7 @@
          // 
          // toolStripMenuItemAlat
          // 
+         this.toolStripMenuItemAlat.AccessibleDescription = "Alat";
          this.toolStripMenuItemAlat.AccessibleName = "menu";
          this.toolStripMenuItemAlat.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItemPengaturan});
@@ -618,6 +624,7 @@
          // 
          // toolStripMenuItemBantuan
          // 
+         this.toolStripMenuItemBantuan.AccessibleDescription = "Bantuan";
          this.toolStripMenuItemBantuan.AccessibleName = "menu";
          this.toolStripMenuItemBantuan.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItemTentang});
@@ -630,7 +637,7 @@
          // 
          this.toolStripMenuItemTentang.AccessibleName = "menuForm";
          this.toolStripMenuItemTentang.Name = "toolStripMenuItemTentang";
-         this.toolStripMenuItemTentang.Size = new System.Drawing.Size(118, 22);
+         this.toolStripMenuItemTentang.Size = new System.Drawing.Size(152, 22);
          this.toolStripMenuItemTentang.Tag = "ignore";
          this.toolStripMenuItemTentang.Text = "&Tentang";
          this.toolStripMenuItemTentang.Click += new System.EventHandler(this.toolStripMenuItemTentang_Click);

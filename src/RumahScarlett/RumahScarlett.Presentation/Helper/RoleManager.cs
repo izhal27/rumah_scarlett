@@ -618,12 +618,13 @@ namespace RumahScarlett.Presentation.Helper
             if (!(menu is ToolStripMenuItem)) continue;
 
             var menuItem = (ToolStripMenuItem)menu;
-
+            
             // Lewati jika Menu mempunyai Tag ignore
             if (menuItem.TagIgnore()) continue;
 
             // Cek jika Menu terdapat pada list RoleDetail
-            var status = listRoleDetail.Any(rd => rd.menu_name.Equals(menuItem.Tag.ToString()));
+            var status = listRoleDetail.Any(rd => rd.menu_name.Equals(menuItem.Tag.ToString()) && 
+                         rd.menu_parent.Equals(menuItem.AccessibleDescription));
 
             menuItem.Enabled = status; // True jika ditemukan pada list role detail
 
