@@ -35,8 +35,6 @@ namespace RumahScarlett.Presentation.Views.Pengeluaran
       {
          InitializeComponent();
 
-         InitializeComponent();
-
          panelUp.LabelInfo = $"{Text.ToUpper()}";
          buttonsDeletePrintDetail.ButtonDetailVisible = false;
          buttonsDeletePrintDetail.ButtonDetail.Tag = "ignore";

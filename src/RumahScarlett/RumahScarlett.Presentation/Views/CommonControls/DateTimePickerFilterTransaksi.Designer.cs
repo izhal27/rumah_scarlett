@@ -153,6 +153,7 @@
          this.buttonTampilkan.Name = "buttonTampilkan";
          this.buttonTampilkan.Size = new System.Drawing.Size(75, 23);
          this.buttonTampilkan.TabIndex = 3;
+         this.buttonTampilkan.Tag = "ignore";
          this.buttonTampilkan.Text = "Tampilkan";
          this.buttonTampilkan.UseVisualStyleBackColor = true;
          this.buttonTampilkan.Click += new System.EventHandler(this.buttonTampilkan_Click);

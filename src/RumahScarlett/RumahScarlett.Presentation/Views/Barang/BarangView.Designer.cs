@@ -165,7 +165,7 @@
          this.buttonTampilkan.Name = "buttonTampilkan";
          this.buttonTampilkan.Size = new System.Drawing.Size(75, 25);
          this.buttonTampilkan.TabIndex = 8;
-         this.buttonTampilkan.Tag = "Tampilkan";
+         this.buttonTampilkan.Tag = "ignore";
          this.buttonTampilkan.Text = "Tam&pilkan";
          this.buttonTampilkan.UseVisualStyleBackColor = true;
          // 
@@ -247,7 +247,7 @@
          this.buttonRefresh.Name = "buttonRefresh";
          this.buttonRefresh.Size = new System.Drawing.Size(75, 23);
          this.buttonRefresh.TabIndex = 97;
-         this.buttonRefresh.Tag = "Refresh";
+         this.buttonRefresh.Tag = "ignore";
          this.buttonRefresh.Text = "&Refresh";
          this.buttonRefresh.UseVisualStyleBackColor = true;
          this.buttonRefresh.Click += new System.EventHandler(this.buttonRefresh_Click);
@@ -307,7 +307,7 @@
          this.buttonDetailPenyesuainStok.Name = "buttonDetailPenyesuainStok";
          this.buttonDetailPenyesuainStok.Size = new System.Drawing.Size(100, 23);
          this.buttonDetailPenyesuainStok.TabIndex = 99;
-         this.buttonDetailPenyesuainStok.Tag = "Cetak";
+         this.buttonDetailPenyesuainStok.Tag = "Penyesuain Stok";
          this.buttonDetailPenyesuainStok.Text = "Penyesuain Sto&k";
          this.buttonDetailPenyesuainStok.UseVisualStyleBackColor = true;
          this.buttonDetailPenyesuainStok.Click += new System.EventHandler(this.buttonDetailPenyesuainStok_Click);

@@ -78,6 +78,11 @@ namespace RumahScarlett.Presentation.Helper
             // Buat instance Form dari Type Form tersebut
             Form form = (Form)Activator.CreateInstance(type);
 
+            if (form.Name.Equals("BarangView"))
+            {
+               var foo = true;
+            }
+
             // Lewati jika Form mempunyai Tag ignore
             if (form.TagIgnore())
                continue;

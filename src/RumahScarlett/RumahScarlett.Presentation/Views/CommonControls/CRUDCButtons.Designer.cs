@@ -83,7 +83,7 @@
          this.buttonRefresh.Name = "buttonRefresh";
          this.buttonRefresh.Size = new System.Drawing.Size(75, 23);
          this.buttonRefresh.TabIndex = 98;
-         this.buttonRefresh.Tag = "Refresh";
+         this.buttonRefresh.Tag = "ignore";
          this.buttonRefresh.Text = "&Refresh";
          this.buttonRefresh.UseVisualStyleBackColor = true;
          this.buttonRefresh.Click += new System.EventHandler(this.btnRefresh_Click);

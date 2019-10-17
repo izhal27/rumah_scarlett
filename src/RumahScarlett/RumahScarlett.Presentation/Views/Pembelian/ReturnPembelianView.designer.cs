@@ -159,6 +159,7 @@
          this.buttonCari.Name = "buttonCari";
          this.buttonCari.Size = new System.Drawing.Size(30, 23);
          this.buttonCari.TabIndex = 1;
+         this.buttonCari.Tag = "ignore";
          this.buttonCari.UseVisualStyleBackColor = true;
          this.buttonCari.Click += new System.EventHandler(this.buttonCari_Click);
          // 
@@ -540,7 +541,7 @@
          this.buttonTambah.Name = "buttonTambah";
          this.buttonTambah.Size = new System.Drawing.Size(75, 23);
          this.buttonTambah.TabIndex = 95;
-         this.buttonTambah.Tag = "Tambah";
+         this.buttonTambah.Tag = "ignore";
          this.buttonTambah.Text = "&Tambah";
          this.buttonTambah.UseVisualStyleBackColor = true;
          this.buttonTambah.Click += new System.EventHandler(this.buttonTambah_Click);
@@ -552,7 +553,7 @@
          this.buttonBersihkan.Name = "buttonBersihkan";
          this.buttonBersihkan.Size = new System.Drawing.Size(75, 23);
          this.buttonBersihkan.TabIndex = 98;
-         this.buttonBersihkan.Tag = "Refresh";
+         this.buttonBersihkan.Tag = "ignore";
          this.buttonBersihkan.Text = "&Bersihkan";
          this.buttonBersihkan.UseVisualStyleBackColor = true;
          this.buttonBersihkan.Click += new System.EventHandler(this.buttonBersihkan_Click);
@@ -564,7 +565,7 @@
          this.buttonHapus.Name = "buttonHapus";
          this.buttonHapus.Size = new System.Drawing.Size(75, 23);
          this.buttonHapus.TabIndex = 97;
-         this.buttonHapus.Tag = "Hapus";
+         this.buttonHapus.Tag = "ignore";
          this.buttonHapus.Text = "&Hapus";
          this.buttonHapus.UseVisualStyleBackColor = true;
          this.buttonHapus.Click += new System.EventHandler(this.buttonHapus_Click);
@@ -588,7 +589,7 @@
          this.buttonCetakNota.Name = "buttonCetakNota";
          this.buttonCetakNota.Size = new System.Drawing.Size(75, 23);
          this.buttonCetakNota.TabIndex = 99;
-         this.buttonCetakNota.Tag = "Cetak";
+         this.buttonCetakNota.Tag = "ignore";
          this.buttonCetakNota.Text = "&Cetak Nota";
          this.buttonCetakNota.UseVisualStyleBackColor = true;
          this.buttonCetakNota.Click += new System.EventHandler(this.buttonCetak_Click);
@@ -600,7 +601,7 @@
          this.buttonSimpan.Name = "buttonSimpan";
          this.buttonSimpan.Size = new System.Drawing.Size(75, 23);
          this.buttonSimpan.TabIndex = 97;
-         this.buttonSimpan.Tag = "Hapus";
+         this.buttonSimpan.Tag = "ignore";
          this.buttonSimpan.Text = "&Simpan";
          this.buttonSimpan.UseVisualStyleBackColor = true;
          this.buttonSimpan.Click += new System.EventHandler(this.buttonSimpan_Click);

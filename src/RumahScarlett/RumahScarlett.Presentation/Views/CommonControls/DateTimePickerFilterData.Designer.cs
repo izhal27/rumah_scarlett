@@ -167,6 +167,7 @@
          this.buttonTampilkan.Name = "buttonTampilkan";
          this.buttonTampilkan.Size = new System.Drawing.Size(75, 23);
          this.buttonTampilkan.TabIndex = 3;
+         this.buttonTampilkan.Tag = "ignore";
          this.buttonTampilkan.Text = "Tampilkan";
          this.buttonTampilkan.UseVisualStyleBackColor = true;
          this.buttonTampilkan.Click += new System.EventHandler(this.buttonTampilkan_Click);
@@ -191,12 +192,12 @@
          this.label4.TabIndex = 2;
          this.label4.Text = ":";
          // 
-         // DateTimePickerFilter
+         // DateTimePickerFilterData
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
          this.Controls.Add(this.groupBox1);
-         this.Name = "DateTimePickerFilter";
+         this.Name = "DateTimePickerFilterData";
          this.Size = new System.Drawing.Size(446, 145);
          this.groupBox1.ResumeLayout(false);
          this.tableLayoutPanel1.ResumeLayout(false);

@@ -204,6 +204,7 @@
          this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
          this.Tag = "ignore";
          this.Text = "Login";
+         this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.LoginView_FormClosed);
          this.Load += new System.EventHandler(this.LoginView_Load);
          this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.LoginView_KeyDown);
          this.groupBox1.ResumeLayout(false);

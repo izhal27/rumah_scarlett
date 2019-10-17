@@ -101,7 +101,7 @@
          this.buttonDetail.Name = "buttonDetail";
          this.buttonDetail.Size = new System.Drawing.Size(75, 23);
          this.buttonDetail.TabIndex = 99;
-         this.buttonDetail.Tag = "Refresh";
+         this.buttonDetail.Tag = "Detail";
          this.buttonDetail.Text = "&Detail";
          this.buttonDetail.UseVisualStyleBackColor = true;
          this.buttonDetail.Click += new System.EventHandler(this.buttonDetail_Click);

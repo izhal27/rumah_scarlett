@@ -42,6 +42,11 @@ namespace RumahScarlett.Presentation.Views.Login
             OnButtonLoginClick?.Invoke(buttonLogin, new EventArgs());
          }
       }
+      
+      private void LoginView_FormClosed(object sender, FormClosedEventArgs e)
+      {
+         Application.Exit();
+      }
 
       private void chkBoxShowCharacters_CheckedChanged(object sender, EventArgs e)
       {
