@@ -1,4 +1,5 @@
 ﻿using RumahScarlett.Presentation.Views.CommonControls;
+using Syncfusion.WinForms.DataGrid.Events;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,7 +14,10 @@ namespace RumahScarlett.Presentation.Views.Role
 {
    public interface IRoleView : IDataView
    {
+      event EventHandler<SelectionChangedEventArgs> OnListDataGridSelectionChanged;
+      event EventHandler OnComboBoxMenuSelectedIndexChanged;
       event EventHandler OnButtonUpdateActionClick;
+
       ComboBox ComboBoxMenu { get; }
       TreeView TreeViewAction { get; }
    }

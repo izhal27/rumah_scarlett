@@ -73,6 +73,7 @@
          this.listDataGrid.Size = new System.Drawing.Size(242, 326);
          this.listDataGrid.TabIndex = 0;
          this.listDataGrid.Text = "listDataGrid1";
+         this.listDataGrid.SelectionChanged += new Syncfusion.WinForms.DataGrid.Events.SelectionChangedEventHandler(this.listDataGrid_SelectionChanged);
          // 
          // crudcButtons
          // 
@@ -184,6 +185,7 @@
          this.comboBoxMenu.Name = "comboBoxMenu";
          this.comboBoxMenu.Size = new System.Drawing.Size(150, 21);
          this.comboBoxMenu.TabIndex = 1;
+         this.comboBoxMenu.SelectedIndexChanged += new System.EventHandler(this.comboBoxMenu_SelectedIndexChanged);
          // 
          // RoleView
          // 

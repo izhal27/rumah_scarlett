@@ -130,7 +130,7 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Role
          {
             using (var context = new DbContext())
             {
-               context.Conn.Insert((RoleDetailModel)models);
+               context.Conn.Insert((IEnumerable<RoleDetailModel>)models);
             }
          }
          catch (MySqlException ex)

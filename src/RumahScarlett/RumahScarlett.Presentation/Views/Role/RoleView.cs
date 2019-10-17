@@ -15,6 +15,8 @@ namespace RumahScarlett.Presentation.Views.Role
    public partial class RoleView : BaseDataView, IRoleView
    {
       public event EventHandler OnLoadData;
+      public event EventHandler<SelectionChangedEventArgs> OnListDataGridSelectionChanged;
+      public event EventHandler OnComboBoxMenuSelectedIndexChanged;
       public event EventHandler OnButtonTambahClick;
       public event EventHandler OnButtonUbahClick;
       public event EventHandler OnButtonHapusClick;
@@ -52,7 +54,7 @@ namespace RumahScarlett.Presentation.Views.Role
          crudcButtons.OnRefreshClick += ButtonsCRUD_OnRefreshClickEvent;
          crudcButtons.OnTutupClick += ButtonsCRUD_OnTutupClickEvent;
       }
-      
+
       private void RoleView_Load(object sender, EventArgs e)
       {
          OnLoadData?.Invoke(sender, e);
@@ -62,6 +64,17 @@ namespace RumahScarlett.Presentation.Views.Role
       private void ListDataGrid_CellDoubleClick(object sender, CellClickEventArgs e)
       {
          OnDataGridCellDoubleClick?.Invoke(sender, e);
+      }
+
+      private void listDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+      {
+         checkBoxPilihSemua.Checked = false;
+         OnListDataGridSelectionChanged?.Invoke(sender, e);
+      }
+
+      private void comboBoxMenu_SelectedIndexChanged(object sender, EventArgs e)
+      {
+         OnComboBoxMenuSelectedIndexChanged?.Invoke(sender, e);
       }
 
       private void ButtonsCRUD_OnTambahClick(object sender, EventArgs e)

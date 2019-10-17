@@ -198,6 +198,7 @@
          // 
          // toolStripMenuItemDataTipe
          // 
+         this.toolStripMenuItemDataTipe.AccessibleDescription = "Master";
          this.toolStripMenuItemDataTipe.AccessibleName = "menu";
          this.toolStripMenuItemDataTipe.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItemTipe,
@@ -402,6 +403,7 @@
          // 
          // toolStripMenuItemReturn
          // 
+         this.toolStripMenuItemReturn.AccessibleDescription = "Transaksi";
          this.toolStripMenuItemReturn.AccessibleName = "menu";
          this.toolStripMenuItemReturn.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItemReturnPenjualan,
@@ -503,6 +505,7 @@
          // 
          // toolStripMenuItemLaporanReturn
          // 
+         this.toolStripMenuItemLaporanReturn.AccessibleDescription = "Laporan";
          this.toolStripMenuItemLaporanReturn.AccessibleName = "menu";
          this.toolStripMenuItemLaporanReturn.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItemLaporanReturnPenjualan,

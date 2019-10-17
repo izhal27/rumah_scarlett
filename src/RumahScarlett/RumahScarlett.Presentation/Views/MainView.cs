@@ -69,15 +69,22 @@ namespace RumahScarlett.Presentation.Views
       {
          InitializeComponent();
 
+         // Inisialisai data class RoleManager
+         RoleManager.MenuStrip = menuStripMain;
+         RoleManager.ToolStrip = toolStripMain;
+         RoleManager.RoleKode = MainProgram.UserActive.role_kode;
+
          var roleManager = new RoleManager();
 
-         // AKtifkan method dibawah ini untuk mereset data pada tabel form_action dan role_detail di database,
+         // DEVELOPER MODE
+         //
+         // AKtifkan pemangilan method dibawah ini untuk mereset data pada tabel form_action dan role_detail ketika anda menambahkan Menu, Form, atau control baru,
          // jangan lupa nonaktifkan kembali, agar tidak melakukan reset setiap kali aplikasi dijalankan.
          //
-         roleManager.ResetFormAction(Assembly.GetExecutingAssembly(), menuStripMain, MainProgram.UserActive.role_kode);
+         // roleManager.ResetFormAction(Assembly.GetExecutingAssembly());
 
          // Enable/Disable MenuStrip dan ToolStrip sesuai Role operator
-         roleManager.PopulateRoleDetailToMenuStripAndToolStrip(MainProgram.UserActive.role_kode, menuStripMain, toolStripMain);
+         roleManager.PopulateRoleDetailToMenuStripAndToolStrip();
 
          _dockPanel = new DockPanel();
          _dockPanel.Parent = this;

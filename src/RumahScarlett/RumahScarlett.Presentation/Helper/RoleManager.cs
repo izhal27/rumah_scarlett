@@ -57,9 +57,7 @@ namespace RumahScarlett.Presentation.Helper
       /// Method yang digunakan untuk mereset tabel form_action dan role_detail
       /// </summary>
       /// <param name="assembly">Assembly aplikasi</param>
-      /// <param name="menuStrip">MenuStrip target</param>
-      /// <param name="roleKode">Role kode</param>
-      public void ResetFormAction(Assembly assembly, MenuStrip menuStrip, string roleKode)
+      public void ResetFormAction(Assembly assembly)
       {
          try
          {
@@ -742,7 +740,7 @@ namespace RumahScarlett.Presentation.Helper
       /// Enable / disable buttons pada form sesuai dengan data di tabel role_detail
       /// </summary>
       /// <param name="formTarget">Form target</param>
-      public void GetActionButtons(Control form)
+      public void EnableButtons(Control form)
       {
          // Ambil data sesuai Role kode dan Form name
          var actionButtons = _roleServices.GetAllMenuNameByTagAction(RoleKode, form.Name).ToList();

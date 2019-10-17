@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace RumahScarlett.Presentation.Presenters.Role
 {
@@ -36,7 +37,20 @@ namespace RumahScarlett.Presentation.Presenters.Role
          _services = new RoleServices(new RoleRepository(), new ModelDataAnnotationCheck());
          _roleManager = new RoleManager();
 
+         _roleManager = new RoleManager();
+         _roleManager.TreeView = _view.TreeViewAction;
+         // Enable buttons
+         _roleManager.EnableButtons((Form)_view);
+
+         // Atur DataSource ComboBox menu
+         var listKvp = _roleManager.DataSourceMenuParent();
+         _view.ComboBoxMenu.SetDataSource(listKvp, false);
+
+         PopulateMenuStripToTreeView();
+
          _view.OnLoadData += _view_LoadData;
+         _view.OnListDataGridSelectionChanged += _view_OnListDataGridSelectionChanged;
+         _view.OnComboBoxMenuSelectedIndexChanged += _view_OnComboBoxMenuSelectedIndexChanged;
          _view.OnButtonTambahClick += _view_OnCreateData;
          _view.OnButtonUbahClick += _view_OnUpdateData;
          _view.OnButtonHapusClick += _view_OnDeleteData;
@@ -57,6 +71,16 @@ namespace RumahScarlett.Presentation.Presenters.Role
                _view.ListDataGrid.DataSource = _bindingView;
             }
          }
+      }
+
+      private void _view_OnListDataGridSelectionChanged(object sender, SelectionChangedEventArgs e)
+      {
+         PopulateRoleToTreeView();
+      }
+
+      private void _view_OnComboBoxMenuSelectedIndexChanged(object sender, EventArgs e)
+      {
+         PopulateMenuStripToTreeView();
       }
 
       private void _view_OnCreateData(object sender, EventArgs e)
@@ -192,12 +216,47 @@ namespace RumahScarlett.Presentation.Presenters.Role
 
       private void _view_OnButtonUpdateActionClick(object sender, EventArgs e)
       {
-         throw new NotImplementedException();
+         try
+         {
+            if (_view.ListDataGrid.SelectedItem != null)
+            {
+               if (Messages.Confirm($"Update action Role terpilih?"))
+               {
+                  var itemSelected = (RoleModel)_view.ListDataGrid.SelectedItem;
+                  _roleManager.UpdateRole(itemSelected.kode, _view.ComboBoxMenu.SelectedValue.ToString());
+                  Messages.Info("Role berhasil diupdate");
+               }
+            }
+         }
+         catch (ArgumentException ex)
+         {
+            Messages.Error(ex);
+         }
+         catch (DataAccessException ex)
+         {
+            Messages.Error(ex);
+         }
       }
 
       private void OnDataGrid_CellDoubleClick(object sender, CellClickEventArgs e)
       {
          _view_OnUpdateData(sender, e);
+      }
+
+      private void PopulateMenuStripToTreeView()
+      {
+         _roleManager.PopulateMenuStripToTreeView(_view.ComboBoxMenu.SelectedValue.ToString());
+         // Terapkan role terpilih ke TreeView
+         PopulateRoleToTreeView();
+      }
+
+      private void PopulateRoleToTreeView()
+      {
+         if (_view.ListDataGrid.SelectedItem != null)
+         {
+            var itemSelected = (RoleModel)_view.ListDataGrid.SelectedItem;
+            _roleManager.PopulateRoleDetailToTreeView(itemSelected.kode, _view.ComboBoxMenu.SelectedValue.ToString());
+         }
       }
    }
 }
