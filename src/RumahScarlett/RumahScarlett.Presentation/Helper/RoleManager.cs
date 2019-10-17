@@ -21,10 +21,19 @@ namespace RumahScarlett.Presentation.Helper
 
       private IRoleServices _roleServices;
       private IFormActionServices _formActionServices;
-      // Role kode untuk reset tabel form_action dan role_detail
-      private string _roleKode;
       // Untuk trace tiap2 property di object FormActionModel
       private int _colActNo = 0;
+
+      #endregion
+
+      // ----------------------------------------------------------------------//
+
+      #region >> Properties <<
+
+      public static string RoleKode { private get; set; }
+      public static MenuStrip MenuStrip { private get; set; }
+      public static ToolStrip ToolStrip { private get; set; }
+      public TreeView TreeView { private get; set; }
 
       #endregion
 
@@ -52,13 +61,27 @@ namespace RumahScarlett.Presentation.Helper
       /// <param name="roleKode">Role kode</param>
       public void ResetFormAction(Assembly assembly, MenuStrip menuStrip, string roleKode)
       {
-         _roleKode = roleKode;
-         _formActionServices.DeleteAll();
-         _roleServices.DeleteAllRoleDetail();
+         try
+         {
+            if (MenuStrip == null)
+            {
+               throw new NullReferenceException("Anda tidak mempunyai MenuStrip untuk dimapping ke tabel role_detail");
+            }
 
-         GetTypeFromAssembly(assembly);
+            if (MenuStrip != null)
+            {
+               _formActionServices.DeleteAll();
+               _roleServices.DeleteAllRoleDetail();
+               GetTypeFromAssembly(assembly);
 
-         PopulateMenuStrip(menuStrip.Items);
+               PopulateMenuStrip(MenuStrip.Items);
+            }
+         }
+         catch (Exception ex)
+         {
+            throw new Exception(ex.Message);
+         }
+
       }
 
       /// <summary>
@@ -67,8 +90,8 @@ namespace RumahScarlett.Presentation.Helper
       /// <param name="assembly">Assembly aplikasi</param>
       private void GetTypeFromAssembly(Assembly assembly)
       {
-         // Ambil object yang ada di assembly yang mengandung BaseType name View,
-         // lewati BaseType name yang mengandung Main, Entry atau Base
+         // Ambil semua object di assembly yang bertipe class dan WindowsForm,
+         // dan form yang tidak mengandung nama Main atau Base
          var formTypes = assembly.GetTypes().Where(t => t.IsClass && (t.BaseType.Name.Contains("View") &&
                          !(t.Name.Contains("Main") || t.Name.Contains("Entry") || t.Name.Contains("Base"))));
 
@@ -78,14 +101,8 @@ namespace RumahScarlett.Presentation.Helper
             // Buat instance Form dari Type Form tersebut
             Form form = (Form)Activator.CreateInstance(type);
 
-            if (form.Name.Equals("BarangView"))
-            {
-               var foo = true;
-            }
-
             // Lewati jika Form mempunyai Tag ignore
-            if (form.TagIgnore())
-               continue;
+            if (form.TagIgnore()) continue;
 
             PopulateButtonFormToFormAction(form);
          }
@@ -132,8 +149,7 @@ namespace RumahScarlett.Presentation.Helper
                var button = (Button)ctrl;
 
                // Lewati Button yang mempunyai Tag ignore
-               if (button.TagIgnore())
-                  continue;
+               if (button.TagIgnore()) continue;
 
                // Ambil menu_name dari Tag Button jika tersedia, sebaliknya ambil dari Text Button
                string buttonText = button.Tag != null ? button.Tag.ToString() : button.Text;
@@ -151,7 +167,7 @@ namespace RumahScarlett.Presentation.Helper
                // Buat RoleDetail object
                var roleDetail = new RoleDetailModel()
                {
-                  role_kode = _roleKode,
+                  role_kode = RoleKode,
                   menu_name = buttonText,
                   menu_parent = form.AccessibleName, // Menu header (parent) di MenuStrip
                   form_action = form.Name,
@@ -175,18 +191,16 @@ namespace RumahScarlett.Presentation.Helper
          foreach (var menu in toolStripItemCollection)
          {
             // Lewati menu jika bukan MenuItem (bisa saja Separator atau ComboBox)
-            if (!(menu is ToolStripMenuItem))
-               continue;
+            if (!(menu is ToolStripMenuItem)) continue;
 
             var menuItem = (ToolStripMenuItem)menu;
 
             // Lewati Menu yang mempunyai Tag ignore
-            if (menuItem.TagIgnore())
-               continue;
+            if (menuItem.TagIgnore()) continue;
 
             var roleDetail = new RoleDetailModel()
             {
-               role_kode = _roleKode,
+               role_kode = RoleKode,
                menu_name = menuItem.Tag.ToString(),
                menu_parent = menuItem.AccessibleDescription, // Menu header (parent) di MenuStrip
                form_action = null,
@@ -209,31 +223,37 @@ namespace RumahScarlett.Presentation.Helper
       /// <summary>
       /// DataSource Menu (parent/header) di MenuStrip
       /// </summary>
-      /// <param name="menuStrip">MenuStrip target</param>
       /// <returns>Menbemalikan nilai List KeyValuePair</returns>
-      public List<KeyValuePair<object, string>> DataSourceMenuParent(MenuStrip menuStrip)
+      public List<KeyValuePair<object, string>> DataSourceMenuParent()
       {
-         return menuStrip.Items.Cast<ToolStripDropDownItem>().Where(m => !m.TagIgnore()).ToList()
+         return MenuStrip.Items.Cast<ToolStripDropDownItem>().Where(m => !m.TagIgnore()).ToList()
             .Select(m => new KeyValuePair<object, string>(m.Tag.ToString(), m.Tag.ToString())).ToList();
       }
 
       /// <summary>
       /// Method yang digunakan untuk mengisi setiap data Menu di MenuStrip ke TreeView
       /// </summary>
-      /// <param name="menuStrip">MenuStrip target</param>
-      /// <param name="treeView">TreeView target</param>
       /// <param name="menuParent">Menu (parent/header) terpilih</param>
-      public void PopulateMenuStripToTreeView(MenuStrip menuStrip, TreeView treeView, string menuParent)
+      public void PopulateMenuStripToTreeView(string menuParent)
       {
+         if (MenuStrip == null)
+         {
+            throw new NullReferenceException("Anda tidak mempunyai MenuStrip untuk dimapping ke TreeView");
+         }
+
+         if (TreeView == null)
+         {
+            throw new NullReferenceException("Anda tidak mempunyai TreeView untuk menampilkan data Role detail");
+         }
+
          // Hapus semua node pada TreeView jika TreeView tersebut terdapat node
-         if (treeView.Nodes != null)
-            treeView.Nodes.Clear();
+         if (TreeView.Nodes != null) TreeView.Nodes.Clear();
 
          // Ambil semua data pada tabel form_action
          var listFormAction = _formActionServices.GetAll().ToList();
 
          // Looping setiap menu pada MenuStrip
-         foreach (ToolStripDropDownItem item in menuStrip.Items)
+         foreach (ToolStripDropDownItem item in MenuStrip.Items)
          {
             if (item.Tag != null)
             {
@@ -252,7 +272,7 @@ namespace RumahScarlett.Presentation.Helper
                   MenuParent = ""
                };
 
-               treeView.Nodes.Add(node);
+               TreeView.Nodes.Add(node);
 
                // Tambahkan node baru ke TreeView jika
                // node tersebut memiliki node child (DropDownItem):
@@ -260,8 +280,8 @@ namespace RumahScarlett.Presentation.Helper
             }
          }
 
-         treeView.ExpandAll();
-         treeView.SelectedNode = treeView.Nodes[0];
+         TreeView.ExpandAll();
+         TreeView.SelectedNode = TreeView.Nodes[0];
       }
 
       /// <summary>
@@ -280,14 +300,12 @@ namespace RumahScarlett.Presentation.Helper
             foreach (var item in toolStripMenuItem.DropDownItems)
             {
                // Lewati jika sub MenuItem bukan merupakan toolstripmenuitem (bisa saja ToolStripSeparator)
-               if (!(item is ToolStripMenuItem))
-                  continue;
+               if (!(item is ToolStripMenuItem)) continue;
 
                var menuItem = (ToolStripMenuItem)item;
 
                // Lewati jika sub MenuItem mempunyai Tag ignore
-               if (menuItem.TagIgnore())
-                  continue;
+               if (menuItem.TagIgnore()) continue;
 
                // Buat node child menu / sub menu / menuForm
                var node = new TreeNode(menuItem.Text.Replace("&", ""));
@@ -362,15 +380,14 @@ namespace RumahScarlett.Presentation.Helper
       /// </summary>
       /// <param name="roleKode">Role kode</param>
       /// <param name="menuParent">Menu (parent/header) terpilih</param>
-      /// <param name="treeView">TreeView target</param>
-      public void PopulateRoleDetailToTreeView(string roleKode, string menuParent, TreeView treeView)
+      public void PopulateRoleDetailToTreeView(string roleKode, string menuParent)
       {
          // Ambil data role_detail sesuai dengan role kode dan menu (parent/header) terpilih
          var listRoleDetail = _roleServices.GetByMenuParent(roleKode, menuParent).ToList();
 
          if (listRoleDetail.Count == 0) // Data tidak ada/tidak ditemukan role kode pada tabel role_detail
          {
-            foreach (TreeNode node in treeView.Nodes)
+            foreach (TreeNode node in TreeView.Nodes)
             {
                node.Checked = false;
 
@@ -379,7 +396,7 @@ namespace RumahScarlett.Presentation.Helper
          }
          else
          {
-            PopulateItemChecked(listRoleDetail, treeView.Nodes);
+            PopulateItemChecked(listRoleDetail, TreeView.Nodes);
          }
       }
 
@@ -450,9 +467,7 @@ namespace RumahScarlett.Presentation.Helper
       /// </summary>
       /// <param name="roleKode">Role kode</param>
       /// <param name="menuParent">Menu (parent/header) terpilih</param>
-      /// <param name="treeView">TreeView target</param>
-      /// <returns>Mengembalikan nilai affected rows</returns>
-      public void UpdateRole(string roleKode, string menuParent, TreeView treeView)
+      public void UpdateRole(string roleKode, string menuParent)
       {
          // Buat object RoleDetail yang ingin di update
          var roleDetail = new RoleDetailModel()
@@ -470,7 +485,7 @@ namespace RumahScarlett.Presentation.Helper
          var listRoleDetail = new List<RoleDetailModel>();
 
          // isi data role detail sesuai node yang di check
-         InsertItemChecked(listRoleDetail, roleKode, menuParent, treeView.Nodes);
+         InsertItemChecked(listRoleDetail, roleKode, menuParent, TreeView.Nodes);
 
          _roleServices.Insert(listRoleDetail);
       }
@@ -497,27 +512,25 @@ namespace RumahScarlett.Presentation.Helper
                var roleDetail = new RoleDetailModel();
                roleDetail.role_kode = roleKode;
                roleDetail.tag = nodeTag.Tag; // menu / menuForm / action
+               roleDetail.menu_parent = menuParent; // Menu header (parent) di MenuStrip
 
                switch (roleDetail.tag)
                {
                   case "menu":
 
                      roleDetail.menu_name = node.Text; // Menu tag
-                     roleDetail.menu_parent = null;
                      roleDetail.form_action = null;
 
                      break;
                   case "menuForm":
 
                      roleDetail.menu_name = nodeTag.FormAction; // Form name
-                     roleDetail.menu_parent = menuParent; // Menu header (parent) di MenuStrip
                      roleDetail.form_action = null;
 
                      break;
                   case "action":
 
                      roleDetail.menu_name = node.Text; // Button Tag/Text
-                     roleDetail.menu_parent = menuParent; // Menu header (parent) di MenuStrip
                      roleDetail.form_action = nodeTag.FormAction; // Form name
 
                      break;
@@ -540,39 +553,35 @@ namespace RumahScarlett.Presentation.Helper
       /// <summary>
       /// Method yang digunakan untuk menerapkan Role ke MenuStrip dan ToolStrip
       /// </summary>
-      /// <param name="roleKode">Role kode</param>
-      /// <param name="menuStrip">MenuStrip target</param>
-      /// <param name="toolStrip">ToolStrip target</param>
-      public void PopulateRoleDetailToMenuStripAndToolStrip(string roleKode
-         , MenuStrip menuStrip = null, ToolStrip toolStrip = null)
+      public void PopulateRoleDetailToMenuStripAndToolStrip()
       {
          // Ambil data RoleDetail sesuai dengan Role kode
-         var listRoleDetail = _roleServices.GetAllByRoleKode(roleKode).ToList();
+         var listRoleDetail = _roleServices.GetAllByRoleKode(RoleKode).ToList();
 
-         if (menuStrip != null) // Jika MenuStrip tersedia
+         if (MenuStrip != null) // Jika MenuStrip tersedia
          {
             // Jika data tidak ditemukan, maka disable semua MenuItem pada MenuStrip,
             // kecuali yang mempunyai Tag ignore  
             if (listRoleDetail.Count == 0)
             {
-               foreach (ToolStripMenuItem menu in menuStrip.Items)
+               foreach (ToolStripMenuItem menu in MenuStrip.Items)
                {
                   menu.Enabled = menu.TagIgnore(); // True jika mempunyai Tag ignore
                }
             }
             else
             {
-               EnableMenuStripItem(listRoleDetail, menuStrip.Items);
+               EnableMenuStripItem(listRoleDetail, MenuStrip.Items);
             }
          }
 
-         if (toolStrip != null) // Jika ToolStrip tersedia
+         if (ToolStrip != null) // Jika ToolStrip tersedia
          {
             // Jika data tidak ditemukan, maka disable semua ToolStripItem,
             // kecuali yang mempunyai Tag ignore  
             if (listRoleDetail.Count == 0)
             {
-               foreach (var item in toolStrip.Items)
+               foreach (var item in ToolStrip.Items)
                {
                   if (item is ToolStripButton)
                   {
@@ -593,7 +602,7 @@ namespace RumahScarlett.Presentation.Helper
             }
             else
             {
-               EnableToolStripItem(listRoleDetail, toolStrip);
+               EnableToolStripItem(listRoleDetail, ToolStrip);
             }
          }
       }
@@ -608,14 +617,12 @@ namespace RumahScarlett.Presentation.Helper
          foreach (var menu in items)
          {
             // Lewati jika bukan MenuItem
-            if (!(menu is ToolStripMenuItem))
-               continue;
+            if (!(menu is ToolStripMenuItem)) continue;
 
             var menuItem = (ToolStripMenuItem)menu;
 
             // Lewati jika Menu mempunyai Tag ignore
-            if (menuItem.TagIgnore())
-               continue;
+            if (menuItem.TagIgnore()) continue;
 
             // Cek jika Menu terdapat pada list RoleDetail
             var status = listRoleDetail.Any(rd => rd.menu_name.Equals(menuItem.Tag.ToString()));
@@ -640,8 +647,7 @@ namespace RumahScarlett.Presentation.Helper
                var button = (ToolStripButton)item;
 
                // Lewati jika ToolStripButton mempunyai Tag ignore
-               if (button.TagIgnore())
-                  continue;
+               if (button.TagIgnore()) continue;
 
                // Cek jika ToolStripButton terdapat pada list RoleDetail
                var status = listRoleDetail.Any(rd => rd.menu_name.Equals(button.Tag.ToString()));
@@ -654,8 +660,7 @@ namespace RumahScarlett.Presentation.Helper
                var dropDownButton = (ToolStripDropDownButton)item;
 
                // Lewati jika ToolStripDropDownButton mempunyai Tag ignore
-               if (dropDownButton.TagIgnore())
-                  continue;
+               if (dropDownButton.TagIgnore()) continue;
 
                // Cek jika ToolStripDropDownButton terdapat pada list RoleDetail
                var status = listRoleDetail.Any(rd => rd.menu_name.Equals(dropDownButton.Tag.ToString()));
@@ -685,8 +690,7 @@ namespace RumahScarlett.Presentation.Helper
                var menuItem = (ToolStripMenuItem)item;
 
                // Lewati jika ToolStripMenuItem mempunyai Tag ignore
-               if (menuItem.TagIgnore())
-                  continue;
+               if (menuItem.TagIgnore()) continue;
 
                // Cek jika ToolStripMenuItem terdapat pada list RoleDetail
                var status = listRoleDetail.Any(rd => rd.menu_name.Equals(menuItem.Tag.ToString()));
@@ -735,15 +739,48 @@ namespace RumahScarlett.Presentation.Helper
       #region >> Action Control/Button <<
 
       /// <summary>
-      /// Method yang digunakan untuk mengambil data action Control/Button pada tabel role_detail
+      /// Enable / disable buttons pada form sesuai dengan data di tabel role_detail
       /// </summary>
-      /// <param name="roleKode">Role kode</param>
-      /// <param name="formName">Form name (active)</param>
-      /// <returns>Mengembalikan List data action Control/Button</returns>
-      public List<string> GetActionButtons(string roleKode, string formName)
+      /// <param name="formTarget">Form target</param>
+      public void GetActionButtons(Control form)
       {
          // Ambil data sesuai Role kode dan Form name
-         return _roleServices.GetAllMenuNameByTagAction(roleKode, formName).ToList();
+         var actionButtons = _roleServices.GetAllMenuNameByTagAction(RoleKode, form.Name).ToList();
+
+         EnableButtons(form, actionButtons);
+      }
+
+      /// <summary>
+      /// Enable / disable buttons pada form sesuai dengan data di tabel role_detail
+      /// </summary>
+      /// <param name="form">Form target</param>
+      /// <param name="actionButtons">List action button</param>
+      private void EnableButtons(Control form, List<string> actionButtons)
+      {
+         foreach (Control ctrl in form.Controls)
+         {
+            if (ctrl is Button)
+            {
+               var button = (Button)ctrl;
+
+               if (button.Tag != null)
+               {
+                  if (button.TagIgnore()) continue;
+
+                  // Cek berdasarkan Tag
+                  // True jika button tag ditemukan pada list action,
+                  // sebaliknya false jika tidak ditemukan
+                  button.Enabled = actionButtons.Any(a => a.Equals(button.Tag.ToString()));
+               }
+               else
+               {
+                  // Cek berdasarkan Button text
+                  button.Enabled = actionButtons.Any(a => a.Equals(button.Text));
+               }
+            }
+
+            EnableButtons(ctrl, actionButtons);
+         }
       }
 
       #endregion

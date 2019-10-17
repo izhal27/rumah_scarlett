@@ -23,6 +23,7 @@ namespace RumahScarlett.Presentation.Presenters.Role
       private List<IRoleModel> _listObjs;
       private BindingListView<RoleModel> _bindingView;
       private static string _typeName = "Role";
+      private RoleManager _roleManager;
 
       public IRoleView GetView
       {
@@ -33,6 +34,7 @@ namespace RumahScarlett.Presentation.Presenters.Role
       {
          _view = new RoleView();
          _services = new RoleServices(new RoleRepository(), new ModelDataAnnotationCheck());
+         _roleManager = new RoleManager();
 
          _view.OnLoadData += _view_LoadData;
          _view.OnButtonTambahClick += _view_OnCreateData;
