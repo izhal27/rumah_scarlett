@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using RumahScarlett.Domain.Models.GantiPassword;
 
 namespace RumahScarlett.Services.Services.User
 {
@@ -59,9 +60,22 @@ namespace RumahScarlett.Services.Services.User
          return _repo.LogIn(loginID, password);
       }
 
+      public void GantiPassword(IGantiPasswordModel model)
+      {
+         _moelDAC.ValidateModel(model);
+         
+         if (!model.password_baru.ToLower().Equals(model.konf_password_baru.ToLower()))
+         {
+            throw new ArgumentException("Password Baru dan Konfirmasi Password tidak sama !!!");
+         }
+
+         _repo.GantiPassword(model);
+      }
+
       public void ValidateModel(IUserModel model)
       {
          _moelDAC.ValidateModel(model);
       }
+
    }
 }

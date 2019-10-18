@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using RumahScarlett.CommonComponents;
+using RumahScarlett.Domain.Models.GantiPassword;
 using RumahScarlett.Domain.Models.User;
 using RumahScarlett.Infrastructure.DataAccess.Repositories.User;
 using RumahScarlett.Services.Services;
@@ -235,5 +236,43 @@ namespace RumahScarlett.Services.UnitTests.User
          }
       }
 
+      [Fact]
+      private void ShouldReturnSuccessForGantiPassword()
+      {
+         var operationSecceded = false;
+         var dataAccessJsonStr = string.Empty;
+         var formattedJsonStr = string.Empty;
+
+         try
+         {
+            var model = new GantiPasswordModel
+            {
+               login_id = "gooner",
+               password_sekarang = "gooner",
+               password_baru = "izhal",
+               konf_password_baru = "izhal"
+            };
+
+            _services.GantiPassword(model);
+
+            operationSecceded = true;
+         }
+         catch (DataAccessException ex)
+         {
+            operationSecceded = ex.DataAccessStatusInfo.OperationSucceeded;
+            dataAccessJsonStr = JsonConvert.SerializeObject(ex.DataAccessStatusInfo);
+            formattedJsonStr = JToken.Parse(dataAccessJsonStr).ToString();
+         }
+
+         try
+         {
+            Assert.True(operationSecceded);
+            _testOutputHelper.WriteLine("Password berhasil diganti.");
+         }
+         finally
+         {
+            _testOutputHelper.WriteLine(formattedJsonStr);
+         }
+      }
    }
 }

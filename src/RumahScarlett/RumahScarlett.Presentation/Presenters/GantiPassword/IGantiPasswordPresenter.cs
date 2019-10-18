@@ -1,4 +1,4 @@
-﻿using RumahScarlett.Presentation.Views.GanitPassword;
+﻿using RumahScarlett.Presentation.Views.GantiPassword;
 using System;
 using System.Collections.Generic;
 using System.Linq;

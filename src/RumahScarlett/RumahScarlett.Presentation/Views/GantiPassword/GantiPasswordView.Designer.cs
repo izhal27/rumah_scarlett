@@ -1,4 +1,4 @@
-﻿namespace RumahScarlett.Presentation.Views.GanitPassword
+﻿namespace RumahScarlett.Presentation.Views.GantiPassword
 {
    partial class GantiPasswordView
    {
@@ -184,6 +184,7 @@
          this.Name = "GantiPasswordView";
          this.Tag = "ignore";
          this.Text = "Ganti Password";
+         this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.GantiPasswordView_KeyDown);
          this.Controls.SetChildIndex(this.panelUp, 0);
          this.Controls.SetChildIndex(this.operationButtons, 0);
          this.Controls.SetChildIndex(this.groupBox1, 0);

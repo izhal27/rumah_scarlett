@@ -1,4 +1,5 @@
-﻿using RumahScarlett.Domain.Models.User;
+﻿using RumahScarlett.Domain.Models.GantiPassword;
+using RumahScarlett.Domain.Models.User;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,5 +11,6 @@ namespace RumahScarlett.Services.Services.User
    public interface IUserRepository : IBaseRepository<IUserModel>
    {
       IUserModel LogIn(string loginID, string password);
+      void GantiPassword(IGantiPasswordModel model);
    }
 }

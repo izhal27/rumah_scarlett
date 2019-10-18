@@ -326,13 +326,13 @@
       <DependentUpon>BackupRestoreDatabaseView.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Database\IBackupRestoreDatabaseView.cs" />
-    <Compile Include="Views\GanitPassword\GantiPasswordView.cs">
+    <Compile Include="Views\GantiPassword\GantiPasswordView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\GanitPassword\GantiPasswordView.Designer.cs">
+    <Compile Include="Views\GantiPassword\GantiPasswordView.Designer.cs">
       <DependentUpon>GantiPasswordView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\GanitPassword\IGantiPasswordView.cs" />
+    <Compile Include="Views\GantiPassword\IGantiPasswordView.cs" />
     <Compile Include="Views\HutangOperasional\HutangOperasionalEntryView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -743,7 +743,7 @@
     <EmbeddedResource Include="Views\Database\BackupRestoreDatabaseView.resx">
       <DependentUpon>BackupRestoreDatabaseView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\GanitPassword\GantiPasswordView.resx">
+    <EmbeddedResource Include="Views\GantiPassword\GantiPasswordView.resx">
       <DependentUpon>GantiPasswordView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\HutangOperasional\HutangOperasionalEntryView.resx">

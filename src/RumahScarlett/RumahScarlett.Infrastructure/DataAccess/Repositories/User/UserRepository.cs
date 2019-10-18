@@ -9,6 +9,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using RumahScarlett.Domain.Models.GantiPassword;
+using MySql.Data.MySqlClient;
 
 namespace RumahScarlett.Infrastructure.DataAccess.Repositories.User
 {
@@ -108,7 +110,7 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.User
                         () => CheckModelExist(context, id));
          }
       }
-      
+
       public IUserModel LogIn(string loginID, string password)
       {
          var dataAccessStatus = new DataAccessStatus();
@@ -133,11 +135,53 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.User
                dataAccessStatus.Status = "Login Error";
                dataAccessStatus.CustomMessage = errorMessage;
 
-               throw new DataAccessException(dataAccessStatus); ;
+               throw new DataAccessException(dataAccessStatus);
             }
          }
 
          return null;
+      }
+
+      public void GantiPassword(IGantiPasswordModel model)
+      {
+         var dataAccessStatus = new DataAccessStatus();
+
+         using (var context = new DbContext())
+         {
+
+            try
+            {
+               var queryStr = "SELECT * FROM user WHERE login_id = @login_id";
+               var userModel = context.Conn.Query<UserModel>(queryStr, new { model.login_id }).FirstOrDefault();
+
+               if (userModel != null)
+               {
+                  if (!PasswordHash.ValidatePassword(model.password_sekarang, userModel.password))
+                  {
+                     dataAccessStatus.Status = "Password Wrong";
+                     dataAccessStatus.CustomMessage = "Password Sekarang salah !!!";
+
+                     throw new DataAccessException(dataAccessStatus);
+                  }
+                  
+                  userModel.password = PasswordHash.CreateHash(model.password_baru);
+                  context.Conn.Update(userModel);
+               }
+               else
+               {
+                  dataAccessStatus.Status = "User Not Found";
+                  dataAccessStatus.CustomMessage = "User tidak ditemukan.";
+
+                  throw new DataAccessException(dataAccessStatus);
+               }
+            }
+            catch (MySqlException ex)
+            {
+               dataAccessStatus = SetDataAccessValues(ex, ErrorMessageType.Update);
+               throw new DataAccessException(message: ex.Message, innerException: ex.InnerException,
+                                             dataAccessStatus: dataAccessStatus);
+            }
+         }
       }
 
       private void ValidateModel(DbContext context, IUserModel model, DataAccessStatus dataAccessStatus)

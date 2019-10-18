@@ -9,11 +9,26 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace RumahScarlett.Presentation.Views.GanitPassword
+namespace RumahScarlett.Presentation.Views.GantiPassword
 {
    public partial class GantiPasswordView : BaseEntryView, IGantiPasswordView
    {
-      public event EventHandler OnButtonSimoanClick;
+      public event EventHandler OnButtonSimpanClick;
+
+      public BaseTextBox TextBoxPasswordSekarang
+      {
+         get { return textBoxPasswordSekarang; }
+      }
+
+      public BaseTextBox TextBoxPasswordBaru
+      {
+         get { return textBoxPasswordBaru; }
+      }
+
+      public BaseTextBox TextBoxKonfPasswordBaru
+      {
+         get { return textBoxKonfPasswordBaru; }
+      }
 
       public GantiPasswordView()
       {
@@ -26,7 +41,7 @@ namespace RumahScarlett.Presentation.Views.GanitPassword
 
       private void OperationButtons_OnSaveButtonClick(object sender, EventArgs e)
       {
-         OnButtonSimoanClick?.Invoke(sender, e);
+         OnButtonSimpanClick?.Invoke(sender, e);
       }
 
       private void checkBoxShowCharacters_CheckedChanged(object sender, EventArgs e)
@@ -48,6 +63,14 @@ namespace RumahScarlett.Presentation.Views.GanitPassword
       public void ShowView()
       {
          ShowDialog();
+      }
+
+      private void GantiPasswordView_KeyDown(object sender, KeyEventArgs e)
+      {
+         if (e.KeyCode == Keys.Enter)
+         {
+            OnButtonSimpanClick?.Invoke(sender, e);
+         }
       }
    }
 }
