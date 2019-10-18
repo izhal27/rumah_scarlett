@@ -23,9 +23,15 @@ namespace RumahScarlett.Presentation.Views.ModelControls
          {
             return comboBox.SelectedIndex != -1 ? (ISatuanModel)comboBox.SelectedItem : null;
          }
-         set { comboBox.SelectedItem = comboBox.Items.Cast<ISatuanModel>().Where(t => t.id == value.id).FirstOrDefault(); }
+         set
+         {
+            if (value != null)
+            {
+               comboBox.SelectedItem = comboBox.Items.Cast<ISatuanModel>().Where(t => t.id == value.id).FirstOrDefault();
+            }
+         }
       }
-      
+
       public ComboBoxSatuan()
       {
          InitializeComponent();
