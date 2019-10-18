@@ -139,7 +139,7 @@
          this.textBoxNama.Name = "textBoxNama";
          this.textBoxNama.Size = new System.Drawing.Size(250, 20);
          this.textBoxNama.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
-         this.textBoxNama.TabIndex = 0;
+         this.textBoxNama.TabIndex = 1;
          // 
          // textBoxKeterangan
          // 
@@ -151,7 +151,7 @@
          this.textBoxKeterangan.Name = "textBoxKeterangan";
          this.textBoxKeterangan.Size = new System.Drawing.Size(250, 100);
          this.textBoxKeterangan.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
-         this.textBoxKeterangan.TabIndex = 1;
+         this.textBoxKeterangan.TabIndex = 2;
          // 
          // label4
          // 
