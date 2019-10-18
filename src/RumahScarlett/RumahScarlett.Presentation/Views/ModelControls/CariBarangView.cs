@@ -27,9 +27,8 @@ namespace RumahScarlett.Presentation.Views.ModelControls
          InitializeComponent();
       }
 
-      public CariBarangView(List<IBarangModel> listsBarang, TipePencarian tipePencarian, string kodeOrNamaValue = default(string)) : base()
+      public CariBarangView(List<IBarangModel> listsBarang, TipePencarian tipePencarian, string kodeOrNamaValue = default(string)) : this()
       {
-
          _listsBarang = listsBarang;
          _bindingView = new BindingListView<BarangModel>(_listsBarang);
          listDataGrid.DataSource = _bindingView;
@@ -61,7 +60,7 @@ namespace RumahScarlett.Presentation.Views.ModelControls
 
          OnEnterKeyDown += CariBarangPembelianView_OnEnterKeyDown;
       }
-      
+
       private void CariBarangView_Load(object sender, EventArgs e)
       {
          if (!string.IsNullOrWhiteSpace(_kodeOrNamaValue))
