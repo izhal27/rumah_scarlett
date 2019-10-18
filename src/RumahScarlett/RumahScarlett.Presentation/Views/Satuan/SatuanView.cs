@@ -52,7 +52,10 @@ namespace RumahScarlett.Presentation.Views.Satuan
 
       private void ListDataGrid_CellDoubleClick(object sender, CellClickEventArgs e)
       {
-         OnDataGridCellDoubleClick?.Invoke(sender, e);
+         if (crudcButtons.ButtonUbah.Enabled)
+         {
+            OnDataGridCellDoubleClick?.Invoke(sender, e);
+         }
       }
 
       private void ButtonsCRUD_OnTambahClick(object sender, EventArgs e)

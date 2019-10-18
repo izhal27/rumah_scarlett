@@ -92,7 +92,10 @@ namespace RumahScarlett.Presentation.Views.Barang
 
       private void listDataGrid_CellDoubleClick(object sender, CellClickEventArgs e)
       {
-         OnDataGridCellDoubleClick?.Invoke(sender, e);
+         if (buttonUbah.Enabled)
+         {
+            OnDataGridCellDoubleClick?.Invoke(sender, e);
+         }
       }
 
       private void radioButtonTipe_CheckedChanged(object sender, EventArgs e)

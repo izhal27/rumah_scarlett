@@ -64,7 +64,10 @@ namespace RumahScarlett.Presentation.Views.Role
 
       private void ListDataGrid_CellDoubleClick(object sender, CellClickEventArgs e)
       {
-         OnDataGridCellDoubleClick?.Invoke(sender, e);
+         if (crudcButtons.ButtonUbah.Enabled)
+         {
+            OnDataGridCellDoubleClick?.Invoke(sender, e);
+         }
       }
 
       private void listDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)

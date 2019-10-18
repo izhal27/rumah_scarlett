@@ -16,20 +16,15 @@ namespace RumahScarlett.Presentation.Views.CommonControls
       public event EventHandler OnCetakClick;
       public event EventHandler OnDetailClick;
       public event EventHandler OnTutupClick;
-
-      public bool ButtonHapusVisible
+      
+      public Button ButtonHapus
       {
-         set { buttonHapus.Visible = value; }
+         get { return buttonHapus; }
       }
 
-      public bool ButtonCetakVisible
+      public Button ButtonCetak
       {
-         set { buttonCetak.Visible = value; }
-      }
-
-      public bool ButtonDetailVisible
-      {
-         set { buttonDetail.Visible = value; }
+         get { return buttonCetak; }
       }
 
       public Button ButtonDetail

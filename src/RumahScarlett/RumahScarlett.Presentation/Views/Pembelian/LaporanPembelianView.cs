@@ -52,7 +52,10 @@ namespace RumahScarlett.Presentation.Views.Pembelian
 
       private void listDataGrid_CellDoubleClick(object sender, CellClickEventArgs e)
       {
-         OnDataGridCellDoubleClick?.Invoke(sender, e);
+         if (buttonsDeletePrintDetail.ButtonDetail.Enabled)
+         {
+            OnDataGridCellDoubleClick?.Invoke(sender, e);
+         }
       }
 
       private void ButtonsDeletePrintDetail_OnHapusClick(object sender, EventArgs e)

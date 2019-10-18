@@ -36,7 +36,7 @@ namespace RumahScarlett.Presentation.Views.Pengeluaran
          InitializeComponent();
 
          panelUp.LabelInfo = $"{Text.ToUpper()}";
-         buttonsDeletePrintDetail.ButtonDetailVisible = false;
+         buttonsDeletePrintDetail.ButtonDetail.Visible = false;
          buttonsDeletePrintDetail.ButtonDetail.Tag = "ignore";
 
          dateTimePickerFilterTransaksi.OnTampilkanClick += DateTimePickerFilterTransaksi_OnTampilkanClick;
@@ -54,7 +54,10 @@ namespace RumahScarlett.Presentation.Views.Pengeluaran
 
       private void listDataGrid_CellDoubleClick(object sender, CellClickEventArgs e)
       {
-         OnDataGridCellDoubleClick?.Invoke(sender, e);
+         if (buttonsDeletePrintDetail.ButtonDetail.Enabled)
+         {
+            OnDataGridCellDoubleClick?.Invoke(sender, e);
+         }
       }
 
       private void ButtonsDeletePrintDetail_OnHapusClick(object sender, EventArgs e)
