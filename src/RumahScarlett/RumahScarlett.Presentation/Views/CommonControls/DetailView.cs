@@ -25,8 +25,10 @@ namespace RumahScarlett.Presentation.Views.CommonControls
          InitializeComponent();
       }
 
-      public DetailView(string textTitle, bool buttonCetakVisible = true) : base()
+      public DetailView(string textTitle, bool buttonCetakVisible = true)
       {
+         InitializeComponent();
+
          Text = textTitle;
          panelUp.LabelInfo = $"{Text.ToUpper()}";
          buttonCetak.Visible = buttonCetakVisible;
