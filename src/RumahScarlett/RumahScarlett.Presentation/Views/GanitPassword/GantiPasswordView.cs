@@ -19,7 +19,7 @@ namespace RumahScarlett.Presentation.Views.GanitPassword
       {
          InitializeComponent();
 
-         panelUp.LabelInfo = $"DATA {Text.ToUpper()}";
+         panelUp.LabelInfo = $"{Text.ToUpper()}";
 
          operationButtons.OnSaveButtonClick += OperationButtons_OnSaveButtonClick;
       }
@@ -43,6 +43,11 @@ namespace RumahScarlett.Presentation.Views.GanitPassword
       private void textBox_ImeModeChanged(object sender, EventArgs e)
       {
          ((TextBox)sender).PasswordChar = '\0'; // Disable/show password char
+      }
+
+      public void ShowView()
+      {
+         ShowDialog();
       }
    }
 }

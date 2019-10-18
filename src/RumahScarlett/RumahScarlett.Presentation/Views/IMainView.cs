@@ -12,6 +12,7 @@ namespace RumahScarlett.Presentation.Views
    {
       event EventHandler OnViewLoad;
       event EventHandler OnLogOutClick;
+      event EventHandler OnGantiPasswordViewClick;
       event EventHandler<MainViewEventArgs> OnTipeViewClick;
       event EventHandler<MainViewEventArgs> OnSubTipeViewClick;
       event EventHandler<MainViewEventArgs> OnSupplierViewClick;

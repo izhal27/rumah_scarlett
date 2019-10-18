@@ -21,6 +21,7 @@ namespace RumahScarlett.Presentation.Views
 
       public event EventHandler OnViewLoad;
       public event EventHandler OnLogOutClick;
+      public event EventHandler OnGantiPasswordViewClick;
       public event EventHandler<MainViewEventArgs> OnTipeViewClick;
       public event EventHandler<MainViewEventArgs> OnSubTipeViewClick;
       public event EventHandler<MainViewEventArgs> OnSupplierViewClick;
@@ -101,7 +102,7 @@ namespace RumahScarlett.Presentation.Views
 
       private void toolStripMenuItemGantiPassword_Click(object sender, EventArgs e)
       {
-
+         OnGantiPasswordViewClick?.Invoke(sender, e);
       }
 
       private void toolStripMenuItemLogout_Click(object sender, EventArgs e)

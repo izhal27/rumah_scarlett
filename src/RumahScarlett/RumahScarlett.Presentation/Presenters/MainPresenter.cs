@@ -1,6 +1,7 @@
 ﻿using RumahScarlett.Presentation.Helper;
 using RumahScarlett.Presentation.Presenters.Barang;
 using RumahScarlett.Presentation.Presenters.Database;
+using RumahScarlett.Presentation.Presenters.GantiPassword;
 using RumahScarlett.Presentation.Presenters.HutangOperasional;
 using RumahScarlett.Presentation.Presenters.KasAwal;
 using RumahScarlett.Presentation.Presenters.Laporan;
@@ -63,6 +64,7 @@ namespace RumahScarlett.Presentation.Presenters
          _view.OnViewLoad += _view_OnViewLoad;
          // Operasi
          _view.OnLogOutClick += _view_OnLogOutClick;
+         _view.OnGantiPasswordViewClick += _view_OnGantiPasswordViewClick;
          // Master
          _view.OnTipeViewClick += _view_OnTipeViewClick;
          _view.OnSubTipeViewClick += _view_OnSubTipeViewClick;
@@ -111,6 +113,14 @@ namespace RumahScarlett.Presentation.Presenters
          MainProgram.UserActive = null;
          ((Form)_view).Dispose();
          ((Form)new LoginPresenter().GetView).ShowDialog();
+      }
+
+      private void _view_OnGantiPasswordViewClick(object sender, EventArgs e)
+      {
+         using (new WaitCursorHandler())
+         {
+            new GantiPasswordPresenter().GetView.ShowView();
+         }
       }
 
       private void _view_OnTipeViewClick(object sender, MainViewEventArgs e)

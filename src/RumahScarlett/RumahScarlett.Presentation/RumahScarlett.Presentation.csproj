@@ -147,6 +147,8 @@
     <Compile Include="Presenters\Barang\IBarangPresenter.cs" />
     <Compile Include="Presenters\Database\BackupRestoreDatabasePresenter.cs" />
     <Compile Include="Presenters\Database\IBackupRestoreDatabasePresenter.cs" />
+    <Compile Include="Presenters\GantiPassword\GantiPasswordPresenter.cs" />
+    <Compile Include="Presenters\GantiPassword\IGantiPasswordPresenter.cs" />
     <Compile Include="Presenters\HutangOperasional\HutangOperasionalPresenter.cs" />
     <Compile Include="Presenters\HutangOperasional\IHutangOperasionalPresenter.cs" />
     <Compile Include="Presenters\IMainPresenter.cs" />

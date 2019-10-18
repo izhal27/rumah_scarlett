@@ -9,8 +9,10 @@ using System.Threading.Tasks;
 
 namespace RumahScarlett.Presentation.Views.GanitPassword
 {
-   public interface IGantiPasswordView
+   public interface IGantiPasswordView : IView
    {
       event EventHandler OnButtonSimoanClick;
+
+      void ShowView();
    }
 }
