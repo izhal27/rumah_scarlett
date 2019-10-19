@@ -92,6 +92,7 @@ namespace RumahScarlett.Presentation.Presenters
          _view.OnLaporanReturnPenjualanViewClick += _view_OnLaporanReturnPenjualanViewClick;
          _view.OnLaporanReturnPembelianViewClick += _view_OnLaporanReturnPembelianViewClick;
          _view.OnLaporanStatusBarangViewClick += _view_OnLaporanStatusBarangViewClick;
+         _view.OnLaporanStatusPerBarangViewClick += _view_OnLaporanStatusPerBarangViewClick;
          _view.OnLaporanLabaRugiViewClick += _view_OnLaporanLabaRugiViewClick;
          // Database
          _view.OnBackupDatabaseViewClick += _view_OnBackupDatabaseViewClick;
@@ -266,6 +267,12 @@ namespace RumahScarlett.Presentation.Presenters
          {
             new LaporanStatusBarangPresenter().GetView.ShowView();
          }
+      }
+      
+      private void _view_OnLaporanStatusPerBarangViewClick(object sender, MainViewEventArgs e)
+      {
+         var view = (DockContent)new LaporanStatusPerBarangPresenter().GetView;
+         ShowChildForm(view, e);
       }
 
       private void _view_OnLaporanLabaRugiViewClick(object sender, EventArgs e)

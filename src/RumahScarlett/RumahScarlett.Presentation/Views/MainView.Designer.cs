@@ -91,6 +91,8 @@
          this.toolStripButtonBarang = new System.Windows.Forms.ToolStripButton();
          this.toolStripButtonPembelian = new System.Windows.Forms.ToolStripButton();
          this.toolStripButtonPenjualan = new System.Windows.Forms.ToolStripButton();
+         this.toolStripMenuItemPerHari = new System.Windows.Forms.ToolStripMenuItem();
+         this.toolStripMenuItemPerBarang = new System.Windows.Forms.ToolStripMenuItem();
          this.statusStripMain.SuspendLayout();
          this.menuStripMain.SuspendLayout();
          this.toolStripMain.SuspendLayout();
@@ -214,7 +216,7 @@
          this.toolStripMenuItemTipe.AccessibleDescription = "Master";
          this.toolStripMenuItemTipe.AccessibleName = "menuForm";
          this.toolStripMenuItemTipe.Name = "toolStripMenuItemTipe";
-         this.toolStripMenuItemTipe.Size = new System.Drawing.Size(152, 22);
+         this.toolStripMenuItemTipe.Size = new System.Drawing.Size(120, 22);
          this.toolStripMenuItemTipe.Tag = "TipeView";
          this.toolStripMenuItemTipe.Text = "&Tipe";
          this.toolStripMenuItemTipe.Click += new System.EventHandler(this.toolStripMenuItemTipe_Click);
@@ -224,7 +226,7 @@
          this.toolStripMenuItemSubTipe.AccessibleDescription = "Master";
          this.toolStripMenuItemSubTipe.AccessibleName = "menuForm";
          this.toolStripMenuItemSubTipe.Name = "toolStripMenuItemSubTipe";
-         this.toolStripMenuItemSubTipe.Size = new System.Drawing.Size(152, 22);
+         this.toolStripMenuItemSubTipe.Size = new System.Drawing.Size(120, 22);
          this.toolStripMenuItemSubTipe.Tag = "SubTipeView";
          this.toolStripMenuItemSubTipe.Text = "&Sub Tipe";
          this.toolStripMenuItemSubTipe.Click += new System.EventHandler(this.toolStripMenuItemSubTipe_Click);
@@ -421,7 +423,7 @@
          this.toolStripMenuItemReturnPenjualan.AccessibleDescription = "Transaksi";
          this.toolStripMenuItemReturnPenjualan.AccessibleName = "menuForm";
          this.toolStripMenuItemReturnPenjualan.Name = "toolStripMenuItemReturnPenjualan";
-         this.toolStripMenuItemReturnPenjualan.Size = new System.Drawing.Size(152, 22);
+         this.toolStripMenuItemReturnPenjualan.Size = new System.Drawing.Size(130, 22);
          this.toolStripMenuItemReturnPenjualan.Tag = "ReturnPenjualanView";
          this.toolStripMenuItemReturnPenjualan.Text = "Pen&jualan";
          this.toolStripMenuItemReturnPenjualan.Click += new System.EventHandler(this.toolStripMenuItemReturnPenjualan_Click);
@@ -431,7 +433,7 @@
          this.toolStripMenuItemReturnPembelian.AccessibleDescription = "Transaksi";
          this.toolStripMenuItemReturnPembelian.AccessibleName = "menuForm";
          this.toolStripMenuItemReturnPembelian.Name = "toolStripMenuItemReturnPembelian";
-         this.toolStripMenuItemReturnPembelian.Size = new System.Drawing.Size(152, 22);
+         this.toolStripMenuItemReturnPembelian.Size = new System.Drawing.Size(130, 22);
          this.toolStripMenuItemReturnPembelian.Tag = "ReturnPembelianView";
          this.toolStripMenuItemReturnPembelian.Text = "Pembel&ian";
          this.toolStripMenuItemReturnPembelian.Click += new System.EventHandler(this.toolStripMenuItemReturnPembelian_Click);
@@ -547,12 +549,14 @@
          // toolStripMenuItemStatusBarang
          // 
          this.toolStripMenuItemStatusBarang.AccessibleDescription = "Laporan";
-         this.toolStripMenuItemStatusBarang.AccessibleName = "menuForm";
+         this.toolStripMenuItemStatusBarang.AccessibleName = "menu";
+         this.toolStripMenuItemStatusBarang.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItemPerHari,
+            this.toolStripMenuItemPerBarang});
          this.toolStripMenuItemStatusBarang.Name = "toolStripMenuItemStatusBarang";
          this.toolStripMenuItemStatusBarang.Size = new System.Drawing.Size(152, 22);
-         this.toolStripMenuItemStatusBarang.Tag = "LaporanStatusBarangView";
+         this.toolStripMenuItemStatusBarang.Tag = "Status Barang";
          this.toolStripMenuItemStatusBarang.Text = "&Status Barang";
-         this.toolStripMenuItemStatusBarang.Click += new System.EventHandler(this.toolStripMenuItemStatusBarang_Click);
          // 
          // toolStripSeparator5
          // 
@@ -617,7 +621,7 @@
          this.toolStripMenuItemPengaturan.AccessibleDescription = "Alat";
          this.toolStripMenuItemPengaturan.AccessibleName = "menuForm";
          this.toolStripMenuItemPengaturan.Name = "toolStripMenuItemPengaturan";
-         this.toolStripMenuItemPengaturan.Size = new System.Drawing.Size(152, 22);
+         this.toolStripMenuItemPengaturan.Size = new System.Drawing.Size(135, 22);
          this.toolStripMenuItemPengaturan.Tag = "PengaturanView";
          this.toolStripMenuItemPengaturan.Text = "&Pengaturan";
          this.toolStripMenuItemPengaturan.Click += new System.EventHandler(this.toolStripMenuItemPengaturan_Click);
@@ -637,7 +641,7 @@
          // 
          this.toolStripMenuItemTentang.AccessibleName = "menuForm";
          this.toolStripMenuItemTentang.Name = "toolStripMenuItemTentang";
-         this.toolStripMenuItemTentang.Size = new System.Drawing.Size(152, 22);
+         this.toolStripMenuItemTentang.Size = new System.Drawing.Size(118, 22);
          this.toolStripMenuItemTentang.Tag = "ignore";
          this.toolStripMenuItemTentang.Text = "&Tentang";
          this.toolStripMenuItemTentang.Click += new System.EventHandler(this.toolStripMenuItemTentang_Click);
@@ -703,6 +707,26 @@
          this.toolStripButtonPenjualan.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
          this.toolStripButtonPenjualan.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
          this.toolStripButtonPenjualan.Click += new System.EventHandler(this.toolStripButtonPenjualan_Click);
+         // 
+         // toolStripMenuItemPerHari
+         // 
+         this.toolStripMenuItemPerHari.AccessibleDescription = "Laporan";
+         this.toolStripMenuItemPerHari.AccessibleName = "menuForm";
+         this.toolStripMenuItemPerHari.Name = "toolStripMenuItemPerHari";
+         this.toolStripMenuItemPerHari.Size = new System.Drawing.Size(152, 22);
+         this.toolStripMenuItemPerHari.Tag = "LaporanStatusBarangView";
+         this.toolStripMenuItemPerHari.Text = "Per Hari";
+         this.toolStripMenuItemPerHari.Click += new System.EventHandler(this.toolStripMenuItemPerHari_Click);
+         // 
+         // toolStripMenuItemPerBarang
+         // 
+         this.toolStripMenuItemPerBarang.AccessibleDescription = "Laporan";
+         this.toolStripMenuItemPerBarang.AccessibleName = "menuForm";
+         this.toolStripMenuItemPerBarang.Name = "toolStripMenuItemPerBarang";
+         this.toolStripMenuItemPerBarang.Size = new System.Drawing.Size(152, 22);
+         this.toolStripMenuItemPerBarang.Tag = "LaporanStatusPerBarangView";
+         this.toolStripMenuItemPerBarang.Text = "Per Barang";
+         this.toolStripMenuItemPerBarang.Click += new System.EventHandler(this.toolStripMenuItemPerBarang_Click);
          // 
          // MainView
          // 
@@ -794,6 +818,8 @@
       private System.Windows.Forms.ToolStripSeparator toolStripSeparator9;
       private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemLogout;
       private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+      private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemPerHari;
+      private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemPerBarang;
    }
 }
 

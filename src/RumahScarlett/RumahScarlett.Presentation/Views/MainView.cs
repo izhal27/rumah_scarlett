@@ -45,6 +45,7 @@ namespace RumahScarlett.Presentation.Views
       public event EventHandler<MainViewEventArgs> OnLaporanReturnPenjualanViewClick;
       public event EventHandler<MainViewEventArgs> OnLaporanReturnPembelianViewClick;
       public event EventHandler OnLaporanStatusBarangViewClick;
+      public event EventHandler<MainViewEventArgs> OnLaporanStatusPerBarangViewClick;
       public event EventHandler OnLaporanLabaRugiViewClick;
       public event EventHandler OnPengaturanViewClick;
       public event EventHandler OnBackupDatabaseViewClick;
@@ -235,9 +236,14 @@ namespace RumahScarlett.Presentation.Views
          OnLaporanReturnPembelianViewClick?.Invoke(sender, _eventArgs);
       }
 
-      private void toolStripMenuItemStatusBarang_Click(object sender, EventArgs e)
+      private void toolStripMenuItemPerHari_Click(object sender, EventArgs e)
       {
          OnLaporanStatusBarangViewClick?.Invoke(sender, e);
+      }
+
+      private void toolStripMenuItemPerBarang_Click(object sender, EventArgs e)
+      {
+         OnLaporanStatusPerBarangViewClick?.Invoke(sender, _eventArgs);
       }
 
       private void toolStripMenuItemLabaRugi_Click(object sender, EventArgs e)

@@ -156,9 +156,11 @@
     <Compile Include="Presenters\KasAwal\KasAwalPresenter.cs" />
     <Compile Include="Presenters\Laporan\ILaporanLabaRugiPresenter.cs" />
     <Compile Include="Presenters\Laporan\ILaporanStatusBarangPresenter.cs" />
+    <Compile Include="Presenters\Laporan\ILaporanStatusPerBarangPresenter.cs" />
     <Compile Include="Presenters\Laporan\ILaporanTransaksiByDatePresenter.cs" />
     <Compile Include="Presenters\Laporan\LaporanLabaRugiPresenter.cs" />
     <Compile Include="Presenters\Laporan\LaporanStatusBarangPresenter.cs" />
+    <Compile Include="Presenters\Laporan\LaporanStatusPerBarangPresenter.cs" />
     <Compile Include="Presenters\Laporan\LaporanTransaksiByDatePresenter.cs" />
     <Compile Include="Presenters\Login\ILoginPresenter.cs" />
     <Compile Include="Presenters\Login\LoginPresenter.cs" />
