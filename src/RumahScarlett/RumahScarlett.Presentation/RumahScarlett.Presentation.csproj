@@ -231,6 +231,9 @@
     <Compile Include="Views\CommonControls\ButtonExport.Designer.cs">
       <DependentUpon>ButtonExport.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\CommonControls\ComboBoxBulan.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Views\CommonControls\DetailView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -260,12 +263,6 @@
     </Compile>
     <Compile Include="Views\CommonControls\ButtonsDeletePrintDetail.Designer.cs">
       <DependentUpon>ButtonsDeletePrintDetail.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Views\CommonControls\ComboBoxBulan.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Views\CommonControls\ComboBoxBulan.Designer.cs">
-      <DependentUpon>ComboBoxBulan.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\CommonControls\CRUDCButtons.cs">
       <SubType>UserControl</SubType>
@@ -721,9 +718,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\CommonControls\ButtonsDeletePrintDetail.resx">
       <DependentUpon>ButtonsDeletePrintDetail.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\CommonControls\ComboBoxBulan.resx">
-      <DependentUpon>ComboBoxBulan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\CommonControls\CRUDCButtons.resx">
       <DependentUpon>CRUDCButtons.cs</DependentUpon>

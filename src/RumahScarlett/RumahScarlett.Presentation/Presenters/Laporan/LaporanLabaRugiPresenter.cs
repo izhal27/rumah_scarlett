@@ -57,7 +57,7 @@ namespace RumahScarlett.Presentation.Presenters.Laporan
 
       private void SetLabelValues()
       {
-         var bulan = (_view.ComboBoxBulan.ComboBox.SelectedIndex + 1);
+         var bulan = (_view.ComboBoxBulan.SelectedIndex + 1);
          var tahun = _view.NumericUpDownTahun.Value;
          _model = _services.GetByMonthYear(bulan, tahun);
 
@@ -111,7 +111,7 @@ namespace RumahScarlett.Presentation.Presenters.Laporan
 
             var parameters = new List<ReportParameter>()
             {
-               new ReportParameter("Bulan", _view.ComboBoxBulan.ComboBox.Text),
+               new ReportParameter("Bulan", _view.ComboBoxBulan.Text),
                new ReportParameter("Tahun", _view.NumericUpDownTahun.Value.ToString())
             };
 

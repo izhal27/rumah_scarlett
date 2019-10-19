@@ -1,39 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Globalization;
 
 namespace RumahScarlett.Presentation.Views.CommonControls
 {
-   public partial class ComboBoxBulan : UserControl
+   public class ComboBoxBulan : ComboBox
    {
-      [Description("Occurs when the value of the SelectedIndex property changes.")]
-      public event EventHandler SelectedIndexChanged;
-
-      public ComboBox ComboBox
-      {
-         get { return comboBox; }
-      }
-
       public ComboBoxBulan()
       {
-         InitializeComponent();
-
-         comboBox.DataSource = CultureInfo.InvariantCulture.DateTimeFormat
-                               .MonthNames.Take(12).ToList();
-         comboBox.SelectedItem = CultureInfo.InvariantCulture.DateTimeFormat
-                                 .MonthNames[DateTime.Now.AddMonths(-1).Month];
+         DropDownStyle = ComboBoxStyle.DropDownList;
       }
 
-      private void comboBox_SelectedIndexChanged(object sender, EventArgs e)
+      protected override void OnCreateControl()
       {
-         SelectedIndexChanged?.Invoke(sender, e);
+         DataSource = CultureInfo.InvariantCulture.DateTimeFormat
+                               .MonthNames.Take(12).ToList();
+         SelectedItem = CultureInfo.InvariantCulture.DateTimeFormat
+                                 .MonthNames[DateTime.Now.AddMonths(-1).Month];
       }
    }
 }
