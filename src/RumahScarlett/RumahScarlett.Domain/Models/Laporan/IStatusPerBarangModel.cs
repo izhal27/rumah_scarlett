@@ -6,7 +6,7 @@
       string kode { get; set; }
       string nama { get; set; }
       string satuan { get; set; }
-      string stok_keluar { get; set; }
-      string stok_masuk { get; set; }
+      long stok_keluar { get; set; }
+      long stok_masuk { get; set; }
    }
 }

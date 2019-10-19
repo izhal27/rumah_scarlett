@@ -17,9 +17,9 @@ namespace RumahScarlett.Presentation.Views.CommonControls
 
       protected override void OnCreateControl()
       {
-         DataSource = CultureInfo.InvariantCulture.DateTimeFormat
+         DataSource = CultureInfo.CurrentCulture.DateTimeFormat
                                .MonthNames.Take(12).ToList();
-         SelectedItem = CultureInfo.InvariantCulture.DateTimeFormat
+         SelectedItem = CultureInfo.CurrentCulture.DateTimeFormat
                                  .MonthNames[DateTime.Now.AddMonths(-1).Month];
       }
    }

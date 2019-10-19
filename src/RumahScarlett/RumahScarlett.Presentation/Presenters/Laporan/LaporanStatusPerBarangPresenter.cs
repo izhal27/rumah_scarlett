@@ -1,6 +1,9 @@
 ﻿using Equin.ApplicationFramework;
+using Microsoft.Reporting.WinForms;
 using RumahScarlett.Domain.Models.Laporan;
 using RumahScarlett.Infrastructure.DataAccess.Repositories.Laporan;
+using RumahScarlett.Presentation.Helper;
+using RumahScarlett.Presentation.Views.CommonControls;
 using RumahScarlett.Presentation.Views.Laporan;
 using RumahScarlett.Services.Services.Laporan;
 using System;
@@ -17,6 +20,7 @@ namespace RumahScarlett.Presentation.Presenters.Laporan
       private IStatusPerBarangServices _services;
       private List<IStatusPerBarangModel> _listObjs;
       private BindingListView<StatusPerBarangModel> _bindingView;
+      private StatusTampilkan _tampilkanStatus = StatusTampilkan.BulanTahun;
 
       public ILaporanStatusPerBarangView GetView
       {
@@ -30,6 +34,7 @@ namespace RumahScarlett.Presentation.Presenters.Laporan
 
          _view.OnLoadView += _view_OnLoadView;
          _view.OnButtonTampilkanClick += _view_OnButtonTampilkanClick;
+         _view.OnButtonCetakClick += _view_OnButtonCetakClick;
       }
 
       private void _view_OnLoadView(object sender, EventArgs e)
@@ -46,23 +51,79 @@ namespace RumahScarlett.Presentation.Presenters.Laporan
          _view.ListDataGrid.DataSource = _bindingView;
       }
 
+      public MonthYear MonthYear
+      {
+         get { return new MonthYear((_view.ComboBoxBulan.SelectedIndex + 1), _view.NumericUpDownTahun.Value); }
+      }
+
+      public MonthYear StartMonthYear
+      {
+         get { return new MonthYear((_view.ComboBoxBulanAwal.SelectedIndex + 1), _view.NumericUpDownTahunAwal.Value); }
+      }
+
+      public MonthYear EndMonthYear
+      {
+         get { return new MonthYear((_view.ComboBoxBulanAkhir.SelectedIndex + 1), _view.NumericUpDownTahunAkhir.Value); }
+      }
+
       private void _view_OnButtonTampilkanClick(object sender, EventArgs e)
       {
-         if (_view.RadioButtonBulan.Checked)
+         using (new WaitCursorHandler())
          {
-            var monthYear = new MonthYear((_view.ComboBoxBulan.SelectedIndex + 1), _view.NumericUpDownTahun.Value);
-
-            _listObjs = _services.GetByMonthYear(monthYear).ToList();
-            _bindingView.DataSource = _listObjs;
-         }
-         else
-         {
-            var startMonthYear = new MonthYear((_view.ComboBoxBulanAwal.SelectedIndex + 1), _view.NumericUpDownTahunAwal.Value);
-            var endMonthYear = new MonthYear((_view.ComboBoxBulanAkhir.SelectedIndex + 1), _view.NumericUpDownTahunAkhir.Value);
-
-            _listObjs = _services.GetByMonthYear(startMonthYear, endMonthYear).ToList();
-            _bindingView.DataSource = _listObjs;
+            if (_view.RadioButtonBulan.Checked)
+            {
+               _listObjs = _services.GetByMonthYear(MonthYear).ToList();
+               _bindingView.DataSource = _listObjs;
+               _tampilkanStatus = StatusTampilkan.BulanTahun;
+            }
+            else
+            {
+               _listObjs = _services.GetByMonthYear(StartMonthYear, EndMonthYear).ToList();
+               _bindingView.DataSource = _listObjs;
+               _tampilkanStatus = StatusTampilkan.BulanTahunPeriode;
+            }
          }
       }
+
+      private void _view_OnButtonCetakClick(object sender, EventArgs e)
+      {
+         using (new WaitCursorHandler())
+         {
+            if (_bindingView.DataSource.Count > 0)
+            {
+               var parameters = new List<ReportParameter>();
+               
+               if (_tampilkanStatus == StatusTampilkan.BulanTahun)
+               {
+                  parameters.Add(new ReportParameter("BulanTahun", $"{_view.ComboBoxBulan.Text}   {_view.NumericUpDownTahun.Value}"));
+               }
+               else
+               {
+                  var bulanTahunAwal = $"{_view.ComboBoxBulanAwal.Text}   {_view.NumericUpDownTahunAwal.Value}";
+                  var bulanTahunAkhir = $"{_view.ComboBoxBulanAkhir.Text}   {_view.NumericUpDownTahunAkhir.Value}";
+
+                  parameters.Add(new ReportParameter("BulanTahun", bulanTahunAwal));
+                  parameters.Add(new ReportParameter("BulanTahunAkhir", bulanTahunAkhir));
+               }
+
+               var reportDataSources = new List<ReportDataSource>()
+               {
+                  new ReportDataSource {
+                     Name = "DataSetStatusPerBrang",
+                     Value = _bindingView.DataSource
+                  }
+               };
+
+               new ReportView("Laporan Status Per Barang", "ReportViewerLaporanStatusPerBarang",
+                              reportDataSources, parameters).ShowDialog();
+            }
+         }
+      }
+   }
+   
+   enum StatusTampilkan
+   {
+      BulanTahun,
+      BulanTahunPeriode
    }
 }

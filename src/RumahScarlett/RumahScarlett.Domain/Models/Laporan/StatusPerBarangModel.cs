@@ -25,10 +25,10 @@ namespace RumahScarlett.Domain.Models.Laporan
 
       [DisplayFormat(DataFormatString = "{0:N0}")]
       [Display(Name = "Stok Masuk")]
-      public string stok_masuk { get; set; }
+      public long stok_masuk { get; set; }
 
       [DisplayFormat(DataFormatString = "{0:N0}")]
       [Display(Name = "Stok Keluar")]
-      public string stok_keluar { get; set; }
+      public long stok_keluar { get; set; }
    }
 }
