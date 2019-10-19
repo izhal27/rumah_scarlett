@@ -21,7 +21,7 @@ namespace RumahScarlett.Services.UnitTests.Laporan
 
       public LaporanTransaksiByDateServicesDataAccessTests(ITestOutputHelper testOutupuHelper)
       {
-         _services = new TransaksiByDateServices(new LaporanTransaksiByDateRepository());
+         _services = new TransaksiByDateServices(new TransaksiByDateRepository());
          _testOutputHelper = testOutupuHelper;
       }
 

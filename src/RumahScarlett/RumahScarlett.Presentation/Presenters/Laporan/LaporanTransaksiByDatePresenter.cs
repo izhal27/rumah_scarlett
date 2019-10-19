@@ -29,7 +29,7 @@ namespace RumahScarlett.Presentation.Presenters.Laporan
       public LaporanTransaksiByDatePresenter()
       {
          _view = new LaporanTransaksiByDateView();
-         _services = new TransaksiByDateServices(new LaporanTransaksiByDateRepository());
+         _services = new TransaksiByDateServices(new TransaksiByDateRepository());
 
          _view.OnLoadData += _view_OnLoadData;
          _view.OnLabelSelisihTextChanged += _view_OnLabelSelisihTextChanged;

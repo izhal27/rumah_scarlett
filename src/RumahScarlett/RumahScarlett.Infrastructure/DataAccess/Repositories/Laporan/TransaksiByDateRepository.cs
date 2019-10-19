@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Laporan
 {
-   public class LaporanTransaksiByDateRepository : ITransaksiByDateRepository
+   public class TransaksiByDateRepository : ITransaksiByDateRepository
    {
       public ITransaksiByDateModel Get(object date)
       {
