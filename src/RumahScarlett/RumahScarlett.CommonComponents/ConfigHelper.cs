@@ -97,13 +97,13 @@ namespace RumahScarlett.CommonComponents
 
       public static T GetConfig<T>(object key)
       {
-         var appSetting = ConfigurationManager.AppSettings[key.ToString()];
-
          if ((LicenseManager.UsageMode != LicenseUsageMode.Designtime))
          {
+            var appSetting = ConfigurationManager.AppSettings[key.ToString()];
+
             if (string.IsNullOrWhiteSpace(appSetting))
             {
-               throw new NullReferenceException(key.ToString());
+               return default(T);
             }
 
             var converter = TypeDescriptor.GetConverter(typeof(T));
