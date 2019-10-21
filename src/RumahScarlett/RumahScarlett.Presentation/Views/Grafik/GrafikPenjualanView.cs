@@ -9,18 +9,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
-namespace RumahScarlett.Presentation.Views.Laporan
+namespace RumahScarlett.Presentation.Views.Grafik
 {
-   public partial class LaporanStatusPerBarangView : BaseDataView, ILaporanStatusPerBarangView
+   public partial class GrafikPenjualanView : BaseDataView, IGrafikPenjualanView
    {
       public event EventHandler OnLoadView;
       public event EventHandler OnButtonTampilkanClick;
-      public event EventHandler OnButtonCetakClick;
 
-      public ListDataGrid ListDataGrid
+      public Chart ChartPenjualan
       {
-         get { return listDataGrid; }
+         get { return chartPenjualan; }
       }
 
       public RadioButton RadioButtonBulan
@@ -57,15 +57,15 @@ namespace RumahScarlett.Presentation.Views.Laporan
       {
          get { return numericUpDownTahunAkhir; }
       }
-      
-      public LaporanStatusPerBarangView()
+
+      public GrafikPenjualanView()
       {
          InitializeComponent();
 
          panelUp.LabelInfo = $"{Text.ToUpper()}";
       }
 
-      private void LaporanStatusPerBarang_Load(object sender, EventArgs e)
+      private void GrafikPenjualanView_Load(object sender, EventArgs e)
       {
          var bulanSekarang = CultureInfo.CurrentCulture.DateTimeFormat
                              .MonthNames[DateTime.Now.AddMonths(-1).Month];
@@ -80,11 +80,6 @@ namespace RumahScarlett.Presentation.Views.Laporan
       private void buttonTampilkan_Click(object sender, EventArgs e)
       {
          OnButtonTampilkanClick?.Invoke(sender, e);
-      }
-
-      private void buttonCetak_Click(object sender, EventArgs e)
-      {
-         OnButtonCetakClick?.Invoke(sender, e);
       }
 
       private void buttonTutup_Click(object sender, EventArgs e)

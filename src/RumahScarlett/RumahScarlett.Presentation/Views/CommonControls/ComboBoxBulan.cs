@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -13,14 +14,17 @@ namespace RumahScarlett.Presentation.Views.CommonControls
       public ComboBoxBulan()
       {
          DropDownStyle = ComboBoxStyle.DropDownList;
+
+         if ((LicenseManager.UsageMode != LicenseUsageMode.Designtime))
+         {
+            LoadDataSource();
+         }
       }
 
-      protected override void OnCreateControl()
+      private void LoadDataSource()
       {
          DataSource = CultureInfo.CurrentCulture.DateTimeFormat
-                               .MonthNames.Take(12).ToList();
-         SelectedItem = CultureInfo.CurrentCulture.DateTimeFormat
-                                 .MonthNames[DateTime.Now.AddMonths(-1).Month];
-      }
+                            .MonthNames.Take(12).ToList();
+      }      
    }
 }

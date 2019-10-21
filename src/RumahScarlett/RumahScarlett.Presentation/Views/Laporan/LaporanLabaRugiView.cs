@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -64,6 +65,8 @@ namespace RumahScarlett.Presentation.Views.Laporan
       private void LaporanLabaRugiView_Load(object sender, EventArgs e)
       {
          numericUpDownTahun.Value = DateTime.Now.Year;
+         comboBoxBulan.SelectedItem = CultureInfo.CurrentCulture.DateTimeFormat
+                                      .MonthNames[DateTime.Now.AddMonths(-1).Month];
          OnLoadData?.Invoke(sender, e);
          ActiveControl = buttonTutup;
       }
