@@ -2,6 +2,7 @@
 using RumahScarlett.Presentation.Presenters.Barang;
 using RumahScarlett.Presentation.Presenters.Database;
 using RumahScarlett.Presentation.Presenters.GantiPassword;
+using RumahScarlett.Presentation.Presenters.Grafik;
 using RumahScarlett.Presentation.Presenters.HutangOperasional;
 using RumahScarlett.Presentation.Presenters.KasAwal;
 using RumahScarlett.Presentation.Presenters.Laporan;
@@ -93,6 +94,7 @@ namespace RumahScarlett.Presentation.Presenters
          _view.OnLaporanReturnPembelianViewClick += _view_OnLaporanReturnPembelianViewClick;
          _view.OnLaporanStatusBarangViewClick += _view_OnLaporanStatusBarangViewClick;
          _view.OnLaporanStatusPerBarangViewClick += _view_OnLaporanStatusPerBarangViewClick;
+         _view.OnLaporanGrafikBarangTerjualViewClick += _view_OnLaporanGrafikBarangTerjualViewClick;
          _view.OnLaporanLabaRugiViewClick += _view_OnLaporanLabaRugiViewClick;
          // Database
          _view.OnBackupDatabaseViewClick += _view_OnBackupDatabaseViewClick;
@@ -272,6 +274,12 @@ namespace RumahScarlett.Presentation.Presenters
       private void _view_OnLaporanStatusPerBarangViewClick(object sender, MainViewEventArgs e)
       {
          var view = (DockContent)new LaporanStatusPerBarangPresenter().GetView;
+         ShowChildForm(view, e);
+      }
+
+      private void _view_OnLaporanGrafikBarangTerjualViewClick(object sender, MainViewEventArgs e)
+      {
+         var view = (DockContent)new GrafikBarangTerjualPresenter().GetView;
          ShowChildForm(view, e);
       }
 

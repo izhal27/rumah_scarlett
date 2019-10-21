@@ -5,7 +5,7 @@ using RumahScarlett.Presentation.Views.CommonControls;
 
 namespace RumahScarlett.Presentation.Views.Grafik
 {
-   public interface IGrafikPenjualanView
+   public interface IGrafikBarangTerjualView : IView
    {
       event EventHandler OnLoadView;
       event EventHandler OnButtonTampilkanClick;

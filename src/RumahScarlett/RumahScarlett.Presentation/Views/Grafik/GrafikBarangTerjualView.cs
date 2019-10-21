@@ -13,7 +13,7 @@ using System.Windows.Forms.DataVisualization.Charting;
 
 namespace RumahScarlett.Presentation.Views.Grafik
 {
-   public partial class GrafikPenjualanView : BaseDataView, IGrafikPenjualanView
+   public partial class GrafikBarangTerjualView : BaseDataView, IGrafikBarangTerjualView
    {
       public event EventHandler OnLoadView;
       public event EventHandler OnButtonTampilkanClick;
@@ -58,7 +58,7 @@ namespace RumahScarlett.Presentation.Views.Grafik
          get { return numericUpDownTahunAkhir; }
       }
 
-      public GrafikPenjualanView()
+      public GrafikBarangTerjualView()
       {
          InitializeComponent();
 

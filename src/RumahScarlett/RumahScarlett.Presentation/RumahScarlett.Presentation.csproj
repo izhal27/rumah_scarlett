@@ -150,6 +150,8 @@
     <Compile Include="Presenters\Database\IBackupRestoreDatabasePresenter.cs" />
     <Compile Include="Presenters\GantiPassword\GantiPasswordPresenter.cs" />
     <Compile Include="Presenters\GantiPassword\IGantiPasswordPresenter.cs" />
+    <Compile Include="Presenters\Grafik\GrafikBarangTerjualPresenter.cs" />
+    <Compile Include="Presenters\Grafik\IGrafikBarangTerjualPresenter.cs" />
     <Compile Include="Presenters\HutangOperasional\HutangOperasionalPresenter.cs" />
     <Compile Include="Presenters\HutangOperasional\IHutangOperasionalPresenter.cs" />
     <Compile Include="Presenters\IMainPresenter.cs" />
@@ -333,13 +335,13 @@
       <DependentUpon>GantiPasswordView.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\GantiPassword\IGantiPasswordView.cs" />
-    <Compile Include="Views\Grafik\GrafikPenjualanView.cs">
+    <Compile Include="Views\Grafik\GrafikBarangTerjualView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\Grafik\GrafikPenjualanView.Designer.cs">
-      <DependentUpon>GrafikPenjualanView.cs</DependentUpon>
+    <Compile Include="Views\Grafik\GrafikBarangTerjualView.Designer.cs">
+      <DependentUpon>GrafikBarangTerjualView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Grafik\IGrafikPenjualanView.cs" />
+    <Compile Include="Views\Grafik\IGrafikBarangTerjualView.cs" />
     <Compile Include="Views\HutangOperasional\HutangOperasionalEntryView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -757,8 +759,8 @@
     <EmbeddedResource Include="Views\GantiPassword\GantiPasswordView.resx">
       <DependentUpon>GantiPasswordView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Grafik\GrafikPenjualanView.resx">
-      <DependentUpon>GrafikPenjualanView.cs</DependentUpon>
+    <EmbeddedResource Include="Views\Grafik\GrafikBarangTerjualView.resx">
+      <DependentUpon>GrafikBarangTerjualView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\HutangOperasional\HutangOperasionalEntryView.resx">
       <DependentUpon>HutangOperasionalEntryView.cs</DependentUpon>
