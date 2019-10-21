@@ -16,8 +16,8 @@ namespace RumahScarlett.CommonComponents
 
       public static string ErrorDeleteForeignKey(string modelName)
       {
-         return $"Tidak dapat menghapus data {modelName.FirstToUpper()}, dikarenakan data sedang " +
-                 "digunakan oleh table yang lain";
+         return $"Terjadi kesalahan saat menghapus data {modelName.FirstToUpper()}. " +
+                 "Kemungkinan data sedang digunakan oleh data yang lain";
       }
 
       public static string GetStringByLength(int length)

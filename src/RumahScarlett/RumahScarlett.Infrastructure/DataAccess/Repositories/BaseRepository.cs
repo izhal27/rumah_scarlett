@@ -208,7 +208,8 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories
                customMessage = $"Terjadi kesalahan saat menyimpan data {_modelName}.";
                break;
             case ErrorMessageType.Delete:
-               customMessage = $"Terjadi kesalahan saat menghapus data {_modelName}.";
+               customMessage = $"Terjadi kesalahan saat menghapus data {_modelName}. " +
+                                "Kemungkinan data sedang digunakan oleh data yang lain.";
                break;
             case ErrorMessageType.GetList:
                customMessage = $"Gagal mengambil data list {_modelName}.";
@@ -254,7 +255,7 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories
                                 "yang ingin di proses tidak ditemukan/sudah dihapus.";
                break;
             case ErrorMessageType.FailedDelete:
-               customMessage = $"Gagal menghapus data {_modelName}.";
+               customMessage = $"Gagal menghapus data {_modelName}. Kemungkinan data sedang digunakan oleh data yang lain";
                break;
             case ErrorMessageType.QtyEmpty:
                customMessage = $"Qty {_modelName} yang ingin di proses bernilai 0 (Nol).";
