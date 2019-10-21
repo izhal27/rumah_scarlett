@@ -280,8 +280,7 @@
          // 
          // panelInfoDigital
          // 
-         this.panelInfoDigital.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+         this.panelInfoDigital.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
          this.panelInfoDigital.BackColor = System.Drawing.Color.Black;
          this.panelInfoDigital.Location = new System.Drawing.Point(372, 58);
          this.panelInfoDigital.Name = "panelInfoDigital";
