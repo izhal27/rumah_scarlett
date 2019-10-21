@@ -85,6 +85,7 @@
     <Compile Include="DataAccess\Repositories\BaseRepository.cs" />
     <Compile Include="DataAccess\Repositories\Database\BackupRestoreDatabaseRepository.cs" />
     <Compile Include="DataAccess\Repositories\DbContext.cs" />
+    <Compile Include="DataAccess\Repositories\Grafik\GrafikBarangTerjualRepository.cs" />
     <Compile Include="DataAccess\Repositories\HutangOperasional\HutangOperasionalRepository.cs" />
     <Compile Include="DataAccess\Repositories\KasAwal\KasAwalRepository.cs" />
     <Compile Include="DataAccess\Repositories\Laporan\LabaRugiRepository.cs" />

@@ -99,6 +99,7 @@
     <Compile Include="Barang\BarangServicesValidationTests.cs" />
     <Compile Include="CommonTests\TestsHelper.cs" />
     <Compile Include="BaseServicesFixture.cs" />
+    <Compile Include="Grafik\GrafikBarangTerjualServicesDataAccessTests.cs" />
     <Compile Include="HutangOperasional\HutangOperasionalServicesDataAccessTests.cs" />
     <Compile Include="HutangOperasional\HutangOperasionalServicesFixture.cs" />
     <Compile Include="HutangOperasional\HutangOperasionalServicesValidationTests.cs" />

@@ -54,6 +54,9 @@
     <Compile Include="Services\Database\BackupRestoreDatabaseServices.cs" />
     <Compile Include="Services\Database\IBackupRestoreDatabaseRepository.cs" />
     <Compile Include="Services\Database\IBackupRestoreDatabaseServices.cs" />
+    <Compile Include="Services\Grafik\GrafikBarangTerjualServices.cs" />
+    <Compile Include="Services\Grafik\IGrafikBarangTerjualRepository.cs" />
+    <Compile Include="Services\Grafik\IGrafikBarangTerjualServices.cs" />
     <Compile Include="Services\HutangOperasional\HutangOperasionalServices.cs" />
     <Compile Include="Services\HutangOperasional\IHutangOperasionalRepository.cs" />
     <Compile Include="Services\HutangOperasional\IHutangOperasionalServices.cs" />

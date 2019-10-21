@@ -65,6 +65,8 @@
     <Compile Include="Models\Barang\IBarangModel.cs" />
     <Compile Include="Models\GantiPassword\GantiPasswordModel.cs" />
     <Compile Include="Models\GantiPassword\IGantiPasswordModel.cs" />
+    <Compile Include="Models\Grafik\GrafikBarangTerjualModel.cs" />
+    <Compile Include="Models\Grafik\IGrafikBarangTerjualModel.cs" />
     <Compile Include="Models\HutangOperasional\HutangOperasionalModel.cs" />
     <Compile Include="Models\HutangOperasional\IHutangOperasionalModel.cs" />
     <Compile Include="Models\KasAwal\IKasAwalModel.cs" />
