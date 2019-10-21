@@ -12,11 +12,12 @@ namespace RumahScarlett.Infrastructure.DataAccess.Repositories.Grafik
 {
    public class GrafikBarangTerjualRepository : IGrafikBarangTerjualRepository
    {
-      private static string _queryStr = "SELECT b.nama AS barang_nama, SUM(pjd.qty) AS stok_terjual FROM barang b " +
+      private static string _queryStr = "SELECT CONCAT(MONTH(pj.tanggal), '/', YEAR(pj.tanggal)) AS bulan_tanggal, " +
+                                        "b.nama AS barang_nama, SUM(pjd.qty) AS stok_terjual FROM barang b " +
                                         "INNER JOIN penjualan_detail pjd ON b.id = pjd.barang_id " +
                                         "INNER JOIN penjualan pj ON pjd.penjualan_id = pj.id AND " +
                                         "({MonthYear}) " +
-                                        "GROUP BY b.id ORDER BY stok_terjual DESC LIMIT 10";
+                                        "GROUP BY b.id, MONTH(pj.tanggal), YEAR(pj.tanggal) ORDER BY stok_terjual DESC LIMIT 10";
 
       public IEnumerable<IGrafikBarangTerjualModel> GetByMonthYear(MonthYear monthYear)
       {

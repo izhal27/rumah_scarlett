@@ -10,7 +10,7 @@ namespace RumahScarlett.Presentation.Views.Grafik
       event EventHandler OnLoadView;
       event EventHandler OnButtonTampilkanClick;
 
-      Chart ChartPenjualan { get; }
+      Chart ChartBarangTerjual { get; }
       RadioButton RadioButtonBulan { get; }
       ComboBoxBulan ComboBoxBulan { get; }
       NumericUpDown NumericUpDownTahun { get; }

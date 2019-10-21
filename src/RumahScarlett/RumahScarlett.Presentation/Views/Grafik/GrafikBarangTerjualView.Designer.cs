@@ -30,7 +30,6 @@
       {
          System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
          System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-         System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
          this.groupBox1 = new System.Windows.Forms.GroupBox();
          this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
          this.numericUpDownTahun = new System.Windows.Forms.NumericUpDown();
@@ -45,7 +44,7 @@
          this.comboBoxBulan = new RumahScarlett.Presentation.Views.CommonControls.ComboBoxBulan();
          this.comboBoxBulanAwal = new RumahScarlett.Presentation.Views.CommonControls.ComboBoxBulan();
          this.comboBoxBulanAkhir = new RumahScarlett.Presentation.Views.CommonControls.ComboBoxBulan();
-         this.chartPenjualan = new System.Windows.Forms.DataVisualization.Charting.Chart();
+         this.chartBarangTerjual = new System.Windows.Forms.DataVisualization.Charting.Chart();
          this.tlpButtons = new System.Windows.Forms.TableLayoutPanel();
          this.buttonTutup = new System.Windows.Forms.Button();
          this.groupBox1.SuspendLayout();
@@ -53,7 +52,7 @@
          ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTahun)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTahunAwal)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTahunAkhir)).BeginInit();
-         ((System.ComponentModel.ISupportInitialize)(this.chartPenjualan)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.chartBarangTerjual)).BeginInit();
          this.tlpButtons.SuspendLayout();
          this.SuspendLayout();
          // 
@@ -104,7 +103,7 @@
          // numericUpDownTahun
          // 
          this.numericUpDownTahun.Anchor = System.Windows.Forms.AnchorStyles.Left;
-         this.numericUpDownTahun.Location = new System.Drawing.Point(242, 4);
+         this.numericUpDownTahun.Location = new System.Drawing.Point(242, 5);
          this.numericUpDownTahun.Maximum = new decimal(new int[] {
             9999,
             0,
@@ -142,7 +141,7 @@
          // 
          this.radioButtonPeriode.Anchor = System.Windows.Forms.AnchorStyles.Left;
          this.radioButtonPeriode.AutoSize = true;
-         this.radioButtonPeriode.Location = new System.Drawing.Point(3, 35);
+         this.radioButtonPeriode.Location = new System.Drawing.Point(3, 36);
          this.radioButtonPeriode.Name = "radioButtonPeriode";
          this.radioButtonPeriode.Size = new System.Drawing.Size(61, 17);
          this.radioButtonPeriode.TabIndex = 0;
@@ -153,7 +152,7 @@
          // 
          this.label1.Anchor = System.Windows.Forms.AnchorStyles.Left;
          this.label1.AutoSize = true;
-         this.label1.Location = new System.Drawing.Point(313, 37);
+         this.label1.Location = new System.Drawing.Point(313, 38);
          this.label1.Name = "label1";
          this.label1.Size = new System.Drawing.Size(23, 13);
          this.label1.TabIndex = 2;
@@ -162,7 +161,7 @@
          // buttonTampilkan
          // 
          this.buttonTampilkan.Anchor = System.Windows.Forms.AnchorStyles.Left;
-         this.buttonTampilkan.Location = new System.Drawing.Point(86, 62);
+         this.buttonTampilkan.Location = new System.Drawing.Point(86, 63);
          this.buttonTampilkan.Name = "buttonTampilkan";
          this.buttonTampilkan.Size = new System.Drawing.Size(75, 23);
          this.buttonTampilkan.TabIndex = 3;
@@ -185,7 +184,7 @@
          // 
          this.label4.Anchor = System.Windows.Forms.AnchorStyles.Left;
          this.label4.AutoSize = true;
-         this.label4.Location = new System.Drawing.Point(70, 37);
+         this.label4.Location = new System.Drawing.Point(70, 38);
          this.label4.Name = "label4";
          this.label4.Size = new System.Drawing.Size(10, 13);
          this.label4.TabIndex = 2;
@@ -194,7 +193,7 @@
          // numericUpDownTahunAwal
          // 
          this.numericUpDownTahunAwal.Anchor = System.Windows.Forms.AnchorStyles.Left;
-         this.numericUpDownTahunAwal.Location = new System.Drawing.Point(242, 33);
+         this.numericUpDownTahunAwal.Location = new System.Drawing.Point(242, 35);
          this.numericUpDownTahunAwal.Maximum = new decimal(new int[] {
             9999,
             0,
@@ -218,7 +217,7 @@
          // numericUpDownTahunAkhir
          // 
          this.numericUpDownTahunAkhir.Anchor = System.Windows.Forms.AnchorStyles.Left;
-         this.numericUpDownTahunAkhir.Location = new System.Drawing.Point(498, 33);
+         this.numericUpDownTahunAkhir.Location = new System.Drawing.Point(498, 35);
          this.numericUpDownTahunAkhir.Maximum = new decimal(new int[] {
             9999,
             0,
@@ -254,7 +253,7 @@
          this.comboBoxBulanAwal.Anchor = System.Windows.Forms.AnchorStyles.Left;
          this.comboBoxBulanAwal.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
          this.comboBoxBulanAwal.FormattingEnabled = true;
-         this.comboBoxBulanAwal.Location = new System.Drawing.Point(86, 33);
+         this.comboBoxBulanAwal.Location = new System.Drawing.Point(86, 34);
          this.comboBoxBulanAwal.Name = "comboBoxBulanAwal";
          this.comboBoxBulanAwal.Size = new System.Drawing.Size(150, 21);
          this.comboBoxBulanAwal.TabIndex = 7;
@@ -264,29 +263,25 @@
          this.comboBoxBulanAkhir.Anchor = System.Windows.Forms.AnchorStyles.Left;
          this.comboBoxBulanAkhir.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
          this.comboBoxBulanAkhir.FormattingEnabled = true;
-         this.comboBoxBulanAkhir.Location = new System.Drawing.Point(342, 33);
+         this.comboBoxBulanAkhir.Location = new System.Drawing.Point(342, 34);
          this.comboBoxBulanAkhir.Name = "comboBoxBulanAkhir";
          this.comboBoxBulanAkhir.Size = new System.Drawing.Size(150, 21);
          this.comboBoxBulanAkhir.TabIndex = 7;
          // 
-         // chartPenjualan
+         // chartBarangTerjual
          // 
-         this.chartPenjualan.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+         this.chartBarangTerjual.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
          chartArea1.Name = "ChartArea1";
-         this.chartPenjualan.ChartAreas.Add(chartArea1);
+         this.chartBarangTerjual.ChartAreas.Add(chartArea1);
          legend1.Name = "Legend1";
-         this.chartPenjualan.Legends.Add(legend1);
-         this.chartPenjualan.Location = new System.Drawing.Point(12, 179);
-         this.chartPenjualan.Name = "chartPenjualan";
-         series1.ChartArea = "ChartArea1";
-         series1.Legend = "Legend1";
-         series1.Name = "Series1";
-         this.chartPenjualan.Series.Add(series1);
-         this.chartPenjualan.Size = new System.Drawing.Size(760, 230);
-         this.chartPenjualan.TabIndex = 7;
-         this.chartPenjualan.Text = "chart1";
+         this.chartBarangTerjual.Legends.Add(legend1);
+         this.chartBarangTerjual.Location = new System.Drawing.Point(12, 179);
+         this.chartBarangTerjual.Name = "chartBarangTerjual";
+         this.chartBarangTerjual.Size = new System.Drawing.Size(760, 230);
+         this.chartBarangTerjual.TabIndex = 7;
+         this.chartBarangTerjual.Text = "chart1";
          // 
          // tlpButtons
          // 
@@ -325,7 +320,7 @@
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
          this.ClientSize = new System.Drawing.Size(784, 462);
          this.Controls.Add(this.tlpButtons);
-         this.Controls.Add(this.chartPenjualan);
+         this.Controls.Add(this.chartBarangTerjual);
          this.Controls.Add(this.groupBox1);
          this.Name = "GrafikBarangTerjualView";
          this.Tag = "";
@@ -333,7 +328,7 @@
          this.Load += new System.EventHandler(this.GrafikPenjualanView_Load);
          this.Controls.SetChildIndex(this.panelUp, 0);
          this.Controls.SetChildIndex(this.groupBox1, 0);
-         this.Controls.SetChildIndex(this.chartPenjualan, 0);
+         this.Controls.SetChildIndex(this.chartBarangTerjual, 0);
          this.Controls.SetChildIndex(this.tlpButtons, 0);
          this.groupBox1.ResumeLayout(false);
          this.tableLayoutPanel1.ResumeLayout(false);
@@ -341,7 +336,7 @@
          ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTahun)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTahunAwal)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTahunAkhir)).EndInit();
-         ((System.ComponentModel.ISupportInitialize)(this.chartPenjualan)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.chartBarangTerjual)).EndInit();
          this.tlpButtons.ResumeLayout(false);
          this.ResumeLayout(false);
 
@@ -360,7 +355,7 @@
       private System.Windows.Forms.Label label4;
       private System.Windows.Forms.NumericUpDown numericUpDownTahunAwal;
       private System.Windows.Forms.NumericUpDown numericUpDownTahunAkhir;
-      private System.Windows.Forms.DataVisualization.Charting.Chart chartPenjualan;
+      private System.Windows.Forms.DataVisualization.Charting.Chart chartBarangTerjual;
       protected System.Windows.Forms.TableLayoutPanel tlpButtons;
       protected System.Windows.Forms.Button buttonTutup;
       private CommonControls.ComboBoxBulan comboBoxBulan;

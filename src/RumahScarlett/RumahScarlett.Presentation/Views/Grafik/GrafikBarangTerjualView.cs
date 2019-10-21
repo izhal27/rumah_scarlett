@@ -18,9 +18,9 @@ namespace RumahScarlett.Presentation.Views.Grafik
       public event EventHandler OnLoadView;
       public event EventHandler OnButtonTampilkanClick;
 
-      public Chart ChartPenjualan
+      public Chart ChartBarangTerjual
       {
-         get { return chartPenjualan; }
+         get { return chartBarangTerjual; }
       }
 
       public RadioButton RadioButtonBulan
@@ -72,6 +72,11 @@ namespace RumahScarlett.Presentation.Views.Grafik
 
          comboBoxBulan.SelectedItem = bulanSekarang;
          comboBoxBulanAkhir.SelectedItem = bulanSekarang;
+
+         var tahun = DateTime.Now.Year;
+         numericUpDownTahun.Value = tahun;
+         numericUpDownTahunAwal.Value = tahun;
+         numericUpDownTahunAkhir.Value = tahun;
 
          OnLoadView?.Invoke(sender, e);
          ActiveControl = buttonTutup;

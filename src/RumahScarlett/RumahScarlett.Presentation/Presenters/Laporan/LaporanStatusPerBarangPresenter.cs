@@ -27,6 +27,21 @@ namespace RumahScarlett.Presentation.Presenters.Laporan
          get { return _view; }
       }
 
+      private MonthYear MonthYear
+      {
+         get { return new MonthYear((_view.ComboBoxBulan.SelectedIndex + 1), _view.NumericUpDownTahun.Value); }
+      }
+
+      private MonthYear StartMonthYear
+      {
+         get { return new MonthYear((_view.ComboBoxBulanAwal.SelectedIndex + 1), _view.NumericUpDownTahunAwal.Value); }
+      }
+
+      private MonthYear EndMonthYear
+      {
+         get { return new MonthYear((_view.ComboBoxBulanAkhir.SelectedIndex + 1), _view.NumericUpDownTahunAkhir.Value); }
+      }
+
       public LaporanStatusPerBarangPresenter()
       {
          _view = new LaporanStatusPerBarangView();
@@ -49,21 +64,6 @@ namespace RumahScarlett.Presentation.Presenters.Laporan
          _listObjs = _services.GetByMonthYear(new MonthYear(DateTime.Now.Month, DateTime.Now.Year)).ToList();
          _bindingView = new BindingListView<StatusPerBarangModel>(_listObjs);
          _view.ListDataGrid.DataSource = _bindingView;
-      }
-
-      public MonthYear MonthYear
-      {
-         get { return new MonthYear((_view.ComboBoxBulan.SelectedIndex + 1), _view.NumericUpDownTahun.Value); }
-      }
-
-      public MonthYear StartMonthYear
-      {
-         get { return new MonthYear((_view.ComboBoxBulanAwal.SelectedIndex + 1), _view.NumericUpDownTahunAwal.Value); }
-      }
-
-      public MonthYear EndMonthYear
-      {
-         get { return new MonthYear((_view.ComboBoxBulanAkhir.SelectedIndex + 1), _view.NumericUpDownTahunAkhir.Value); }
       }
 
       private void _view_OnButtonTampilkanClick(object sender, EventArgs e)
