@@ -2,7 +2,7 @@
 {
    public interface IGrafikBarangTerjualModel
    {
-      string bulan_tanggal { get; set; }
+      string bulan_tahun { get; set; }
       string barang_nama { get; set; }
       long stok_terjual { get; set; }
    }

@@ -10,7 +10,6 @@ namespace RumahScarlett.Services.Services.Grafik
 {
    public interface IGrafikBarangTerjualRepository
    {
-      IEnumerable<IGrafikBarangTerjualModel> GetByMonthYear(MonthYear monthYear);
-      IEnumerable<IGrafikBarangTerjualModel> GetByMonthYear(MonthYear startMonthYear, MonthYear endMonthYear);
+      IEnumerable<IGrafikBarangTerjualModel> GetByMonthYear(object month, object year);
    }
 }

@@ -17,14 +17,10 @@ namespace RumahScarlett.Services.Services.Grafik
          _repo = repo;
       }
 
-      public IEnumerable<IGrafikBarangTerjualModel> GetByMonthYear(MonthYear monthYear)
+      public IEnumerable<IGrafikBarangTerjualModel> GetByMonthYear(object month, object year)
       {
-         return _repo.GetByMonthYear(monthYear);
+         return _repo.GetByMonthYear(month, year);
       }
-
-      public IEnumerable<IGrafikBarangTerjualModel> GetByMonthYear(MonthYear startMonthYear, MonthYear endMonthYear)
-      {
-         return _repo.GetByMonthYear(startMonthYear, endMonthYear);
-      }
+      
    }
 }

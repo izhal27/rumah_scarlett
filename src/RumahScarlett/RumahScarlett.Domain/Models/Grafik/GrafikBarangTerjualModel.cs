@@ -8,7 +8,7 @@ namespace RumahScarlett.Domain.Models.Grafik
 {
    public class GrafikBarangTerjualModel : IGrafikBarangTerjualModel
    {
-      public string bulan_tanggal { get; set; }
+      public string bulan_tahun { get; set; }
       public string barang_nama { get; set; }
       public long stok_terjual { get; set; }
    }

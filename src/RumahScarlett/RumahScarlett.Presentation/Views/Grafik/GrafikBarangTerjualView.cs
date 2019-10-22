@@ -37,27 +37,7 @@ namespace RumahScarlett.Presentation.Views.Grafik
       {
          get { return numericUpDownTahun; }
       }
-
-      public ComboBoxBulan ComboBoxBulanAwal
-      {
-         get { return comboBoxBulanAwal; }
-      }
-
-      public NumericUpDown NumericUpDownTahunAwal
-      {
-         get { return numericUpDownTahunAwal; }
-      }
-
-      public ComboBoxBulan ComboBoxBulanAkhir
-      {
-         get { return comboBoxBulanAkhir; }
-      }
-
-      public NumericUpDown NumericUpDownTahunAkhir
-      {
-         get { return numericUpDownTahunAkhir; }
-      }
-
+      
       public GrafikBarangTerjualView()
       {
          InitializeComponent();
@@ -69,14 +49,10 @@ namespace RumahScarlett.Presentation.Views.Grafik
       {
          var bulanSekarang = CultureInfo.CurrentCulture.DateTimeFormat
                              .MonthNames[DateTime.Now.AddMonths(-1).Month];
-
          comboBoxBulan.SelectedItem = bulanSekarang;
-         comboBoxBulanAkhir.SelectedItem = bulanSekarang;
 
          var tahun = DateTime.Now.Year;
          numericUpDownTahun.Value = tahun;
-         numericUpDownTahunAwal.Value = tahun;
-         numericUpDownTahunAkhir.Value = tahun;
 
          OnLoadView?.Invoke(sender, e);
          ActiveControl = buttonTutup;

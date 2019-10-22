@@ -14,9 +14,5 @@ namespace RumahScarlett.Presentation.Views.Grafik
       RadioButton RadioButtonBulan { get; }
       ComboBoxBulan ComboBoxBulan { get; }
       NumericUpDown NumericUpDownTahun { get; }
-      ComboBoxBulan ComboBoxBulanAwal { get; }
-      NumericUpDown NumericUpDownTahunAwal { get; }
-      ComboBoxBulan ComboBoxBulanAkhir { get; }
-      NumericUpDown NumericUpDownTahunAkhir { get; }
    }
 }

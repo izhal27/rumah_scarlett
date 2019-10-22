@@ -33,7 +33,7 @@ namespace RumahScarlett.Services.UnitTests.Laporan
 
          try
          {
-            model = _services.GetByMonthYear(new MonthYear(10, 2019));
+            model = _services.GetByMonthYear(DateTime.Now.Month, DateTime.Now.Year);
          }
          catch (DataAccessException ex)
          {
@@ -46,28 +46,6 @@ namespace RumahScarlett.Services.UnitTests.Laporan
          {
             TestsHelper.WriteModel(_testOutputHelper, model);
          }
-      }
-
-      [Fact]
-      private void ShouldReturnSuccessForGetByBetweenMonthYear()
-      {
-         IEnumerable<IGrafikBarangTerjualModel> model = null;
-
-         try
-         {
-            model = _services.GetByMonthYear(new MonthYear(1, 2019), new MonthYear(12, 2019));
-         }
-         catch (DataAccessException ex)
-         {
-            _testOutputHelper.WriteLine(ex.DataAccessStatusInfo.GetFormatedValues());
-         }
-
-         Assert.True(model != null);
-
-         if (model != null)
-         {
-            TestsHelper.WriteModel(_testOutputHelper, model);
-         }
-      }
+      }      
    }
 }
