@@ -47,6 +47,10 @@ namespace RumahScarlett.Presentation.Views.User
             textBoxLoginID.Text = _model.login_id;
             comboBoxRole.SelectedItem = new RoleModel { id = _model.id, kode = _model.role_kode };
          }
+         else
+         {
+            buttonShowPassword.Enabled = true;
+         }
       }
 
       private void OperationButtons_OnSaveButtonClick(object sender, EventArgs e)
