@@ -164,6 +164,7 @@ namespace RumahScarlett.Presentation.Helper
       {
          var graphics = e.Graphics;
 
+         var font6 = new Font("Courier New", 6);
          var font8 = new Font("Courier New", 8);
          var font10 = new Font("Courier New", 10);
          var font12 = new Font("Courier New", 12);
@@ -381,6 +382,22 @@ namespace RumahScarlett.Presentation.Helper
 
          graphics.DrawString("ATAS KUNJUNGAN ANDA", font8
             , Brushes.Black, startCenter, offset, formatCenter);
+
+         offset += font8.Height;
+
+         // Garis
+         DrawLine(graphics, startX, offset, endOfLine, blackPen);
+         // ------------------------------------------------------------------------------- //
+
+         offset += 2;
+
+         graphics.DrawString("PERHATIAN:", font6
+            , Brushes.Black, startX, offset, formatLeft);
+
+         offset += font6.Height;
+
+         graphics.DrawString("Barang-barang yang sudah dibeli tidak dapat\ndikembalikan/ditukar.", font6
+            , Brushes.Black, startX, offset, formatLeft);
       }
    }
 }
