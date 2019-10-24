@@ -102,8 +102,8 @@ namespace RumahScarlett.Presentation.Presenters.Barang
             }
             else if (_view.RadioButtonTipe.Checked) // Filter by tipe
             {
-               var tipeId = _view.ComboBoxTipe.SelectedItem.id;
-               var subTipeId = _view.ComboBoxSubTipe.SelectedItem.id;
+               var tipeId = _view.ComboBoxTipe.SelectedItem != null ? _view.ComboBoxTipe.SelectedItem.id : default(int);
+               var subTipeId = _view.ComboBoxSubTipe.SelectedItem != null ? _view.ComboBoxSubTipe.SelectedItem.id : default(int);
 
                var filterBarang = _listObjs.Where(b => b.tipe_id == tipeId && b.sub_tipe_id == subTipeId).ToList();
                _bindingView.DataSource = filterBarang;
@@ -111,7 +111,7 @@ namespace RumahScarlett.Presentation.Presenters.Barang
             }
             else // Filter by supplier
             {
-               var supplierId = _view.ComboBoxSupplier.SelectedItem.id;
+               var supplierId = _view.ComboBoxSupplier.SelectedItem != null ? _view.ComboBoxSupplier.SelectedItem.id : default(int);
 
                var filterBarang = _listObjs.Where(b => b.supplier_id == supplierId).ToList();
                _bindingView.DataSource = filterBarang;
