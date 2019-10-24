@@ -59,32 +59,35 @@ namespace RumahScarlett.Presentation.Views.PenyesuaianStok
 
       private void OperationButtons_OnSaveButtonClick(object sender, EventArgs e)
       {
-         var barangModel = textBoxBarang.Tag != null ? (BarangModel)textBoxBarang.Tag : new BarangModel();
-
-         var model = new PenyesuaianStokModel
+         if (textBoxBarang.Tag != null)
          {
-            tanggal = dateTimePickerTanggal.Value,
-            Barang = barangModel,
-            hpp = decimal.Parse(textBoxHpp.Text, NumberStyles.Number),
-            qty = int.Parse(textBoxQty.Text, NumberStyles.Number),
-            satuan_id = comboBoxSatuan.SelectedItem.id,
-            satuan_nama = comboBoxSatuan.SelectedItem.nama,
-            keterangan = textBoxKeterangan.Text
-         };
+            var barangModel = textBoxBarang.Tag != null ? (BarangModel)textBoxBarang.Tag : new BarangModel();
 
-         var modelArgs = new ModelEventArgs<PenyesuaianStokModel>(model);
-
-         if (_isNewData)
-         {
-            if (Messages.ConfirmSave(_typeName))
+            var model = new PenyesuaianStokModel
             {
+               tanggal = dateTimePickerTanggal.Value,
+               Barang = barangModel,
+               hpp = decimal.Parse(textBoxHpp.Text, NumberStyles.Number),
+               qty = int.Parse(textBoxQty.Text, NumberStyles.Number),
+               satuan_id = comboBoxSatuan.SelectedItem != null ? comboBoxSatuan.SelectedItem.id : default(uint),
+               satuan_nama = comboBoxSatuan.SelectedItem.nama,
+               keterangan = textBoxKeterangan.Text
+            };
+
+            var modelArgs = new ModelEventArgs<PenyesuaianStokModel>(model);
+
+            if (_isNewData)
+            {
+               if (Messages.ConfirmSave(_typeName))
+               {
+                  OnSaveData?.Invoke(this, modelArgs);
+               }
+            }
+            else if (Messages.ConfirmUpdate(_typeName))
+            {
+               model.id = _model.id;
                OnSaveData?.Invoke(this, modelArgs);
             }
-         }
-         else if (Messages.ConfirmUpdate(_typeName))
-         {
-            model.id = _model.id;
-            OnSaveData?.Invoke(this, modelArgs);
          }
       }
 
