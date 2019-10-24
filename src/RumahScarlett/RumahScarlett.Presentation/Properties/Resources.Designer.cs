@@ -143,6 +143,16 @@ namespace RumahScarlett.Presentation.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap logo_rumah_scarlett {
+            get {
+                object obj = ResourceManager.GetObject("logo_rumah_scarlett", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap sale_32 {
             get {
                 object obj = ResourceManager.GetObject("sale_32", resourceCulture);

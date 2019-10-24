@@ -960,6 +960,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="make_up_icon_64.ico" />
+    <None Include="Resources\logo_rumah_scarlett.jpg" />
     <None Include="Resources\eye_16.png" />
     <None Include="Resources\whatsapp_24.png" />
     <None Include="Resources\twitter_24.png" />
