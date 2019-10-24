@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.IO;
@@ -95,6 +96,9 @@ namespace RumahScarlett.Presentation.Views
 
          toolStripStatusLabelMachineName.Text = Environment.MachineName;
          toolStripStatusLabelTanggal.Text = DateTime.Now.ToShortDateString();
+         toolStripStatusLabelServer.Text = ConfigurationManager.AppSettings["Server"] ?? "";
+         toolStripStatusLabelPort.Text = ConfigurationManager.AppSettings["Port"] ?? "";
+         toolStripStatusLabelUser.Text = MainProgram.UserActive.login_id;
       }
 
       private void MainView_Load(object sender, EventArgs e)

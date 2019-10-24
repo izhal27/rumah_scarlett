@@ -80,6 +80,8 @@
          this.toolStripMenuItemStatusBarang = new System.Windows.Forms.ToolStripMenuItem();
          this.toolStripMenuItemPerHari = new System.Windows.Forms.ToolStripMenuItem();
          this.toolStripMenuItemPerBarang = new System.Windows.Forms.ToolStripMenuItem();
+         this.tolStripMenuItemGrafik = new System.Windows.Forms.ToolStripMenuItem();
+         this.toolStripMenuItemGrafikBarangTerjual = new System.Windows.Forms.ToolStripMenuItem();
          this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
          this.toolStripMenuItemLabaRugi = new System.Windows.Forms.ToolStripMenuItem();
          this.toolStripMenuItemDatabase = new System.Windows.Forms.ToolStripMenuItem();
@@ -93,8 +95,13 @@
          this.toolStripButtonBarang = new System.Windows.Forms.ToolStripButton();
          this.toolStripButtonPembelian = new System.Windows.Forms.ToolStripButton();
          this.toolStripButtonPenjualan = new System.Windows.Forms.ToolStripButton();
-         this.tolStripMenuItemGrafik = new System.Windows.Forms.ToolStripMenuItem();
-         this.toolStripMenuItemGrafikBarangTerjual = new System.Windows.Forms.ToolStripMenuItem();
+         this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
+         this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
+         this.toolStripStatusLabelServer = new System.Windows.Forms.ToolStripStatusLabel();
+         this.toolStripStatusLabel4 = new System.Windows.Forms.ToolStripStatusLabel();
+         this.toolStripStatusLabel5 = new System.Windows.Forms.ToolStripStatusLabel();
+         this.toolStripStatusLabelUser = new System.Windows.Forms.ToolStripStatusLabel();
+         this.toolStripStatusLabelPort = new System.Windows.Forms.ToolStripStatusLabel();
          this.statusStripMain.SuspendLayout();
          this.menuStripMain.SuspendLayout();
          this.toolStripMain.SuspendLayout();
@@ -105,7 +112,14 @@
          this.statusStripMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabelMachineName,
             this.toolStripStatusLabel1,
-            this.toolStripStatusLabelTanggal});
+            this.toolStripStatusLabelTanggal,
+            this.toolStripStatusLabel2,
+            this.toolStripStatusLabel3,
+            this.toolStripStatusLabelServer,
+            this.toolStripStatusLabelPort,
+            this.toolStripStatusLabel4,
+            this.toolStripStatusLabel5,
+            this.toolStripStatusLabelUser});
          this.statusStripMain.Location = new System.Drawing.Point(0, 431);
          this.statusStripMain.Name = "statusStripMain";
          this.statusStripMain.Size = new System.Drawing.Size(632, 22);
@@ -127,8 +141,8 @@
          // toolStripStatusLabelTanggal
          // 
          this.toolStripStatusLabelTanggal.Name = "toolStripStatusLabelTanggal";
-         this.toolStripStatusLabelTanggal.Size = new System.Drawing.Size(39, 17);
-         this.toolStripStatusLabelTanggal.Text = "Status";
+         this.toolStripStatusLabelTanggal.Size = new System.Drawing.Size(50, 17);
+         this.toolStripStatusLabelTanggal.Text = "Tanggal";
          // 
          // menuStripMain
          // 
@@ -467,7 +481,7 @@
          this.toolStripMenuItemTransaksiByDate.AccessibleDescription = "Laporan";
          this.toolStripMenuItemTransaksiByDate.AccessibleName = "menuForm";
          this.toolStripMenuItemTransaksiByDate.Name = "toolStripMenuItemTransaksiByDate";
-         this.toolStripMenuItemTransaksiByDate.Size = new System.Drawing.Size(152, 22);
+         this.toolStripMenuItemTransaksiByDate.Size = new System.Drawing.Size(146, 22);
          this.toolStripMenuItemTransaksiByDate.Tag = "ignore";
          this.toolStripMenuItemTransaksiByDate.Text = "&Transaksi";
          this.toolStripMenuItemTransaksiByDate.Click += new System.EventHandler(this.toolStripMenuItemTransaksiByDate_Click);
@@ -475,14 +489,14 @@
          // toolStripSeparator0
          // 
          this.toolStripSeparator0.Name = "toolStripSeparator0";
-         this.toolStripSeparator0.Size = new System.Drawing.Size(149, 6);
+         this.toolStripSeparator0.Size = new System.Drawing.Size(143, 6);
          // 
          // toolStripMenuItemLaporanPenjualan
          // 
          this.toolStripMenuItemLaporanPenjualan.AccessibleDescription = "Laporan";
          this.toolStripMenuItemLaporanPenjualan.AccessibleName = "menuForm";
          this.toolStripMenuItemLaporanPenjualan.Name = "toolStripMenuItemLaporanPenjualan";
-         this.toolStripMenuItemLaporanPenjualan.Size = new System.Drawing.Size(152, 22);
+         this.toolStripMenuItemLaporanPenjualan.Size = new System.Drawing.Size(146, 22);
          this.toolStripMenuItemLaporanPenjualan.Tag = "LaporanPenjualanView";
          this.toolStripMenuItemLaporanPenjualan.Text = "Pen&jualan";
          this.toolStripMenuItemLaporanPenjualan.Click += new System.EventHandler(this.toolStripMenuItemLaporanPenjualan_Click);
@@ -492,7 +506,7 @@
          this.toolStripMenuItemLaporanPembelian.AccessibleDescription = "Laporan";
          this.toolStripMenuItemLaporanPembelian.AccessibleName = "menuForm";
          this.toolStripMenuItemLaporanPembelian.Name = "toolStripMenuItemLaporanPembelian";
-         this.toolStripMenuItemLaporanPembelian.Size = new System.Drawing.Size(152, 22);
+         this.toolStripMenuItemLaporanPembelian.Size = new System.Drawing.Size(146, 22);
          this.toolStripMenuItemLaporanPembelian.Tag = "LaporanPembelianView";
          this.toolStripMenuItemLaporanPembelian.Text = "Pem&belian";
          this.toolStripMenuItemLaporanPembelian.Click += new System.EventHandler(this.toolStripMenuItemLaporanPembelian_Click);
@@ -502,7 +516,7 @@
          this.toolStripMenuItemLaporanPengeluaran.AccessibleDescription = "Laporan";
          this.toolStripMenuItemLaporanPengeluaran.AccessibleName = "menuForm";
          this.toolStripMenuItemLaporanPengeluaran.Name = "toolStripMenuItemLaporanPengeluaran";
-         this.toolStripMenuItemLaporanPengeluaran.Size = new System.Drawing.Size(152, 22);
+         this.toolStripMenuItemLaporanPengeluaran.Size = new System.Drawing.Size(146, 22);
          this.toolStripMenuItemLaporanPengeluaran.Tag = "LaporanPengeluaranView";
          this.toolStripMenuItemLaporanPengeluaran.Text = "Penge&luaran";
          this.toolStripMenuItemLaporanPengeluaran.Click += new System.EventHandler(this.toolStripMenuItemLaporanPengeluaran_Click);
@@ -510,7 +524,7 @@
          // toolStripSeparator
          // 
          this.toolStripSeparator.Name = "toolStripSeparator";
-         this.toolStripSeparator.Size = new System.Drawing.Size(149, 6);
+         this.toolStripSeparator.Size = new System.Drawing.Size(143, 6);
          // 
          // toolStripMenuItemLaporanReturn
          // 
@@ -520,7 +534,7 @@
             this.toolStripMenuItemLaporanReturnPenjualan,
             this.toolStripMenuItemLaporanReturnPembelian});
          this.toolStripMenuItemLaporanReturn.Name = "toolStripMenuItemLaporanReturn";
-         this.toolStripMenuItemLaporanReturn.Size = new System.Drawing.Size(152, 22);
+         this.toolStripMenuItemLaporanReturn.Size = new System.Drawing.Size(146, 22);
          this.toolStripMenuItemLaporanReturn.Tag = "Return";
          this.toolStripMenuItemLaporanReturn.Text = "R&eturn";
          // 
@@ -529,7 +543,7 @@
          this.toolStripMenuItemLaporanReturnPenjualan.AccessibleDescription = "Laporan";
          this.toolStripMenuItemLaporanReturnPenjualan.AccessibleName = "menuForm";
          this.toolStripMenuItemLaporanReturnPenjualan.Name = "toolStripMenuItemLaporanReturnPenjualan";
-         this.toolStripMenuItemLaporanReturnPenjualan.Size = new System.Drawing.Size(152, 22);
+         this.toolStripMenuItemLaporanReturnPenjualan.Size = new System.Drawing.Size(130, 22);
          this.toolStripMenuItemLaporanReturnPenjualan.Tag = "LaporanReturnPenjualanView";
          this.toolStripMenuItemLaporanReturnPenjualan.Text = "Pen&jualan";
          this.toolStripMenuItemLaporanReturnPenjualan.Click += new System.EventHandler(this.toolStripMenuItemLaporanReturnPenjualan_Click);
@@ -539,7 +553,7 @@
          this.toolStripMenuItemLaporanReturnPembelian.AccessibleDescription = "Laporan";
          this.toolStripMenuItemLaporanReturnPembelian.AccessibleName = "menuForm";
          this.toolStripMenuItemLaporanReturnPembelian.Name = "toolStripMenuItemLaporanReturnPembelian";
-         this.toolStripMenuItemLaporanReturnPembelian.Size = new System.Drawing.Size(152, 22);
+         this.toolStripMenuItemLaporanReturnPembelian.Size = new System.Drawing.Size(130, 22);
          this.toolStripMenuItemLaporanReturnPembelian.Tag = "LaporanReturnPembelianView";
          this.toolStripMenuItemLaporanReturnPembelian.Text = "Pem&belian";
          this.toolStripMenuItemLaporanReturnPembelian.Click += new System.EventHandler(this.toolStripMenuItemLaporanReturnPembelian_Click);
@@ -547,7 +561,7 @@
          // toolStripSeparator7
          // 
          this.toolStripSeparator7.Name = "toolStripSeparator7";
-         this.toolStripSeparator7.Size = new System.Drawing.Size(149, 6);
+         this.toolStripSeparator7.Size = new System.Drawing.Size(143, 6);
          // 
          // toolStripMenuItemStatusBarang
          // 
@@ -557,7 +571,7 @@
             this.toolStripMenuItemPerHari,
             this.toolStripMenuItemPerBarang});
          this.toolStripMenuItemStatusBarang.Name = "toolStripMenuItemStatusBarang";
-         this.toolStripMenuItemStatusBarang.Size = new System.Drawing.Size(152, 22);
+         this.toolStripMenuItemStatusBarang.Size = new System.Drawing.Size(146, 22);
          this.toolStripMenuItemStatusBarang.Tag = "Status Barang";
          this.toolStripMenuItemStatusBarang.Text = "&Status Barang";
          // 
@@ -566,7 +580,7 @@
          this.toolStripMenuItemPerHari.AccessibleDescription = "Laporan";
          this.toolStripMenuItemPerHari.AccessibleName = "menuForm";
          this.toolStripMenuItemPerHari.Name = "toolStripMenuItemPerHari";
-         this.toolStripMenuItemPerHari.Size = new System.Drawing.Size(152, 22);
+         this.toolStripMenuItemPerHari.Size = new System.Drawing.Size(131, 22);
          this.toolStripMenuItemPerHari.Tag = "LaporanStatusBarangView";
          this.toolStripMenuItemPerHari.Text = "Per Hari";
          this.toolStripMenuItemPerHari.Click += new System.EventHandler(this.toolStripMenuItemPerHari_Click);
@@ -576,22 +590,43 @@
          this.toolStripMenuItemPerBarang.AccessibleDescription = "Laporan";
          this.toolStripMenuItemPerBarang.AccessibleName = "menuForm";
          this.toolStripMenuItemPerBarang.Name = "toolStripMenuItemPerBarang";
-         this.toolStripMenuItemPerBarang.Size = new System.Drawing.Size(152, 22);
+         this.toolStripMenuItemPerBarang.Size = new System.Drawing.Size(131, 22);
          this.toolStripMenuItemPerBarang.Tag = "LaporanStatusPerBarangView";
          this.toolStripMenuItemPerBarang.Text = "Per Barang";
          this.toolStripMenuItemPerBarang.Click += new System.EventHandler(this.toolStripMenuItemPerBarang_Click);
          // 
+         // tolStripMenuItemGrafik
+         // 
+         this.tolStripMenuItemGrafik.AccessibleDescription = "Laporan";
+         this.tolStripMenuItemGrafik.AccessibleName = "menu";
+         this.tolStripMenuItemGrafik.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItemGrafikBarangTerjual});
+         this.tolStripMenuItemGrafik.Name = "tolStripMenuItemGrafik";
+         this.tolStripMenuItemGrafik.Size = new System.Drawing.Size(146, 22);
+         this.tolStripMenuItemGrafik.Tag = "Grafik";
+         this.tolStripMenuItemGrafik.Text = "&Grafik";
+         // 
+         // toolStripMenuItemGrafikBarangTerjual
+         // 
+         this.toolStripMenuItemGrafikBarangTerjual.AccessibleDescription = "Laporan";
+         this.toolStripMenuItemGrafikBarangTerjual.AccessibleName = "menuForm";
+         this.toolStripMenuItemGrafikBarangTerjual.Name = "toolStripMenuItemGrafikBarangTerjual";
+         this.toolStripMenuItemGrafikBarangTerjual.Size = new System.Drawing.Size(150, 22);
+         this.toolStripMenuItemGrafikBarangTerjual.Tag = "GrafikBarangTerjualView";
+         this.toolStripMenuItemGrafikBarangTerjual.Text = "&Barang Terjual";
+         this.toolStripMenuItemGrafikBarangTerjual.Click += new System.EventHandler(this.toolStripMenuItemBarangTerjual_Click);
+         // 
          // toolStripSeparator5
          // 
          this.toolStripSeparator5.Name = "toolStripSeparator5";
-         this.toolStripSeparator5.Size = new System.Drawing.Size(149, 6);
+         this.toolStripSeparator5.Size = new System.Drawing.Size(143, 6);
          // 
          // toolStripMenuItemLabaRugi
          // 
          this.toolStripMenuItemLabaRugi.AccessibleDescription = "Laporan";
          this.toolStripMenuItemLabaRugi.AccessibleName = "menuForm";
          this.toolStripMenuItemLabaRugi.Name = "toolStripMenuItemLabaRugi";
-         this.toolStripMenuItemLabaRugi.Size = new System.Drawing.Size(152, 22);
+         this.toolStripMenuItemLabaRugi.Size = new System.Drawing.Size(146, 22);
          this.toolStripMenuItemLabaRugi.Tag = "LaporanLabaRugiView";
          this.toolStripMenuItemLabaRugi.Text = "Laba &Rugi";
          this.toolStripMenuItemLabaRugi.Click += new System.EventHandler(this.toolStripMenuItemLabaRugi_Click);
@@ -731,26 +766,47 @@
          this.toolStripButtonPenjualan.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
          this.toolStripButtonPenjualan.Click += new System.EventHandler(this.toolStripButtonPenjualan_Click);
          // 
-         // tolStripMenuItemGrafik
+         // toolStripStatusLabel2
          // 
-         this.tolStripMenuItemGrafik.AccessibleDescription = "Laporan";
-         this.tolStripMenuItemGrafik.AccessibleName = "menu";
-         this.tolStripMenuItemGrafik.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItemGrafikBarangTerjual});
-         this.tolStripMenuItemGrafik.Name = "tolStripMenuItemGrafik";
-         this.tolStripMenuItemGrafik.Size = new System.Drawing.Size(152, 22);
-         this.tolStripMenuItemGrafik.Tag = "Grafik";
-         this.tolStripMenuItemGrafik.Text = "&Grafik";
+         this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
+         this.toolStripStatusLabel2.Size = new System.Drawing.Size(10, 17);
+         this.toolStripStatusLabel2.Text = "|";
          // 
-         // toolStripMenuItemGrafikBarangTerjual
+         // toolStripStatusLabel3
          // 
-         this.toolStripMenuItemGrafikBarangTerjual.AccessibleDescription = "Laporan";
-         this.toolStripMenuItemGrafikBarangTerjual.AccessibleName = "menuForm";
-         this.toolStripMenuItemGrafikBarangTerjual.Name = "toolStripMenuItemGrafikBarangTerjual";
-         this.toolStripMenuItemGrafikBarangTerjual.Size = new System.Drawing.Size(152, 22);
-         this.toolStripMenuItemGrafikBarangTerjual.Tag = "GrafikBarangTerjualView";
-         this.toolStripMenuItemGrafikBarangTerjual.Text = "&Barang Terjual";
-         this.toolStripMenuItemGrafikBarangTerjual.Click += new System.EventHandler(this.toolStripMenuItemBarangTerjual_Click);
+         this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
+         this.toolStripStatusLabel3.Size = new System.Drawing.Size(42, 17);
+         this.toolStripStatusLabel3.Text = "Server:";
+         // 
+         // toolStripStatusLabelServer
+         // 
+         this.toolStripStatusLabelServer.Name = "toolStripStatusLabelServer";
+         this.toolStripStatusLabelServer.Size = new System.Drawing.Size(39, 17);
+         this.toolStripStatusLabelServer.Text = "Server";
+         // 
+         // toolStripStatusLabel4
+         // 
+         this.toolStripStatusLabel4.Name = "toolStripStatusLabel4";
+         this.toolStripStatusLabel4.Size = new System.Drawing.Size(10, 17);
+         this.toolStripStatusLabel4.Text = "|";
+         // 
+         // toolStripStatusLabel5
+         // 
+         this.toolStripStatusLabel5.Name = "toolStripStatusLabel5";
+         this.toolStripStatusLabel5.Size = new System.Drawing.Size(33, 17);
+         this.toolStripStatusLabel5.Text = "User:";
+         // 
+         // toolStripStatusLabelUser
+         // 
+         this.toolStripStatusLabelUser.Name = "toolStripStatusLabelUser";
+         this.toolStripStatusLabelUser.Size = new System.Drawing.Size(30, 17);
+         this.toolStripStatusLabelUser.Text = "User";
+         // 
+         // toolStripStatusLabelPort
+         // 
+         this.toolStripStatusLabelPort.Name = "toolStripStatusLabelPort";
+         this.toolStripStatusLabelPort.Size = new System.Drawing.Size(29, 17);
+         this.toolStripStatusLabelPort.Text = "Port";
          // 
          // MainView
          // 
@@ -846,6 +902,13 @@
       private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemPerBarang;
       private System.Windows.Forms.ToolStripMenuItem tolStripMenuItemGrafik;
       private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemGrafikBarangTerjual;
+      private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
+      private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
+      private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelServer;
+      private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelPort;
+      private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel4;
+      private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel5;
+      private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelUser;
    }
 }
 

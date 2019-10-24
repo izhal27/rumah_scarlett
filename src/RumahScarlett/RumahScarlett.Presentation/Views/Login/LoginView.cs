@@ -13,7 +13,24 @@ namespace RumahScarlett.Presentation.Views.Login
 {
    public partial class LoginView : Form, ILoginView
    {
+      public event EventHandler OnLoadView;
       public event EventHandler OnButtonLoginClick;
+      public event EventHandler OnButtonTesKoneksiClick;
+
+      public TabControl TabControlLogin
+      {
+         get { return tabControlLogin; }
+      }
+
+      public TabPage TabPageLogin
+      {
+         get { return tabPageLogin; }
+      }
+
+      public TabPage TabPageDatabase
+      {
+         get { return tabPageDatabase; }
+      }
 
       public BaseTextBox TextBoxLoginID
       {
@@ -25,6 +42,31 @@ namespace RumahScarlett.Presentation.Views.Login
          get { return textBoxPassword; }
       }
 
+      public BaseTextBox TextBoxServer
+      {
+         get { return textBoxServer; }
+      }
+
+      public BaseTextBox TextBoxDatabase
+      {
+         get { return textBoxDatabase; }
+      }
+
+      public BaseTextBox TextBoxPort
+      {
+         get { return textBoxPort; }
+      }
+
+      public BaseTextBox TextBoxUser
+      {
+         get { return textBoxUser; }
+      }
+
+      public BaseTextBox TextBoxPasswordDatabase
+      {
+         get { return textBoxPasswordDatabase; }
+      }
+
       public LoginView()
       {
          InitializeComponent();
@@ -32,17 +74,21 @@ namespace RumahScarlett.Presentation.Views.Login
 
       private void LoginView_Load(object sender, EventArgs e)
       {
+         OnLoadView?.Invoke(sender, e);
          ActiveControl = textBoxLoginID;
       }
-      
+
       private void LoginView_KeyDown(object sender, KeyEventArgs e)
       {
          if (e.KeyCode == Keys.Enter)
          {
-            OnButtonLoginClick?.Invoke(buttonLogin, new EventArgs());
+            if (tabControlLogin.SelectedTab == tabPageLogin)
+            {
+               OnButtonLoginClick?.Invoke(buttonLogin, new EventArgs());
+            }
          }
       }
-      
+
       private void LoginView_FormClosed(object sender, FormClosedEventArgs e)
       {
          Application.Exit();
@@ -61,7 +107,7 @@ namespace RumahScarlett.Presentation.Views.Login
       {
          ((TextBox)sender).PasswordChar = '\0'; // Disable password char
       }
-      
+
       private void btnLogin_Click(object sender, EventArgs e)
       {
          OnButtonLoginClick?.Invoke(sender, e);
@@ -70,6 +116,11 @@ namespace RumahScarlett.Presentation.Views.Login
       private void btnCancel_Click(object sender, EventArgs e)
       {
          Application.Exit();
+      }
+
+      private void buttonTesKoneksi_Click(object sender, EventArgs e)
+      {
+         OnButtonTesKoneksiClick?.Invoke(sender, e);
       }
    }
 }
