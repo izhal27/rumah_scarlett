@@ -34,6 +34,13 @@
          this.toolStripStatusLabelMachineName = new System.Windows.Forms.ToolStripStatusLabel();
          this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
          this.toolStripStatusLabelTanggal = new System.Windows.Forms.ToolStripStatusLabel();
+         this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
+         this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
+         this.toolStripStatusLabelServer = new System.Windows.Forms.ToolStripStatusLabel();
+         this.toolStripStatusLabelPort = new System.Windows.Forms.ToolStripStatusLabel();
+         this.toolStripStatusLabel4 = new System.Windows.Forms.ToolStripStatusLabel();
+         this.toolStripStatusLabel5 = new System.Windows.Forms.ToolStripStatusLabel();
+         this.toolStripStatusLabelUser = new System.Windows.Forms.ToolStripStatusLabel();
          this.toolTip = new System.Windows.Forms.ToolTip(this.components);
          this.menuStripMain = new System.Windows.Forms.MenuStrip();
          this.toolStripMenuItemOperasi = new System.Windows.Forms.ToolStripMenuItem();
@@ -92,16 +99,11 @@
          this.toolStripMenuItemBantuan = new System.Windows.Forms.ToolStripMenuItem();
          this.toolStripMenuItemTentang = new System.Windows.Forms.ToolStripMenuItem();
          this.toolStripMain = new System.Windows.Forms.ToolStrip();
+         this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
          this.toolStripButtonBarang = new System.Windows.Forms.ToolStripButton();
          this.toolStripButtonPembelian = new System.Windows.Forms.ToolStripButton();
          this.toolStripButtonPenjualan = new System.Windows.Forms.ToolStripButton();
-         this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
-         this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
-         this.toolStripStatusLabelServer = new System.Windows.Forms.ToolStripStatusLabel();
-         this.toolStripStatusLabel4 = new System.Windows.Forms.ToolStripStatusLabel();
-         this.toolStripStatusLabel5 = new System.Windows.Forms.ToolStripStatusLabel();
-         this.toolStripStatusLabelUser = new System.Windows.Forms.ToolStripStatusLabel();
-         this.toolStripStatusLabelPort = new System.Windows.Forms.ToolStripStatusLabel();
+         this.toolStripButtonLogOut = new System.Windows.Forms.ToolStripButton();
          this.statusStripMain.SuspendLayout();
          this.menuStripMain.SuspendLayout();
          this.toolStripMain.SuspendLayout();
@@ -143,6 +145,48 @@
          this.toolStripStatusLabelTanggal.Name = "toolStripStatusLabelTanggal";
          this.toolStripStatusLabelTanggal.Size = new System.Drawing.Size(50, 17);
          this.toolStripStatusLabelTanggal.Text = "Tanggal";
+         // 
+         // toolStripStatusLabel2
+         // 
+         this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
+         this.toolStripStatusLabel2.Size = new System.Drawing.Size(10, 17);
+         this.toolStripStatusLabel2.Text = "|";
+         // 
+         // toolStripStatusLabel3
+         // 
+         this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
+         this.toolStripStatusLabel3.Size = new System.Drawing.Size(42, 17);
+         this.toolStripStatusLabel3.Text = "Server:";
+         // 
+         // toolStripStatusLabelServer
+         // 
+         this.toolStripStatusLabelServer.Name = "toolStripStatusLabelServer";
+         this.toolStripStatusLabelServer.Size = new System.Drawing.Size(39, 17);
+         this.toolStripStatusLabelServer.Text = "Server";
+         // 
+         // toolStripStatusLabelPort
+         // 
+         this.toolStripStatusLabelPort.Name = "toolStripStatusLabelPort";
+         this.toolStripStatusLabelPort.Size = new System.Drawing.Size(29, 17);
+         this.toolStripStatusLabelPort.Text = "Port";
+         // 
+         // toolStripStatusLabel4
+         // 
+         this.toolStripStatusLabel4.Name = "toolStripStatusLabel4";
+         this.toolStripStatusLabel4.Size = new System.Drawing.Size(10, 17);
+         this.toolStripStatusLabel4.Text = "|";
+         // 
+         // toolStripStatusLabel5
+         // 
+         this.toolStripStatusLabel5.Name = "toolStripStatusLabel5";
+         this.toolStripStatusLabel5.Size = new System.Drawing.Size(33, 17);
+         this.toolStripStatusLabel5.Text = "User:";
+         // 
+         // toolStripStatusLabelUser
+         // 
+         this.toolStripStatusLabelUser.Name = "toolStripStatusLabelUser";
+         this.toolStripStatusLabelUser.Size = new System.Drawing.Size(30, 17);
+         this.toolStripStatusLabelUser.Text = "User";
          // 
          // menuStripMain
          // 
@@ -710,12 +754,19 @@
          this.toolStripMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButtonBarang,
             this.toolStripButtonPembelian,
-            this.toolStripButtonPenjualan});
+            this.toolStripButtonPenjualan,
+            this.toolStripSeparator2,
+            this.toolStripButtonLogOut});
          this.toolStripMain.Location = new System.Drawing.Point(0, 24);
          this.toolStripMain.Name = "toolStripMain";
          this.toolStripMain.Size = new System.Drawing.Size(632, 64);
          this.toolStripMain.TabIndex = 5;
          this.toolStripMain.Text = "toolStrip1";
+         // 
+         // toolStripSeparator2
+         // 
+         this.toolStripSeparator2.Name = "toolStripSeparator2";
+         this.toolStripSeparator2.Size = new System.Drawing.Size(6, 64);
          // 
          // toolStripButtonBarang
          // 
@@ -766,47 +817,21 @@
          this.toolStripButtonPenjualan.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
          this.toolStripButtonPenjualan.Click += new System.EventHandler(this.toolStripButtonPenjualan_Click);
          // 
-         // toolStripStatusLabel2
+         // toolStripButtonLogOut
          // 
-         this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
-         this.toolStripStatusLabel2.Size = new System.Drawing.Size(10, 17);
-         this.toolStripStatusLabel2.Text = "|";
-         // 
-         // toolStripStatusLabel3
-         // 
-         this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
-         this.toolStripStatusLabel3.Size = new System.Drawing.Size(42, 17);
-         this.toolStripStatusLabel3.Text = "Server:";
-         // 
-         // toolStripStatusLabelServer
-         // 
-         this.toolStripStatusLabelServer.Name = "toolStripStatusLabelServer";
-         this.toolStripStatusLabelServer.Size = new System.Drawing.Size(39, 17);
-         this.toolStripStatusLabelServer.Text = "Server";
-         // 
-         // toolStripStatusLabel4
-         // 
-         this.toolStripStatusLabel4.Name = "toolStripStatusLabel4";
-         this.toolStripStatusLabel4.Size = new System.Drawing.Size(10, 17);
-         this.toolStripStatusLabel4.Text = "|";
-         // 
-         // toolStripStatusLabel5
-         // 
-         this.toolStripStatusLabel5.Name = "toolStripStatusLabel5";
-         this.toolStripStatusLabel5.Size = new System.Drawing.Size(33, 17);
-         this.toolStripStatusLabel5.Text = "User:";
-         // 
-         // toolStripStatusLabelUser
-         // 
-         this.toolStripStatusLabelUser.Name = "toolStripStatusLabelUser";
-         this.toolStripStatusLabelUser.Size = new System.Drawing.Size(30, 17);
-         this.toolStripStatusLabelUser.Text = "User";
-         // 
-         // toolStripStatusLabelPort
-         // 
-         this.toolStripStatusLabelPort.Name = "toolStripStatusLabelPort";
-         this.toolStripStatusLabelPort.Size = new System.Drawing.Size(29, 17);
-         this.toolStripStatusLabelPort.Text = "Port";
+         this.toolStripButtonLogOut.AccessibleDescription = "";
+         this.toolStripButtonLogOut.AccessibleName = "";
+         this.toolStripButtonLogOut.Image = global::RumahScarlett.Presentation.Properties.Resources.exit_32;
+         this.toolStripButtonLogOut.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+         this.toolStripButtonLogOut.ImageTransparentColor = System.Drawing.Color.Magenta;
+         this.toolStripButtonLogOut.Name = "toolStripButtonLogOut";
+         this.toolStripButtonLogOut.Padding = new System.Windows.Forms.Padding(5);
+         this.toolStripButtonLogOut.Size = new System.Drawing.Size(59, 61);
+         this.toolStripButtonLogOut.Tag = "ignore";
+         this.toolStripButtonLogOut.Text = "Logout";
+         this.toolStripButtonLogOut.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+         this.toolStripButtonLogOut.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+         this.toolStripButtonLogOut.Click += new System.EventHandler(this.toolStripButtonLogOut_Click);
          // 
          // MainView
          // 
@@ -909,6 +934,8 @@
       private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel4;
       private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel5;
       private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelUser;
+      private System.Windows.Forms.ToolStripButton toolStripButtonLogOut;
+      private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
    }
 }
 

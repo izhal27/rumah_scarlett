@@ -121,14 +121,17 @@
   <data name="instagram_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\instagram_24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="buy_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\buy_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="eye_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\eye_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="About_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\About_logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="whatsapp_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\whatsapp_24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="logo_rumah_scarlett" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\logo_rumah_scarlett.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="facebook_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\facebook_24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -145,8 +148,8 @@
   <data name="sale_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\sale_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="eye_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\eye_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="buy_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\buy_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="twitter_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\twitter_24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -157,7 +160,7 @@
   <data name="github-logo_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\github-logo_24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="logo_rumah_scarlett" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\logo_rumah_scarlett.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="exit_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\exit_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

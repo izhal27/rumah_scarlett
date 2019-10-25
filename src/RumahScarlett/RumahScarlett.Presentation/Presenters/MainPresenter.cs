@@ -113,6 +113,14 @@ namespace RumahScarlett.Presentation.Presenters
 
       private void _view_OnLogOutClick(object sender, EventArgs e)
       {
+         if (!sender.GetType().Name.Equals(((Form)_view).GetType().Name))
+         {
+            if (!Messages.Confirm("Lanjutkan proses Logout?"))
+            {
+               return;
+            }
+         }
+
          MainProgram.UserActive = null;
          ((Form)_view).Dispose();
          ((Form)new LoginPresenter().GetView).ShowDialog();
@@ -270,7 +278,7 @@ namespace RumahScarlett.Presentation.Presenters
             new LaporanStatusBarangPresenter().GetView.ShowView();
          }
       }
-      
+
       private void _view_OnLaporanStatusPerBarangViewClick(object sender, MainViewEventArgs e)
       {
          var view = (DockContent)new LaporanStatusPerBarangPresenter().GetView;

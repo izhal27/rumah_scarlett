@@ -105,6 +105,11 @@ namespace RumahScarlett.Presentation.Views
       {
          OnViewLoad?.Invoke(sender, e);
       }
+      
+      private void MainView_FormClosed(object sender, FormClosedEventArgs e)
+      {
+         OnLogOutClick?.Invoke(sender, e);
+      }
 
       private void toolStripMenuItemGantiPassword_Click(object sender, EventArgs e)
       {
@@ -185,7 +190,7 @@ namespace RumahScarlett.Presentation.Views
       {
          toolStripMenuItemPenjualan_Click(sender, e);
       }
-
+      
       private void toolStripMenuItemPembelian_Click(object sender, EventArgs e)
       {
          OnPembelianViewClick?.Invoke(sender, _eventArgs);
@@ -281,7 +286,7 @@ namespace RumahScarlett.Presentation.Views
          OnTentangViewClick?.Invoke(sender, e);
       }
 
-      private void MainView_FormClosed(object sender, FormClosedEventArgs e)
+      private void toolStripButtonLogOut_Click(object sender, EventArgs e)
       {
          OnLogOutClick?.Invoke(sender, e);
       }
