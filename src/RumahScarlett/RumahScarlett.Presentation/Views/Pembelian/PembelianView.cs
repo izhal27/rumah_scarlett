@@ -120,5 +120,35 @@ namespace RumahScarlett.Presentation.Views.Pembelian
       {
          OnListDataGridPreviewKeyDown?.Invoke(sender, e);
       }
+
+      private void buttonCari_Click(object sender, EventArgs e)
+      {
+         OnCariData?.Invoke(sender, e);
+      }
+
+      private void buttonHapus_Click(object sender, EventArgs e)
+      {
+         OnHapusData?.Invoke(sender, e);
+      }
+
+      private void buttonSimpan_Click(object sender, EventArgs e)
+      {
+         OnSimpanData?.Invoke(sender, e);
+      }
+
+      private void buttonClearData_Click(object sender, EventArgs e)
+      {
+         OnBersihkanData?.Invoke(sender, e);
+      }
+
+      private void buttonCetakNota_Click(object sender, EventArgs e)
+      {
+         OnCetakNota?.Invoke(sender, e);
+      }
+
+      private void buttonTutup_Click(object sender, EventArgs e)
+      {
+         Close();
+      }
    }
 }
