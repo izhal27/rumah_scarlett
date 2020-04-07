@@ -18,104 +18,104 @@ using System.Windows.Forms;
 
 namespace RumahScarlett.Presentation.Presenters.Pembelian
 {
-   public class LaporanPembelianPresenter : ILaporanPembelianPresenter
-   {
-      private ILaporanPembelianView _view;
-      private IPembelianServices _services;
-      private List<IPembelianModel> _listPembelians;
-      private BindingListView<PembelianModel> _bindingView;
-      private string _typeName = "Pembelian";
-      private TampilkanStatus _tampilkanStatus = TampilkanStatus.Tanggal;
-      private DateTime _tanggal = DateTime.Now.Date;
-      private DateTime _tanggalAwal;
-      private DateTime _tanggalAkhir;
+  public class LaporanPembelianPresenter : ILaporanPembelianPresenter
+  {
+    private ILaporanPembelianView _view;
+    private IPembelianServices _services;
+    private List<IPembelianModel> _listPembelians;
+    private BindingListView<PembelianModel> _bindingView;
+    private string _typeName = "Pembelian";
+    private TampilkanStatus _tampilkanStatus = TampilkanStatus.Tanggal;
+    private DateTime _tanggal = DateTime.Now.Date;
+    private DateTime _tanggalAwal;
+    private DateTime _tanggalAkhir;
 
-      public ILaporanPembelianView GetView
+    public ILaporanPembelianView GetView
+    {
+      get { return _view; }
+    }
+
+    public LaporanPembelianPresenter()
+    {
+      _view = new LaporanPembelianView();
+      _services = new PembelianServices(new PembelianRepository(), new ModelDataAnnotationCheck());
+
+      _view.OnLoadData += _view_OnLoadData;
+      _view.OnTampilkanClick += _view_OnTampilkanClick;
+      _view.OnDeleteClick += _view_OnDeleteClick;
+      _view.OnPrintClick += _view_OnPrintData;
+      _view.OnDetailClick += _view_OnDetailClick;
+      _view.OnDataGridCellDoubleClick += _view_OnDataGridCellDoubleClick;
+    }
+
+    private void _view_OnLoadData(object sender, EventArgs e)
+    {
+      using (new WaitCursorHandler())
       {
-         get { return _view; }
+        _listPembelians = _services.GetByDate(DateTime.Now.Date).ToList();
+        _bindingView = new BindingListView<PembelianModel>(_listPembelians);
+        _view.ListDataGrid.DataSource = _bindingView;
       }
+    }
 
-      public LaporanPembelianPresenter()
+    private void _view_OnDeleteClick(object sender, EventArgs e)
+    {
+      using (new WaitCursorHandler())
       {
-         _view = new LaporanPembelianView();
-         _services = new PembelianServices(new PembelianRepository(), new ModelDataAnnotationCheck());
+        if (_view.ListDataGrid != null && _view.ListDataGrid.SelectedItem != null && Messages.ConfirmDelete(_typeName))
+        {
+          try
+          {
+            var model = _services.GetById(((PembelianModel)_view.ListDataGrid.SelectedItem).id);
 
-         _view.OnLoadData += _view_OnLoadData;
-         _view.OnTampilkanClick += _view_OnTampilkanClick;
-         _view.OnDeleteClick += _view_OnDeleteClick;
-         _view.OnPrintClick += _view_OnPrintData;
-         _view.OnDetailClick += _view_OnDetailClick;
-         _view.OnDataGridCellDoubleClick += _view_OnDataGridCellDoubleClick;
-      }
+            _services.Delete(model);
+            Messages.InfoDelete(_typeName);
 
-      private void _view_OnLoadData(object sender, EventArgs e)
-      {
-         using (new WaitCursorHandler())
-         {
-            _listPembelians = _services.GetByDate(DateTime.Now.Date).ToList();
-            _bindingView = new BindingListView<PembelianModel>(_listPembelians);
-            _view.ListDataGrid.DataSource = _bindingView;
-         }
-      }
-
-      private void _view_OnDeleteClick(object sender, EventArgs e)
-      {
-         using (new WaitCursorHandler())
-         {
-            if (_view.ListDataGrid != null && _view.ListDataGrid.SelectedItem != null && Messages.ConfirmDelete(_typeName))
+            if (_listPembelians.Remove((PembelianModel)_view.ListDataGrid.SelectedItem))
             {
-               try
-               {
-                  var model = _services.GetById(((PembelianModel)_view.ListDataGrid.SelectedItem).id);
-
-                  _services.Delete(model);
-                  Messages.InfoDelete(_typeName);
-
-                  if (_listPembelians.Remove((PembelianModel)_view.ListDataGrid.SelectedItem))
-                  {
-                     _bindingView.DataSource = _listPembelians;
-                  }
-               }
-               catch (DataAccessException ex)
-               {
-                  Messages.Error(ex);
-               }
-               finally
-               {
-                  if (_view.ListDataGrid.SelectedItem != null)
-                  {
-                     _view.ListDataGrid.SelectedItem = null;
-                  }
-               }
+              _bindingView.DataSource = _listPembelians;
             }
-         }
-      }
-
-      private void _view_OnPrintData(object sender, EventArgs e)
-      {
-         using (new WaitCursorHandler())
-         {
-            if (_bindingView.DataSource.Count > 0)
+          }
+          catch (DataAccessException ex)
+          {
+            Messages.Error(ex);
+          }
+          finally
+          {
+            if (_view.ListDataGrid.SelectedItem != null)
             {
-               var parameters = new List<ReportParameter>();
+              _view.ListDataGrid.SelectedItem = null;
+            }
+          }
+        }
+      }
+    }
 
-               var listObjs = new List<IPembelianReportModel>();
+    private void _view_OnPrintData(object sender, EventArgs e)
+    {
+      using (new WaitCursorHandler())
+      {
+        if (_bindingView.DataSource.Count > 0)
+        {
+          var parameters = new List<ReportParameter>();
 
-               if (_tampilkanStatus == TampilkanStatus.Tanggal)
-               {
-                  listObjs = _services.GetReportByDate(_tanggal).ToList();
+          var listObjs = new List<IPembelianReportModel>();
 
-                  parameters.Add(new ReportParameter("Tanggal", _tanggal.ToShortDateString()));
-               }
-               else if (_tampilkanStatus == TampilkanStatus.Periode)
-               {
-                  listObjs = _services.GetReportByDate(_tanggalAwal, _tanggalAkhir).ToList();
+          if (_tampilkanStatus == TampilkanStatus.Tanggal)
+          {
+            listObjs = _services.GetReportByDate(_tanggal).ToList();
 
-                  parameters.Add(new ReportParameter("Tanggal", _tanggalAwal.ToShortDateString()));
-                  parameters.Add(new ReportParameter("TanggalAkhir", _tanggalAkhir.ToShortDateString()));
-               }
+            parameters.Add(new ReportParameter("Tanggal", _tanggal.ToShortDateString()));
+          }
+          else if (_tampilkanStatus == TampilkanStatus.Periode)
+          {
+            listObjs = _services.GetReportByDate(_tanggalAwal, _tanggalAkhir).ToList();
 
-               var reportDataSources = new List<ReportDataSource>()
+            parameters.Add(new ReportParameter("Tanggal", _tanggalAwal.ToShortDateString()));
+            parameters.Add(new ReportParameter("TanggalAkhir", _tanggalAkhir.ToShortDateString()));
+          }
+
+          var reportDataSources = new List<ReportDataSource>()
                {
                   new ReportDataSource {
                      Name = "DataSetPembelian",
@@ -123,81 +123,81 @@ namespace RumahScarlett.Presentation.Presenters.Pembelian
                   }
                };
 
-               new ReportView("Laporan Pembelian", "ReportViewerLaporanPembelian",
-                              reportDataSources, parameters).ShowDialog();
-            }
-         }
+          new ReportView("Laporan Pembelian", "ReportViewerLaporanPembelian",
+                         reportDataSources, parameters).ShowDialog();
+        }
       }
+    }
 
-      private void _view_OnDetailClick(object sender, EventArgs e)
+    private void _view_OnDetailClick(object sender, EventArgs e)
+    {
+      var model = (PembelianModel)_view.ListDataGrid.SelectedItem;
+
+      if (model != null)
       {
-         var model = (PembelianModel)_view.ListDataGrid.SelectedItem;
-
-         if (model != null)
-         {
-            var detailView = new DetailView("Detail Pembelian");
-            detailView.OnLoadView += DetailView_OnLoadView;
-            detailView.OnButtonCetakClick += DetailView_OnButtonCetakClick;
-            detailView.ShowDialog();
-         }
+        var detailView = new DetailView("Detail Pembelian", "barang_nama");
+        detailView.OnLoadView += DetailView_OnLoadView;
+        detailView.OnButtonCetakClick += DetailView_OnButtonCetakClick;
+        detailView.ShowDialog();
       }
+    }
 
-      private void DetailView_OnLoadView(object sender, EventArgs e)
+    private void DetailView_OnLoadView(object sender, EventArgs e)
+    {
+      var modelDetails = ((PembelianModel)_view.ListDataGrid.SelectedItem).PembelianDetails.ToList();
+      var detailView = (DetailView)sender;
+
+      if (modelDetails != null && modelDetails.Count > 0)
       {
-         var modelDetails = ((PembelianModel)_view.ListDataGrid.SelectedItem).PembelianDetails.ToList();
-         var detailView = (DetailView)sender;
-
-         if (modelDetails != null && modelDetails.Count > 0)
-         {
-            var bindingDetialView = new BindingListView<PembelianDetailModel>(modelDetails);
-            detailView.ListDataGrid.DataSource = bindingDetialView;
-         }
+        var bindingDetialView = new BindingListView<PembelianDetailModel>(modelDetails);
+        detailView.ListDataGrid.DataSource = bindingDetialView;
       }
+    }
 
-      private void DetailView_OnButtonCetakClick(object sender, EventArgs e)
+    private void DetailView_OnButtonCetakClick(object sender, EventArgs e)
+    {
+      var pembelianModel = (PembelianModel)_view.ListDataGrid.SelectedItem;
+
+      ReportHelper.ShowNotaPembelian(pembelianModel);
+
+      ((Form)sender).Close();
+    }
+
+    private void _view_OnTampilkanClick(object sender, FilterDateEventArgs e)
+    {
+      using (new WaitCursorHandler())
       {
-         var pembelianModel = (PembelianModel)_view.ListDataGrid.SelectedItem;
+        _tampilkanStatus = e.TampilkanStatus;
 
-         ReportHelper.ShowNotaPembelian(pembelianModel);
+        switch (e.TampilkanStatus)
+        {
+          case TampilkanStatus.Tanggal:
 
-         ((Form)sender).Close();
+            _listPembelians = _services.GetByDate(e.Tanggal.Date).ToList();
+            _bindingView.DataSource = _listPembelians;
+            _tanggal = e.Tanggal.Date;
+
+            break;
+          case TampilkanStatus.Periode:
+
+            _listPembelians = _services.GetByDate(e.TanggalAwal.Date, e.TanggalAkhir.Date).ToList();
+            _bindingView.DataSource = _listPembelians;
+            _tanggalAwal = e.TanggalAwal.Date;
+            _tanggalAkhir = e.TanggalAkhir.Date;
+
+            break;
+        }
+
+        if (_view.ListDataGrid.SelectedItem != null)
+        {
+          _view.ListDataGrid.SelectedItem = null;
+        }
       }
+    }
 
-      private void _view_OnTampilkanClick(object sender, FilterDateEventArgs e)
-      {
-         using (new WaitCursorHandler())
-         {
-            _tampilkanStatus = e.TampilkanStatus;
-
-            switch (e.TampilkanStatus)
-            {
-               case TampilkanStatus.Tanggal:
-
-                  _listPembelians = _services.GetByDate(e.Tanggal.Date).ToList();
-                  _bindingView.DataSource = _listPembelians;
-                  _tanggal = e.Tanggal.Date;
-
-                  break;
-               case TampilkanStatus.Periode:
-
-                  _listPembelians = _services.GetByDate(e.TanggalAwal.Date, e.TanggalAkhir.Date).ToList();
-                  _bindingView.DataSource = _listPembelians;
-                  _tanggalAwal = e.TanggalAwal.Date;
-                  _tanggalAkhir = e.TanggalAkhir.Date;
-
-                  break;
-            }
-
-            if (_view.ListDataGrid.SelectedItem != null)
-            {
-               _view.ListDataGrid.SelectedItem = null;
-            }
-         }
-      }
-
-      private void _view_OnDataGridCellDoubleClick(object sender, CellClickEventArgs e)
-      {
-         _view_OnDetailClick(null, null);
-      }
-   }
+    private void _view_OnDataGridCellDoubleClick(object sender, CellClickEventArgs e)
+    {
+      _view_OnDetailClick(null, null);
+    }
+  }
 }

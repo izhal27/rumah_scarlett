@@ -134,7 +134,7 @@ namespace RumahScarlett.Presentation.Presenters.Penjualan
 
          if (model != null)
          {
-            var detailView = new DetailView("Detail Penjualan");
+            var detailView = new DetailView("Detail Penjualan", "barang_nama");
             detailView.OnLoadView += DetailView_OnLoadView;
             detailView.OnButtonCetakClick += DetailView_OnButtonCetakClick;
             detailView.ShowDialog();

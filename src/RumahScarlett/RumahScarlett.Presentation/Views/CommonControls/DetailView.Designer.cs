@@ -105,8 +105,8 @@
          this.Name = "DetailView";
          this.Tag = "ignore";
          this.Text = "BaseDetailTransaksiView";
-         this.Load += new System.EventHandler(this.BaseDetailTransaksiView_Load);
-         this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.BaseDetailTransaksiView_KeyDown);
+         this.Load += new System.EventHandler(this.DetailView_Load);
+         this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DetailView_KeyDown);
          this.Controls.SetChildIndex(this.panelUp, 0);
          this.Controls.SetChildIndex(this.tlpButtons, 0);
          this.Controls.SetChildIndex(this.listDataGrid, 0);

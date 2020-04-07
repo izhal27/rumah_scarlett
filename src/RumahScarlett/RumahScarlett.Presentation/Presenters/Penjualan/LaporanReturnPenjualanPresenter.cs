@@ -145,7 +145,7 @@ namespace RumahScarlett.Presentation.Presenters.Penjualan
       {
          var modelDetails = ((PenjualanReturnModel)_view.ListDataGrid.SelectedItem).PenjualanReturnDetails.ToList();
          var detailView = (DetailView)sender;
-
+      
          if (modelDetails != null && modelDetails.Count > 0)
          {
             var bindingDetialView = new BindingListView<PenjualanReturnDetailModel>(modelDetails);

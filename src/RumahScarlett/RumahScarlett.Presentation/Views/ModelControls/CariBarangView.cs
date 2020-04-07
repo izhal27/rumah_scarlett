@@ -73,8 +73,7 @@ namespace RumahScarlett.Presentation.Views.ModelControls
 
     private void CariBarangView_Load(object sender, EventArgs e)
     {
-      listDataGrid.AutoSizeColumnsMode = AutoSizeColumnsMode.LastColumnFill;
-      listDataGrid.Columns["nama"].AutoSizeColumnsMode = AutoSizeColumnsMode.LastColumnFill;
+      listDataGrid.SetLastColumnFill("nama");
 
       if (!string.IsNullOrWhiteSpace(_kodeOrNamaValue))
       {

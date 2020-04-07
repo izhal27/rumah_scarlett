@@ -22,7 +22,7 @@ namespace RumahScarlett.Presentation.Views.CommonControls
 
       DrawCell += ListDataGrid_DrawCell;
       QueryRowStyle += ListDataGrid_QueryRowStyle;
-      
+
     }
 
     protected override void OnCreateControl()
@@ -31,6 +31,24 @@ namespace RumahScarlett.Presentation.Views.CommonControls
       ShowRowHeader = true;
       AllowEditing = false;
       AllowResizingColumns = true;
+    }
+
+    public void SetLastColumnFill(object lastColumnFill)
+    {
+      if (lastColumnFill is string || lastColumnFill is int)
+      {
+        var lastColumn = lastColumnFill.ToString();
+        AutoSizeColumnsMode = AutoSizeColumnsMode.LastColumnFill;
+
+        if (lastColumnFill is string)
+        {
+          Columns[lastColumn].AutoSizeColumnsMode = AutoSizeColumnsMode.LastColumnFill;
+        }
+        else if (lastColumnFill is int)
+        {
+          Columns[int.Parse(lastColumn)].AutoSizeColumnsMode = AutoSizeColumnsMode.LastColumnFill;
+        }
+      }
     }
 
     private void ListDataGrid_DrawCell(object sender, DrawCellEventArgs e)
