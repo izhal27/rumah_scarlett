@@ -63,7 +63,7 @@ namespace RumahScarlett.Presentation.Views.ModelControls
 
       _kodeOrNamaValue = kodeOrNamaValue;
 
-      if (tipePencarian == TipePencarian.Penjualan)
+      if (tipePencarian == TipePencarian.Penjualan || tipePencarian == TipePencarian.Pembelian)
       {
         listDataGrid.QueryRowStyle += ListDataGrid_QueryRowStyle;
       }
@@ -86,19 +86,13 @@ namespace RumahScarlett.Presentation.Views.ModelControls
       if (e.RowType == RowType.DefaultRow)
       {
         var barangModel = (BarangModel)e.RowData;
-        var oldStyle = e.Style;
 
         if (barangModel != null)
         {
-          if (barangModel.stok <= 0)
+          if (barangModel.stok <= 0 || barangModel.hpp <= 0)
           {
             e.Style.BackColor = Color.FromArgb(255, 165, 160);
             e.Style.TextColor = Color.FromArgb(1, 2, 3);
-          }
-          else
-          {
-            e.Style.BackColor = oldStyle.BackColor;
-            e.Style.TextColor = oldStyle.TextColor;
           }
         }
       }
@@ -110,7 +104,8 @@ namespace RumahScarlett.Presentation.Views.ModelControls
       {
         var model = (BarangModel)listDataGrid.SelectedItem;
 
-        if (_tipePencarian == TipePencarian.Penjualan && model.stok <= 0)
+        if (_tipePencarian == TipePencarian.Penjualan && model.stok <= 0 ||
+            _tipePencarian == TipePencarian.Pembelian && model.hpp <= 0)
         {
           return;
         }
