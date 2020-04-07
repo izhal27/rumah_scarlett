@@ -78,7 +78,8 @@ namespace RumahScarlett.Presentation.Views.Role
 
       private void comboBoxMenu_SelectedIndexChanged(object sender, EventArgs e)
       {
-         OnComboBoxMenuSelectedIndexChanged?.Invoke(sender, e);
+      checkBoxPilihSemua.Checked = false;
+      OnComboBoxMenuSelectedIndexChanged?.Invoke(sender, e);
       }
 
       private void ButtonsCRUD_OnTambahClick(object sender, EventArgs e)
