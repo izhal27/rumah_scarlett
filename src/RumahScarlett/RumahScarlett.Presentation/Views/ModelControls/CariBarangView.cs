@@ -63,7 +63,7 @@ namespace RumahScarlett.Presentation.Views.ModelControls
 
       _kodeOrNamaValue = kodeOrNamaValue;
 
-      if (tipePencarian == TipePencarian.Penjualan || tipePencarian == TipePencarian.Pembelian)
+      if (tipePencarian == TipePencarian.Penjualan)
       {
         listDataGrid.QueryRowStyle += ListDataGrid_QueryRowStyle;
       }
@@ -104,8 +104,7 @@ namespace RumahScarlett.Presentation.Views.ModelControls
       {
         var model = (BarangModel)listDataGrid.SelectedItem;
 
-        if (_tipePencarian == TipePencarian.Penjualan && model.stok <= 0 ||
-            _tipePencarian == TipePencarian.Pembelian && model.hpp <= 0)
+        if (_tipePencarian == TipePencarian.Penjualan && model.stok <= 0)
         {
           return;
         }
