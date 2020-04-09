@@ -15,6 +15,7 @@ namespace RumahScarlett.Presentation.Views.Login
    {
       event EventHandler OnLoadView;
       event EventHandler OnButtonLoginClick;
+      event EventHandler OnButtonSimpanClick;
       event EventHandler OnButtonTesKoneksiClick;
 
       TabControl TabControlLogin { get;} 
