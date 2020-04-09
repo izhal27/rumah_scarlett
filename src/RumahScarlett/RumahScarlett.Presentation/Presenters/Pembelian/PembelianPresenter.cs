@@ -85,6 +85,7 @@ namespace RumahScarlett.Presentation.Presenters.Pembelian
 
          _view.ListDataGrid.Columns[0].AllowEditing = true; // Kode
          _view.ListDataGrid.Columns[2].AllowEditing = true; // Qty
+         _view.ListDataGrid.Columns[4].AllowEditing = true; // HPP
 
          _view.ListDataGrid.MoveToCurrentCell(new RowColumnIndex(1, 1));
          _view.ListDataGrid.CurrentCell.BeginEdit();
