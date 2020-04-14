@@ -1330,7 +1330,7 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox54">
+                    <Textbox Name="Total">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
@@ -1351,7 +1351,6 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox54</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>#e5e5e5</Color>
@@ -1564,8 +1563,8 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=IIF(Cdec(First(Fields!jumlah_bayar.Value) - ReportItems("TotalSubTotal").Value) &gt; 0, 
-	 Cdec(First(Fields!jumlah_bayar.Value) - ReportItems("TotalSubTotal").Value), 0)</Value>
+                              <Value>=IIF(Cdec(First(Fields!jumlah_bayar.Value) - ReportItems("Total").Value) &gt; 0, 
+	 Cdec(First(Fields!jumlah_bayar.Value) - ReportItems("Total").Value), 0)</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <Format>'Rp'#,0;('Rp'#,0)</Format>
@@ -1594,6 +1593,7 @@
                         <rd:FormatSymbolCulture>id-ID</rd:FormatSymbolCulture>
                       </Style>
                     </Textbox>
+                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
               </TablixCells>
