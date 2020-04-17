@@ -19,6 +19,7 @@ namespace RumahScarlett.Presentation.Views.ModelControls
   public partial class CariBarangView : BaseCariBarangView
   {
     public event EventHandler OnSendData;
+    public event EventHandler OnFormClosing;
 
     private List<IBarangModel> _listsBarang;
     private TipePencarian _tipePencarian;
@@ -128,6 +129,11 @@ namespace RumahScarlett.Presentation.Views.ModelControls
       {
         _bindingView.DataSource = _listsBarang;
       }
+    }
+
+    private void CariBarangView_FormClosing(object sender, FormClosingEventArgs e)
+    {
+      OnFormClosing?.Invoke(sender, e);
     }
   }
 

@@ -28,20 +28,25 @@
       /// </summary>
       private void InitializeComponent()
       {
-         ((System.ComponentModel.ISupportInitialize)(this.listDataGrid)).BeginInit();
-         this.SuspendLayout();
-         // 
-         // CariBarangView
-         // 
-         this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-         this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-         this.ClientSize = new System.Drawing.Size(784, 462);
-         this.Name = "CariBarangView";
-         this.Tag = "ignore";
-         this.Text = "Cari Barang";
-         this.Load += new System.EventHandler(this.CariBarangView_Load);
-         ((System.ComponentModel.ISupportInitialize)(this.listDataGrid)).EndInit();
-         this.ResumeLayout(false);
+      ((System.ComponentModel.ISupportInitialize)(this.listDataGrid)).BeginInit();
+      this.SuspendLayout();
+      // 
+      // listDataGrid
+      // 
+      this.listDataGrid.AllowResizingColumns = true;
+      // 
+      // CariBarangView
+      // 
+      this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+      this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+      this.ClientSize = new System.Drawing.Size(784, 462);
+      this.Name = "CariBarangView";
+      this.Tag = "ignore";
+      this.Text = "Cari Barang";
+      this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CariBarangView_FormClosing);
+      this.Load += new System.EventHandler(this.CariBarangView_Load);
+      ((System.ComponentModel.ISupportInitialize)(this.listDataGrid)).EndInit();
+      this.ResumeLayout(false);
 
       }
 
