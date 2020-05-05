@@ -25,5 +25,7 @@ namespace RumahScarlett.Presentation.Views.Laporan
       NumericUpDown NumericUpDownTahunAwal { get; }
       ComboBoxBulan ComboBoxBulanAkhir { get; }
       NumericUpDown NumericUpDownTahunAkhir { get; }
-   }
+      Label LabelTotalMasuk { get; }
+      Label LabelTotalKeluar { get; }
+  }
 }

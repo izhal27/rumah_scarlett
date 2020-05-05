@@ -57,8 +57,18 @@ namespace RumahScarlett.Presentation.Views.Laporan
       {
          get { return numericUpDownTahunAkhir; }
       }
-      
-      public LaporanStatusPerBarangView()
+
+    public Label LabelTotalMasuk
+    {
+      get { return labelTotalMasuk; }
+    }
+
+    public Label LabelTotalKeluar
+    {
+      get { return labelTotalKeluar; }
+    }
+
+    public LaporanStatusPerBarangView()
       {
          InitializeComponent();
 
@@ -91,5 +101,5 @@ namespace RumahScarlett.Presentation.Views.Laporan
       {
          Close();
       }
-   }
+  }
 }
