@@ -21,8 +21,7 @@ namespace RumahScarlett.Presentation.Views.CommonControls
                AnchorStyles.Bottom | AnchorStyles.Left;
 
       DrawCell += ListDataGrid_DrawCell;
-      QueryRowStyle += ListDataGrid_QueryRowStyle;
-
+      //QueryRowStyle += ListDataGrid_QueryRowStyle;
     }
 
     protected override void OnCreateControl()
@@ -67,10 +66,10 @@ namespace RumahScarlett.Presentation.Views.CommonControls
 
     private void ListDataGrid_QueryRowStyle(object sender, QueryRowStyleEventArgs e)
     {
-      if (e.RowType == RowType.DefaultRow && e.RowIndex % 2 == 0)
-        e.Style.BackColor = MainProgram.Pengaturan.warna_baris_genap;
-      else
-        e.Style.BackColor = MainProgram.Pengaturan.warna_baris_ganjil;
+      //if (e.RowType == RowType.DefaultRow && e.RowIndex % 2 == 0)
+      //  e.Style.BackColor = MainProgram.Pengaturan.warna_baris_genap;
+      //else
+      //  e.Style.BackColor = MainProgram.Pengaturan.warna_baris_ganjil;
     }
   }
 }
