@@ -43,3 +43,9 @@ Proyek ini dibuat sebagai simulasi nyata dari aplikasi Point of Sale (POS), menu
 
 ### Pengaturan
 <img src="https://github.com/izhal27/rumah_scarlett/blob/master/screenshots/pengaturan.png" alt="pengaturan" width=75% height=75%>
+
+---
+
+## 📄 Lisensi
+
+Proyek ini menggunakan [MIT License](LICENSE).
